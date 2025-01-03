@@ -392,6 +392,16 @@ class Ssb_Settings {
 					)
 				),
 				array(
+					'name'	=> 'ssb_factory_reset',
+					'type'	=> 'ssb_checkbox',
+					'label'	=> __( 'Factory Reset:', 'simple-social-buttons' ),
+					'help'	=> sprintf(
+						__( '%1$s Enable to reset all settings made by Simple Social Buttons upon saving.%2$s', 'simple-social-button' ),
+						'<span class="ssb_uninstall_data">',
+						'</span>',
+					)
+				),
+				array(
 					'name'  => 'facebook_app_id',
 					'desc'  => sprintf(
 						__( '%1$sFacebook App%2$s %3$show to make App%4$s', 'simple-social-button' ),

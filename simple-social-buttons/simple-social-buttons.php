@@ -3,7 +3,7 @@
  * Plugin Name: Simple Social Buttons
  * Plugin URI: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=plugin-url-link
  * Description: Simple Social Buttons adds an advanced set of social media sharing buttons to your WordPress sites, such as: Facebook, Twitter, WhatsApp, Viber, Reddit, LinkedIn and Pinterest. This makes it the most <code>Flexible Social Sharing Plugin ever for Everyone.</code>
- * Version: 5.3.2
+ * Version: 5.4.0
  * Author: WPBrigade
  * Author URI: https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_medium=author-url-link
  * Text Domain: simple-social-buttons
@@ -11,7 +11,7 @@
  */
 
 /*
-  Copyright 2011 - 2024, Muhammad Adnan (WPBrigade)  (email : support@wpbrigade.com)
+  Copyright 2011 - 2025, Muhammad Adnan (WPBrigade)  (email : support@wpbrigade.com)
 
 	This program is free software; you can redistribute it and/or modify
 	it under the terms of the GNU General Public License, version 2, as
@@ -81,7 +81,7 @@ class SimpleSocialButtonsPR {
 	 * @isnce
 	 * @var string
 	 */
-	public $pluginVersion = '5.3.1';
+	public $pluginVersion = '5.4.0';
 
 	/**
 	 * Plugin Prefix
@@ -210,7 +210,7 @@ class SimpleSocialButtonsPR {
 		$this->set_sidebar_option();
 		$this->set_extra_option();
 
-		add_action( 'plugins_loaded', array( $this, 'load_plugin_domain' ) );
+		add_action( 'admin_init', array( $this, 'factory_reset_settings_on_update' ) );
 
 		$content_filter_priority = apply_filters( 'ssb_the_content_priority', 12 );
 		$excerpt_filter_priority = apply_filters( 'ssb_the_excerpt_priority', 12 );
@@ -693,17 +693,28 @@ class SimpleSocialButtonsPR {
 		include_once SSB_PLUGIN_DIR . '/ssb-social-counts/reddit.php';
 		include_once SSB_PLUGIN_DIR . '/ssb-social-counts/tumblr.php';
 	}
-
-
+	
 	/**
-	 * Load plugin text domain.
+	 * Resets all settings to default on plugin update.
 	 *
+	 * This function is used to reset all settings to default on plugin update.
+	 * It will only work if the user has checked the checkbox for resetting
+	 * settings on the plugin's settings page.
+	 *
+	 * @since 5.3.3
 	 * @access public
-	 * @since 1.0.0
 	 * @return void
 	 */
-	public function load_plugin_domain() {
-		load_plugin_textdomain( 'simple-social-buttons', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
+	public function factory_reset_settings_on_update() {
+
+		if ( isset( $this->extra_option['ssb_factory_reset']) && '1' == $this->extra_option['ssb_factory_reset'] ) {
+			$this->plugin_install(true);
+			include_once(ABSPATH.'wp-admin/includes/plugin.php');
+			if ( is_plugin_active( 'simple-social-buttons-pro/simple-social-buttons-pro.php') || is_plugin_active_for_network( 'simple-social-buttons-pro/simple-social-buttons-pro.php') ) {
+				require_once(SSB_PRO_PLUGIN_DIR . '/simple-social-buttons-pro.php');
+				plugin_install(true);
+			}
+		}
 	}
 
 	/**
@@ -736,13 +747,14 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @since 1.0.0
+	 * @version 5.3.3
 	 * @return void
 	 */
-	public function plugin_install() {
-
+	public function plugin_install($default = false) {
+		
 		if ( ! is_multisite() ) {
 
-			$this->default_settings();
+			$this->default_settings($default);
 
 		} else {
 
@@ -750,7 +762,7 @@ class SimpleSocialButtonsPR {
 			$ssb_blog_ids = $wpdb->get_col( "SELECT blog_id FROM $wpdb->blogs" );
 			foreach ( $ssb_blog_ids as $blog_id ) {
 				switch_to_blog( $blog_id );
-				$this->default_settings();
+				$this->default_settings($default);
 				restore_current_blog();
 			}
 		}
@@ -761,26 +773,26 @@ class SimpleSocialButtonsPR {
 	/**
 	 * Plugin default settings.
 	 *
-	 * @version 3.1.0
+	 * @version 5.3.3
 	 * @return void
 	 */
-	public function default_settings() {
-
-		if ( ! get_option( 'ssb_networks' ) ) {
+	public function default_settings($default) {
+		
+		if ( $default == get_option( 'ssb_networks' ) ) {
 			$_default = array(
 				'icon_selection' => 'fbshare,twitter,linkedin,fblike',
 			);
 			update_option( 'ssb_networks', $_default );
 		}
 
-		if ( ! get_option( 'ssb_themes' ) ) {
+		if ( $default == get_option( 'ssb_themes' ) ) {
 			$_default = array(
 				'icon_style' => 'simple-icons',
 			);
 			update_option( 'ssb_themes', $_default );
 		}
 
-		if ( ! get_option( 'ssb_positions' ) ) {
+		if ( $default == get_option( 'ssb_positions' ) ) {
 			$_default = array(
 				'position' => array(
 					'inline' => 'inline',
@@ -789,7 +801,7 @@ class SimpleSocialButtonsPR {
 			update_option( 'ssb_positions', $_default );
 		}
 
-		if ( ! get_option( 'ssb_inline' ) ) {
+		if ( $default == get_option( 'ssb_inline' ) ) {
 			$_default = array(
 				'location' => 'below',
 				'posts'    => array(
@@ -799,9 +811,16 @@ class SimpleSocialButtonsPR {
 			update_option( 'ssb_inline', $_default );
 		}
 
-		if ( ! get_option( 'ssb_advanced' ) ) {
+		if ( $default == get_option( 'ssb_advanced' ) ) {
 			$_default = array(
 				'ssb_og_tags' => '1',
+			);
+			update_option( 'ssb_advanced', $_default );
+		}
+
+		if ( $default == get_option( 'ssb_advanced' ) ) {
+			$_default = array(
+				'ssb_factory_reset' => '0',
 			);
 			update_option( 'ssb_advanced', $_default );
 		}
@@ -2150,6 +2169,8 @@ class SimpleSocialButtonsPR {
 	 * @return void
 	 */
 	public function ssb_register_block() {
+
+		load_plugin_textdomain( 'simple-social-buttons', false, dirname( plugin_basename( __FILE__ ) ) . '/lang' );
 
 		if ( ! function_exists( 'register_block_type' ) ) { // Backward compitablity check
 			return;

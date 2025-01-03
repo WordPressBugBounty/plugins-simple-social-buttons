@@ -3,8 +3,8 @@ Contributors: hiddenpearls, WPBrigade, desideveloper
 Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=donate-link
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
-Tested up to: 6.6
-Stable tag: 5.3.2
+Tested up to: 6.7
+Stable tag: 5.4.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,12 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 5.4.0 - 2025-01-03 =
+* Bugfix: PHP Warning for translation hook.
+* Bugfix: Round Icon Layout issue.
+* New Feature: Introduced new option to reset the settings of the plugin.
+* Compatibility: Compatible with WordPress 6.7
 
 = 5.3.2 - 2024-09-11 =
 * Bugfix: Duplicate first icon issue.
@@ -557,5 +563,5 @@ like_button_size = small(default), large
 
 == Upgrade Notice ==
 
-= 5.3.2 =
-* Update Now.
+= 5.4.0 =
+* Update This Social Media Plugin Now.
