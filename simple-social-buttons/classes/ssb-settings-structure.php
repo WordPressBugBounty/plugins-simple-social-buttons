@@ -86,11 +86,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * This function gets the initiated settings sections and fields. Then
 		 * registers them to WordPress and ready for use.
 		 *
-		 * @version 5.0.0
+		 * @version 5.3.3
 		 */
 		function admin_init() {
 
-			$advanced_settings = array( 'ssb_advanced', 'ssb_click_to_tweet' );
+			$advanced_settings = array( 'ssb_advanced' );
 
 			// If NextGen plugin is activated and Simple Social Buttons Pro is activated.
 			if ( class_exists('C_Photocrati_Installer' ) && class_exists('Simple_Social_Buttons_Pro' ) ) {
@@ -113,9 +113,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				}
 				// 'ssb_advanced' == $section['id']
 				if ( in_array( $section['id'], $advanced_settings ) ) {
-					add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
-				} else {
+					add_settings_section( $section['id'], $section['title'], $callback, 'ssb_advanced' );
+				} elseif ( $section['id'] !== 'ssb_click_to_tweet' ) {
 					add_settings_section( $section['id'], $section['title'], $callback, 'ssb_networks' );
+				} else {
+					add_settings_section( $section['id'], $section['title'], $callback, $section['id'] );
 				}
 			}
 			// register settings fields
@@ -148,9 +150,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 					);
 
 					if ( in_array( $section, $advanced_settings ) ) {
-						add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
-					} else {
+						add_settings_field( "{$section}[{$name}]", $label, $callback, 'ssb_advanced', $section, $args );
+					} elseif ( $section !== 'ssb_click_to_tweet' ) {
 						add_settings_field( "{$section}[{$name}]", $label, $callback, 'ssb_networks', $section, $args );
+					} else {
+						add_settings_field( "{$section}[{$name}]", $label, $callback, $section, $section, $args );
 					}
 				}
 			}
@@ -158,9 +162,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			// creates our settings in the options table
 			foreach ( $this->settings_sections as $section ) {
 				if ( in_array( $section['id'], $advanced_settings ) ) {
-					register_setting( $section['id'], $section['id'], array( $this, 'sanitize_options' ) );
-				} else {
+					register_setting( 'ssb_advanced', $section['id'], array( $this, 'sanitize_options' ) );
+				} elseif ( $section['id'] !== 'ssb_click_to_tweet' ) {
 					register_setting( 'ssb_networks', $section['id'], array( $this, 'sanitize_options' ) );
+				} else {
+					register_setting( $section['id'], $section['id'], array( $this, 'sanitize_options' ) );
 				}
 			}
 		}
@@ -425,7 +431,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			 <ul id="ssb_active_icons" class="items" style="min-height:35px">
 			   <?php
 				 $ssb_icons_order = array();
-				 $arrKnownButtons = array( 'twitter', 'pinterest', 'fbshare', 'linkedin', 'reddit', 'whatsapp', 'viber', 'fblike', 'messenger', 'email' , 'copylink' , 'print', 'tumblr' );
+				 $arrKnownButtons = array( 'twitter', 'pinterest', 'fbshare', 'linkedin', 'reddit', 'whatsapp', 'viber', 'fblike', 'messenger', 'email' , 'copylink' , 'print', 'tumblr', 'bluesky', 'telegram', 'threads' );
 				foreach ( $arrKnownButtons as $button_name ) {
 					$ssb_icons_order[ $button_name ] = isset( $settings[ $button_name ] ) ? $settings[ $button_name ] : 0;
 				}
@@ -930,7 +936,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * Show the section settings forms 
 		 * This function displays every sections in a different form.
 		 *
-		 * @version 5.0.0
+		 * @version 5.3.3
 		 */
 		function show_forms() {
 			echo '<div class="ssb_settings_container ssb_settings-tab group" id="ssb_settings-tab-content">';
@@ -964,19 +970,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			echo '<form method="post" action="options.php">';
 			/**
 			 * SSB Advanced settings section.
+			 * SSB NextGen Gallery in Advanced settings section if NextGen plugin is activated.
 			 */
 			$this->do_settings_sections( 'ssb_advanced' );
 			settings_fields( 'ssb_advanced' );
 
-			// If NextGen plugin is activated and Simple Social Buttons Pro is activated.
-			if ( class_exists('C_Photocrati_Installer' ) && class_exists( 'Simple_Social_Buttons_Pro' ) ) {
-				/**
-				 * SSB NextGen Gallery in Advanced settings section.
-				 */
-				$this->do_settings_sections( 'ssb_ngg_gallery' );
-				settings_fields( 'ssb_ngg_gallery' );
-			}
-			// $this->render_instruction();
 			// $this->render_click_to_tweet();
 			  submit_button();
 			echo '</form>';

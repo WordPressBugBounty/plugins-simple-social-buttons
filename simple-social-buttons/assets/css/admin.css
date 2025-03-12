@@ -637,7 +637,7 @@ div.inside div.simplesocialbuttons-nav li a {
 }
 
 .simplesocialbuttons-nav li a.simplesocial-fb-share:after {
-  content: "\e900";
+  content: "\e905";
 }
 
 .simplesocialbuttons-nav li a.simplesocial-twt-share:after {
@@ -649,7 +649,7 @@ div.inside div.simplesocialbuttons-nav li a {
 }
 
 .simplesocialbuttons-nav li a.simplesocial-copy-link:after {
-  content: "\e905";
+  content: "\e911";
 }
 
 .simplesocialbuttons-nav.sm-round li a.simplesocial-twt-share {

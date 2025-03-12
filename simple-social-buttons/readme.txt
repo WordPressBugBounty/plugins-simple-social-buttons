@@ -4,7 +4,7 @@ Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-l
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
 Tested up to: 6.7
-Stable tag: 5.4.0
+Stable tag: 6.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,13 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 6.0.0 - 2025-03-12 =
+* Bugfix: Simple Social Buttons settings conflict with NextGEN Gallery settings.
+* New Feature: Introduced New Flat Design Sidebar Social Icons.
+* New Feature: Introduced 3 New Social Share Icons "Telegram, Threads, and Bluesky" 
+* Enhancement: Code optimization.
+* Compatibility: Compatible with AMP plugin.
 
 = 5.4.0 - 2025-01-03 =
 * Bugfix: PHP Warning for translation hook.
@@ -563,5 +570,5 @@ like_button_size = small(default), large
 
 == Upgrade Notice ==
 
-= 5.4.0 =
+= 6.0.0 =
 * Update This Social Media Plugin Now.

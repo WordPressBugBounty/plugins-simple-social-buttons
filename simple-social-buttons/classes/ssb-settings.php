@@ -188,6 +188,18 @@ class Ssb_Settings {
 					'priority' => '20',
 				),
 				array(
+					'name'     => 'display_hover_text',
+					'label'    => __( 'Display Text on hover', 'simple-social-buttons' ),
+					'type'     => 'ssb_checkbox',
+					'priority' => '26',
+				),
+				array(
+					'name'     => 'flat_button_sidebar',
+					'label'    => __( 'Flat Button Style', 'simple-social-buttons' ),
+					'type'     => 'ssb_checkbox',
+					'priority' => '27',
+				),
+				array(
 					'name'     => 'icon_space',
 					'label'    => __( 'Add Icon Spacing', 'simple-social-buttons' ),
 					'type'     => 'ssb_checkbox',

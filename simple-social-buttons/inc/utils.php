@@ -304,11 +304,12 @@ function ssb_linkdin_share_link( $url ) {
 	 * Check if SSB network has count/s.
 	 *
 	 * @since 2.1.4
+	 * @version 6.0.0
 	 * @param string $network network name.
 	 * @return boolean
 	 */
 function ssb_is_network_has_counts( $network ) {
-	$no_count_networks = array( 'totalshare', 'viber', 'fblike', 'whatsapp', 'print', 'email', 'messenger', 'linkedin' );
+	$no_count_networks = array( 'totalshare', 'viber', 'fblike', 'whatsapp', 'print', 'email', 'messenger', 'linkedin', 'copylink', 'telegram', 'threads', 'bluesky' );
 	if ( in_array( $network, $no_count_networks ) ) {
 		return false;
 	} else {

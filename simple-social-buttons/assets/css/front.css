@@ -44,13 +44,22 @@ div.ssb-button-pinterest { width: 100px; }
   outline: none;
 }
 .simplesocialbuttons button.simplesocial-fb-share:after{
-  content: "\e900";
+  content: "\e905";
 }
 .simplesocialbuttons button.simplesocial-twt-share:after{
   content: "\e920";
 }
 .simplesocialbuttons button.simplesocial-whatsapp-share:after{
   content: "\e906";
+}
+.simplesocialbuttons button.simplesocial-telegram-share:after{
+  content: "\e90e";
+}
+.simplesocialbuttons button.simplesocial-threads-share:after{
+  content: "\e90f";
+}
+.simplesocialbuttons button.simplesocial-bluesky-share:after{
+  content: "\e910";
 }
 .simplesocialbuttons button.simplesocial-viber-share:after{
   content: "\e666";
@@ -78,7 +87,7 @@ div.ssb-button-pinterest { width: 100px; }
   content: "\e90d";
 }
 .simplesocialbuttons button.simplesocial-copy-link:after{
-  content: "\e905";
+  content: "\e911";
 }
 .ssb_total_counter{
   display: inline-block;
@@ -846,6 +855,131 @@ div[class*="simplesocialbuttons-float"].simplesocial-simple-icons.simplesocialbu
   fill: #fff;
   height: 14px;
 }
+
+.simplesocial-simple-icons button.ssb_threads-icon{
+border-radius: 2px;
+width: auto;
+padding: 0 4px 0 0;
+text-align: center;
+text-decoration: none;
+font:bold 11px/20px "Helvetica Neue", Helvetica, sans-serif;
+font-weight: bold;
+color: #fff;
+background: #000;
+background-size: 14px 14px;
+display: inline-block;
+-webkit-font-smoothing: antialiased;
+height: 20px;
+text-indent: 20px;
+}
+.simplesocial-simple-icons button.ssb_threads-icon:hover{
+background: #1b1a1a;
+}
+.simplesocial-simple-icons button.ssb_threads-icon .icon{
+text-indent: 0;
+position: absolute;
+top: 3px;
+left: 3px;
+}
+.simplesocial-simple-icons button.ssb_threads-icon .icon svg{
+width: 14px;
+fill: #fff;
+height: 14px;
+}
+
+.simplesocial-simple-icons button.ssb_threads-icon{
+border-radius: 2px;
+width: auto;
+padding: 0 4px 0 0;
+text-align: center;
+text-decoration: none;
+font:bold 11px/20px "Helvetica Neue", Helvetica, sans-serif;
+font-weight: bold;
+color: #fff;
+background: #000;
+background-size: 14px 14px;
+display: inline-block;
+-webkit-font-smoothing: antialiased;
+height: 20px;
+text-indent: 20px;
+}
+.simplesocial-simple-icons button.ssb_threads-icon:hover{
+background: #1b1a1a;
+}
+.simplesocial-simple-icons button.ssb_threads-icon .icon{
+text-indent: 0;
+position: absolute;
+top: 3px;
+left: 3px;
+}
+.simplesocial-simple-icons button.ssb_threads-icon .icon svg{
+width: 14px;
+fill: #fff;
+height: 14px;
+}
+
+
+.simplesocial-simple-icons button.ssb_bluesky-icon{
+	border-radius: 2px;
+	width: auto;
+	padding: 0 4px 0 0;
+	text-align: center;
+	text-decoration: none;
+	font:bold 11px/20px "Helvetica Neue", Helvetica, sans-serif;
+	font-weight: bold;
+	color: #fff;
+	background: #1185fe;
+	background-size: 14px 14px;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	height: 20px;
+	text-indent: 20px;
+}
+.simplesocial-simple-icons button.ssb_bluesky-icon:hover{
+	background: #1b1a1a;
+}
+.simplesocial-simple-icons button.ssb_bluesky-icon .icon{
+	text-indent: 0;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+}
+.simplesocial-simple-icons button.ssb_bluesky-icon .icon svg{
+	width: 14px;
+	fill: #fff;
+	height: 14px;
+}
+
+.simplesocial-simple-icons button.ssb_telegram-icon{
+	border-radius: 2px;
+	width: auto;
+	padding: 0 4px 0 0;
+	text-align: center;
+	text-decoration: none;
+	font:bold 11px/20px "Helvetica Neue", Helvetica, sans-serif;
+	font-weight: bold;
+	color: #fff;
+	background: #24A1DE;
+	background-size: 14px 14px;
+	display: inline-block;
+	-webkit-font-smoothing: antialiased;
+	height: 20px;
+	text-indent: 20px;
+}
+.simplesocial-simple-icons button.ssb_telegram-icon:hover{
+	background: #1e8ec6;
+}
+.simplesocial-simple-icons button.ssb_telegram-icon .icon{
+	text-indent: 0;
+	position: absolute;
+	top: 3px;
+	left: 3px;
+}
+.simplesocial-simple-icons button.ssb_telegram-icon .icon svg{
+	width: 14px;
+	fill: #fff;
+	height: 14px;
+}
 div[class*="simplesocialbuttons-float"].simplesocial-simple-icons{
   width: 82px;
   text-align: left;
@@ -970,6 +1104,15 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 .simplesocialbuttons.simplesocial-sm-round button.simplesocial-print-share{
   color: #353535;
 }
+.simplesocialbuttons.simplesocial-sm-round button.simplesocial-telegram-share{
+  color: #24A1DE;
+}
+.simplesocialbuttons.simplesocial-sm-round button.simplesocial-threads-share{
+  color: #000;
+}
+.simplesocialbuttons.simplesocial-sm-round button.simplesocial-bluesky-share{
+  color: #1185fe;
+}
 .simplesocialbuttons.simplesocial-sm-round button.simplesocial-tumblr-share{
   color: #36465d;
 }
@@ -1048,11 +1191,35 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-email-share{
   background: #878787;
 }
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-email-share:before{
+  background: #727272;
+}
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-copy-link{
   background: #434A4D;
 }
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-print-share{
   background: #353535;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-print-share:before{
+	background: #2b2b2b;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-telegram-share{
+  background: #24A1DE;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-telegram-share::before{
+	background: #1a81b5;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-threads-share{
+  background: #000;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-threads-share::before{
+	background: #1d1d1d;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-bluesky-share{
+  background: #1185fe;
+}
+.simplesocialbuttons.simplesocial-simple-round button.simplesocial-bluesky-share::before{
+	background: #0964c3;
 }
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-tumblr-share{
   background: #36465d;
@@ -1208,6 +1375,30 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
   background: #353535;
   color: #fff;
 }
+.simplesocialbuttons.simplesocial-round-txt button.simplesocial-telegram-share{
+  color: #24A1DE;
+  border-color: #24A1DE;
+}
+.simplesocialbuttons.simplesocial-round-txt button.simplesocial-telegram-share:hover{
+  background: #24A1DE;
+  color: #fff;
+}
+.simplesocialbuttons.simplesocial-round-txt button.simplesocial-threads-share{
+  color: #000;
+  border-color: #000;
+}
+.simplesocialbuttons.simplesocial-round-txt button.simplesocial-threads-share:hover{
+  background: #000;
+  color: #fff;
+}
+.simplesocialbuttons.simplesocial-round-txt button.simplesocial-bluesky-share{
+  color: #1185fe;
+  border-color: #1185fe;
+}
+.simplesocialbuttons.simplesocial-round-txt button.simplesocial-bluesky-share:hover{
+  background: #1185fe;
+  color: #fff;
+}
 .simplesocialbuttons.simplesocial-round-txt button.simplesocial-tumblr-share{
   color: #36465d;
   border-color: #36465d;
@@ -1351,6 +1542,36 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
   box-shadow: inset 0px -40px 0px 0px #353535, 0px 2px 0px 0px #353535, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
   color: #fff;
 }
+.simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-telegram-share {
+  -webkit-box-shadow: inset 0px 0px 0px 0px #24A1DE, 0px 2px 0px 0px #24A1DE, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px 0px 0px 0px #24A1DE, 0px 2px 0px 0px #24A1DE, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  color: #717070;
+}
+.simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-telegram-share:hover{
+  -webkit-box-shadow: inset 0px -40px 0px 0px #24A1DE, 0px 2px 0px 0px #24A1DE, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px -40px 0px 0px #24A1DE, 0px 2px 0px 0px #24A1DE, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  color: #fff;
+}
+.simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-threads-share {
+  -webkit-box-shadow: inset 0px 0px 0px 0px #000000, 0px 2px 0px 0px #000000, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px 0px 0px 0px #000000, 0px 2px 0px 0px #000000, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  color: #000000;
+}
+.simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-threads-share:hover{
+  -webkit-box-shadow: inset 0px -40px 0px 0px #000000, 0px 2px 0px 0px #000000, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px -40px 0px 0px #000000, 0px 2px 0px 0px #000000, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  color: #fff;
+}
+.simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-bluesky-share {
+  -webkit-box-shadow: inset 0px 0px 0px 0px #1185fe, 0px 2px 0px 0px #1185fe, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px 0px 0px 0px #1185fe, 0px 2px 0px 0px #1185fe, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  color: #1185fe;
+}
+.simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-bluesky-share:hover{
+  -webkit-box-shadow: inset 0px -40px 0px 0px #1185fe, 0px 2px 0px 0px #1185fe, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: inset 0px -40px 0px 0px #1185fe, 0px 2px 0px 0px #1185fe, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
+  color: #fff;
+}
 .simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-tumblr-share:hover{
   -webkit-box-shadow: inset 0px -40px 0px 0px #36465d, 0px 2px 0px 0px #36465d, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
   box-shadow: inset 0px -40px 0px 0px #36465d, 0px 2px 0px 0px #36465d, 0px 0px 5px 0px rgba(0, 0, 0, 0.13);
@@ -1477,6 +1698,33 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
   -webkit-box-shadow: inset 0px -40px 0px 0px #1b1a1a, 0px 3px 0px 0px #1b1a1a;
   box-shadow: inset 0px -40px 0px 0px #1b1a1a, 0px 3px 0px 0px #1b1a1a;
 }
+.simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-telegram-share {
+  background: #24A1DE;
+  -webkit-box-shadow: inset 0px 0px 0px 0px #24A1DE, 0px 3px 0px 0px #24A1DE;
+  box-shadow: inset 0px 0px 0px 0px #24A1DE, 0px 3px 0px 0px #24A1DE;
+}
+.simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-telegram-share:hover {
+  -webkit-box-shadow: inset 0px -40px 0px 0px #0971a3, 0px 3px 0px 0px #0971a3;
+  box-shadow: inset 0px -40px 0px 0px #0971a3, 0px 3px 0px 0px #0971a3;
+}
+.simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-threads-share {
+  background: #000;
+  -webkit-box-shadow: inset 0px 0px 0px 0px #000, 0px 3px 0px 0px #000;
+  box-shadow: inset 0px 0px 0px 0px #000, 0px 3px 0px 0px #000;
+}
+.simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-threads-share:hover {
+  -webkit-box-shadow: inset 0px -40px 0px 0px #1D1D1D, 0px 3px 0px 0px #1D1D1D;
+  box-shadow: inset 0px -40px 0px 0px #1D1D1D, 0px 3px 0px 0px #1D1D1D;
+}
+.simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-bluesky-share {
+  background: #1185fe;
+  -webkit-box-shadow: inset 0px 0px 0px 0px #1185fe, 0px 3px 0px 0px #1185fe;
+  box-shadow: inset 0px 0px 0px 0px #1185fe, 0px 3px 0px 0px #1185fe;
+}
+.simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-bluesky-share:hover {
+  -webkit-box-shadow: inset 0px -40px 0px 0px #0973e1, 0px 3px 0px 0px #0973e1;
+  box-shadow: inset 0px -40px 0px 0px #0973e1, 0px 3px 0px 0px #0973e1;
+}
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-tumblr-share {
   background: #36465d;
   -webkit-box-shadow: inset 0px 0px 0px 0px #36465d, 0px 3px 0px 0px #36465d;
@@ -1602,7 +1850,30 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
   background: #717070;
   color: #fff;
 }
-
+.simplesocialbuttons.simplesocial-round-icon button.simplesocial-telegram-share{
+  color: #24A1DE;
+  border-color: #24A1DE;
+}
+.simplesocialbuttons.simplesocial-round-icon button.simplesocial-telegram-share:hover{
+  background: #1ea2e5;
+  color: #fff;
+}
+.simplesocialbuttons.simplesocial-round-icon button.simplesocial-bluesky-share{
+  color: #1185fe;
+  border-color: #1185fe;
+}
+.simplesocialbuttons.simplesocial-round-icon button.simplesocial-bluesky-share:hover{
+  background: #0973e1;
+  color: #fff;
+}
+.simplesocialbuttons.simplesocial-round-icon button.simplesocial-threads-share{
+  color: #000;
+  border-color: #000;
+}
+.simplesocialbuttons.simplesocial-round-icon button.simplesocial-threads-share:hover{
+  background: #1D1D1D;
+  color: #fff;
+}
 .simplesocialbuttons.simplesocial-round-icon button.simplesocial-msng-share{
   color: #468bff;
   border-color: #468bff;
@@ -1722,61 +1993,78 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 .simplesocialbuttons-inline-fade-in.simplesocialbuttons-inline-in button{
   opacity: 1;
 }
-.simplesocialbuttons_inline button:nth-child(2),.simplesocialbuttons_inline .ssb_total_counter:nth-child(2){
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(2){
+	-webkit-animation-delay: 0.2s;
+	animation-delay: 0.2s;
 }
-.simplesocialbuttons_inline button:nth-child(3),.simplesocialbuttons_inline .ssb_total_counter:nth-child(3){
-  -webkit-animation-delay: 0.4s;
-          animation-delay: 0.4s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(3){
+	-webkit-animation-delay: 0.4s;
+	animation-delay: 0.4s;
 }
-.simplesocialbuttons_inline button:nth-child(4),.simplesocialbuttons_inline .ssb_total_counter:nth-child(4){
- -webkit-animation-delay: 0.6s;
-         animation-delay: 0.6s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(4){
+	-webkit-animation-delay: 0.6s;
+	animation-delay: 0.6s;
 }
-.simplesocialbuttons_inline button:nth-child(5),.simplesocialbuttons_inline .ssb_total_counter:nth-child(5){
- -webkit-animation-delay: 0.8s;
-         animation-delay: 0.8s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(5){
+	-webkit-animation-delay: 0.8s;
+	animation-delay: 0.8s;
 }
-.simplesocialbuttons_inline button:nth-child(6),.simplesocialbuttons_inline .ssb_total_counter:nth-child(6){
- -webkit-animation-delay: 1s;
-         animation-delay: 1s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(6){
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
 }
-.simplesocialbuttons_inline button:nth-child(7),.simplesocialbuttons_inline .ssb_total_counter:nth-child(7){
- -webkit-animation-delay: 1.2s;
-         animation-delay: 1.2s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(7){
+	-webkit-animation-delay: 1.2s;
+	animation-delay: 1.2s;
 }
-.simplesocialbuttons_inline button:nth-child(8),.simplesocialbuttons_inline .ssb_total_counter:nth-child(8){
- -webkit-animation-delay: 1.4s;
-         animation-delay: 1.4s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(8){
+	-webkit-animation-delay: 1.4s;
+	animation-delay: 1.4s;
 }
-.simplesocialbuttons_inline button:nth-child(9),.simplesocialbuttons_inline .ssb_total_counter:nth-child(9){
- -webkit-animation-delay: 1.6s;
-         animation-delay: 1.6s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(9){
+	-webkit-animation-delay: 1.6s;
+	animation-delay: 1.6s;
 }
-.simplesocialbuttons_inline button:nth-child(10),.simplesocialbuttons_inline .ssb_total_counter:nth-child(10){
- -webkit-animation-delay: 1.8s;
-         animation-delay: 1.8s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(10){
+	-webkit-animation-delay: 1.8s;
+	animation-delay: 1.8s;
 }
-.simplesocialbuttons_inline button:nth-child(11),.simplesocialbuttons_inline .ssb_total_counter:nth-child(11){
- -webkit-animation-delay: 2s;
-         animation-delay: 2s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(11){
+	-webkit-animation-delay: 2s;
+	animation-delay: 2s;
 }
-.simplesocialbuttons_inline button:nth-child(12),.simplesocialbuttons_inline .ssb_total_counter:nth-child(12){
- -webkit-animation-delay: 2.2s;
-         animation-delay: 2.2s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(12){
+	-webkit-animation-delay: 2.2s;
+	animation-delay: 2.2s;
 }
-.simplesocialbuttons_inline button:nth-child(13),.simplesocialbuttons_inline .ssb_total_counter:nth-child(13){
- -webkit-animation-delay: 2.4s;
-         animation-delay: 2.4s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(13){
+	-webkit-animation-delay: 2.4s;
+	animation-delay: 2.4s;
 }
-.simplesocialbuttons_inline button:nth-child(14),.simplesocialbuttons_inline .ssb_total_counter:nth-child(14){
- -webkit-animation-delay: 2.6s;
-         animation-delay: 2.6s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(14){
+	-webkit-animation-delay: 2.6s;
+	animation-delay: 2.6s;
 }
-.simplesocialbuttons_inline button:nth-child(15),.simplesocialbuttons_inline .ssb_total_counter:nth-child(15){
- -webkit-animation-delay: 2.8s;
-         animation-delay: 2.8s;
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(15){
+	-webkit-animation-delay: 2.8s;
+	animation-delay: 2.8s;
+}
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(16){
+	-webkit-animation-delay: 3s;
+	animation-delay: 3s;
+}
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(17){
+	-webkit-animation-delay: 3.2s;
+	animation-delay: 3.2s;
+}
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(18){
+	-webkit-animation-delay: 3.4s;
+	animation-delay: 3.4s;
+}
+div[class*="simplesocialbuttons-float"] :is(.ssb-fb-like,button):nth-child(19){
+	-webkit-animation-delay: 3.6s;
+	animation-delay: 3.6s;
 }
 
 
@@ -1856,7 +2144,7 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 .simplesocialbuttons.simplesocial-round-txt button.simplesocial-tumblr-share .ssb_counter{
   background: #36465d;
 }
-.simplesocialbuttons.simplesocial-sm-round.ssb_counter-activate button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share){
+.simplesocialbuttons.simplesocial-sm-round.ssb_counter-activate button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share):not(.simplesocial-telegram-share):not(.simplesocial-threads-share):not(.simplesocial-bluesky-share){
   padding-right: 50px;
   position: relative;
 }
@@ -1875,7 +2163,7 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
   border-radius: 0 3px 3px 0;
   padding: 0 2px;
 }
-.simplesocialbuttons.simplesocial-simple-round.ssb_counter-activate button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share){
+.simplesocialbuttons.simplesocial-simple-round.ssb_counter-activate button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share):not(.simplesocial-telegram-share):not(.simplesocial-threads-share):not(.simplesocial-bluesky-share){
   padding-right: 50px;
   position: relative;
 }
@@ -1953,7 +2241,7 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
   color: #C92228;
 }
 
-.simplesocialbuttons.simplesocial-flat-button-border.ssb_counter-activate button:not(.simplesocial-whatsapp-share):not(.simplesocial-viber-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share){
+.simplesocialbuttons.simplesocial-flat-button-border.ssb_counter-activate button:not(.simplesocial-whatsapp-share):not(.simplesocial-viber-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share):not(.simplesocial-telegram-share):not(.simplesocial-threads-share):not(.simplesocial-bluesky-share){
   padding-right: 50px;
   position: relative;
 }
@@ -1992,7 +2280,7 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-tumblr-share .ssb_counter{
   color: #36465d;
 }
-.simplesocialbuttons.simplesocial-round-btm-border.ssb_counter-activate button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share){
+.simplesocialbuttons.simplesocial-round-btm-border.ssb_counter-activate button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-copy-link):not(.simplesocial-print-share):not(.simplesocial-linkedin-share):not(.simplesocial-telegram-share):not(.simplesocial-threads-share):not(.simplesocial-bluesky-share){
   padding-right: 60px;
   position: relative;
 }
@@ -2737,11 +3025,13 @@ div[class*="simplesocialbuttons-float-left-post"] button .ssb_counter{
   transform: translateX(-10px);
   margin-top: 6px;
   position: relative;
-  left: 50%;
+  left: 25px;
   margin-left: -13px;
 }
 .simplesocialbuttons-float-right-center .ssb-hide-floating-bar{
   clear: both;
+  right: 8px;
+  left: auto;
 }
 .simplesocialbuttons-float-left-center:hover .ssb-hide-floating-bar,
 .simplesocialbuttons-float-right-center:hover .ssb-hide-floating-bar{
@@ -2868,13 +3158,16 @@ div[class*="simplesocialbuttons-float"].simplesocial-simple-round  button[class*
   text-decoration: none !important;
 }
 .ssb_followers a.ssb_button.simplesocial-fb-follow:after{
-  content: "\e900";
+  content: "\e905";
 }
 .ssb_followers a.ssb_button.simplesocial-twt-follow:after{
   content: "\e920";
 }
 .ssb_followers a.ssb_button.simplesocial-whatsapp-follow:after{
   content: "\e906";
+}
+.ssb_followers a.ssb_button.simplesocial-telegram-follow:after{
+  content: "\e90e";
 }
 .ssb_followers a.ssb_button.simplesocial-viber-follow:after{
   content: "\e666";
@@ -2895,7 +3188,7 @@ div[class*="simplesocialbuttons-float"].simplesocial-simple-round  button[class*
   content: "\e90a";
 }
 .ssb_followers a.simplesocial-copy:after{
-  content: "\e905";
+  content: "\e911";
 }
 .ssb_followers a.ssb_button:after {
   font-family: 'ssb-icon' !important;
@@ -3087,9 +3380,64 @@ div[class*="simplesocialbuttons-float"].simplesocial-simple-round  button[class*
 body .sl-wrapper button:hover{
 	opacity: 1;
 }
+div[class*="simplesocialbuttons-float"].ssb_show_text_hover:not(.simplesocial-simple-icons) button span.simplesocialtxt{
+	display: block;
+	line-height: 1;
+	overflow: hidden;
+	padding-left: 3px;
+}
+div[class*="simplesocialbuttons-float"].ssb_show_text_hover:not(.simplesocial-simple-icons) {
+    width: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.ssb_show_text_hover:not(.simplesocial-simple-icons) button {
+	width: 34px;
+	padding-left: 34px !important;
+}
+
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.ssb_show_text_hover:not(.simplesocial-simple-icons) button:hover {
+    width: 120px !important;
+    padding-right: 10px !important;
+    /* padding-right transition will also apply on hover */
+}
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.ssb_show_text_hover:not(.simplesocial-simple-icons) button:after{
+	position: absolute !important;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-left-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button{
+	border-radius: 0px 0px 0px 0px;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-right-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button:first-of-type{
+	border-radius: 5px 0 0 0;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-right-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button:last-of-type{
+	border-radius:  0 0 0 5px;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-left-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button:first-of-type{
+	border-radius:  0 5px 0 0;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-left-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button:last-of-type{
+	border-radius:  0 0 5px 0 ;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-right-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button{
+	border-radius: 0px 0px 0px 0px;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-right-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button:hover{
+	border-radius: 5px 0 0 5px;
+}
+div.simplesocialbuttons.simplesocialbuttons-float-left-center.ssbflat_button_sidebar:not(.simplesocial-simple-icons) button:hover{
+	border-radius: 0 5px 5px 0;
+}
+div[class*="simplesocialbuttons-float"].ssbflat_button_sidebar.simplesocial-round-txt button{
+	margin: 0;
+}
 /*========================================
 =            End of compaitabilty code          =
 ========================================*/
+amp-facebook-like{
+	display: none !important;
+}
 .simplesocialbuttons.simplesocial-round-icon button{
     padding: 0 !important;
     width: 38px !important;
@@ -3103,6 +3451,13 @@ body .sl-wrapper button:hover{
 }
 body div.simplesocialbuttons.simplesocialbuttons-float-left-center{
     left: 5px;
+}
+body div.simplesocialbuttons.simplesocialbuttons-float-left-center button:after{
+	width: 34px;
+    height: 34px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 3px;
 }
 body div.simplesocialbuttons.simplesocialbuttons-float-right-center{
     right: 5px;
