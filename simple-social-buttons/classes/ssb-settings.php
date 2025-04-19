@@ -214,6 +214,12 @@ class Ssb_Settings {
 					'priority'          => '30',
 				),
 				array(
+					'name'     => 'sticky_mobile_bottom',
+					'label'    => __( 'Sticky Bottom (Mobile)', 'simple-social-buttons' ),
+					'type'     => 'ssb_checkbox',
+					'priority' => '25',
+				),
+				array(
 					'name'     => 'hide_mobile',
 					'label'    => __( 'Hide On Mobile Devices', 'simple-social-buttons' ),
 					'type'     => 'ssb_checkbox',
@@ -659,6 +665,7 @@ class Ssb_Settings {
 	 * Import Settings.
 	 *
 	 * @since 2.0.4
+  	 * @version 6.1.0
 	 */
 	public function import() {
 
@@ -674,15 +681,22 @@ class Ssb_Settings {
 
 		if ( json_last_error() == JSON_ERROR_NONE ) {
 
-			// Check ssb settings object set
+			// Check the SSB settings object set.
 			if ( ! isset( $ssb_json['ssb_settings_obj'] ) ) {
 				wp_die( 'error' );
 			}
 
 			$ssb_settings_obj = $ssb_json['ssb_settings_obj'];
 
-			foreach ( $ssb_json as $id => $array ) {
-				if ( strpos( $id, 'ssb_' ) !== false ) {
+			foreach ( $ssb_settings_obj as $id => $array ) {
+
+				// Check if the id is ssb_js then do base64 decode.
+				if ( 'ssb_advanced' === $id ) {
+					if ( $array['ssb_js'] ) {
+						$array['ssb_js'] = base64_decode( $array['ssb_js'] );
+						update_option( $id, $array );
+					}
+				} elseif ( strpos( $id, 'ssb_' ) !== false ) {
 					update_option( $id, $array );
 				}
 			}

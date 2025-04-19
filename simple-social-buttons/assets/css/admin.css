@@ -1916,6 +1916,170 @@ div.inside .simplesocial-form-section ul.options li {
   padding-top:0;
 }
 
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page {
+	padding: 30px 15px 30px;
+	max-width: 1270px;
+	margin: 40px auto;
+	box-sizing: border-box;
+	background-color: #ffffff;
+	border-radius: 0%;
+}
+
+.social-buttons_page_ssb-import-export #wpbody-content {
+	padding-bottom: unset;
+}
+
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page>h2,
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page>h3 {
+	font-size: 22px;
+	margin-top: 10px !important;
+	margin-bottom: 10px !important;
+	font-weight: 600;
+	line-height: 32px;
+	font-family: "Poppins", sans-serif;
+}
+
+.ssb-import-export-page table tr th {
+	font-size: 16px;
+	line-height: 24px;
+	font-family: "Poppins", sans-serif;
+	font-weight: 500;
+}
+
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .import_setting .ssb-import:disabled {
+  border: 1px solid #0085ba;
+  background-color: #0085ba !important;
+  padding: 12px 24px;
+  font-size: 13px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #fff !important;
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s;
+  border-radius: 5px;
+  cursor: not-allowed;
+	opacity: .3;
+}
+
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .import_setting .ssb-import,
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .export_setting .ssb-export {
+  border: none;
+	background-color: #0085ba;
+	padding: 12px 24px;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 600;
+	color: #fff;
+	font-family: "Poppins", sans-serif;
+	transition: all 0.3s;
+	border-radius: 5px;
+	cursor: pointer;
+	border: 1px solid #0085ba;
+}
+
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .export_setting .ssb-export:hover,
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .import_setting .ssb-import:hover {
+  background-color: #fff;
+	border: 1px solid #0085ba;
+	color: #0085ba;
+}
+
+.import_setting .import-sniper {
+	padding: 5px;
+	display: none;
+}
+
+.import_setting .import-text {
+	padding: 5px;
+	color: #009306;
+	display: none;
+}
+
+.import_setting .wrong-import {
+	padding: 5px;
+	color: #ff0000;
+}
+
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .import_setting .ssb-import:disabled,
+.social-buttons_page_ssb-import-export #wpcontent .ssb-import-export-page .import_setting .ssb-import {
+  margin-left: 15px;
+}
+
+.upload-file input {
+	opacity: 0;
+	margin: -2px 0 0 -2px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: calc(100% + 4px) !important;
+	height: calc(100% + 4px) !important;
+}
+
+.upload-file span{
+	cursor: pointer;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+	display: block;
+}
+
+.upload-file span::before {
+	content: "\f317";
+	font-family: dashicons;
+	display: inline-block;
+	line-height: 1;
+	font-weight: 400;
+	font-style: normal;
+	text-decoration: inherit;
+	text-transform: none;
+	text-rendering: auto;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	vertical-align: top;
+	text-align: center;
+	transition: color .1s ease-in;
+	margin-right: 4px;
+	font-size: 26px;
+	vertical-align: bottom;
+}
+
+.upload-file {
+	background: none;
+	min-height: 30px;
+	border: 2px solid #D2DDF2;
+	height: 46px;
+	width: 100%;
+	font-family: "Poppins", sans-serif;
+	max-width: 450px;
+	color: #5C7697;
+	font-size: 14px;
+	line-height: 24px;
+	border-radius: 5px;
+	outline: none !important;
+	box-shadow: none !important;
+	background-color: #fff;
+	position: relative;
+	padding: 11px 15px;
+	height: 50px;
+	box-sizing: border-box;
+	cursor: pointer;
+	display: inline-block;
+}
+
+.upload-file {
+	max-width: 350px;
+}
+
+.export_setting .export-sniper {
+	padding: 5px;
+	display: none;
+}
+
+.export_setting .export-text {
+	padding: 5px;
+	display: none;
+	color: #009306;
+}
 
 /* ANIMATIONS ================ */
 @-webkit-keyframes inputHighlighter {

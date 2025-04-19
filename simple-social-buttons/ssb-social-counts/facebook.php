@@ -28,11 +28,22 @@ function ssb_format_fbshare_response( $response ) {
  * @since 1.0.0
  * @return string  ready link to call for API.
  */
-function ssb_fbshare_generate_link( $url ) {
-	global $_ssb_pr;
-	$advance_settings    = $_ssb_pr->extra_option;
-	$facebook_app_id     = isset( $advance_settings['facebook_app_id'] ) ? $advance_settings['facebook_app_id'] : '';
-	$facebook_secret_key = isset( $advance_settings['facebook_app_secret'] ) ? $advance_settings['facebook_app_secret'] : '';
-	$link                = "https://graph.facebook.com/v3.0/?id={$url}&fields=engagement&access_token={$facebook_app_id}|{$facebook_secret_key}";
-	return $link;
+function ssb_fbshare_generate_link($url) {
+    global $_ssb_pr;
+    $advance_settings = $_ssb_pr->extra_option;
+    $facebook_app_id = isset($advance_settings['facebook_app_id']) ? $advance_settings['facebook_app_id'] : '';
+    $facebook_secret_key = isset($advance_settings['facebook_app_secret']) ? $advance_settings['facebook_app_secret'] : '';
+
+    // Validate the Facebook App ID and Secret
+    if (empty($facebook_app_id) || empty($facebook_secret_key)) {
+        return false; // Return false if credentials are missing
+    }
+
+    // Use the Facebook Graph API version 15.0
+    $api_version = 'v15.0';
+
+    // Construct the URL properly
+    $link = "https://graph.facebook.com/{$api_version}/?id=" . urlencode($url) . "&fields=engagement&access_token={$facebook_app_id}|{$facebook_secret_key}";
+
+    return $link;
 }

@@ -326,6 +326,10 @@ function ssb_is_network_has_counts( $network ) {
 	 * @since 2.0.0
 	 */
 function ssb_count_format( $n, $precision = 1 ) {
+
+	// Initialize default values for $n_format and $suffix.
+	$n_format = 0;
+	$suffix   = '';
 	if ( $n >= 0 && $n < 1000 ) {
 		// 1 - 999
 		$n_format = floor( $n );

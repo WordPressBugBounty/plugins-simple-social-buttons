@@ -20,6 +20,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 
 		public function __construct() {
 			add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
+			add_action( 'wp_ajax_activate_plugin', array($this, 'ssb_activate_plugin' ) );
 		}
 
 		/**
@@ -399,7 +400,6 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 
 		}
 
-
 		/**
 		 * The JS Output Escaping
 		 * @since 4.0.0
@@ -407,7 +407,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		public function ssb_escape_js_output( $input ) {
 			return base64_decode( $input );
 		}
-
+		
 		/**
 		 * The CSS Output Escaping
 		 * @since 4.0.0
@@ -464,14 +464,87 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			<?php
 		}
 
-		function callback_ssb_go_pro( $args ) {
+		/**
+		 * Create a callback for upgrade/activate pro Button.
+		 *
+		 * @param array $args An array of arguments for the settings structure.
+		 *
+		 * @version 6.1.0
+		 */
+		public function callback_ssb_go_pro( $args ) {
+			// Check if the Pro version is installed.
+			$pro_plugin_path  = 'simple-social-buttons-pro/simple-social-buttons-pro.php';
+			$is_pro_installed = file_exists( WP_PLUGIN_DIR . '/' . $pro_plugin_path );
+			$is_pro_active    = is_plugin_active( $pro_plugin_path );
+
+			if ( $is_pro_installed && ! $is_pro_active ) {
+				// Pro version is installed but not activated.
+				$button_text   = 'Click here to Activate Pro';
+				$button_action = 'activate';
+			} else {
+				// Pro version is not installed.
+				$button_text   = 'Click here to Upgrade';
+				$button_action = 'upgrade';
+			}
 			?>
-		<div class="ssb_goto_pro_section">
-		  <h4><?php echo $args['name']; ?></h4>
-		  <p><?php echo $args['desc']; ?></p>
-		  <a href="<?php echo $args['link']; ?>" class="ssb_goto_pro_button">Click here to Upgrade</a>
-		</div>
+			<div class="ssb_goto_pro_section">
+				<h4><?php echo $args['name']; ?></h4>
+				<p><?php echo $args['desc']; ?></p>
+				<a href="<?php echo esc_url( $args['link'] ); ?>" class="ssb_goto_pro_button" data-action="<?php echo esc_attr( $button_action ); ?>" data-plugin="<?php echo esc_attr( $pro_plugin_path ); ?>"><?php echo esc_html( $button_text ); ?></a>
+			</div>
+			<script>
+			jQuery(document).ready(function($) {
+				$('.ssb_goto_pro_button').on('click', function(e) {
+					e.preventDefault();
+					var action = $(this).data('action');
+					var plugin = $(this).data('plugin');
+					if (action === 'activate') {
+						$.ajax({
+							url: ajaxurl,
+							type: 'POST',
+							data: {
+								action: 'activate_plugin',
+								plugin: plugin,
+								_wpnonce: '<?php echo wp_create_nonce( 'activate-plugin_' . $pro_plugin_path ); ?>'
+							},
+							success: function(response) {
+								if (response.success) {
+									location.reload();
+								} else {
+									alert('Failed to activate the plugin.');
+								}
+							}
+						});
+					} else {
+						window.location.href = $(this).attr('href');
+					}
+				});
+			});
+			</script>
 			<?php
+		}
+
+		/**
+		 * AJAX callback for activating a SSB Pro.
+		 *
+		 * @since 6.1.0
+		 *
+		 * @return void
+		 */
+		public function ssb_activate_plugin() {
+			if ( ! current_user_can( 'activate_plugins' ) ) {
+				wp_send_json_error( 'You do not have permission to activate plugins.' );
+			}
+
+			check_ajax_referer( 'activate-plugin_' . $_POST['plugin'] );
+
+			$result = activate_plugin( $_POST['plugin'] );
+
+			if ( is_wp_error( $result ) ) {
+				wp_send_json_error( $result->get_error_message() );
+			}
+
+			wp_send_json_success();
 		}
 
 		function settings_header() {

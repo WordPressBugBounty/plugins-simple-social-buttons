@@ -46,7 +46,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		 */
 		public function admin_enqueue_scripts( $page ) {
 
-			if ( 'toplevel_page_simple-social-buttons' == $page || 'social-buttons_page_ssb-help' == $page || 'widgets.php' == $page ) {
+			if ( 'toplevel_page_simple-social-buttons' == $page || 'social-buttons_page_ssb-help' == $page || 'social-buttons_page_ssb-import-export' == $page || 'widgets.php' == $page ) {
 				wp_enqueue_style( 'ssb-admin-cs', plugins_url( 'assets/css/admin.css', plugin_dir_path( __FILE__ ) ), false, SSB_VERSION );
 				wp_enqueue_script( 'ssb-admin-js', plugins_url( 'assets/js/admin.js', plugin_dir_path( __FILE__ ) ), array( 'jquery', 'jquery-ui-sortable' ), SSB_VERSION );
 				wp_localize_script(

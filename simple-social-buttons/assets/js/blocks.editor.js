@@ -1271,7 +1271,7 @@ var Settings = function (_Component) {
               }
             }),
             wp.element.createElement(TextControl, {
-              help: "Supported Networks: fbshare,twitter,linkedin,pinterest,reddit,whatsapp,viber,tumblr,messenger,email,print,fblike",
+              help: "Supported Networks: fbshare,twitter,linkedin,pinterest,reddit,whatsapp,viber,tumblr,messenger,email,print,fblike,copylink,threads,telegram,bluesky",
               label: __("Order"),
               value: order,
               onChange: function onChange(order) {
@@ -2138,7 +2138,7 @@ var Buttons = function (_Component) {
       var showCounter = counter;
       var buttonStyle = {};
       //fblike, totalshare -> having issue
-      var knownNetworks = Array("twitter", "pinterest", "fbshare", "linkedin", "reddit", "whatsapp", "viber", "messenger", "email", "fblike", "print", "tumblr");
+      var knownNetworks = Array("twitter", "pinterest", "fbshare", "linkedin", "reddit", "whatsapp", "viber", "messenger", "email", "fblike", "print", "tumblr", "copylink","threads","telegram","bluesky");
 
       var selectedNetworks = order.split(",");
       if (counter && showTotalCount) {
@@ -2656,6 +2656,182 @@ var Buttons = function (_Component) {
               ));
             }
             break;
+          case "copylink":
+            if ("simple-icons" === theme) {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "ssb_copylink-icon" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "icon" },
+                      wp.element.createElement(
+                          "svg",
+                          {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "15",
+                              height: "19",
+                              x: "0",
+                              y: "0",
+                              version: "1.1",
+                              viewBox: "0 0 18 20",
+                              xmlSpace: "preserve"
+                          },
+                          wp.element.createElement("path", {
+                              fill: "#FFF",
+                              d: "M14,5.55A.8.8,0,0,0,14,5.34V5.26A.74.74,0,0,0,13.81,5L9.14.24A1.07,1.07,0,0,0,8.92.09H8.85A.62.62,0,0,0,8.59,0H5.44A2.32,2.32,0,0,0,3.79.7a2.47,2.47,0,0,0-.68,1.7v.8H2.33a2.3,2.3,0,0,0-1.65.7A2.47,2.47,0,0,0,0,5.6v8a2.47,2.47,0,0,0,.68,1.7,2.3,2.3,0,0,0,1.65.7H8.56a2.32,2.32,0,0,0,1.65-.7,2.47,2.47,0,0,0,.68-1.7v-.8h.78a2.3,2.3,0,0,0,1.65-.7A2.47,2.47,0,0,0,14,10.4V5.55ZM9.33,2.73l2,2.07H10.11a.76.76,0,0,1-.55-.23A.86.86,0,0,1,9.33,4Zm0,10.87a.85.85,0,0,1-.22.57.78.78,0,0,1-.55.23H2.33a.78.78,0,0,1-.55-.23.85.85,0,0,1-.22-.57v-8A.85.85,0,0,1,1.78,5a.78.78,0,0,1,.55-.23h.78v5.6a2.47,2.47,0,0,0,.68,1.7,2.32,2.32,0,0,0,1.65.7H9.33Zm3.11-3.2a.85.85,0,0,1-.22.57.78.78,0,0,1-.55.23H5.44A.78.78,0,0,1,4.89,11a.85.85,0,0,1-.22-.57v-8a.85.85,0,0,1,.22-.57.78.78,0,0,1,.55-.23H7.78V4a2.42,2.42,0,0,0,.68,1.7,2.3,2.3,0,0,0,1.65.7h2.33Z"
+                          })
+                      )
+                  ),
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Copy Link"
+                  )
+              ));
+            } else {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "simplesocial-copy-link" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Copy Link"
+                  )
+              ));
+            }
+          break;
+          case "threads":
+            if ("simple-icons" === theme) {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "ssb_threads-icon" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "icon" },
+                      wp.element.createElement(
+                          "svg",
+                          {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "15",
+                              height: "19",
+                              x: "0",
+                              y: "0",
+                              version: "1.1",
+                              viewBox: "0 0 128 128",
+                              xmlSpace: "preserve"
+                          },
+                          wp.element.createElement("path", {
+                              fill: "#FFF",
+                              d: "M93.405,59.512c-0.529-0.254-1.067-0.498-1.612-0.732c-0.948-17.477-10.498-27.482-26.533-27.585c-0.073,0-0.145,0-0.218,0  c-9.591,0-17.568,4.094-22.477,11.543l8.819,6.049c3.668-5.565,9.424-6.751,13.663-6.751c0.049,0,0.098,0,0.147,0  c5.28,0.034,9.264,1.569,11.842,4.562c1.877,2.179,3.132,5.191,3.753,8.992c-4.681-0.796-9.744-1.04-15.155-0.73  c-15.245,0.878-25.046,9.77-24.388,22.124c0.334,6.267,3.456,11.658,8.791,15.18c4.51,2.977,10.32,4.433,16.357,4.104  c7.973-0.437,14.228-3.479,18.591-9.041c3.314-4.224,5.41-9.698,6.335-16.595c3.8,2.293,6.616,5.311,8.171,8.938  c2.645,6.166,2.799,16.3-5.47,24.561c-7.244,7.237-15.952,10.368-29.112,10.465c-14.598-0.108-25.639-4.79-32.817-13.915  C25.371,92.139,21.897,79.797,21.768,64c0.13-15.797,3.603-28.139,10.325-36.684c7.178-9.125,18.218-13.807,32.817-13.915  c14.704,0.109,25.937,4.813,33.39,13.983c3.654,4.496,6.41,10.151,8.226,16.744l10.334-2.757  c-2.202-8.115-5.666-15.108-10.38-20.908C96.925,8.707,82.951,2.684,64.946,2.559h-0.072C46.905,2.683,33.088,8.73,23.805,20.53  c-8.26,10.501-12.521,25.112-12.664,43.427l0,0.043l0,0.043c0.143,18.315,4.404,32.926,12.664,43.427  c9.283,11.8,23.1,17.847,41.069,17.971h0.072c15.975-0.111,27.235-4.293,36.512-13.561c12.137-12.125,11.771-27.323,7.771-36.653  C106.358,68.536,100.887,63.102,93.405,59.512z M65.823,85.445c-6.682,0.376-13.623-2.623-13.966-9.047  c-0.254-4.763,3.39-10.078,14.376-10.711c1.258-0.073,2.493-0.108,3.706-0.108c3.99,0,7.724,0.388,11.118,1.13  C79.79,82.519,72.365,85.086,65.823,85.445z"
+                          })
+                      )
+                  ),
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Threads"
+                  )
+              ));
+            } else {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "simplesocial-threads-share" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Threads"
+                  )
+              ));
+            }
+          break;
+          case "telegram":
+            if ("simple-icons" === theme) {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "ssb_telegram-icon" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "icon" },
+                      wp.element.createElement(
+                          "svg",
+                          {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "15",
+                              height: "19",
+                              x: "0",
+                              y: "0",
+                              version: "1.1",
+                              viewBox: "0 0 448 512",
+                              xmlSpace: "preserve"
+                          },
+                          wp.element.createElement("path", {
+                              fill: "#FFF",
+                              d: "M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"
+                          })
+                      )
+                  ),
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Telegram"
+                  )
+              ));
+            } else {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "simplesocial-telegram-share" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Telegram"
+                  )
+              ));
+            }
+          break;
+          case "bluesky":
+            if ("simple-icons" === theme) {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "ssb_bluesky-icon" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "icon" },
+                      wp.element.createElement(
+                          "svg",
+                          {
+                              xmlns: "http://www.w3.org/2000/svg",
+                              width: "15",
+                              height: "19",
+                              x: "0",
+                              y: "0",
+                              version: "1.1",
+                              viewBox: "0 0 512 512",
+                              xmlSpace: "preserve"
+                          },
+                          wp.element.createElement("path", {
+                              fill: "#FFF",
+                              d: "M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2c42.1-31.6 110.3-56 110.3 21.8c0 15.5-8.9 130.5-14.1 149.2C478.2 298 412 314.6 353.1 304.5c102.9 17.5 129.1 75.5 72.5 133.5c-107.4 110.2-154.3-27.6-166.3-62.9l0 0c-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8l0 0c-12 35.3-59 173.1-166.3 62.9c-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1C10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"
+                          })
+                      )
+                  ),
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Bluesky"
+                  )
+              ));
+            } else {
+              output.push(wp.element.createElement(
+                  "button",
+                  { "class": "simplesocial-bluesky-share" },
+                  wp.element.createElement(
+                      "span",
+                      { "class": "simplesocialtxt" },
+                      "Bluesky"
+                  )
+              ));
+            }
+          break;
           case "tumblr":
             if ("simple-icons" === theme) {
               output.push(wp.element.createElement(

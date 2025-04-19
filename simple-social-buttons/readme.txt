@@ -3,8 +3,8 @@ Contributors: hiddenpearls, WPBrigade, desideveloper
 Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=donate-link
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
-Tested up to: 6.7
-Stable tag: 6.0.0
+Tested up to: 6.8
+Stable tag: 6.1.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,14 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 6.1.0 - 2025-04-19 =
+* Bugfix: Restrict resources only on SSB configured pages.
+* Bugfix: Import/Export setting concerning custom JS.
+* New Feature: Improve Import/Export page styling.
+* Enhancement: Code optimization.
+* Enhancement: Added 3 New Social Share Icons "Telegram, Threads, and Bluesky" in SSB Block.
+* Compatibility: Compatible with WordPress 6.8
 
 = 6.0.0 - 2025-03-12 =
 * Bugfix: Simple Social Buttons settings conflict with NextGEN Gallery settings.
@@ -570,5 +578,5 @@ like_button_size = small(default), large
 
 == Upgrade Notice ==
 
-= 6.0.0 =
+= 6.1.0 =
 * Update This Social Media Plugin Now.

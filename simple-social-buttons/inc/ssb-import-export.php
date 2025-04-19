@@ -3,7 +3,16 @@
  * SSB Import Export Page Content.
  *
  * @since 2.0.4
+ * @version 6.1.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+$settings_api = new Ssb_Settings_Structure();
+echo '<div class="wrap">';
+$settings_api->settings_header();
+echo '</div>';
 ?>
 <div class="ssb-import-export-page">
   <h2><?php esc_html_e( 'Import/Export Simple Social Share Buttons Settings', 'simple-social-buttons' ); ?></h2>
@@ -15,7 +24,7 @@
 		  <label for="ssb_press_import"><?php esc_html_e( 'Import Settings:', 'simple-social-buttons' ); ?></label>
 		</th>
 		<td>
-		  <input type="file" name="ssb_press_import" id="ssb_press_import">
+		  <div class="upload-file"><span>Upload File</span><input type="file" name="ssbImport" id="ssbImport" accept=".json"></div>
 		  <input type="button" class="button ssb-import" value="<?php esc_html_e( 'Import', 'simple-social-buttons' ); ?>" disabled="disabled">
 		  <span class="import-sniper">
 			<img src="<?php echo admin_url( 'images/wpspin_light.gif' ); ?>">
@@ -51,31 +60,36 @@
   $(".export-sniper").hide();
   $(".export-text").hide();
   // Remove Disabled attribute from Import Button.
-  $( '#ssb_press_import' ).on( 'change', function( event ) {
+  $( '#ssbImport' ).on( 'change', function( event ) {
 
 	event.preventDefault();
 
-	var ssbFileImp = $( '#ssb_press_import' ).val();
+	var ssbFileImp = $( '#ssbImport' ).val();
+	$(this).prev('span').html(ssbFileImp.split('\\').pop());
 	var ssbpressFileExt = ssbFileImp.substr( ssbFileImp.lastIndexOf('.') + 1 );
 
 	$( '.ssb-import' ).attr( "disabled", "disabled" );
 
-	if ( 'json' == ssbpressFileExt ) {
+	if ( 'json' == ssbpressFileExt && ssbFileImp.split(/(\\|\/)/g).pop().substring( 0, 3 ) === 'ssb' ) {
 	  $(".import_setting .wrong-import").html("");
 	  $( '.ssb-import' ).removeAttr( "disabled" );
 	} else {
 	  $(".import_setting .wrong-import").html("Invalid File.");
 	}
   });
+
   $('.ssb-export').on('click',  function(event) {
 
 	event.preventDefault();
 
 	var dateObj = new Date();
-	var month   = dateObj.getUTCMonth() + 1; //months from 1-12
-	var day     = dateObj.getUTCDate();
-	var year    = dateObj.getUTCFullYear();
-	var newdate = year + "-" + month + "-" + day;
+	var month = dateObj.getUTCMonth() + 1; //months from 1-12
+    var day = dateObj.getUTCDate();
+    var year = dateObj.getUTCFullYear();
+    var hours = dateObj.getUTCHours();
+    var minutes = dateObj.getUTCMinutes();
+    var seconds = dateObj.getUTCSeconds();
+    var newdate = year + "-" + month + "-" + day + "_" + hours + "-" + minutes + "-" + seconds;
 
 	$.ajax({
 
@@ -116,7 +130,7 @@
   $('.ssb-import').on( 'click', function(event) {
 	event.preventDefault();
 
-	var file    = $('#ssb_press_import');
+	var file    = $('#ssbImport');
 	var fileObj = new FormData();
 	var content = file[0].files[0];
 

@@ -3,7 +3,7 @@
  * Plugin Name: Simple Social Buttons
  * Plugin URI: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=plugin-url-link
  * Description: Simple Social Buttons adds an advanced set of social media sharing buttons to your WordPress sites, such as: Facebook, Twitter, WhatsApp, Viber, Reddit, LinkedIn and Pinterest. This makes it the most <code>Flexible Social Sharing Plugin ever for Everyone.</code>
- * Version: 6.0.0
+ * Version: 6.1.0
  * Author: WPBrigade
  * Author URI: https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_medium=author-url-link
  * Text Domain: simple-social-buttons
@@ -81,7 +81,7 @@ class SimpleSocialButtonsPR {
 	 * @isnce
 	 * @var string
 	 */
-	public $pluginVersion = '6.0.0';
+	public $pluginVersion = '6.1.0';
 
 	/**
 	 * Plugin Prefix
@@ -185,6 +185,33 @@ class SimpleSocialButtonsPR {
 	public $sidebar_option = '';
 
 	/**
+	 * Sidebar position setting.
+	 *
+	 * @since 6.1.0
+	 *
+	 * @var string
+	 */
+	public $media_option = '';
+
+	/**
+	 * Sidebar position setting.
+	 *
+	 * @since 6.1.0
+	 *
+	 * @var string
+	 */
+	public $popup_option = '';
+
+	/**
+	 * Sidebar position setting.
+	 *
+	 * @since 6.1.0
+	 *
+	 * @var string
+	 */
+	public $flyin_option = '';
+
+	/**
 	 * Advance settings.
 	 *
 	 * @since 1.0.0
@@ -209,7 +236,10 @@ class SimpleSocialButtonsPR {
 		$this->set_inline_option();
 		$this->set_sidebar_option();
 		$this->set_extra_option();
-
+		$this->media_option = get_option( 'ssb_media' );
+		$this->popup_option = get_option( 'ssb_popup' );
+		$this->flyin_option = get_option( 'ssb_flyin' );
+		
 		add_action( 'admin_init', array( $this, 'factory_reset_settings_on_update' ) );
 
 		$content_filter_priority = apply_filters( 'ssb_the_content_priority', 12 );
@@ -657,9 +687,20 @@ class SimpleSocialButtonsPR {
 			wp_enqueue_script( 'jquery' );
 			wp_enqueue_script( 'ssb-front-js', plugins_url( 'assets/js/front.js', __FILE__ ), array( 'jquery' ), SSB_VERSION, true );
 			wp_enqueue_style( 'ssb-front-css', plugins_url( 'assets/css/front.css', __FILE__ ), false, SSB_VERSION );
+			
+			if ( isset( $this->extra_option['ssb_css'] ) && ! empty( $this->extra_option['ssb_css'] ) && ! is_admin() ) {
 
-			if ( isset( $this->extra_option['ssb_css'] ) && ! empty( $this->extra_option['ssb_css'] ) ) {
-				wp_add_inline_style( 'ssb-front-css', $this->extra_option['ssb_css'] );
+				$all_position = array( 'inline', 'sidebar', 'media', 'popup', 'flyin' );
+				$style_added = false;
+				foreach ( $all_position as $position ) {
+					if ( isset( $this->selected_position[ $position ] ) && $this->is_ssb_on( $position ) ) {
+						if ( ! $style_added ) {
+							wp_add_inline_style( 'ssb-front-css', $this->extra_option['ssb_css'] );
+							$style_added = true;
+						}
+					}
+				}
+				
 			}
 
 			wp_localize_script(
@@ -687,8 +728,18 @@ class SimpleSocialButtonsPR {
 			wp_enqueue_script( 'ssb-blocks-front-js', plugins_url( 'assets/js/frontend-blocks.js', __FILE__ ), array(), SSB_VERSION, true );
 		}
 
-		if ( isset( $this->extra_option['ssb_js'] ) && ! empty( $this->extra_option['ssb_js'] ) ) {
-			wp_add_inline_script( 'ssb-blocks-front-js', strip_tags( base64_decode( $this->extra_option['ssb_js'] ) ) );
+		if ( isset( $this->extra_option['ssb_js'] ) && ! empty( $this->extra_option['ssb_js'] ) && ! is_admin() ) {
+
+			$all_position = array( 'inline', 'sidebar', 'media', 'popup', 'flyin' );
+			$script_added = false;
+			foreach ( $all_position as $position ) {
+				if ( isset( $this->selected_position[ $position ] ) && $this->is_ssb_on( $position ) ) {
+					if ( ! $script_added ) {
+						wp_add_inline_script( 'ssb-blocks-front-js', strip_tags( $this->extra_option['ssb_js'] ) );
+						$script_added = true;
+					}
+				}
+			}
 		}
 	}
 
@@ -1089,7 +1140,7 @@ class SimpleSocialButtonsPR {
 
 			$_share_links = array();
 			foreach ( $arrButtons as $social_name => $priority ) {
-				if ( ! ssb_is_network_has_counts( $social_name ) || $social_name === 'copylink' || $social_name === 'bluesky' ) {
+				if ( ! ssb_is_network_has_counts( $social_name ) ) {
 					continue; }
 					$_share_links[ $social_name ] = call_user_func( 'ssb_' . $social_name . '_generate_link', $permalink );
 			}
@@ -1190,7 +1241,7 @@ class SimpleSocialButtonsPR {
 			switch ( $button_name ) {
 
 				case 'fbshare':
-					$fbshare_share = $share_counts['fbshare'] ? $share_counts['fbshare'] : 0;
+					$fbshare_share = ( isset( $share_counts['fbshare'] ) && $share_counts['fbshare'] > 0 ) ? $share_counts['fbshare'] : 0;
 
 					if ( $theme == 'simple-icons' ) {
 						$_html .= '		<'.$ssb_element_tag.' class="ssb_fbshare-icon" ' . $ssb_attr_html . ' aria-label="Facebook Share" '. $ssb_trigger_attr .'="https://www.facebook.com/sharer/sharer.php?u=' . $permalink . '" ' . $ssb_click_attr . '="javascript:window.open(this.dataset.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
@@ -1222,11 +1273,11 @@ class SimpleSocialButtonsPR {
 						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--!Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M111.8 62.2C170.2 105.9 233 194.7 256 242.4c23-47.6 85.8-136.4 144.2-180.2c42.1-31.6 110.3-56 110.3 21.8c0 15.5-8.9 130.5-14.1 149.2C478.2 298 412 314.6 353.1 304.5c102.9 17.5 129.1 75.5 72.5 133.5c-107.4 110.2-154.3-27.6-166.3-62.9l0 0c-1.7-4.9-2.6-7.8-3.3-7.8s-1.6 3-3.3 7.8l0 0c-12 35.3-59 173.1-166.3 62.9c-56.5-58-30.4-116 72.5-133.5C100 314.6 33.8 298 15.7 233.1C10.4 214.4 1.5 99.4 1.5 83.9c0-77.8 68.2-53.4 110.3-21.8z"/></svg></span>
 						<span class="simplesocialtxt">Bluesky</span>';
 
-						$_html .= ' </'.$ssb_element_tag.' >';
+						$_html .= ' </'.$ssb_element_tag.'>';
 					} else {
 
 						$_html = '<'.$ssb_element_tag.'  class="simplesocial-bluesky-share" ' . $ssb_attr_html . ' aria-label="Bluesky Share" '. $ssb_trigger_attr .'="https://bsky.app/intent/compose?text=' . $permalink . '" ' . $ssb_click_attr . '="javascript:window.open(this.dataset.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"><span class="simplesocialtxt">Bluesky </span> ';
-						$_html .= '</'.$ssb_element_tag.' >';
+						$_html .= '</'.$ssb_element_tag.'>';
 					}
 
 						$arrButtonsCode[] = $_html;
@@ -1239,12 +1290,12 @@ class SimpleSocialButtonsPR {
 						<span class="icon"><svg viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M446.7 98.6l-67.6 318.8c-5.1 22.5-18.4 28.1-37.3 17.5l-103-75.9-49.7 47.8c-5.5 5.5-10.1 10.1-20.7 10.1l7.4-104.9 190.9-172.5c8.3-7.4-1.8-11.5-12.9-4.1L117.8 284 16.2 252.2c-22.1-6.9-22.5-22.1 4.6-32.7L418.2 66.4c18.4-6.9 34.5 4.1 28.5 32.2z"/></svg></span>
 						<span class="simplesocialtxt">Telegram</span>';
 
-						$_html .= ' </'.$ssb_element_tag.' >';
+						$_html .= ' </'.$ssb_element_tag.'>';
 					} else {
 
 						$_html = '<'.$ssb_element_tag.'  class="simplesocial-telegram-share" ' . $ssb_attr_html . ' aria-label="Telegram Share" '. $ssb_trigger_attr .'="https://t.me/share/url?url=' . $permalink . '" ' . $ssb_click_attr . '="javascript:window.open(this.dataset.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"><span class="simplesocialtxt">Telegram </span> ';
 
-						$_html .= '</'.$ssb_element_tag.' >';
+						$_html .= '</'.$ssb_element_tag.'>';
 					}
 
 						$arrButtonsCode[] = $_html;
@@ -1257,7 +1308,7 @@ class SimpleSocialButtonsPR {
 						<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" width="128px" height="128px" viewBox="0 0 128 128" enable-background="new 0 0 128 128" xml:space="preserve"><path d="M93.405,59.512c-0.529-0.254-1.067-0.498-1.612-0.732c-0.948-17.477-10.498-27.482-26.533-27.585c-0.073,0-0.145,0-0.218,0  c-9.591,0-17.568,4.094-22.477,11.543l8.819,6.049c3.668-5.565,9.424-6.751,13.663-6.751c0.049,0,0.098,0,0.147,0  c5.28,0.034,9.264,1.569,11.842,4.562c1.877,2.179,3.132,5.191,3.753,8.992c-4.681-0.796-9.744-1.04-15.155-0.73  c-15.245,0.878-25.046,9.77-24.388,22.124c0.334,6.267,3.456,11.658,8.791,15.18c4.51,2.977,10.32,4.433,16.357,4.104  c7.973-0.437,14.228-3.479,18.591-9.041c3.314-4.224,5.41-9.698,6.335-16.595c3.8,2.293,6.616,5.311,8.171,8.938  c2.645,6.166,2.799,16.3-5.47,24.561c-7.244,7.237-15.952,10.368-29.112,10.465c-14.598-0.108-25.639-4.79-32.817-13.915  C25.371,92.139,21.897,79.797,21.768,64c0.13-15.797,3.603-28.139,10.325-36.684c7.178-9.125,18.218-13.807,32.817-13.915  c14.704,0.109,25.937,4.813,33.39,13.983c3.654,4.496,6.41,10.151,8.226,16.744l10.334-2.757  c-2.202-8.115-5.666-15.108-10.38-20.908C96.925,8.707,82.951,2.684,64.946,2.559h-0.072C46.905,2.683,33.088,8.73,23.805,20.53  c-8.26,10.501-12.521,25.112-12.664,43.427l0,0.043l0,0.043c0.143,18.315,4.404,32.926,12.664,43.427  c9.283,11.8,23.1,17.847,41.069,17.971h0.072c15.975-0.111,27.235-4.293,36.512-13.561c12.137-12.125,11.771-27.323,7.771-36.653  C106.358,68.536,100.887,63.102,93.405,59.512z M65.823,85.445c-6.682,0.376-13.623-2.623-13.966-9.047  c-0.254-4.763,3.39-10.078,14.376-10.711c1.258-0.073,2.493-0.108,3.706-0.108c3.99,0,7.724,0.388,11.118,1.13  C79.79,82.519,72.365,85.086,65.823,85.445z"/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/><g/></svg></span>
 						<span class="simplesocialtxt">Threads</span>';
 
-						$_html .= ' </'.$ssb_element_tag.' >';
+						$_html .= ' </'.$ssb_element_tag.'>';
 					} else {
 
 						$_html = '<'.$ssb_element_tag.' class="simplesocial-threads-share" ' . $ssb_attr_html . ' aria-label="Threads Share" '. $ssb_trigger_attr .'="https://www.threads.net/intent/post?text=' . $permalink . '" '.$ssb_click_attr.'="javascript:window.open(this.dataset.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;"><span class="simplesocialtxt">Threads </span> ';
@@ -1268,7 +1319,7 @@ class SimpleSocialButtonsPR {
 
 					break;
 				case 'twitter':
-					$twitter_share = $share_counts['twitter'] ? $share_counts['twitter'] : 0;
+					$twitter_share = ( isset( $share_counts['twitter'] ) && $share_counts['twitter'] > 0 ) ? $share_counts['twitter'] : 0;
 					$via           = ! empty( $this->extra_option['twitter_handle'] ) ? '&via=' . $this->extra_option['twitter_handle'] : '';
 
 					if ( $theme == 'simple-icons' ) {
@@ -1346,7 +1397,7 @@ class SimpleSocialButtonsPR {
 
 					break;
 				case 'pinterest':
-					$pinterest_share = $share_counts['pinterest'] ? $share_counts['pinterest'] : 0;
+					$pinterest_share = ( isset( $share_counts['pinterest'] ) && $share_counts['pinterest'] > 0 ) ? $share_counts['pinterest'] : 0;
 					
 					if ( $theme == 'simple-icons' ) {
 
@@ -1371,11 +1422,11 @@ class SimpleSocialButtonsPR {
 
 					break;
 				case 'totalshare':
-					$total_share      = $share_counts['total'] ? $share_counts['total'] : 0;
+					$total_share = ( isset( $share_counts['total'] ) && $share_counts['total'] > 0 ) ? $share_counts['total'] : 0;
 					$arrButtonsCode[] = "<span class='ssb_total_counter'>" . ssb_count_format( $total_share ) . '<span>Shares</span></span>';
 					break;
 				case 'reddit':
-					$reddit_score = $share_counts['reddit'] ? $share_counts['reddit'] : 0;
+					$reddit_score = ( isset( $share_counts['reddit'] ) && $share_counts['reddit'] > 0 )? $share_counts['reddit'] : 0;
 
 					if ( $theme == 'simple-icons' ) {
 						$_html = ' <'.$ssb_element_tag.' class="ssb_reddit-icon" ' . $ssb_attr_html . ' aria-label="Reddit Share" '. $ssb_trigger_attr .'="https://reddit.com/submit?url=' . $permalink . '&title=' . $title . '" ' . $ssb_click_attr . '="javascript:window.open(this.dataset.href, \'\', \'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600\');return false;">
@@ -1423,7 +1474,7 @@ class SimpleSocialButtonsPR {
 					}
 					break;
 				case 'fblike':
-					$button_size      = isset( $extra_data['like-button-size'] ) ? $extra_data['like-button-size'] : 'small';
+					$button_size      = ( isset( $extra_data['like-button-size'] ) && $extra_data['like-button-size'] > 0 ) ? $extra_data['like-button-size'] : 'small';
 					if(function_exists( 'amp_is_request' ) && amp_is_request()){
 						$_html = '<amp-facebook-like width="' . ($button_size == 'large' ? '100' : '80') . '" height="' . ($button_size == 'large' ? '40' : '20') . '" data-size="' . $button_size . '" layout="fixed" data-layout="button_count" data-href="'.$permalink.'"></amp-facebook-like>';
 					}else{
@@ -1479,7 +1530,7 @@ class SimpleSocialButtonsPR {
 					}
 					break;
 				case 'tumblr':
-					$tumblr_score = $share_counts['tumblr'] ? $share_counts['tumblr'] : 0;
+					$tumblr_score = ( isset( $share_counts['tumblr'] ) && $share_counts['tumblr'] > 0 ) ? $share_counts['tumblr'] : 0;
 
 					$link             = urlencode( $permalink );
 					$tumblr_share_url = esc_url( "http://tumblr.com/widgets/share/tool?canonicalUrl=$link" );
@@ -1609,6 +1660,9 @@ class SimpleSocialButtonsPR {
 				if ( $this->sidebar_option['hide_mobile'] ) {
 					$class .= ' simplesocialbuttons-mobile-hidden';
 				}
+				if ( isset( $this->sidebar_option['sticky_mobile_bottom'] ) && $this->sidebar_option['sticky_mobile_bottom'] ) {
+					$class .= ' simplesocialbuttons-bottom-sticky-mobile';
+				}
 
 				if ( $this->_get_settings( 'sidebar', 'share_counts' ) ) {
 					$class .= ' ssb_counter-activate';
@@ -1635,8 +1689,28 @@ class SimpleSocialButtonsPR {
 					'position'    => 'sidebar',
 					'before_text' => sanitize_text_field( $before_text ),
 				);
+				if (count($_selected_network) > 4 && isset($this->sidebar_option['sticky_mobile_bottom']) && $this->sidebar_option['sticky_mobile_bottom']) {
+					$buttons_code = $this->generate_buttons_code($_selected_network, $show_count, $show_total, $extra_data);
+					$buttons_array = explode("</button>", $buttons_code);
 
-				echo $this->generate_buttons_code( $_selected_network, $show_count, $show_total, $extra_data );
+					// Ensure valid array position before inserting
+					if (count($buttons_array) > 3) {
+						array_splice($buttons_array, 3, 0, '<button class="ssb_custom-button">+</button><div class="ssb_wrapper_mobile"><div class="ssb_wrapped-button"><span class="ssb_wrapper-closed"></span>');
+					}
+
+					// Close the divs correctly after all buttons
+					$buttons_array[] = '</div></div>';
+
+					// Reconstruct the buttons HTML
+					$fixed_buttons_code = implode("</button>", $buttons_array);
+
+					// Ensure the final structure does not break
+					$fixed_buttons_code = str_replace("</button></button>", "</button>", $fixed_buttons_code);
+
+					echo $fixed_buttons_code;
+				} else {
+					echo $this->generate_buttons_code($_selected_network, $show_count, $show_total, $extra_data);
+				}
 			}
 		}
 	}
@@ -1943,6 +2017,7 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @since 2.0.9
+	 * @version 6.1.0
 	 * @return string
 	 */
 	public function get_excerpt_by_id( $post_id ) {
@@ -1953,13 +2028,13 @@ class SimpleSocialButtonsPR {
 			// Check if the post has an excerpt
 		if ( has_excerpt() ) {
 				$excerpt_length = apply_filters( 'excerpt_length', 35 );
-				return trim( wp_strip_all_tags( get_the_excerpt() ) );
+				return trim( wp_strip_all_tags( strip_shortcodes(get_the_excerpt()) ) );
 		}
 
 			$the_post       = get_post( $post_id ); // Gets post ID
 			$the_excerpt    = $the_post->post_content; // Gets post_content to be used as a basis for the excerpt
 			$the_excerpt = wp_trim_words($the_excerpt, 60);
-			return trim( wp_strip_all_tags( $the_excerpt ) );
+			return trim( wp_strip_all_tags( strip_shortcodes($the_excerpt) ) );
 	}
 
 	 /**

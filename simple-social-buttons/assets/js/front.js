@@ -83,6 +83,12 @@ var ssbPlugin = ssbPlugin || {};
 	});
 
 	$(window).on('load', function () {
+		$('.ssb_custom-button').on('click', function () {
+			$('.ssb_wrapper_mobile').addClass('ssb_wrapper_mobile_open');
+		});
+		$('.ssb_wrapper-closed').on('click', function () {
+			$('.ssb_wrapper_mobile').removeClass('ssb_wrapper_mobile_open');
+		});
 		var allMods = $(".simplesocialbuttons_inline");
 		// Already visible modules
 		allMods.each(function (i, el) {
