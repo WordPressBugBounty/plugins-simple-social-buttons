@@ -3,11 +3,12 @@
  * Plugin Name: Simple Social Buttons
  * Plugin URI: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=plugin-url-link
  * Description: Simple Social Buttons adds an advanced set of social media sharing buttons to your WordPress sites, such as: Facebook, Twitter, WhatsApp, Viber, Reddit, LinkedIn and Pinterest. This makes it the most <code>Flexible Social Sharing Plugin ever for Everyone.</code>
- * Version: 6.1.0
+ * Version: 6.2.0
  * Author: WPBrigade
  * Author URI: https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_medium=author-url-link
  * Text Domain: simple-social-buttons
  * Domain Path: /lang
+ * GitHub Plugin URI: https://github.com/WPBrigade/simple-social-buttons
  */
 
  /*
@@ -81,7 +82,7 @@ class SimpleSocialButtonsPR {
 	 * @isnce
 	 * @var string
 	 */
-	public $pluginVersion = '6.1.0';
+	public $pluginVersion = '6.2.0';
 
 	/**
 	 * Plugin Prefix
@@ -477,10 +478,15 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @since 1.0.0
+	 * @version 6.2.0
 	 * @return void
 	 */
 	public function ajax_fetch_fresh_data() {
 
+		if ( ! check_ajax_referer( 'ssb_security', 'security', false ) ) {
+			wp_send_json_error( 'Invalid security token.' );
+			wp_die();
+		}
 		$order   = array();
 		$post_id = (int) $_POST['postID'];
 		foreach ( $this->arrKnownButtons as $button_name ) {
@@ -529,6 +535,7 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @param array $info information about post/page.
+	 * @version 6.2.0
 	 * @return void
 	 */
 	public function ssb_output_cache_trigger( $info ) {
@@ -567,11 +574,13 @@ class SimpleSocialButtonsPR {
 				if( is_ssb_used ) {
 
 					var data = {
-					'action': 'ssb_fetch_data',
-					'postID': ssb_post_id
-				};
+					'action'   : 'ssb_fetch_data',
+					'postID'   :  ssb_post_id,
+					'security' : '<?php echo wp_create_nonce( 'ssb_security' );?>'
+					};
 					jQuery.post(ssb_admin_ajax, data, function(data, textStatus, xhr) {
 						var array = JSON.parse(data);
+
 						jQuery.each( array, function( index, value ){
 
 							if( index == 'total' ){
@@ -1053,7 +1062,7 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @since 1.0.0
-	 * @version 5.1.2
+	 * @version 6.2.0
 	 * @return string
 	 */
 	public function generate_buttons_code( $order = null, $show_count = false, $show_total = false, $extra_data = array(), $image = false ) {
@@ -1134,6 +1143,9 @@ class SimpleSocialButtonsPR {
 			$non_exist_post_record = true;
 		}
 
+		// Use the post_url with parameter if set, otherwise use the permalink.
+		$permalink = isset( $extra_data['post_url'] ) ? esc_url( $permalink . $extra_data['post_url'] ) : esc_url( $permalink );
+
 		// Reset the cache timestamp if needed
 		// if false fetch the new share counts.
 		if ( ( isset( $this->settings['cache'] ) && $this->settings['cache'] == 'off' ) || ( true == $http_solve ) || ( $non_exist_post_record ) ) {
@@ -1144,8 +1156,7 @@ class SimpleSocialButtonsPR {
 					continue; }
 					$_share_links[ $social_name ] = call_user_func( 'ssb_' . $social_name . '_generate_link', $permalink );
 			}
-
-				// http url convert to https or vice versa
+				// http url convert to https or vice versa.
 				$_alt_share_links = $this->http_or_https_link_generate( $permalink );
 
 				// normal fetch
@@ -1800,7 +1811,7 @@ class SimpleSocialButtonsPR {
 	 */
 	public function fblike_script() {
 		if(function_exists( 'amp_is_request' ) && amp_is_request()){return;}
-		if ( ! array_key_exists( 'fblike', array_filter( $this->selected_networks ) ) ) {
+		if ( is_array( $this->selected_networks ) && ! array_key_exists( 'fblike', array_filter( $this->selected_networks ) ) ) {
 			return;
 		}
 		?>
@@ -1823,6 +1834,7 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @since 2.0.2
+	 * @version 6.2.0
 	 * @return string
 	 */
 	public function short_code_content( $atts ) {
@@ -1846,6 +1858,7 @@ class SimpleSocialButtonsPR {
 		$selected_theme = shortcode_atts(
 			array(
 				'theme'            => '',
+				'post_url'         => '',
 				'order'            => null,
 				'align'            => '',
 				'counter'          => 'false',
@@ -1910,7 +1923,7 @@ class SimpleSocialButtonsPR {
 
 			// set fb like button size
 			$like_button_size = $selected_theme['like_button_size'];
-
+			$post_url = esc_url_raw( sanitize_url( $selected_theme['post_url'] ) );
 			$extra_class .= ' simplesocialbuttons-inline-' . $this->_get_settings( 'inline', 'animation', 'no-animation' );
 
 			$extra_option = array(
@@ -1920,6 +1933,9 @@ class SimpleSocialButtonsPR {
 				'position'         => 'shortcode',
 			);
 
+			if ( ! empty( $post_url ) ) {
+				$extra_option['post_url'] = $post_url;
+			}
 			$ssb_buttons_code = $this->generate_buttons_code( $selected_theme['order'], $show_count, $show_total, $extra_option );
 			// }
 
@@ -1933,7 +1949,7 @@ class SimpleSocialButtonsPR {
 	 *
 	 * @access public
 	 * @since 2.0.9
-	 * @version 5.1.1
+	 * @version 6.2.0
 	 * @return string
 	 */
 	public function add_meta_tags() {
@@ -1953,8 +1969,13 @@ class SimpleSocialButtonsPR {
 			$og_tag .= '<meta property="og:title" content="' . get_the_title() . ' - ' . get_bloginfo( 'name' ) . '" />' . PHP_EOL;
 		}
 
+		// add option for og type
+		$og_type = ( is_singular('post') ) ? 'article' : 'website';
+		
+		$og_tag .= '<meta property="og:type" content="' . esc_attr( $og_type ) . '" />' . PHP_EOL;
+
 		if ( $this->og_get_description() ) {
-			$og_tag .= '<meta property="og:description" content="' . $this->og_get_description() . '" />' . PHP_EOL;
+			$og_tag .= '<meta property="og:description" content="' . esc_attr( $this->og_get_description() ) . '" />' . PHP_EOL;
 		}
 		$og_tag .= '<meta property="og:url" content="' . get_permalink() . '" />' . PHP_EOL;
 		if ( $this->og_get_blog() ) {

@@ -1,3 +1,4 @@
+<?php if ( ! isset( $this->selected_position['inline'] ) && ! isset( $this->selected_position['sidebar'] ) ) { return; } ?>
  <style media="screen">
 
 	<?php if ( isset( $this->selected_position['inline'] ) && isset( $this->inline_option['icon_space'] ) ) : ?>

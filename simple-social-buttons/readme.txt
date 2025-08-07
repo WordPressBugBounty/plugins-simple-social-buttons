@@ -4,7 +4,7 @@ Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-l
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
 Tested up to: 6.8
-Stable tag: 6.1.0
+Stable tag: 6.2.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -161,12 +161,20 @@ like_button_size = small(default), large
 
 == Changelog ==
 
+= 6.2.0 - 2025-08-07 =
+* Bugfix: Removed unnecessary CSS loading from frontend when SSB is not configured
+* Bugfix: og:type Property: Corrected Open Graph type detection in add_meta_tags() function.
+* Bugfix: Resolved potential array access issues in generate_buttons_code() function.
+* Enhancement: Implemented consistent security patterns across all AJAX endpoints.
+* Enhancement: Added support for custom URL parameters in the SSB shortcode. Usage: [SSB post_url="?utm_source=social&utm_medium=share"]
+* Compatibility: Compatible with WordPress 6.8
+
 = 6.1.0 - 2025-04-19 =
-* Bugfix: Restrict resources only on SSB configured pages.
+* Bugfix: Restrict resources only on Simple Social Buttons configured pages.
 * Bugfix: Import/Export setting concerning custom JS.
 * New Feature: Improve Import/Export page styling.
 * Enhancement: Code optimization.
-* Enhancement: Added 3 New Social Share Icons "Telegram, Threads, and Bluesky" in SSB Block.
+* Enhancement: Added 3 New Social Share Icons "Telegram, Threads, and Bluesky" in Simple Social Buttons Block.
 * Compatibility: Compatible with WordPress 6.8
 
 = 6.0.0 - 2025-03-12 =
@@ -578,5 +586,5 @@ like_button_size = small(default), large
 
 == Upgrade Notice ==
 
-= 6.1.0 =
+= 6.2.0 =
 * Update This Social Media Plugin Now.
