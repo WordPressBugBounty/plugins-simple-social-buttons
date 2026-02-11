@@ -3,7 +3,7 @@ Contributors: hiddenpearls, WPBrigade, desideveloper
 Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=donate-link
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
-Tested up to: 6.8
+Tested up to: 6.9
 Stable tag: 6.2.0
 Requires PHP: 5.6
 License: GPLv2 or later
