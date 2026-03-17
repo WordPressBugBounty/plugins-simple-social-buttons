@@ -4,7 +4,7 @@ Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-l
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
 Tested up to: 6.9
-Stable tag: 6.2.0
+Stable tag: 6.2.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,9 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 6.2.1 – 2026-03-17 =
+* Security: Added nonce verification and capability checks to prevent CSRF attacks.
 
 = 6.2.0 - 2025-08-07 =
 * Bugfix: Removed unnecessary CSS loading from frontend when SSB is not configured
@@ -586,5 +589,5 @@ like_button_size = small(default), large
 
 == Upgrade Notice ==
 
-= 6.2.0 =
-* Update This Social Media Plugin Now.
+= 6.2.1 =
+* Update Simple Social Buttons Plugin Now.
