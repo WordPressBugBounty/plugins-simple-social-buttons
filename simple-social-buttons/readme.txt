@@ -3,8 +3,8 @@ Contributors: hiddenpearls, WPBrigade, desideveloper
 Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=donate-link
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
-Tested up to: 6.9
-Stable tag: 6.2.1
+Tested up to: 7.0
+Stable tag: 7.0.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,26 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 7.0.0 – 2026-07-16 =
+* New Feature: Rebuilt the entire settings screen as a modern React-based interface for faster loading and a smoother experience.
+* New Feature: Added new share buttons — Mastodon, Line, VK, and Snapchat.
+* New Feature: Added a configurable custom share button so you can add your own network or branding.
+* New Feature: Added an icon-limit option for inline and sidebar layouts — cap the number of visible buttons and reveal the rest in a "+ more" popup.
+* New Feature: Snapchat sharing now uses Snapchat's web share flow, with icon and an optional Snap Kit App ID meta tag.
+* New Feature: Introduced internal share-count tracking; Facebook share counts now combine the API count with on-site clicks.
+* New Feature: Introduced new feature cache purge (recent posts or site-wide) to refresh share counts on demand.
+* Enhancement: Combined the Facebook App and Snapchat options into a single "Social" settings tab.
+* Enhancement: Improved accessibility of admin form fields.
+* Enhancement: API credentials (Facebook App ID/Secret and Snap Kit Client ID) are no longer included when exporting or importing settings, preventing accidental credential leaks.
+* Enhancement: Custom buttons now support custom background, hover, and icon colors with matching shadows.
+* Enhancement: Refreshed front-end and admin styling, including LinkedIn icon alignment and numerous CSS fixes.
+* Enhancement: Uninstalling the plugin now fully cleans up all of its stored data and settings.
+* Bugfix: Fixed Tumblr share-count parsing and URL encoding.
+* Bugfix: Fixed full-URL sharing and several button-rendering issues.
+* Removed: Removed the deprecated Facebook Like button (no longer supported by Facebook).
+* Compatibility: Compatible with WordPress 7.0.
+* Compatibility: Compatible with PHP 8.5.
 
 = 6.2.1 – 2026-03-17 =
 * Security: Added nonce verification and capability checks to prevent CSRF attacks.

@@ -1,8 +1,21 @@
-<?php 
-	if ( ! defined( 'ABSPATH' ) ) {
-		exit;
-	}
+<?php
+/**
+ * WPBrigade SDK abstract base.
+ *
+ * @package wpbrigade_sdk
+ */
 
-    abstract class WPBRIGADE_SDK_Abstract{
-        public function __construct() {}
-    }
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Abstract base for SDK implementations.
+ */
+abstract class WPBRIGADE_SDK_Abstract {
+
+	/**
+	 * Constructor.
+	 */
+	public function __construct() {}
+}

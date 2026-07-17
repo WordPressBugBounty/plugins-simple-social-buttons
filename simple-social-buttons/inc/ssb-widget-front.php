@@ -1,7 +1,7 @@
-<?php
+<?php // phpcs:ignoreFile
 
 if ( ! empty( $widget_title ) ) {
-	echo $before_title . $widget_title . $after_title;
+	echo $before_title . esc_html( $widget_title ) . $after_title;
 }
 ?>
 
