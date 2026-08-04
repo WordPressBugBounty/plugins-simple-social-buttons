@@ -1,5 +1,11 @@
 <?php // phpcs:ignore
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 add_action( 'init', 'ssb_upgrade_routine_2' );
+add_action( 'init', 'ssb_upgrade_routine_71_share_counts' );
 
 /**
  * Upgrade Routine for V 2.0
@@ -34,8 +40,8 @@ function ssb_upgrade_routine_2() {
 		$_old_value = get_option( 'ssb_pr_settings' );
 
 		// Set Position of Inline Icons.
-		$before_post = rest_sanitize_boolean( isset( $_old_value['beforepost'] ) && $_old_value['beforepost'] == '1' ? true : false ); // phpcs:ignore
-		$after_post  = rest_sanitize_boolean( isset( $_old_value['afterpost'] ) && $_old_value['afterpost'] == '1' ? true : false ); // phpcs:ignore
+		$before_post = rest_sanitize_boolean( isset( $_old_value['beforepost'] ) && '1' === $_old_value['beforepost'] ? true : false ); // phpcs:ignore
+		$after_post  = rest_sanitize_boolean( isset( $_old_value['afterpost'] ) && '1' === $_old_value['afterpost'] ? true : false ); // phpcs:ignore
 
 		if ( $before_post && $after_post ) {
 			$inline_location = 'above_below';
@@ -46,8 +52,8 @@ function ssb_upgrade_routine_2() {
 		}
 
 		// Page.
-		$before_page = rest_sanitize_boolean( isset( $_old_value['beforepage'] ) && $_old_value['beforepage'] == '1' ? true : false ); // phpcs:ignore
-		$after_page  = rest_sanitize_boolean( isset( $_old_value['afterpage'] ) && $_old_value['afterpage'] == '1' ? true : false ); // phpcs:ignore
+		$before_page = rest_sanitize_boolean( isset( $_old_value['beforepage'] ) && '1' === $_old_value['beforepage'] ? true : false ); // phpcs:ignore
+		$after_page  = rest_sanitize_boolean( isset( $_old_value['afterpage'] ) && '1' === $_old_value['afterpage'] ? true : false ); // phpcs:ignore
 
 		$inline_posts = array(
 			'post' => 'post',
@@ -62,9 +68,9 @@ function ssb_upgrade_routine_2() {
 			'posts'    => $inline_posts,
 		);
 
-		$on_archive  = rest_sanitize_boolean( isset( $_old_value['showarchive'] ) && $_old_value['showarchive'] == '1' ? true : false ); // phpcs:ignore
-		$on_tag      = rest_sanitize_boolean( isset( $_old_value['showtag'] ) && $_old_value['showtag'] == '1' ? true : false ); // phpcs:ignore
-		$on_category = rest_sanitize_boolean( isset( $_old_value['showcategory'] ) && $_old_value['showcategory'] == '1' ? true : false ); // phpcs:ignore
+		$on_archive  = rest_sanitize_boolean( isset( $_old_value['showarchive'] ) && '1' === $_old_value['showarchive'] ? true : false ); // phpcs:ignore
+		$on_tag      = rest_sanitize_boolean( isset( $_old_value['showtag'] ) && '1' === $_old_value['showtag'] ? true : false ); // phpcs:ignore
+		$on_category = rest_sanitize_boolean( isset( $_old_value['showcategory'] ) && '1' === $_old_value['showcategory'] ? true : false ); // phpcs:ignore
 
 		if ( $on_archive ) {
 			$_default_inline['show_on_archive'] = 1;
@@ -104,4 +110,27 @@ function ssb_upgrade_routine_2() {
 	}
 
 	update_option( 'run_ssb_update_routine_2', 'yes' );
+}
+
+/**
+ * One-time migration of legacy share counts into internal history (7.1).
+ *
+ * @since 7.1.0
+ * @return void
+ */
+function ssb_upgrade_routine_71_share_counts() {
+	if ( get_option( 'run_ssb_upgrade_routine_71_share_counts' ) ) {
+		return;
+	}
+
+	if ( ! function_exists( 'ssb_get_all_post_ids_for_purge' ) ) {
+		return;
+	}
+
+	foreach ( ssb_get_all_post_ids_for_purge() as $post_id ) {
+		ssb_migrate_legacy_share_counts_for_post( (int) $post_id );
+		ssb_maybe_repair_internal_share_counts_latest( (int) $post_id );
+	}
+
+	update_option( 'run_ssb_upgrade_routine_71_share_counts', 'yes' );
 }

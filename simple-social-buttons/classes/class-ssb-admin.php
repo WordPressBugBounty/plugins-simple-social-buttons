@@ -7,6 +7,10 @@
  * @package SimpleSocialButtons
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // phpcs:ignore WordPress.Files.FileName.InvalidClassFileName
 if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 
@@ -244,6 +248,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		 * @param WP_Post $post The post object.
 		 * @access public
 		 * @since 1.0.0
+		 * @version 7.0.1
 		 * @return void
 		 */
 		public function ssb_save_meta( $post_id, $post ) {
@@ -258,8 +263,8 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 			}
 
 			// Verify this came from the our screen and with proper authorization.
-			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized,WordPress.Security.ValidatedSanitizedInput.MissingUnslash
-			if ( ! wp_verify_nonce( $_POST['ssb_noncename'], plugin_basename( __FILE__ ) ) ) {
+			// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			if ( ! wp_verify_nonce( wp_unslash( $_POST['ssb_noncename'] ), plugin_basename( __FILE__ ) ) ) {
 				return;
 			}
 
@@ -590,16 +595,6 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 
 
 
-		/**
-		 * Add Thumbs Up Icon.
-		 *
-		 * @param array  $links Plugin row meta links.
-		 * @param string $file Plugin file path.
-		 * @access public
-		 * @since 1.9.0
-		 * @version 2.1.5
-		 * @return array
-		 */
 		/**
 		 * Add Thumbs Up Icon.
 		 *

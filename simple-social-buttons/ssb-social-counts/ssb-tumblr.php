@@ -6,6 +6,10 @@
  * @since   1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Format the tumblr response to beautiful count.
  *

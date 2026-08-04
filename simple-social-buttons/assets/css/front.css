@@ -1,13 +1,21 @@
 @font-face {
 	font-family: 'ssb-icon';
-	src:  url('../fonts/ssb-icon.eot?eahqa2');
-	src:  url('../fonts/ssb-icon.eot?eahqa2#iefix') format('embedded-opentype'),
-		url('../fonts/ssb-icon.ttf?eahqa2') format('truetype'),
-		url('../fonts/ssb-icon.woff?eahqa2') format('woff'),
-		url('../fonts/ssb-icon.svg?eahqa2#ssb-icon') format('svg');
+	src:  url('../fonts/ssb-icon.woff2') format('woff2'),
+		url('../fonts/ssb-icon.woff') format('woff');
 	font-weight: normal;
 	font-style: normal;
 	font-display: swap;
+}
+/* Respect the user's reduced-motion preference for all SSB animations/transitions (A11Y-7). */
+@media (prefers-reduced-motion: reduce) {
+	.simplesocialbuttons *,
+	.simplesocialbuttons *::before,
+	.simplesocialbuttons *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }
 /* Decrease the Margin 'Sahre Title' at Top */
 div.simplesocialbuttons { height: auto; margin: -5px auto 5px -5px; text-align: left; clear: left; font-size: 0; direction: ltr;}
@@ -341,6 +349,7 @@ margin-block: 10px !important;
     padding: 1px 8px 1px 6px;
     background-color: #0f1419;
     color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.28);
     border-radius: 3px;
     font-weight: 500;
     cursor: pointer;
@@ -508,6 +517,7 @@ div[class*="simplesocialbuttons-float"].simplesocial-simple-icons.simplesocialbu
   padding: 1px 8px 1px 6px;
   background-color: #0f1419;
   color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: 3px;
   font-weight: 500;
   cursor: pointer;
@@ -1124,6 +1134,7 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 }
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-twt-share{
   background: #0f1419;
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-whatsapp-share{
   background: #34AF23;
@@ -1666,12 +1677,13 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 }
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-twt-share {
   background: #0f1419;
-  -webkit-box-shadow: inset 0px 0px 0px 0px #000000, 0px 3px 0px 0px #000000;
-          box-shadow: inset 0px 0px 0px 0px #000000, 0px 3px 0px 0px #000000;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  -webkit-box-shadow: inset 0px 0px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
+          box-shadow: inset 0px 0px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
 }
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-twt-share:hover {
-  -webkit-box-shadow: inset 0px -40px 0px 0px #000000, 0px 3px 0px 0px #000000;
-          box-shadow: inset 0px -40px 0px 0px #000000, 0px 3px 0px 0px #000000;
+  -webkit-box-shadow: inset 0px -40px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
+          box-shadow: inset 0px -40px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
 }
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-whatsapp-share {
   background: #34AF23;

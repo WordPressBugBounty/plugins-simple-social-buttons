@@ -7,6 +7,16 @@
  * @package    Simple Social Buttons
  * @since      2.0.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Collects plugin and system info for support logs.
+ *
+ * @since 2.0.0
+ */
 class Ssb_Logs_Info {
 
 	/**
@@ -14,7 +24,7 @@ class Ssb_Logs_Info {
 	 *
 	 * @access public
 	 * @since 2.0.0
-	 * @version 7.0.0
+	 * @version 7.0.1
 	 * @return string
 	 */
 	public static function ssb_get_sysinfo() {
@@ -47,20 +57,28 @@ class Ssb_Logs_Info {
 		$html .= 'Plugin Version:           ' . SSB_VERSION . "\n";
 		$html .= 'Social Networks:          ' . $networks_option['icon_selection'] . "\n";
 		$html .= 'Social Buttons Designs:   ' . $theme_option['icon_style'] . "\n";
-		$html .= 'Social Buttons Positions:  ' . print_r( $position_option['position'], true ) . "\n"; //phpcs:ignore
-		$html .= 'Sidebar:                  ' . print_r( $sidebar_option, true ) . "\n"; //phpcs:ignore
-		$html .= 'InLine:                   ' . print_r( $inline_option, true ) . "\n"; //phpcs:ignore
+		$html .= 'Social Buttons Positions:  ' . print_r( $position_option['position'], true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+		$html .= 'Sidebar:                  ' . print_r( $sidebar_option, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+		$html .= 'InLine:                   ' . print_r( $inline_option, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		if ( class_exists( 'Simple_Social_Buttons_Pro' ) ) {
 			$media_option = get_option( 'ssb_media' );
 			$popup_option = get_option( 'ssb_popup' );
 			$flyin_option = get_option( 'ssb_flyin' );
-			$html        .= 'Media:                    ' . print_r( $media_option, true ) . "\n"; //phpcs:ignore
-			$html        .= 'Popup:                    ' . print_r( $popup_option, true ) . "\n"; //phpcs:ignore
-			$html        .= 'Flyin:                    ' . print_r( $flyin_option, true ) . "\n"; //phpcs:ignore
+			$html        .= 'Media:                    ' . print_r( $media_option, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+			$html        .= 'Popup:                    ' . print_r( $popup_option, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
+			$html        .= 'Flyin:                    ' . print_r( $flyin_option, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
-		$html .= 'Advance:                  ' . print_r( $extra_option, true ) . "\n"; //phpcs:ignore
+		$extra_option_log = $extra_option;
+		if ( is_array( $extra_option_log ) ) {
+			foreach ( array( 'facebook_app_id', 'facebook_app_secret' ) as $secret_key ) {
+				if ( ! empty( $extra_option_log[ $secret_key ] ) ) {
+					$extra_option_log[ $secret_key ] = '***REDACTED***';
+				}
+			}
+		}
+		$html .= 'Advance:                  ' . print_r( $extra_option_log, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		if ( class_exists( 'C_Photocrati_Installer' ) && class_exists( 'Simple_Social_Buttons_Pro' ) ) {
-			$html .= 'NextGen Gallery:      ' . print_r( $ngg_option, true ) . "\n"; //phpcs:ignore
+			$html .= 'NextGen Gallery:      ' . print_r( $ngg_option, true ) . "\n"; // phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		}
 
 		// Server Configuration.
@@ -69,7 +87,11 @@ class Ssb_Logs_Info {
 		$html .= 'PHP Version:              ' . PHP_VERSION . "\n";
 		$html .= 'MySQL Version:            ' . $wpdb->db_version() . "\n";
 
-		$html .= 'Server Software:          ' . $_SERVER['SERVER_SOFTWARE'] . "\n"; //phpcs:ignore
+		$server_software = '';
+		if ( isset( $_SERVER['SERVER_SOFTWARE'] ) ) {
+			$server_software = sanitize_text_field( wp_unslash( $_SERVER['SERVER_SOFTWARE'] ) );
+		}
+		$html .= 'Server Software:          ' . $server_software . "\n";
 
 		// PHP configs... now we're getting to the important stuff.
 		$html .= "\n" . '-- PHP Configuration --' . "\n\n";
@@ -90,7 +112,7 @@ class Ssb_Logs_Info {
 		$plugins        = get_plugins();
 		$active_plugins = get_option( 'active_plugins', array() );
 		foreach ( $plugins as $plugin_path => $plugin ) {
-			if ( ! in_array( $plugin_path, $active_plugins ) ) { //phpcs:ignore
+			if ( ! in_array( $plugin_path, $active_plugins, true ) ) {
 				continue;
 			}
 			$html .= $plugin['Name'] . ': ' . $plugin['Version'] . "\n";
@@ -99,7 +121,7 @@ class Ssb_Logs_Info {
 		// WordPress inactive plugins.
 		$html .= "\n" . '-- WordPress Inactive Plugins --' . "\n\n";
 		foreach ( $plugins as $plugin_path => $plugin ) {
-			if ( in_array( $plugin_path, $active_plugins ) ) { //phpcs:ignore
+			if ( in_array( $plugin_path, $active_plugins, true ) ) {
 				continue;
 			}
 			$html .= $plugin['Name'] . ': ' . $plugin['Version'] . "\n";

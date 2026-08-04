@@ -6,6 +6,10 @@
  * @since   1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Format the facebook response to share count only (engagement.share_count).
  *

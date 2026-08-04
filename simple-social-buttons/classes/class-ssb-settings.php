@@ -8,6 +8,10 @@
  * @since 1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Settings class.
  *
@@ -41,7 +45,7 @@ class Ssb_Settings {
 	/**
 	 * Add Admin Menu.
 	 *
-	 * @version 7.0.0
+	 * @version 7.0.1
 	 *
 	 * @return void
 	 */
@@ -56,18 +60,15 @@ class Ssb_Settings {
 			return;
 		}
 		if ( current_user_can( 'activate_plugins' ) ) {
-			// phpcs:disable
-			$icon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF8xNzEyXzE0ODMiIHN0eWxlPSJtYXNrLXR5cGU6bHVtaW5hbmNlIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSI3IiB5PSI1IiB3aWR0aD0iMTE1IiBoZWlnaHQ9IjExOSI+CjxwYXRoIGQ9Ik0xMjEuMzk2IDVIN1YxMjMuMDYzSDEyMS4zOTZWNVoiIGZpbGw9IndoaXRlIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF8xNzEyXzE0ODMpIj4KPHBhdGggZD0iTTYyLjA0MDIgNjguNzE1NEM2Ni43OTg4IDc3LjE1OTMgNjcuNjQzNyA4NC45MjQyIDY2LjE1NTQgOTMuMDQ3OUM2NS42MTM1IDk1Ljk1NzkgNjQuNzgyMiA5OC44MDY0IDYzLjY3MzggMTAxLjU1MUM2Mi4yMTgxIDEwNS4xNzcgNTkuNTU1NiAxMDcuMzAzIDU1LjY2ODcgMTA3LjYwOEM1MS44MzgxIDEwNy45MDUgNDguODE3IDEwNi4yNSA0Ni44MjE2IDEwMy4wMzNDNDUuMDk2MSAxMDAuMjUyIDQ1LjEyNTcgOTcuMjQ2MSA0Ni4zNjggOTQuMjI0OUM0Ny42Njc2IDkxLjE2NzMgNDguMjE3NiA4Ny44NDMyIDQ3Ljk3MiA4NC41Mjk5QzQ3LjQ5NDYgNzguNjI2OSA0NC4wNTI0IDc0LjkzNTYgMzguNzgwOSA3Mi43ODMyQzMyLjQwMzYgNzAuMTggMjUuNzc0MiA3MC4zMTM0IDE5LjEyMSA3MS4yNDE0QzE2LjI5NTYgNzEuNjM1OCAxMy42MzAyIDcxLjUzNzkgMTEuMTYwNSA2OS45MjhDNi4wNTIwMiA2Ni41NzE4IDUuNTk4NCA1OS4xMDM0IDEwLjIxMTcgNTUuMTI0NUMxMS44MjE2IDUzLjczNyAxMy42OTI0IDUzLjA5MDYgMTUuNjk2NyA1Mi43OTEyQzI0LjY3NDIgNTEuNDUxMSAzMy41OTI1IDUxLjU0IDQyLjM0NDcgNTQuMjQ5OUM1MS4wMTk4IDU2Ljk0MiA1OC4wNTg0IDYxLjgzOTkgNjIuMDQwMiA2OC43MTU0WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggb3BhY2l0eT0iMC40IiBkPSJNNjYuODIyNiA4Ni41MjY4QzY2Ljc3MzMgOTIuMDgwOCA2NS41MzU5IDk3LjU2IDYzLjE5MzYgMTAyLjU5N0M2MS4zOTQgMTA2LjQwMyA1Ni44NDI5IDEwOC40MDggNTIuODc2IDEwNy4zNzlDNDguNDQ5NCAxMDYuMjI4IDQ1LjM5MjcgMTAyLjMzOSA0NS41MjMxIDk4LjAzOTNDNDUuNTk3NiA5Ni45NTcgNDUuODQyOCA5NS44OTMzIDQ2LjI0OTUgOTQuODg3N0M0Ny4xOTgzIDkyLjI0MyA0OC4wMjg0IDg5LjU1MDkgNDguMTM4MSA4Ni43Mjg0QzQ4LjI4OTMgODMuMzI3NyA0Ny4wMDg1IDgwLjMyNDMgNDUuNTk3MyA3Ny4zMTJDNDQuMTY1MiA3NC4yNTIzIDQ1LjUxMTMgNjkuNTQ3MSA0OC4xNzM3IDY3LjQwNjVDNTAuMTQ1MyA2NS44MjMyIDUyLjM0MjMgNjQuODY1NiA1NC45MDY5IDY0LjkxNkM1Ni4yODQ5IDY0LjkxNjYgNTcuNjQxMyA2NS4yNTc5IDU4Ljg1NTQgNjUuOTA5N0M2MC4wNjk1IDY2LjU2MTUgNjEuMTAzNSA2Ny41MDM1IDYxLjg2NTQgNjguNjUxN0M2NS40MDg0IDczLjg0MzIgNjYuODE5NiA3OS43MzczIDY2LjgyMjYgODYuNTI2OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04Mi44NzcgNzEuMDAxNUM4Ny43MzY0IDYyLjYxNjkgOTQuMDAxMSA1Ny45NTYyIDEwMS43NTQgNTUuMTA5OUMxMDQuNTQgNTQuMDk3IDEwNy40MjEgNTMuMzY3OSAxMTAuMzUzIDUyLjkzMzdDMTE0LjIwNyA1Mi4zNDA4IDExNy40IDUzLjU2MjMgMTE5LjY0MSA1Ni43NjE0QzEyMS44NDQgNTkuOTEgMTIxLjk0NSA2My4zNTUyIDEyMC4xODcgNjYuNzA4NEMxMTguNjY2IDY5LjYwNTEgMTE2LjA2MyA3MS4xMDUzIDExMi44MjggNzEuNTY3OEMxMDkuNTMyIDcxLjk5OTkgMTA2LjM4NyA3My4yMTM3IDEwMy42NTUgNzUuMTA3OEM5OC44MTAxIDc4LjUxNDUgOTcuMzc4MSA4My4zNTAxIDk4LjIwMjMgODguOTk4MkM5OS4xOTg1IDk1LjgxNzMgMTAyLjY3NiAxMDEuNDUgMTA2Ljg1NCAxMDYuNzIyQzEwOC42MzMgMTA4Ljk1NCAxMDkuOTA1IDExMS4yOTcgMTA5Ljc2IDExNC4yNDdDMTA5LjQ2MyAxMjAuMzUxIDEwMy4yNTcgMTI0LjUzMiA5Ny40ODQ4IDEyMi41NzVDOTUuNDc0NiAxMjEuODk2IDkzLjk2NTUgMTIwLjYwOSA5Mi42OTA2IDExOS4wMzVDODYuOTgwMyAxMTEuOTc5IDgyLjUzMzEgMTA0LjI0NiA4MC40MjggOTUuMzMxMUM3OC4zMjMgODYuNDcyMSA3OC45NzIzIDc3LjkzMzMgODIuODc3IDcxLjAwMTVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjMiIGQ9Ik05NS43OTQ2IDU3LjgzOTdDMTAwLjYwNCA1NS4wNTc3IDEwNS45NTUgNTMuMzM5IDExMS40ODQgNTIuNzk5NUMxMTUuNjc3IDUyLjQxNyAxMTkuNzE1IDU1LjMyMjYgMTIwLjgzOCA1OS4yNjU4QzEyMi4wOTYgNjMuNjYyNyAxMjAuMjk5IDY4LjI2NzEgMTE2LjUyMiA3MC4zMzk1QzExNS41NTEgNzAuODI0IDExNC41MTEgNzEuMTUyMiAxMTMuNDM4IDcxLjMxMkMxMTAuNjc4IDcxLjgzNjggMTA3Ljk1IDcyLjQ5OCAxMDUuNDUxIDczLjgyNjJDMTAyLjQ0NSA3NS40MjEzIDEwMC41MDYgNzguMDQ4MiA5OC42MzE5IDgwLjc5MzZDOTYuNzU4MiA4My41MzkgOTEuOTg0NyA4NC44MDUgODguNzkxNiA4My41OTgzQzg2LjQxOTcgODIuNzA4OSA4NC40ODM3IDgxLjI5NzYgODMuMjI2NiA3OS4wNjIxQzgyLjUyNzggNzcuODc2OSA4Mi4xMzI0IDc2LjUzNzUgODIuMDc1NSA3NS4xNjI3QzgyLjAxODYgNzMuNzg4IDgyLjMwMiA3Mi40MjA1IDgyLjkwMDUgNzEuMTgxNkM4NS41OTI1IDY1LjUwMDkgODkuOTUwOSA2MS4yODQ5IDk1Ljc5NDYgNTcuODM5N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NC4zNzczIDUwLjgwNzZDNjQuNjg1MiA1MC43NTcyIDU3LjUyMjEgNDcuNjQ0MSA1MS4yMDQgNDIuMzI4MkM0OC45NDI2IDQwLjQxNzcgNDYuODc5NSAzOC4yODQxIDQ1LjA0NjEgMzUuOTU5N0M0Mi42MTQ5IDMyLjg5NyA0Mi4wODEyIDI5LjUzMTkgNDMuNzUzNCAyNS45OTc4QzQ1LjM4NyAyMi41MiA0OC4zMjgxIDIwLjcyMDQgNTIuMTExMyAyMC41ODFDNTUuMzcyNiAyMC40NTk1IDU3Ljk3ODcgMjEuOTcxNSA1OS45ODU5IDI0LjU0OEM2MS45OTgyIDI3LjE5MjQgNjQuNjEzOCAyOS4zMTcgNjcuNjE0NSAzMC43NDQ1QzcyLjk3NzkgMzMuMjU1NyA3Ny44ODc3IDMyLjA5MzUgODIuMzc2NSAyOC41NzEzQzg3Ljc5NjIgMjQuMzE2NyA5MC45NzQ1IDE4LjQ5MDggOTMuNDU2MSAxMi4yNjQ2Qzk0LjUxNDUgOS42MTQgOTUuOTExIDcuMzQyOTMgOTguNTQwOCA2LjAwMjgyQzEwMy45ODcgMy4yMjc3MiAxMTAuNjk3IDYuNTMwNTYgMTExLjg4MyAxMi41MjU1QzExMi4yOTIgMTQuNjAwOSAxMTEuOTI0IDE2LjU1NzcgMTExLjE5MiAxOC40NTUyQzEwNy45MSAyNi45MTY5IDEwMy40MTIgMzQuNjE5NiA5Ni43MjM0IDQwLjg3ODRDOTAuMDM0NyA0Ny4xMzcyIDgyLjMyMzEgNTAuNzU3MiA3NC4zNzczIDUwLjgwNzZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjMiIGQ9Ik01Ni41Mzc4IDQ2LjE0NDNDNTEuNzM5MyA0My4zNDg4IDQ3LjU5NDUgMzkuNTU4OSA0NC4zODE5IDM1LjAyOTFDNDEuOTY4NiAzMS41ODEgNDIuNDgxNSAyNi42MzI2IDQ1LjMzOTYgMjMuNjk3NEM0OC41MzI3IDIwLjQyMTMgNTMuNDIxOCAxOS42ODkgNTcuMDk1MiAyMS45MzYzQzU3Ljk5NTUgMjIuNTM5MyA1OC43OTU5IDIzLjI3OTYgNTkuNDY3MSAyNC4xMzAzQzYxLjI5NjQgMjYuMjY1IDYzLjIyMzUgMjguMzAxOCA2NS42MTkxIDI5LjgxMzlDNjguNDk4IDMxLjYyNTQgNzEuNzQxNiAzMi4wMDQ5IDc1LjA1OTIgMzIuMjcxOEM3OC40MjQzIDMyLjU0MTYgODEuODQyOCAzNi4wNDMxIDgyLjM4MjQgMzkuNDE0MUM4Mi43ODI2IDQxLjkxMDUgODIuNTI3NyA0NC4yOTcyIDgxLjIxNDIgNDYuNDk3MUM4MC41MzA2IDQ3LjY5NDEgNzkuNTYxNyA0OC43MDM0IDc4LjM5MzcgNDkuNDM1NEM3Ny4yMjU3IDUwLjE2NzMgNzUuODk0OSA1MC41OTkxIDc0LjUxOTYgNTAuNjkyNEM2OC4yNTQ5IDUxLjE4NDUgNjIuNDQzOCA0OS41MDA1IDU2LjUzNzggNDYuMTQ0M1oiIGZpbGw9IndoaXRlIi8+CjwvZz4KPC9zdmc+';
 			add_menu_page(
 				'Simple Social Buttons',
 				'Social Buttons',
 				'activate_plugins',
 				'simple-social-buttons',
 				array( $this, 'ssb_plugin_page' ),
-				$icon,
+				ssb_get_admin_menu_icon(),
 				100
 			);
-			// phpcs:enable
 			add_submenu_page(
 				'simple-social-buttons',
 				__( 'Settings', 'simple-social-buttons' ),
@@ -559,22 +560,24 @@ class Ssb_Settings {
 
 				),
 				array(
-					'name'  => 'ssb_uninstall_data',
-					'type'  => 'ssb_checkbox',
-					'label' => __( 'Remove Settings on Uninstall', 'simple-social-buttons' ),
-					'help'  => sprintf(
-						// Translators: %1$s is the opening span tag, %2$s is the closing span tag.
+					'name'              => 'ssb_uninstall_data',
+					'type'              => 'ssb_checkbox',
+					'label'             => __( 'Remove Settings on Uninstall', 'simple-social-buttons' ),
+					'sanitize_callback' => 'sanitize_text_field',
+					'help'              => sprintf(
+						// translators: %1$s is the opening span tag, %2$s is the closing span tag.
 						__( '%1$s This tool will remove all Simple Social Button settings upon uninstall.%2$s', 'simple-social-buttons' ),
 						'<span class="ssb_uninstall_data">',
 						'</span>'
 					),
 				),
 				array(
-					'name'  => 'ssb_factory_reset',
-					'type'  => 'ssb_checkbox',
-					'label' => __( 'Factory Reset', 'simple-social-buttons' ),
-					'help'  => sprintf(
-						// Translators: %1$s is the opening span tag, %2$s is the closing span tag.
+					'name'              => 'ssb_factory_reset',
+					'type'              => 'ssb_checkbox',
+					'label'             => __( 'Factory Reset', 'simple-social-buttons' ),
+					'sanitize_callback' => 'sanitize_text_field',
+					'help'              => sprintf(
+						// translators: %1$s is the opening span tag, %2$s is the closing span tag.
 						__( '%1$s Enable to reset all settings made by Simple Social Buttons upon saving.%2$s', 'simple-social-buttons' ),
 						'<span class="ssb_uninstall_data">',
 						'</span>'
@@ -583,7 +586,7 @@ class Ssb_Settings {
 				array(
 					'name'              => 'facebook_app_id',
 					'desc'              => sprintf(
-						// Translators: %1$s is the opening h4 tag, %2$s is the closing h4 tag, %3$s is the opening anchor tag, %4$s is the closing anchor tag.
+						// translators: %1$s is the opening h4 tag, %2$s is the closing h4 tag, %3$s is the opening anchor tag, %4$s is the closing anchor tag.
 						__( '%1$sFacebook App%2$s %3$show to make App%4$s', 'simple-social-buttons' ),
 						'<h4>',
 						'</h4>',
@@ -723,10 +726,17 @@ class Ssb_Settings {
 	 *
 	 * @param string $input The code input to sanitize.
 	 * @since 4.0.0
+	 * @version 7.0.1
 	 *
 	 * @return $input the sanitized value.
 	 */
 	public function ssb_sanitize_code( $input ) {
+		// Only users allowed unfiltered_html may persist Custom JS; otherwise preserve what's stored.
+		if ( ! function_exists( 'ssb_user_can_save_custom_js' ) || ! ssb_user_can_save_custom_js() ) {
+			$existing_advanced = get_option( 'ssb_advanced' );
+			return is_array( $existing_advanced ) && isset( $existing_advanced['ssb_js'] ) ? $existing_advanced['ssb_js'] : '';
+		}
+
 		// Store raw JS (no base64). Read paths use ssb_get_custom_js_for_output() for legacy base64.
 		if ( ! is_string( $input ) ) {
 			return '';
@@ -803,7 +813,7 @@ class Ssb_Settings {
 		$html  = '<div class="simple-social-buttons-help-page">';
 		$html .= '<h2>Help & Troubleshooting</h2>';
 		$html .= sprintf(
-			// Translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+			// translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
 			__( 'Free support is available on the %1$s plugin support forums%2$s.', 'simple-social-buttons' ),
 			'<a href="https://wordpress.org/support/plugin/simple-social-buttons" target="_blank">',
 			'</a>'
@@ -811,7 +821,7 @@ class Ssb_Settings {
 		$html .= '<br /><br />';
 		if ( ! class_exists( 'Simple_Social_Buttons_Pro' ) ) {
 			$html .= sprintf(
-				// Translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+				// translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
 				__( 'For premium features, add-ons and priority email support, %1$s upgrade to pro%2$s.', 'simple-social-buttons' ),
 				'<a href="https://simplesocialbuttons.com/pricing/?utm_source=simple-social-buttons-lite&utm_medium=help-page&utm_campaign=pro-upgrade" target="_blank">',
 				'</a>'
@@ -835,6 +845,7 @@ class Ssb_Settings {
 	 * Download help callback.
 	 *
 	 * @return void
+	 * @version 7.0.1
 	 */
 	public function ssb_download_help() {
 
@@ -846,7 +857,7 @@ class Ssb_Settings {
 
 		include SSB_PLUGIN_DIR . 'classes/class-ssb-logs.php';
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- plain-text log file, not HTML.
 		echo Ssb_Logs_Info::ssb_get_sysinfo();
 		wp_die();
 	}
@@ -895,7 +906,7 @@ class Ssb_Settings {
 	 * wp_send_json_error( array( 'message', 'code' ) ) on failure.
 	 *
 	 * @since 2.0.4
-	 * @version 6.1.0
+	 * @version 7.0.1
 	 */
 	public function ssb_import() {
 		$nonce = isset( $_POST['security'] ) ? sanitize_text_field( wp_unslash( $_POST['security'] ) ) : '';
@@ -981,10 +992,11 @@ class Ssb_Settings {
 			return;
 		}
 
-		$ssb_settings_obj = $ssb_json['ssb_settings_obj'];
+		$ssb_settings_obj       = $ssb_json['ssb_settings_obj'];
+		$importable_section_ids = ssb_get_importable_section_ids();
 
 		foreach ( $ssb_settings_obj as $id => $array ) {
-			if ( false === strpos( $id, 'ssb_' ) ) {
+			if ( ! in_array( $id, $importable_section_ids, true ) ) {
 				continue;
 			}
 
@@ -993,9 +1005,22 @@ class Ssb_Settings {
 				$array['ssb_js'] = ssb_get_custom_js_for_output( $array['ssb_js'] );
 			}
 
+			$existing_ssb_js = null;
+			if ( 'ssb_advanced' === $id && ! ssb_user_can_save_custom_js() && isset( $array['ssb_js'] ) ) {
+				$existing_advanced = get_option( 'ssb_advanced' );
+				if ( is_array( $existing_advanced ) && isset( $existing_advanced['ssb_js'] ) ) {
+					$existing_ssb_js = $existing_advanced['ssb_js'];
+				}
+			}
+
 			// Never restore API credentials from an export file.
 			$array     = ssb_strip_sensitive_settings( $id, $array );
 			$sanitized = ssb_sanitize_imported_settings( $array );
+
+			if ( null !== $existing_ssb_js ) {
+				$sanitized['ssb_js'] = $existing_ssb_js;
+			}
+
 			update_option( $id, $sanitized );
 		}
 

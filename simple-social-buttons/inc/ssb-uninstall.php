@@ -11,6 +11,10 @@
  * @since   5.3.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 // Exit if not a real uninstall (WP core or SDK after-uninstall callback).
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) && ! defined( 'SSB_DOING_UNINSTALL' ) ) {
 	exit;
@@ -18,7 +22,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) && ! defined( 'SSB_DOING_UNINSTALL' ) ) 
 
 $ssb_advance_setting = get_option( 'ssb_advanced' );
 
-if ( isset( $ssb_advance_setting['ssb_uninstall_data'] ) && '1' != $ssb_advance_setting['ssb_uninstall_data'] ) { // phpcs:ignore
+if ( isset( $ssb_advance_setting['ssb_uninstall_data'] ) && '1' !== $ssb_advance_setting['ssb_uninstall_data'] ) { // phpcs:ignore
 	return;
 }
 
@@ -58,6 +62,8 @@ $ssb_unintstall_options = array(
 $ssb_uninstall_post_meta_keys = array(
 	'ssb_share_counts',
 	'ssb_share_counts_latest',
+	'ssb_legacy_share_counts_migrated',
+	'ssb_share_counts_latest_repaired',
 );
 
 /**
@@ -69,9 +75,7 @@ $ssb_uninstall_post_meta_keys = array(
  */
 function ssb_uninstall_cleanup_current_site( array $options, array $post_meta_keys ) {
 	foreach ( $options as $ssb_options ) {
-		if ( get_option( $ssb_options ) ) {
-			delete_option( $ssb_options );
-		}
+		delete_option( $ssb_options );
 	}
 
 	wp_clear_scheduled_hook( 'ssb_flush_internal_share_queue' );

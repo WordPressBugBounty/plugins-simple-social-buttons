@@ -160,33 +160,72 @@ class Ssb_Admin_Bar_Purge {
 	}
 
 	/**
-	 * Purge internal + API for a list of post IDs (sync).
+	 * Queue post IDs for background API refetch via cron batches.
 	 *
 	 * @param array $post_ids Post IDs.
-	 * @return array{processed:int,internal_flushed:int,api_refetched:int}
+	 * @param array $options  Optional batch metadata (type, internal_flushed, processing_message).
+	 * @return void
+	 * @since 7.0.1
 	 */
-	private function purge_posts_sync( $post_ids ) {
-		if ( function_exists( 'set_time_limit' ) ) {
-			set_time_limit( 240 );
-		}
+	private function ssb_queue_api_batch( $post_ids, $options = array() ) {
+		wp_clear_scheduled_hook( 'ssb_purge_all_api_batch' );
 
 		$post_ids = array_values( array_unique( array_map( 'intval', $post_ids ) ) );
-		$internal = ssb_purge_internal_for_post_ids( $post_ids );
-		$api_ok   = 0;
+		$total    = count( $post_ids );
 
-		foreach ( $post_ids as $post_id ) {
-			if ( $post_id <= 0 ) {
-				continue;
-			}
-			if ( ssb_refetch_api_counts_for_post( $post_id, $this->plugin ) ) {
-				++$api_ok;
-			}
+		$defaults = array(
+			'type'               => 'all',
+			'internal_flushed'   => 0,
+			'processing_message' => __( 'Purging all share caches in the background…', 'simple-social-buttons' ),
+		);
+		$options  = wp_parse_args( $options, $defaults );
+
+		set_transient(
+			self::PURGE_ALL_STATE_TRANSIENT,
+			array(
+				'post_ids'           => $post_ids,
+				'offset'             => 0,
+				'total'              => $total,
+				'done'               => 0,
+				'type'               => $options['type'],
+				'internal_flushed'   => (int) $options['internal_flushed'],
+				'processing_message' => $options['processing_message'],
+			),
+			HOUR_IN_SECONDS
+		);
+
+		if ( $total > 0 ) {
+			wp_schedule_single_event( time() + 5, 'ssb_purge_all_api_batch' );
+			$this->set_notice(
+				'processing',
+				$options['processing_message'],
+				array(
+					'done'  => 0,
+					'total' => $total,
+				)
+			);
+			return;
 		}
 
-		return array(
-			'processed'        => count( $post_ids ),
-			'internal_flushed' => $internal,
-			'api_refetched'    => $api_ok,
+		if ( 'recent' === $options['type'] ) {
+			$this->set_notice(
+				'completed',
+				sprintf(
+					/* translators: 1: posts processed, 2: internal queue flushes. */
+					__(
+						'Purged %1$d posts/pages. Internal queue flushed for %2$d. No posts found for API refetch.',
+						'simple-social-buttons'
+					),
+					0,
+					(int) $options['internal_flushed']
+				)
+			);
+			return;
+		}
+
+		$this->set_notice(
+			'completed',
+			__( 'Internal share queue flushed. No posts found for API refetch.', 'simple-social-buttons' )
 		);
 	}
 
@@ -194,34 +233,24 @@ class Ssb_Admin_Bar_Purge {
 	 * Handle purge for 30 recent posts/pages.
 	 *
 	 * @return void
+	 * @version 7.0.1
 	 */
 	public function handle_purge_recent() {
 		$this->verify_request();
 
 		$post_ids = ssb_get_recent_post_ids_for_purge();
+		$internal = ssb_purge_internal_for_post_ids( $post_ids );
 
-		$this->set_notice(
-			'processing',
-			sprintf(
-				/* translators: %d: number of posts. */
-				__( 'Purging share caches for %d recent posts/pages…', 'simple-social-buttons' ),
-				count( $post_ids )
-			)
-		);
-
-		$result = $this->purge_posts_sync( $post_ids );
-
-		$this->set_notice(
-			'completed',
-			sprintf(
-				/* translators: 1: posts processed, 2: internal queue flushes, 3: API refetches. */
-				__(
-					'Purged %1$d posts/pages. Internal queue flushed for %2$d. API counts refetched for %3$d.',
-					'simple-social-buttons'
+		$this->ssb_queue_api_batch(
+			$post_ids,
+			array(
+				'type'               => 'recent',
+				'internal_flushed'   => $internal,
+				'processing_message' => sprintf(
+					/* translators: %d: number of posts. */
+					__( 'Purging share caches for %d recent posts/pages in the background…', 'simple-social-buttons' ),
+					count( $post_ids )
 				),
-				$result['processed'],
-				$result['internal_flushed'],
-				$result['api_refetched']
 			)
 		);
 
@@ -232,6 +261,7 @@ class Ssb_Admin_Bar_Purge {
 	 * Handle site-wide purge (internal now, API via cron batches).
 	 *
 	 * @return void
+	 * @version 7.0.1
 	 */
 	public function handle_purge_all() {
 		$this->verify_request();
@@ -244,40 +274,14 @@ class Ssb_Admin_Bar_Purge {
 			$this->redirect_back();
 		}
 
-		wp_clear_scheduled_hook( 'ssb_purge_all_api_batch' );
-
 		$this->plugin->ssb_flush_internal_share_queue();
 
-		$post_ids = ssb_get_all_post_ids_for_purge();
-		$total    = count( $post_ids );
-
-		set_transient(
-			self::PURGE_ALL_STATE_TRANSIENT,
+		$this->ssb_queue_api_batch(
+			ssb_get_all_post_ids_for_purge(),
 			array(
-				'post_ids' => $post_ids,
-				'offset'   => 0,
-				'total'    => $total,
-				'done'     => 0,
-			),
-			HOUR_IN_SECONDS
+				'type' => 'all',
+			)
 		);
-
-		if ( $total > 0 ) {
-			wp_schedule_single_event( time() + 5, 'ssb_purge_all_api_batch' );
-			$this->set_notice(
-				'processing',
-				__( 'Purging all share caches in the background…', 'simple-social-buttons' ),
-				array(
-					'done'  => 0,
-					'total' => $total,
-				)
-			);
-		} else {
-			$this->set_notice(
-				'completed',
-				__( 'Internal share queue flushed. No posts found for API refetch.', 'simple-social-buttons' )
-			);
-		}
 
 		$this->redirect_back();
 	}
@@ -287,11 +291,11 @@ class Ssb_Admin_Bar_Purge {
 	 *
 	 * @param SimpleSocialButtonsPR $plugin Plugin instance.
 	 * @return void
+	 * @version 7.0.1
 	 */
 	public static function process_api_batch( $plugin ) {
 		$state = get_transient( self::PURGE_ALL_STATE_TRANSIENT );
 		if ( ! is_array( $state ) || empty( $state['post_ids'] ) || ! is_array( $state['post_ids'] ) ) {
-			wp_clear_scheduled_hook( 'ssb_purge_all_api_batch' );
 			return;
 		}
 
@@ -300,6 +304,11 @@ class Ssb_Admin_Bar_Purge {
 		$post_ids   = $state['post_ids'];
 		$total      = isset( $state['total'] ) ? (int) $state['total'] : count( $post_ids );
 		$done       = isset( $state['done'] ) ? (int) $state['done'] : 0;
+		$type       = isset( $state['type'] ) ? $state['type'] : 'all';
+		$internal   = isset( $state['internal_flushed'] ) ? (int) $state['internal_flushed'] : 0;
+		$processing = isset( $state['processing_message'] )
+			? $state['processing_message']
+			: __( 'Purging all share caches in the background…', 'simple-social-buttons' );
 		$slice      = array_slice( $post_ids, $offset, $batch_size );
 
 		foreach ( $slice as $post_id ) {
@@ -315,34 +324,81 @@ class Ssb_Admin_Bar_Purge {
 			$state['done']   = $done;
 			set_transient( self::PURGE_ALL_STATE_TRANSIENT, $state, HOUR_IN_SECONDS );
 
-			self::set_notice_static(
+			self::ssb_set_notice_static(
 				'processing',
-				__( 'Purging all share caches in the background…', 'simple-social-buttons' ),
+				$processing,
 				array(
 					'done'  => $done,
 					'total' => $total,
 				)
 			);
 
-			wp_schedule_single_event( time() + 10, 'ssb_purge_all_api_batch' );
+			if ( true !== self::schedule_api_batch( 10 ) ) {
+				self::ssb_set_notice_static(
+					'error',
+					__(
+						'The background purge could not be scheduled. Please try Purge All again.',
+						'simple-social-buttons'
+					)
+				);
+			}
 			return;
 		}
 
 		delete_transient( self::PURGE_ALL_STATE_TRANSIENT );
-		wp_clear_scheduled_hook( 'ssb_purge_all_api_batch' );
 
-		self::set_notice_static(
-			'completed',
-			sprintf(
+		if ( 'recent' === $type ) {
+			$completed_message = sprintf(
+				/* translators: 1: posts processed, 2: internal queue flushes, 3: API refetches. */
+				__(
+					'Purged %1$d posts/pages. Internal queue flushed for %2$d. API counts refetched for %3$d.',
+					'simple-social-buttons'
+				),
+				$total,
+				$internal,
+				$done
+			);
+		} else {
+			$completed_message = sprintf(
 				/* translators: %d: number of posts. */
 				__( 'Purge all complete. API counts refetched for %d posts/pages.', 'simple-social-buttons' ),
 				$done
-			),
+			);
+		}
+
+		self::ssb_set_notice_static(
+			'completed',
+			$completed_message,
 			array(
 				'done'  => $done,
 				'total' => $total,
 			)
 		);
+	}
+
+	/**
+	 * Schedule the next API purge batch when none is pending.
+	 *
+	 * Single cron events remove themselves before their callback runs, so
+	 * clearing the hook from inside the callback is unnecessary and can race
+	 * with WordPress updating the cron event list.
+	 *
+	 * @param int $delay Delay in seconds.
+	 * @return bool True when scheduled or already pending.
+	 */
+	private static function schedule_api_batch( $delay ) {
+		if ( wp_next_scheduled( 'ssb_purge_all_api_batch' ) ) {
+			return true;
+		}
+
+		$result = wp_schedule_single_event(
+			time() + max( 1, (int) $delay ),
+			'ssb_purge_all_api_batch',
+			array(),
+			true
+		);
+
+		return ! is_wp_error( $result ) && true === $result;
 	}
 
 	/**
@@ -353,7 +409,7 @@ class Ssb_Admin_Bar_Purge {
 	 * @param array  $progress Optional progress.
 	 * @return void
 	 */
-	private static function set_notice_static( $status, $message, $progress = array() ) {
+	private static function ssb_set_notice_static( $status, $message, $progress = array() ) {
 		set_transient(
 			self::NOTICE_TRANSIENT,
 			array(

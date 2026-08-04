@@ -4,7 +4,7 @@ Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-l
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
 Requires at least: 4.0
 Tested up to: 7.0
-Stable tag: 7.0.0
+Stable tag: 7.1.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,30 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 7.1.0 – 2026-08-04 =
+* New Feature: Added lowercase [ssb] shortcode support alongside [SSB].
+* New Feature: Added an "Upgrade to Pro" admin menu link for Lite users.
+* New Feature: Added a Twitter/X username field (appended as via= on share links).
+* Enhancement: [SSB]/[ssb] shortcodes now load required assets even when no other button position is enabled.
+* Enhancement: Relabeled "Twitter" to "Twitter/X" in buttons and settings.
+* Enhancement: Added a subtle border to the Twitter/X icon for better contrast.
+* Enhancement: Simplified the icon webfont to modern formats for faster loading.
+* Enhancement: Share buttons now respect the "reduce motion" accessibility setting.
+* Enhancement: Saving a custom button scrolls to and highlights it in the Networks list.
+* Enhancement: Fixed the dismiss button on the "Settings saved successfully!" notice.
+* Enhancement: Reduced unnecessary front-end compatibility checks.
+* Bugfix: Migrated and repaired legacy share counts on upgrade to keep totals accurate.
+* Bugfix: Fixed share links not encoding URLs/titles with special characters.
+* Bugfix: Fixed Twitter/X share-count fetching for URLs with special characters.
+* Bugfix: Fixed Pinterest hover "Pin it" failing when its script can't load; falls back to the share popup.
+* Bugfix: Fixed Pinterest hover-share loading over an insecure connection.
+* Bugfix: Fixed Custom JS corruption when it contained a "</script>" substring.
+* Bugfix: Fixed System Info downloads being HTML-escaped instead of plain text.
+* Security: Hardened Custom JS, settings import, and cache-rebuild against misuse.
+* Security: Removed insecure SSL config from follower-count API requests.
+* Security: Hardened Custom CSS sanitization against injection.
+* Security: Redacted Facebook App ID/Secret from the System Info file.
 
 = 7.0.0 – 2026-07-16 =
 * New Feature: Rebuilt the entire settings screen as a modern React-based interface for faster loading and a smoother experience.
@@ -609,5 +633,5 @@ like_button_size = small(default), large
 
 == Upgrade Notice ==
 
-= 6.2.1 =
-* Update Simple Social Buttons Plugin Now.
+= 7.1.0 =
+* Shortcode, Twitter/X, share-count, Pinterest, and security fixes. Update now.

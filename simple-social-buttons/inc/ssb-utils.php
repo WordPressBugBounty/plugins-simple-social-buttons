@@ -1,10 +1,126 @@
-<?php // phpcs:ignore
+<?php
 /**
  * Utility functions for Simple Social Buttons.
  *
  * @package Simple_Social_Buttons
  * @since   2.0
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Built-in network button ids (canonical list).
+ *
+ * Single source of truth for known networks: SimpleSocialButtonsPR::$arr_known_buttons
+ * is populated from this function, and localized `ssbReact.knownButtons` (JS `allIcons`
+ * fallback) is sourced from this function too.
+ *
+ * @return array
+ * @since 7.0.1
+ */
+function ssb_get_known_buttons() {
+	static $buttons = null;
+	if ( null !== $buttons ) {
+		return $buttons;
+	}
+
+	$buttons = array(
+		'twitter',
+		'pinterest',
+		'fbshare',
+		'linkedin',
+		'reddit',
+		'whatsapp',
+		'viber',
+		'messenger',
+		'email',
+		'copylink',
+		'print',
+		'tumblr',
+		'bluesky',
+		'telegram',
+		'threads',
+		'line',
+		'mastodon',
+		'vk',
+		'snapchat',
+	);
+
+	return $buttons;
+}
+
+/**
+ * Base64-encoded SVG admin menu icon (shared by the classic and React admin menus).
+ *
+ * @return string Data URI for use as the add_menu_page() icon argument.
+ * @since 7.0.1
+ */
+function ssb_get_admin_menu_icon() {
+	// phpcs:ignore Generic.Files.LineLength.MaxExceeded -- Base64 SVG data URI must stay on one line.
+	return 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF8xNzEyXzE0ODMiIHN0eWxlPSJtYXNrLXR5cGU6bHVtaW5hbmNlIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSI3IiB5PSI1IiB3aWR0aD0iMTE1IiBoZWlnaHQ9IjExOSI+CjxwYXRoIGQ9Ik0xMjEuMzk2IDVIN1YxMjMuMDYzSDEyMS4zOTZWNVoiIGZpbGw9IndoaXRlIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF8xNzEyXzE0ODMpIj4KPHBhdGggZD0iTTYyLjA0MDIgNjguNzE1NEM2Ni43OTg4IDc3LjE1OTMgNjcuNjQzNyA4NC45MjQyIDY2LjE1NTQgOTMuMDQ3OUM2NS42MTM1IDk1Ljk1NzkgNjQuNzgyMiA5OC44MDY0IDYzLjY3MzggMTAxLjU1MUM2Mi4yMTgxIDEwNS4xNzcgNTkuNTU1NiAxMDcuMzAzIDU1LjY2ODcgMTA3LjYwOEM1MS44MzgxIDEwNy45MDUgNDguODE3IDEwNi4yNSA0Ni44MjE2IDEwMy4wMzNDNDUuMDk2MSAxMDAuMjUyIDQ1LjEyNTcgOTcuMjQ2MSA0Ni4zNjggOTQuMjI0OUM0Ny42Njc2IDkxLjE2NzMgNDguMjE3NiA4Ny44NDMyIDQ3Ljk3MiA4NC41Mjk5QzQ3LjQ5NDYgNzguNjI2OSA0NC4wNTI0IDc0LjkzNTYgMzguNzgwOSA3Mi43ODMyQzMyLjQwMzYgNzAuMTggMjUuNzc0MiA3MC4zMTM0IDE5LjEyMSA3MS4yNDE0QzE2LjI5NTYgNzEuNjM1OCAxMy42MzAyIDcxLjUzNzkgMTEuMTYwNSA2OS45MjhDNi4wNTIwMiA2Ni41NzE4IDUuNTk4NCA1OS4xMDM0IDEwLjIxMTcgNTUuMTI0NUMxMS44MjE2IDUzLjczNyAxMy42OTI0IDUzLjA5MDYgMTUuNjk2NyA1Mi43OTEyQzI0LjY3NDIgNTEuNDUxMSAzMy41OTI1IDUxLjU0IDQyLjM0NDcgNTQuMjQ5OUM1MS4wMTk4IDU2Ljk0MiA1OC4wNTg0IDYxLjgzOTkgNjIuMDQwMiA2OC43MTU0WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggb3BhY2l0eT0iMC40IiBkPSJNNjYuODIyNiA4Ni41MjY4QzY2Ljc3MzMgOTIuMDgwOCA2NS41MzU5IDk3LjU2IDYzLjE5MzYgMTAyLjU5N0M2MS4zOTQgMTA2LjQwMyA1Ni44NDI5IDEwOC40MDggNTIuODc2IDEwNy4zNzlDNDguNDQ5NCAxMDYuMjI4IDQ1LjM5MjcgMTAyLjMzOSA0NS41MjMxIDk4LjAzOTNDNDUuNTk3NiA5Ni45NTcgNDUuODQyOCA5NS44OTMzIDQ2LjI0OTUgOTQuODg3N0M0Ny4xOTgzIDkyLjI0MyA0OC4wMjg0IDg5LjU1MDkgNDguMTM4MSA4Ni43Mjg0QzQ4LjI4OTMgODMuMzI3NyA0Ny4wMDg1IDgwLjMyNDMgNDUuNTk3MyA3Ny4zMTJDNDQuMTY1MiA3NC4yNTIzIDQ1LjUxMTMgNjkuNTQ3MSA0OC4xNzM3IDY3LjQwNjVDNTAuMTQ1MyA2NS44MjMyIDUyLjM0MjMgNjQuODY1NiA1NC45MDY5IDY0LjkxNkM1Ni4yODQ5IDY0LjkxNjYgNTcuNjQxMyA2NS4yNTc5IDU4Ljg1NTQgNjUuOTA5N0M2MC4wNjk1IDY2LjU2MTUgNjEuMTAzNSA2Ny41MDM1IDYxLjg2NTQgNjguNjUxN0M2NS40MDg0IDczLjg0MzIgNjYuODE5NiA3OS43MzczIDY2LjgyMjYgODYuNTI2OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04Mi44NzcgNzEuMDAxNUM4Ny43MzY0IDYyLjYxNjkgOTQuMDAxMSA1Ny45NTYyIDEwMS43NTQgNTUuMTA5OUMxMDQuNTQgNTQuMDk3IDEwNy40MjEgNTMuMzY3OSAxMTAuMzUzIDUyLjkzMzdDMTE0LjIwNyA1Mi4zNDA4IDExNy40IDUzLjU2MjMgMTE5LjY0MSA1Ni43NjE0QzEyMS44NDQgNTkuOTEgMTIxLjk0NSA2My4zNTUyIDEyMC4xODcgNjYuNzA4NEMxMTguNjY2IDY5LjYwNTEgMTE2LjA2MyA3MS4xMDUzIDExMi44MjggNzEuNTY3OEMxMDkuNTMyIDcxLjk5OTkgMTA2LjM4NyA3My4yMTM3IDEwMy42NTUgNzUuMTA3OEM5OC44MTAxIDc4LjUxNDUgOTcuMzc4MSA4My4zNTAxIDk4LjIwMjMgODguOTk4MkM5OS4xOTg1IDk1LjgxNzMgMTAyLjY3NiAxMDEuNDUgMTA2Ljg1NCAxMDYuNzIyQzEwOC42MzMgMTA4Ljk1NCAxMDkuOTA1IDExMS4yOTcgMTA5Ljc2IDExNC4yNDdDMTA5LjQ2MyAxMjAuMzUxIDEwMy4yNTcgMTI0LjUzMiA5Ny40ODQ4IDEyMi41NzVDOTUuNDc0NiAxMjEuODk2IDkzLjk2NTUgMTIwLjYwOSA5Mi42OTA2IDExOS4wMzVDODYuOTgwMyAxMTEuOTc5IDgyLjUzMzEgMTA0LjI0NiA4MC40MjggOTUuMzMxMUM3OC4zMjMgODYuNDcyMSA3OC45NzIzIDc3LjkzMzMgODIuODc3IDcxLjAwMTVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjMiIGQ9Ik05NS43OTQ2IDU3LjgzOTdDMTAwLjYwNCA1NS4wNTc3IDEwNS45NTUgNTMuMzM5IDExMS40ODQgNTIuNzk5NUMxMTUuNjc3IDUyLjQxNyAxMTkuNzE1IDU1LjMyMjYgMTIwLjgzOCA1OS4yNjU4QzEyMi4wOTYgNjMuNjYyNyAxMjAuMjk5IDY4LjI2NzEgMTE2LjUyMiA3MC4zMzk1QzExNS41NTEgNzAuODI0IDExNC41MTEgNzEuMTUyMiAxMTMuNDM4IDcxLjMxMkMxMTAuNjc4IDcxLjgzNjggMTA3Ljk1IDcyLjQ5OCAxMDUuNDUxIDczLjgyNjJDMTAyLjQ0NSA3NS40MjEzIDEwMC41MDYgNzguMDQ4MiA5OC42MzE5IDgwLjc5MzZDOTYuNzU4MiA4My41MzkgOTEuOTg0NyA4NC44MDUgODguNzkxNiA4My41OTgzQzg2LjQxOTcgODIuNzA4OSA4NC40ODM3IDgxLjI5NzYgODMuMjI2NiA3OS4wNjIxQzgyLjUyNzggNzcuODc2OSA4Mi4xMzI0IDc2LjUzNzUgODIuMDc1NSA3NS4xNjI3QzgyLjAxODYgNzMuNzg4IDgyLjMwMiA3Mi40MjA1IDgyLjkwMDUgNzEuMTgxNkM4NS41OTI1IDY1LjUwMDkgODkuOTUwOSA2MS4yODQ5IDk1Ljc5NDYgNTcuODM5N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NC4zNzczIDUwLjgwNzZDNjQuNjg1MiA1MC43NTcyIDU3LjUyMjEgNDcuNjQ0MSA1MS4yMDQgNDIuMzI4MkM0OC45NDI2IDQwLjQxNzcgNDYuODc5NSAzOC4yODQxIDQ1LjA0NjEgMzUuOTU5N0M0Mi42MTQ5IDMyLjg5NyA0Mi4wODEyIDI5LjUzMTkgNDMuNzUzNCAyNS45OTc4QzQ1LjM4NyAyMi41MiA0OC4zMjgxIDIwLjcyMDQgNTIuMTExMyAyMC41ODFDNTUuMzcyNiAyMC40NTk1IDU3Ljk3ODcgMjEuOTcxNSA1OS45ODU5IDI0LjU0OEM2MS45OTgyIDI3LjE5MjQgNjQuNjEzOCAyOS4zMTcgNjcuNjE0NSAzMC43NDQ1QzcyLjk3NzkgMzMuMjU1NyA3Ny44ODc3IDMyLjA5MzUgODIuMzc2NSAyOC41NzEzQzg3Ljc5NjIgMjQuMzE2NyA5MC45NzQ1IDE4LjQ5MDggOTMuNDU2MSAxMi4yNjQ2Qzk0LjUxNDUgOS42MTQgOTUuOTExIDcuMzQyOTMgOTguNTQwOCA2LjAwMjgyQzEwMy45ODcgMy4yMjc3MiAxMTAuNjk3IDYuNTMwNTYgMTExLjg4MyAxMi41MjU1QzExMi4yOTIgMTQuNjAwOSAxMTEuOTI0IDE2LjU1NzcgMTExLjE5MiAxOC40NTUyQzEwNy45MSAyNi45MTY5IDEwMy40MTIgMzQuNjE5NiA5Ni43MjM0IDQwLjg3ODRDOTAuMDM0NyA0Ny4xMzcyIDgyLjMyMzEgNTAuNzU3MiA3NC4zNzczIDUwLjgwNzZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjMiIGQ9Ik01Ni41Mzc4IDQ2LjE0NDNDNTEuNzM5MyA0My4zNDg4IDQ3LjU5NDUgMzkuNTU4OSA0NC4zODE5IDM1LjAyOTFDNDEuOTY4NiAzMS41ODEgNDIuNDgxNSAyNi42MzI2IDQ1LjMzOTYgMjMuNjk3NEM0OC41MzI3IDIwLjQyMTMgNTMuNDIxOCAxOS42ODkgNTcuMDk1MiAyMS45MzYzQzU3Ljk5NTUgMjIuNTM5MyA1OC43OTU5IDIzLjI3OTYgNTkuNDY3MSAyNC4xMzAzQzYxLjI5NjQgMjYuMjY1IDYzLjIyMzUgMjguMzAxOCA2NS42MTkxIDI5LjgxMzlDNjguNDk4IDMxLjYyNTQgNzEuNzQxNiAzMi4wMDQ5IDc1LjA1OTIgMzIuMjcxOEM3OC40MjQzIDMyLjU0MTYgODEuODQyOCAzNi4wNDMxIDgyLjM4MjQgMzkuNDE0MUM4Mi43ODI2IDQxLjkxMDUgODIuNTI3NyA0NC4yOTcyIDgxLjIxNDIgNDYuNDk3MUM4MC41MzA2IDQ3LjY5NDEgNzkuNTYxNyA0OC43MDM0IDc4LjM5MzcgNDkuNDM1NEM3Ny4yMjU3IDUwLjE2NzMgNzUuODk0OSA1MC41OTkxIDc0LjUxOTYgNTAuNjkyNEM2OC4yNTQ5IDUxLjE4NDUgNjIuNDQzOCA0OS41MDA1IDU2LjUzNzggNDYuMTQ0M1oiIGZpbGw9IndoaXRlIi8+CjwvZz4KPC9zdmc+';
+}
+
+/**
+ * Whether the current request is an AMP page.
+ *
+ * @return bool
+ * @since 7.0.1
+ */
+function ssb_is_amp_request() {
+	return function_exists( 'amp_is_request' ) && amp_is_request();
+}
+
+/**
+ * Sanitize HTTP_USER_AGENT for comparisons / request args.
+ *
+ * @return string
+ * @since 7.0.1
+ */
+function ssb_get_http_user_agent() {
+	if ( ! isset( $_SERVER['HTTP_USER_AGENT'] ) ) {
+		return '';
+	}
+	return sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) );
+}
+
+/**
+ * Build a client fingerprint for rate limiting.
+ *
+ * @return string
+ * @since 7.0.1
+ */
+function ssb_get_client_agent_hash() {
+	$agent = ssb_get_http_user_agent();
+	$ip    = isset( $_SERVER['REMOTE_ADDR'] )
+		? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) )
+		: '';
+
+	return $agent . '|' . $ip;
+}
+
+/**
+ * Per-IP/UA transient throttle. Returns true when the caller should abort.
+ *
+ * @param string $key_prefix Transient key prefix.
+ * @param int    $window_seconds Cooldown window.
+ * @param string $extra Extra salt (e.g. post_id|network).
+ * @return bool True if rate limited.
+ * @since 7.0.1
+ */
+function ssb_is_rate_limited( $key_prefix, $window_seconds = 60, $extra = '' ) {
+	$window_seconds = max( 10, (int) $window_seconds );
+	$hash           = md5( $extra . '|' . ssb_get_client_agent_hash() ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_md5
+	$key            = sanitize_key( $key_prefix ) . '_' . $hash;
+
+	if ( get_transient( $key ) ) {
+		return true;
+	}
+
+	set_transient( $key, 1, $window_seconds );
+	return false;
+}
 
 /**
  * Fetch share count responses with WordPress HTTP API.
@@ -13,6 +129,7 @@
  * @param array $args Optional request args for wp_safe_remote_get.
  * @return array Array of response bodies keyed by network.
  * @since 7.0.0
+ * @version 7.0.1
  */
 function ssb_fetch_shares_via_http_api( $data, $args = array() ) {
 	$result = array();
@@ -21,7 +138,7 @@ function ssb_fetch_shares_via_http_api( $data, $args = array() ) {
 		return $result;
 	}
 
-	$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : ''; // phpcs:ignore
+	$user_agent = ssb_get_http_user_agent();
 	$defaults   = array(
 		'redirection' => 0,
 		'sslverify'   => true,
@@ -72,16 +189,23 @@ function ssb_fetch_shares_via_http_api( $data, $args = array() ) {
  * @param string $css Raw CSS input.
  * @return string Sanitized CSS.
  * @since 7.0.0
+ * @version 7.0.1
  */
 function ssb_sanitize_custom_css( $css ) {
 	if ( ! is_string( $css ) ) {
 		return '';
 	}
 	$css = wp_strip_all_tags( $css );
-	$css = preg_replace( '#</style>#i', '', $css );
-	$css = preg_replace( '#</script>#i', '', $css );
-	$css = preg_replace( '#<script#i', '', $css );
+	// Normalize whitespace so split/obfuscated closing tags still match.
+	$css = preg_replace( '/\s+/', ' ', $css );
+	$css = preg_replace( '#<\s*/\s*style\s*>#i', '', $css );
+	$css = preg_replace( '#<\s*/\s*script\s*>#i', '', $css );
+	$css = preg_replace( '#<\s*script#i', '', $css );
 	$css = preg_replace( '#javascript\s*:#i', '', $css );
+	$css = preg_replace( '#expression\s*\(#i', '', $css );
+	$css = preg_replace( '#-moz-binding\s*:#i', '', $css );
+	$css = preg_replace( '#behavior\s*:#i', '', $css );
+	$css = preg_replace( '#@import\b#i', '', $css );
 	return $css;
 }
 
@@ -90,10 +214,12 @@ function ssb_sanitize_custom_css( $css ) {
  *
  * Handles both legacy base64-stored values and raw-stored values. Decodes at most
  * once when the stored value is valid base64 and decodes to printable text.
+ * Strips wrapping <script> tags — wp_add_inline_script() must receive bare JS only.
  *
  * @param string $stored Stored ssb_js value (raw or base64).
  * @return string JS code to use (display or wp_add_inline_script).
  * @since 7.0.0
+ * @version 7.0.1
  */
 function ssb_get_custom_js_for_output( $stored ) {
 	if ( ! is_string( $stored ) || '' === trim( $stored ) ) {
@@ -102,9 +228,14 @@ function ssb_get_custom_js_for_output( $stored ) {
 	// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 	$decoded = base64_decode( $stored, true );
 	if ( false !== $decoded && preg_match( '/^[\x20-\x7e\r\n\t]*$/s', $decoded ) ) {
-		return $decoded;
+		$stored = $decoded;
 	}
-	return $stored;
+
+	// wp_add_inline_script() wraps output in its own <script> tag.
+	$stored = preg_replace( '#^\s*<script[^>]*>#i', '', $stored );
+	$stored = preg_replace( '#</script>\s*$#i', '', $stored );
+
+	return trim( $stored );
 }
 
 /**
@@ -139,6 +270,7 @@ function ssb_strip_sensitive_settings( $option_id, $settings ) {
  * @param array $array_data Imported section data.
  * @return array Sanitized array.
  * @since 7.0.0
+ * @version 7.0.1
  */
 function ssb_sanitize_imported_settings( $array_data ) {
 	if ( ! is_array( $array_data ) ) {
@@ -151,7 +283,10 @@ function ssb_sanitize_imported_settings( $array_data ) {
 		} elseif ( 'ssb_css' === $key ) {
 			$out[ $key ] = ssb_sanitize_custom_css( $value );
 		} elseif ( 'ssb_js' === $key ) {
-			$out[ $key ] = $value;
+			// Require unfiltered_html; callers preserve existing value when this key is omitted.
+			if ( current_user_can( 'unfiltered_html' ) && is_string( $value ) ) {
+				$out[ $key ] = preg_replace( '/[\x00]/', '', $value );
+			}
 		} else {
 			$out[ $key ] = sanitize_text_field( $value );
 		}
@@ -160,21 +295,59 @@ function ssb_sanitize_imported_settings( $array_data ) {
 }
 
 /**
+ * Option section names allowed for settings import.
+ *
+ * @return array
+ * @since 7.0.1
+ */
+function ssb_get_importable_section_ids() {
+	$sections = array_merge( Ssb_React_Admin::CORE_SECTIONS, Ssb_React_Admin::PRO_SECTIONS );
+
+	/**
+	 * Filter importable option section ids.
+	 *
+	 * @param array $sections Section option names.
+	 */
+	return apply_filters( 'ssb_importable_section_ids', $sections );
+}
+
+/**
+ * Whether the current user may persist Custom JS.
+ *
+ * @return bool
+ * @since 7.0.1
+ */
+function ssb_user_can_save_custom_js() {
+	return current_user_can( 'unfiltered_html' );
+}
+
+/**
  * Return false if to fetch the new counts.
  *
  * @param int $post_id Post ID.
  * @return bool
  * @since 2.0
+ * @version 7.0.1
  */
 function ssb_is_cache_fresh( $post_id ) {
 	// Bail early if it's a crawl bot. If so, ONLY SERVE CACHED RESULTS FOR MAXIMUM SPEED.
-	if ( isset( $_SERVER['HTTP_USER_AGENT'] ) && preg_match( '/bot|crawl|slurp|spider/i', wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) ) { // phpcs:ignore
+	$user_agent = ssb_get_http_user_agent();
+	if ( '' !== $user_agent && preg_match( '/bot|crawl|slurp|spider/i', $user_agent ) ) {
 		return true;
 	}
 
 	$fresh_cache = false;
 
-	if ( isset( $_POST['ssb_cache'] ) && 'rebuild' === $_POST['ssb_cache'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+	// Rebuild only via authenticated AJAX (nonce checked in ssb_ajax_fetch_fresh_data).
+	if (
+		wp_doing_ajax()
+		&& isset( $_POST['ssb_cache'], $_POST['security'] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		&& 'rebuild' === sanitize_text_field( wp_unslash( $_POST['ssb_cache'] ) ) // phpcs:ignore WordPress.Security.NonceVerification.Missing
+		&& false !== wp_verify_nonce(
+			sanitize_text_field( wp_unslash( $_POST['security'] ) ), // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			'ssb_security'
+		)
+	) {
 		return false;
 	}
 
@@ -478,10 +651,45 @@ function ssb_get_hybrid_api_internal_share_networks() {
 }
 
 /**
+ * Networks that rely on internal click counts only (no live API).
+ *
+ * @return array
+ * @since 7.1.0
+ */
+function ssb_get_internal_only_share_networks() {
+	return array_values(
+		array_diff(
+			ssb_get_internal_share_trackable_networks(),
+			ssb_get_hybrid_api_internal_share_networks()
+		)
+	);
+}
+
+/**
+ * Cached per-network share count from post meta (ssb_{network}_counts).
+ *
+ * @param int    $post_id Post ID.
+ * @param string $network Network key.
+ * @return int
+ * @since 7.1.0
+ */
+function ssb_get_cached_network_share_count( $post_id, $network ) {
+	$post_id = (int) $post_id;
+	if ( $post_id <= 0 || '' === (string) $network ) {
+		return 0;
+	}
+
+	$counts = ssb_fetch_cached_counts( array( $network ), $post_id );
+
+	return isset( $counts[ $network ] ) ? (int) $counts[ $network ] : 0;
+}
+
+/**
  * Networks tracked via internal click counter.
  *
  * @return array
  * @since 7.0.0
+ * @version 7.1.0
  */
 function ssb_get_internal_share_trackable_networks() {
 	$networks = array();
@@ -490,6 +698,15 @@ function ssb_get_internal_share_trackable_networks() {
 	global $_ssb_pr;
 	if ( isset( $_ssb_pr->arr_known_buttons ) && is_array( $_ssb_pr->arr_known_buttons ) ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
 		foreach ( $_ssb_pr->arr_known_buttons as $network ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
+			if ( 'totalshare' === $network || ssb_is_network_has_counts( $network ) ) {
+				continue;
+			}
+			$networks[] = $network;
+		}
+	}
+
+	if ( empty( $networks ) ) {
+		foreach ( ssb_get_known_buttons() as $network ) {
 			if ( 'totalshare' === $network || ssb_is_network_has_counts( $network ) ) {
 				continue;
 			}
@@ -529,6 +746,7 @@ function ssb_get_internal_share_queue() {
  * @param int    $increment Increment amount.
  * @return array
  * @since 7.0.0
+ * @version 7.0.1
  */
 function ssb_increment_internal_share_queue( $post_id, $network, $increment = 1 ) {
 	$post_id   = (int) $post_id;
@@ -537,7 +755,19 @@ function ssb_increment_internal_share_queue( $post_id, $network, $increment = 1 
 		return array();
 	}
 
+	$status = get_post_status( $post_id );
+	if ( ! $status || 'publish' !== $status ) {
+		return array();
+	}
+
 	$queue = ssb_get_internal_share_queue();
+	$max   = (int) apply_filters( 'ssb_share_queue_max_posts', 500 );
+	$max   = max( 50, $max );
+
+	if ( ! isset( $queue[ $post_id ] ) && count( $queue ) >= $max ) {
+		return $queue;
+	}
+
 	if ( ! isset( $queue[ $post_id ] ) || ! is_array( $queue[ $post_id ] ) ) {
 		$queue[ $post_id ] = array();
 	}
@@ -693,11 +923,122 @@ function ssb_refetch_api_counts_for_post( $post_id, $plugin ) {
 }
 
 /**
+ * Rebuild cumulative latest counts from full share history.
+ *
+ * @param array $history Date-bucketed share history.
+ * @return array{date:string,networks:array<string,int>,total:int}
+ * @since 7.1.0
+ */
+function ssb_rebuild_internal_share_counts_latest( $history ) {
+	$networks    = array();
+	$latest_date = gmdate( 'Y-m-d' );
+	$trackable   = array_flip( ssb_get_internal_share_trackable_networks() );
+
+	if ( ! is_array( $history ) || empty( $history ) ) {
+		return array(
+			'date'     => $latest_date,
+			'networks' => array(),
+			'total'    => 0,
+		);
+	}
+
+	$dates = array_keys( $history );
+	rsort( $dates );
+	$latest_date = (string) $dates[0];
+
+	foreach ( $history as $bucket ) {
+		if ( ! is_array( $bucket ) || empty( $bucket['networks'] ) || ! is_array( $bucket['networks'] ) ) {
+			continue;
+		}
+		foreach ( $bucket['networks'] as $network => $count ) {
+			if ( ! isset( $trackable[ $network ] ) && ! ssb_is_custom_button_id( (string) $network ) ) {
+				continue;
+			}
+			$networks[ $network ] = ( isset( $networks[ $network ] ) ? (int) $networks[ $network ] : 0 )
+				+ (int) $count;
+		}
+	}
+
+	return array(
+		'date'     => $latest_date,
+		'networks' => $networks,
+		'total'    => (int) array_sum( $networks ),
+	);
+}
+
+/**
+ * Migrate legacy ssb_{network}_counts into the internal store once per post.
+ *
+ * Only internal-only networks are copied. Hybrid networks (e.g. fbshare) stay
+ * on the API/cached meta path to avoid double-counting.
+ *
+ * @param int $post_id Post ID.
+ * @return bool True when legacy values were copied, false otherwise.
+ * @since 7.1.0
+ */
+function ssb_migrate_legacy_share_counts_for_post( $post_id ) {
+	$post_id = (int) $post_id;
+	if ( $post_id <= 0 ) {
+		return false;
+	}
+
+	// Unique insert acts as a lock against concurrent first-view double merges.
+	if ( ! add_post_meta( $post_id, 'ssb_legacy_share_counts_migrated', 1, true ) ) {
+		return false;
+	}
+
+	$legacy = array();
+	foreach ( ssb_get_internal_only_share_networks() as $network ) {
+		$count = ssb_get_cached_network_share_count( $post_id, $network );
+		if ( $count > 0 ) {
+			$legacy[ $network ] = $count;
+		}
+	}
+
+	if ( empty( $legacy ) ) {
+		return false;
+	}
+
+	ssb_merge_internal_share_history( $post_id, $legacy, '0000-00-00' );
+	return true;
+}
+
+/**
+ * One-time repair of day-only latest meta to a cumulative history sum.
+ *
+ * @param int $post_id Post ID.
+ * @return void
+ * @since 7.1.0
+ */
+function ssb_maybe_repair_internal_share_counts_latest( $post_id ) {
+	$post_id = (int) $post_id;
+	if ( $post_id <= 0 ) {
+		return;
+	}
+
+	if ( ! add_post_meta( $post_id, 'ssb_share_counts_latest_repaired', 1, true ) ) {
+		return;
+	}
+
+	$history = get_post_meta( $post_id, 'ssb_share_counts', true );
+	if ( ! is_array( $history ) || empty( $history ) ) {
+		return;
+	}
+
+	update_post_meta(
+		$post_id,
+		'ssb_share_counts_latest',
+		ssb_rebuild_internal_share_counts_latest( $history )
+	);
+}
+
+/**
  * Return latest internal share counts for a post.
  *
  * @param int $post_id Post ID.
  * @return array
  * @since 7.0.0
+ * @version 7.1.0
  */
 function ssb_get_internal_share_counts_latest( $post_id ) {
 	$post_id = (int) $post_id;
@@ -716,6 +1057,13 @@ function ssb_get_internal_share_counts_latest( $post_id ) {
 		return $latest;
 	}
 
+	$history = get_post_meta( $post_id, 'ssb_share_counts', true );
+	if ( is_array( $history ) && ! empty( $history ) ) {
+		$rebuilt = ssb_rebuild_internal_share_counts_latest( $history );
+		update_post_meta( $post_id, 'ssb_share_counts_latest', $rebuilt );
+		return $rebuilt;
+	}
+
 	return array(
 		'date'     => gmdate( 'Y-m-d' ),
 		'networks' => array(),
@@ -731,6 +1079,7 @@ function ssb_get_internal_share_counts_latest( $post_id ) {
  * @param string $bucket_date Date bucket (Y-m-d). Defaults to current date.
  * @return array
  * @since 7.0.0
+ * @version 7.1.0
  */
 function ssb_merge_internal_share_history( $post_id, $network_counts, $bucket_date = '' ) {
 	$post_id = (int) $post_id;
@@ -770,11 +1119,7 @@ function ssb_merge_internal_share_history( $post_id, $network_counts, $bucket_da
 	$history[ $bucket_date ]['total'] = array_sum( $history[ $bucket_date ]['networks'] );
 	update_post_meta( $post_id, 'ssb_share_counts', $history );
 
-	$latest = array(
-		'date'     => $bucket_date,
-		'networks' => $history[ $bucket_date ]['networks'],
-		'total'    => (int) $history[ $bucket_date ]['total'],
-	);
+	$latest = ssb_rebuild_internal_share_counts_latest( $history );
 	update_post_meta( $post_id, 'ssb_share_counts_latest', $latest );
 
 	return $latest;
@@ -788,13 +1133,15 @@ function ssb_merge_internal_share_history( $post_id, $network_counts, $bucket_da
  * @param array|null $active_networks Active network order map; total uses only these when provided.
  * @return array
  * @since 7.0.0
+ * @version 7.1.0
  */
 function ssb_merge_api_and_internal_share_counts( $share_counts, $post_id, $active_networks = null ) {
 	if ( ! is_array( $share_counts ) ) {
 		$share_counts = array();
 	}
 
-	$latest          = ssb_get_internal_share_counts_latest( (int) $post_id );
+	$post_id         = (int) $post_id;
+	$latest          = ssb_get_internal_share_counts_latest( $post_id );
 	$internal_total  = isset( $latest['total'] ) ? (int) $latest['total'] : 0;
 	$internal_map    = isset( $latest['networks'] ) && is_array( $latest['networks'] ) ? $latest['networks'] : array();
 	$hybrid_networks = ssb_get_hybrid_api_internal_share_networks();
@@ -804,7 +1151,10 @@ function ssb_merge_api_and_internal_share_counts( $share_counts, $post_id, $acti
 		$internal_count = isset( $internal_map[ $network ] ) ? (int) $internal_map[ $network ] : 0;
 
 		if ( in_array( $network, $hybrid_networks, true ) ) {
-			$api_count                = isset( $share_counts[ $network ] ) ? (int) $share_counts[ $network ] : 0;
+			$api_count = isset( $share_counts[ $network ] ) ? (int) $share_counts[ $network ] : 0;
+			if ( $post_id > 0 ) {
+				$api_count = max( $api_count, ssb_get_cached_network_share_count( $post_id, $network ) );
+			}
 			$share_counts[ $network ] = $api_count + $internal_count;
 			continue;
 		}
@@ -877,13 +1227,19 @@ function ssb_fetch_cached_counts( $network_name, $post_id ) {
  *
  * @return bool True if mobile device, false otherwise.
  * @since 2.0.13
+ * @version 7.0.1
  */
 function ssb_is_mobile() {
 
-	$useragent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : 'none'; // phpcs:ignore
+	$useragent = ssb_get_http_user_agent();
+	if ( '' === $useragent ) {
+		$useragent = 'none';
+	}
 
-	$mobile_pattern_1 = '/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i'; // phpcs:ignore
-	$mobile_pattern_2 = '/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i'; // phpcs:ignore
+	// phpcs:ignore Generic.Files.LineLength.MaxExceeded -- Mobile UA regex must stay intact.
+	$mobile_pattern_1 = '/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i';
+	// phpcs:ignore Generic.Files.LineLength.MaxExceeded -- Mobile UA regex must stay intact.
+	$mobile_pattern_2 = '/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i';
 
 	if ( preg_match( $mobile_pattern_1, $useragent ) || preg_match( $mobile_pattern_2, substr( $useragent, 0, 4 ) ) ) {
 		return true;
@@ -898,12 +1254,11 @@ function ssb_is_mobile() {
  * @param string $url URL to share.
  * @return string Final url after detection is it mobile or desktop.
  * @since 2.0.23
- * @version 5.0.0
+ * @version 7.0.1
  */
 function ssb_whats_app_share_link( $url ) {
-	$whats_share_link = 'https://api.whatsapp.com/send?text=' . $url;
-
-	return $whats_share_link;
+	$url = html_entity_decode( (string) $url, ENT_QUOTES, 'UTF-8' );
+	return 'https://api.whatsapp.com/send?text=' . rawurlencode( $url );
 }
 
 /**
@@ -912,10 +1267,11 @@ function ssb_whats_app_share_link( $url ) {
  * @param string $url URL to share.
  * @return string Final url after detection is it desktop.
  * @since 3.2.0
+ * @version 7.0.1
  */
 function ssb_viber_share_link( $url ) {
-	$viber_share_link = 'viber://forward?text=' . $url;
-	return $viber_share_link;
+	$url = html_entity_decode( (string) $url, ENT_QUOTES, 'UTF-8' );
+	return 'viber://forward?text=' . rawurlencode( $url );
 }
 
 /**
@@ -924,10 +1280,140 @@ function ssb_viber_share_link( $url ) {
  * @param string $url URL to share.
  * @return string Final url after detection is it desktop.
  * @since 3.2.0
+ * @version 7.0.1
  */
 function ssb_linkdin_share_link( $url ) {
-	$linkdin_share_link = 'https://www.linkedin.com/sharing/share-offsite/?url=' . $url;
-	return $linkdin_share_link;
+	$url = html_entity_decode( (string) $url, ENT_QUOTES, 'UTF-8' );
+	return 'https://www.linkedin.com/sharing/share-offsite/?url=' . rawurlencode( $url );
+}
+
+/**
+ * Generate Twitter/X intent share link.
+ *
+ * @param string $url    Permalink.
+ * @param string $title  Share text.
+ * @param string $handle Optional Twitter handle (without @).
+ * @return string
+ * @since 7.0.1
+ */
+function ssb_twitter_share_link( $url, $title = '', $handle = '' ) {
+	$url    = html_entity_decode( (string) $url, ENT_QUOTES, 'UTF-8' );
+	$link   = 'https://twitter.com/intent/tweet?text=' . rawurlencode( (string) $title )
+		. '&url=' . rawurlencode( $url );
+	$handle = sanitize_text_field( (string) $handle );
+	if ( '' !== $handle ) {
+		$link .= '&via=' . rawurlencode( ltrim( $handle, '@' ) );
+	}
+	return $link;
+}
+
+/**
+ * Resolve an image URL suitable for Pinterest's media parameter.
+ *
+ * Prefers an explicit image (e.g. media hover share), then the post featured image.
+ *
+ * @param int    $post_id        Post ID.
+ * @param string $fallback_image Optional image URL already in context.
+ * @return string Absolute image URL or empty string.
+ * @since 7.0.1
+ */
+function ssb_get_pinterest_media_url( $post_id = 0, $fallback_image = '' ) {
+	$fallback_image = html_entity_decode( (string) $fallback_image, ENT_QUOTES, 'UTF-8' );
+	if ( '' !== $fallback_image && filter_var( $fallback_image, FILTER_VALIDATE_URL ) ) {
+		return esc_url_raw( $fallback_image );
+	}
+
+	$post_id = (int) $post_id;
+	if ( $post_id > 0 && has_post_thumbnail( $post_id ) ) {
+		$thumb = wp_get_attachment_image_url( get_post_thumbnail_id( $post_id ), 'full' );
+		if ( $thumb ) {
+			return esc_url_raw( $thumb );
+		}
+	}
+
+	return '';
+}
+
+/**
+ * Generate Pinterest pin/create share link.
+ *
+ * Format: https://www.pinterest.com/pin/create/button/?url=&media=&description=
+ *
+ * @param string $url         Page URL being pinned.
+ * @param string $media       Absolute image URL (required by Pinterest for a complete pin).
+ * @param string $description Optional pin caption.
+ * @return string
+ * @since 7.0.1
+ */
+function ssb_pinterest_share_link( $url, $media = '', $description = '' ) {
+	$url         = html_entity_decode( (string) $url, ENT_QUOTES, 'UTF-8' );
+	$media       = html_entity_decode( (string) $media, ENT_QUOTES, 'UTF-8' );
+	$description = html_entity_decode( (string) $description, ENT_QUOTES, 'UTF-8' );
+
+	$link = 'https://www.pinterest.com/pin/create/button/?url=' . rawurlencode( $url );
+	if ( '' !== $media ) {
+		$link .= '&media=' . rawurlencode( $media );
+	}
+	if ( '' !== $description ) {
+		$link .= '&description=' . rawurlencode( $description );
+	}
+
+	return $link;
+}
+
+/**
+ * Build a network share URL (DRY helper for front-end button markup).
+ *
+ * @param string $network   Network key.
+ * @param string $permalink Page URL.
+ * @param string $title     Share title/text.
+ * @param array  $args      Extra args (e.g. twitter_handle, media).
+ * @return string
+ * @since 7.0.1
+ */
+function ssb_build_share_url( $network, $permalink, $title = '', $args = array() ) {
+	$permalink = html_entity_decode( (string) $permalink, ENT_QUOTES, 'UTF-8' );
+	$title     = (string) $title;
+	$args      = is_array( $args ) ? $args : array();
+
+	switch ( $network ) {
+		case 'twitter':
+			$handle = isset( $args['twitter_handle'] ) ? $args['twitter_handle'] : '';
+			return ssb_twitter_share_link( $permalink, $title, $handle );
+		case 'pinterest':
+			$media = isset( $args['media'] ) ? $args['media'] : '';
+			return ssb_pinterest_share_link( $permalink, $media, $title );
+		case 'whatsapp':
+			return ssb_whats_app_share_link( $permalink );
+		case 'viber':
+			return ssb_viber_share_link( $permalink );
+		case 'linkedin':
+			return ssb_linkdin_share_link( $permalink );
+		case 'fbshare':
+			return 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $permalink );
+		case 'reddit':
+			return 'https://www.reddit.com/submit?url=' . rawurlencode( $permalink )
+				. '&title=' . rawurlencode( $title );
+		case 'threads':
+			return 'https://www.threads.net/intent/post?text=' . rawurlencode( $title . ' ' . $permalink );
+		case 'bluesky':
+			return 'https://bsky.app/intent/compose?text=' . rawurlencode( $title . ' ' . $permalink );
+		case 'tumblr':
+			return 'https://www.tumblr.com/widgets/share/tool?canonicalUrl=' . rawurlencode( $permalink )
+				. '&title=' . rawurlencode( $title );
+		case 'line':
+			return 'https://social-plugins.line.me/lineit/share?url=' . rawurlencode( $permalink );
+		case 'mastodon':
+			return 'https://mastodonshare.com/?text=' . rawurlencode( $title )
+				. '&url=' . rawurlencode( $permalink );
+		case 'vk':
+			return 'https://vk.com/share.php?url=' . rawurlencode( $permalink );
+		case 'telegram':
+			return 'https://t.me/share/url?url=' . rawurlencode( $permalink )
+				. '&text=' . rawurlencode( $title );
+		default:
+			return $permalink;
+	}
 }
 
 /**

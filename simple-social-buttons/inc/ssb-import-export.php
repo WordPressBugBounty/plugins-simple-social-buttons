@@ -74,7 +74,7 @@ echo '</div>';
 
 	$( '.ssb-import' ).attr( "disabled", "disabled" );
 
-	if ( 'json' == ssbpressFileExt && ssbFileImp.split(/(\\|\/)/g).pop().substring( 0, 3 ) === 'ssb' ) {
+	if ( 'json' === ssbpressFileExt && ssbFileImp.split(/(\\|\/)/g).pop().substring( 0, 3 ) === 'ssb' ) {
 		$(".import_setting .wrong-import").html("");
 		$( '.ssb-import' ).removeAttr( "disabled" );
 	} else {
@@ -157,7 +157,7 @@ echo '</div>';
 		success: function(response) {
 
 		$(".import_setting .import-sniper").hide();
-		if ( 'error' == response ) {
+		if ( 'error' === response ) {
 			$(".import_setting .wrong-import").html("JSON File is not Valid.");
 		} else {
 			$(".import_setting .import-text").show();

@@ -45,7 +45,7 @@ class Ssb_React_Admin {
 	 *
 	 * @var array<string>
 	 */
-	private const CORE_SECTIONS = array(
+	const CORE_SECTIONS = array(
 		'ssb_networks',
 		'ssb_themes',
 		'ssb_positions',
@@ -63,7 +63,7 @@ class Ssb_React_Admin {
 	 *
 	 * @var array<string>
 	 */
-	private const PRO_SECTIONS = array(
+	const PRO_SECTIONS = array(
 		'ssb_click_to_tweet',
 		'ssb_ngg_gallery',
 	);
@@ -89,15 +89,27 @@ class Ssb_React_Admin {
 		add_action( 'wp_ajax_ssb_get_settings', array( $this, 'ssb_get_settings' ) );
 		add_action( 'wp_ajax_ssb_save_settings', array( $this, 'ssb_save_settings' ) );
 		add_action( 'admin_menu', array( $this, 'ssb_add_react_menu' ), 5 );
+
+		// Keep the cached plugin version data (PERF-2) fresh across updates/activations.
+		add_action( 'upgrader_process_complete', array( $this, 'ssb_clear_plugin_version_cache' ) );
+		add_action( 'activated_plugin', array( $this, 'ssb_clear_plugin_version_cache' ) );
 	}
 
 	/**
 	 * Check version compatibility for React admin interface.
 	 *
+	 * Only relevant to the admin menu/React gate, so skip the plugin-data
+	 * lookups entirely on front-end requests.
+	 *
 	 * @since 7.0.0
+	 * @version 7.0.1
 	 * @return void
 	 */
 	public function ssb_check_version_compatibility() {
+		if ( ! is_admin() ) {
+			return;
+		}
+
 		$free_version = $this->ssb_get_plugin_version( 'simple-social-buttons/simple-social-buttons.php' );
 		$pro_version  = $this->ssb_get_plugin_version( 'simple-social-buttons-pro/simple-social-buttons-pro.php' );
 
@@ -130,26 +142,67 @@ class Ssb_React_Admin {
 	}
 
 	/**
-	 * Get plugin version safely
+	 * Get plugin version safely, cached in a transient keyed by plugin file (PERF-2).
+	 *
+	 * Avoids loading wp-admin/includes/plugin.php and calling get_plugin_data() on
+	 * every request; only done on a cache miss. Cache is invalidated on plugin
+	 * updates/activations via ssb_clear_plugin_version_cache().
 	 *
 	 * @param string $plugin_file Plugin file path.
 	 * @return string|false Plugin version or false on failure
 	 *
 	 * @since 7.0.0
+	 * @version 7.0.1
 	 */
 	private function ssb_get_plugin_version( $plugin_file ) {
+		$cache_key = $this->ssb_get_plugin_version_cache_key( $plugin_file );
+		$cached    = get_transient( $cache_key );
+
+		if ( is_array( $cached ) && array_key_exists( 'version', $cached ) ) {
+			return $cached['version'];
+		}
+
 		if ( ! function_exists( 'get_plugin_data' ) ) {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
 		$plugin_path = WP_PLUGIN_DIR . '/' . $plugin_file;
+		$version     = false;
 
-		if ( ! file_exists( $plugin_path ) || ! is_plugin_active( $plugin_file ) ) {
-			return false;
+		if ( file_exists( $plugin_path ) && is_plugin_active( $plugin_file ) ) {
+			$plugin_data = get_plugin_data( $plugin_path );
+			$version     = isset( $plugin_data['Version'] ) ? $plugin_data['Version'] : false;
 		}
 
-		$plugin_data = get_plugin_data( $plugin_path );
-		return isset( $plugin_data['Version'] ) ? $plugin_data['Version'] : false;
+		set_transient( $cache_key, array( 'version' => $version ), DAY_IN_SECONDS );
+
+		return $version;
+	}
+
+	/**
+	 * Build the transient key used to cache a plugin's version (PERF-2).
+	 *
+	 * @param string $plugin_file Plugin file path.
+	 * @return string
+	 * @since 7.0.1
+	 */
+	private function ssb_get_plugin_version_cache_key( $plugin_file ) {
+		// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_md5 -- Not used for security, just a short/stable cache key.
+		return 'ssb_pv_' . md5( $plugin_file );
+	}
+
+	/**
+	 * Clear cached plugin version data (PERF-2).
+	 *
+	 * Hooked to upgrader_process_complete and activated_plugin so a version
+	 * change is reflected immediately instead of waiting out the transient TTL.
+	 *
+	 * @since 7.0.1
+	 * @return void
+	 */
+	public function ssb_clear_plugin_version_cache() {
+		delete_transient( $this->ssb_get_plugin_version_cache_key( 'simple-social-buttons/simple-social-buttons.php' ) );
+		delete_transient( $this->ssb_get_plugin_version_cache_key( 'simple-social-buttons-pro/simple-social-buttons-pro.php' ) );
 	}
 
 	/**
@@ -177,21 +230,19 @@ class Ssb_React_Admin {
 	 * @return void
 	 *
 	 * @since 7.0.0
+	 * @version 7.0.1
 	 */
-	// phpcs:disable
 	private function ssb_add_main_menu_page() {
-		$icon = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI4IiBoZWlnaHQ9IjEyOCIgdmlld0JveD0iMCAwIDEyOCAxMjgiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxtYXNrIGlkPSJtYXNrMF8xNzEyXzE0ODMiIHN0eWxlPSJtYXNrLXR5cGU6bHVtaW5hbmNlIiBtYXNrVW5pdHM9InVzZXJTcGFjZU9uVXNlIiB4PSI3IiB5PSI1IiB3aWR0aD0iMTE1IiBoZWlnaHQ9IjExOSI+CjxwYXRoIGQ9Ik0xMjEuMzk2IDVIN1YxMjMuMDYzSDEyMS4zOTZWNVoiIGZpbGw9IndoaXRlIi8+CjwvbWFzaz4KPGcgbWFzaz0idXJsKCNtYXNrMF8xNzEyXzE0ODMpIj4KPHBhdGggZD0iTTYyLjA0MDIgNjguNzE1NEM2Ni43OTg4IDc3LjE1OTMgNjcuNjQzNyA4NC45MjQyIDY2LjE1NTQgOTMuMDQ3OUM2NS42MTM1IDk1Ljk1NzkgNjQuNzgyMiA5OC44MDY0IDYzLjY3MzggMTAxLjU1MUM2Mi4yMTgxIDEwNS4xNzcgNTkuNTU1NiAxMDcuMzAzIDU1LjY2ODcgMTA3LjYwOEM1MS44MzgxIDEwNy45MDUgNDguODE3IDEwNi4yNSA0Ni44MjE2IDEwMy4wMzNDNDUuMDk2MSAxMDAuMjUyIDQ1LjEyNTcgOTcuMjQ2MSA0Ni4zNjggOTQuMjI0OUM0Ny42Njc2IDkxLjE2NzMgNDguMjE3NiA4Ny44NDMyIDQ3Ljk3MiA4NC41Mjk5QzQ3LjQ5NDYgNzguNjI2OSA0NC4wNTI0IDc0LjkzNTYgMzguNzgwOSA3Mi43ODMyQzMyLjQwMzYgNzAuMTggMjUuNzc0MiA3MC4zMTM0IDE5LjEyMSA3MS4yNDE0QzE2LjI5NTYgNzEuNjM1OCAxMy42MzAyIDcxLjUzNzkgMTEuMTYwNSA2OS45MjhDNi4wNTIwMiA2Ni41NzE4IDUuNTk4NCA1OS4xMDM0IDEwLjIxMTcgNTUuMTI0NUMxMS44MjE2IDUzLjczNyAxMy42OTI0IDUzLjA5MDYgMTUuNjk2NyA1Mi43OTEyQzI0LjY3NDIgNTEuNDUxMSAzMy41OTI1IDUxLjU0IDQyLjM0NDcgNTQuMjQ5OUM1MS4wMTk4IDU2Ljk0MiA1OC4wNTg0IDYxLjgzOTkgNjIuMDQwMiA2OC43MTU0WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggb3BhY2l0eT0iMC40IiBkPSJNNjYuODIyNiA4Ni41MjY4QzY2Ljc3MzMgOTIuMDgwOCA2NS41MzU5IDk3LjU2IDYzLjE5MzYgMTAyLjU5N0M2MS4zOTQgMTA2LjQwMyA1Ni44NDI5IDEwOC40MDggNTIuODc2IDEwNy4zNzlDNDguNDQ5NCAxMDYuMjI4IDQ1LjM5MjcgMTAyLjMzOSA0NS41MjMxIDk4LjAzOTNDNDUuNTk3NiA5Ni45NTcgNDUuODQyOCA5NS44OTMzIDQ2LjI0OTUgOTQuODg3N0M0Ny4xOTgzIDkyLjI0MyA0OC4wMjg0IDg5LjU1MDkgNDguMTM4MSA4Ni43Mjg0QzQ4LjI4OTMgODMuMzI3NyA0Ny4wMDg1IDgwLjMyNDMgNDUuNTk3MyA3Ny4zMTJDNDQuMTY1MiA3NC4yNTIzIDQ1LjUxMTMgNjkuNTQ3MSA0OC4xNzM3IDY3LjQwNjVDNTAuMTQ1MyA2NS44MjMyIDUyLjM0MjMgNjQuODY1NiA1NC45MDY5IDY0LjkxNkM1Ni4yODQ5IDY0LjkxNjYgNTcuNjQxMyA2NS4yNTc5IDU4Ljg1NTQgNjUuOTA5N0M2MC4wNjk1IDY2LjU2MTUgNjEuMTAzNSA2Ny41MDM1IDYxLjg2NTQgNjguNjUxN0M2NS40MDg0IDczLjg0MzIgNjYuODE5NiA3OS43MzczIDY2LjgyMjYgODYuNTI2OFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik04Mi44NzcgNzEuMDAxNUM4Ny43MzY0IDYyLjYxNjkgOTQuMDAxMSA1Ny45NTYyIDEwMS43NTQgNTUuMTA5OUMxMDQuNTQgNTQuMDk3IDEwNy40MjEgNTMuMzY3OSAxMTAuMzUzIDUyLjkzMzdDMTE0LjIwNyA1Mi4zNDA4IDExNy40IDUzLjU2MjMgMTE5LjY0MSA1Ni43NjE0QzEyMS44NDQgNTkuOTEgMTIxLjk0NSA2My4zNTUyIDEyMC4xODcgNjYuNzA4NEMxMTguNjY2IDY5LjYwNTEgMTE2LjA2MyA3MS4xMDUzIDExMi44MjggNzEuNTY3OEMxMDkuNTMyIDcxLjk5OTkgMTA2LjM4NyA3My4yMTM3IDEwMy42NTUgNzUuMTA3OEM5OC44MTAxIDc4LjUxNDUgOTcuMzc4MSA4My4zNTAxIDk4LjIwMjMgODguOTk4MkM5OS4xOTg1IDk1LjgxNzMgMTAyLjY3NiAxMDEuNDUgMTA2Ljg1NCAxMDYuNzIyQzEwOC42MzMgMTA4Ljk1NCAxMDkuOTA1IDExMS4yOTcgMTA5Ljc2IDExNC4yNDdDMTA5LjQ2MyAxMjAuMzUxIDEwMy4yNTcgMTI0LjUzMiA5Ny40ODQ4IDEyMi41NzVDOTUuNDc0NiAxMjEuODk2IDkzLjk2NTUgMTIwLjYwOSA5Mi42OTA2IDExOS4wMzVDODYuOTgwMyAxMTEuOTc5IDgyLjUzMzEgMTA0LjI0NiA4MC40MjggOTUuMzMxMUM3OC4zMjMgODYuNDcyMSA3OC45NzIzIDc3LjkzMzMgODIuODc3IDcxLjAwMTVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjMiIGQ9Ik05NS43OTQ2IDU3LjgzOTdDMTAwLjYwNCA1NS4wNTc3IDEwNS45NTUgNTMuMzM5IDExMS40ODQgNTIuNzk5NUMxMTUuNjc3IDUyLjQxNyAxMTkuNzE1IDU1LjMyMjYgMTIwLjgzOCA1OS4yNjU4QzEyMi4wOTYgNjMuNjYyNyAxMjAuMjk5IDY4LjI2NzEgMTE2LjUyMiA3MC4zMzk1QzExNS41NTEgNzAuODI0IDExNC41MTEgNzEuMTUyMiAxMTMuNDM4IDcxLjMxMkMxMTAuNjc4IDcxLjgzNjggMTA3Ljk1IDcyLjQ5OCAxMDUuNDUxIDczLjgyNjJDMTAyLjQ0NSA3NS40MjEzIDEwMC41MDYgNzguMDQ4MiA5OC42MzE5IDgwLjc5MzZDOTYuNzU4MiA4My41MzkgOTEuOTg0NyA4NC44MDUgODguNzkxNiA4My41OTgzQzg2LjQxOTcgODIuNzA4OSA4NC40ODM3IDgxLjI5NzYgODMuMjI2NiA3OS4wNjIxQzgyLjUyNzggNzcuODc2OSA4Mi4xMzI0IDc2LjUzNzUgODIuMDc1NSA3NS4xNjI3QzgyLjAxODYgNzMuNzg4IDgyLjMwMiA3Mi40MjA1IDgyLjkwMDUgNzEuMTgxNkM4NS41OTI1IDY1LjUwMDkgODkuOTUwOSA2MS4yODQ5IDk1Ljc5NDYgNTcuODM5N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NC4zNzczIDUwLjgwNzZDNjQuNjg1MiA1MC43NTcyIDU3LjUyMjEgNDcuNjQ0MSA1MS4yMDQgNDIuMzI4MkM0OC45NDI2IDQwLjQxNzcgNDYuODc5NSAzOC4yODQxIDQ1LjA0NjEgMzUuOTU5N0M0Mi42MTQ5IDMyLjg5NyA0Mi4wODEyIDI5LjUzMTkgNDMuNzUzNCAyNS45OTc4QzQ1LjM4NyAyMi41MiA0OC4zMjgxIDIwLjcyMDQgNTIuMTExMyAyMC41ODFDNTUuMzcyNiAyMC40NTk1IDU3Ljk3ODcgMjEuOTcxNSA1OS45ODU5IDI0LjU0OEM2MS45OTgyIDI3LjE5MjQgNjQuNjEzOCAyOS4zMTcgNjcuNjE0NSAzMC43NDQ1QzcyLjk3NzkgMzMuMjU1NyA3Ny44ODc3IDMyLjA5MzUgODIuMzc2NSAyOC41NzEzQzg3Ljc5NjIgMjQuMzE2NyA5MC45NzQ1IDE4LjQ5MDggOTMuNDU2MSAxMi4yNjQ2Qzk0LjUxNDUgOS42MTQgOTUuOTExIDcuMzQyOTMgOTguNTQwOCA2LjAwMjgyQzEwMy45ODcgMy4yMjc3MiAxMTAuNjk3IDYuNTMwNTYgMTExLjg4MyAxMi41MjU1QzExMi4yOTIgMTQuNjAwOSAxMTEuOTI0IDE2LjU1NzcgMTExLjE5MiAxOC40NTUyQzEwNy45MSAyNi45MTY5IDEwMy40MTIgMzQuNjE5NiA5Ni43MjM0IDQwLjg3ODRDOTAuMDM0NyA0Ny4xMzcyIDgyLjMyMzEgNTAuNzU3MiA3NC4zNzczIDUwLjgwNzZaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBvcGFjaXR5PSIwLjMiIGQ9Ik01Ni41Mzc4IDQ2LjE0NDNDNTEuNzM5MyA0My4zNDg4IDQ3LjU5NDUgMzkuNTU4OSA0NC4zODE5IDM1LjAyOTFDNDEuOTY4NiAzMS41ODEgNDIuNDgxNSAyNi42MzI2IDQ1LjMzOTYgMjMuNjk3NEM0OC41MzI3IDIwLjQyMTMgNTMuNDIxOCAxOS42ODkgNTcuMDk1MiAyMS45MzYzQzU3Ljk5NTUgMjIuNTM5MyA1OC43OTU5IDIzLjI3OTYgNTkuNDY3MSAyNC4xMzAzQzYxLjI5NjQgMjYuMjY1IDYzLjIyMzUgMjguMzAxOCA2NS42MTkxIDI5LjgxMzlDNjguNDk4IDMxLjYyNTQgNzEuNzQxNiAzMi4wMDQ5IDc1LjA1OTIgMzIuMjcxOEM3OC40MjQzIDMyLjU0MTYgODEuODQyOCAzNi4wNDMxIDgyLjM4MjQgMzkuNDE0MUM4Mi43ODI2IDQxLjkxMDUgODIuNTI3NyA0NC4yOTcyIDgxLjIxNDIgNDYuNDk3MUM4MC41MzA2IDQ3LjY5NDEgNzkuNTYxNyA0OC43MDM0IDc4LjM5MzcgNDkuNDM1NEM3Ny4yMjU3IDUwLjE2NzMgNzUuODk0OSA1MC41OTkxIDc0LjUxOTYgNTAuNjkyNEM2OC4yNTQ5IDUxLjE4NDUgNjIuNDQzOCA0OS41MDA1IDU2LjUzNzggNDYuMTQ0M1oiIGZpbGw9IndoaXRlIi8+CjwvZz4KPC9zdmc+';
 		add_menu_page(
 			'Simple Social Buttons',
 			'Social Buttons',
 			'activate_plugins',
 			'simple-social-buttons',
 			array( $this, 'ssb_render_react_admin' ),
-			$icon,
+			ssb_get_admin_menu_icon(),
 			100
 		);
 	}
-	// phpcs:enable
 
 	/**
 	 * Add all submenu pages
@@ -210,11 +261,6 @@ class Ssb_React_Admin {
 			'simple-social-buttons',
 			array( $this, 'ssb_render_react_admin' )
 		);
-
-		// Pro submenu if Pro is active.
-		if ( class_exists( 'Simple_Social_Buttons_Pro' ) ) {
-			do_action( 'ssb_add_pro_submenu' );
-		}
 
 		// Help submenu.
 		add_submenu_page(
@@ -235,6 +281,56 @@ class Ssb_React_Admin {
 			'ssb-import-export',
 			array( $this, 'ssb_import_export_page' )
 		);
+
+		// Pro submenu if Pro is active.
+		if ( class_exists( 'Simple_Social_Buttons_Pro' ) ) {
+			do_action( 'ssb_add_pro_submenu' );
+		} else {
+			$this->ssb_add_upgrade_submenu();
+		}
+	}
+
+	/**
+	 * Add the Upgrade to Pro submenu for Lite users.
+	 *
+	 * @since 7.1.0
+	 * @return void
+	 */
+	private function ssb_add_upgrade_submenu() {
+		$upgrade_url = add_query_arg(
+			array(
+				'utm_source'   => 'simple-social-buttons-lite',
+				'utm_medium'   => 'admin-menu',
+				'utm_campaign' => 'pro-upgrade',
+			),
+			'https://simplesocialbuttons.com/pricing/'
+		);
+
+		add_submenu_page(
+			'simple-social-buttons',
+			__( 'Upgrade to Pro', 'simple-social-buttons' ),
+			__( 'Upgrade to Pro', 'simple-social-buttons' ),
+			'manage_options',
+			$upgrade_url
+		);
+
+		global $submenu;
+		if ( ! isset( $submenu['simple-social-buttons'] ) ) {
+			return;
+		}
+
+		foreach ( $submenu['simple-social-buttons'] as $position => $menu_item ) {
+			if ( isset( $menu_item[2] ) && false !== strpos( $menu_item[2], 'simplesocialbuttons.com/pricing' ) ) {
+				if ( isset( $submenu['simple-social-buttons'][ $position ][4] ) ) {
+					// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- add CSS class to Upgrade submenu.
+					$submenu['simple-social-buttons'][ $position ][4] .= ' ssb-sidebar-upgrade-pro';
+				} else {
+					// phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- add CSS class to Upgrade submenu.
+					$submenu['simple-social-buttons'][ $position ][] = 'ssb-sidebar-upgrade-pro';
+				}
+				break;
+			}
+		}
 	}
 
 	/**
@@ -245,6 +341,8 @@ class Ssb_React_Admin {
 	 * @return void
 	 */
 	public function ssb_enqueue_react_scripts( $hook ) {
+		$this->ssb_enqueue_outside_plugin_admin_assets();
+
 		if ( ! $this->ssb_should_load_scripts( $hook ) ) {
 			return;
 		}
@@ -254,6 +352,32 @@ class Ssb_React_Admin {
 		$this->ssb_enqueue_styles();
 		wp_enqueue_media();
 		$this->ssb_localize_script();
+	}
+
+	/**
+	 * Enqueue Lite upgrade-menu assets across the WordPress admin.
+	 *
+	 * @since 7.1.0
+	 * @return void
+	 */
+	private function ssb_enqueue_outside_plugin_admin_assets() {
+		if ( class_exists( 'Simple_Social_Buttons_Pro' ) ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'ssb-outside-plugin-admin',
+			SSB_PLUGIN_URL . 'assets/css/outside-plugin-admin.css',
+			array(),
+			SSB_VERSION
+		);
+		wp_enqueue_script(
+			'ssb-outside-plugin-admin',
+			SSB_PLUGIN_URL . 'assets/js/outside-plugin-admin.js',
+			array( 'jquery' ),
+			SSB_VERSION,
+			false
+		);
 	}
 
 	/**
@@ -333,6 +457,7 @@ class Ssb_React_Admin {
 	 * @return void
 	 *
 	 * @since 7.0.0
+	 * @version 7.0.1
 	 */
 	private function ssb_localize_script() {
 		wp_localize_script(
@@ -352,6 +477,7 @@ class Ssb_React_Admin {
 				'currentUser'   => wp_get_current_user()->display_name,
 				'postTypes'     => $this->ssb_get_post_types(),
 				'version'       => SSB_VERSION,
+				'knownButtons'  => function_exists( 'ssb_get_known_buttons' ) ? ssb_get_known_buttons() : array(),
 			)
 		);
 	}
@@ -1191,18 +1317,24 @@ class Ssb_React_Admin {
 	 * @param mixed  $value Field value.
 	 * @return mixed Sanitized value.
 	 * @since 7.0.0
+	 * @version 7.0.1
 	 */
 	private function ssb_sanitize_field_value( $key, $value ) {
 		switch ( $key ) {
 			case 'ssb_css':
 				return ssb_sanitize_custom_css( $value );
 			case 'ssb_js':
+				// Only users allowed unfiltered_html may persist Custom JS; otherwise preserve what's stored.
+				if ( ! function_exists( 'ssb_user_can_save_custom_js' ) || ! ssb_user_can_save_custom_js() ) {
+					$existing_advanced = get_option( 'ssb_advanced' );
+					return is_array( $existing_advanced ) && isset( $existing_advanced['ssb_js'] ) ? $existing_advanced['ssb_js'] : '';
+				}
 				// Incoming base64 from client (transport only). Decode once and store raw.
 				if ( is_string( $value ) && preg_match( '/^[A-Za-z0-9+\/=]+\s*$/', trim( $value ) ) ) {
 					// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 					$decoded = base64_decode( trim( $value ), true );
 					if ( false !== $decoded ) {
-						return $decoded;
+						return preg_replace( '/[\x00]/', '', $decoded );
 					}
 				}
 				return $value;

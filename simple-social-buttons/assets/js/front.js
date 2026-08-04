@@ -161,15 +161,23 @@ var ssbPlugin = ssbPlugin || {};
 					window.print();
 					break;
 				case 'pinterest-pin':
+					// Prefer Pinterest's pinmarklet picker; fall back to the pin-create URL.
 					if ( ! document.querySelector( 'script[src*="pinmarklet.js"]' ) ) {
 						var pinScript = document.createElement( 'script' );
 						pinScript.setAttribute( 'type', 'text/javascript' );
 						pinScript.setAttribute( 'charset', 'UTF-8' );
 						pinScript.setAttribute(
 							'src',
-							'//assets.pinterest.com/js/pinmarklet.js?r=' + Math.random() * 99999999
+							'https://assets.pinterest.com/js/pinmarklet.js?r=' + Math.random() * 99999999
 						);
+						pinScript.onerror = function () {
+							if ( url ) {
+								window.open( url, '', popupFeatures );
+							}
+						};
 						document.body.appendChild( pinScript );
+					} else if ( url ) {
+						window.open( url, '', popupFeatures );
 					}
 					break;
 				default:

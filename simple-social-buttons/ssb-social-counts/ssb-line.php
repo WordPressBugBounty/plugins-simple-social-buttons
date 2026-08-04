@@ -1,5 +1,9 @@
 <?php // phpcs:ignore
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Line share counts use ssb_fetch_shares_via_http_api() (5s timeout, cached with other networks).
  *

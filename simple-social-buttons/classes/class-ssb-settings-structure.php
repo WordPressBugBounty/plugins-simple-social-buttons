@@ -8,6 +8,10 @@
  * @since 1.0.0
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 	/**
 	 * Settings structure class.
@@ -289,7 +293,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 					<?php else : ?>
 					<ul>
 					<li><a href="#" class="simplesocial-fb-share"><span class="simplesocial-hidden-text">Facebook</span></a></li>
-					<li><a href="#" class="simplesocial-twt-share"><span class="simplesocial-hidden-text">Twitter</span></a></li>
+					<li><a href="#" class="simplesocial-twt-share"><span class="simplesocial-hidden-text">Twitter/X</span></a></li>
 					<li><a href="#" class="simplesocial-linkedin-share"><span class="simplesocial-hidden-text">LinkedIn</span></a></li>
 					</ul>
 				<?php endif; ?>
@@ -612,6 +616,8 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $args Field arguments.
 		 * @return void
+		 * @since 1.0.0
+		 * @version 7.0.1
 		 */
 		public function callback_ssb_icon_selection( $args ) {
 
@@ -627,27 +633,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			<ul id="ssb_active_icons" class="items" style="min-height:35px">
 				<?php
 				$ssb_icons_order   = array();
-				$arr_known_buttons = array(
-					'twitter',
-					'pinterest',
-					'fbshare',
-					'linkedin',
-					'reddit',
-					'whatsapp',
-					'viber',
-					'messenger',
-					'email',
-					'copylink',
-					'print',
-					'tumblr',
-					'bluesky',
-					'telegram',
-					'threads',
-					'line',
-					'mastodon',
-					'vk',
-					'snapchat',
-				);
+				$arr_known_buttons = ssb_get_known_buttons();
 				foreach ( $arr_known_buttons as $button_name ) {
 					$ssb_icons_order[ $button_name ] = isset( $settings[ $button_name ] ) ? $settings[ $button_name ] : 0;
 				}
@@ -888,7 +874,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			<?php
 			echo wp_kses_post(
 				sprintf(
-					// Translators: %1$s and %5$s are the opening strong tag, %2$s and %4$s are the closing strong tag.
+					// translators: %1$s and %5$s are the opening strong tag, %2$s and %4$s are the closing strong tag.
 					__(
 						'%1$sSimple Social Buttons%2$s by %1$s%3$sWPBrigade%4$s%5$s adds an advanced set of social media sharing buttons to your WordPress sites, such as:
 						%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, %1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s and %1$sPinterest%2$s.

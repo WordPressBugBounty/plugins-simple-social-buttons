@@ -1,5 +1,9 @@
 <?php // phpcs:ignore
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 /**
  * Format the twitter response to beautiful count.
  *
@@ -23,10 +27,11 @@ function ssb_format_twitter_response( $response ) {
  * @param string $url URL to get share count for.
  * @return string Ready link to call for API.
  * @since 1.0.0
+ * @version 7.0.1
  */
 function ssb_twitter_generate_link( $url ) {
 
 	// Return the correct Twitter JSON endpoint URL.
-	$request_url = 'https://counts.twitcount.com/counts.php?url=' . $url;
+	$request_url = 'https://counts.twitcount.com/counts.php?url=' . rawurlencode( $url );
 	return $request_url;
 }

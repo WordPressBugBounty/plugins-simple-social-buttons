@@ -833,9 +833,21 @@ div.inside div.simplesocialbuttons-nav li a {
 	color: #fff;
 }
 
+.round-txt li a {
+    position: relative;
+}
+
+.ssb_settings_container .postbox .inside .wp-picker-holder,
+.ssb_settings_container .postbox .inside .wp-picker-holder * {
+	box-sizing: content-box;
+}
+
+.iris-picker-inner {
+	display: flex;
+}
+
 .simplesocialbuttons-nav li a::after {
 	font-family: ssb-icon, sans-serif !important;
-	speak: none;
 	font-style: normal;
 	font-weight: 400;
 	font-variant: normal;
