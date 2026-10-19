@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:29+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sv-SE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Enkla sociala knappar"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "S\u00e4kerhetskontroll misslyckades. V\u00e4nligen uppdatera sidan och f\u00f6rs\u00f6k igen."
+            ],
+            "You do not have permission to import settings.": [
+                "Du har inte beh\u00f6righet att importera inst\u00e4llningar."
+            ],
+            "No file uploaded or upload failed.": [
+                "Ingen fil uppladdad eller uppladdning misslyckades."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Ogiltig JSON-fil. V\u00e4nligen ladda upp en giltig SSB-exportfil."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Ogiltigt filformat. Detta verkar inte vara en exportfil f\u00f6r Simple Social Buttons."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Inst\u00e4llningar f\u00f6r Simple Social Buttons delades framg\u00e5ngsrikt."
+            ],
+            "Export": [
+                "Exportera"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Inst\u00e4llningar f\u00f6r Simple Social Buttons exporterades framg\u00e5ngsrikt!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Exportera inst\u00e4llningar f\u00f6r enkelt socialt knapptryck."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Enkla sociala knappar<\/strong> fr\u00e5n <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> l\u00e4gger till ett avancerat set av knappar f\u00f6r delning p\u00e5 sociala medier till dina WordPress-sajter, s\u00e5som: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> och <strong>Pinterest<\/strong>. Detta g\u00f6r det till det mest flexibla pluginet f\u00f6r delning p\u00e5 sociala medier f\u00f6r alla."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Ogiltig fil. V\u00e4nligen ladda upp en JSON-fil som b\u00f6rjar med \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "Import misslyckades. V\u00e4nligen f\u00f6rs\u00f6k igen."
+            ],
+            "Please select a valid file first.": [
+                "V\u00e4nligen v\u00e4lj en giltig fil f\u00f6rst."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "S\u00e4kerhetskontroll misslyckades eller serverfel. V\u00e4nligen uppdatera och f\u00f6rs\u00f6k igen."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Ogiltigt svar fr\u00e5n servern. V\u00e4nligen f\u00f6rs\u00f6k igen."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Ett fel intr\u00e4ffade under importen. V\u00e4nligen f\u00f6rs\u00f6k igen."
+            ],
+            "Export failed. Please try again.": [
+                "Export misslyckades. V\u00e4nligen f\u00f6rs\u00f6k igen."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Importera & Exportera inst\u00e4llningar f\u00f6r enkla sociala delningsknappar"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importera\/Exportera dina inst\u00e4llningar f\u00f6r social delning f\u00f6r\/fr\u00e5n andra sajter."
+            ],
+            "Drag and drop file here or": [
+                "Dra och sl\u00e4pp fil h\u00e4r eller"
+            ],
+            "Browse": [
+                "Bl\u00e4ddra"
+            ],
+            "Remove file": [
+                "Ta bort fil"
+            ],
+            "Import Settings": [
+                "Importera inst\u00e4llningar"
+            ],
+            "Importing settings...": [
+                "Importerar inst\u00e4llningar..."
+            ],
+            "Export Settings": [
+                "Exportera inst\u00e4llningar"
+            ],
+            "Exporting...": [
+                "Exportera..."
+            ]
+        }
+    }
+}

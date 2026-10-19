@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:27+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sr-RS",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Jednostavni dru\u0161tveni dugmadi"
+            ],
+            "Post Type Settings": [
+                "Postavke tipa objave"
+            ],
+            "Spread the Word": [
+                "Pro\u0161irite re\u010d"
+            ],
+            "Share on X\/Twitter": [
+                "Podelite na X\/Twitter"
+            ],
+            "Share on Facebook": [
+                "Pawe\u0142 Rabinek na Facebook"
+            ],
+            "Rate on WordPress.org": [
+                "Oceni na WordPress.org"
+            ],
+            "Email": [
+                "Email"
+            ],
+            "Name": [
+                "Ime"
+            ],
+            "Recommended Plugins": [
+                "Preporu\u010deni dodaci"
+            ],
+            "Customize WordPress Login Page": [
+                "Prilagodite WordPress stranicu za prijavu"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "P pojednostavite Google Analytics u WordPress-u"
+            ],
+            "Related Posts Thumbnails": [
+                "Sli\u010dice povezanih postova"
+            ],
+            "Under Construction & Maintenance mode": [
+                "U izradi & re\u017eim odr\u017eavanja"
+            ],
+            "Settings": [
+                "Postavke"
+            ],
+            "Social Buttons": [
+                "Sakrij Simple Social Buttons"
+            ],
+            "Social Buttons Designs": [
+                "Dizajni dru\u0161tvenih dugmadi"
+            ],
+            "Social Buttons Positions": [
+                "Pozicije dru\u0161tvenih dugmadi"
+            ],
+            "Sidebar": [
+                "Sidebar"
+            ],
+            "On Media": [
+                "O Medijima"
+            ],
+            "Popup": [
+                "Isko\u010dni prozor"
+            ],
+            "Fly In": [
+                "Ulet"
+            ],
+            "InLine": [
+                "U redu"
+            ],
+            "Additional features": [
+                "Dodatne funkcije"
+            ],
+            "Inline": [
+                "U redu"
+            ],
+            "Media": [
+                "Mediji"
+            ],
+            "Sidebar Orientation": [
+                "Orijentacija bo\u010dne trake"
+            ],
+            "Left": [
+                "Levo"
+            ],
+            "Right": [
+                "Desno"
+            ],
+            "Intro Animation": [
+                "Animacija uvoda"
+            ],
+            "No": [
+                "Ne"
+            ],
+            "From Right": [
+                "Sa desna"
+            ],
+            "From Top": [
+                "Sa vrha"
+            ],
+            "From Bottom": [
+                "Sa dna"
+            ],
+            "From Left": [
+                "Sa leva"
+            ],
+            "Fade In": [
+                "Izblje\u0111ivanje"
+            ],
+            "Display Share Counts": [
+                "Prika\u017ei broj deljenja"
+            ],
+            "Display Total Shares": [
+                "Prika\u017ei ukupne deljenja"
+            ],
+            "Display Text on hover": [
+                "Prika\u017ei tekst na prelaz"
+            ],
+            "Flat Button Style": [
+                "Ravan stil dugmeta"
+            ],
+            "Add Icon Spacing": [
+                "Dodaj razmak izme\u0111u ikona"
+            ],
+            "Enter the Space in Pixel": [
+                "Unesite razmak u pikselima"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Lepljivo dno (mobilni)"
+            ],
+            "Hide On Mobile Devices": [
+                "Sakrij na mobilnim ure\u0111ajima"
+            ],
+            "Limit Social Icons": [
+                "Ograni\u010di dru\u0161tvene ikone"
+            ],
+            "Maximum Icons to Show": [
+                "Maksimalni broj ikona za prikaz"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "\u017delite li vi\u0161e kontrole nad stilizovanjem dru\u0161tvenih dugmadi u bo\u010dnoj traci?"
+            ],
+            "Icon Position": [
+                "Pozicija ikone"
+            ],
+            "Above The Content": [
+                "Iznad sadr\u017eaja"
+            ],
+            "Below The Content": [
+                "Ispod sadr\u017eaja"
+            ],
+            "Above + Below The Content": [
+                "Iznad + ispod sadr\u017eaja"
+            ],
+            "Icon Alignment": [
+                "Poravnanje ikone"
+            ],
+            "Centered": [
+                "Centrirano"
+            ],
+            "Animation": [
+                "Animacija"
+            ],
+            "From bottom": [
+                "Od dna"
+            ],
+            "From top": [
+                "Od vrha"
+            ],
+            "From left": [
+                "Od leve strane"
+            ],
+            "From right": [
+                "Od desne strane"
+            ],
+            "Show at Category pages": [
+                "Prika\u017ei na stranici sa kategorijama"
+            ],
+            "Show at Archive pages": [
+                "Prika\u017ei na stranici sa arhivama"
+            ],
+            "Show at Tag pages": [
+                "Prika\u017ei na stranicama sa tagovima"
+            ],
+            "Show at Search pages": [
+                "Prika\u017ei na stranicama pretrage"
+            ],
+            "Share Title": [
+                "Podeli naslov"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "\u017delite vi\u0161e kontrole nad stilizovanjem va\u0161ih dru\u0161tvenih dugmadi u liniji?"
+            ],
+            "Internal Share Flush Interval": [
+                "Interval za internu deljenje"
+            ],
+            "Open Graph Tags": [
+                "Open Graph oznake"
+            ],
+            "Remove Settings on Uninstall": [
+                "Ukloni pode\u0161avanja pri deinstalaciji"
+            ],
+            "Factory Reset": [
+                "Fabricki reset"
+            ],
+            "Custom CSS": [
+                "Prilago\u0111eni CSS"
+            ],
+            "Custom JS": [
+                "Prilago\u0111eni JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "\u017delite li da prika\u017eete dugmad za deljenje na dru\u0161tvenim mre\u017eama na va\u0161em mediju?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "\u017delite li pametne iska\u010du\u0107e prozore koji se aktiviraju u pravom trenutku?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "\u017delite li napredne fly-in animacije koje pove\u0107avaju broj deljenja?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Podeli"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Threads"
+            ],
+            "Post": [
+                "Objavi"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Kopiraj link"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "\u0160tampaj"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Gre\u0161ka u pode\u0161avanjima"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "Ne\u0161to je po\u0161lo po zlu sa stranicom pode\u0161avanja. Molimo osve\u017eite stranicu da biste poku\u0161ali ponovo."
+            ],
+            "Error Details": [
+                "Detalji gre\u0161ke"
+            ],
+            "Refresh Page": [
+                "Osve\u017ei stranicu"
+            ],
+            "Toggle setting": [
+                "Prebaci pode\u0161avanje"
+            ],
+            "Select Color": [
+                "Odaberi boju"
+            ],
+            "Clear": [
+                "Obri\u0161i"
+            ],
+            "Done": [
+                "Gotovo"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "Unesite ceo broj piksela od 1 do 999. Vrednost je prilago\u0111ena."
+            ],
+            "Select...": [
+                "Odaberi..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Jednostavna dru\u0161tvena dugmad<\/strong> od <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> dodaje napredni set dugmadi za deljenje na dru\u0161tvenim mre\u017eama na va\u0161e WordPress sajtove, kao \u0161to su: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> i <strong>Pinterest<\/strong>. Ovo ga \u010dini najfleksibilnijim dodatkom za deljenje na dru\u0161tvenim mre\u017eama za sve."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Kontroli\u0161ite kako se dugmad za deljenje prikazuju na slikama i medijima unutar va\u0161ih postova."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Konfiguri\u0161ite va\u0161 iska\u010du\u0107i prozor za deljenje: postavite poruku, vreme i pona\u0161anje okida\u010da."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "Postavite iska\u010du\u0107i prozor za deljenje sa prilago\u0111enim porukama, pozicijom i vremenom"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS Broj Resolucija"
+            ],
+            "hour": [
+                "sat"
+            ],
+            "hours": [
+                "sati"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Interni brojevi klikova za deljenje se bele\u017ee za podr\u017eane mre\u017ee (na primer Twitter\/X, LinkedIn, WhatsApp) kada posetioci koriste dugmad za deljenje na va\u0161em sajtu. Brojevi se \u010duvaju lokalno i ne \u0161alju se tim dru\u0161tvenim mre\u017eama. O\u010distite ke\u0161 stranice nakon nadogradnje dodatka kako bi se markup dugmadi sinhronizovao."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "Omogu\u0107i da se svi parametri uklone prilikom deinstalacije dodatka."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "Omogu\u0107i da se svi parametri resetuju na podrazumevane prilikom \u010duvanja."
+            ],
+            "Click To Post": [
+                "Kliknite za post"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "Otklju\u010dajte Kliknite da Tweetujete funkciju sa Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "Dobijte mo\u0107nu Kliknite da Tweetujete funkcionalnost koja vam omogu\u0107ava da kreirate zanimljiv, tvitabilan sadr\u017eaj direktno u va\u0161im postovima. Ova Pro funkcija poma\u017ee u pove\u0107anju dru\u0161tvene anga\u017eovanosti i dovla\u010denju vi\u0161e saobra\u0107aja na va\u0161 sajt."
+            ],
+            "Click here to Upgrade": [
+                "Kliknite ovde za nadogradnju"
+            ],
+            "Loading Pro settings...": [
+                "U\u010ditavanje Pro pode\u0161avanja..."
+            ],
+            "Loading Pro component...": [
+                "U\u010ditavanje Pro komponente..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Konfiguri\u0161ite kako se va\u0161a inline dugmad za deljenje prikazuju unutar va\u0161eg sadr\u017eaja."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "Za broj deljenja na Facebook-u potrebno je dodati Facebook App ID i Secret na Socijalnoj kartici."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Prika\u017eite samo odre\u0111eni broj ikona u va\u0161em sadr\u017eaju. Preostale ikone se otvaraju u iska\u010du\u0107em prozoru kada posetioci dodirnu dugme +."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "Ovaj tekst se pojavljuje na va\u0161em sajtu kao naslov iznad dugmadi za deljenje. Ne koristi se kao naslov kada neko deli va\u0161 sadr\u017eaj na dru\u0161tvenim mre\u017eama."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Pritisnite Enter da pre\u0111ete na Neaktivan."
+            ],
+            "Press Enter to move to Active.": [
+                "Pritisnite Enter da pre\u0111ete na Aktivan."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Koristite tastere sa strelicama gore i dole da promenite redosled."
+            ],
+            "Drop here": [
+                "Otpustite ovde"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Uredi"
+            ],
+            "Drop at end of list": [
+                "Otpustite na kraju liste"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Prevucite i otpustite da aktivirate i promenite redosled va\u0161ih dugmadi za deljenje:"
+            ],
+            "Active": [
+                "Aktivan"
+            ],
+            "Inactive": [
+                "Neaktivan"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Jednostavna dru\u0161tvena dugmad na NextGEN galeriji"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "Izaberite stilove prikaza za pozicioniranje va\u0161ih dugmadi za deljenje."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Konfiguri\u0161ite izgled i pona\u0161anje va\u0161ih dugmadi za deljenje u bo\u010dnom panelu."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Prikazujte samo odre\u0111eni broj ikona u bo\u010dnom panelu. Preostale ikone se otvaraju u iska\u010du\u0107em prozoru kada posetioci pritisnu dugme +."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "Dodajte svoje X korisni\u010dko ime da dodate via= na Twitter\/X linkove za deljenje iz va\u0161ih dugmadi."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @korisni\u010dkoime"
+            ],
+            "Facebook App": [
+                "Facebook aplikacija"
+            ],
+            "How to create a Facebook app": [
+                "Kako kreirati Facebook aplikaciju"
+            ],
+            "Facebook App ID": [
+                "Facebook App ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "Potreban za brojeve deljenja na Facebook-u. Dodajte va\u0161 App ID i Secret sa Facebook developerskog portala."
+            ],
+            "Facebook App Secret": [
+                "Facebook App Secret"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat koristi Snap Creative Kit Web tako da mobilni posetioci otvore Snapchat aplikaciju sa va\u0161om stranicom spremnom za deljenje."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "Snap Kit Client ID (opciono)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Opcionalno. Dodajte va\u0161 Snap Kit Client ID da biste pripisali deljenja u Snap Kit developerskom portalu. Deljenje funkcioni\u0161e i bez njega."
+            ],
+            "How it works": [
+                "Kako to funkcioni\u0161e"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "Dodajte Snapchat iz taba Pode\u0161avanja kao bilo koji drugi dugme."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "Na mobilnom, dodirivanje dugmeta otvara deljenje u Snapchat aplikaciji za trenutnu stranicu."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "Na desktop-u, otvara se prozor Snapcode-a kako bi korisnici mogli da skeniraju i dele sa svog telefona."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "Dr\u017eite Open Graph oznake omogu\u0107ene kako bi Snapchat mogao da prikazuje naslov va\u0161e stranice i pregled."
+            ],
+            "Official Buttons": [
+                "Zvani\u010dna dugmad"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "Izaberite stil dugmeta koji odgovara izgledu i ose\u0107aju va\u0161eg sajta."
+            ],
+            "Dismiss this notice.": [
+                "Odbaci ovu obave\u0161tenje."
+            ],
+            "Dismiss": [
+                "Odbaci"
+            ],
+            "Share on LinkedIn": [
+                "Podeli na LinkedIn-u"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro vam omogu\u0107ava da postavite prilago\u0111enu pozadinu, boje pri prelazu i boje ikona za svako dugme, tako da se prirodno uklapaju u dizajn va\u0161eg sajta umesto da se isti\u010du kao standardni dodatak. Dugmad koja odgovaraju va\u0161em sajtu obi\u010dno dobijaju vi\u0161e klikova, \u0161to zna\u010di vi\u0161e deljenja i vi\u0161e saobra\u0107aja za vas. Pro tako\u0111e dodaje funkcije kao \u0161to su dugmad na slikama, iska\u010du\u0107i prozori pri nameri izlaska, animacije klizanja i jo\u0161 mnogo toga."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro vam omogu\u0107ava da prika\u017eete dugmad za deljenje direktno na slikama i fotografijama \u0161irom va\u0161ih postova i stranica, izaberete njihovu poziciju, dodate razmak izme\u0111u ikona i postavite prilago\u0111ene boje koje odgovaraju va\u0161em sajtu. Tako\u0111e ih mo\u017eete sakriti na mobilnim ure\u0111ajima i ta\u010dno kontrolisati na kojim vrstama postova se pojavljuju. To je jednostavan na\u010din da svaku sliku pretvorite u priliku za deljenje i pove\u0107ate saobra\u0107aj."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro vam omogu\u0107ava da kreirate prilago\u0111eni iska\u010du\u0107i prozor sa va\u0161im naslovom i porukom, i da ga aktivirate ta\u010dno kada je to va\u017eno, kao pre nego \u0161to posetioci odu ili nakon \u0161to se pomere. Mo\u017eete dodati animaciju, prikazati brojeve deljenja ili ukupna deljenja da biste izgradili dru\u0161tveni dokaz, i postaviti prilago\u0111ene boje koje odgovaraju va\u0161em brendu. To je pametan na\u010din da privu\u010dete pa\u017enju posetilaca u trenutku kada su najverovatnije da podele."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro vam omogu\u0107ava da kreirate prilago\u0111eni Fly In okvir sa va\u0161im naslovom i porukom, izaberete njegovu poziciju i animaciju, i \u010dak prika\u017eete brojeve deljenja ili ukupna deljenja da biste izgradili dru\u0161tveni dokaz. Mo\u017eete fino podesiti vreme, razmak izme\u0111u ikona i boje da odgovaraju va\u0161em brendu, i kontrolisati na kojim vrstama postova se pojavljuje. To je odli\u010dan na\u010din da podstaknete posetioce da dele u trenutku kada su najvi\u0161e anga\u017eovani."
+            ],
+            "Failed to activate the plugin.": [
+                "Aktivacija dodatka nije uspela."
+            ],
+            "Click here to Activate Pro": [
+                "Kliknite ovde da aktivirate Pro"
+            ],
+            "Please enter your email.": [
+                "Molimo unesite svoju email adresu."
+            ],
+            "Please enter a valid email address.": [
+                "Molimo unesite va\u017ee\u0107u email adresu."
+            ],
+            "Failed to subscribe.": [
+                "Nije uspelo pretplata."
+            ],
+            "Thank you!": [
+                "Hvala vam!"
+            ],
+            "Please try again.": [
+                "Molimo poku\u0161ajte ponovo."
+            ],
+            "Newsletter": [
+                "Bilten"
+            ],
+            "Subscribing": [
+                "Pretpla\u0107ivanje"
+            ],
+            "Subscribe": [
+                "Pretplati se"
+            ],
+            "Dismiss notice": [
+                "Odbaci obave\u0161tenje"
+            ],
+            "Upgrade to Pro!": [
+                "Nadogradite na Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "Otklju\u010dajte premium funkcije dizajnirane da vam pomognu da pove\u0107ate anga\u017eman, pobolj\u0161ate vidljivost i u\u0161tedite vreme."
+            ],
+            "Unlimited Websites:": [
+                "Neograni\u010deni sajtovi:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Koristite SSB Pro na svim svojim sajtovima (bez ograni\u010denja)"
+            ],
+            "Priority Support:": [
+                "Prioritetna podr\u0161ka:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "Dobijte brzu, prijateljsku pomo\u0107 od na\u0161eg stru\u010dnog tima podr\u0161ke kada vam zatreba."
+            ],
+            "1 Year of Updates:": [
+                "1 godina a\u017euriranja:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "Ostanite sigurni i kompatibilni sa najnovijim izdanjima."
+            ],
+            "No Coding Required:": [
+                "Nema potrebe za kodiranjem:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "Postavite i prilagodite dugmad bez napora sa kontrolne table."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "Brza i fleksibilna postavka dugmadi:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "Dodajte dugmad ta\u010dno gde \u017eelite: postovi, stranice ili prilago\u0111ene lokacije."
+            ],
+            "Fully Responsive Design:": [
+                "Potpuno responzivan dizajn:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "Va\u0161a dru\u0161tvena dugmad izgledaju odli\u010dno na desktopu, tabletu i mobilnom telefonu."
+            ],
+            "Ongoing Feature Improvements:": [
+                "Neprekidna pobolj\u0161anja funkcija:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Redovne nadogradnje sa novim funkcijama i pobolj\u0161anjima performansi."
+            ],
+            "Get up to": [
+                "Dobijate do"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "popusta na va\u0161u prvu godinu Simple Social Buttons."
+            ],
+            "Unlock Pro Features": [
+                "Otklju\u010dajte Pro funkcije"
+            ],
+            "* Discount applied automatically": [
+                "* Popust se automatski primenjuje"
+            ],
+            "Reviewer avatar": [
+                "Avatar recenzenta"
+            ],
+            "John": [
+                "John"
+            ],
+            "5 star rating": [
+                "Ocena 5 zvezdica"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "Dodatak zaista dobro funkcioni\u0161e. Programeri i kreatori su odradili dobar posao!"
+            ],
+            "Designed and Maintained by": [
+                "Dizajnirano i odr\u017eavano od strane"
+            ],
+            "Company logo": [
+                "Logo kompanije"
+            ],
+            "Tab content not found": [
+                "Sadr\u017eaj taba nije prona\u0111en"
+            ],
+            "Settings saved successfully!": [
+                "Pode\u0161avanja su uspe\u0161no sa\u010duvana!"
+            ],
+            "Loading\u2026": [
+                "U\u010ditavanje\u2026"
+            ],
+            "Try again": [
+                "Poku\u0161ajte ponovo"
+            ],
+            "Saving...": [
+                "\u010cuvanje..."
+            ],
+            "Save Changes": [
+                "Sa\u010duvaj izmene"
+            ],
+            "Advanced": [
+                "Napredno"
+            ],
+            "Social": [
+                "Dru\u0161tveno"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Nadogradite na Pro za vi\u0161e funkcija"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "Omogu\u0107ite bo\u010dnu traku ili inline da sa\u010duvate pode\u0161avanja. Mediji, iska\u010du\u0107i prozori i \"Fly In\" zahtevaju Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Nepoznata gre\u0161ka prilikom \u010duvanja pode\u0161avanja."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Nedostaje administrativna konfiguracija za status brisanja."
+            ],
+            "Unable to load purge status.": [
+                "Nije mogu\u0107e u\u010ditati status brisanja."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "Gre\u0161ka u mre\u017ei prilikom u\u010ditavanja pode\u0161avanja. Proverite svoju konekciju i poku\u0161ajte ponovo."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Nije mogu\u0107e pro\u010ditati odgovor servera. Poku\u0161ajte da osve\u017eite stranicu."
+            ],
+            "Invalid response from server.": [
+                "Neva\u017ee\u0107i odgovor sa servera."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Nije mogu\u0107e u\u010ditati pode\u0161avanja. Mo\u017eda \u0107ete morati da osve\u017eite stranicu ili se ponovo prijavite."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Nije mogu\u0107e u\u010ditati pode\u0161avanja (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Neva\u017ee\u0107i podaci pode\u0161avanja sa servera."
+            ],
+            "Something went wrong while loading settings.": [
+                "Ne\u0161to je po\u0161lo po zlu prilikom u\u010ditavanja pode\u0161avanja."
+            ]
+        }
+    }
+}

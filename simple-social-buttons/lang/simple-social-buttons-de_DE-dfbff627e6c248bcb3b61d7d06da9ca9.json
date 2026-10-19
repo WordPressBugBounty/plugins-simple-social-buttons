@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:14+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de-DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Einfache soziale Schaltfl\u00e4chen"
+            ],
+            "Post Type Settings": [
+                "Einstellungen f\u00fcr den Beitragstyp"
+            ],
+            "Spread the Word": [
+                "Verbreite das Wort"
+            ],
+            "Share on X\/Twitter": [
+                "Auf X\/Twitter teilen"
+            ],
+            "Share on Facebook": [
+                "Pawe\u0142 Rabinek bei Facebook"
+            ],
+            "Rate on WordPress.org": [
+                "Bewerten auf WordPress.org"
+            ],
+            "Email": [
+                "E-Mail"
+            ],
+            "Name": [
+                "Name"
+            ],
+            "Recommended Plugins": [
+                "Empfohlene Plugins"
+            ],
+            "Customize WordPress Login Page": [
+                "WordPress-Anmeldeseite anpassen"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "Google Analytics in WordPress vereinfachen"
+            ],
+            "Related Posts Thumbnails": [
+                "Miniaturansichten verwandter Beitr\u00e4ge"
+            ],
+            "Under Construction & Maintenance mode": [
+                "In Arbeit & Wartungsmodus"
+            ],
+            "Settings": [
+                "Einstellungen"
+            ],
+            "Social Buttons": [
+                "Verbergen Simple Social Buttons"
+            ],
+            "Social Buttons Designs": [
+                "Designs f\u00fcr soziale Buttons"
+            ],
+            "Social Buttons Positions": [
+                "Positionen der sozialen Buttons"
+            ],
+            "Sidebar": [
+                "Seitenleiste"
+            ],
+            "On Media": [
+                "Zu Medien"
+            ],
+            "Popup": [
+                "Popup"
+            ],
+            "Fly In": [
+                "Hereinfliegen"
+            ],
+            "InLine": [
+                "Inline"
+            ],
+            "Additional features": [
+                "Zus\u00e4tzliche Funktionen"
+            ],
+            "Inline": [
+                "Inline"
+            ],
+            "Media": [
+                "Medien"
+            ],
+            "Sidebar Orientation": [
+                "Seitenleistenorientierung"
+            ],
+            "Left": [
+                "Links"
+            ],
+            "Right": [
+                "Rechts"
+            ],
+            "Intro Animation": [
+                "Einf\u00fchrungsanimation"
+            ],
+            "No": [
+                "Nein"
+            ],
+            "From Right": [
+                "Von rechts"
+            ],
+            "From Top": [
+                "Von oben"
+            ],
+            "From Bottom": [
+                "Von unten"
+            ],
+            "From Left": [
+                "Von links"
+            ],
+            "Fade In": [
+                "Einblenden"
+            ],
+            "Display Share Counts": [
+                "Anzahl der Shares anzeigen"
+            ],
+            "Display Total Shares": [
+                "Gesamtanzahl der Shares anzeigen"
+            ],
+            "Display Text on hover": [
+                "Text beim Hover anzeigen"
+            ],
+            "Flat Button Style": [
+                "Flacher Button-Stil"
+            ],
+            "Add Icon Spacing": [
+                "Icon-Abstand hinzuf\u00fcgen"
+            ],
+            "Enter the Space in Pixel": [
+                "Geben Sie den Abstand in Pixeln ein"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Sticky Bottom (Mobil)"
+            ],
+            "Hide On Mobile Devices": [
+                "Auf mobilen Ger\u00e4ten ausblenden"
+            ],
+            "Limit Social Icons": [
+                "Soziale Icons begrenzen"
+            ],
+            "Maximum Icons to Show": [
+                "Maximale Anzahl an anzuzeigenden Icons"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "M\u00f6chten Sie mehr Kontrolle \u00fcber das Styling Ihrer Sidebar-Sozial-Buttons?"
+            ],
+            "Icon Position": [
+                "Icon-Position"
+            ],
+            "Above The Content": [
+                "\u00dcber dem Inhalt"
+            ],
+            "Below The Content": [
+                "Unter dem Inhalt"
+            ],
+            "Above + Below The Content": [
+                "\u00dcber und unter dem Inhalt"
+            ],
+            "Icon Alignment": [
+                "Icon-Ausrichtung"
+            ],
+            "Centered": [
+                "Zentriert"
+            ],
+            "Animation": [
+                "Animation"
+            ],
+            "From bottom": [
+                "Von unten"
+            ],
+            "From top": [
+                "Von oben"
+            ],
+            "From left": [
+                "Von links"
+            ],
+            "From right": [
+                "Von rechts"
+            ],
+            "Show at Category pages": [
+                "Zeige in den Kategorien"
+            ],
+            "Show at Archive pages": [
+                "Zeige bei Archiven"
+            ],
+            "Show at Tag pages": [
+                "Zeige bei Stichworten"
+            ],
+            "Show at Search pages": [
+                "Auf Suchseiten anzeigen"
+            ],
+            "Share Title": [
+                "Titel teilen"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "M\u00f6chten Sie mehr Kontrolle \u00fcber das Styling Ihrer Inline-Sozial-Buttons?"
+            ],
+            "Internal Share Flush Interval": [
+                "Interner Freigabe-Flush-Intervall"
+            ],
+            "Open Graph Tags": [
+                "Open Graph-Tags"
+            ],
+            "Remove Settings on Uninstall": [
+                "Einstellungen bei Deinstallation entfernen"
+            ],
+            "Factory Reset": [
+                "Werkseinstellung zur\u00fccksetzen"
+            ],
+            "Custom CSS": [
+                "Benutzerdefiniertes CSS"
+            ],
+            "Custom JS": [
+                "Benutzerdefiniertes JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "M\u00f6chten Sie soziale Sharing-Buttons auf Ihren Medien anzeigen?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "M\u00f6chten Sie smarte Popups, die im richtigen Moment ausgel\u00f6st werden?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "M\u00f6chten Sie erweiterte Fly-In-Animationen, die mehr Shares generieren?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Teilen"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Threads"
+            ],
+            "Post": [
+                "Beitrag"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Link kopieren"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "Drucken"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Einstellungsfehler"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "Es gab ein Problem mit der Einstellungsseite. Bitte aktualisieren Sie die Seite, um es erneut zu versuchen."
+            ],
+            "Error Details": [
+                "Fehlerdetails"
+            ],
+            "Refresh Page": [
+                "Seite aktualisieren"
+            ],
+            "Toggle setting": [
+                "Einstellung umschalten"
+            ],
+            "Select Color": [
+                "Farbe ausw\u00e4hlen"
+            ],
+            "Clear": [
+                "L\u00f6schen"
+            ],
+            "Done": [
+                "Fertig"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "Geben Sie eine ganze Zahl von Pixeln von 1 bis 999 ein. Der Wert wurde angepasst."
+            ],
+            "Select...": [
+                "Ausw\u00e4hlen..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Einfache Social Buttons<\/strong> von <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> f\u00fcgt Ihren WordPress-Seiten ein erweitertes Set von Schaltfl\u00e4chen f\u00fcr das Teilen in sozialen Medien hinzu, wie z.B.: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> und <strong>Pinterest<\/strong>. Dies macht es zum flexibelsten Plugin f\u00fcr das Teilen in sozialen Medien f\u00fcr alle."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Steuern Sie, wie die Teilen-Schaltfl\u00e4chen auf Bildern und Medien in Ihren Beitr\u00e4gen angezeigt werden."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Konfigurieren Sie Ihr Teilen-Popup: Setzen Sie die Nachricht, das Timing und das Triggerverhalten."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "Richten Sie eine slide-in Teilen-Aufforderung mit benutzerdefinierter Nachricht, Position und Timing ein"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS-Z\u00e4hlungen aufl\u00f6sen"
+            ],
+            "hour": [
+                "Stunde"
+            ],
+            "hours": [
+                "Stunden"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Interne Klickz\u00e4hlungen f\u00fcr das Teilen werden f\u00fcr unterst\u00fctzte Netzwerke (z. B. Twitter\/X, LinkedIn, WhatsApp) aufgezeichnet, wenn Besucher die Teilen-Schaltfl\u00e4chen auf Ihrer Seite verwenden. Z\u00e4hlungen werden lokal gespeichert und nicht an diese sozialen Netzwerke gesendet. Leeren Sie den Seiten-Cache nach dem Upgrade des Plugins, damit das Schaltfl\u00e4chen-Markup synchron bleibt."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "Aktivieren, um alle Einstellungen beim Deinstallieren des Plugins zu entfernen."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "Aktivieren, um alle Einstellungen beim Speichern auf die Standardwerte zur\u00fcckzusetzen."
+            ],
+            "Click To Post": [
+                "Klicken Sie zum Posten"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "Entsperren Sie die Funktion \"Klicken, um zu twittern\" mit Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "Erhalten Sie die leistungsstarke Funktion \"Klicken, um zu twittern\", mit der Sie ansprechende, tweetbare Inhalte direkt in Ihren Beitr\u00e4gen erstellen k\u00f6nnen. Diese Pro-Funktion hilft, die soziale Interaktion zu erh\u00f6hen und mehr Verkehr auf Ihre Seite zu lenken."
+            ],
+            "Click here to Upgrade": [
+                "Hier klicken, um ein Upgrade durchzuf\u00fchren"
+            ],
+            "Loading Pro settings...": [
+                "Pro-Einstellungen werden geladen..."
+            ],
+            "Loading Pro component...": [
+                "Pro-Komponente wird geladen..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Konfigurieren Sie, wie Ihre Inline-Teilen-Schaltfl\u00e4chen in Ihrem Inhalt angezeigt werden."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "F\u00fcr die Facebook-Teilen-Z\u00e4hlung m\u00fcssen Sie die Facebook-App-ID und das Geheimnis im sozialen Tab hinzuf\u00fcgen."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Zeigen Sie nur eine festgelegte Anzahl von Symbolen in Ihrem Inhalt an. Verbleibende Symbole \u00f6ffnen sich in einem Popup, wenn Besucher die + Schaltfl\u00e4che antippen."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "Dieser Text erscheint auf Ihrer Seite als \u00dcberschrift \u00fcber den Inline-Share-Buttons. Er wird nicht als Titel verwendet, wenn jemand Ihren Inhalt in sozialen Netzwerken teilt."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Dr\u00fccken Sie die Eingabetaste, um zu Inaktiv zu wechseln."
+            ],
+            "Press Enter to move to Active.": [
+                "Dr\u00fccken Sie die Eingabetaste, um zu Aktiv zu wechseln."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Verwenden Sie die Pfeiltasten nach oben und unten, um die Reihenfolge zu \u00e4ndern."
+            ],
+            "Drop here": [
+                "Hier ablegen"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Bearbeiten"
+            ],
+            "Drop at end of list": [
+                "Am Ende der Liste ablegen"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Ziehen und Ablegen, um Ihre Share-Buttons zu aktivieren und die Reihenfolge zu \u00e4ndern:"
+            ],
+            "Active": [
+                "Aktiv"
+            ],
+            "Inactive": [
+                "Inaktiv"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Einfache soziale Buttons in der NextGEN Gallery"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "W\u00e4hlen Sie die Anzeige-Stile aus, um Ihre Share-Buttons zu positionieren."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Konfigurieren Sie das Aussehen und Verhalten Ihrer Share-Buttons in der Seitenleiste."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Zeigen Sie nur eine bestimmte Anzahl von Icons in der Seitenleiste an. Die verbleibenden Icons \u00f6ffnen sich in einem Popup, wenn Besucher auf die Schaltfl\u00e4che + tippen."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "F\u00fcgen Sie Ihren X-Benutzernamen hinzu, um via= zu den Twitter\/X-Share-Links von Ihren Buttons hinzuzuf\u00fcgen."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @benutzername"
+            ],
+            "Facebook App": [
+                "Facebook-App"
+            ],
+            "How to create a Facebook app": [
+                "So erstellen Sie eine Facebook-App"
+            ],
+            "Facebook App ID": [
+                "Facebook-App-ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "Erforderlich f\u00fcr Facebook-Anteilzahlen. F\u00fcgen Sie Ihre App-ID und das Geheimnis aus dem Facebook-Entwicklerportal hinzu."
+            ],
+            "Facebook App Secret": [
+                "Facebook-App-Geheimnis"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat verwendet Snap Creative Kit Web, damit mobile Besucher die Snapchat-App mit Ihrem Seitenlink \u00f6ffnen, bereit zum Teilen."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "Snap Kit Client-ID (optional)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Optional. F\u00fcgen Sie Ihre Snap Kit Client-ID hinzu, um Shares im Snap Kit-Entwicklerportal zuzuordnen. Das Teilen funktioniert auch ohne sie."
+            ],
+            "How it works": [
+                "So funktioniert es"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "F\u00fcgen Sie Snapchat \u00fcber den Tab Einstellungen wie jeden anderen Button hinzu."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "Auf mobilen Ger\u00e4ten \u00f6ffnet das Tippen auf den Button den Snapchat-App-Share-Flow f\u00fcr die aktuelle Seite."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "Auf dem Desktop \u00f6ffnet sich ein Snapcode-Fenster, damit Benutzer scannen und von ihrem Telefon aus teilen k\u00f6nnen."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "Halten Sie die Open Graph-Tags aktiviert, damit Snapchat Ihren Seitentitel und die Vorschau anzeigen kann."
+            ],
+            "Official Buttons": [
+                "Offizielle Buttons"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "W\u00e4hlen Sie einen Buttonstil, der zum Look and Feel Ihrer Website passt."
+            ],
+            "Dismiss this notice.": [
+                "Diese Mitteilung schlie\u00dfen."
+            ],
+            "Dismiss": [
+                "Schlie\u00dfen"
+            ],
+            "Share on LinkedIn": [
+                "Auf LinkedIn teilen"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro erm\u00f6glicht es Ihnen, benutzerdefinierte Hintergrund-, Hover- und Icon-Farben f\u00fcr jeden Button festzulegen, sodass sie sich nat\u00fcrlich in das Design Ihrer Website einf\u00fcgen, anstatt wie ein Standard-Plugin hervorzustechen. Buttons, die zu Ihrer Website passen, werden eher angeklickt, was mehr Shares und mehr Traffic f\u00fcr Sie bedeutet. Pro f\u00fcgt au\u00dferdem Funktionen wie Buttons auf Bildern, Popups bei Verlassen der Seite, Fly-In-Animationsschieberegler und mehr hinzu."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro erm\u00f6glicht es Ihnen, Share-Buttons direkt auf Bildern und Fotos in Ihren Beitr\u00e4gen und Seiten anzuzeigen, ihre Position auszuw\u00e4hlen, Icon-Abst\u00e4nde hinzuzuf\u00fcgen und benutzerdefinierte Farben festzulegen, die zu Ihrer Website passen. Sie k\u00f6nnen sie auch auf mobilen Ger\u00e4ten ausblenden und genau steuern, auf welchen Beitragstypen sie erscheinen. Es ist eine einfache M\u00f6glichkeit, jedes Bild in eine teilbare Gelegenheit zu verwandeln und mehr Traffic zu generieren."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro erm\u00f6glicht es Ihnen, ein benutzerdefiniertes Share-Popup mit Ihrem eigenen Titel und Ihrer Nachricht zu erstellen und es genau dann auszul\u00f6sen, wenn es wichtig ist, z. B. bevor Besucher die Seite verlassen oder nachdem sie gescrollt haben. Sie k\u00f6nnen Animationen hinzuf\u00fcgen, Share-Zahlen oder Gesamtanteile anzeigen, um sozialen Beweis zu erbringen, und benutzerdefinierte Farben festlegen, die zu Ihrer Marke passen. Es ist eine clevere M\u00f6glichkeit, die Aufmerksamkeit der Besucher genau dann zu gewinnen, wenn sie am wahrscheinlichsten teilen."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro erm\u00f6glicht es Ihnen, eine benutzerdefinierte Fly-In-Box mit Ihrem eigenen Titel und Ihrer Nachricht zu erstellen, ihre Position und Animation auszuw\u00e4hlen und sogar Share-Zahlen oder Gesamtanteile anzuzeigen, um sozialen Beweis zu erbringen. Sie k\u00f6nnen Timing, Icon-Abst\u00e4nde und Farben anpassen, um zu Ihrer Marke zu passen, und steuern, auf welchen Beitragstypen sie erscheint. Es ist eine gro\u00dfartige M\u00f6glichkeit, Besucher genau dann zum Teilen zu motivieren, wenn sie am engagiertesten sind."
+            ],
+            "Failed to activate the plugin.": [
+                "Die Aktivierung des Plugins ist fehlgeschlagen."
+            ],
+            "Click here to Activate Pro": [
+                "Klicken Sie hier, um Pro zu aktivieren"
+            ],
+            "Please enter your email.": [
+                "Bitte geben Sie Ihre E-Mail-Adresse ein."
+            ],
+            "Please enter a valid email address.": [
+                "Bitte geben Sie eine g\u00fcltige E-Mail-Adresse ein."
+            ],
+            "Failed to subscribe.": [
+                "Abonnement fehlgeschlagen."
+            ],
+            "Thank you!": [
+                "Danke!"
+            ],
+            "Please try again.": [
+                "Bitte versuchen Sie es erneut."
+            ],
+            "Newsletter": [
+                "Newsletter"
+            ],
+            "Subscribing": [
+                "Abonnieren"
+            ],
+            "Subscribe": [
+                "Abonnieren"
+            ],
+            "Dismiss notice": [
+                "Hinweis schlie\u00dfen"
+            ],
+            "Upgrade to Pro!": [
+                "Upgrade zu Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "Schalten Sie Premium-Funktionen frei, die Ihnen helfen, Engagement zu erh\u00f6hen, Sichtbarkeit zu steigern und Zeit zu sparen."
+            ],
+            "Unlimited Websites:": [
+                "Unbegrenzte Websites:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Verwenden Sie SSB Pro auf all Ihren Websites (keine Einschr\u00e4nkungen)"
+            ],
+            "Priority Support:": [
+                "Priorit\u00e4tsunterst\u00fctzung:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "Erhalten Sie schnelle, freundliche Hilfe von unserem Expertenteam, wenn Sie sie ben\u00f6tigen."
+            ],
+            "1 Year of Updates:": [
+                "1 Jahr Updates:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "Bleiben Sie sicher und kompatibel mit den neuesten Versionen."
+            ],
+            "No Coding Required:": [
+                "Kein Coding erforderlich:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "Richten Sie Schaltfl\u00e4chen m\u00fchelos \u00fcber das Dashboard ein und passen Sie sie an."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "Schnelle & Flexible Platzierung von Schaltfl\u00e4chen:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "F\u00fcgen Sie Schaltfl\u00e4chen genau dort hinzu, wo Sie m\u00f6chten: Beitr\u00e4ge, Seiten oder benutzerdefinierte Standorte."
+            ],
+            "Fully Responsive Design:": [
+                "Vollst\u00e4ndig responsives Design:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "Ihre sozialen Schaltfl\u00e4chen sehen auf Desktop, Tablet und Mobilger\u00e4t gro\u00dfartig aus."
+            ],
+            "Ongoing Feature Improvements:": [
+                "Laufende Verbesserungen der Funktionen:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Regelm\u00e4\u00dfige Updates mit neuen Funktionen und Leistungsverbesserungen."
+            ],
+            "Get up to": [
+                "Erhalten Sie bis zu"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "Rabatt auf Ihr erstes Jahr von Simple Social Buttons."
+            ],
+            "Unlock Pro Features": [
+                "Pro-Funktionen freischalten"
+            ],
+            "* Discount applied automatically": [
+                "* Rabatt wird automatisch angewendet"
+            ],
+            "Reviewer avatar": [
+                "Rezensenten-Avatar"
+            ],
+            "John": [
+                "John"
+            ],
+            "5 star rating": [
+                "5-Sterne-Bewertung"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "Das Plugin funktioniert wirklich gut. Die Entwickler und die Ersteller haben gute Arbeit geleistet!"
+            ],
+            "Designed and Maintained by": [
+                "Entwickelt und gewartet von"
+            ],
+            "Company logo": [
+                "Firmenlogo"
+            ],
+            "Tab content not found": [
+                "Tab-Inhalt nicht gefunden"
+            ],
+            "Settings saved successfully!": [
+                "Einstellungen erfolgreich gespeichert!"
+            ],
+            "Loading\u2026": [
+                "Wird geladen\u2026"
+            ],
+            "Try again": [
+                "Erneut versuchen"
+            ],
+            "Saving...": [
+                "Speichern..."
+            ],
+            "Save Changes": [
+                "\u00c4nderungen speichern"
+            ],
+            "Advanced": [
+                "Erweitert"
+            ],
+            "Social": [
+                "Sozial"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Upgrade auf Pro f\u00fcr mehr Funktionen"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "Aktivieren Sie die Seitenleiste oder inline, um die Einstellungen zu speichern. Medien, Popup und Fly In erfordern Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Unbekannter Fehler beim Speichern der Einstellungen."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Fehlende Admin-Konfiguration f\u00fcr den L\u00f6schstatus."
+            ],
+            "Unable to load purge status.": [
+                "L\u00f6schstatus kann nicht geladen werden."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "Netzwerkfehler beim Laden der Einstellungen. \u00dcberpr\u00fcfen Sie Ihre Verbindung und versuchen Sie es erneut."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Serverantwort konnte nicht gelesen werden. Versuchen Sie, die Seite zu aktualisieren."
+            ],
+            "Invalid response from server.": [
+                "Ung\u00fcltige Antwort vom Server."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Einstellungen konnten nicht geladen werden. M\u00f6glicherweise m\u00fcssen Sie die Seite aktualisieren oder sich erneut anmelden."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Einstellungen konnten nicht geladen werden (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Ung\u00fcltige Einstellungsdaten vom Server."
+            ],
+            "Something went wrong while loading settings.": [
+                "Beim Laden der Einstellungen ist ein Fehler aufgetreten."
+            ]
+        }
+    }
+}

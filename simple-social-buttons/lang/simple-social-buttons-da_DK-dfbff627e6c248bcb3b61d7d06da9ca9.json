@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:13+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "da-DK",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Enkle sociale knapper"
+            ],
+            "Post Type Settings": [
+                "Indstillinger for indl\u00e6gstype"
+            ],
+            "Spread the Word": [
+                "Spred Budskabet"
+            ],
+            "Share on X\/Twitter": [
+                "Del p\u00e5 X\/Twitter"
+            ],
+            "Share on Facebook": [
+                "Pawe\u0142 Rabinek p\u00e5 Facebook"
+            ],
+            "Rate on WordPress.org": [
+                "Bed\u00f8m p\u00e5 WordPress.org"
+            ],
+            "Email": [
+                "Email"
+            ],
+            "Name": [
+                "Navn"
+            ],
+            "Recommended Plugins": [
+                "Anbefalede plugins"
+            ],
+            "Customize WordPress Login Page": [
+                "Tilpas WordPress Login Side"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "Forenkle Google Analytics i WordPress"
+            ],
+            "Related Posts Thumbnails": [
+                "Relaterede indl\u00e6g Miniaturebilleder"
+            ],
+            "Under Construction & Maintenance mode": [
+                "Under opbygning & vedligeholdelsestilstand"
+            ],
+            "Settings": [
+                "Indstillinger"
+            ],
+            "Social Buttons": [
+                "Gem Simple Social Buttons"
+            ],
+            "Social Buttons Designs": [
+                "Design af sociale knapper"
+            ],
+            "Social Buttons Positions": [
+                "Positioner for sociale knapper"
+            ],
+            "Sidebar": [
+                "Sidebar"
+            ],
+            "On Media": [
+                "P\u00e5 medier"
+            ],
+            "Popup": [
+                "Popup"
+            ],
+            "Fly In": [
+                "Flyv ind"
+            ],
+            "InLine": [
+                "Inden for linje"
+            ],
+            "Additional features": [
+                "Yderligere funktioner"
+            ],
+            "Inline": [
+                "Inden for linje"
+            ],
+            "Media": [
+                "Medier"
+            ],
+            "Sidebar Orientation": [
+                "Sidebar orientering"
+            ],
+            "Left": [
+                "Venstre"
+            ],
+            "Right": [
+                "H\u00f8jre"
+            ],
+            "Intro Animation": [
+                "Intro animation"
+            ],
+            "No": [
+                "Nej"
+            ],
+            "From Right": [
+                "Fra h\u00f8jre"
+            ],
+            "From Top": [
+                "Fra toppen"
+            ],
+            "From Bottom": [
+                "Fra bunden"
+            ],
+            "From Left": [
+                "Fra venstre"
+            ],
+            "Fade In": [
+                "Fade ind"
+            ],
+            "Display Share Counts": [
+                "Vis delingsantal"
+            ],
+            "Display Total Shares": [
+                "Vis samlede delinger"
+            ],
+            "Display Text on hover": [
+                "Vis tekst ved hover"
+            ],
+            "Flat Button Style": [
+                "Flad knapstil"
+            ],
+            "Add Icon Spacing": [
+                "Tilf\u00f8j ikonafstand"
+            ],
+            "Enter the Space in Pixel": [
+                "Indtast plads i pixels"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Sticky bund (mobil)"
+            ],
+            "Hide On Mobile Devices": [
+                "Skjul p\u00e5 mobile enheder"
+            ],
+            "Limit Social Icons": [
+                "Begr\u00e6ns sociale ikoner"
+            ],
+            "Maximum Icons to Show": [
+                "Maksimale ikoner at vise"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "Vil du have mere kontrol over styling af dine sidebar sociale knapper?"
+            ],
+            "Icon Position": [
+                "Ikonposition"
+            ],
+            "Above The Content": [
+                "Over indholdet"
+            ],
+            "Below The Content": [
+                "Under indholdet"
+            ],
+            "Above + Below The Content": [
+                "Over + under indholdet"
+            ],
+            "Icon Alignment": [
+                "Ikonalignment"
+            ],
+            "Centered": [
+                "Centret"
+            ],
+            "Animation": [
+                "Animation"
+            ],
+            "From bottom": [
+                "Fra bunden"
+            ],
+            "From top": [
+                "Fra toppen"
+            ],
+            "From left": [
+                "Fra venstre"
+            ],
+            "From right": [
+                "Fra h\u00f8jre"
+            ],
+            "Show at Category pages": [
+                "Vis p\u00e5 kategorisider"
+            ],
+            "Show at Archive pages": [
+                "Vis p\u00e5 arkivsider"
+            ],
+            "Show at Tag pages": [
+                "Vis p\u00e5 tagsider"
+            ],
+            "Show at Search pages": [
+                "Vis p\u00e5 s\u00f8gesider"
+            ],
+            "Share Title": [
+                "Del titel"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "\u00d8nsker du mere kontrol over styling af dine inline sociale knapper?"
+            ],
+            "Internal Share Flush Interval": [
+                "Intern delings flush interval"
+            ],
+            "Open Graph Tags": [
+                "\u00c5ben Graph Tags"
+            ],
+            "Remove Settings on Uninstall": [
+                "Fjern indstillinger ved afinstallation"
+            ],
+            "Factory Reset": [
+                "Fabriks\u00e5bning"
+            ],
+            "Custom CSS": [
+                "Brugerdefineret CSS"
+            ],
+            "Custom JS": [
+                "Brugerdefineret JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "\u00d8nsker du at vise sociale delingsknapper p\u00e5 dine medier?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "\u00d8nsker du smarte popups, der udl\u00f8ses p\u00e5 det rigtige tidspunkt?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "\u00d8nsker du avancerede Fly In-animationer, der driver flere delinger?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Del"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Tr\u00e5de"
+            ],
+            "Post": [
+                "Indl\u00e6g"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Kopier Link"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "Print"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Indstillingsfejl"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "Der opstod en fejl med indstillingssiden. Opdater venligst siden for at pr\u00f8ve igen."
+            ],
+            "Error Details": [
+                "Fejl Detaljer"
+            ],
+            "Refresh Page": [
+                "Opdater Side"
+            ],
+            "Toggle setting": [
+                "Veksel indstilling"
+            ],
+            "Select Color": [
+                "V\u00e6lg Farve"
+            ],
+            "Clear": [
+                "Ryd"
+            ],
+            "Done": [
+                "F\u00e6rdig"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "Indtast et helt antal pixels fra 1 til 999. V\u00e6rdien blev justeret."
+            ],
+            "Select...": [
+                "V\u00e6lg..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> af <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> tilf\u00f8jer et avanceret s\u00e6t af sociale mediedelingsknapper til dine WordPress-sider, s\u00e5som: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> og <strong>Pinterest<\/strong>. Dette g\u00f8r det til det mest fleksible sociale delingsplugin for alle."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Kontroller hvordan delingsknapper vises p\u00e5 billeder og medier i dine indl\u00e6g."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Konfigurer dit delingspop-up: indstil beskeden, timingen og triggeradf\u00e6rden."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "Ops\u00e6t en slide-in delingsprompt med tilpasset besked, position og timing"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS T\u00e6llinger L\u00f8sning"
+            ],
+            "hour": [
+                "time"
+            ],
+            "hours": [
+                "timer"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Interne delingsklik t\u00e6llinger registreres for underst\u00f8ttede netv\u00e6rk (for eksempel Twitter\/X, LinkedIn, WhatsApp), n\u00e5r bes\u00f8gende bruger delingsknapperne p\u00e5 dit site. T\u00e6llinger gemmes lokalt og sendes ikke til de sociale netv\u00e6rk. Ryd din sidecache efter opgradering af plugin'et, s\u00e5 knapmarkup forbliver synkroniseret."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "Aktiv\u00e9r for at fjerne alle indstillinger ved afinstallation af plugin'et."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "Aktiv\u00e9r for at nulstille alle indstillinger tilbage til standard ved gemning."
+            ],
+            "Click To Post": [
+                "Klik for at poste"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "L\u00e5s op for Klik for at Tweet-funktionen med Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "F\u00e5 den kraftfulde Klik for at Tweet-funktionalitet, der lader dig skabe engagerende, tweetable indhold direkte i dine indl\u00e6g. Denne Pro-funktion hj\u00e6lper med at \u00f8ge social engagement og drive mere trafik til dit site."
+            ],
+            "Click here to Upgrade": [
+                "Klik her for at opgradere"
+            ],
+            "Loading Pro settings...": [
+                "Indl\u00e6ser Pro-indstillinger..."
+            ],
+            "Loading Pro component...": [
+                "Indl\u00e6ser Pro-komponent..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Konfigurer hvordan dine inline delingsknapper vises i dit indhold."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "For Facebook delingst\u00e6lling skal du tilf\u00f8je Facebook App ID og Secret i fanen Sociale."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Vis kun et bestemt antal ikoner i dit indhold. De resterende ikoner \u00e5bnes i et pop-up, n\u00e5r bes\u00f8gende trykker p\u00e5 + knappen."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "Denne tekst vises p\u00e5 dit site som en overskrift over de inline delingsknapper. Den bruges ikke som titlen, n\u00e5r nogen deler dit indhold p\u00e5 sociale netv\u00e6rk."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Tryk p\u00e5 Enter for at flytte til Inaktiv."
+            ],
+            "Press Enter to move to Active.": [
+                "Tryk p\u00e5 Enter for at flytte til Aktiv."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Brug op- og ned-piletasterne til at \u00e6ndre r\u00e6kkef\u00f8lge."
+            ],
+            "Drop here": [
+                "Slip her"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Rediger"
+            ],
+            "Drop at end of list": [
+                "Slip i slutningen af listen"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Tr\u00e6k & Slip for at aktivere og \u00e6ndre r\u00e6kkef\u00f8lge p\u00e5 dine delingsknapper:"
+            ],
+            "Active": [
+                "Aktiv"
+            ],
+            "Inactive": [
+                "Inaktiv"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Enkle sociale knapper p\u00e5 NextGEN Galleri"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "V\u00e6lg visningsstile for at placere dine delingsknapper."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Konfigurer udseendet og adf\u00e6rden af dine sidebar delingsknapper."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Vis kun et bestemt antal ikoner i sidebar. De resterende ikoner \u00e5bner i et popup, n\u00e5r bes\u00f8gende trykker p\u00e5 + knappen."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "Tilf\u00f8j dit X-brugernavn for at tilf\u00f8je via= til Twitter\/X delingslinks fra dine knapper."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @brugernavn"
+            ],
+            "Facebook App": [
+                "Facebook App"
+            ],
+            "How to create a Facebook app": [
+                "Hvordan man opretter en Facebook-app"
+            ],
+            "Facebook App ID": [
+                "Facebook App ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "P\u00e5kr\u00e6vet for Facebook delingsantal. Tilf\u00f8j dit App ID og hemmelighed fra Facebook udviklerportalen."
+            ],
+            "Facebook App Secret": [
+                "Facebook App hemmelighed"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat bruger Snap Creative Kit Web, s\u00e5 mobile bes\u00f8gende \u00e5bner Snapchat-appen med dit sidens link klar til at dele."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "Snap Kit Klient ID (valgfrit)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Valgfrit. Tilf\u00f8j dit Snap Kit Klient ID for at tilskrive delinger i Snap Kit udviklerportalen. Deling fungerer uden det."
+            ],
+            "How it works": [
+                "S\u00e5dan fungerer det"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "Tilf\u00f8j Snapchat fra Indstillinger fanen ligesom enhver anden knap."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "P\u00e5 mobil \u00e5bner tryk p\u00e5 knappen Snapchat appens delingsflow for den aktuelle side."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "P\u00e5 desktop \u00e5bnes et Snapcode vindue, s\u00e5 brugere kan scanne og dele fra deres telefon."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "Hold Open Graph tags aktiveret, s\u00e5 Snapchat kan vise din side titel og forh\u00e5ndsvisning."
+            ],
+            "Official Buttons": [
+                "Officielle knapper"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "V\u00e6lg en knap stil, der passer til dit sites udseende og f\u00f8lelse."
+            ],
+            "Dismiss this notice.": [
+                "Afvis denne meddelelse."
+            ],
+            "Dismiss": [
+                "Afvis"
+            ],
+            "Share on LinkedIn": [
+                "Del p\u00e5 LinkedIn"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro giver dig mulighed for at indstille brugerdefinerede baggrunds-, hover- og ikonfarver for hver knap, s\u00e5 de naturligt blander sig med dit websites design i stedet for at skille sig ud som en standard plugin. Knapper, der passer til dit site, bliver typisk trykket mere p\u00e5, hvilket betyder flere delinger og mere trafik til dig. Pro tilf\u00f8jer ogs\u00e5 funktioner som knapper p\u00e5 billeder, popups ved exit-intent, fly-in glideanimationer og mere."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro giver dig mulighed for at vise delingsknapper direkte p\u00e5 billeder og fotos p\u00e5 tv\u00e6rs af dine indl\u00e6g og sider, v\u00e6lge deres position, tilf\u00f8je ikonafstand og indstille brugerdefinerede farver, der matcher dit site. Du kan ogs\u00e5 skjule dem p\u00e5 mobil og kontrollere pr\u00e6cis, hvilke indl\u00e6gstyper de vises p\u00e5. Det er en nem m\u00e5de at g\u00f8re hvert billede til en delbar mulighed og drive mere trafik."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro giver dig mulighed for at oprette en brugerdefineret delings-popup med din egen titel og besked og udl\u00f8se den pr\u00e6cist, n\u00e5r det er vigtigt, som f\u00f8r bes\u00f8gende forlader eller efter de ruller. Du kan tilf\u00f8je animation, vise delingsantal eller samlede delinger for at opbygge socialt bevis, og indstille brugerdefinerede farver, der matcher dit brand. Det er en smart m\u00e5de at fange bes\u00f8gendes opm\u00e6rksomhed lige n\u00e5r de er mest tilb\u00f8jelige til at dele."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro giver dig mulighed for at oprette en brugerdefineret Fly In boks med din egen titel og besked, v\u00e6lge dens position og animation, og endda vise delingsantal eller samlede delinger for at opbygge socialt bevis. Du kan finjustere timing, ikonafstand og farver for at matche dit brand, og kontrollere hvilke indl\u00e6gstyper den vises p\u00e5. Det er en fantastisk m\u00e5de at opfordre bes\u00f8gende til at dele lige n\u00e5r de er mest engagerede."
+            ],
+            "Failed to activate the plugin.": [
+                "Aktivering af plugin'et mislykkedes."
+            ],
+            "Click here to Activate Pro": [
+                "Klik her for at aktivere Pro"
+            ],
+            "Please enter your email.": [
+                "Indtast venligst din e-mail."
+            ],
+            "Please enter a valid email address.": [
+                "Indtast venligst en gyldig e-mailadresse."
+            ],
+            "Failed to subscribe.": [
+                "Abonnementet kunne ikke gennemf\u00f8res."
+            ],
+            "Thank you!": [
+                "Tak!"
+            ],
+            "Please try again.": [
+                "Pr\u00f8v venligst igen."
+            ],
+            "Newsletter": [
+                "Nyhedsbrev"
+            ],
+            "Subscribing": [
+                "Abonnerer"
+            ],
+            "Subscribe": [
+                "Abonner"
+            ],
+            "Dismiss notice": [
+                "Afvis meddelelse"
+            ],
+            "Upgrade to Pro!": [
+                "Opgrader til Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "L\u00e5s op for premiumfunktioner designet til at hj\u00e6lpe dig med at \u00f8ge engagementet, booste synligheden og spare tid."
+            ],
+            "Unlimited Websites:": [
+                "Ubegr\u00e6nsede hjemmesider:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Brug SSB Pro p\u00e5 tv\u00e6rs af alle dine sider (ingen gr\u00e6nser)"
+            ],
+            "Priority Support:": [
+                "Prioriteret support:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "F\u00e5 hurtig, venlig hj\u00e6lp fra vores ekspert supportteam, n\u00e5r du har brug for det."
+            ],
+            "1 Year of Updates:": [
+                "1 \u00e5r med opdateringer:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "Forbliv sikker og kompatibel med de nyeste udgivelser."
+            ],
+            "No Coding Required:": [
+                "Ingen kodning kr\u00e6ves:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "Ops\u00e6t og tilpas knapper uden besv\u00e6r fra dashboardet."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "Hurtig & Fleksibel Knapplacering:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "Tilf\u00f8j knapper pr\u00e6cis hvor du vil: indl\u00e6g, sider eller brugerdefinerede placeringer."
+            ],
+            "Fully Responsive Design:": [
+                "Fuldst\u00e6ndig Responsivt Design:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "Dine sociale knapper ser godt ud p\u00e5 desktop, tablet og mobil."
+            ],
+            "Ongoing Feature Improvements:": [
+                "L\u00f8bende Funktionsforbedringer:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Regelm\u00e6ssige opdateringer med nye funktioner og ydeevneforbedringer."
+            ],
+            "Get up to": [
+                "F\u00e5 op til"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "rabatt p\u00e5 dit f\u00f8rste \u00e5r med Simple Social Buttons."
+            ],
+            "Unlock Pro Features": [
+                "L\u00e5s Pro Funktioner op"
+            ],
+            "* Discount applied automatically": [
+                "* Rabatten anvendes automatisk"
+            ],
+            "Reviewer avatar": [
+                "Anmelder avatar"
+            ],
+            "John": [
+                "John"
+            ],
+            "5 star rating": [
+                "5 stjernet vurdering"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "Plug-in'et fungerer virkelig godt. Udviklerne og skaberne har gjort et godt stykke arbejde!"
+            ],
+            "Designed and Maintained by": [
+                "Designet og Vedligeholdt af"
+            ],
+            "Company logo": [
+                "Firma logo"
+            ],
+            "Tab content not found": [
+                "Faneblad indhold ikke fundet"
+            ],
+            "Settings saved successfully!": [
+                "Indstillinger gemt med succes!"
+            ],
+            "Loading\u2026": [
+                "Indl\u00e6ser\u2026"
+            ],
+            "Try again": [
+                "Pr\u00f8v igen"
+            ],
+            "Saving...": [
+                "Gemmer..."
+            ],
+            "Save Changes": [
+                "Gem \u00e6ndringer"
+            ],
+            "Advanced": [
+                "Avanceret"
+            ],
+            "Social": [
+                "Social"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Opgrader til Pro for flere funktioner"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "Aktiver sidebar eller inline for at gemme indstillinger. Media, Popup og Fly In kr\u00e6ver Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Ukendt fejl under gemmning af indstillinger."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Manglende admin-konfiguration for purge status."
+            ],
+            "Unable to load purge status.": [
+                "Kunne ikke indl\u00e6se purge status."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "Netv\u00e6rksfejl under indl\u00e6sning af indstillinger. Tjek din forbindelse og pr\u00f8v igen."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Kunne ikke l\u00e6se serverens svar. Pr\u00f8v at opdatere siden."
+            ],
+            "Invalid response from server.": [
+                "Ugyldigt svar fra serveren."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Kunne ikke indl\u00e6se indstillinger. Du skal muligvis opdatere siden eller logge ind igen."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Kunne ikke indl\u00e6se indstillinger (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Ugyldige indstillingsdata fra serveren."
+            ],
+            "Something went wrong while loading settings.": [
+                "Noget gik galt under indl\u00e6sning af indstillinger."
+            ]
+        }
+    }
+}

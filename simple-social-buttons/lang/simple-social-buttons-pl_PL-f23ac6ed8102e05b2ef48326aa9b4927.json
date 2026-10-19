@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:23+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "pl-PL",
+                "plural-forms": "nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Click to post": [
+                "Kliknij, aby opublikowa\u0107"
+            ],
+            "Theme": [
+                "Motyw"
+            ],
+            "select the style for click to post ": [
+                "wybierz styl do klikni\u0119cia, aby opublikowa\u0107 "
+            ],
+            "Content": [
+                "Tre\u015b\u0107"
+            ],
+            "Quote Content": [
+                "Tre\u015b\u0107 cytatu"
+            ],
+            "This text will be shown to the user.": [
+                "Ten tekst zostanie wy\u015bwietlony u\u017cytkownikowi."
+            ],
+            "Tweet Content": [
+                "Tre\u015b\u0107 tweeta"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Ten tekst zostanie opublikowany jako tweet. Je\u015bli b\u0119dzie pusty, zostanie u\u017cyta tre\u015b\u0107 cytatu."
+            ],
+            " Configuration": [
+                " Konfiguracja"
+            ],
+            "Show Tweet Button": [
+                "Poka\u017c przycisk Tweeta"
+            ],
+            "Include Page\/post Link": [
+                "Do\u0142\u0105cz link do strony\/wpisu"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n Link do tego wpisu zostanie dodany do tweeta. Mamy filtr, je\u015bli chcesz go zmodyfikowa\u0107 `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Do\u0142\u0105cz przez @nazwa_u\u017cytkownika"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "\n Nazwa u\u017cytkownika Twittera z zaawansowanej zak\u0142adki ustawie\u0144 SSB zostanie dodana na ko\u0144cu tweeta z tekstem \u201evia @nazwa_u\u017cytkownika\u201d."
+            ],
+            "Enter your content ...": [
+                "Wprowad\u017a swoj\u0105 tre\u015b\u0107 ..."
+            ],
+            "Configuration": [
+                "Konfiguracja"
+            ],
+            "Share Counter": [
+                "Licznik udost\u0119pnie\u0144"
+            ],
+            "Total Counts": [
+                "\u0141\u0105czna liczba"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Obs\u0142ugiwane sieci: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Kolejno\u015b\u0107"
+            ],
+            "Align Left": [
+                "Wyr\u00f3wnaj do lewej"
+            ],
+            "Align Center": [
+                "Wyr\u00f3wnaj do \u015brodka"
+            ],
+            "Align Right": [
+                "Wyr\u00f3wnaj do prawej"
+            ]
+        }
+    }
+}

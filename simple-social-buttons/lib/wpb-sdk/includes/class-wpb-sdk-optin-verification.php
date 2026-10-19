@@ -50,7 +50,9 @@ class WPBRIGADE_Optin_Verification {
 		$slug                   = (string) $module['slug'];
 		self::$modules[ $slug ] = $module;
 
-		if ( ! self::$init_hooked ) {
+		if ( did_action( 'init' ) ) {
+			self::handle_request();
+		} elseif ( ! self::$init_hooked ) {
 			self::$init_hooked = true;
 			add_action( 'init', array( __CLASS__, 'handle_request' ), 1 );
 		}
@@ -129,24 +131,138 @@ class WPBRIGADE_Optin_Verification {
 	}
 
 	/**
+	 * Extract verification token from GET query parameters.
+	 *
+	 * @param string[] $query_args Query argument keys to check.
+	 * @return string Verification token or empty string.
+	 */
+	private static function extract_token_from_request( array $query_args ) {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Email link carries a secret verification token.
+		foreach ( $query_args as $query_arg ) {
+			if ( isset( $_GET[ $query_arg ] ) ) {
+				$token = sanitize_text_field( wp_unslash( (string) $_GET[ $query_arg ] ) );
+				if ( '' !== $token ) {
+					return $token;
+				}
+			}
+		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+		return '';
+	}
+
+	/**
+	 * Retrieve saved verification token from user meta or option fallbacks.
+	 *
+	 * @param int                  $user_id    Current user ID.
+	 * @param string               $token_meta User meta key.
+	 * @param array<string, mixed> $optin      Optin config.
+	 * @param string               $slug       Product slug.
+	 * @return string Saved token or empty string.
+	 */
+	private static function get_persisted_verification_token( $user_id, $token_meta, array $optin, $slug ) {
+		if ( $user_id > 0 && '' !== $token_meta ) {
+			$meta_val = get_user_meta( $user_id, $token_meta, true );
+			if ( is_string( $meta_val ) && '' !== $meta_val ) {
+				return $meta_val;
+			}
+		}
+		if ( ! empty( $optin['legacy_token_option'] ) ) {
+			$legacy = get_option( (string) $optin['legacy_token_option'], '' );
+			if ( is_string( $legacy ) && '' !== $legacy ) {
+				return $legacy;
+			}
+		}
+		$fallback = get_option( 'wpb_sdk_' . $slug . '_fallback_verify_token', '' );
+		return ( is_string( $fallback ) && '' !== $fallback ) ? $fallback : '';
+	}
+
+	/**
+	 * Execute state updates and hooks upon successful opt-in verification.
+	 *
+	 * @param WP_User              $current_user Current user object.
+	 * @param string               $slug         Product slug.
+	 * @param array<string, mixed> $module       Module definition.
+	 * @param string               $token_meta     User meta key.
+	 * @param int                  $target_user_id Target user ID whose token was verified.
+	 * @return void
+	 */
+	private static function perform_optin_success_actions( WP_User $current_user, $slug, array $module, $token_meta, $target_user_id = 0 ) {
+		$user_id = $target_user_id > 0 ? $target_user_id : (int) $current_user->ID;
+		$optin   = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
+
+		if ( function_exists( 'wpb_sdk_set_user_email_verified' ) ) {
+			wpb_sdk_set_user_email_verified( $slug, $user_id );
+		}
+
+		if ( function_exists( 'wpb_sdk_legacy_upgrade_optin_option_key' ) ) {
+			delete_option( wpb_sdk_legacy_upgrade_optin_option_key( $slug ) );
+		}
+		if ( '' !== $token_meta ) {
+			delete_user_meta( $user_id, $token_meta );
+		}
+		$expires_meta = function_exists( 'wpb_sdk_verification_token_expires_meta_key' )
+			? wpb_sdk_verification_token_expires_meta_key( $module )
+			: $token_meta . '_expires';
+		delete_user_meta( $user_id, $expires_meta );
+		delete_option( 'wpb_sdk_' . $slug . '_fallback_verify_token' );
+		delete_transient( 'wpb_sdk_' . $slug . '_pending_verify_notice' );
+		if ( ! empty( $optin['legacy_token_option'] ) ) {
+			delete_option( (string) $optin['legacy_token_option'] );
+		}
+
+		$optin_option = ! empty( $optin['option_name'] )
+			? (string) $optin['option_name']
+			: self::guess_option_name( $module );
+		if ( '' !== $optin_option ) {
+			update_option( $optin_option, 'yes' );
+		}
+
+		if ( ! empty( $optin['verified_by_option'] ) && ! empty( $optin['store_verified_by_user'] ) ) {
+			update_option(
+				(string) $optin['verified_by_option'],
+				array(
+					'user_id'     => $user_id,
+					'email'       => sanitize_email( $current_user->user_email ),
+					'verified_at' => current_time( 'mysql' ),
+				)
+			);
+		}
+
+		do_action( 'wpb_sdk_optin_verified', $current_user, $module );
+	}
+
+	/**
+	 * Verify permissions and already-verified state before proceeding.
+	 *
+	 * @param array<string, mixed> $optin        Module optin config.
+	 * @param string               $settings_url Fallback redirect URL.
+	 * @return void
+	 */
+	private static function check_verification_prerequisites( array $optin, $settings_url ) {
+		if ( ! empty( $optin['require_manage_options'] ) && ! current_user_can( 'manage_options' ) ) {
+			wp_safe_redirect( add_query_arg( 'verified', 'unauthorized', $settings_url ) );
+			exit;
+		}
+
+		if ( ! empty( $optin['verified_by_option'] ) && ! empty( get_option( (string) $optin['verified_by_option'] ) ) ) {
+			$already = ! empty( $optin['already_verified_query'] )
+				? (string) $optin['already_verified_query']
+				: 'already_verified';
+			wp_safe_redirect( add_query_arg( 'verified', $already, $settings_url ) );
+			exit;
+		}
+	}
+
+	/**
 	 * @param string               $slug   Product slug.
 	 * @param array<string, mixed> $module Module definition.
 	 * @return void
 	 */
 	private static function verify( $slug, array $module ) {
-		$optin         = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
-		$token_meta = (string) $module['optin_user_meta']['token'];
-		$query_args = self::verify_query_args( $slug, $optin );
-
-		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Email link carries a secret verification token.
-		$verification_token = '';
-		foreach ( $query_args as $query_arg ) {
-			if ( isset( $_GET[ $query_arg ] ) ) {
-				$verification_token = sanitize_text_field( wp_unslash( (string) $_GET[ $query_arg ] ) );
-				break;
-			}
-		}
-		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+		$optin              = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
+		$token_meta         = isset( $module['optin_user_meta']['token'] ) ? (string) $module['optin_user_meta']['token'] : '';
+		$query_args         = self::verify_query_args( $slug, $optin );
+		$verification_token = self::extract_token_from_request( $query_args );
 
 		if ( '' === $verification_token ) {
 			return;
@@ -162,38 +278,7 @@ class WPBRIGADE_Optin_Verification {
 			? wpb_sdk_resolve_optin_redirect_url( $slug )
 			: self::settings_redirect_url( $optin );
 
-		if ( ! empty( $optin['require_manage_options'] ) && ! current_user_can( 'manage_options' ) ) {
-			wp_safe_redirect( add_query_arg( 'verified', 'unauthorized', $settings_url ) );
-			exit;
-		}
-
-		if ( ! empty( $optin['verified_by_option'] ) ) {
-			$verified_by = get_option( (string) $optin['verified_by_option'] );
-			if ( ! empty( $verified_by ) ) {
-				$already = ! empty( $optin['already_verified_query'] )
-					? (string) $optin['already_verified_query']
-					: 'already_verified';
-				wp_safe_redirect( add_query_arg( 'verified', $already, $settings_url ) );
-				exit;
-			}
-		}
-
-		$saved_token = '';
-		if ( $current_user->ID ) {
-			$saved_token = get_user_meta( $current_user->ID, $token_meta, true );
-		}
-		if ( ( '' === $saved_token || false === $saved_token ) && ! empty( $optin['legacy_token_option'] ) ) {
-			$legacy = get_option( (string) $optin['legacy_token_option'], '' );
-			if ( is_string( $legacy ) && '' !== $legacy ) {
-				$saved_token = $legacy;
-			}
-		}
-		if ( '' === $saved_token || false === $saved_token ) {
-			$fallback = get_option( 'wpb_sdk_' . $slug . '_fallback_verify_token', '' );
-			if ( is_string( $fallback ) && '' !== $fallback ) {
-				$saved_token = $fallback;
-			}
-		}
+		self::check_verification_prerequisites( $optin, $settings_url );
 
 		$token_owner_id = self::resolve_verification_token_owner_id(
 			$slug,
@@ -202,8 +287,7 @@ class WPBRIGADE_Optin_Verification {
 			(int) $current_user->ID
 		);
 
-		if (
-			$token_owner_id > 0
+		if ( $token_owner_id > 0
 			&& function_exists( 'wpb_sdk_is_verification_token_expired' )
 			&& wpb_sdk_is_verification_token_expired( $slug, $token_owner_id )
 		) {
@@ -211,44 +295,10 @@ class WPBRIGADE_Optin_Verification {
 			exit;
 		}
 
-		if ( $saved_token && hash_equals( (string) $saved_token, $verification_token ) ) {
-			if ( function_exists( 'wpb_sdk_set_user_email_verified' ) ) {
-				wpb_sdk_set_user_email_verified( $slug, (int) $current_user->ID );
-			}
-
-			if ( function_exists( 'wpb_sdk_legacy_upgrade_optin_option_key' ) ) {
-				delete_option( wpb_sdk_legacy_upgrade_optin_option_key( $slug ) );
-			}
-			delete_user_meta( $current_user->ID, $token_meta );
-			$expires_meta = function_exists( 'wpb_sdk_verification_token_expires_meta_key' )
-				? wpb_sdk_verification_token_expires_meta_key( $module )
-				: $token_meta . '_expires';
-			delete_user_meta( $current_user->ID, $expires_meta );
-			delete_option( 'wpb_sdk_' . $slug . '_fallback_verify_token' );
-			if ( ! empty( $optin['legacy_token_option'] ) ) {
-				delete_option( (string) $optin['legacy_token_option'] );
-			}
-
-			$optin_option = ! empty( $optin['option_name'] )
-				? (string) $optin['option_name']
-				: self::guess_option_name( $module );
-			if ( '' !== $optin_option ) {
-				update_option( $optin_option, 'yes' );
-			}
-
-			if ( ! empty( $optin['verified_by_option'] ) && ! empty( $optin['store_verified_by_user'] ) ) {
-				update_option(
-					(string) $optin['verified_by_option'],
-					array(
-						'user_id'     => $current_user->ID,
-						'email'       => sanitize_email( $current_user->user_email ),
-						'verified_at' => current_time( 'mysql' ),
-					)
-				);
-			}
-
-			do_action( 'wpb_sdk_optin_verified', $current_user, $module );
-
+		$target_user_id = $token_owner_id > 0 ? $token_owner_id : (int) $current_user->ID;
+		$saved_token    = self::get_persisted_verification_token( $target_user_id, $token_meta, $optin, $slug );
+		if ( '' !== $saved_token && hash_equals( $saved_token, $verification_token ) ) {
+			self::perform_optin_success_actions( $current_user, $slug, $module, $token_meta, $target_user_id );
 			wp_safe_redirect( add_query_arg( 'verified', 'success', $settings_url ) );
 			exit;
 		}

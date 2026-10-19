@@ -23,18 +23,27 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 	class SimpleSocialButtonsPR_Admin extends SimpleSocialButtonsPR { //phpcs:ignore
 
 		/**
+		 * Admin bar cache purge helper (hooks registered in its constructor).
+		 *
+		 * @var Ssb_Admin_Bar_Purge|null
+		 */
+		private $admin_bar_purge = null;
+
+		/**
 		 * Automatically called when object created.
 		 *
 		 * @access public
 		 * @since 1.0.0
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function __construct() {
 			parent::__construct();
 
 			include_once SSB_PLUGIN_DIR . '/classes/class-ssb-settings.php';
 			include_once SSB_PLUGIN_DIR . '/classes/class-ssb-admin-bar-purge.php';
-			new Ssb_Admin_Bar_Purge( $this );
+			// Instantiation registers admin-bar hooks in the constructor.
+			$this->admin_bar_purge = new Ssb_Admin_Bar_Purge( $this );
 
 			add_action( 'add_meta_boxes', array( $this, 'ssb_meta_box' ) );
 			add_action( 'save_post', array( $this, 'ssb_save_meta' ), 10, 2 );
@@ -46,6 +55,8 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 			add_action( 'admin_enqueue_scripts', array( $this, 'ssb_admin_enqueue_scripts' ) );
 			add_action( 'in_admin_header', array( $this, 'ssb_skip_notices' ), 100000 );
 			add_action( 'enqueue_block_editor_assets', array( $this, 'ssb_blocks_scripts' ) );
+			// Content styles must use this hook so they load inside the iframed canvas.
+			add_action( 'enqueue_block_assets', array( $this, 'ssb_block_content_styles' ) );
 		}
 
 
@@ -56,6 +67,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		 * @access public
 		 * @since 1.0.0
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function ssb_admin_enqueue_scripts( $page ) {
 			$allowed_pages = array(
@@ -67,9 +79,11 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 			);
 
 			if ( in_array( $page, $allowed_pages, true ) ) {
+				$suffix = ssb_asset_min_suffix();
+
 				wp_enqueue_style(
 					'ssb-admin-cs',
-					plugins_url( 'assets/css/admin.css', plugin_dir_path( __FILE__ ) ),
+					plugins_url( 'assets/css/admin' . $suffix . '.css', plugin_dir_path( __FILE__ ) ),
 					false,
 					SSB_VERSION
 				);
@@ -96,7 +110,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 				}
 				wp_enqueue_script(
 					'ssb-admin-js',
-					plugins_url( 'assets/js/admin.js', plugin_dir_path( __FILE__ ) ),
+					plugins_url( 'assets/js/admin' . $suffix . '.js', plugin_dir_path( __FILE__ ) ),
 					array( 'jquery', 'jquery-ui-sortable' ),
 					SSB_VERSION,
 					false
@@ -112,10 +126,10 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		}
 
 		/**
-		 * Ssb Block editor assets.
+		 * Block editor scripts and inspector UI (outside the content iframe).
 		 *
 		 * @since 3.0.0
-		 * @version 7.0.0
+		 * @version 7.2.0
 		 * @return void
 		 */
 		public function ssb_blocks_scripts() {
@@ -133,18 +147,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 				SSB_VERSION,
 				false
 			);
-			wp_enqueue_style(
-				'ssb-blocks-editor-css',
-				plugins_url( 'assets/css/blocks.editor.css', plugin_dir_path( __FILE__ ) ),
-				array(),
-				SSB_VERSION
-			);
-			wp_enqueue_style(
-				'ssb-front-css',
-				plugins_url( 'assets/css/front.min.css', plugin_dir_path( __FILE__ ) ),
-				false,
-				SSB_VERSION
-			);
+			wp_set_script_translations( 'ssb-blocks-editor-js', 'simple-social-buttons', SSB_PLUGIN_DIR . 'lang' );
 
 			$is_pro = class_exists( 'Simple_Social_Buttons_Pro' )
 				? rest_sanitize_boolean( true )
@@ -160,11 +163,44 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		}
 
 		/**
+		 * Block content styles for the editor canvas (iframe).
+		 *
+		 * `enqueue_block_editor_assets` only loads styles in the parent admin
+		 * document. Since WP 6.3 the post editor canvas is iframed, so front
+		 * and block preview CSS must use `enqueue_block_assets` instead.
+		 * Limited to admin so frontend keeps its existing front.css enqueue.
+		 *
+		 * @since 7.2.0
+		 * @return void
+		 */
+		public function ssb_block_content_styles() {
+			if ( ! is_admin() ) {
+				return;
+			}
+
+			$suffix = ssb_asset_min_suffix();
+
+			wp_enqueue_style(
+				'ssb-blocks-editor-css',
+				plugins_url( 'assets/css/blocks.editor.css', plugin_dir_path( __FILE__ ) ),
+				array(),
+				SSB_VERSION
+			);
+			wp_enqueue_style(
+				'ssb-front-css',
+				plugins_url( 'assets/css/front' . $suffix . '.css', plugin_dir_path( __FILE__ ) ),
+				array(),
+				SSB_VERSION
+			);
+		}
+
+		/**
 		 * Register meta box to hide/show SSB plugin on single post or page.
 		 *
 		 * @access public
 		 * @since 1.0.0
 		 * @return void|false
+		 * @version 7.2.0
 		 */
 		public function ssb_meta_box() {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
@@ -175,7 +211,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 
 			// Check if a SSB position is selected or not.
 			if ( isset( $ssb_positions['position'] ) && ! empty( $ssb_positions['position'] ) ) {
-				foreach ( $ssb_positions['position'] as $key => $value ) {
+				foreach ( $ssb_positions['position'] as $value ) {
 					$options = get_option( 'ssb_' . $value );
 
 					if ( isset( $options['posts'] ) && ! empty( $options['posts'] ) ) {
@@ -199,7 +235,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 
 			// Rendering meta box.
 			if ( ! function_exists( 'add_meta_box' ) ) {
-				include 'includes/template.php';
+				include_once 'includes/template.php';
 			}
 			add_meta_box(
 				'ssb_meta_box',
@@ -223,14 +259,14 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		 * @access public
 		 * @since 1.0.0
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function render_ssb_meta_box( $post, $metabox ) {
 			wp_nonce_field( plugin_basename( __FILE__ ), 'ssb_noncename' );
-			$meta_key         = $this->hide_custom_meta_key;
-			$escaped_meta_key = esc_attr( $meta_key );
+			$meta_key = $this->hide_custom_meta_key;
 			?>
 			<label for="<?php echo esc_attr( $meta_key ); ?>">
-				<input type="checkbox" id="<?php echo esc_attr( $meta_key ); ?>" 
+				<input type="checkbox" id="<?php echo esc_attr( $meta_key ); ?>"
 					name="<?php echo esc_attr( $meta_key ); ?>" value="true"
 					<?php if ( $metabox['args']['checked'] ) : ?>
 					checked="checked"
@@ -299,6 +335,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		 * @access public
 		 * @since 1.9.0
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function ssb_deactivate() {
 			if ( ! current_user_can( 'manage_options' ) ) {
@@ -350,7 +387,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 				'plugin_name'       => 'Simple Social Buttons',
 			);
 
-			$response = wp_remote_post(
+			wp_remote_post(
 				SSB_FEEDBACK_SERVER,
 				array(
 					'method'      => 'POST',
@@ -400,6 +437,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 		 *
 		 * @access public
 		 * @since 1.9.0
+		 * @version 7.2.0
 		 * @return void
 		 */
 		public function ssb_review_notice_message() {
@@ -482,7 +520,7 @@ if ( ! class_exists( 'SimpleSocialButtonsPR_Admin' ) ) :
 			<?php
 			// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText
 			$review_msg = __(
-				'We hope you\'ve enjoyed using Simple Social Buttons! 
+				'We hope you\'ve enjoyed using Simple Social Buttons!
 				Would you consider leaving us a review on WordPress.org?',
 				'simple-social-buttons'
 			);

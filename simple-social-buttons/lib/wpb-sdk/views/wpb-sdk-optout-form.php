@@ -26,6 +26,8 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 	$wpb_sdk_diagnostic_info = wpb_sdk_sdk_option_is_enabled( $wpb_sdk_diagnostic_info ) ? '1' : '0';
 	$wpb_sdk_extensions      = wpb_sdk_sdk_option_is_enabled( $wpb_sdk_extensions ) ? '1' : '0';
 }
+$wpb_sdk_label_opt_out = esc_html__( 'Opt Out', 'wpbrigade-sdk' );
+$wpb_sdk_label_opt_in  = esc_html__( 'Opt In', 'wpbrigade-sdk' );
 
 ?><input type="hidden" id="<?php echo esc_attr( $wpb_sdk_plugin_slug . '_communication' ); ?>"
 	value="<?php echo esc_attr( $wpb_sdk_communication ); ?>" />
@@ -367,7 +369,7 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 			<div
 				class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-modal-close <?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-continue-button">
 				<span class="dashicons dashicons-no"></span></div>
-			<h4>Opt Out</h4>
+			<h4><?php echo esc_html( $wpb_sdk_label_opt_out ); ?></h4>
 		</div>
 		<div class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-modal-body" data-optin="extensions">
 			<!-- Communication Section -->
@@ -377,7 +379,7 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 					<span class="wpb-communication-switch-feedback wpb-switch-feedback"><i
 							class="dashicons dashicons-yes"></i></span>
 					<a href="#" class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-opt-out-link"
-						option-name="communication"><?php echo '1' === $wpb_sdk_communication ? 'Opt Out' : 'Opt In'; ?></a>
+						option-name="communication"><?php echo esc_html( '1' === $wpb_sdk_communication ? $wpb_sdk_label_opt_out : $wpb_sdk_label_opt_in ); ?></a>
 				</div>
 				<div class="communication-content">
 					<div class="info-box">
@@ -404,7 +406,7 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 					<span class="wpb-diagnostic_info-switch-feedback wpb-switch-feedback"><i
 							class="dashicons dashicons-yes"></i></span>
 					<a href="#" class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-opt-out-link"
-						option-name="diagnostic_info"><?php echo '1' === $wpb_sdk_diagnostic_info ? 'Opt Out' : 'Opt In'; ?></a>
+						option-name="diagnostic_info"><?php echo esc_html( '1' === $wpb_sdk_diagnostic_info ? $wpb_sdk_label_opt_out : $wpb_sdk_label_opt_in ); ?></a>
 				</div>
 				<div class="communication-content">
 					<div class="info-box">
@@ -435,13 +437,13 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 			</div>
 			<hr>
 			<!-- Extensions Section -->
-			<div class="communication-container <?php echo '1' === $wpb_sdk_extensions ? '' : 'wpb-deactivated'; ?>" ">
-			<div class=" communication-header">
+			<div class="communication-container <?php echo '1' === $wpb_sdk_extensions ? '' : 'wpb-deactivated'; ?>">
+			<div class="communication-header">
 				<h2>Extensions</h2>
 				<span class="wpb-extensions-switch-feedback wpb-switch-feedback"><i
 						class="dashicons dashicons-yes"></i></span>
 				<a href="#" class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-opt-out-link"
-					option-name="extensions"><?php echo '1' === $wpb_sdk_extensions ? 'Opt Out' : 'Opt In'; ?></a>
+					option-name="extensions"><?php echo esc_html( '1' === $wpb_sdk_extensions ? $wpb_sdk_label_opt_out : $wpb_sdk_label_opt_in ); ?></a>
 			</div>
 			<div class="communication-content">
 				<div class="info-box">
@@ -455,7 +457,7 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 							Names, slugs, versions, and if active or not
 						</div>
 					</div>
-					<label class="wpb-optin-switch"><input data-checkbox="extensions" type="checkbox" <?php echo '1' === $wpb_sdk_extensions ? 'Checked' : ''; ?>></label>
+					<label class="wpb-optin-switch" for="<?php echo esc_attr( $wpb_sdk_plugin_slug . '_optin_extensions' ); ?>"><input id="<?php echo esc_attr( $wpb_sdk_plugin_slug . '_optin_extensions' ); ?>" data-checkbox="extensions" type="checkbox" <?php echo '1' === $wpb_sdk_extensions ? 'checked' : ''; ?>><span class="screen-reader-text"><?php esc_html_e( 'Toggle Extensions', 'wpbrigade-sdk' ); ?></span></label>
 				</div>
 			</div>
 		</div>
@@ -479,12 +481,12 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 	<div class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-modal-footer" style="display: none;"
 		data-optin-footer="communication">
 		<a class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-opt-out-button" data-optin="" href="#">Opt Out</a>
-		<button class="button button-primary" id="stay-connected">Stay Connected</button>
+		<button class="button button-primary wpb-stay-connected-btn" id="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-stay-connected">Stay Connected</button>
 	</div>
 	<div class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-modal-footer" style="display: none;"
 		data-optin-footer="diagnostic_info">
 		<a class="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-opt-out-button" data-optin="" href="#">Opt Out</a>
-		<button class="button button-primary" id="stay-connected">Keep Sharing</button>
+		<button class="button button-primary wpb-stay-connected-btn" id="<?php echo esc_attr( $wpb_sdk_plugin_slug ); ?>-keep-sharing">Keep Sharing</button>
 	</div>
 </div>
 </div>
@@ -533,7 +535,7 @@ if ( function_exists( 'wpb_sdk_sdk_option_is_enabled' ) ) {
 				}// Reload the page.
 			});
 			// Show the extension opt-in modal body when "Stay Connected" is clicked.
-			$(document).on('click', '.' + pluginSlug + '-modal  #stay-connected', function (event) {
+			$(document).on('click', '.' + pluginSlug + '-modal .wpb-stay-connected-btn', function (event) {
 				event.preventDefault();
 				$('.' + pluginSlug + '-modal [data-optin="extensions"]').show().siblings('.' + pluginSlug + '-modal-body').hide();  // Show extensions, hide other modal bodies
 				$('.' + pluginSlug + '-modal [data-optin-footer="extensions"]').show().siblings('.' + pluginSlug + '-modal-footer').hide();  // Show extension footer, hide other footers

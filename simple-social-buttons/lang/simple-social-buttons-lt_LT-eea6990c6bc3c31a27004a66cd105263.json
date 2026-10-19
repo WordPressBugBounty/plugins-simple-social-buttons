@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:20+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "lt-LT",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Paprasti socialiniai mygtukai"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "Saugumo patikra nepavyko. Pra\u0161ome atnaujinti puslap\u012f ir bandyti dar kart\u0105."
+            ],
+            "You do not have permission to import settings.": [
+                "Neturite leidimo importuoti nustatym\u0173."
+            ],
+            "No file uploaded or upload failed.": [
+                "Failas nebuvo \u012fkeltas arba \u012fk\u0117limas nepavyko."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Neteisingas JSON failas. Pra\u0161ome \u012fkelti galiojant\u012f SSB eksportavimo fail\u0105."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Neteisingas failo formatas. Tai nepana\u0161u \u012f Paprast\u0173 socialini\u0173 mygtuk\u0173 eksportavimo fail\u0105."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Paprast\u0173 socialini\u0173 mygtuk\u0173 dalinimosi nustatymai s\u0117kmingai importuoti."
+            ],
+            "Export": [
+                "Eksportuoti"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Paprast\u0173 socialini\u0173 mygtuk\u0173 nustatymai s\u0117kmingai eksportuoti!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Eksportuoti paprast\u0173 socialini\u0173 mygtuk\u0173 nustatymus."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Papras\u010di\u0173 socialini\u0173 mygtuk\u0173<\/strong> k\u016br\u0117jas <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> prideda pa\u017eangi\u0105 socialini\u0173 tinkl\u0173 dalijimosi mygtuk\u0173 rinkin\u012f j\u016bs\u0173 WordPress svetain\u0117ms, tokias kaip: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> ir <strong>Pinterest<\/strong>. Tai daro j\u012f labiausiai lanks\u010diu socialinio dalijimosi papildiniu visiems."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Neteisingas failas. Pra\u0161ome \u012fkelti JSON fail\u0105, prasidedant\u012f nuo \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "Importavimas nepavyko. Pra\u0161ome bandyti dar kart\u0105."
+            ],
+            "Please select a valid file first.": [
+                "Pra\u0161ome pirmiausia pasirinkti galiojant\u012f fail\u0105."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "Saugumo patikra nepavyko arba serverio klaida. Pra\u0161ome atnaujinti ir bandyti dar kart\u0105."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Neteisingas atsakymas i\u0161 serverio. Pra\u0161ome bandyti dar kart\u0105."
+            ],
+            "An error occurred during import. Please try again.": [
+                "\u012ekeliant \u012fvyko klaida. Pra\u0161ome bandyti dar kart\u0105."
+            ],
+            "Export failed. Please try again.": [
+                "Eksportas nepavyko. Pra\u0161ome bandyti dar kart\u0105."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Importuoti & Eksportuoti paprast\u0173j\u0173 socialini\u0173 dalijimosi mygtuk\u0173 nustatymus"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importuokite\/eksportuokite savo socialini\u0173 dalijimosi nustatymus i\u0161\/kitiems svetain\u0117ms."
+            ],
+            "Drag and drop file here or": [
+                "Vilkti ir mesti fail\u0105 \u010dia arba"
+            ],
+            "Browse": [
+                "Nar\u0161yti"
+            ],
+            "Remove file": [
+                "Pa\u0161alinti fail\u0105"
+            ],
+            "Import Settings": [
+                "Importuoti nustatymus"
+            ],
+            "Importing settings...": [
+                "Importuojami nustatymai..."
+            ],
+            "Export Settings": [
+                "Eksporto nustatymai"
+            ],
+            "Exporting...": [
+                "Eksportuojama..."
+            ]
+        }
+    }
+}

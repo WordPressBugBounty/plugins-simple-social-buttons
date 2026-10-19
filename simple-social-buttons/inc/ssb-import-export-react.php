@@ -20,7 +20,8 @@ if ( class_exists( 'Ssb_Pro_React_Admin' ) || ! class_exists( 'Simple_Social_But
 echo '</div>';
 
 // Enqueue necessary scripts and styles for React component.
-wp_enqueue_script( 'ssb-import-export-react', plugins_url( '../build/import-export.js', __FILE__ ), array( 'wp-element' ), SSB_VERSION, true );
+wp_enqueue_script( 'ssb-import-export-react', plugins_url( '../build/import-export.js', __FILE__ ), array( 'wp-element', 'wp-i18n' ), SSB_VERSION, true );
+wp_set_script_translations( 'ssb-import-export-react', 'simple-social-buttons', SSB_PLUGIN_DIR . 'lang' );
 wp_enqueue_style( 'ssb-import-export-style', plugins_url( '../build/import-export.css', __FILE__ ), array(), SSB_VERSION );
 
 // Localize script for React component.

@@ -31,7 +31,7 @@ echo '</div>';
 			<div class="upload-file"><span>Upload File</span><input type="file" name="ssbImport" id="ssbImport" accept=".json"></div>
 			<input type="button" class="button ssb-import" value="<?php esc_html_e( 'Import', 'simple-social-buttons' ); ?>" disabled="disabled">
 			<span class="import-sniper">
-			<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>">
+			<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" alt="">
 			</span>
 			<span class="import-text"><?php esc_html_e( 'Simple Social Buttons Share Settings Imported Successfully.', 'simple-social-buttons' ); ?></span>
 			<span class="wrong-import"></span>
@@ -45,7 +45,7 @@ echo '</div>';
 		<td>
 			<input type="button" class="button ssb-export" value="<?php esc_html_e( 'Export', 'simple-social-buttons' ); ?>">
 			<span class="export-sniper">
-			<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>">
+			<img src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>" alt="">
 			</span>
 			<span class="export-text"><?php esc_html_e( 'Simple Social Button Settings Exported Successfully!', 'simple-social-buttons' ); ?></span>
 			<p class="description"><?php esc_html_e( 'Export Simple Social Button Settings.', 'simple-social-buttons' ); ?></p>

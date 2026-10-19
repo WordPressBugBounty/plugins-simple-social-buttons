@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:14+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de-DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Click to post": [
+                "Klicken, um zu posten"
+            ],
+            "Theme": [
+                "Thema"
+            ],
+            "select the style for click to post ": [
+                "W\u00e4hlen Sie den Stil f\u00fcr Klick zum Posten "
+            ],
+            "Content": [
+                "Inhalt"
+            ],
+            "Quote Content": [
+                "Zitatinhalt"
+            ],
+            "This text will be shown to the user.": [
+                "Dieser Text wird dem Benutzer angezeigt."
+            ],
+            "Tweet Content": [
+                "Tweet-Inhalt"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Dieser Text wird getwittert. Wenn er leer ist, wird der Zitatinhalt verwendet."
+            ],
+            " Configuration": [
+                "Konfiguration"
+            ],
+            "Show Tweet Button": [
+                "Tweet-Button anzeigen"
+            ],
+            "Include Page\/post Link": [
+                "Seiten-\/Beitrag-Link einf\u00fcgen"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n Der Link zu diesem Beitrag wird an den Tweet angeh\u00e4ngt. Wir haben einen Filter, wenn Sie ihn \u00e4ndern m\u00f6chten `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Inklusive \u00fcber @Benutzername"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "Der Twitter-Benutzername aus dem SSB-Einstellungs-Tab \"Erweitert\" wird am Ende des Tweets mit dem Text \u201evia @Benutzername\u201c angeh\u00e4ngt."
+            ],
+            "Enter your content ...": [
+                "Geben Sie Ihren Inhalt ein ..."
+            ],
+            "Configuration": [
+                "Konfiguration"
+            ],
+            "Share Counter": [
+                "Teilen-Z\u00e4hler"
+            ],
+            "Total Counts": [
+                "Gesamtanzahlen"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Unterst\u00fctzte Netzwerke: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,drucken,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Reihenfolge"
+            ],
+            "Align Left": [
+                "Links ausrichten"
+            ],
+            "Align Center": [
+                "Zentrieren"
+            ],
+            "Align Right": [
+                "Rechts ausrichten"
+            ]
+        }
+    }
+}

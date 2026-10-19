@@ -24,7 +24,7 @@ class Ssb_Logs_Info {
 	 *
 	 * @access public
 	 * @since 2.0.0
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 * @return string
 	 */
 	public static function ssb_get_sysinfo() {
@@ -49,7 +49,14 @@ class Ssb_Logs_Info {
 		$html .= 'Version:                  ' . get_bloginfo( 'version' ) . "\n";
 		$html .= 'Language:                 ' . get_locale() . "\n";
 		$html .= 'Table Prefix:             Length: ' . strlen( $wpdb->prefix ) . "\n";
-		$html .= 'WP_DEBUG:                 ' . ( defined( 'WP_DEBUG' ) ? WP_DEBUG ? 'Enabled' : 'Disabled' : 'Not set' ) . "\n";
+		if ( ! defined( 'WP_DEBUG' ) ) {
+			$wp_debug_status = 'Not set';
+		} elseif ( WP_DEBUG ) {
+			$wp_debug_status = 'Enabled';
+		} else {
+			$wp_debug_status = 'Disabled';
+		}
+		$html .= 'WP_DEBUG:                 ' . $wp_debug_status . "\n";
 		$html .= 'Memory Limit:             ' . WP_MEMORY_LIMIT . "\n";
 
 		// Plugin Configuration.
@@ -95,7 +102,6 @@ class Ssb_Logs_Info {
 
 		// PHP configs... now we're getting to the important stuff.
 		$html .= "\n" . '-- PHP Configuration --' . "\n\n";
-		$html .= 'Safe Mode:                ' . ( ini_get( 'safe_mode' ) ? 'Enabled' : 'Disabled' . "\n" );
 		$html .= 'Memory Limit:             ' . ini_get( 'memory_limit' ) . "\n";
 		$html .= 'Post Max Size:            ' . ini_get( 'post_max_size' ) . "\n";
 		$html .= 'Upload Max Filesize:      ' . ini_get( 'upload_max_filesize' ) . "\n";

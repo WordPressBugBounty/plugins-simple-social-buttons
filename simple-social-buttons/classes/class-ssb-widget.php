@@ -48,7 +48,7 @@ class Ssb_Follower_Widget extends WP_Widget {
 	 * @see WP_Widget::widget()
 	 * @access public
 	 * @since 2.0.5
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 */
 	public function widget( $args, $instance ) {
 		$before_widget = isset( $args['before_widget'] ) ? $args['before_widget'] : '';
@@ -88,7 +88,6 @@ class Ssb_Follower_Widget extends WP_Widget {
 
 		$pinterest_id           = ! empty( $instance['pinterest'] ) ? $instance['pinterest'] : '';
 		$pinterest_show_counter = ! empty( $instance['pinterest_show_counter'] ) ? $instance['pinterest_show_counter'] : '';
-		$pinterest_api_key      = ! empty( $instance['pinterest_api_key'] ) ? $instance['pinterest_api_key'] : '';
 		$pinterest_text         = ! empty( $instance['pinterest_text'] ) ? $instance['pinterest_text'] : '';
 
 		$instagram_id           = ! empty( $instance['instagram'] ) ? $instance['instagram'] : '';
@@ -124,12 +123,13 @@ class Ssb_Follower_Widget extends WP_Widget {
 	 * @access public
 	 * @since 2.0.5
 	 * @return mixed
+	 * @version 7.2.0
 	 */
 	public function form( $instance ) {
 		$display = '1';
 
 		// First time run when instance create.
-		if ( 0 === count( $instance ) ) {
+		if ( empty( $instance ) ) {
 			$instance['facebook_text']  = __( 'Follow us on Facebook', 'simple-social-buttons' );
 			$instance['youtube_text']   = __( 'Subscribe us on Youtube', 'simple-social-buttons' );
 			$instance['twitter_text']   = __( 'Follow us on Twitter', 'simple-social-buttons' );
@@ -320,7 +320,7 @@ class Ssb_Follower_Widget extends WP_Widget {
 	 *
 	 * @access public
 	 * @since 2.0.5
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 * @return mixed|void
 	 */
 	public function get_twitter_followers( $twitter_handle, $api_key, $secret_key, $show_count ) {
@@ -330,9 +330,6 @@ class Ssb_Follower_Widget extends WP_Widget {
 		$token_option    = 'ssb_follow_twitter_token_' . md5( (string) $api_key ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_md5
 		$token           = get_option( $token_option );
 		$transient_key   = 'ssb_follow_twitter_counter_' . md5( (string) $twitter_handle ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_md5
-
-		// Get follower count from cache.
-		$number_of_followers = get_transient( $transient_key );
 
 		if ( $show_count ) {
 
@@ -550,17 +547,15 @@ class Ssb_Follower_Widget extends WP_Widget {
 	 * @access public
 	 * @since 2.0.5
 	 * @return string
+	 * @version 7.2.0
 	 */
 	public function format_number( $value ) {
 		if ( $value > 999 && $value <= 999999 ) {
-			$result = floor( $value / 1000 ) . 'k+';
-			return $result;
+			return floor( $value / 1000 ) . 'k+';
 		} elseif ( $value > 999999 ) {
-			$result = floor( $value / 1000000 ) . 'm+';
-			return $result;
+			return floor( $value / 1000000 ) . 'm+';
 		} else {
-			$result = $value;
-			return $result;
+			return $value;
 		}
 	}
 } // end class Ssb_Follower_Widget

@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:27+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sr-RS",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Jednostavni dru\u0161tveni dugmadi"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "Provera bezbednosti nije uspela. Molimo osve\u017eite stranicu i poku\u0161ajte ponovo."
+            ],
+            "You do not have permission to import settings.": [
+                "Nemate dozvolu za uvoz postavki."
+            ],
+            "No file uploaded or upload failed.": [
+                "Nema fajla koji je otpremljen ili otpremanje nije uspelo."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Neva\u017ee\u0107a JSON datoteka. Molimo vas da otpremite va\u017ee\u0107u SSB izvoznu datoteku."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Neva\u017ee\u0107i format datoteke. Ovo ne izgleda kao izvozna datoteka Simple Social Buttons."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Pode\u0161avanja Simple Social Buttons za deljenje su uspe\u0161no uvezena."
+            ],
+            "Export": [
+                "Izvezi"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Pode\u0161avanja jednostavnog dru\u0161tvenog dugmeta su uspe\u0161no eksportovana!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Izvezi pode\u0161avanja jednostavnog dru\u0161tvenog dugmeta."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Jednostavna dru\u0161tvena dugmad<\/strong> od <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> dodaje napredni set dugmadi za deljenje na dru\u0161tvenim mre\u017eama na va\u0161e WordPress sajtove, kao \u0161to su: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> i <strong>Pinterest<\/strong>. Ovo ga \u010dini najfleksibilnijim dodatkom za deljenje na dru\u0161tvenim mre\u017eama za sve."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Neva\u017ee\u0107a datoteka. Molimo vas da otpremite JSON datoteku koja po\u010dinje sa \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "Uvoz nije uspeo. Molimo poku\u0161ajte ponovo."
+            ],
+            "Please select a valid file first.": [
+                "Molimo prvo odaberite va\u017ee\u0107u datoteku."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "Provera bezbednosti nije uspela ili je do\u0161lo do gre\u0161ke na serveru. Molimo osve\u017eite i poku\u0161ajte ponovo."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Neva\u017ee\u0107i odgovor sa servera. Molimo poku\u0161ajte ponovo."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Do\u0161lo je do gre\u0161ke prilikom uvoza. Molimo poku\u0161ajte ponovo."
+            ],
+            "Export failed. Please try again.": [
+                "Izvoz nije uspeo. Molimo poku\u0161ajte ponovo."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Uvoz & Izvoz pode\u0161avanja jednostavnog dugmeta za deljenje na dru\u0161tvenim mre\u017eama"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Uvoz\/Izvoz va\u0161ih pode\u0161avanja deljenja na dru\u0161tvenim mre\u017eama za\/sa drugih sajtova."
+            ],
+            "Drag and drop file here or": [
+                "Prevucite i ispustite datoteku ovde ili"
+            ],
+            "Browse": [
+                "Pretra\u017ei"
+            ],
+            "Remove file": [
+                "Ukloni datoteku"
+            ],
+            "Import Settings": [
+                "Uvezi pode\u0161avanja"
+            ],
+            "Importing settings...": [
+                "U\u010ditavanje pode\u0161avanja..."
+            ],
+            "Export Settings": [
+                "Pode\u0161avanja izvoza"
+            ],
+            "Exporting...": [
+                "Izvoz..."
+            ]
+        }
+    }
+}

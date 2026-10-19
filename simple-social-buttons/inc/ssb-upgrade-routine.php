@@ -4,8 +4,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-add_action( 'init', 'ssb_upgrade_routine_2' );
-add_action( 'init', 'ssb_upgrade_routine_71_share_counts' );
+add_action( 'init', 'ssb_run_upgrade_routines' );
+
+/**
+ * Run pending upgrade routines.
+ *
+ * Hooked to init (not upgrader_process_complete) so the routines run on the first
+ * request served by the new code, whatever the update method (dashboard, auto-update,
+ * zip upload or FTP). upgrader_process_complete fires while the old plugin files are
+ * still loaded, so a callback added in a new version never runs for its own update.
+ *
+ * Each routine is idempotent (early-returns when its flag option is set).
+ *
+ * @since 7.2.0
+ * @return void
+ */
+function ssb_run_upgrade_routines() {
+	ssb_upgrade_routine_2();
+	ssb_upgrade_routine_71_share_counts();
+	ssb_upgrade_routine_icon_space_values();
+}
 
 /**
  * Upgrade Routine for V 2.0
@@ -133,4 +151,49 @@ function ssb_upgrade_routine_71_share_counts() {
 	}
 
 	update_option( 'run_ssb_upgrade_routine_71_share_counts', 'yes' );
+}
+
+/**
+ * Normalize legacy icon_space_value strings that included CSS units (e.g. "20px").
+ *
+ * Older admin UI accepted free-text like "10px"; frontend CSS used absint() so
+ * spacing still worked. Fired on init via ssb_run_upgrade_routines().
+ *
+ * @since 7.2.0
+ * @return void
+ */
+function ssb_upgrade_routine_icon_space_values() {
+	if ( get_option( 'run_ssb_upgrade_routine_icon_space' ) ) {
+		return;
+	}
+
+	if ( ! function_exists( 'ssb_sanitize_icon_space_value' ) ) {
+		return;
+	}
+
+	$option_keys = array(
+		'ssb_inline',
+		'ssb_sidebar',
+		'ssb_media',
+		'ssb_flyin',
+		'ssb_popup',
+	);
+
+	foreach ( $option_keys as $option_key ) {
+		$settings = get_option( $option_key );
+		if ( ! is_array( $settings ) || ! array_key_exists( 'icon_space_value', $settings ) ) {
+			continue;
+		}
+
+		$raw       = $settings['icon_space_value'];
+		$sanitized = ssb_sanitize_icon_space_value( $raw );
+		if ( (string) $raw === (string) $sanitized ) {
+			continue;
+		}
+
+		$settings['icon_space_value'] = $sanitized;
+		update_option( $option_key, $settings );
+	}
+
+	update_option( 'run_ssb_upgrade_routine_icon_space', 'yes' );
 }

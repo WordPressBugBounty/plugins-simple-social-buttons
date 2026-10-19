@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:18+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "fr-FR",
+                "plural-forms": "nplurals=2; plural=(n > 1);"
+            },
+            "Simple Social Buttons": [
+                "Boutons de partage simples"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "\u00c9chec de la v\u00e9rification de s\u00e9curit\u00e9. Veuillez actualiser la page et r\u00e9essayer."
+            ],
+            "You do not have permission to import settings.": [
+                "Vous n'avez pas la permission d'importer des param\u00e8tres."
+            ],
+            "No file uploaded or upload failed.": [
+                "Aucun fichier t\u00e9l\u00e9charg\u00e9 ou \u00e9chec du t\u00e9l\u00e9chargement."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Fichier JSON invalide. Veuillez t\u00e9l\u00e9charger un fichier d'export SSB valide."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Format de fichier invalide. Cela ne semble pas \u00eatre un fichier d'export Simple Social Buttons."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Param\u00e8tres de partage des Simple Social Buttons import\u00e9s avec succ\u00e8s."
+            ],
+            "Export": [
+                "Exporter"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Param\u00e8tres du bouton social simple export\u00e9s avec succ\u00e8s !"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Exporter les param\u00e8tres du bouton social simple."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Boutons sociaux simples<\/strong> par <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> ajoute un ensemble avanc\u00e9 de boutons de partage sur les r\u00e9seaux sociaux \u00e0 vos sites WordPress, tels que : <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> et <strong>Pinterest<\/strong>. Cela en fait le plugin de partage social le plus flexible pour tout le monde."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Fichier invalide. Veuillez t\u00e9l\u00e9charger un fichier JSON commen\u00e7ant par \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "\u00c9chec de l'importation. Veuillez r\u00e9essayer."
+            ],
+            "Please select a valid file first.": [
+                "Veuillez d'abord s\u00e9lectionner un fichier valide."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "\u00c9chec de la v\u00e9rification de s\u00e9curit\u00e9 ou erreur serveur. Veuillez actualiser et r\u00e9essayer."
+            ],
+            "Invalid response from server. Please try again.": [
+                "R\u00e9ponse invalide du serveur. Veuillez r\u00e9essayer."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Une erreur est survenue lors de l'importation. Veuillez r\u00e9essayer."
+            ],
+            "Export failed. Please try again.": [
+                "\u00c9chec de l'exportation. Veuillez r\u00e9essayer."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Importer & Exporter les param\u00e8tres des boutons de partage social simples"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importer\/Exporter vos param\u00e8tres de partage social pour\/de autres sites."
+            ],
+            "Drag and drop file here or": [
+                "Faites glisser et d\u00e9posez le fichier ici ou"
+            ],
+            "Browse": [
+                "Parcourir"
+            ],
+            "Remove file": [
+                "Supprimer le fichier"
+            ],
+            "Import Settings": [
+                "Importer les param\u00e8tres"
+            ],
+            "Importing settings...": [
+                "Importation des param\u00e8tres..."
+            ],
+            "Export Settings": [
+                "Param\u00e8tres d'exportation"
+            ],
+            "Exporting...": [
+                "Exportation..."
+            ]
+        }
+    }
+}

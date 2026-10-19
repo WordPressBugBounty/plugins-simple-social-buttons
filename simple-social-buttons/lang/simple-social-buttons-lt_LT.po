@@ -1,0 +1,2510 @@
+# Copyright (C) 2026 WPBrigade
+# This file is distributed under the same license as the Simple Social Buttons plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: simplesocialbuttons\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Paweł Rabinek (DE: Dennis Schreiber) <pawel@rabinek.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2017-10-28 11:37+0500\n"
+"PO-Revision-Date: 2026-09-24 10:20+0000\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Domain: simple-social-buttons\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"(n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: lt-LT\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: simple-social-buttons.php
+#: classes/class-ssb-admin-bar-purge.php:80
+#: src/components/Help.jsx:40
+#: src/components/ImportExport.jsx:240
+#: src/index.js:597
+#. Plugin Name of the plugin
+msgid "Simple Social Buttons"
+msgstr "Paprasti socialiniai mygtukai"
+
+#: simple-social-buttons.php
+#. Plugin URI of the plugin
+msgid ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+msgstr ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+
+#: simple-social-buttons.php
+#. Description of the plugin
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your WordPress sites,"
+msgstr ""
+"Paprasti socialiniai mygtukai prideda pažangų socialinių tinklų dalijimosi "
+"mygtukų rinkinį jūsų WordPress svetainėms,"
+
+#: simple-social-buttons.php
+#. Author of the plugin
+msgid "WPBrigade"
+msgstr "WPBrigade"
+
+#: simple-social-buttons.php
+#. Author URI of the plugin
+msgid ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+msgstr ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+
+#: classes/class-ssb-admin-bar-purge.php:89
+msgid "Purge caches (30 recent posts/pages)"
+msgstr "Išvalyti talpyklas (30 naujausių įrašų/puslapių)"
+
+#: classes/class-ssb-admin-bar-purge.php:99
+msgid "Purge all (internal + API cache)"
+msgstr "Išvalyti viską (vidinė + API talpykla)"
+
+#: classes/class-ssb-admin-bar-purge.php:124
+msgid "You do not have permission to purge share caches."
+msgstr "Neturite leidimo išvalyti dalijimosi talpyklas."
+
+#: classes/class-ssb-admin-bar-purge.php:181
+#: classes/class-ssb-admin-bar-purge.php:313
+msgid "Purging all share caches in the background…"
+msgstr "Išvaloma visos dalijimosi talpyklos fone…"
+
+#: classes/class-ssb-admin-bar-purge.php:217
+#. translators: 1: posts processed, 2: internal queue flushes.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. No posts found "
+"for API refetch."
+msgstr ""
+"Išvalyti %1$d įrašai/puslapiai. Vidinė eilė išvalyta %2$d. Įrašų nerasta "
+"API pakartotiniam gavimui."
+
+#: classes/class-ssb-admin-bar-purge.php:230
+msgid "Internal share queue flushed. No posts found for API refetch."
+msgstr "Vidinė dalijimosi eilė išvalyta. Įrašų nerasta API pakartotiniam gavimui."
+
+#: classes/class-ssb-admin-bar-purge.php:253
+#. translators: %d: number of posts.
+msgid "Purging share caches for %d recent posts/pages in the background…"
+msgstr "Išvaloma dalijimosi talpyklos fone %d naujausiems įrašams/puslapiams…"
+
+#: classes/class-ssb-admin-bar-purge.php:274
+msgid "Purge all is not enabled on this site."
+msgstr "Išvalyti viską šioje svetainėje negalima."
+
+#: classes/class-ssb-admin-bar-purge.php:341
+msgid "The background purge could not be scheduled. Please try Purge All again."
+msgstr ""
+"Fono išvalymas negalėjo būti suplanuotas. Prašome bandyti Išvalyti viską "
+"dar kartą."
+
+#: classes/class-ssb-admin-bar-purge.php:355
+#. translators: 1: posts processed, 2: internal queue flushes, 3: API refetches.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. API counts "
+"refetched for %3$d."
+msgstr ""
+"Išvalyti %1$d įrašai/puslapiai. Vidinė eilė išvalyta %2$d. API skaičiai "
+"pakartotinai gauti %3$d."
+
+#: classes/class-ssb-admin-bar-purge.php:366
+#. translators: %d: number of posts.
+msgid "Purge all complete. API counts refetched for %d posts/pages."
+msgstr "Išvalymas baigtas. API skaičiai pakartotinai gauti %d įrašams/puslapiams."
+
+#: classes/class-ssb-admin-bar-purge.php:445
+#. translators: 1: done count, 2: total count.
+msgid "(%1$d / %2$d posts)"
+msgstr "(%1$d / %2$d įrašai)"
+
+#: classes/class-ssb-admin-bar-purge.php:556
+msgid "Permission denied"
+msgstr "Leidimas atmestas"
+
+#: classes/class-ssb-admin.php:238
+msgid "SSB Settings"
+msgstr "SSB Nuostatos"
+
+#: classes/class-ssb-admin.php:269
+msgid "Hide Simple Social Buttons"
+msgstr "Paslėpti Simple Social Buttons"
+
+#: classes/class-ssb-admin.php:336
+msgid "You are not allowed to perform this action."
+msgstr "Jums neleidžiama atlikti šios veiklos."
+
+#: classes/class-ssb-admin.php:342
+msgid "Security check failed."
+msgstr "Saugumo patikra nepavyko."
+
+#: classes/class-ssb-admin.php:511
+msgid "Leave A Review?"
+msgstr "Palikti atsiliepimą?"
+
+#: classes/class-ssb-admin.php:515
+msgid ""
+"We hope you've enjoyed using Simple Social Buttons!\n"
+"\t\t\t\tWould you consider leaving us a review on WordPress.org?"
+msgstr ""
+"Tikimės, kad jums patiko naudotis Paprastais socialiniais mygtukais! Ar "
+"apsvarstytumėte galimybę palikti mums atsiliepimą WordPress.org?"
+
+#: classes/class-ssb-admin.php:527
+msgid "Sure! I'd love to!"
+msgstr "Žinoma! Man labai patiktų!"
+
+#: classes/class-ssb-admin.php:533
+msgid "I've already left a review"
+msgstr "Aš jau palikau atsiliepimą"
+
+#: classes/class-ssb-admin.php:539
+msgid "Maybe Later"
+msgstr "Galbūt vėliau"
+
+#: classes/class-ssb-admin.php:545
+msgid "Never show again"
+msgstr "Niekuomet nerodyti vėl"
+
+#: classes/class-ssb-admin.php:664
+msgid "Vote!"
+msgstr "Balsuoti!"
+
+#: classes/class-ssb-admin.php:669
+msgid "Rate"
+msgstr "Įvertinti"
+
+#: classes/class-ssb-react-admin.php:268
+#: classes/class-ssb-react-admin.php:269
+#: classes/class-ssb-settings.php:83
+#: classes/class-ssb-settings.php:84
+msgid "Help"
+msgstr "Pagalba"
+
+#: classes/class-ssb-react-admin.php:278
+#: classes/class-ssb-settings.php:92
+msgid "Import and export settings"
+msgstr "Importuoti ir eksportuoti nustatymus"
+
+#: classes/class-ssb-react-admin.php:279
+#: classes/class-ssb-settings.php:93
+msgid "Import / Export"
+msgstr "Importuoti / Eksportuoti"
+
+#: classes/class-ssb-react-admin.php:311
+#: classes/class-ssb-react-admin.php:312
+#: classes/class-ssb-settings-structure.php:807
+msgid "Upgrade to Pro"
+msgstr "Atsinaujinti į Pro"
+
+#: classes/class-ssb-react-admin.php:571
+msgid "Overview"
+msgstr "Apžvalga"
+
+#: classes/class-ssb-react-admin.php:572
+msgid "This is the React-powered admin interface for Simple Social Buttons."
+msgstr ""
+"Tai yra React technologija paremta administravimo sąsaja Paprastiems "
+"socialiniams mygtukams."
+
+#: classes/class-ssb-react-admin.php:846
+msgid "Invalid data"
+msgstr "Neteisingi duomenys"
+
+#: classes/class-ssb-react-admin.php:862
+#: classes/class-ssb-react-admin.php:907
+#. translators: %s: invalid section name.
+msgid "Invalid settings section: %s"
+msgstr "Neteisinga nustatymų skiltis: %s"
+
+#: classes/class-ssb-react-admin.php:886
+msgid "Factory reset completed! All settings restored to defaults."
+msgstr "Gamykliniai nustatymai atkurti! Visi nustatymai grąžinti į numatytuosius."
+
+#: classes/class-ssb-react-admin.php:887
+msgid "All settings saved successfully!"
+msgstr "Visi nustatymai sėkmingai išsaugoti!"
+
+#: classes/class-ssb-settings-structure.php:479
+#: classes/class-ssb-settings.php:322
+#: classes/class-ssb-settings.php:479
+#: src/components/form-fields/SsbPostTypesField.jsx:14
+#: src/components/sections/SsbInlineSection.jsx:266
+#: src/components/sections/SsbSidebarSection.jsx:225
+msgid "Post Type Settings"
+msgstr "Įrašų tipo nustatymai"
+
+#: classes/class-ssb-settings-structure.php:805
+msgid "Support"
+msgstr "Pagalba"
+
+#: classes/class-ssb-settings-structure.php:837
+msgid "Documentation"
+msgstr "Dokumentacija"
+
+#: classes/class-ssb-settings-structure.php:884
+msgid "makes Social Sharing easy for everyone"
+msgstr "paverčia socialinį dalinimą lengvu visiems"
+
+#: classes/class-ssb-settings-structure.php:890
+#. translators: %1$s and %5$s are the opening strong tag, %2$s and %4$s are the closing strong tag.
+msgid ""
+"%1$sSimple Social Buttons%2$s by %1$s%3$sWPBrigade%4$s%5$s adds an advanced "
+"set of social media sharing buttons to your WordPress sites, such as:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s and %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tThis makes it the most flexible social sharing plugin ever for "
+"Everyone."
+msgstr ""
+"%1$sPaprasčiausi socialiniai mygtukai%2$s nuo %1$s%3$sWPBrigade%4$s%5$s "
+"prideda pažangų rinkinį socialinių tinklų dalinimosi mygtukų jūsų WordPress "
+"svetainėms, tokių kaip:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s ir %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tTai daro jį pačiu lanksčiausiu socialinio dalinimosi papildiniu "
+"visiems."
+
+#: classes/class-ssb-settings-structure.php:921
+#: src/components/widgets/SsbFollowPlugins.jsx:12
+msgid "Spread the Word"
+msgstr "Skleiskite žinias"
+
+#: classes/class-ssb-settings-structure.php:926
+#: src/components/widgets/SsbFollowPlugins.jsx:30
+#: src/components/widgets/SsbFollowPlugins.jsx:33
+msgid "Share on X/Twitter"
+msgstr "Dalinkitės X/Twitter"
+
+#: classes/class-ssb-settings-structure.php:930
+#: src/components/widgets/SsbFollowPlugins.jsx:19
+#: src/components/widgets/SsbFollowPlugins.jsx:22
+#, fuzzy
+msgid "Share on Facebook"
+msgstr "Paweł Rabinek Facebook socialiniame tinkle"
+
+#: classes/class-ssb-settings-structure.php:936
+#: src/components/widgets/SsbFollowPlugins.jsx:52
+#: src/components/widgets/SsbFollowPlugins.jsx:55
+msgid "Rate on WordPress.org"
+msgstr "Įvertinkite WordPress.org"
+
+#: classes/class-ssb-settings-structure.php:945
+msgid "Subscribe Newsletter"
+msgstr "Prenumeruoti naujienlaiškį"
+
+#: classes/class-ssb-settings-structure.php:948
+#: simple-social-buttons.php:2713
+#: simple-social-buttons.php:2722
+#: src/components/widgets/SsbNewsletterWidget.jsx:146
+#: src/utils/constants.js:135
+msgid "Email"
+msgstr "El. paštas"
+
+#: classes/class-ssb-settings-structure.php:953
+#: src/components/widgets/SsbNewsletterWidget.jsx:157
+msgid "Name"
+msgstr "Vardas"
+
+#: classes/class-ssb-settings-structure.php:969
+#: src/components/widgets/SsbRecommendedPlugins.jsx:38
+msgid "Recommended Plugins"
+msgstr "Rekomenduojami papildiniai"
+
+#: classes/class-ssb-settings-structure.php:973
+#: src/components/widgets/SsbRecommendedPlugins.jsx:11
+#: src/components/widgets/SsbRecommendedPlugins.jsx:13
+msgid "Customize WordPress Login Page"
+msgstr "Pridėti WordPress prisijungimo puslapio pritaikymą"
+
+#: classes/class-ssb-settings-structure.php:977
+#: src/components/widgets/SsbRecommendedPlugins.jsx:17
+#: src/components/widgets/SsbRecommendedPlugins.jsx:19
+msgid "Simplify Google Analytics in WordPress"
+msgstr "Supaprastinti Google Analytics WordPress"
+
+#: classes/class-ssb-settings-structure.php:981
+#: src/components/widgets/SsbRecommendedPlugins.jsx:23
+#: src/components/widgets/SsbRecommendedPlugins.jsx:25
+msgid "Related Posts Thumbnails"
+msgstr "Susijusių įrašų miniatiūros"
+
+#: classes/class-ssb-settings-structure.php:985
+#: src/components/widgets/SsbRecommendedPlugins.jsx:29
+#: src/components/widgets/SsbRecommendedPlugins.jsx:31
+msgid "Under Construction & Maintenance mode"
+msgstr "Statybos metu & Priežiūros režimas"
+
+#: classes/class-ssb-settings-structure.php:1293
+msgid "Choose File"
+msgstr "Pasirinkti failą"
+
+#: classes/class-ssb-settings-structure.php:1586
+msgid ""
+"Social media is about the people! Not about your business. Provide for the "
+"people and the people will provide you."
+msgstr ""
+"Socialiniai tinklai yra apie žmones! Ne apie jūsų verslą. Pasirūpinkite "
+"žmonėmis, ir žmonės pasirūpins jumis."
+
+#: classes/class-ssb-settings-structure.php:1593
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:65
+msgid "Click to post"
+msgstr "Paspauskite, kad paskelbtumėte"
+
+#: classes/class-ssb-settings.php:74
+#: classes/class-ssb-settings.php:75
+#: simple-social-buttons.php:529
+#: src/utils/constants.js:13
+msgid "Settings"
+msgstr "Nuostatos"
+
+#: classes/class-ssb-settings.php:111
+#: src/components/sections/SsbNetworksSection.jsx:272
+#, fuzzy
+msgid "Social Buttons"
+msgstr "Paslėpti Simple Social Buttons"
+
+#: classes/class-ssb-settings.php:116
+#: src/components/sections/SsbThemesSection.jsx:114
+msgid "Social Buttons Designs"
+msgstr "Socialinių mygtukų dizainai"
+
+#: classes/class-ssb-settings.php:121
+#: src/components/sections/SsbPositionsSection.jsx:34
+msgid "Social Buttons Positions"
+msgstr "Socialinių mygtukų padėtys"
+
+#: classes/class-ssb-settings.php:126
+#: classes/class-ssb-settings.php:215
+#: src/components/sections/SsbPositionsSection.jsx:23
+#: src/components/sections/SsbSidebarSection.jsx:82
+msgid "Sidebar"
+msgstr "Šoninė juosta"
+
+#: classes/class-ssb-settings.php:131
+#: src/components/sections/ProSections.jsx:113
+msgid "On Media"
+msgstr "Apie mediją"
+
+#: classes/class-ssb-settings.php:136
+#: classes/class-ssb-settings.php:218
+#: src/components/sections/ProSections.jsx:133
+#: src/components/sections/SsbPositionsSection.jsx:26
+msgid "Popup"
+msgstr "Iššokantis langas"
+
+#: classes/class-ssb-settings.php:141
+#: classes/class-ssb-settings.php:219
+#: src/components/sections/ProSections.jsx:153
+#: src/components/sections/SsbPositionsSection.jsx:27
+msgid "Fly In"
+msgstr "Skristi į"
+
+#: classes/class-ssb-settings.php:146
+#: src/components/sections/SsbInlineSection.jsx:98
+msgid "InLine"
+msgstr "Inline"
+
+#: classes/class-ssb-settings.php:151
+#: src/components/sections/SsbAdvancedTab.jsx:43
+msgid "Additional features"
+msgstr "Papildomos funkcijos"
+
+#: classes/class-ssb-settings.php:189
+msgid "Home"
+msgstr "Pradžia"
+
+#: classes/class-ssb-settings.php:216
+#: src/components/sections/SsbPositionsSection.jsx:24
+msgid "Inline"
+msgstr "Inline"
+
+#: classes/class-ssb-settings.php:217
+#: src/components/sections/SsbPositionsSection.jsx:25
+msgid "Media"
+msgstr "Media"
+
+#: classes/class-ssb-settings.php:226
+#: src/components/sections/SsbSidebarSection.jsx:97
+msgid "Sidebar Orientation"
+msgstr "Šoninės juostos orientacija"
+
+#: classes/class-ssb-settings.php:228
+#: classes/class-ssb-settings.php:357
+msgid "<h4>Display Settings</h4>"
+msgstr "<h4>Rodymo nustatymai</h4>"
+
+#: classes/class-ssb-settings.php:232
+#: classes/class-ssb-settings.php:373
+#: src/components/sections/SsbInlineSection.jsx:120
+#: src/components/sections/SsbSidebarSection.jsx:100
+msgid "Left"
+msgstr "Kairė"
+
+#: classes/class-ssb-settings.php:233
+#: classes/class-ssb-settings.php:375
+#: src/components/sections/SsbInlineSection.jsx:122
+#: src/components/sections/SsbSidebarSection.jsx:101
+msgid "Right"
+msgstr "Dešinė"
+
+#: classes/class-ssb-settings.php:239
+#: src/components/sections/SsbSidebarSection.jsx:107
+msgid "Intro Animation"
+msgstr "Įžangos animacija"
+
+#: classes/class-ssb-settings.php:243
+#: classes/class-ssb-settings.php:385
+#: src/components/sections/SsbInlineSection.jsx:131
+#: src/components/sections/SsbSidebarSection.jsx:110
+msgid "No"
+msgstr "Ne"
+
+#: classes/class-ssb-settings.php:244
+#: src/components/sections/SsbSidebarSection.jsx:111
+msgid "From Right"
+msgstr "Iš dešinės"
+
+#: classes/class-ssb-settings.php:245
+#: src/components/sections/SsbSidebarSection.jsx:112
+msgid "From Top"
+msgstr "Iš viršaus"
+
+#: classes/class-ssb-settings.php:246
+#: src/components/sections/SsbSidebarSection.jsx:113
+msgid "From Bottom"
+msgstr "Iš apačios"
+
+#: classes/class-ssb-settings.php:247
+#: src/components/sections/SsbSidebarSection.jsx:114
+msgid "From Left"
+msgstr "Iš kairės"
+
+#: classes/class-ssb-settings.php:248
+#: classes/class-ssb-settings.php:390
+#: src/components/sections/SsbInlineSection.jsx:136
+#: src/components/sections/SsbSidebarSection.jsx:115
+msgid "Fade In"
+msgstr "Išnykti"
+
+#: classes/class-ssb-settings.php:254
+#: classes/class-ssb-settings.php:396
+msgid ""
+"<p id=\"share-count-message\" >For Facebook share count you need to add "
+"Facebook App id and secret in the Social tab.</p>"
+msgstr ""
+"<p id=\"share-count-message\" >Norint gauti Facebook dalijimosi skaičių, "
+"reikia pridėti Facebook programos ID ir slaptažodį Socialiniame "
+"skirtuke.</p>"
+
+#: classes/class-ssb-settings.php:258
+#: classes/class-ssb-settings.php:400
+#: src/components/sections/SsbInlineSection.jsx:143
+#: src/components/sections/SsbSidebarSection.jsx:122
+msgid "Display Share Counts"
+msgstr "Rodyti dalijimosi skaičius"
+
+#: classes/class-ssb-settings.php:264
+#: classes/class-ssb-settings.php:406
+#: src/components/sections/SsbInlineSection.jsx:153
+#: src/components/sections/SsbSidebarSection.jsx:134
+msgid "Display Total Shares"
+msgstr "Rodyti bendrą dalijimų skaičių"
+
+#: classes/class-ssb-settings.php:270
+#: src/components/sections/SsbSidebarSection.jsx:176
+msgid "Display Text on hover"
+msgstr "Rodyti tekstą pelės užvedus"
+
+#: classes/class-ssb-settings.php:276
+#: src/components/sections/SsbSidebarSection.jsx:183
+msgid "Flat Button Style"
+msgstr "Plokščias mygtuko stilius"
+
+#: classes/class-ssb-settings.php:282
+#: classes/class-ssb-settings.php:412
+#: src/components/sections/SsbInlineSection.jsx:170
+#: src/components/sections/SsbSidebarSection.jsx:151
+msgid "Add Icon Spacing"
+msgstr "Pridėti piktogramų tarpą"
+
+#: classes/class-ssb-settings.php:289
+#: classes/class-ssb-settings.php:419
+#: src/components/sections/SsbInlineSection.jsx:179
+#: src/components/sections/SsbSidebarSection.jsx:160
+msgid "Enter the Space in Pixel"
+msgstr "Įveskite tarpą pikseliais"
+
+#: classes/class-ssb-settings.php:296
+#: src/components/sections/SsbSidebarSection.jsx:169
+msgid "Sticky Bottom (Mobile)"
+msgstr "Klijuojantis apačioje (mobiliesiems)"
+
+#: classes/class-ssb-settings.php:302
+#: classes/class-ssb-settings.php:426
+#: src/components/sections/SsbInlineSection.jsx:188
+#: src/components/sections/SsbSidebarSection.jsx:190
+msgid "Hide On Mobile Devices"
+msgstr "Slėpti mobiliesiems įrenginiams"
+
+#: classes/class-ssb-settings.php:308
+#: classes/class-ssb-settings.php:432
+#: src/components/sections/SsbInlineSection.jsx:195
+#: src/components/sections/SsbSidebarSection.jsx:197
+msgid "Limit Social Icons"
+msgstr "Apriboti socialinių piktogramų skaičių"
+
+#: classes/class-ssb-settings.php:315
+#: classes/class-ssb-settings.php:439
+#: src/components/sections/SsbInlineSection.jsx:213
+#: src/components/sections/SsbSidebarSection.jsx:215
+msgid "Maximum Icons to Show"
+msgstr "Maksimalus rodytinų piktogramų skaičius"
+
+#: classes/class-ssb-settings.php:323
+#: classes/class-ssb-settings.php:480
+#: classes/class-ssb-settings.php:653
+msgid "Multi checkbox description"
+msgstr "Daugiapakopės žymės aprašymas"
+
+#: classes/class-ssb-settings.php:335
+#: src/components/widgets/SsbGoProSection.jsx:14
+msgid "Want More Control Over Your Sidebar Social Buttons Styling?"
+msgstr ""
+"Norite daugiau kontrolės dėl savo šoninės juostos socialinių mygtukų "
+"stiliaus?"
+
+#: classes/class-ssb-settings.php:339
+#: classes/class-ssb-settings.php:496
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button,\n"
+"\t\t\t\t\t\tso they blend naturally with your website's design instead of "
+"standing out like a default plugin.\n"
+"\t\t\t\t\t\tButtons that fit your site tend to get clicked more, which "
+"means more shares and more traffic for you.\n"
+"\t\t\t\t\t\tPro also adds features like buttons on images, popups on exit "
+"intent, fly in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro leidžia nustatyti individualias fono, pelės "
+"užvedimo ir piktogramų spalvas kiekvienam mygtukui,\n"
+"\t\t\t\t\t\ttodėl jie natūraliai dera su jūsų svetainės dizainu, o ne "
+"išsiskiria kaip numatytasis įskiepis.\n"
+"\t\t\t\t\t\tMygtukai, kurie tinka jūsų svetainei, dažniau paspaudžiami, o "
+"tai reiškia daugiau dalijimų ir daugiau srauto jums.\n"
+"\t\t\t\t\t\tPro taip pat prideda funkcijas, kaip mygtukai ant nuotraukų, "
+"iššokantys langai išeinant, skaidrės animacijos ir dar daugiau."
+
+#: classes/class-ssb-settings.php:355
+#: src/components/sections/SsbInlineSection.jsx:110
+msgid "Icon Position"
+msgstr "Piktogramos padėtis"
+
+#: classes/class-ssb-settings.php:361
+#: src/components/sections/SsbInlineSection.jsx:22
+msgid "Above The Content"
+msgstr "Virš turinio"
+
+#: classes/class-ssb-settings.php:362
+#: src/components/sections/SsbInlineSection.jsx:23
+msgid "Below The Content"
+msgstr "Po turiniu"
+
+#: classes/class-ssb-settings.php:363
+#: src/components/sections/SsbInlineSection.jsx:24
+msgid "Above + Below The Content"
+msgstr "Virš + po turiniu"
+
+#: classes/class-ssb-settings.php:369
+#: src/components/sections/SsbInlineSection.jsx:117
+msgid "Icon Alignment"
+msgstr "Piktogramos lygiavimas"
+
+#: classes/class-ssb-settings.php:374
+#: src/components/sections/SsbInlineSection.jsx:121
+msgid "Centered"
+msgstr "Centrinis"
+
+#: classes/class-ssb-settings.php:381
+#: src/components/sections/SsbInlineSection.jsx:128
+msgid "Animation"
+msgstr "Animacija"
+
+#: classes/class-ssb-settings.php:386
+#: src/components/sections/SsbInlineSection.jsx:132
+msgid "From bottom"
+msgstr "Iš apačios"
+
+#: classes/class-ssb-settings.php:387
+#: src/components/sections/SsbInlineSection.jsx:133
+msgid "From top"
+msgstr "Iš viršaus"
+
+#: classes/class-ssb-settings.php:388
+#: src/components/sections/SsbInlineSection.jsx:134
+msgid "From left"
+msgstr "Iš kairės"
+
+#: classes/class-ssb-settings.php:389
+#: src/components/sections/SsbInlineSection.jsx:135
+msgid "From right"
+msgstr "Iš dešinės"
+
+#: classes/class-ssb-settings.php:446
+#: src/components/sections/SsbInlineSection.jsx:223
+#, fuzzy
+msgid "Show at Category pages"
+msgstr "Rodyti kategorijų puslapiuose"
+
+#: classes/class-ssb-settings.php:452
+#: src/components/sections/SsbInlineSection.jsx:230
+#, fuzzy
+msgid "Show at Archive pages"
+msgstr "Rodyti archyvo puslapiuose"
+
+#: classes/class-ssb-settings.php:459
+#: src/components/sections/SsbInlineSection.jsx:237
+#, fuzzy
+msgid "Show at Tag pages"
+msgstr "Rodyti gairių puslapiuose"
+
+#: classes/class-ssb-settings.php:465
+#: src/components/sections/SsbInlineSection.jsx:244
+msgid "Show at Search pages"
+msgstr "Rodyti paieškos puslapiuose"
+
+#: classes/class-ssb-settings.php:471
+#: src/components/sections/SsbInlineSection.jsx:252
+msgid "Share Title"
+msgstr "Bendrinti pavadinimą"
+
+#: classes/class-ssb-settings.php:492
+#: src/components/widgets/SsbGoProSection.jsx:19
+msgid "Want More Control Over Your Inline Social Buttons Styling?"
+msgstr "Norite daugiau kontroliuoti savo įterptųjų socialinių mygtukų stilių?"
+
+#: classes/class-ssb-settings.php:513
+msgid "Twitter/X @username:"
+msgstr "Twitter/X @vartotojo_vardas:"
+
+#: classes/class-ssb-settings.php:519
+msgid "Http/Https counts resolve:"
+msgstr "Http/Https skaičiavimai:"
+
+#: classes/class-ssb-settings.php:524
+#: src/components/sections/SsbAdvancedTab.jsx:55
+msgid "Internal Share Flush Interval"
+msgstr "Vidinis bendrinimo išvalymo intervalas"
+
+#: classes/class-ssb-settings.php:527
+msgid "1 hour"
+msgstr "1 valanda"
+
+#: classes/class-ssb-settings.php:528
+msgid "2 hours"
+msgstr "2 valandos"
+
+#: classes/class-ssb-settings.php:529
+msgid "3 hours"
+msgstr "3 valandos"
+
+#: classes/class-ssb-settings.php:530
+msgid "4 hours"
+msgstr "4 valandos"
+
+#: classes/class-ssb-settings.php:531
+msgid "5 hours"
+msgstr "5 valandų"
+
+#: classes/class-ssb-settings.php:532
+msgid "6 hours"
+msgstr "6 valandų"
+
+#: classes/class-ssb-settings.php:533
+msgid "7 hours"
+msgstr "7 valandų"
+
+#: classes/class-ssb-settings.php:534
+msgid "8 hours"
+msgstr "8 valandų"
+
+#: classes/class-ssb-settings.php:535
+msgid "9 hours"
+msgstr "9 valandų"
+
+#: classes/class-ssb-settings.php:536
+msgid "10 hours"
+msgstr "10 valandų"
+
+#: classes/class-ssb-settings.php:537
+msgid "11 hours"
+msgstr "11 valandų"
+
+#: classes/class-ssb-settings.php:538
+msgid "12 hours"
+msgstr "12 valandų"
+
+#: classes/class-ssb-settings.php:539
+msgid "13 hours"
+msgstr "13 valandų"
+
+#: classes/class-ssb-settings.php:540
+msgid "14 hours"
+msgstr "14 valandų"
+
+#: classes/class-ssb-settings.php:541
+msgid "15 hours"
+msgstr "15 valandų"
+
+#: classes/class-ssb-settings.php:542
+msgid "16 hours"
+msgstr "16 valandų"
+
+#: classes/class-ssb-settings.php:543
+msgid "17 hours"
+msgstr "17 valandų"
+
+#: classes/class-ssb-settings.php:544
+msgid "18 hours"
+msgstr "18 valandų"
+
+#: classes/class-ssb-settings.php:545
+msgid "19 hours"
+msgstr "19 valandų"
+
+#: classes/class-ssb-settings.php:546
+msgid "20 hours"
+msgstr "20 valandų"
+
+#: classes/class-ssb-settings.php:547
+msgid "21 hours"
+msgstr "21 valanda"
+
+#: classes/class-ssb-settings.php:548
+msgid "22 hours"
+msgstr "22 valandos"
+
+#: classes/class-ssb-settings.php:549
+msgid "23 hours"
+msgstr "23 valandos"
+
+#: classes/class-ssb-settings.php:550
+msgid "24 hours"
+msgstr "24 valandos"
+
+#: classes/class-ssb-settings.php:557
+#: src/components/sections/SsbAdvancedTab.jsx:73
+msgid "Open Graph Tags"
+msgstr "Atidaryti „Graph“ žymeles"
+
+#: classes/class-ssb-settings.php:565
+#: src/components/sections/SsbAdvancedTab.jsx:80
+msgid "Remove Settings on Uninstall"
+msgstr "Pašalinti nustatymus išinstaliavus"
+
+#: classes/class-ssb-settings.php:569
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s This tool will remove all Simple Social Button settings upon "
+"uninstall.%2$s"
+msgstr ""
+"%1$s Šis įrankis pašalins visus „Simple Social Button“ nustatymus "
+"išinstaliavus.%2$s"
+
+#: classes/class-ssb-settings.php:577
+#: src/components/sections/SsbAdvancedTab.jsx:88
+msgid "Factory Reset"
+msgstr "Gamykliniai nustatymai"
+
+#: classes/class-ssb-settings.php:581
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s Enable to reset all settings made by Simple Social Buttons upon "
+"saving.%2$s"
+msgstr ""
+"%1$s Įjungti, kad būtų atstatyti visi „Simple Social Buttons“ nustatymai "
+"išsaugant.%2$s"
+
+#: classes/class-ssb-settings.php:590
+#. translators: %1$s is the opening h4 tag, %2$s is the closing h4 tag, %3$s is the opening anchor tag, %4$s is the closing anchor tag.
+msgid "%1$sFacebook App%2$s %3$show to make App%4$s"
+msgstr "%1$sFacebook programa%2$s %3$srodyti, kad būtų sukurta programa%4$s"
+
+#: classes/class-ssb-settings.php:597
+msgid "Facebook App ID:"
+msgstr "Facebook programos ID:"
+
+#: classes/class-ssb-settings.php:604
+msgid "Facebook App Secret:"
+msgstr "Facebook programos paslaptis:"
+
+#: classes/class-ssb-settings.php:610
+#: src/components/sections/SsbAdvancedTab.jsx:99
+msgid "Custom CSS"
+msgstr "Pritaikyta CSS"
+
+#: classes/class-ssb-settings.php:617
+#: src/components/sections/SsbAdvancedTab.jsx:107
+msgid "Custom JS"
+msgstr "Pritaikyta JS"
+
+#: classes/class-ssb-settings.php:636
+msgid "Icon Style"
+msgstr "Piktogramos stilius"
+
+#: classes/class-ssb-settings.php:652
+msgid "Positions"
+msgstr "Pozicijos"
+
+#: classes/class-ssb-settings.php:666
+#: src/components/widgets/SsbGoProSection.jsx:24
+msgid "Want to Show Social Sharing Buttons on Your Media?"
+msgstr "Ar norite rodyti socialinių dalinimosi mygtukus savo medijoje?"
+
+#: classes/class-ssb-settings.php:670
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos\n"
+"\t\t\t\t\t\t\tacross your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site.\n"
+"\t\t\t\t\t\t\tYou can also hide them on mobile and control exactly which "
+"post types they appear on.\n"
+"\t\t\t\t\t\t\tIt's an easy way to turn every image into a shareable "
+"opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro leidžia jums rodyti dalinimosi mygtukus tiesiai "
+"ant paveikslėlių ir nuotraukų \n"
+"\t\t\t\t\t\t\tįvairiuose jūsų įrašuose ir puslapiuose, pasirinkti jų "
+"poziciją, pridėti piktogramos tarpą ir nustatyti \n"
+"\t\t\t\t\t\t\tpritaikytas spalvas, kurios atitinka jūsų svetainę. \n"
+"\t\t\t\t\t\t\tJūs taip pat galite jas paslėpti mobiliajame telefone ir "
+"kontroliuoti, tiksliai kuriuose įrašų tipuose \n"
+"\t\t\t\t\t\t\tjos rodysite. \n"
+"\t\t\t\t\t\t\tTai paprastas būdas paversti kiekvieną paveikslėlį dalinimosi "
+"galimybe ir pritraukti daugiau srauto."
+
+#: classes/class-ssb-settings.php:684
+#: src/components/widgets/SsbGoProSection.jsx:29
+msgid "Want Smart Popups That Trigger at the Right Moment?"
+msgstr "Ar norite išmanių iššokančių langų, kurie pasirodo tinkamu momentu?"
+
+#: classes/class-ssb-settings.php:688
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message,\n"
+"\t\t\t\t\t\t\tand trigger it exactly when it matters, like before visitors "
+"leave or after they scroll.\n"
+"\t\t\t\t\t\t\tYou can add animation, display share counts or total shares "
+"to build social proof, and set custom colors to match your brand.\n"
+"\t\t\t\t\t\t\tIt's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro leidžia jums sukurti pritaikytą dalinimosi "
+"iššokantį langą su savo pavadinimu ir žinute, \n"
+"\t\t\t\t\t\t\tir aktyvuoti jį būtent tada, kai tai svarbu, pavyzdžiui, "
+"prieš išvykstant lankytojams arba po to, kai jie \n"
+"\t\t\t\t\t\t\tperkelia puslapį. \n"
+"\t\t\t\t\t\t\tJūs galite pridėti animaciją, rodyti dalinimosi skaičius arba "
+"bendrą dalinimosi skaičių, kad sukurtumėte socialinį \n"
+"\t\t\t\t\t\t\tįrodymą, ir nustatyti pritaikytas spalvas, kad atitiktų jūsų "
+"prekės ženklą. \n"
+"\t\t\t\t\t\t\tTai išmanus būdas pritraukti lankytojų dėmesį, kai jie "
+"labiausiai linkę dalintis."
+
+#: classes/class-ssb-settings.php:702
+#: src/components/widgets/SsbGoProSection.jsx:34
+msgid "Want Advanced Fly In Animations That Drive More Shares?"
+msgstr "Ar norite pažangių \"Fly In\" animacijų, kurios skatina daugiau dalinimosi?"
+
+#: classes/class-ssb-settings.php:706
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message,\n"
+"\t\t\t\t\t\t\tchoose its position and animation, and even display share "
+"counts or total shares to build social proof.\n"
+"\t\t\t\t\t\t\tYou can fine-tune timing, icon spacing, and colors to match "
+"your brand, and control which post types it appears on.\n"
+"\t\t\t\t\t\t\tIt's a great way to prompt visitors to share right when "
+"they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro leidžia jums sukurti pritaikytą \"Fly In\" "
+"langelį su savo pavadinimu ir žinute, \n"
+"\t\t\t\t\t\t\tpasirinkti jo poziciją ir animaciją, ir netgi rodyti "
+"dalinimosi skaičius arba bendrą dalinimosi skaičių, \n"
+"\t\t\t\t\t\t\tkad sukurtumėte socialinį įrodymą. \n"
+"\t\t\t\t\t\t\tJūs galite tiksliai nustatyti laiką, piktogramos tarpą ir "
+"spalvas, kad atitiktų jūsų prekės ženklą, ir \n"
+"\t\t\t\t\t\t\tkontroliuoti, kuriuose įrašų tipuose jis pasirodys. \n"
+"\t\t\t\t\t\t\tTai puikus būdas paskatinti lankytojus dalintis, kai jie yra "
+"labiausiai įsitraukę."
+
+#: classes/class-ssb-settings.php:817
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid "Free support is available on the %1$s plugin support forums%2$s."
+msgstr "Nemokama parama yra prieinama %1$spluginų palaikymo forumuose%2$s."
+
+#: classes/class-ssb-settings.php:825
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid ""
+"For premium features, add-ons and priority email support, %1$s upgrade to "
+"pro%2$s."
+msgstr ""
+"Norėdami gauti premium funkcijas, priedus ir prioritetinę el. pašto paramą, "
+"%1$satnaujinkite į pro%2$s."
+
+#: classes/class-ssb-settings.php:836
+#: src/components/Help.jsx:107
+msgid "Download Log File"
+msgstr "Atsisiųsti žurnalo failą"
+
+#: classes/class-ssb-settings.php:916
+#: src/components/ImportExport.jsx:92
+msgid "Security check failed. Please refresh the page and try again."
+msgstr "Saugumo patikra nepavyko. Prašome atnaujinti puslapį ir bandyti dar kartą."
+
+#: classes/class-ssb-settings.php:926
+#: src/components/ImportExport.jsx:93
+msgid "You do not have permission to import settings."
+msgstr "Neturite leidimo importuoti nustatymų."
+
+#: classes/class-ssb-settings.php:940
+#: src/components/ImportExport.jsx:94
+msgid "No file uploaded or upload failed."
+msgstr "Failas nebuvo įkeltas arba įkėlimas nepavyko."
+
+#: classes/class-ssb-settings.php:951
+msgid "The uploaded file is too large."
+msgstr "Įkeltas failas yra per didelis."
+
+#: classes/class-ssb-settings.php:963
+msgid "Please upload a valid JSON export file."
+msgstr "Prašome įkelti galiojantį JSON eksporto failą."
+
+#: classes/class-ssb-settings.php:977
+#: src/components/ImportExport.jsx:95
+msgid "Invalid JSON file. Please upload a valid SSB export file."
+msgstr "Neteisingas JSON failas. Prašome įkelti galiojantį SSB eksportavimo failą."
+
+#: classes/class-ssb-settings.php:984
+#: src/components/ImportExport.jsx:96
+msgid ""
+"Invalid file format. This does not appear to be a Simple Social Buttons "
+"export file."
+msgstr ""
+"Neteisingas failo formatas. Tai nepanašu į Paprastų socialinių mygtukų "
+"eksportavimo failą."
+
+#: classes/class-ssb-settings.php:1027
+msgid "Settings imported successfully."
+msgstr "Nustatymai sėkmingai importuoti."
+
+#: classes/class-ssb-widget.php:37
+msgid "Display Follow Button For your site"
+msgstr "Rodyti sekimo mygtuką jūsų svetainėje"
+
+#: classes/class-ssb-widget.php:39
+msgid "Social Follow Widget"
+msgstr "Socialinio sekimo valdiklis"
+
+#: classes/class-ssb-widget.php:132
+msgid "Follow us on Facebook"
+msgstr "Sekite mus Facebook'e"
+
+#: classes/class-ssb-widget.php:133
+msgid "Subscribe us on Youtube"
+msgstr "Prenumeruokite mus Youtube'e"
+
+#: classes/class-ssb-widget.php:134
+msgid "Follow us on Twitter"
+msgstr "Sekite mus Twitter'yje"
+
+#: classes/class-ssb-widget.php:135
+msgid "Follow us on Pinterest"
+msgstr "Sekite mus Pinterest'e"
+
+#: classes/class-ssb-widget.php:136
+msgid "Follow us on Instagram"
+msgstr "Sekite mus Instagram'e"
+
+#: classes/class-ssb-widget.php:137
+msgid "Contact us on WhatsApp"
+msgstr "Susisiekite su mumis WhatsApp'e"
+
+#: classes/class-ssb-widget.php:141
+msgid "Follow Us"
+msgstr "Sekite mus"
+
+#: inc/ssb-import-export.php:22
+msgid "Import/Export Simple Social Share Buttons Settings"
+msgstr "Importuoti/eksportuoti Paprastų socialinių dalinimosi mygtukų nustatymus"
+
+#: inc/ssb-import-export.php:23
+msgid "Import/Export your Social share button Settings for/from other sites."
+msgstr ""
+"Importuoti/eksportuoti savo socialinių dalinimosi mygtukų nustatymus "
+"iš/kitiems svetainėms."
+
+#: inc/ssb-import-export.php:28
+msgid "Import Settings:"
+msgstr "Importuoti nustatymus:"
+
+#: inc/ssb-import-export.php:32
+msgid "Import"
+msgstr "Importuoti"
+
+#: inc/ssb-import-export.php:36
+#: src/components/ImportExport.jsx:146
+msgid "Simple Social Buttons Share Settings Imported Successfully."
+msgstr "Paprastų socialinių mygtukų dalinimosi nustatymai sėkmingai importuoti."
+
+#: inc/ssb-import-export.php:38
+msgid "Select a file and click on Import to start processing."
+msgstr "Pasirinkite failą ir spustelėkite Importuoti, kad pradėtumėte apdorojimą."
+
+#: inc/ssb-import-export.php:43
+msgid "Export Settings:"
+msgstr "Eksportuoti nustatymus:"
+
+#: inc/ssb-import-export.php:46
+#: src/components/ImportExport.jsx:374
+msgid "Export"
+msgstr "Eksportuoti"
+
+#: inc/ssb-import-export.php:50
+#: src/components/ImportExport.jsx:207
+msgid "Simple Social Button Settings Exported Successfully!"
+msgstr "Paprastų socialinių mygtukų nustatymai sėkmingai eksportuoti!"
+
+#: inc/ssb-import-export.php:51
+#: src/components/ImportExport.jsx:390
+msgid "Export Simple Social Button Settings."
+msgstr "Eksportuoti paprastų socialinių mygtukų nustatymus."
+
+#: inc/ssb-widget-fields.php:15
+msgid "Title:"
+msgstr "Pavadinimas:"
+
+#: inc/ssb-widget-fields.php:35
+#: inc/ssb-widget-fields.php:103
+#: simple-social-buttons.php:2147
+#: src/components/sections/SsbThemesSection.jsx:73
+#: src/utils/constants.js:129
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/ssb-widget-fields.php:47
+#: inc/ssb-widget-fields.php:217
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/ssb-widget-fields.php:59
+#: inc/ssb-widget-fields.php:314
+msgid "YouTube"
+msgstr "YouTube"
+
+#: inc/ssb-widget-fields.php:71
+#: inc/ssb-widget-fields.php:394
+#: simple-social-buttons.php:2429
+#: simple-social-buttons.php:2439
+#: src/utils/constants.js:128
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: inc/ssb-widget-fields.php:83
+#: inc/ssb-widget-fields.php:457
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/ssb-widget-fields.php:95
+#: inc/ssb-widget-fields.php:523
+#: simple-social-buttons.php:2568
+#: simple-social-buttons.php:2577
+#: src/utils/constants.js:132
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: inc/ssb-widget-fields.php:106
+msgid "Facebook Button Text"
+msgstr "Facebook mygtuko tekstas"
+
+#: inc/ssb-widget-fields.php:120
+msgid "Facebook Page Name:"
+msgstr "Facebook puslapio pavadinimas:"
+
+#: inc/ssb-widget-fields.php:140
+msgid "Display Facebook like counter"
+msgstr "Rodyti Facebook patiktukų skaitiklį"
+
+#: inc/ssb-widget-fields.php:151
+msgid "Facebook App Id:"
+msgstr "Facebook programos ID:"
+
+#: inc/ssb-widget-fields.php:163
+msgid "Facebook Security Key:"
+msgstr "Facebook saugumo raktas:"
+
+#: inc/ssb-widget-fields.php:175
+msgid "Facebook Access Token: "
+msgstr "Facebook prieigos ženklas: "
+
+#: inc/ssb-widget-fields.php:194
+#: inc/ssb-widget-fields.php:291
+msgid "Default count to show instead of 0 when API's are not available."
+msgstr "Numatytasis skaičius rodyti vietoj 0, kai API nėra pasiekiami."
+
+#: inc/ssb-widget-fields.php:220
+msgid "Twitter Button Text:"
+msgstr "Twitter mygtuko tekstas:"
+
+#: inc/ssb-widget-fields.php:233
+msgid "Twitter Handle:"
+msgstr "Twitter naudotojo vardas:"
+
+#: inc/ssb-widget-fields.php:254
+msgid "Display Twitter follower counter"
+msgstr "Rodyti Twitter sekėjų skaitiklį"
+
+#: inc/ssb-widget-fields.php:264
+msgid "Twitter Api Key: "
+msgstr "Twitter API raktas: "
+
+#: inc/ssb-widget-fields.php:279
+msgid "Twitter Secret Key:"
+msgstr "Twitter slaptas raktas:"
+
+#: inc/ssb-widget-fields.php:317
+msgid "YouTube Button Text:"
+msgstr "YouTube mygtuko tekstas:"
+
+#: inc/ssb-widget-fields.php:331
+msgid "Type :"
+msgstr "Tipas :"
+
+#: inc/ssb-widget-fields.php:335
+msgid "Channel"
+msgstr "Kanalas"
+
+#: inc/ssb-widget-fields.php:338
+msgid "Username"
+msgstr "Vartotojo vardas"
+
+#: inc/ssb-widget-fields.php:345
+msgid "YouTube Channel ID:"
+msgstr "YouTube kanalo ID:"
+
+#: inc/ssb-widget-fields.php:363
+msgid "Display YouTube subscriber counter"
+msgstr "Rodyti YouTube prenumeratorių skaitiklį"
+
+#: inc/ssb-widget-fields.php:373
+msgid "YouTube Api Key: "
+msgstr "YouTube API raktas: "
+
+#: inc/ssb-widget-fields.php:397
+msgid "Pinterest Button Text:"
+msgstr "Pinterest mygtuko tekstas:"
+
+#: inc/ssb-widget-fields.php:410
+msgid "Pinterest User ID:"
+msgstr "Pinterest vartotojo ID:"
+
+#: inc/ssb-widget-fields.php:429
+msgid "Display Pinterest follower counter"
+msgstr "Rodyti Pinterest sekėjų skaitiklį"
+
+#: inc/ssb-widget-fields.php:435
+msgid "Printerest Access Token: "
+msgstr "Pinterest prieigos raktas: "
+
+#: inc/ssb-widget-fields.php:460
+msgid "Instagram Button Text:"
+msgstr "Instagram mygtuko tekstas:"
+
+#: inc/ssb-widget-fields.php:473
+msgid "Instagram User Name:"
+msgstr "Instagram vartotojo vardas:"
+
+#: inc/ssb-widget-fields.php:492
+msgid "Display Instagram follower counter"
+msgstr "Rodyti Instagram sekėjų skaitiklį"
+
+#: inc/ssb-widget-fields.php:501
+msgid "Instagram Access Token: "
+msgstr "Instagram prieigos raktas: "
+
+#: inc/ssb-widget-fields.php:526
+msgid "WhatsApp Button Text:"
+msgstr "WhatsApp mygtuko tekstas:"
+
+#: inc/ssb-widget-fields.php:539
+msgid "WhatsApp Mobile Number:"
+msgstr "WhatsApp mobiliojo telefono numeris:"
+
+#: simple-social-buttons.php:452
+#: simple-social-buttons.php:453
+msgid "Activate"
+msgstr "Aktyvuoti"
+
+#: simple-social-buttons.php:539
+#. translators: %1$s: opening anchor tag, %2$s: closing anchor tag, %3$s: opening span tag, %4$s: closing span tag.
+msgid "%1$s %3$s Upgrade Pro %4$s %2$s"
+msgstr "%1$s %3$s Atnaujinti Pro %4$s %2$s"
+
+#: simple-social-buttons.php:968
+#. translators: %d: interval in hours.
+msgid "SSB Internal Share Flush (every %d hours)"
+msgstr "SSB vidinis dalinimosi atnaujinimas (kas %d valandų)"
+
+#: simple-social-buttons.php:1410
+msgid "Hide social sharing bar"
+msgstr "Paslėpti socialinio dalinimosi juostą"
+
+#: simple-social-buttons.php:1411
+msgid "Show social sharing bar"
+msgstr "Rodyti socialinio dalinimosi juostą"
+
+#: simple-social-buttons.php:2130
+#: simple-social-buttons.php:2145
+msgid "Facebook Share"
+msgstr "Facebook dalinimasis"
+
+#: simple-social-buttons.php:2136
+#: simple-social-buttons.php:2374
+#: simple-social-buttons.php:3082
+#: src/components/sections/SsbThemesSection.jsx:35
+#: src/components/sections/SsbThemesSection.jsx:57
+msgid "Share"
+msgstr "Dalintis"
+
+#: simple-social-buttons.php:2162
+#: simple-social-buttons.php:2177
+msgid "Bluesky Share"
+msgstr "Bluesky dalinimasis"
+
+#: simple-social-buttons.php:2169
+#: simple-social-buttons.php:2179
+#: src/utils/constants.js:139
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: simple-social-buttons.php:2193
+#: simple-social-buttons.php:2208
+msgid "Telegram Share"
+msgstr "Telegram dalinimasis"
+
+#: simple-social-buttons.php:2200
+#: simple-social-buttons.php:2210
+#: src/utils/constants.js:140
+msgid "Telegram"
+msgstr "Telegram"
+
+#: simple-social-buttons.php:2239
+msgid "threads Share"
+msgstr "threads dalinimasis"
+
+#: simple-social-buttons.php:2247
+#: simple-social-buttons.php:2257
+#: src/utils/constants.js:141
+msgid "Threads"
+msgstr "Threads"
+
+#: simple-social-buttons.php:2255
+msgid "Threads Share"
+msgstr "Threads dalinimasis"
+
+#: simple-social-buttons.php:2276
+#: simple-social-buttons.php:2293
+msgid "Twitter/X Share"
+msgstr "Twitter/X dalinimasis"
+
+#: simple-social-buttons.php:2282
+#: simple-social-buttons.php:2284
+#: src/components/sections/SsbThemesSection.jsx:45
+msgid "Post"
+msgstr "Paskelbti"
+
+#: simple-social-buttons.php:2295
+#: src/components/sections/SsbSocialTab.jsx:60
+#: src/components/sections/SsbThemesSection.jsx:78
+#: src/utils/constants.js:127
+msgid "Twitter/X"
+msgstr "Twitter/X"
+
+#: simple-social-buttons.php:2309
+msgid "Copy"
+msgstr "Kopijuoti"
+
+#: simple-social-buttons.php:2319
+#: simple-social-buttons.php:2335
+#: src/utils/constants.js:136
+msgid "Copy Link"
+msgstr "Kopijuoti nuorodą"
+
+#: simple-social-buttons.php:2339
+msgid "Copied"
+msgstr "Kopijuota"
+
+#: simple-social-buttons.php:2364
+#: simple-social-buttons.php:2383
+msgid "LinkedIn Share"
+msgstr "LinkedIn dalinimasis"
+
+#: simple-social-buttons.php:2385
+#: src/components/sections/SsbThemesSection.jsx:83
+#: src/utils/constants.js:130
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: simple-social-buttons.php:2422
+#: simple-social-buttons.php:2436
+msgid "Pinterest Share"
+msgstr "Pinterest dalijimasis"
+
+#: simple-social-buttons.php:2453
+msgid "Shares"
+msgstr "Dalijimasis"
+
+#: simple-social-buttons.php:2514
+#: simple-social-buttons.php:2531
+msgid "Reddit Share"
+msgstr "Reddit dalijimasis"
+
+#: simple-social-buttons.php:2522
+#: simple-social-buttons.php:2533
+#: src/utils/constants.js:131
+msgid "Reddit"
+msgstr "Reddit"
+
+#: simple-social-buttons.php:2561
+#: simple-social-buttons.php:2575
+msgid "WhatsApp Share"
+msgstr "WhatsApp dalijimasis"
+
+#: simple-social-buttons.php:2640
+#: simple-social-buttons.php:2653
+msgid "Viber Share"
+msgstr "Viber dalijimasis"
+
+#: simple-social-buttons.php:2644
+msgid "Viber icon"
+msgstr "Viber ikona"
+
+#: simple-social-buttons.php:2646
+#: simple-social-buttons.php:2655
+#: src/utils/constants.js:133
+msgid "Viber"
+msgstr "Viber"
+
+#: simple-social-buttons.php:2671
+#: simple-social-buttons.php:2687
+msgid "Facebook Messenger Share"
+msgstr "Facebook Messenger dalijimasis"
+
+#: simple-social-buttons.php:2681
+#: simple-social-buttons.php:2689
+#: src/utils/constants.js:134
+msgid "Messenger"
+msgstr "Messenger"
+
+#: simple-social-buttons.php:2704
+#: simple-social-buttons.php:2719
+msgid "Share through Email"
+msgstr "Dalijimasis per El. paštą"
+
+#: simple-social-buttons.php:2730
+msgid "Print The Post"
+msgstr "Spausdinti įrašą"
+
+#: simple-social-buttons.php:2748
+#: simple-social-buttons.php:2763
+#: src/utils/constants.js:137
+msgid "Print"
+msgstr "Spausdinti"
+
+#: simple-social-buttons.php:2761
+msgid "Print Share"
+msgstr "Spausdinti dalijimąsi"
+
+#: simple-social-buttons.php:2776
+#: simple-social-buttons.php:2798
+msgid "Tumblr Share"
+msgstr "Tumblr dalijimasis"
+
+#: simple-social-buttons.php:2791
+#: simple-social-buttons.php:2799
+#: src/utils/constants.js:138
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: simple-social-buttons.php:2817
+#: simple-social-buttons.php:2831
+msgid "Line Share"
+msgstr "Line dalijimasis"
+
+#: simple-social-buttons.php:2824
+#: simple-social-buttons.php:2831
+#: src/utils/constants.js:142
+msgid "Line"
+msgstr "Line"
+
+#: simple-social-buttons.php:2846
+#: simple-social-buttons.php:2855
+msgid "Mastodon Share"
+msgstr "Mastodon dalijimasis"
+
+#: simple-social-buttons.php:2851
+#: simple-social-buttons.php:2855
+#: src/utils/constants.js:143
+msgid "Mastodon"
+msgstr "Mastodon"
+
+#: simple-social-buttons.php:2867
+#: simple-social-buttons.php:2879
+msgid "VK Share"
+msgstr "VK Dalinimasis"
+
+#: simple-social-buttons.php:2875
+#: simple-social-buttons.php:2879
+#: src/utils/constants.js:144
+msgid "VK"
+msgstr "VK"
+
+#: simple-social-buttons.php:2896
+#: simple-social-buttons.php:2905
+msgid "Snapchat Share"
+msgstr "Snapchat Dalinimasis"
+
+#: simple-social-buttons.php:2899
+#: simple-social-buttons.php:2907
+#: src/components/sections/SsbSocialTab.jsx:121
+#: src/utils/constants.js:145
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: simple-social-buttons.php:3069
+#: simple-social-buttons.php:3078
+#: simple-social-buttons.php:3225
+msgid "More share options"
+msgstr "Daugiau dalinimosi parinkčių"
+
+#: simple-social-buttons.php:3081
+msgid "Close"
+msgstr "Uždaryti"
+
+#: simple-social-buttons.php:3326
+msgid "Simple Social Buttons 2.0 (Relaunched)"
+msgstr "Paprasti socialiniai mygtukai 2.0 (Perdaryta)"
+
+#: simple-social-buttons.php:3329
+msgid ""
+"Simple Social Buttons had 50,000 Active installs and It was abondoned and "
+"rarely updated since last 5 years.<br />\n"
+"\t\t\t\t\tWe at <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\tadopted this plugin and rewrote it completely from scratch.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tCheck out</a> What's new in 2.0 version.<br /> Pardon me, If "
+"there is anything broken. Please\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">report</a> us any issue you see in the plugin."
+msgstr ""
+"Paprasti socialiniai mygtukai turėjo 50,000 aktyvių įdiegimų, tačiau buvo "
+"apleisti ir retai atnaujinami per paskutinius 5 metus.<br />\n"
+"\t\t\t\t\tMes <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\tpriėmėme šį papildinį ir visiškai perrašėme jį iš naujo.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tSužinokite</a> kas naujo 2.0 versijoje.<br /> Atsiprašome, jei "
+"yra kokių nors klaidų. Prašome\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">pranešti</a> mums apie bet kokias problemas, kurias "
+"pastebėjote šiame papildinyje."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:23
+#: blocks/shortcode/settings.js:23
+msgid "Theme"
+msgstr "Tema"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:38
+msgid "select the style for click to post "
+msgstr "pasirinkite stilių, kad paskelbtumėte "
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:45
+msgid "Content"
+msgstr "Turinys"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:51
+msgid "Quote Content"
+msgstr "Cituoti turinį"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:53
+msgid "This text will be shown to the user."
+msgstr "Šis tekstas bus rodomas vartotojui."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:57
+msgid "Tweet Content"
+msgstr "Tweet turinys"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:59
+msgid "This text will be tweet . if empty Quote content will be used."
+msgstr "Šis tekstas bus tweet'inamas. jei tuščias, bus naudojamas cituoti turinys."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:66
+msgid " Configuration"
+msgstr "Konfigūracija"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:72
+msgid "Show Tweet Button"
+msgstr "Rodyti Tweet mygtuką"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:77
+msgid "Include Page/post Link"
+msgstr "Įtraukti puslapio/įrašo nuorodą"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:80
+msgid ""
+"\n"
+" Link to this post will be appended to the Tweet. we have a filter if you "
+"want to modify it `ssb_ctt_url`."
+msgstr ""
+"Nuoroda į šį įrašą bus pridėta prie Tweet. turime filtrą, jei norite jį "
+"modifikuoti `ssb_ctt_url`."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:83
+msgid "Include via @username"
+msgstr "Įtraukti per @vartotojo_vardą"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:86
+msgid ""
+"\n"
+" Twitter username from SSB Settings Advanced tab will be appended to the "
+"end of the Tweet with the text “via @username”."
+msgstr ""
+"Twitter vartotojo vardas iš SSB nustatymų Išplėstinis skirtukas bus "
+"pridėtas prie Tweet pabaigos su tekstu “per @username”."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:59
+msgid "Enter your content ..."
+msgstr "Įveskite savo turinį ..."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:44
+msgid "Configuration"
+msgstr "Konfigūracija"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:50
+msgid "Share Counter"
+msgstr "Bendrinimo skaitiklis"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:58
+msgid "Total Counts"
+msgstr "Bendri skaičiavimai"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:68
+msgid ""
+"Supported Networks: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+msgstr ""
+"Palaikomos tinklai: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:70
+msgid "Order"
+msgstr "Tvarka"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:25
+msgid "Align Left"
+msgstr "Lygiuoti kairėje"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:30
+msgid "Align Center"
+msgstr "Lygiuoti centre"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:35
+msgid "Align Right"
+msgstr "Lygiuoti dešinėje"
+
+#: src/components/ErrorBoundary.jsx:30
+msgid "Settings Error"
+msgstr "Nustatymų klaida"
+
+#: src/components/ErrorBoundary.jsx:33
+msgid ""
+"Something went wrong with the settings page. Please refresh the page to try "
+"again."
+msgstr ""
+"Kažkas negerai su nustatymų puslapiu. Prašome atnaujinti puslapį, kad "
+"bandytumėte dar kartą."
+
+#: src/components/ErrorBoundary.jsx:36
+msgid "Error Details"
+msgstr "Klaidos detalės"
+
+#: src/components/ErrorBoundary.jsx:44
+msgid "Refresh Page"
+msgstr "Atnaujinti puslapį"
+
+#: src/components/form-fields/SsbCheckboxField.jsx:77
+msgid "Toggle setting"
+msgstr "Perjungti nustatymą"
+
+#: src/components/form-fields/SsbColorField.jsx:99
+msgid "Select Color"
+msgstr "Pasirinkti spalvą"
+
+#: src/components/form-fields/SsbColorField.jsx:129
+msgid "Clear"
+msgstr "Išvalyti"
+
+#: src/components/form-fields/SsbColorField.jsx:142
+msgid "Done"
+msgstr "Atlikta"
+
+#: src/components/form-fields/SsbIconSpaceField.jsx:53
+msgid "Enter a whole number of pixels from 1 to 999. The value was adjusted."
+msgstr "Įveskite visą skaičių pikselių nuo 1 iki 999. Vertė buvo koreguota."
+
+#: src/components/form-fields/SsbSelectField.jsx:265
+msgid "Select..."
+msgstr "Pasirinkti..."
+
+#: src/components/Help.jsx:29
+msgid "Simple Social Buttons Log File Downloaded Successfully!"
+msgstr "Paprasčių socialinių mygtukų žurnalo failas sėkmingai atsisiųstas!"
+
+#: src/components/Help.jsx:41
+#: src/components/ImportExport.jsx:241
+#: src/index.js:598
+msgid ""
+"<strong>Simple Social Buttons</strong> by <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> adds "
+"an advanced set of social media sharing buttons to your WordPress sites, "
+"such as: <strong>Facebook</strong>, <strong>Twitter/X</strong>, "
+"<strong>LinkedIn</strong>, <strong>WhatsApp</strong>, "
+"<strong>Viber</strong>, <strong>Reddit</strong> and "
+"<strong>Pinterest</strong>. This makes it the most flexible social sharing "
+"plugin for everyone."
+msgstr ""
+"<strong>Paprasčių socialinių mygtukų</strong> kūrėjas <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> "
+"prideda pažangią socialinių tinklų dalijimosi mygtukų rinkinį jūsų "
+"WordPress svetainėms, tokias kaip: <strong>Facebook</strong>, "
+"<strong>Twitter/X</strong>, <strong>LinkedIn</strong>, "
+"<strong>WhatsApp</strong>, <strong>Viber</strong>, <strong>Reddit</strong> "
+"ir <strong>Pinterest</strong>. Tai daro jį labiausiai lanksčiu socialinio "
+"dalijimosi papildiniu visiems."
+
+#: src/components/Help.jsx:47
+msgid "Help & Troubleshooting"
+msgstr "Pagalba & Nustatymų sprendimas"
+
+#: src/components/Help.jsx:52
+msgid "Free support is available on the %splugin support forums%s."
+msgstr "Nemokama pagalba yra prieinama %spluginų palaikymo forumuose%s."
+
+#: src/components/Help.jsx:66
+msgid ""
+"For premium features, add-ons and priority email support, %supgrade to "
+"pro%s."
+msgstr ""
+"Dėl premium funkcijų, papildinių ir prioritetinio el. pašto palaikymo, "
+"%supgrade to pro%s."
+
+#: src/components/Help.jsx:80
+msgid "Found a bug or have a feature request? Please submit an issue %shere!%s"
+msgstr ""
+"Radote klaidą arba turite funkcijos prašymą? Prašome pateikti problemą "
+"%shere!%s"
+
+#: src/components/ImportExport.jsx:51
+msgid "Invalid file. Please upload a JSON file starting with \"ssb\"."
+msgstr "Neteisingas failas. Prašome įkelti JSON failą, prasidedantį nuo \"ssb\"."
+
+#: src/components/ImportExport.jsx:98
+msgid "Import failed. Please try again."
+msgstr "Importavimas nepavyko. Prašome bandyti dar kartą."
+
+#: src/components/ImportExport.jsx:106
+msgid "Please select a valid file first."
+msgstr "Prašome pirmiausia pasirinkti galiojantį failą."
+
+#: src/components/ImportExport.jsx:159
+msgid "Security check failed or server error. Please refresh and try again."
+msgstr ""
+"Saugumo patikra nepavyko arba serverio klaida. Prašome atnaujinti ir "
+"bandyti dar kartą."
+
+#: src/components/ImportExport.jsx:161
+msgid "Invalid response from server. Please try again."
+msgstr "Neteisingas atsakymas iš serverio. Prašome bandyti dar kartą."
+
+#: src/components/ImportExport.jsx:165
+msgid "An error occurred during import. Please try again."
+msgstr "Įkeliant įvyko klaida. Prašome bandyti dar kartą."
+
+#: src/components/ImportExport.jsx:231
+msgid "Export failed. Please try again."
+msgstr "Eksportas nepavyko. Prašome bandyti dar kartą."
+
+#: src/components/ImportExport.jsx:246
+msgid "Import & Export Simple Social Share Button Settings"
+msgstr "Importuoti & Eksportuoti paprastųjų socialinių dalijimosi mygtukų nustatymus"
+
+#: src/components/ImportExport.jsx:248
+msgid "Import/Export your Social share Settings for/from other sites."
+msgstr ""
+"Importuokite/eksportuokite savo socialinių dalijimosi nustatymus iš/kitiems "
+"svetainėms."
+
+#: src/components/ImportExport.jsx:292
+msgid "Drag and drop file here or"
+msgstr "Vilkti ir mesti failą čia arba"
+
+#: src/components/ImportExport.jsx:293
+msgid "Browse"
+msgstr "Naršyti"
+
+#: src/components/ImportExport.jsx:319
+msgid "Remove file"
+msgstr "Pašalinti failą"
+
+#: src/components/ImportExport.jsx:335
+msgid "Import Settings"
+msgstr "Importuoti nustatymus"
+
+#: src/components/ImportExport.jsx:344
+msgid "Importing settings..."
+msgstr "Importuojami nustatymai..."
+
+#: src/components/ImportExport.jsx:366
+msgid "Export Settings"
+msgstr "Eksporto nustatymai"
+
+#: src/components/ImportExport.jsx:374
+msgid "Exporting..."
+msgstr "Eksportuojama..."
+
+#: src/components/sections/ProSections.jsx:114
+msgid "Control how share buttons appear on images and media within your posts."
+msgstr ""
+"Valdykite, kaip dalijimosi mygtukai atrodo jūsų įrašuose esančiose "
+"nuotraukose ir medijoje."
+
+#: src/components/sections/ProSections.jsx:134
+msgid "Configure your share popup: set the message, timing, and trigger behavior."
+msgstr ""
+"Konfigūruokite savo dalijimosi iššokantį langą: nustatykite pranešimą, "
+"laiką ir aktyvavimo elgesį."
+
+#: src/components/sections/ProSections.jsx:154
+msgid "Set up a slide-in share prompt with custom messaging, position, and timing"
+msgstr ""
+"Sukurkite slenkantį dalijimosi pranešimą su individualizuotu pranešimu, "
+"pozicija ir laiku"
+
+#: src/components/sections/SsbAdvancedTab.jsx:49
+msgid "HTTP/HTTPS Counts Resolve"
+msgstr "HTTP/HTTPS skaičiavimai"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hour"
+msgstr "valanda"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hours"
+msgstr "valandos"
+
+#: src/components/sections/SsbAdvancedTab.jsx:64
+msgid ""
+"Internal share click counts are recorded for supported networks (for "
+"example Twitter/X, LinkedIn, WhatsApp) when visitors use the sharing "
+"buttons on your site. Counts are stored locally and are not sent to those "
+"social networks. Clear your page cache after upgrading the plugin so button "
+"markup stays in sync."
+msgstr ""
+"Vidiniai dalijimosi paspaudimų skaičiai yra fiksuojami palaikomose "
+"socialinėse tinkluose (pvz., Twitter/X, LinkedIn, WhatsApp), kai lankytojai "
+"naudoja dalijimosi mygtukus jūsų svetainėje. Skaičiai saugomi lokaliai ir "
+"nėra siunčiami į šias socialines tinklus. Išvalykite savo puslapio talpyklą "
+"po papildinio atnaujinimo, kad mygtukų žymėjimas išliktų suderintas."
+
+#: src/components/sections/SsbAdvancedTab.jsx:82
+msgid "Enable to remove all settings upon uninstalling the plugin."
+msgstr "Įjungti, kad pašalintumėte visus nustatymus, pašalinus papildinį."
+
+#: src/components/sections/SsbAdvancedTab.jsx:90
+msgid "Enable to reset all settings back to default upon saving."
+msgstr "Įjungti, kad atstatytumėte visus nustatymus į numatytuosius, kai išsaugote."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:26
+#: src/utils/constants.js:17
+msgid "Click To Post"
+msgstr "Paspauskite, kad paskelbtumėte"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:29
+msgid "Unlock Click to Tweet Feature with Pro!"
+msgstr "Atrakinkite Paspauskite, kad Tweet funkciją su Pro!"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:30
+msgid ""
+"Get the powerful Click to Tweet functionality that lets you create "
+"engaging, tweetable content directly in your posts. This Pro feature helps "
+"increase social engagement and drive more traffic to your site."
+msgstr ""
+"Gaukite galingą Paspauskite, kad Tweet funkcionalumą, leidžiantį kurti "
+"įtraukiančią, tweetinamą turinį tiesiai savo įrašuose. Ši Pro funkcija "
+"padeda padidinti socialinį įsitraukimą ir pritraukti daugiau srauto į jūsų "
+"svetainę."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:36
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Upgrade"
+msgstr "Paspauskite čia, kad atnaujintumėte"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:55
+#: src/components/sections/SsbNextGenGalleryTab.jsx:29
+msgid "Loading Pro settings..."
+msgstr "Kraunamos Pro nustatymai..."
+
+#: src/components/sections/SsbInlineSection.jsx:44
+#: src/components/sections/SsbSidebarSection.jsx:31
+msgid "Loading Pro component..."
+msgstr "Kraunamas Pro komponentas..."
+
+#: src/components/sections/SsbInlineSection.jsx:101
+msgid "Configure how your inline share buttons appear within your content."
+msgstr "Konfigūruokite, kaip jūsų vidiniai dalijimosi mygtukai atrodo jūsų turinyje."
+
+#: src/components/sections/SsbInlineSection.jsx:146
+#: src/components/sections/SsbSidebarSection.jsx:126
+msgid ""
+"For Facebook share count you need to add Facebook App ID and Secret in the "
+"Social tab."
+msgstr ""
+"Norint gauti Facebook dalijimosi skaičių, reikia pridėti Facebook "
+"Programėlės ID ir Slaptažodį Socialiniame skirtuke."
+
+#: src/components/sections/SsbInlineSection.jsx:199
+msgid ""
+"Show only a set number of icons in your content. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"Rodyti tik nustatytą ikonų skaičių jūsų turinyje. Likusios ikonėlės "
+"atsidaro iššokančiame lange, kai lankytojai paspaudžia + mygtuką."
+
+#: src/components/sections/SsbInlineSection.jsx:257
+msgid ""
+"This text appears on your site as a heading above the inline share buttons. "
+"It is not used as the title when someone shares your content on social "
+"networks."
+msgstr ""
+"Šis tekstas rodomas jūsų svetainėje kaip antraštė virš inline dalijimosi "
+"mygtukų. Jis nenaudojamas kaip pavadinimas, kai kas nors dalijasi jūsų "
+"turiniu socialiniuose tinkluose."
+
+#: src/components/sections/SsbNetworksSection.jsx:134
+msgid "Press Enter to move to Inactive."
+msgstr "Paspauskite Enter, kad pereitumėte prie Neaktyvus."
+
+#: src/components/sections/SsbNetworksSection.jsx:135
+msgid "Press Enter to move to Active."
+msgstr "Paspauskite Enter, kad pereitumėte prie Aktyvus."
+
+#: src/components/sections/SsbNetworksSection.jsx:136
+msgid "Use Up and Down arrow keys to reorder."
+msgstr "Naudokite aukštyn ir žemyn rodyklių klavišus, kad pertvarkytumėte."
+
+#: src/components/sections/SsbNetworksSection.jsx:181
+#: src/components/sections/SsbNetworksSection.jsx:261
+msgid "Drop here"
+msgstr "Numeskite čia"
+
+#: src/components/sections/SsbNetworksSection.jsx:219
+msgid "Pro"
+msgstr "Pro"
+
+#: src/components/sections/SsbNetworksSection.jsx:236
+msgid "Edit"
+msgstr "Redaguoti"
+
+#: src/components/sections/SsbNetworksSection.jsx:251
+msgid "Drop at end of list"
+msgstr "Numeskite sąrašo pabaigoje"
+
+#: src/components/sections/SsbNetworksSection.jsx:275
+msgid "Drag & Drop to activate and reorder your share buttons:"
+msgstr ""
+"Tempkite ir numeskite, kad aktyvuotumėte ir pertvarkytumėte savo dalijimosi "
+"mygtukus:"
+
+#: src/components/sections/SsbNetworksSection.jsx:280
+msgid "Active"
+msgstr "Aktyvus"
+
+#: src/components/sections/SsbNetworksSection.jsx:284
+msgid "Inactive"
+msgstr "Neaktyvus"
+
+#: src/components/sections/SsbNextGenGalleryTab.jsx:27
+msgid "Simple Social Buttons on NextGEN Gallery"
+msgstr "Paprasti socialiniai mygtukai NextGEN galerijoje"
+
+#: src/components/sections/SsbPositionsSection.jsx:38
+msgid "Select the display styles to position your share buttons."
+msgstr "Pasirinkite rodymo stilius, kad pozicionuotumėte savo dalijimosi mygtukus."
+
+#: src/components/sections/SsbSidebarSection.jsx:87
+msgid "Configure the appearance and behavior of your sidebar share buttons."
+msgstr "Konfigūruokite savo šoninės juostos dalijimosi mygtukų išvaizdą ir elgseną."
+
+#: src/components/sections/SsbSidebarSection.jsx:201
+msgid ""
+"Show only a set number of icons in the sidebar. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"Rodyti tik nustatytą ikonų skaičių šoninėje juostoje. Likusios ikonos "
+"atsidaro iškylančiame lange, kai lankytojai paspaudžia + mygtuką."
+
+#: src/components/sections/SsbSocialTab.jsx:62
+msgid ""
+"Add your X username to append via= to Twitter/X share links from your "
+"buttons."
+msgstr ""
+"Pridėkite savo X vartotojo vardą, kad pridėtumėte via= prie Twitter/X "
+"dalijimosi nuorodų iš savo mygtukų."
+
+#: src/components/sections/SsbSocialTab.jsx:72
+msgid "Twitter/X @username"
+msgstr "Twitter/X @vartotojo_vardas"
+
+#: src/components/sections/SsbSocialTab.jsx:81
+msgid "Facebook App"
+msgstr "Facebook programa"
+
+#: src/components/sections/SsbSocialTab.jsx:88
+msgid "How to create a Facebook app"
+msgstr "Kaip sukurti Facebook programą"
+
+#: src/components/sections/SsbSocialTab.jsx:96
+msgid "Facebook App ID"
+msgstr "Facebook programos ID"
+
+#: src/components/sections/SsbSocialTab.jsx:100
+msgid ""
+"Required for Facebook share counts. Add your App ID and Secret from the "
+"Facebook developer portal."
+msgstr ""
+"Būtina Facebook dalijimosi skaičiams. Pridėkite savo programos ID ir slaptą "
+"kodą iš Facebook kūrėjų portalo."
+
+#: src/components/sections/SsbSocialTab.jsx:112
+msgid "Facebook App Secret"
+msgstr "Facebook programos slaptas kodas"
+
+#: src/components/sections/SsbSocialTab.jsx:123
+msgid ""
+"Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat "
+"app with your page link ready to share."
+msgstr ""
+"Snapchat naudoja Snap Creative Kit Web, todėl mobilieji lankytojai atidaro "
+"Snapchat programą su jūsų puslapio nuoroda, paruošta dalijimuisi."
+
+#: src/components/sections/SsbSocialTab.jsx:133
+msgid "Snap Kit Client ID (optional)"
+msgstr "Snap Kit kliento ID (neprivaloma)"
+
+#: src/components/sections/SsbSocialTab.jsx:137
+msgid ""
+"Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit "
+"developer portal. Sharing works without it."
+msgstr ""
+"Nepaprasta. Pridėkite savo Snap Kit kliento ID, kad priskirtumėte dalijimus "
+"Snap Kit kūrėjų portale. Dalijimasis veikia ir be jo."
+
+#: src/components/sections/SsbSocialTab.jsx:147
+msgid "How it works"
+msgstr "Kaip tai veikia"
+
+#: src/components/sections/SsbSocialTab.jsx:150
+msgid "Add Snapchat from the Settings tab like any other button."
+msgstr "Pridėkite Snapchat iš nustatymų skilties, kaip bet kurį kitą mygtuką."
+
+#: src/components/sections/SsbSocialTab.jsx:156
+msgid ""
+"On mobile, tapping the button opens the Snapchat app share flow for the "
+"current page."
+msgstr ""
+"Mobiliajame telefone paspaudus mygtuką, atsidaro Snapchat programos "
+"dalijimosi srautas dabartiniam puslapiui."
+
+#: src/components/sections/SsbSocialTab.jsx:162
+msgid ""
+"On desktop, a Snapcode window opens so users can scan and share from their "
+"phone."
+msgstr ""
+"Darbalaukyje atsidaro Snapcode langas, kad naudotojai galėtų nuskaityti ir "
+"dalintis iš savo telefono."
+
+#: src/components/sections/SsbSocialTab.jsx:168
+msgid ""
+"Keep Open Graph tags enabled so Snapchat can show your page title and "
+"preview."
+msgstr ""
+"Išlaikykite Open Graph žymes įjungtas, kad Snapchat galėtų rodyti jūsų "
+"puslapio pavadinimą ir peržiūrą."
+
+#: src/components/sections/SsbThemesSection.jsx:62
+msgid "Official Buttons"
+msgstr "Oficialūs mygtukai"
+
+#: src/components/sections/SsbThemesSection.jsx:118
+msgid "Choose a button style that fits your site's look and feel."
+msgstr ""
+"Pasirinkite mygtuko stilių, kuris atitinka jūsų svetainės išvaizdą ir "
+"pojūtį."
+
+#: src/components/SsbPurgeNotice.jsx:87
+#: src/components/SsbPurgeNotice.jsx:91
+#: src/utils/formHelpers.js:241
+msgid "Dismiss this notice."
+msgstr "Atmesti šį pranešimą."
+
+#: src/components/SsbStickySaveBar.jsx:305
+#: src/index.js:689
+#: src/index.js:704
+msgid "Dismiss"
+msgstr "Atmesti"
+
+#: src/components/widgets/SsbFollowPlugins.jsx:41
+#: src/components/widgets/SsbFollowPlugins.jsx:44
+msgid "Share on LinkedIn"
+msgstr "Dalintis LinkedIn"
+
+#: src/components/widgets/SsbGoProSection.jsx:15
+#: src/components/widgets/SsbGoProSection.jsx:20
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button, so they blend naturally with your website's design "
+"instead of standing out like a default plugin. Buttons that fit your site "
+"tend to get clicked more, which means more shares and more traffic for you. "
+"Pro also adds features like buttons on images, popups on exit intent, fly "
+"in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro leidžia nustatyti individualias fono, užvedimo ir "
+"ikonos spalvas kiekvienam mygtukui, kad jie natūraliai derėtų su jūsų "
+"svetainės dizainu, o ne išsiskirtų kaip numatytasis papildinys. Mygtukai, "
+"kurie tinka jūsų svetainei, dažniau paspaudžiami, o tai reiškia daugiau "
+"dalijimosi ir daugiau srauto jums. Pro taip pat prideda funkcijas, tokias "
+"kaip mygtukai ant vaizdų, iššokantys langai, kai ketinama išeiti, skaidrės "
+"animacijos ir kt."
+
+#: src/components/widgets/SsbGoProSection.jsx:25
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos across your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site. You can also hide them "
+"on mobile and control exactly which post types they appear on. It's an easy "
+"way to turn every image into a shareable opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro leidžia jums rodyti dalijimosi mygtukus "
+"tiesiogiai ant vaizdų ir nuotraukų jūsų įrašuose ir puslapiuose, pasirinkti "
+"jų padėtį, pridėti ikonos tarpus ir nustatyti individualias spalvas, kurios "
+"atitinka jūsų svetainę. Taip pat galite juos paslėpti mobiliajame telefone "
+"ir tiksliai kontroliuoti, kuriuose įrašų tipuose jie pasirodo. Tai lengvas "
+"būdas paversti kiekvieną vaizdą dalijimosi galimybe ir pritraukti daugiau "
+"srauto."
+
+#: src/components/widgets/SsbGoProSection.jsx:30
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message, and trigger it exactly when it matters, like before "
+"visitors leave or after they scroll. You can add animation, display share "
+"counts or total shares to build social proof, and set custom colors to "
+"match your brand. It's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro leidžia jums sukurti individualų dalijimosi "
+"iššokantį langą su savo pavadinimu ir žinute ir suaktyvinti jį tiksliai "
+"tada, kai tai svarbu, pavyzdžiui, prieš lankytojams išeinant arba po to, "
+"kai jie slenka. Galite pridėti animaciją, rodyti dalijimosi skaičius arba "
+"bendrą dalijimų skaičių, kad sukurtumėte socialinį įrodymą, ir nustatyti "
+"individualias spalvas, kad jos atitiktų jūsų prekės ženklą. Tai protingas "
+"būdas atkreipti lankytojų dėmesį būtent tada, kai jie yra labiausiai linkę "
+"dalintis."
+
+#: src/components/widgets/SsbGoProSection.jsx:35
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message, choose its position and animation, and even display "
+"share counts or total shares to build social proof. You can fine-tune "
+"timing, icon spacing, and colors to match your brand, and control which "
+"post types it appears on. It's a great way to prompt visitors to share "
+"right when they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro leidžia jums sukurti individualų Fly In langelį "
+"su savo pavadinimu ir žinute, pasirinkti jo padėtį ir animaciją, o taip pat "
+"rodyti dalijimosi skaičius arba bendrą dalijimų skaičių, kad sukurtumėte "
+"socialinį įrodymą. Galite tiksliai sureguliuoti laiką, ikonos tarpus ir "
+"spalvas, kad jos atitiktų jūsų prekės ženklą, ir kontroliuoti, kuriuose "
+"įrašų tipuose jis pasirodo. Tai puikus būdas paskatinti lankytojus dalintis "
+"būtent tada, kai jie yra labiausiai įsitraukę."
+
+#: src/components/widgets/SsbGoProSection.jsx:68
+#: src/components/widgets/SsbGoProSection.jsx:72
+msgid "Failed to activate the plugin."
+msgstr "Nepavyko aktyvuoti papildinio."
+
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Activate Pro"
+msgstr "Spustelėkite čia, kad aktyvuotumėte Pro"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:74
+msgid "Please enter your email."
+msgstr "Prašome įvesti savo el. paštą."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:83
+msgid "Please enter a valid email address."
+msgstr "Prašome įvesti galiojantį el. pašto adresą."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:108
+#: src/components/widgets/SsbNewsletterWidget.jsx:123
+msgid "Failed to subscribe."
+msgstr "Nepavyko užsiprenumeruoti."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:116
+msgid "Thank you!"
+msgstr "Ačiū!"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:124
+msgid "Please try again."
+msgstr "Prašome bandyti dar kartą."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:135
+msgid "Newsletter"
+msgstr "Naujienlaiškis"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:169
+msgid "Subscribing"
+msgstr "Užsiprenumeruojama"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:170
+msgid "Subscribe"
+msgstr "Prenumeruoti"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:183
+#: src/components/widgets/SsbNewsletterWidget.jsx:205
+msgid "Dismiss notice"
+msgstr "Atmesti pranešimą"
+
+#: src/components/widgets/SsbSidebar.jsx:36
+msgid "Upgrade to Pro!"
+msgstr "Aukite į Pro!"
+
+#: src/components/widgets/SsbSidebar.jsx:38
+msgid ""
+"Unlock premium features designed to help you increase engagement, boost "
+"visibility, and save time."
+msgstr ""
+"Atblokokite premium funkcijas, sukurtas padėti jums padidinti įsitraukimą, "
+"pagerinti matomumą ir sutaupyti laiko."
+
+#: src/components/widgets/SsbSidebar.jsx:48
+msgid "Unlimited Websites:"
+msgstr "Neribotos svetainės:"
+
+#: src/components/widgets/SsbSidebar.jsx:49
+msgid "Use SSB Pro across all your sites (no limits)"
+msgstr "Naudokite SSB Pro visose savo svetainėse (be ribų)"
+
+#: src/components/widgets/SsbSidebar.jsx:52
+msgid "Priority Support:"
+msgstr "Prioritetinė pagalba:"
+
+#: src/components/widgets/SsbSidebar.jsx:53
+msgid "Get fast, friendly help from our expert support team when you need it."
+msgstr ""
+"Gaukite greitą, draugišką pagalbą iš mūsų ekspertų palaikymo komandos, kai "
+"jos reikia."
+
+#: src/components/widgets/SsbSidebar.jsx:56
+msgid "1 Year of Updates:"
+msgstr "1 metų atnaujinimai:"
+
+#: src/components/widgets/SsbSidebar.jsx:57
+msgid "Stay secure and compatible with the latest releases."
+msgstr "Būkite saugūs ir suderinami su naujausiais leidimais."
+
+#: src/components/widgets/SsbSidebar.jsx:60
+msgid "No Coding Required:"
+msgstr "Nereikia koduoti:"
+
+#: src/components/widgets/SsbSidebar.jsx:61
+msgid "Set up and customize buttons effortlessly from the dashboard."
+msgstr "Nustatykite ir pritaikykite mygtukus be vargo iš valdymo pulto."
+
+#: src/components/widgets/SsbSidebar.jsx:64
+msgid "Quick & Flexible Button Placement:"
+msgstr "Greitas ir lanksčius mygtukų išdėstymas:"
+
+#: src/components/widgets/SsbSidebar.jsx:65
+msgid "Add buttons exactly where you want: posts, pages, or custom locations."
+msgstr ""
+"Pridėkite mygtukus tiksliai ten, kur norite: įrašai, puslapiai ar "
+"individualios vietos."
+
+#: src/components/widgets/SsbSidebar.jsx:68
+msgid "Fully Responsive Design:"
+msgstr "Visiškai reaguojantis dizainas:"
+
+#: src/components/widgets/SsbSidebar.jsx:69
+msgid "Your social buttons look great on desktop, tablet, and mobile."
+msgstr ""
+"Jūsų socialiniai mygtukai puikiai atrodo kompiuteriuose, planšetėse ir "
+"mobiliuosiuose įrenginiuose."
+
+#: src/components/widgets/SsbSidebar.jsx:72
+msgid "Ongoing Feature Improvements:"
+msgstr "Nuolatiniai funkcijų patobulinimai:"
+
+#: src/components/widgets/SsbSidebar.jsx:73
+msgid "Regular updates with new features and performance enhancements."
+msgstr "Reguliarūs atnaujinimai su naujomis funkcijomis ir našumo pagerinimais."
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "Get up to"
+msgstr "Gaukite iki"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "50%"
+msgstr "50%"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "off your first year of Simple Social Buttons."
+msgstr "nuolaidos pirmam savo Simple Social Buttons metui."
+
+#: src/components/widgets/SsbSidebar.jsx:86
+msgid "Unlock Pro Features"
+msgstr "Atrakinti Pro funkcijas"
+
+#: src/components/widgets/SsbSidebar.jsx:89
+msgid "* Discount applied automatically"
+msgstr "* Nuolaida taikoma automatiškai"
+
+#: src/components/widgets/SsbSidebar.jsx:92
+msgid "Reviewer avatar"
+msgstr "Recenzento avataras"
+
+#: src/components/widgets/SsbSidebar.jsx:94
+msgid "John"
+msgstr "Jonas"
+
+#: src/components/widgets/SsbSidebar.jsx:97
+msgid "5 star rating"
+msgstr "5 žvaigždučių įvertinimas"
+
+#: src/components/widgets/SsbSidebar.jsx:100
+msgid ""
+"The plug-in really works well. The developers and the creators did a good "
+"job!"
+msgstr "Įskiepiai tikrai veikia gerai. Kūrėjai ir kūrėjai gerai pasirodė!"
+
+#: src/components/widgets/SsbSidebar.jsx:111
+msgid "Designed and Maintained by"
+msgstr "Sukūrė ir palaiko"
+
+#: src/components/widgets/SsbSidebar.jsx:113
+msgid "Company logo"
+msgstr "Įmonės logotipas"
+
+#: src/index.js:588
+msgid "Tab content not found"
+msgstr "Skirtuko turinys nerastas"
+
+#: src/index.js:628
+#: src/utils/formHelpers.js:233
+msgid "Settings saved successfully!"
+msgstr "Nustatymai sėkmingai išsaugoti!"
+
+#: src/index.js:646
+msgid "Loading…"
+msgstr "Kraunama…"
+
+#: src/index.js:647
+msgid "Try again"
+msgstr "Bandykite dar kartą"
+
+#: src/index.js:671
+#: src/index.js:727
+msgid "Saving..."
+msgstr "Išsaugoma..."
+
+#: src/index.js:671
+#: src/index.js:726
+msgid "Save Changes"
+msgstr "Išsaugoti pakeitimus"
+
+#: src/utils/constants.js:22
+msgid "Advanced"
+msgstr "Išplėstinė"
+
+#: src/utils/constants.js:26
+msgid "Social"
+msgstr "Socialinė"
+
+#: src/utils/constants.js:30
+msgid "Upgrade To Pro For More Features"
+msgstr "Atnaujinkite į Pro versiją, kad gautumėte daugiau funkcijų"
+
+#: src/utils/constants.js:93
+msgid ""
+"Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require "
+"Simple Social Buttons Pro."
+msgstr ""
+"Įjunkite šoninę juostą arba įterptą, kad išsaugotumėte nustatymus. Medijos, "
+"iššokantys langai ir skraidymas reikalauja Simple Social Buttons Pro."
+
+#: src/utils/formHelpers.js:209
+msgid "Unknown error while saving settings."
+msgstr "Nežinoma klaida išsaugant nustatymus."
+
+#: src/utils/purgeNotice.js:24
+msgid "Missing admin configuration for purge status."
+msgstr "Trūksta administratoriaus konfigūracijos dėl valymo statuso."
+
+#: src/utils/purgeNotice.js:44
+msgid "Unable to load purge status."
+msgstr "Nepavyko įkelti valymo statuso."
+
+#: src/utils/settingsManager.js:71
+msgid "Network error while loading settings. Check your connection and try again."
+msgstr ""
+"Tinklo klaida įkeliant nustatymus. Patikrinkite savo ryšį ir bandykite dar "
+"kartą."
+
+#: src/utils/settingsManager.js:80
+msgid "Could not read the server response. Try refreshing the page."
+msgstr "Nepavyko perskaityti serverio atsakymo. Bandykite atnaujinti puslapį."
+
+#: src/utils/settingsManager.js:86
+msgid "Invalid response from server."
+msgstr "Neteisingas atsakymas iš serverio."
+
+#: src/utils/settingsManager.js:94
+msgid "Could not load settings. You may need to refresh the page or sign in again."
+msgstr ""
+"Nepavyko įkelti nustatymų. Galbūt reikės atnaujinti puslapį arba dar kartą "
+"prisijungti."
+
+#: src/utils/settingsManager.js:102
+#. translators: %s: HTTP status code
+msgid "Unable to load settings (HTTP %s)."
+msgstr "Nepavyko įkelti nustatymų (HTTP %s)."
+
+#: src/utils/settingsManager.js:110
+msgid "Invalid settings data from server."
+msgstr "Neteisingi nustatymų duomenys iš serverio."
+
+#: src/utils/settingsManager.js:285
+msgid "Something went wrong while loading settings."
+msgstr "Kilo problema įkeliant nustatymus."
+
+#: simple-social-buttons.php:3798
+msgctxt "Word count type. Do not translate!"
+msgid "words"
+msgstr "žodžiai"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block title"
+msgid "Click to Post"
+msgstr "Spauskite, kad paskelbtumėte"
+
+#: blocks/shortcode/block.json
+msgctxt "block title"
+msgid "Simple Social Buttons"
+msgstr "Paprasti socialiniai mygtukai"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block description"
+msgid "SSB Click to post easy way to post your content."
+msgstr "SSB Paspauskite, kad lengvai paskelbtumėte savo turinį."
+
+#: blocks/shortcode/block.json
+msgctxt "block description"
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your sites, such as: Facebook, WhatsApp, Viber, Twitter, Reddit, "
+"LinkedIn and Pinterest."
+msgstr ""
+"Simple Social Buttons prideda pažangų socialinių tinklų dalijimosi mygtukų "
+"rinkinį jūsų svetainėms, tokius kaip: Facebook, WhatsApp, Viber, Twitter, "
+"Reddit, LinkedIn ir Pinterest."
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "twiter"
+msgstr "twitter"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "clicktotweet"
+msgstr "paspauskite, kad tweet"
+
+#: blocks/click-to-tweet/block.json
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "ssb"
+msgstr "ssb"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Social Share"
+msgstr "Socialinis dalijimasis"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Button"
+msgstr "Mygtukas"

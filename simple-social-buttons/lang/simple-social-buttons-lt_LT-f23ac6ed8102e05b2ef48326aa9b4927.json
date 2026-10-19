@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:20+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "lt-LT",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Click to post": [
+                "Paspauskite, kad paskelbtum\u0117te"
+            ],
+            "Theme": [
+                "Tema"
+            ],
+            "select the style for click to post ": [
+                "pasirinkite stili\u0173, kad paskelbtum\u0117te "
+            ],
+            "Content": [
+                "Turinys"
+            ],
+            "Quote Content": [
+                "Cituoti turin\u012f"
+            ],
+            "This text will be shown to the user.": [
+                "\u0160is tekstas bus rodomas vartotojui."
+            ],
+            "Tweet Content": [
+                "Tweet turinys"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "\u0160is tekstas bus tweet'inamas. jei tu\u0161\u010dias, bus naudojamas cituoti turinys."
+            ],
+            " Configuration": [
+                "Konfig\u016bracija"
+            ],
+            "Show Tweet Button": [
+                "Rodyti Tweet mygtuk\u0105"
+            ],
+            "Include Page\/post Link": [
+                "\u012etraukti puslapio\/\u012fra\u0161o nuorod\u0105"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "Nuoroda \u012f \u0161\u012f \u012fra\u0161\u0105 bus prid\u0117ta prie Tweet. turime filtr\u0105, jei norite j\u012f modifikuoti `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "\u012etraukti per @vartotojo_vard\u0105"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "Twitter vartotojo vardas i\u0161 SSB nustatym\u0173 I\u0161pl\u0117stinis skirtukas bus prid\u0117tas prie Tweet pabaigos su tekstu \u201cper @username\u201d."
+            ],
+            "Enter your content ...": [
+                "\u012eveskite savo turin\u012f ..."
+            ],
+            "Configuration": [
+                "Konfig\u016bracija"
+            ],
+            "Share Counter": [
+                "Bendrinimo skaitiklis"
+            ],
+            "Total Counts": [
+                "Bendri skai\u010diavimai"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Palaikomos tinklai: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Tvarka"
+            ],
+            "Align Left": [
+                "Lygiuoti kair\u0117je"
+            ],
+            "Align Center": [
+                "Lygiuoti centre"
+            ],
+            "Align Right": [
+                "Lygiuoti de\u0161in\u0117je"
+            ]
+        }
+    }
+}

@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:21+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl-NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Eenvoudige Sociale Knoppen"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "Beveiligingscontrole mislukt. Vernieuw de pagina en probeer het opnieuw."
+            ],
+            "You do not have permission to import settings.": [
+                "U heeft geen toestemming om instellingen te importeren."
+            ],
+            "No file uploaded or upload failed.": [
+                "Geen bestand ge\u00fcpload of upload mislukt."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Ongeldig JSON-bestand. Upload een geldig SSB-exportbestand."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Ongeldig bestandsformaat. Dit lijkt geen Simple Social Buttons-exportbestand te zijn."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Instellingen voor Simple Social Buttons succesvol ge\u00efmporteerd."
+            ],
+            "Export": [
+                "Exporteren"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Instellingen voor de eenvoudige sociale knop succesvol ge\u00ebxporteerd!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Exporteer instellingen voor de eenvoudige sociale knop."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> door <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> voegt een geavanceerde set sociale media deelknoppen toe aan uw WordPress-sites, zoals: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> en <strong>Pinterest<\/strong>. Dit maakt het de meest flexibele sociale deelplugin voor iedereen."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Ongeldig bestand. Upload alstublieft een JSON-bestand dat begint met \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "Importeren mislukt. Probeer het opnieuw."
+            ],
+            "Please select a valid file first.": [
+                "Selecteer eerst een geldig bestand."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "Beveiligingscontrole mislukt of serverfout. Vernieuw en probeer het opnieuw."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Ongeldig antwoord van de server. Probeer het opnieuw."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Er is een fout opgetreden tijdens het importeren. Probeer het opnieuw."
+            ],
+            "Export failed. Please try again.": [
+                "Exporteren mislukt. Probeer het opnieuw."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Importeren & Exporteren van de instellingen van de Simple Social Share Button"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importeer\/Exporteer uw sociale deelinstellingen voor\/van andere sites."
+            ],
+            "Drag and drop file here or": [
+                "Sleep het bestand hierheen of"
+            ],
+            "Browse": [
+                "Bladeren"
+            ],
+            "Remove file": [
+                "Verwijder bestand"
+            ],
+            "Import Settings": [
+                "Instellingen importeren"
+            ],
+            "Importing settings...": [
+                "Instellingen aan het importeren..."
+            ],
+            "Export Settings": [
+                "Exportinstellingen"
+            ],
+            "Exporting...": [
+                "Exporteren..."
+            ]
+        }
+    }
+}

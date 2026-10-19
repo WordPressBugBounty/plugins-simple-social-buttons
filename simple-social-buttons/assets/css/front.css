@@ -183,7 +183,7 @@ margin-block: 10px !important;
   position: absolute;
   font-size: 17px;
   top: 0;
-  width: 38px;
+  width: 33px;
   height: 38px;
   text-align: center;
   line-height: 38px;
@@ -276,7 +276,8 @@ margin-block: 10px !important;
     background-color: var(--ssb-custom-bg);
     background-image: none;
     color: var(--ssb-custom-color);
-    min-width: 0;
+    width: auto;
+    max-width: none;
   }
   .simplesocialbuttons .ssb-custom-button .ssb-custom-icon {
     order: 1;
@@ -289,11 +290,15 @@ margin-block: 10px !important;
   }
   .simplesocialbuttons .ssb-custom-button .simplesocialtxt {
     order: 2;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    flex: 0 1 auto;
+    min-width: auto;
+    overflow: visible;
+    text-overflow: clip;
     white-space: nowrap;
+    font-size: 14px;
+    line-height: inherit;
+    position: relative;
+    z-index: 1;
   }
   .simplesocialbuttons .ssb-custom-button .ssb_counter {
     order: 3;
@@ -309,12 +314,67 @@ margin-block: 10px !important;
   .simplesocialbuttons .ssb-custom-button.simplesocial-custom:hover {
     background-color: var(--ssb-custom-hover-bg) !important;
     background-image: none !important;
-    color: var(--ssb-custom-color) !important;
+    color: var(--ssb-custom-hover-color) !important;
     border-color: var(--ssb-custom-hover-bg) !important;
   }
   .simplesocialbuttons .ssb-custom-button.simplesocial-custom .simplesocialtxt {
     color: inherit;
   }
+
+  /* Custom buttons without an uploaded icon: no icon gutter / pseudo icon slot */
+  .simplesocialbuttons button.simplesocial-custom.ssb-custom-no-icon:after,
+  .simplesocialbuttons button.simplesocial-custom.ssb-custom-no-icon:before {
+    content: none !important;
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  .simplesocialbuttons.simplesocial-sm-round button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-round-txt button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-simple-round button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-custom.ssb-custom-no-icon {
+    padding-left: 15px !important;
+  }
+
+  .simplesocialbuttons.simplesocial-sm-round.ssb_counter-activate button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-simple-round.ssb_counter-activate button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-flat-button-border.ssb_counter-activate button.simplesocial-custom.ssb-custom-no-icon,
+  .simplesocialbuttons.simplesocial-round-btm-border.ssb_counter-activate button.simplesocial-custom.ssb-custom-no-icon {
+    padding-right: 50px !important;
+  }
+
+  .simplesocialbuttons.simplesocial-sm-round button.simplesocial-custom.ssb-custom-no-icon:not(:has(.ssb_counter)),
+  .simplesocialbuttons.simplesocial-simple-round button.simplesocial-custom.ssb-custom-no-icon:not(:has(.ssb_counter)),
+  .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-custom.ssb-custom-no-icon:not(:has(.ssb_counter)),
+  .simplesocialbuttons.simplesocial-round-btm-border button.simplesocial-custom.ssb-custom-no-icon:not(:has(.ssb_counter)),
+  .simplesocialbuttons.simplesocial-round-txt button.simplesocial-custom.ssb-custom-no-icon:not(:has(.ssb_counter)) {
+    padding-right: 15px !important;
+  }
+
+  div[class*="simplesocialbuttons-float"] button.simplesocial-custom.ssb-custom-no-icon:after,
+  div[class*="simplesocialbuttons-float"] button.simplesocial-custom.ssb-custom-no-icon:before {
+    content: none !important;
+    display: none !important;
+  }
+
+  .simplesocialbuttons.simplesocial-round-icon button.simplesocial-custom.ssb-custom-no-icon {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    width: auto !important;
+    min-width: 38px;
+  }
+
+  .simplesocial-simple-icons button.ssb_custom-icon.ssb-custom-button.ssb-custom-no-icon {
+    padding-left: 6px !important;
+  }
+
+  div[class*="simplesocialbuttons-float"] button.simplesocial-custom.ssb-custom-no-icon {
+    padding-left: 15px !important;
+    padding-right: 10px !important;
+  }
+
   /*.simplesocial-simple-icons button {
       position: relative;
       padding: 2px;
@@ -660,7 +720,6 @@ div[class*="simplesocialbuttons-float"].simplesocial-simple-icons.simplesocialbu
   display: inline-block;
   position: relative;
   white-space: nowrap;
-  vertical-align: top;
   overflow: hidden;
   text-align: center;
   height: 20px;
@@ -1134,7 +1193,6 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 }
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-twt-share{
   background: #0f1419;
-  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 .simplesocialbuttons.simplesocial-simple-round button.simplesocial-whatsapp-share{
   background: #34AF23;
@@ -1677,13 +1735,12 @@ div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-
 }
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-twt-share {
   background: #0f1419;
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  -webkit-box-shadow: inset 0px 0px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
-          box-shadow: inset 0px 0px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
+  -webkit-box-shadow: inset 0px 0px 0px 0px #000000, 0px 3px 0px 0px #000000;
+          box-shadow: inset 0px 0px 0px 0px #000000, 0px 3px 0px 0px #000000;
 }
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-twt-share:hover {
-  -webkit-box-shadow: inset 0px -40px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
-          box-shadow: inset 0px -40px 0px 0px #fffc, 0px 3px 0px 0px #fffc;
+  -webkit-box-shadow: inset 0px -40px 0px 0px #000000, 0px 3px 0px 0px #000000;
+          box-shadow: inset 0px -40px 0px 0px #000000, 0px 3px 0px 0px #000000;
 }
 .simplesocialbuttons.simplesocial-flat-button-border button.simplesocial-whatsapp-share {
   background: #34AF23;
@@ -4290,15 +4347,18 @@ body.ssb_icon_limit_popup_open {
 	width: 2px;
 	transition: all 0.2s ease-in-out;
 }
-.simplesocialbuttons button.ssb_icon-limit-more:hover
-.simplesocialbuttons button.ssb_more-icon:hover{
+.simplesocialbuttons button.ssb_icon-limit-more:hover,
+.simplesocialbuttons button.ssb_more-icon:hover {
 	background-color: #434a4d !important;
+	background-image: none !important;
+	border-color: #434a4d !important;
+	color: #fff !important;
 }
 .simplesocialbuttons button.ssb_icon-limit-more:hover:before,
 .simplesocialbuttons button.ssb_more-icon:hover:before,
 .simplesocialbuttons button.ssb_icon-limit-more:hover:after,
-.simplesocialbuttons button.ssb_more-icon:hover:after{
-	background: #fff;
+.simplesocialbuttons button.ssb_more-icon:hover:after {
+	background: #fff !important;
 }
 .simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more,
 .simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon {
@@ -4354,6 +4414,47 @@ body.ssb_icon_limit_popup_open {
 	min-height: 38px;
 	min-width: 38px;
 	width: 38px;
+}
+
+.simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more:hover,
+.simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon:hover,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more:hover,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon:hover {
+	background-color: #434a4d !important;
+	background-image: none !important;
+	border-color: #434a4d !important;
+	color: #fff !important;
+}
+
+.simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more:hover:before,
+.simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon:hover:before,
+.simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more:hover:after,
+.simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon:hover:after,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more:hover:before,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon:hover:before,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button.ssb_icon-limit-more:hover:after,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button.ssb_more-icon:hover:after {
+	background: #fff !important;
+}
+
+.simplesocialbuttons.simplesocial-round-txt button.ssb_icon-limit-more:hover,
+.simplesocialbuttons.simplesocial-round-txt button.ssb_more-icon:hover,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button.ssb_icon-limit-more:hover,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button.ssb_more-icon:hover {
+	background: #434a4d !important;
+	border-color: #434a4d !important;
+	color: #fff !important;
+}
+
+.simplesocialbuttons.simplesocial-round-txt button.ssb_icon-limit-more:hover:before,
+.simplesocialbuttons.simplesocial-round-txt button.ssb_more-icon:hover:before,
+.simplesocialbuttons.simplesocial-round-txt button.ssb_icon-limit-more:hover:after,
+.simplesocialbuttons.simplesocial-round-txt button.ssb_more-icon:hover:after,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button.ssb_icon-limit-more:hover:before,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button.ssb_more-icon:hover:before,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button.ssb_icon-limit-more:hover:after,
+div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button.ssb_more-icon:hover:after {
+	background: #fff !important;
 }
 
 .simplesocialbuttons.simplesocial-round-icon button.ssb_icon-limit-more,

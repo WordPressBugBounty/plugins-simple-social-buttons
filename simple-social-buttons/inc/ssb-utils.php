@@ -11,6 +11,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Asset filename suffix for minified vs debug files.
+ *
+ * Returns '.min' when SCRIPT_DEBUG is off; empty string when SCRIPT_DEBUG is on
+ * so unminified assets load during development.
+ *
+ * @since 7.2.0
+ * @return string
+ */
+function ssb_asset_min_suffix() {
+	return ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ) ? '' : '.min';
+}
+
+/**
  * Built-in network button ids (canonical list).
  *
  * Single source of truth for known networks: SimpleSocialButtonsPR::$arr_known_buttons
@@ -19,6 +32,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @return array
  * @since 7.0.1
+ * @version 7.2.0
  */
 function ssb_get_known_buttons() {
 	static $buttons = null;
@@ -26,7 +40,7 @@ function ssb_get_known_buttons() {
 		return $buttons;
 	}
 
-	$buttons = array(
+	return $buttons = array( // phpcs:ignore
 		'twitter',
 		'pinterest',
 		'fbshare',
@@ -47,8 +61,6 @@ function ssb_get_known_buttons() {
 		'vk',
 		'snapchat',
 	);
-
-	return $buttons;
 }
 
 /**
@@ -92,12 +104,19 @@ function ssb_get_http_user_agent() {
  * @since 7.0.1
  */
 function ssb_get_client_agent_hash() {
-	$agent = ssb_get_http_user_agent();
-	$ip    = isset( $_SERVER['REMOTE_ADDR'] )
+	return ssb_get_http_user_agent() . '|' . ssb_get_client_ip();
+}
+
+/**
+ * Client IP (REMOTE_ADDR) for rate limiting.
+ *
+ * @return string
+ * @since 7.2.0
+ */
+function ssb_get_client_ip() {
+	return isset( $_SERVER['REMOTE_ADDR'] )
 		? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) )
 		: '';
-
-	return $agent . '|' . $ip;
 }
 
 /**
@@ -106,12 +125,15 @@ function ssb_get_client_agent_hash() {
  * @param string $key_prefix Transient key prefix.
  * @param int    $window_seconds Cooldown window.
  * @param string $extra Extra salt (e.g. post_id|network).
+ * @param bool   $ip_only Key on the client IP only, so a changing User-Agent cannot bypass the limit.
  * @return bool True if rate limited.
  * @since 7.0.1
+ * @version 7.2.0
  */
-function ssb_is_rate_limited( $key_prefix, $window_seconds = 60, $extra = '' ) {
+function ssb_is_rate_limited( $key_prefix, $window_seconds = 60, $extra = '', $ip_only = false ) {
 	$window_seconds = max( 10, (int) $window_seconds );
-	$hash           = md5( $extra . '|' . ssb_get_client_agent_hash() ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_md5
+	$client         = $ip_only ? ssb_get_client_ip() : ssb_get_client_agent_hash();
+	$hash           = md5( $extra . '|' . $client ); // phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_md5
 	$key            = sanitize_key( $key_prefix ) . '_' . $hash;
 
 	if ( get_transient( $key ) ) {
@@ -120,6 +142,165 @@ function ssb_is_rate_limited( $key_prefix, $window_seconds = 60, $extra = '' ) {
 
 	set_transient( $key, 1, $window_seconds );
 	return false;
+}
+
+/**
+ * Whether a permalink is eligible for third-party share count API requests.
+ *
+ * Skips local/dev hosts where APIs return misleading or aggregated counts.
+ *
+ * @param string $url Permalink or share URL.
+ * @return bool
+ * @since 7.2.0
+ */
+function ssb_is_share_count_url_eligible( $url ) {
+	if ( ! is_string( $url ) || '' === trim( $url ) ) {
+		return false;
+	}
+
+	$parsed = wp_parse_url( $url );
+	if ( empty( $parsed['host'] ) ) {
+		return false;
+	}
+
+	$host = strtolower( $parsed['host'] );
+	if ( 'localhost' === $host ) {
+		return (bool) apply_filters( 'ssb_is_share_count_url_eligible', false, $url );
+	}
+
+	$local_suffixes = array( '.local', '.test', '.localhost' );
+	foreach ( $local_suffixes as $suffix ) {
+		$suffix_len = strlen( $suffix );
+		if ( function_exists( 'str_ends_with' ) ) {
+			$host_ends_with_suffix = str_ends_with( $host, $suffix );
+		} else {
+			$host_ends_with_suffix = strlen( $host ) >= $suffix_len
+				&& substr_compare( $host, $suffix, -$suffix_len ) === 0;
+		}
+		if ( $host_ends_with_suffix ) {
+			return (bool) apply_filters( 'ssb_is_share_count_url_eligible', false, $url );
+		}
+	}
+
+	if ( filter_var( $host, FILTER_VALIDATE_IP ) ) {
+		$is_public_ip = filter_var(
+			$host,
+			FILTER_VALIDATE_IP,
+			FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+		);
+		if ( ! $is_public_ip ) {
+			return (bool) apply_filters( 'ssb_is_share_count_url_eligible', false, $url );
+		}
+	}
+
+	if ( function_exists( 'wp_get_environment_type' ) ) {
+		$env = wp_get_environment_type();
+		if ( in_array( $env, array( 'local', 'development' ), true ) ) {
+			return (bool) apply_filters( 'ssb_is_share_count_url_eligible', false, $url );
+		}
+	}
+
+	return (bool) apply_filters( 'ssb_is_share_count_url_eligible', true, $url );
+}
+
+/**
+ * Whether a post already has non-zero cached API share counts in post meta.
+ *
+ * Used so upgraded sites keep showing previously saved Facebook/Tumblr/LINE
+ * counts without requiring a manual purge.
+ *
+ * @param int $post_id Post ID.
+ * @return bool
+ * @since 7.2.0
+ */
+function ssb_post_has_stored_api_share_counts( $post_id ) {
+	$post_id = (int) $post_id;
+	if ( $post_id <= 0 ) {
+		return false;
+	}
+
+	foreach ( ssb_get_known_buttons() as $network ) {
+		if ( ! ssb_is_network_has_counts( $network ) ) {
+			continue;
+		}
+		if ( ssb_get_cached_network_share_count( $post_id, $network ) > 0 ) {
+			return true;
+		}
+	}
+
+	return false;
+}
+
+/**
+ * Whether external (API) share counts should be fetched, stored, or displayed for a post.
+ *
+ * Fresh posts with no saved API counts and no share activity show 0 until an admin
+ * purge/refetch marks counts verified, a visitor shares via the plugin, or legacy
+ * API count meta already exists (upgraded sites).
+ *
+ * @param int $post_id Post ID.
+ * @return bool
+ * @since 7.2.0
+ */
+function ssb_should_trust_external_api_share_counts( $post_id ) {
+	$post_id = (int) $post_id;
+	if ( $post_id <= 0 ) {
+		return false;
+	}
+
+	$permalink = get_permalink( $post_id );
+	if ( ! $permalink || ! ssb_is_share_count_url_eligible( $permalink ) ) {
+		return false;
+	}
+
+	if ( get_post_meta( $post_id, 'ssb_api_counts_verified', true ) ) {
+		return true;
+	}
+
+	if ( ssb_post_has_stored_api_share_counts( $post_id ) ) {
+		return true;
+	}
+
+	$latest = ssb_get_internal_share_counts_latest( $post_id );
+	if ( ! empty( $latest['total'] ) ) {
+		return true;
+	}
+
+	/**
+	 * Filter whether to trust third-party API share counts for a post.
+	 *
+	 * Default false for posts with no saved API counts, no internal shares,
+	 * and no verified API fetch.
+	 *
+	 * @param bool $trust   Whether API counts are trusted.
+	 * @param int  $post_id Post ID.
+	 */
+	return (bool) apply_filters( 'ssb_trust_external_api_share_counts', false, $post_id );
+}
+
+/**
+ * Build a zeroed API share count map for active networks.
+ *
+ * @param array $networks Network => priority map.
+ * @return array
+ * @since 7.2.0
+ */
+function ssb_zero_api_share_counts_for_networks( $networks ) {
+	$result = array( 'total' => 0 );
+	if ( ! is_array( $networks ) ) {
+		return $result;
+	}
+
+	foreach ( $networks as $social_name => $unused ) {
+		if ( preg_match( '/^custom_\d+$/', (string) $social_name ) ) {
+			continue;
+		}
+		if ( ssb_is_network_has_counts( $social_name ) ) {
+			$result[ $social_name ] = 0;
+		}
+	}
+
+	return $result;
 }
 
 /**
@@ -209,6 +390,82 @@ function ssb_sanitize_custom_css( $css ) {
 	return $css;
 }
 
+/** Minimum icon spacing in pixels. */
+const SSB_ICON_SPACE_MIN = 1;
+
+/** Maximum icon spacing in pixels. */
+const SSB_ICON_SPACE_MAX = 999;
+
+/** Default icon spacing when value is missing or invalid. */
+const SSB_ICON_SPACE_DEFAULT = 10;
+
+/**
+ * Sanitize icon spacing pixel value (whole number within allowed range).
+ *
+ * Accepts legacy stored values that included a CSS unit (e.g. "20px") by
+ * stripping non-digits — matching master-era absint() CSS output and the
+ * React admin normalizer — so upgrades do not reset spacing to the default.
+ *
+ * @param mixed $value Raw input.
+ * @return string Sanitized pixel count as string.
+ * @since 7.2.0
+ * @version 7.2.0
+ */
+function ssb_sanitize_icon_space_value( $value ) {
+	if ( is_int( $value ) || is_float( $value ) ) {
+		$value = (string) (int) $value;
+	} elseif ( ! is_string( $value ) ) {
+		return (string) SSB_ICON_SPACE_DEFAULT;
+	} else {
+		$value = trim( $value );
+	}
+
+	// Preserve empty so Settings API resaves do not coerce blank → default.
+	// Apply SSB_ICON_SPACE_DEFAULT only at render/use time when needed.
+	if ( '' === $value ) {
+		return '';
+	}
+
+	// Digits only (legacy "10px" / "10 px" → "10"). Pure garbage → default.
+	$digits = preg_replace( '/\D+/', '', $value );
+	if ( '' === $digits ) {
+		return (string) SSB_ICON_SPACE_DEFAULT;
+	}
+
+	$int = (int) $digits;
+	if ( $int < SSB_ICON_SPACE_MIN ) {
+		return (string) SSB_ICON_SPACE_MIN;
+	}
+	if ( $int > SSB_ICON_SPACE_MAX ) {
+		return (string) SSB_ICON_SPACE_MAX;
+	}
+
+	return (string) $int;
+}
+
+/**
+ * Build margin value for icon spacing CSS when spacing is enabled.
+ *
+ * @param array  $option Option array with icon_space / icon_space_value keys.
+ * @param string $suffix Suffix after the pixel value (e.g. "px", "px 0").
+ * @return string Escaped margin value or empty string when spacing is off.
+ * @since 7.2.0
+ */
+function ssb_icon_space_margin( $option, $suffix = 'px' ) {
+	if ( ! is_array( $option ) ) {
+		return '';
+	}
+	if ( empty( $option['icon_space'] ) || '1' !== (string) $option['icon_space'] ) {
+		return '';
+	}
+	if ( ! isset( $option['icon_space_value'] ) || '' === $option['icon_space_value'] ) {
+		return '';
+	}
+
+	$pixels = ssb_sanitize_icon_space_value( $option['icon_space_value'] );
+	return esc_attr( $pixels . $suffix );
+}
+
 /**
  * Return Custom JS string ready for display or frontend output.
  *
@@ -236,6 +493,35 @@ function ssb_get_custom_js_for_output( $stored ) {
 	$stored = preg_replace( '#</script>\s*$#i', '', $stored );
 
 	return trim( $stored );
+}
+
+/**
+ * Allowed inline icon position values.
+ *
+ * @return array<int, string>
+ * @since 7.2.0
+ */
+function ssb_get_inline_location_allowed_values() {
+	return array( 'above', 'below', 'above_below' );
+}
+
+/**
+ * Sanitize inline icon position to a known allowed value.
+ *
+ * @param mixed  $value   Raw setting value.
+ * @param string $default_val Default when invalid or empty.
+ * @return string
+ * @since 7.2.0
+ */
+function ssb_sanitize_inline_location( $value, $default_val = 'below' ) {
+	$value   = is_string( $value ) ? sanitize_key( $value ) : '';
+	$allowed = ssb_get_inline_location_allowed_values();
+
+	if ( in_array( $value, $allowed, true ) ) {
+		return $value;
+	}
+
+	return in_array( $default_val, $allowed, true ) ? $default_val : 'below';
 }
 
 /**
@@ -270,7 +556,7 @@ function ssb_strip_sensitive_settings( $option_id, $settings ) {
  * @param array $array_data Imported section data.
  * @return array Sanitized array.
  * @since 7.0.0
- * @version 7.0.1
+ * @version 7.2.0
  */
 function ssb_sanitize_imported_settings( $array_data ) {
 	if ( ! is_array( $array_data ) ) {
@@ -282,10 +568,14 @@ function ssb_sanitize_imported_settings( $array_data ) {
 			$out[ $key ] = ssb_sanitize_imported_settings( $value );
 		} elseif ( 'ssb_css' === $key ) {
 			$out[ $key ] = ssb_sanitize_custom_css( $value );
+		} elseif ( 'location' === $key ) {
+			$out[ $key ] = ssb_sanitize_inline_location( $value );
+		} elseif ( 'icon_space_value' === $key ) {
+			$out[ $key ] = ssb_sanitize_icon_space_value( $value );
 		} elseif ( 'ssb_js' === $key ) {
 			// Require unfiltered_html; callers preserve existing value when this key is omitted.
 			if ( current_user_can( 'unfiltered_html' ) && is_string( $value ) ) {
-				$out[ $key ] = preg_replace( '/[\x00]/', '', $value );
+				$out[ $key ] = preg_replace( '/[\x00]/', '', $value ); // NOSONAR.
 			}
 		} else {
 			$out[ $key ] = sanitize_text_field( $value );
@@ -327,7 +617,7 @@ function ssb_user_can_save_custom_js() {
  * @param int $post_id Post ID.
  * @return bool
  * @since 2.0
- * @version 7.0.1
+ * @version 7.2.0
  */
 function ssb_is_cache_fresh( $post_id ) {
 	// Bail early if it's a crawl bot. If so, ONLY SERVE CACHED RESULTS FOR MAXIMUM SPEED.
@@ -338,9 +628,10 @@ function ssb_is_cache_fresh( $post_id ) {
 
 	$fresh_cache = false;
 
-	// Rebuild only via authenticated AJAX (nonce checked in ssb_ajax_fetch_fresh_data).
+	// Rebuild only via authenticated AJAX (nonce checked in ssb_ajax_fetch_fresh_data) by an admin.
 	if (
 		wp_doing_ajax()
+		&& current_user_can( 'manage_options' )
 		&& isset( $_POST['ssb_cache'], $_POST['security'] ) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		&& 'rebuild' === sanitize_text_field( wp_unslash( $_POST['ssb_cache'] ) ) // phpcs:ignore WordPress.Security.NonceVerification.Missing
 		&& false !== wp_verify_nonce(
@@ -380,11 +671,16 @@ function ssb_is_cache_fresh( $post_id ) {
  * @param array $stats          Stats array.
  * @param int   $post_id        Post ID.
  * @param array $alt_share_link Alternative share links.
+ * @param bool  $force          Bypass trust gate (admin purge/refetch).
  * @return array Simple array with counts.
  * @since 2.0
- * @version 7.0.0
+ * @version 7.2.0
  */
-function ssb_fetch_fresh_counts( $stats, $post_id, $alt_share_link ) {
+function ssb_fetch_fresh_counts( $stats, $post_id, $alt_share_link, $force = false ) {
+
+	if ( ! $force && 0 !== (int) $post_id && ! ssb_should_trust_external_api_share_counts( $post_id ) ) {
+		return ssb_zero_api_share_counts_for_networks( is_array( $stats ) ? $stats : array() );
+	}
 
 	$stats_result = array();
 	$total        = 0;
@@ -550,6 +846,7 @@ function ssb_darken_hex_color( $hex, $percent = 25 ) {
  *
  * @return bool
  * @since 7.0.0
+ * @version 7.2.0
  */
 function ssb_is_pro_active() {
 	if ( class_exists( 'Simple_Social_Buttons_Pro' ) ) {
@@ -566,11 +863,9 @@ function ssb_is_pro_active() {
 		require_once ABSPATH . 'wp-admin/includes/plugin.php';
 	}
 
-	$pro_plugin = 'simple-social-buttons-pro/simple-social-buttons-pro.php';
-	$pro_active = is_plugin_active( $pro_plugin )
+	$pro_plugin        = 'simple-social-buttons-pro/simple-social-buttons-pro.php';
+	return $pro_active = is_plugin_active( $pro_plugin ) //phpcs:ignore
 		|| ( function_exists( 'is_plugin_active_for_network' ) && is_plugin_active_for_network( $pro_plugin ) );
-
-	return $pro_active;
 }
 
 /**
@@ -901,6 +1196,7 @@ function ssb_get_all_post_ids_for_purge() {
  * @param SimpleSocialButtonsPR $plugin  Plugin instance.
  * @return bool True on success, false on failure or skipped.
  * @since 7.0.0
+ * @version 7.2.0
  */
 function ssb_refetch_api_counts_for_post( $post_id, $plugin ) {
 	$post_id = (int) $post_id;
@@ -913,11 +1209,13 @@ function ssb_refetch_api_counts_for_post( $post_id, $plugin ) {
 		return false;
 	}
 
+	// Force bypasses the trust gate so we can verify only after a successful fetch.
 	$counts = $plugin->ssb_refetch_api_share_counts_for_post( $post_id );
 	if ( ! is_array( $counts ) ) {
 		return false;
 	}
 
+	update_post_meta( $post_id, 'ssb_api_counts_verified', 1 );
 	update_post_meta( $post_id, 'ssb_cache_timestamp', floor( ( ( gmdate( 'U' ) / 60 ) / 60 ) ) );
 	return true;
 }
@@ -1079,7 +1377,7 @@ function ssb_get_internal_share_counts_latest( $post_id ) {
  * @param string $bucket_date Date bucket (Y-m-d). Defaults to current date.
  * @return array
  * @since 7.0.0
- * @version 7.1.0
+ * @version 7.2.0
  */
 function ssb_merge_internal_share_history( $post_id, $network_counts, $bucket_date = '' ) {
 	$post_id = (int) $post_id;
@@ -1133,7 +1431,7 @@ function ssb_merge_internal_share_history( $post_id, $network_counts, $bucket_da
  * @param array|null $active_networks Active network order map; total uses only these when provided.
  * @return array
  * @since 7.0.0
- * @version 7.1.0
+ * @version 7.2.0
  */
 function ssb_merge_api_and_internal_share_counts( $share_counts, $post_id, $active_networks = null ) {
 	if ( ! is_array( $share_counts ) ) {
@@ -1141,19 +1439,31 @@ function ssb_merge_api_and_internal_share_counts( $share_counts, $post_id, $acti
 	}
 
 	$post_id         = (int) $post_id;
+	$trust_api       = $post_id <= 0 ? false : ssb_should_trust_external_api_share_counts( $post_id );
 	$latest          = ssb_get_internal_share_counts_latest( $post_id );
 	$internal_total  = isset( $latest['total'] ) ? (int) $latest['total'] : 0;
 	$internal_map    = isset( $latest['networks'] ) && is_array( $latest['networks'] ) ? $latest['networks'] : array();
 	$hybrid_networks = ssb_get_hybrid_api_internal_share_networks();
 	$api_total       = isset( $share_counts['total'] ) ? (int) $share_counts['total'] : 0;
 
+	if ( ! $trust_api ) {
+		foreach ( array_keys( $share_counts ) as $network_key ) {
+			if ( ssb_is_network_has_counts( $network_key ) ) {
+				$share_counts[ $network_key ] = 0;
+			}
+		}
+		$api_total = 0;
+	}
+
 	foreach ( ssb_get_internal_share_trackable_networks() as $network ) {
 		$internal_count = isset( $internal_map[ $network ] ) ? (int) $internal_map[ $network ] : 0;
 
 		if ( in_array( $network, $hybrid_networks, true ) ) {
 			$api_count = isset( $share_counts[ $network ] ) ? (int) $share_counts[ $network ] : 0;
-			if ( $post_id > 0 ) {
+			if ( $trust_api && $post_id > 0 ) {
 				$api_count = max( $api_count, ssb_get_cached_network_share_count( $post_id, $network ) );
+			} else {
+				$api_count = 0;
 			}
 			$share_counts[ $network ] = $api_count + $internal_count;
 			continue;
@@ -1227,7 +1537,7 @@ function ssb_fetch_cached_counts( $network_name, $post_id ) {
  *
  * @return bool True if mobile device, false otherwise.
  * @since 2.0.13
- * @version 7.0.1
+ * @version 7.2.0
  */
 function ssb_is_mobile() {
 
@@ -1241,11 +1551,10 @@ function ssb_is_mobile() {
 	// phpcs:ignore Generic.Files.LineLength.MaxExceeded -- Mobile UA regex must stay intact.
 	$mobile_pattern_2 = '/1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i';
 
-	if ( preg_match( $mobile_pattern_1, $useragent ) || preg_match( $mobile_pattern_2, substr( $useragent, 0, 4 ) ) ) {
-		return true;
-	} else {
-		return false;
-	}
+	return (bool) (
+		preg_match( $mobile_pattern_1, $useragent )
+		|| preg_match( $mobile_pattern_2, substr( $useragent, 0, 4 ) )
+	);
 }
 
 /**
@@ -1335,6 +1644,293 @@ function ssb_get_pinterest_media_url( $post_id = 0, $fallback_image = '' ) {
 }
 
 /**
+ * Normalize a candidate SEO/meta description string.
+ *
+ * @param mixed $description Raw description.
+ * @return string|null Trimmed plain text, or null if empty/invalid.
+ * @since 7.2.0
+ */
+function ssb_normalize_seo_meta_description( $description ) {
+	if ( ! is_string( $description ) ) {
+		return null;
+	}
+
+	$description = trim(
+		wp_strip_all_tags(
+			html_entity_decode( $description, ENT_QUOTES, 'UTF-8' )
+		)
+	);
+
+	return '' !== $description ? $description : null;
+}
+
+/**
+ * Yoast SEO meta description provider.
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_yoast( $post_id ) {
+	if ( ! defined( 'WPSEO_VERSION' ) ) {
+		return null;
+	}
+
+	$description = '';
+	if ( class_exists( 'WPSEO_Meta' ) && is_callable( array( 'WPSEO_Meta', 'get_value' ) ) ) {
+		$description = (string) WPSEO_Meta::get_value( 'metadesc', $post_id );
+	} else {
+		$description = (string) get_post_meta( $post_id, '_yoast_wpseo_metadesc', true );
+	}
+
+	if ( '' === trim( $description ) ) {
+		return null;
+	}
+
+	$post = get_post( $post_id );
+	if ( $post && function_exists( 'wpseo_replace_vars' ) ) {
+		$description = (string) wpseo_replace_vars( $description, $post );
+	}
+
+	/**
+	 * Yoast's own meta description filter (when practical).
+	 *
+	 * @see https://developer.yoast.com/customization/apis/metadata-api/
+	 */
+	$description = (string) apply_filters( 'wpseo_metadesc', $description ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+
+	return ssb_normalize_seo_meta_description( $description );
+}
+
+/**
+ * Rank Math meta description provider.
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_rankmath( $post_id ) {
+	if ( ! defined( 'RANK_MATH_VERSION' ) && ! class_exists( 'RankMath' ) ) {
+		return null;
+	}
+
+	$description = (string) get_post_meta( $post_id, 'rank_math_description', true );
+
+	return ssb_normalize_seo_meta_description( $description );
+}
+
+/**
+ * All in One SEO (AIOSEO) meta description provider.
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_aioseo( $post_id ) {
+	if ( ! defined( 'AIOSEO_VERSION' ) && ! function_exists( 'aioseo' ) ) {
+		return null;
+	}
+
+	$description = '';
+
+	// AIOSEO 4+ prefers its meta API when available.
+	if ( function_exists( 'aioseo' ) ) {
+		$aioseo = aioseo();
+		if (
+			is_object( $aioseo )
+			&& isset( $aioseo->meta )
+			&& is_object( $aioseo->meta )
+			&& isset( $aioseo->meta->metaData )
+			&& is_object( $aioseo->meta->metaData )
+			&& method_exists( $aioseo->meta->metaData, 'getMetaData' )
+		) {
+			$meta = $aioseo->meta->metaData->getMetaData( $post_id );
+			if ( is_object( $meta ) && ! empty( $meta->description ) ) {
+				$description = (string) $meta->description;
+			}
+		}
+	}
+
+	if ( '' === trim( $description ) ) {
+		$description = (string) get_post_meta( $post_id, '_aioseo_description', true );
+	}
+
+	return ssb_normalize_seo_meta_description( $description );
+}
+
+/**
+ * SEOPress meta description provider.
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_seopress( $post_id ) {
+	if ( ! defined( 'SEOPRESS_VERSION' ) && ! function_exists( 'seopress_get_service' ) ) {
+		return null;
+	}
+
+	$description = (string) get_post_meta( $post_id, '_seopress_titles_desc', true );
+
+	return ssb_normalize_seo_meta_description( $description );
+}
+
+/**
+ * The SEO Framework meta description provider.
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_the_seo_framework( $post_id ) {
+	if ( ! function_exists( 'the_seo_framework' ) && ! defined( 'THE_SEO_FRAMEWORK_VERSION' ) ) {
+		return null;
+	}
+
+	$description = '';
+
+	if ( function_exists( 'the_seo_framework' ) ) {
+		$tsf = the_seo_framework();
+		if ( is_object( $tsf ) && method_exists( $tsf, 'get_description' ) ) {
+			$description = (string) $tsf->get_description( array( 'id' => (int) $post_id ) );
+		}
+	}
+
+	if ( '' === trim( $description ) ) {
+		/**
+		 * The SEO Framework description filter (legacy / extensibility).
+		 *
+		 * @param string $description Description.
+		 * @param array  $args        Context args.
+		 */
+		$description = (string) apply_filters( // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			'the_seo_framework_description', // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
+			$description,
+			array( 'id' => (int) $post_id )
+		);
+	}
+
+	return ssb_normalize_seo_meta_description( $description );
+}
+
+/**
+ * Post excerpt provider (only when an explicit excerpt is set).
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_excerpt( $post_id ) {
+	if ( ! has_excerpt( $post_id ) ) {
+		return null;
+	}
+
+	$excerpt = get_post_field( 'post_excerpt', $post_id );
+	if ( ! is_string( $excerpt ) ) {
+		return null;
+	}
+
+	return ssb_normalize_seo_meta_description( $excerpt );
+}
+
+/**
+ * Post title provider (final fallback; matches legacy Pinterest behavior).
+ *
+ * @param int $post_id Post ID.
+ * @return string|null
+ * @since 7.2.0
+ */
+function ssb_seo_meta_desc_provider_title( $post_id ) {
+	$title = get_the_title( $post_id );
+
+	return ssb_normalize_seo_meta_description( $title );
+}
+
+/**
+ * Default ordered list of SEO meta description providers.
+ *
+ * Highest-adoption SEO plugins first, then excerpt, then title.
+ *
+ * @return array<string, callable> Map of provider slug => callable( int $post_id ): string|null.
+ * @since 7.2.0
+ */
+function ssb_get_default_seo_meta_description_providers() {
+	return array(
+		'yoast'             => 'ssb_seo_meta_desc_provider_yoast',
+		'rankmath'          => 'ssb_seo_meta_desc_provider_rankmath',
+		'aioseo'            => 'ssb_seo_meta_desc_provider_aioseo',
+		'seopress'          => 'ssb_seo_meta_desc_provider_seopress',
+		'the_seo_framework' => 'ssb_seo_meta_desc_provider_the_seo_framework',
+		'excerpt'           => 'ssb_seo_meta_desc_provider_excerpt',
+		'title'             => 'ssb_seo_meta_desc_provider_title',
+	);
+}
+
+/**
+ * Resolve a share/pin description from SEO plugins, excerpt, or title.
+ *
+ * Tries each provider in order and returns the first non-empty description.
+ * Providers that are inactive or have no value return null and are skipped.
+ *
+ * Filter `ssb_seo_meta_description_providers` to reorder, disable, or register
+ * additional providers. Each provider receives the post ID and must return a
+ * non-empty string or null.
+ *
+ * Default order: Yoast → Rank Math → AIOSEO → SEOPress → The SEO Framework →
+ * excerpt → title.
+ *
+ * @param int $post_id Post ID.
+ * @return string Plain-text description (may be empty only if title is also empty).
+ * @since 7.2.0
+ */
+function ssb_get_seo_meta_description( $post_id ) {
+	$post_id = absint( $post_id );
+	if ( ! $post_id ) {
+		return '';
+	}
+
+	/**
+	 * Filter the ordered SEO meta description providers.
+	 *
+	 * @since 7.1.1
+	 *
+	 * @param array<string, callable> $providers Map of slug => callable( int $post_id ): string|null.
+	 * @param int                     $post_id   Post ID being resolved.
+	 */
+	$providers = apply_filters(
+		'ssb_seo_meta_description_providers',
+		ssb_get_default_seo_meta_description_providers(),
+		$post_id
+	);
+
+	if ( ! is_array( $providers ) ) {
+		$providers = ssb_get_default_seo_meta_description_providers();
+	}
+
+	foreach ( $providers as $callable ) {
+		if ( ! is_callable( $callable ) ) {
+			continue;
+		}
+
+		$result     = call_user_func( $callable, $post_id );
+		$normalized = ssb_normalize_seo_meta_description( $result );
+		if ( null !== $normalized ) {
+			/**
+			 * Filter the resolved SEO meta description before use (e.g. Pinterest).
+			 *
+			 * @since 7.1.1
+			 *
+			 * @param string $description Resolved description.
+			 * @param int    $post_id     Post ID.
+			 */
+			return (string) apply_filters( 'ssb_seo_meta_description', $normalized, $post_id );
+		}
+	}
+
+	return '';
+}
+
+/**
  * Generate Pinterest pin/create share link.
  *
  * Format: https://www.pinterest.com/pin/create/button/?url=&media=&description=
@@ -1370,6 +1966,7 @@ function ssb_pinterest_share_link( $url, $media = '', $description = '' ) {
  * @param array  $args      Extra args (e.g. twitter_handle, media).
  * @return string
  * @since 7.0.1
+ * @version 7.2.0
  */
 function ssb_build_share_url( $network, $permalink, $title = '', $args = array() ) {
 	$permalink = html_entity_decode( (string) $permalink, ENT_QUOTES, 'UTF-8' );
@@ -1381,8 +1978,15 @@ function ssb_build_share_url( $network, $permalink, $title = '', $args = array()
 			$handle = isset( $args['twitter_handle'] ) ? $args['twitter_handle'] : '';
 			return ssb_twitter_share_link( $permalink, $title, $handle );
 		case 'pinterest':
-			$media = isset( $args['media'] ) ? $args['media'] : '';
-			return ssb_pinterest_share_link( $permalink, $media, $title );
+			$media       = isset( $args['media'] ) ? $args['media'] : '';
+			$description = $title;
+			if ( ! empty( $args['post_id'] ) ) {
+				$seo_description = ssb_get_seo_meta_description( (int) $args['post_id'] );
+				if ( '' !== $seo_description ) {
+					$description = $seo_description;
+				}
+			}
+			return ssb_pinterest_share_link( $permalink, $media, $description );
 		case 'whatsapp':
 			return ssb_whats_app_share_link( $permalink );
 		case 'viber':
@@ -1487,16 +2091,12 @@ function ssb_get_snapchat_icon_svg() {
  * @param string $network Network name.
  * @return bool True if network has counts, false otherwise.
  * @since 2.1.4
- * @version 6.0.0
+ * @version 7.2.0
  */
 function ssb_is_network_has_counts( $network ) {
 	// phpcs:ignore Generic.Files.LineLength.MaxExceeded
 	$no_count_networks = array( 'totalshare', 'viber', 'whatsapp', 'print', 'email', 'messenger', 'linkedin', 'twitter', 'pinterest', 'reddit', 'copylink', 'telegram', 'threads', 'bluesky', 'mastodon', 'vk', 'snapchat' );
-	if ( in_array( $network, $no_count_networks, true ) ) {
-		return false;
-	} else {
-		return true;
-	}
+	return ! in_array( $network, $no_count_networks, true );
 }
 
 /**

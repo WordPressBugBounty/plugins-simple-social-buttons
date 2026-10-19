@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:20+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "lt-LT",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Paprasti socialiniai mygtukai"
+            ],
+            "Post Type Settings": [
+                "\u012era\u0161\u0173 tipo nustatymai"
+            ],
+            "Spread the Word": [
+                "Skleiskite \u017einias"
+            ],
+            "Share on X\/Twitter": [
+                "Dalinkit\u0117s X\/Twitter"
+            ],
+            "Share on Facebook": [
+                "Pawe\u0142 Rabinek Facebook socialiniame tinkle"
+            ],
+            "Rate on WordPress.org": [
+                "\u012evertinkite WordPress.org"
+            ],
+            "Email": [
+                "El. pa\u0161tas"
+            ],
+            "Name": [
+                "Vardas"
+            ],
+            "Recommended Plugins": [
+                "Rekomenduojami papildiniai"
+            ],
+            "Customize WordPress Login Page": [
+                "Prid\u0117ti WordPress prisijungimo puslapio pritaikym\u0105"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "Supaprastinti Google Analytics WordPress"
+            ],
+            "Related Posts Thumbnails": [
+                "Susijusi\u0173 \u012fra\u0161\u0173 miniati\u016bros"
+            ],
+            "Under Construction & Maintenance mode": [
+                "Statybos metu & Prie\u017ei\u016bros re\u017eimas"
+            ],
+            "Settings": [
+                "Nuostatos"
+            ],
+            "Social Buttons": [
+                "Pasl\u0117pti Simple Social Buttons"
+            ],
+            "Social Buttons Designs": [
+                "Socialini\u0173 mygtuk\u0173 dizainai"
+            ],
+            "Social Buttons Positions": [
+                "Socialini\u0173 mygtuk\u0173 pad\u0117tys"
+            ],
+            "Sidebar": [
+                "\u0160onin\u0117 juosta"
+            ],
+            "On Media": [
+                "Apie medij\u0105"
+            ],
+            "Popup": [
+                "I\u0161\u0161okantis langas"
+            ],
+            "Fly In": [
+                "Skristi \u012f"
+            ],
+            "InLine": [
+                "Inline"
+            ],
+            "Additional features": [
+                "Papildomos funkcijos"
+            ],
+            "Inline": [
+                "Inline"
+            ],
+            "Media": [
+                "Media"
+            ],
+            "Sidebar Orientation": [
+                "\u0160onin\u0117s juostos orientacija"
+            ],
+            "Left": [
+                "Kair\u0117"
+            ],
+            "Right": [
+                "De\u0161in\u0117"
+            ],
+            "Intro Animation": [
+                "\u012e\u017eangos animacija"
+            ],
+            "No": [
+                "Ne"
+            ],
+            "From Right": [
+                "I\u0161 de\u0161in\u0117s"
+            ],
+            "From Top": [
+                "I\u0161 vir\u0161aus"
+            ],
+            "From Bottom": [
+                "I\u0161 apa\u010dios"
+            ],
+            "From Left": [
+                "I\u0161 kair\u0117s"
+            ],
+            "Fade In": [
+                "I\u0161nykti"
+            ],
+            "Display Share Counts": [
+                "Rodyti dalijimosi skai\u010dius"
+            ],
+            "Display Total Shares": [
+                "Rodyti bendr\u0105 dalijim\u0173 skai\u010di\u0173"
+            ],
+            "Display Text on hover": [
+                "Rodyti tekst\u0105 pel\u0117s u\u017evedus"
+            ],
+            "Flat Button Style": [
+                "Plok\u0161\u010dias mygtuko stilius"
+            ],
+            "Add Icon Spacing": [
+                "Prid\u0117ti piktogram\u0173 tarp\u0105"
+            ],
+            "Enter the Space in Pixel": [
+                "\u012eveskite tarp\u0105 pikseliais"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Klijuojantis apa\u010dioje (mobiliesiems)"
+            ],
+            "Hide On Mobile Devices": [
+                "Sl\u0117pti mobiliesiems \u012frenginiams"
+            ],
+            "Limit Social Icons": [
+                "Apriboti socialini\u0173 piktogram\u0173 skai\u010di\u0173"
+            ],
+            "Maximum Icons to Show": [
+                "Maksimalus rodytin\u0173 piktogram\u0173 skai\u010dius"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "Norite daugiau kontrol\u0117s d\u0117l savo \u0161onin\u0117s juostos socialini\u0173 mygtuk\u0173 stiliaus?"
+            ],
+            "Icon Position": [
+                "Piktogramos pad\u0117tis"
+            ],
+            "Above The Content": [
+                "Vir\u0161 turinio"
+            ],
+            "Below The Content": [
+                "Po turiniu"
+            ],
+            "Above + Below The Content": [
+                "Vir\u0161 + po turiniu"
+            ],
+            "Icon Alignment": [
+                "Piktogramos lygiavimas"
+            ],
+            "Centered": [
+                "Centrinis"
+            ],
+            "Animation": [
+                "Animacija"
+            ],
+            "From bottom": [
+                "I\u0161 apa\u010dios"
+            ],
+            "From top": [
+                "I\u0161 vir\u0161aus"
+            ],
+            "From left": [
+                "I\u0161 kair\u0117s"
+            ],
+            "From right": [
+                "I\u0161 de\u0161in\u0117s"
+            ],
+            "Show at Category pages": [
+                "Rodyti kategorij\u0173 puslapiuose"
+            ],
+            "Show at Archive pages": [
+                "Rodyti archyvo puslapiuose"
+            ],
+            "Show at Tag pages": [
+                "Rodyti gairi\u0173 puslapiuose"
+            ],
+            "Show at Search pages": [
+                "Rodyti paie\u0161kos puslapiuose"
+            ],
+            "Share Title": [
+                "Bendrinti pavadinim\u0105"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "Norite daugiau kontroliuoti savo \u012fterpt\u0173j\u0173 socialini\u0173 mygtuk\u0173 stili\u0173?"
+            ],
+            "Internal Share Flush Interval": [
+                "Vidinis bendrinimo i\u0161valymo intervalas"
+            ],
+            "Open Graph Tags": [
+                "Atidaryti \u201eGraph\u201c \u017eymeles"
+            ],
+            "Remove Settings on Uninstall": [
+                "Pa\u0161alinti nustatymus i\u0161instaliavus"
+            ],
+            "Factory Reset": [
+                "Gamykliniai nustatymai"
+            ],
+            "Custom CSS": [
+                "Pritaikyta CSS"
+            ],
+            "Custom JS": [
+                "Pritaikyta JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "Ar norite rodyti socialini\u0173 dalinimosi mygtukus savo medijoje?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "Ar norite i\u0161mani\u0173 i\u0161\u0161okan\u010di\u0173 lang\u0173, kurie pasirodo tinkamu momentu?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "Ar norite pa\u017eangi\u0173 \"Fly In\" animacij\u0173, kurios skatina daugiau dalinimosi?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Dalintis"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Threads"
+            ],
+            "Post": [
+                "Paskelbti"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Kopijuoti nuorod\u0105"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "Spausdinti"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Nustatym\u0173 klaida"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "Ka\u017ekas negerai su nustatym\u0173 puslapiu. Pra\u0161ome atnaujinti puslap\u012f, kad bandytum\u0117te dar kart\u0105."
+            ],
+            "Error Details": [
+                "Klaidos detal\u0117s"
+            ],
+            "Refresh Page": [
+                "Atnaujinti puslap\u012f"
+            ],
+            "Toggle setting": [
+                "Perjungti nustatym\u0105"
+            ],
+            "Select Color": [
+                "Pasirinkti spalv\u0105"
+            ],
+            "Clear": [
+                "I\u0161valyti"
+            ],
+            "Done": [
+                "Atlikta"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "\u012eveskite vis\u0105 skai\u010di\u0173 pikseli\u0173 nuo 1 iki 999. Vert\u0117 buvo koreguota."
+            ],
+            "Select...": [
+                "Pasirinkti..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Papras\u010di\u0173 socialini\u0173 mygtuk\u0173<\/strong> k\u016br\u0117jas <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> prideda pa\u017eangi\u0105 socialini\u0173 tinkl\u0173 dalijimosi mygtuk\u0173 rinkin\u012f j\u016bs\u0173 WordPress svetain\u0117ms, tokias kaip: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> ir <strong>Pinterest<\/strong>. Tai daro j\u012f labiausiai lanks\u010diu socialinio dalijimosi papildiniu visiems."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Valdykite, kaip dalijimosi mygtukai atrodo j\u016bs\u0173 \u012fra\u0161uose esan\u010diose nuotraukose ir medijoje."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Konfig\u016bruokite savo dalijimosi i\u0161\u0161okant\u012f lang\u0105: nustatykite prane\u0161im\u0105, laik\u0105 ir aktyvavimo elges\u012f."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "Sukurkite slenkant\u012f dalijimosi prane\u0161im\u0105 su individualizuotu prane\u0161imu, pozicija ir laiku"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS skai\u010diavimai"
+            ],
+            "hour": [
+                "valanda"
+            ],
+            "hours": [
+                "valandos"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Vidiniai dalijimosi paspaudim\u0173 skai\u010diai yra fiksuojami palaikomose socialin\u0117se tinkluose (pvz., Twitter\/X, LinkedIn, WhatsApp), kai lankytojai naudoja dalijimosi mygtukus j\u016bs\u0173 svetain\u0117je. Skai\u010diai saugomi lokaliai ir n\u0117ra siun\u010diami \u012f \u0161ias socialines tinklus. I\u0161valykite savo puslapio talpykl\u0105 po papildinio atnaujinimo, kad mygtuk\u0173 \u017eym\u0117jimas i\u0161likt\u0173 suderintas."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "\u012ejungti, kad pa\u0161alintum\u0117te visus nustatymus, pa\u0161alinus papildin\u012f."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "\u012ejungti, kad atstatytum\u0117te visus nustatymus \u012f numatytuosius, kai i\u0161saugote."
+            ],
+            "Click To Post": [
+                "Paspauskite, kad paskelbtum\u0117te"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "Atrakinkite Paspauskite, kad Tweet funkcij\u0105 su Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "Gaukite galing\u0105 Paspauskite, kad Tweet funkcionalum\u0105, leid\u017eiant\u012f kurti \u012ftraukian\u010di\u0105, tweetinam\u0105 turin\u012f tiesiai savo \u012fra\u0161uose. \u0160i Pro funkcija padeda padidinti socialin\u012f \u012fsitraukim\u0105 ir pritraukti daugiau srauto \u012f j\u016bs\u0173 svetain\u0119."
+            ],
+            "Click here to Upgrade": [
+                "Paspauskite \u010dia, kad atnaujintum\u0117te"
+            ],
+            "Loading Pro settings...": [
+                "Kraunamos Pro nustatymai..."
+            ],
+            "Loading Pro component...": [
+                "Kraunamas Pro komponentas..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Konfig\u016bruokite, kaip j\u016bs\u0173 vidiniai dalijimosi mygtukai atrodo j\u016bs\u0173 turinyje."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "Norint gauti Facebook dalijimosi skai\u010di\u0173, reikia prid\u0117ti Facebook Program\u0117l\u0117s ID ir Slapta\u017eod\u012f Socialiniame skirtuke."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Rodyti tik nustatyt\u0105 ikon\u0173 skai\u010di\u0173 j\u016bs\u0173 turinyje. Likusios ikon\u0117l\u0117s atsidaro i\u0161\u0161okan\u010diame lange, kai lankytojai paspaud\u017eia + mygtuk\u0105."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "\u0160is tekstas rodomas j\u016bs\u0173 svetain\u0117je kaip antra\u0161t\u0117 vir\u0161 inline dalijimosi mygtuk\u0173. Jis nenaudojamas kaip pavadinimas, kai kas nors dalijasi j\u016bs\u0173 turiniu socialiniuose tinkluose."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Paspauskite Enter, kad pereitum\u0117te prie Neaktyvus."
+            ],
+            "Press Enter to move to Active.": [
+                "Paspauskite Enter, kad pereitum\u0117te prie Aktyvus."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Naudokite auk\u0161tyn ir \u017eemyn rodykli\u0173 klavi\u0161us, kad pertvarkytum\u0117te."
+            ],
+            "Drop here": [
+                "Numeskite \u010dia"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Redaguoti"
+            ],
+            "Drop at end of list": [
+                "Numeskite s\u0105ra\u0161o pabaigoje"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Tempkite ir numeskite, kad aktyvuotum\u0117te ir pertvarkytum\u0117te savo dalijimosi mygtukus:"
+            ],
+            "Active": [
+                "Aktyvus"
+            ],
+            "Inactive": [
+                "Neaktyvus"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Paprasti socialiniai mygtukai NextGEN galerijoje"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "Pasirinkite rodymo stilius, kad pozicionuotum\u0117te savo dalijimosi mygtukus."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Konfig\u016bruokite savo \u0161onin\u0117s juostos dalijimosi mygtuk\u0173 i\u0161vaizd\u0105 ir elgsen\u0105."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Rodyti tik nustatyt\u0105 ikon\u0173 skai\u010di\u0173 \u0161onin\u0117je juostoje. Likusios ikonos atsidaro i\u0161kylan\u010diame lange, kai lankytojai paspaud\u017eia + mygtuk\u0105."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "Prid\u0117kite savo X vartotojo vard\u0105, kad prid\u0117tum\u0117te via= prie Twitter\/X dalijimosi nuorod\u0173 i\u0161 savo mygtuk\u0173."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @vartotojo_vardas"
+            ],
+            "Facebook App": [
+                "Facebook programa"
+            ],
+            "How to create a Facebook app": [
+                "Kaip sukurti Facebook program\u0105"
+            ],
+            "Facebook App ID": [
+                "Facebook programos ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "B\u016btina Facebook dalijimosi skai\u010diams. Prid\u0117kite savo programos ID ir slapt\u0105 kod\u0105 i\u0161 Facebook k\u016br\u0117j\u0173 portalo."
+            ],
+            "Facebook App Secret": [
+                "Facebook programos slaptas kodas"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat naudoja Snap Creative Kit Web, tod\u0117l mobilieji lankytojai atidaro Snapchat program\u0105 su j\u016bs\u0173 puslapio nuoroda, paruo\u0161ta dalijimuisi."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "Snap Kit kliento ID (neprivaloma)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Nepaprasta. Prid\u0117kite savo Snap Kit kliento ID, kad priskirtum\u0117te dalijimus Snap Kit k\u016br\u0117j\u0173 portale. Dalijimasis veikia ir be jo."
+            ],
+            "How it works": [
+                "Kaip tai veikia"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "Prid\u0117kite Snapchat i\u0161 nustatym\u0173 skilties, kaip bet kur\u012f kit\u0105 mygtuk\u0105."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "Mobiliajame telefone paspaudus mygtuk\u0105, atsidaro Snapchat programos dalijimosi srautas dabartiniam puslapiui."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "Darbalaukyje atsidaro Snapcode langas, kad naudotojai gal\u0117t\u0173 nuskaityti ir dalintis i\u0161 savo telefono."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "I\u0161laikykite Open Graph \u017eymes \u012fjungtas, kad Snapchat gal\u0117t\u0173 rodyti j\u016bs\u0173 puslapio pavadinim\u0105 ir per\u017ei\u016br\u0105."
+            ],
+            "Official Buttons": [
+                "Oficial\u016bs mygtukai"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "Pasirinkite mygtuko stili\u0173, kuris atitinka j\u016bs\u0173 svetain\u0117s i\u0161vaizd\u0105 ir poj\u016bt\u012f."
+            ],
+            "Dismiss this notice.": [
+                "Atmesti \u0161\u012f prane\u0161im\u0105."
+            ],
+            "Dismiss": [
+                "Atmesti"
+            ],
+            "Share on LinkedIn": [
+                "Dalintis LinkedIn"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro leid\u017eia nustatyti individualias fono, u\u017evedimo ir ikonos spalvas kiekvienam mygtukui, kad jie nat\u016braliai der\u0117t\u0173 su j\u016bs\u0173 svetain\u0117s dizainu, o ne i\u0161siskirt\u0173 kaip numatytasis papildinys. Mygtukai, kurie tinka j\u016bs\u0173 svetainei, da\u017eniau paspaud\u017eiami, o tai rei\u0161kia daugiau dalijimosi ir daugiau srauto jums. Pro taip pat prideda funkcijas, tokias kaip mygtukai ant vaizd\u0173, i\u0161\u0161okantys langai, kai ketinama i\u0161eiti, skaidr\u0117s animacijos ir kt."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro leid\u017eia jums rodyti dalijimosi mygtukus tiesiogiai ant vaizd\u0173 ir nuotrauk\u0173 j\u016bs\u0173 \u012fra\u0161uose ir puslapiuose, pasirinkti j\u0173 pad\u0117t\u012f, prid\u0117ti ikonos tarpus ir nustatyti individualias spalvas, kurios atitinka j\u016bs\u0173 svetain\u0119. Taip pat galite juos pasl\u0117pti mobiliajame telefone ir tiksliai kontroliuoti, kuriuose \u012fra\u0161\u0173 tipuose jie pasirodo. Tai lengvas b\u016bdas paversti kiekvien\u0105 vaizd\u0105 dalijimosi galimybe ir pritraukti daugiau srauto."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro leid\u017eia jums sukurti individual\u0173 dalijimosi i\u0161\u0161okant\u012f lang\u0105 su savo pavadinimu ir \u017einute ir suaktyvinti j\u012f tiksliai tada, kai tai svarbu, pavyzd\u017eiui, prie\u0161 lankytojams i\u0161einant arba po to, kai jie slenka. Galite prid\u0117ti animacij\u0105, rodyti dalijimosi skai\u010dius arba bendr\u0105 dalijim\u0173 skai\u010di\u0173, kad sukurtum\u0117te socialin\u012f \u012frodym\u0105, ir nustatyti individualias spalvas, kad jos atitikt\u0173 j\u016bs\u0173 prek\u0117s \u017eenkl\u0105. Tai protingas b\u016bdas atkreipti lankytoj\u0173 d\u0117mes\u012f b\u016btent tada, kai jie yra labiausiai link\u0119 dalintis."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro leid\u017eia jums sukurti individual\u0173 Fly In langel\u012f su savo pavadinimu ir \u017einute, pasirinkti jo pad\u0117t\u012f ir animacij\u0105, o taip pat rodyti dalijimosi skai\u010dius arba bendr\u0105 dalijim\u0173 skai\u010di\u0173, kad sukurtum\u0117te socialin\u012f \u012frodym\u0105. Galite tiksliai sureguliuoti laik\u0105, ikonos tarpus ir spalvas, kad jos atitikt\u0173 j\u016bs\u0173 prek\u0117s \u017eenkl\u0105, ir kontroliuoti, kuriuose \u012fra\u0161\u0173 tipuose jis pasirodo. Tai puikus b\u016bdas paskatinti lankytojus dalintis b\u016btent tada, kai jie yra labiausiai \u012fsitrauk\u0119."
+            ],
+            "Failed to activate the plugin.": [
+                "Nepavyko aktyvuoti papildinio."
+            ],
+            "Click here to Activate Pro": [
+                "Spustel\u0117kite \u010dia, kad aktyvuotum\u0117te Pro"
+            ],
+            "Please enter your email.": [
+                "Pra\u0161ome \u012fvesti savo el. pa\u0161t\u0105."
+            ],
+            "Please enter a valid email address.": [
+                "Pra\u0161ome \u012fvesti galiojant\u012f el. pa\u0161to adres\u0105."
+            ],
+            "Failed to subscribe.": [
+                "Nepavyko u\u017esiprenumeruoti."
+            ],
+            "Thank you!": [
+                "A\u010di\u016b!"
+            ],
+            "Please try again.": [
+                "Pra\u0161ome bandyti dar kart\u0105."
+            ],
+            "Newsletter": [
+                "Naujienlai\u0161kis"
+            ],
+            "Subscribing": [
+                "U\u017esiprenumeruojama"
+            ],
+            "Subscribe": [
+                "Prenumeruoti"
+            ],
+            "Dismiss notice": [
+                "Atmesti prane\u0161im\u0105"
+            ],
+            "Upgrade to Pro!": [
+                "Aukite \u012f Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "Atblokokite premium funkcijas, sukurtas pad\u0117ti jums padidinti \u012fsitraukim\u0105, pagerinti matomum\u0105 ir sutaupyti laiko."
+            ],
+            "Unlimited Websites:": [
+                "Neribotos svetain\u0117s:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Naudokite SSB Pro visose savo svetain\u0117se (be rib\u0173)"
+            ],
+            "Priority Support:": [
+                "Prioritetin\u0117 pagalba:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "Gaukite greit\u0105, draugi\u0161k\u0105 pagalb\u0105 i\u0161 m\u016bs\u0173 ekspert\u0173 palaikymo komandos, kai jos reikia."
+            ],
+            "1 Year of Updates:": [
+                "1 met\u0173 atnaujinimai:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "B\u016bkite saug\u016bs ir suderinami su naujausiais leidimais."
+            ],
+            "No Coding Required:": [
+                "Nereikia koduoti:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "Nustatykite ir pritaikykite mygtukus be vargo i\u0161 valdymo pulto."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "Greitas ir lanks\u010dius mygtuk\u0173 i\u0161d\u0117stymas:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "Prid\u0117kite mygtukus tiksliai ten, kur norite: \u012fra\u0161ai, puslapiai ar individualios vietos."
+            ],
+            "Fully Responsive Design:": [
+                "Visi\u0161kai reaguojantis dizainas:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "J\u016bs\u0173 socialiniai mygtukai puikiai atrodo kompiuteriuose, plan\u0161et\u0117se ir mobiliuosiuose \u012frenginiuose."
+            ],
+            "Ongoing Feature Improvements:": [
+                "Nuolatiniai funkcij\u0173 patobulinimai:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Reguliar\u016bs atnaujinimai su naujomis funkcijomis ir na\u0161umo pagerinimais."
+            ],
+            "Get up to": [
+                "Gaukite iki"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "nuolaidos pirmam savo Simple Social Buttons metui."
+            ],
+            "Unlock Pro Features": [
+                "Atrakinti Pro funkcijas"
+            ],
+            "* Discount applied automatically": [
+                "* Nuolaida taikoma automati\u0161kai"
+            ],
+            "Reviewer avatar": [
+                "Recenzento avataras"
+            ],
+            "John": [
+                "Jonas"
+            ],
+            "5 star rating": [
+                "5 \u017evaig\u017edu\u010di\u0173 \u012fvertinimas"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "\u012eskiepiai tikrai veikia gerai. K\u016br\u0117jai ir k\u016br\u0117jai gerai pasirod\u0117!"
+            ],
+            "Designed and Maintained by": [
+                "Suk\u016br\u0117 ir palaiko"
+            ],
+            "Company logo": [
+                "\u012emon\u0117s logotipas"
+            ],
+            "Tab content not found": [
+                "Skirtuko turinys nerastas"
+            ],
+            "Settings saved successfully!": [
+                "Nustatymai s\u0117kmingai i\u0161saugoti!"
+            ],
+            "Loading\u2026": [
+                "Kraunama\u2026"
+            ],
+            "Try again": [
+                "Bandykite dar kart\u0105"
+            ],
+            "Saving...": [
+                "I\u0161saugoma..."
+            ],
+            "Save Changes": [
+                "I\u0161saugoti pakeitimus"
+            ],
+            "Advanced": [
+                "I\u0161pl\u0117stin\u0117"
+            ],
+            "Social": [
+                "Socialin\u0117"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Atnaujinkite \u012f Pro versij\u0105, kad gautum\u0117te daugiau funkcij\u0173"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "\u012ejunkite \u0161onin\u0119 juost\u0105 arba \u012fterpt\u0105, kad i\u0161saugotum\u0117te nustatymus. Medijos, i\u0161\u0161okantys langai ir skraidymas reikalauja Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Ne\u017einoma klaida i\u0161saugant nustatymus."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Tr\u016bksta administratoriaus konfig\u016bracijos d\u0117l valymo statuso."
+            ],
+            "Unable to load purge status.": [
+                "Nepavyko \u012fkelti valymo statuso."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "Tinklo klaida \u012fkeliant nustatymus. Patikrinkite savo ry\u0161\u012f ir bandykite dar kart\u0105."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Nepavyko perskaityti serverio atsakymo. Bandykite atnaujinti puslap\u012f."
+            ],
+            "Invalid response from server.": [
+                "Neteisingas atsakymas i\u0161 serverio."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Nepavyko \u012fkelti nustatym\u0173. Galb\u016bt reik\u0117s atnaujinti puslap\u012f arba dar kart\u0105 prisijungti."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Nepavyko \u012fkelti nustatym\u0173 (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Neteisingi nustatym\u0173 duomenys i\u0161 serverio."
+            ],
+            "Something went wrong while loading settings.": [
+                "Kilo problema \u012fkeliant nustatymus."
+            ]
+        }
+    }
+}

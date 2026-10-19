@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:21+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl-NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Eenvoudige Sociale Knoppen"
+            ],
+            "Post Type Settings": [
+                "Instellingen voor berichttype"
+            ],
+            "Spread the Word": [
+                "Verspreid het Woord"
+            ],
+            "Share on X\/Twitter": [
+                "Deel op X\/Twitter"
+            ],
+            "Share on Facebook": [
+                "Pawe\u0142 Rabinek op Facebook"
+            ],
+            "Rate on WordPress.org": [
+                "Beoordeel op WordPress.org"
+            ],
+            "Email": [
+                "E-mail"
+            ],
+            "Name": [
+                "Naam"
+            ],
+            "Recommended Plugins": [
+                "Aanbevolen Plugins"
+            ],
+            "Customize WordPress Login Page": [
+                "Pas de WordPress Inlogpagina aan"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "Vereenvoudig Google Analytics in WordPress"
+            ],
+            "Related Posts Thumbnails": [
+                "Gerelateerde Berichten Miniaturen"
+            ],
+            "Under Construction & Maintenance mode": [
+                "In Constructie & Onderhoudsmodus"
+            ],
+            "Settings": [
+                "Instellingen"
+            ],
+            "Social Buttons": [
+                "Verberg Simple Social Buttons"
+            ],
+            "Social Buttons Designs": [
+                "Sociale Knoppen Ontwerpen"
+            ],
+            "Social Buttons Positions": [
+                "Sociale Knoppen Posities"
+            ],
+            "Sidebar": [
+                "Zijbalk"
+            ],
+            "On Media": [
+                "Op Media"
+            ],
+            "Popup": [
+                "Popup"
+            ],
+            "Fly In": [
+                "Vlieg In"
+            ],
+            "InLine": [
+                "InLine"
+            ],
+            "Additional features": [
+                "Extra functies"
+            ],
+            "Inline": [
+                "Inline"
+            ],
+            "Media": [
+                "Media"
+            ],
+            "Sidebar Orientation": [
+                "Zijbalk Ori\u00ebntatie"
+            ],
+            "Left": [
+                "Links"
+            ],
+            "Right": [
+                "Rechts"
+            ],
+            "Intro Animation": [
+                "Intro Animatie"
+            ],
+            "No": [
+                "Nee"
+            ],
+            "From Right": [
+                "Van Rechts"
+            ],
+            "From Top": [
+                "Van Boven"
+            ],
+            "From Bottom": [
+                "Van Beneden"
+            ],
+            "From Left": [
+                "Van Links"
+            ],
+            "Fade In": [
+                "Vervagen In"
+            ],
+            "Display Share Counts": [
+                "Weergave van de deelcontroles"
+            ],
+            "Display Total Shares": [
+                "Weergave van het totale aantal delen"
+            ],
+            "Display Text on hover": [
+                "Weergave tekst bij hover"
+            ],
+            "Flat Button Style": [
+                "Plat knopstijl"
+            ],
+            "Add Icon Spacing": [
+                "Voeg ruimte tussen iconen toe"
+            ],
+            "Enter the Space in Pixel": [
+                "Voer de ruimte in pixels in"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Plakkerig onderaan (Mobiel)"
+            ],
+            "Hide On Mobile Devices": [
+                "Verbergen op mobiele apparaten"
+            ],
+            "Limit Social Icons": [
+                "Beperk sociale iconen"
+            ],
+            "Maximum Icons to Show": [
+                "Maximaal aantal iconen om weer te geven"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "Wilt u meer controle over de styling van uw zijbalk sociale knoppen?"
+            ],
+            "Icon Position": [
+                "Pictogrampositie"
+            ],
+            "Above The Content": [
+                "Boven de inhoud"
+            ],
+            "Below The Content": [
+                "Onder de inhoud"
+            ],
+            "Above + Below The Content": [
+                "Boven + Onder de inhoud"
+            ],
+            "Icon Alignment": [
+                "Pictogramuitlijning"
+            ],
+            "Centered": [
+                "Gecentreerd"
+            ],
+            "Animation": [
+                "Animatie"
+            ],
+            "From bottom": [
+                "Van onder"
+            ],
+            "From top": [
+                "Van boven"
+            ],
+            "From left": [
+                "Van links"
+            ],
+            "From right": [
+                "Van rechts"
+            ],
+            "Show at Category pages": [
+                "Toon op categorie pagina's"
+            ],
+            "Show at Archive pages": [
+                "Toon op archief pagina's"
+            ],
+            "Show at Tag pages": [
+                "Toon op tag pagina's"
+            ],
+            "Show at Search pages": [
+                "Toon op Zoekpagina's"
+            ],
+            "Share Title": [
+                "Deel Titel"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "Meer Controle Over de Stijl van Je Inline Sociale Knoppen?"
+            ],
+            "Internal Share Flush Interval": [
+                "Interne Deel Flush Interval"
+            ],
+            "Open Graph Tags": [
+                "Open Graph-tags"
+            ],
+            "Remove Settings on Uninstall": [
+                "Verwijder instellingen bij de\u00efnstalleren"
+            ],
+            "Factory Reset": [
+                "Fabrieksinstellingen herstellen"
+            ],
+            "Custom CSS": [
+                "Aangepaste CSS"
+            ],
+            "Custom JS": [
+                "Aangepaste JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "Wilt u sociale deelknoppen op uw media tonen?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "Wilt u slimme pop-ups die op het juiste moment worden geactiveerd?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "Wilt u geavanceerde Fly In-animaties die meer shares genereren?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Delen"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Threads"
+            ],
+            "Post": [
+                "Plaatsen"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Kopieer Link"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "Afdrukken"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Instellingen Fout"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "Er is iets misgegaan met de instellingenpagina. Vernieuw de pagina om het opnieuw te proberen."
+            ],
+            "Error Details": [
+                "Foutdetails"
+            ],
+            "Refresh Page": [
+                "Vernieuw Pagina"
+            ],
+            "Toggle setting": [
+                "Schakel instelling in"
+            ],
+            "Select Color": [
+                "Kleur Selecteren"
+            ],
+            "Clear": [
+                "Vegen"
+            ],
+            "Done": [
+                "Klaar"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "Voer een geheel getal van pixels in van 1 tot 999. De waarde is aangepast."
+            ],
+            "Select...": [
+                "Selecteer..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> door <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> voegt een geavanceerde set sociale media deelknoppen toe aan uw WordPress-sites, zoals: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> en <strong>Pinterest<\/strong>. Dit maakt het de meest flexibele sociale deelplugin voor iedereen."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Beheer hoe deelknoppen verschijnen op afbeeldingen en media binnen uw berichten."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Configureer uw deelpop-up: stel de boodschap, timing en triggergedrag in."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "Stel een slide-in deelprompt in met aangepaste berichten, positie en timing"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS Tellingen Oplossen"
+            ],
+            "hour": [
+                "uur"
+            ],
+            "hours": [
+                "uren"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Interne kliks op deelknoppen worden vastgelegd voor ondersteunde netwerken (bijvoorbeeld Twitter\/X, LinkedIn, WhatsApp) wanneer bezoekers de deelknoppen op uw site gebruiken. Tellingen worden lokaal opgeslagen en worden niet naar die sociale netwerken verzonden. Maak uw pagina-cache leeg na het upgraden van de plugin zodat de knopmarkup in sync blijft."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "Schakel in om alle instellingen te verwijderen bij het de-installeren van de plugin."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "Schakel in om alle instellingen terug te zetten naar standaard bij het opslaan."
+            ],
+            "Click To Post": [
+                "Klik om te Plaatsen"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "Ontgrendel de Klik om te Tweeten functie met Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "Krijg de krachtige Klik om te Tweeten functionaliteit waarmee u boeiende, tweetbare inhoud direct in uw berichten kunt maken. Deze Pro-functie helpt sociale betrokkenheid te vergroten en meer verkeer naar uw site te leiden."
+            ],
+            "Click here to Upgrade": [
+                "Klik hier om te Upgraden"
+            ],
+            "Loading Pro settings...": [
+                "Pro-instellingen laden..."
+            ],
+            "Loading Pro component...": [
+                "Pro-component laden..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Configureer hoe uw inline deelknoppen verschijnen binnen uw inhoud."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "Voor de Facebook deelcount moet u Facebook App ID en Secret toevoegen in het Sociale tabblad."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Toon slechts een vastgesteld aantal pictogrammen in uw inhoud. Overige pictogrammen openen in een pop-up wanneer bezoekers op de + knop klikken."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "Deze tekst verschijnt op uw site als een kop boven de inline deelknoppen. Het wordt niet gebruikt als de titel wanneer iemand uw content deelt op sociale netwerken."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Druk op Enter om naar Inactief te verplaatsen."
+            ],
+            "Press Enter to move to Active.": [
+                "Druk op Enter om naar Actief te verplaatsen."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Gebruik de pijl omhoog en omlaag om te herordenen."
+            ],
+            "Drop here": [
+                "Sleep hier"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Bewerken"
+            ],
+            "Drop at end of list": [
+                "Sleep naar het einde van de lijst"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Sleep & Laat los om uw deelknoppen te activeren en te herordenen:"
+            ],
+            "Active": [
+                "Actief"
+            ],
+            "Inactive": [
+                "Inactief"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Eenvoudige sociale knoppen op NextGEN Gallery"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "Selecteer de weergavestijlen om uw deelknoppen te positioneren."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Configureer het uiterlijk en gedrag van uw zijbalkdeelknoppen."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Toon slechts een vastgesteld aantal pictogrammen in de zijbalk. Overige pictogrammen worden geopend in een popup wanneer bezoekers op de + knop drukken."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "Voeg uw X-gebruikersnaam toe om via= toe te voegen aan Twitter\/X deel links van uw knoppen."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @gebruikersnaam"
+            ],
+            "Facebook App": [
+                "Facebook App"
+            ],
+            "How to create a Facebook app": [
+                "Hoe een Facebook-app te maken"
+            ],
+            "Facebook App ID": [
+                "Facebook App ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "Verplicht voor Facebook-aandeelcounts. Voeg je App ID en Secret toe vanuit het Facebook-ontwikkelaarsportaal."
+            ],
+            "Facebook App Secret": [
+                "Facebook App Secret"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat gebruikt Snap Creative Kit Web zodat mobiele bezoekers de Snapchat-app openen met je paginalink klaar om te delen."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "Snap Kit Client ID (optioneel)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Optioneel. Voeg je Snap Kit Client ID toe om shares toe te wijzen in het Snap Kit-ontwikkelaarsportaal. Delen werkt zonder."
+            ],
+            "How it works": [
+                "Hoe het werkt"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "Voeg Snapchat toe vanuit het tabblad Instellingen zoals elke andere knop."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "Op mobiel opent het tikken op de knop de Snapchat-appdeelstroom voor de huidige pagina."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "Op desktop opent een Snapcode-venster zodat gebruikers kunnen scannen en delen vanaf hun telefoon."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "Houd Open Graph-tags ingeschakeld zodat Snapchat je paginatitel en voorbeeld kan tonen."
+            ],
+            "Official Buttons": [
+                "Offici\u00eble knoppen"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "Kies een knopstijl die past bij de uitstraling van je site."
+            ],
+            "Dismiss this notice.": [
+                "Deze melding sluiten."
+            ],
+            "Dismiss": [
+                "Sluiten"
+            ],
+            "Share on LinkedIn": [
+                "Deel op LinkedIn"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro stelt je in staat om aangepaste achtergrond-, hover- en iconkleuren voor elke knop in te stellen, zodat ze natuurlijk passen bij het ontwerp van je website in plaats van op te vallen als een standaardplug-in. Knoppen die passen bij je site worden vaker aangeklikt, wat betekent meer shares en meer verkeer voor jou. Pro voegt ook functies toe zoals knoppen op afbeeldingen, pop-ups bij exit-intentie, fly-in slide-animaties en meer."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro stelt je in staat om deelknoppen direct op afbeeldingen en foto's in je berichten en pagina's weer te geven, kies hun positie, voeg iconafstand toe en stel aangepaste kleuren in die passen bij je site. Je kunt ze ook op mobiel verbergen en precies bepalen op welke berichttypen ze verschijnen. Het is een gemakkelijke manier om elke afbeelding om te zetten in een deelbare kans en meer verkeer aan te trekken."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro stelt je in staat om een aangepaste deelpop-up te maken met je eigen titel en bericht, en deze precies te activeren wanneer het belangrijk is, zoals voordat bezoekers vertrekken of nadat ze scrollen. Je kunt animatie toevoegen, deelcounts of totale shares weergeven om sociale bewijskracht op te bouwen, en aangepaste kleuren instellen die passen bij je merk. Het is een slimme manier om de aandacht van bezoekers te trekken op het moment dat ze het meest waarschijnlijk willen delen."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro stelt je in staat om een aangepaste Fly In-box te maken met je eigen titel en bericht, kies de positie en animatie, en zelfs deelcounts of totale shares weergeven om sociale bewijskracht op te bouwen. Je kunt timing, iconafstand en kleuren verfijnen om bij je merk te passen, en bepalen op welke berichttypen het verschijnt. Het is een geweldige manier om bezoekers aan te moedigen om te delen op het moment dat ze het meest betrokken zijn."
+            ],
+            "Failed to activate the plugin.": [
+                "Activatie van de plug-in is mislukt."
+            ],
+            "Click here to Activate Pro": [
+                "Klik hier om Pro te activeren"
+            ],
+            "Please enter your email.": [
+                "Voer uw e-mailadres in."
+            ],
+            "Please enter a valid email address.": [
+                "Voer een geldig e-mailadres in."
+            ],
+            "Failed to subscribe.": [
+                "Abonneren is mislukt."
+            ],
+            "Thank you!": [
+                "Bedankt!"
+            ],
+            "Please try again.": [
+                "Probeer het opnieuw."
+            ],
+            "Newsletter": [
+                "Nieuwsbrief"
+            ],
+            "Subscribing": [
+                "Abonneren"
+            ],
+            "Subscribe": [
+                "Abonneer"
+            ],
+            "Dismiss notice": [
+                "Bericht sluiten"
+            ],
+            "Upgrade to Pro!": [
+                "Upgrade naar Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "Ontgrendel premium functies die zijn ontworpen om u te helpen de betrokkenheid te vergroten, de zichtbaarheid te verbeteren en tijd te besparen."
+            ],
+            "Unlimited Websites:": [
+                "Onbeperkte Websites:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Gebruik SSB Pro op al uw sites (geen limieten)"
+            ],
+            "Priority Support:": [
+                "Prioriteit Support:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "Krijg snelle, vriendelijke hulp van ons expert ondersteuningsteam wanneer u het nodig heeft."
+            ],
+            "1 Year of Updates:": [
+                "1 Jaar Updates:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "Blijf veilig en compatibel met de nieuwste versies."
+            ],
+            "No Coding Required:": [
+                "Geen Codering Vereist:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "Stel knoppen moeiteloos in en pas ze aan vanuit het dashboard."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "Snelle & Flexibele Knopplaatsing:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "Voeg knoppen precies daar toe waar je wilt: berichten, pagina's of aangepaste locaties."
+            ],
+            "Fully Responsive Design:": [
+                "Volledig Responsief Ontwerp:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "Je sociale knoppen zien er geweldig uit op desktop, tablet en mobiel."
+            ],
+            "Ongoing Feature Improvements:": [
+                "Voortdurende Functieverbeteringen:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Regelmatige updates met nieuwe functies en prestatieverbeteringen."
+            ],
+            "Get up to": [
+                "Krijg tot"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "korting op je eerste jaar van Simple Social Buttons."
+            ],
+            "Unlock Pro Features": [
+                "Ontgrendel Pro-functies"
+            ],
+            "* Discount applied automatically": [
+                "* Korting automatisch toegepast"
+            ],
+            "Reviewer avatar": [
+                "Beoordelaar avatar"
+            ],
+            "John": [
+                "John"
+            ],
+            "5 star rating": [
+                "5 sterren beoordeling"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "De plug-in werkt echt goed. De ontwikkelaars en de makers hebben goed werk geleverd!"
+            ],
+            "Designed and Maintained by": [
+                "Ontworpen en Onderhouden door"
+            ],
+            "Company logo": [
+                "Bedrijfslogo"
+            ],
+            "Tab content not found": [
+                "Tabbladinhoud niet gevonden"
+            ],
+            "Settings saved successfully!": [
+                "Instellingen succesvol opgeslagen!"
+            ],
+            "Loading\u2026": [
+                "Laden\u2026"
+            ],
+            "Try again": [
+                "Probeer het opnieuw"
+            ],
+            "Saving...": [
+                "Opslaan..."
+            ],
+            "Save Changes": [
+                "Wijzigingen opslaan"
+            ],
+            "Advanced": [
+                "Geavanceerd"
+            ],
+            "Social": [
+                "Sociaal"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Upgrade naar Pro voor meer functies"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "Schakel zijbalk of inline in om instellingen op te slaan. Media, Popup en Fly In vereisen Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Onbekende fout bij het opslaan van instellingen."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Ontbrekende admin-configuratie voor purge-status."
+            ],
+            "Unable to load purge status.": [
+                "Kon purge-status niet laden."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "Netwerkfout bij het laden van instellingen. Controleer uw verbinding en probeer het opnieuw."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Kon de serverrespons niet lezen. Probeer de pagina te vernieuwen."
+            ],
+            "Invalid response from server.": [
+                "Ongeldige respons van de server."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Kon instellingen niet laden. U moet mogelijk de pagina vernieuwen of opnieuw inloggen."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Kon instellingen niet laden (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Ongeldige instellingengegevens van de server."
+            ],
+            "Something went wrong while loading settings.": [
+                "Er ging iets mis bij het laden van instellingen."
+            ]
+        }
+    }
+}

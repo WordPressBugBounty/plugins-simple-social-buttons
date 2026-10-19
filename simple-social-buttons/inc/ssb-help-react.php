@@ -31,6 +31,7 @@ wp_enqueue_style( 'wp-components' );
 
 // Enqueue necessary scripts and styles for React component.
 wp_enqueue_script( 'ssb-help-react', plugins_url( '../build/help.js', __FILE__ ), array( 'wp-element', 'wp-i18n' ), SSB_VERSION, true );
+wp_set_script_translations( 'ssb-help-react', 'simple-social-buttons', SSB_PLUGIN_DIR . 'lang' );
 wp_enqueue_style( 'ssb-help-style', plugins_url( '../build/help.css', __FILE__ ), array(), SSB_VERSION );
 
 // Localize script for React component.

@@ -178,6 +178,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					src="<?php echo esc_url( admin_url( 'images/wpspin_light.gif' ) ); ?>"
 					id="token_loader"
 					style="display: none"
+					alt=""
 				>
 			</label>
 			<input

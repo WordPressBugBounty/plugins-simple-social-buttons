@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:23+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "pl-PL",
+                "plural-forms": "nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Proste przyciski spo\u0142eczno\u015bciowe"
+            ],
+            "Download Log File": [
+                "Pobierz plik dziennika"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Prosty plik dziennika przycisk\u00f3w spo\u0142eczno\u015bciowych pobrany pomy\u015blnie!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Proste przyciski spo\u0142eczno\u015bciowe<\/strong> autorstwa <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> dodaje zaawansowany zestaw przycisk\u00f3w do udost\u0119pniania w mediach spo\u0142eczno\u015bciowych na Twoich stronach WordPress, takich jak: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> i <strong>Pinterest<\/strong>. Dzi\u0119ki temu jest to najelastyczniejsza wtyczka do udost\u0119pniania w mediach spo\u0142eczno\u015bciowych dla ka\u017cdego."
+            ],
+            "Help & Troubleshooting": [
+                "Pomoc & Rozwi\u0105zywanie problem\u00f3w"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Darmowa pomoc jest dost\u0119pna na %sforum wsparcia wtyczki%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "Aby uzyska\u0107 funkcje premium, dodatki i priorytetow\u0105 pomoc mailow\u0105, %sprzejd\u017a na wersj\u0119 pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Znalaz\u0142e\u015b b\u0142\u0105d lub masz pro\u015bb\u0119 o funkcj\u0119? Prosz\u0119 zg\u0142o\u015b problem %stutaj!%s"
+            ]
+        }
+    }
+}

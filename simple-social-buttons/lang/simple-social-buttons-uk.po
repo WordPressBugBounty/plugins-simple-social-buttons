@@ -1,0 +1,2515 @@
+# Copyright (C) 2026 WPBrigade
+# This file is distributed under the same license as the Simple Social Buttons plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: simplesocialbuttons\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: http://getvoip.com/\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2017-10-28 11:38+0500\n"
+"PO-Revision-Date: 2026-09-24 10:33+0000\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Domain: simple-social-buttons\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: uk\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: simple-social-buttons.php
+#: classes/class-ssb-admin-bar-purge.php:80
+#: src/components/Help.jsx:40
+#: src/components/ImportExport.jsx:240
+#: src/index.js:597
+#. Plugin Name of the plugin
+msgid "Simple Social Buttons"
+msgstr "Прості соціальні кнопки"
+
+#: simple-social-buttons.php
+#. Plugin URI of the plugin
+msgid ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+msgstr ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+
+#: simple-social-buttons.php
+#. Description of the plugin
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your WordPress sites,"
+msgstr ""
+"Прості соціальні кнопки додають розширений набір кнопок для спільного "
+"використання в соціальних медіа на ваших сайтах WordPress,"
+
+#: simple-social-buttons.php
+#. Author of the plugin
+msgid "WPBrigade"
+msgstr "WPBrigade"
+
+#: simple-social-buttons.php
+#. Author URI of the plugin
+msgid ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+msgstr ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+
+#: classes/class-ssb-admin-bar-purge.php:89
+msgid "Purge caches (30 recent posts/pages)"
+msgstr "Очистити кеш (30 останніх записів/сторінок)"
+
+#: classes/class-ssb-admin-bar-purge.php:99
+msgid "Purge all (internal + API cache)"
+msgstr "Очистити всі (внутрішній + API кеш)"
+
+#: classes/class-ssb-admin-bar-purge.php:124
+msgid "You do not have permission to purge share caches."
+msgstr "У вас немає дозволу на очищення кешу спільних записів."
+
+#: classes/class-ssb-admin-bar-purge.php:181
+#: classes/class-ssb-admin-bar-purge.php:313
+msgid "Purging all share caches in the background…"
+msgstr "Очищення всіх кешів спільних записів у фоновому режимі…"
+
+#: classes/class-ssb-admin-bar-purge.php:217
+#. translators: 1: posts processed, 2: internal queue flushes.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. No posts found "
+"for API refetch."
+msgstr ""
+"Очищено %1$d записів/сторінок. Внутрішня черга очищена для %2$d. Записів не "
+"знайдено для повторного запиту API."
+
+#: classes/class-ssb-admin-bar-purge.php:230
+msgid "Internal share queue flushed. No posts found for API refetch."
+msgstr ""
+"Внутрішня черга спільних записів очищена. Записів не знайдено для "
+"повторного запиту API."
+
+#: classes/class-ssb-admin-bar-purge.php:253
+#. translators: %d: number of posts.
+msgid "Purging share caches for %d recent posts/pages in the background…"
+msgstr ""
+"Очищення кешів спільних записів для %d останніх записів/сторінок у фоновому "
+"режимі…"
+
+#: classes/class-ssb-admin-bar-purge.php:274
+msgid "Purge all is not enabled on this site."
+msgstr "Очистка всіх не увімкнена на цьому сайті."
+
+#: classes/class-ssb-admin-bar-purge.php:341
+msgid "The background purge could not be scheduled. Please try Purge All again."
+msgstr ""
+"Фонове очищення не вдалося запланувати. Будь ласка, спробуйте очистити всі "
+"ще раз."
+
+#: classes/class-ssb-admin-bar-purge.php:355
+#. translators: 1: posts processed, 2: internal queue flushes, 3: API refetches.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. API counts "
+"refetched for %3$d."
+msgstr ""
+"Очищено %1$d записів/сторінок. Внутрішня черга очищена для %2$d. API дані "
+"повторно запитані для %3$d."
+
+#: classes/class-ssb-admin-bar-purge.php:366
+#. translators: %d: number of posts.
+msgid "Purge all complete. API counts refetched for %d posts/pages."
+msgstr "Очистка всіх завершена. API дані повторно запитані для %d записів/сторінок."
+
+#: classes/class-ssb-admin-bar-purge.php:445
+#. translators: 1: done count, 2: total count.
+msgid "(%1$d / %2$d posts)"
+msgstr "(%1$d / %2$d записів)"
+
+#: classes/class-ssb-admin-bar-purge.php:556
+msgid "Permission denied"
+msgstr "Доступ заборонено"
+
+#: classes/class-ssb-admin.php:238
+msgid "SSB Settings"
+msgstr "Налаштування SSB"
+
+#: classes/class-ssb-admin.php:269
+msgid "Hide Simple Social Buttons"
+msgstr "Приховати Прості соціальні кнопки"
+
+#: classes/class-ssb-admin.php:336
+msgid "You are not allowed to perform this action."
+msgstr "Вам не дозволено виконувати цю дію."
+
+#: classes/class-ssb-admin.php:342
+msgid "Security check failed."
+msgstr "Перевірка безпеки не пройдена."
+
+#: classes/class-ssb-admin.php:511
+msgid "Leave A Review?"
+msgstr "Залишити відгук?"
+
+#: classes/class-ssb-admin.php:515
+msgid ""
+"We hope you've enjoyed using Simple Social Buttons!\n"
+"\t\t\t\tWould you consider leaving us a review on WordPress.org?"
+msgstr ""
+"Сподіваємось, вам сподобалось використовувати Simple Social Buttons! \n"
+"\t\t\t\tЧи розглянули б ви можливість залишити нам відгук на WordPress.org?"
+
+#: classes/class-ssb-admin.php:527
+msgid "Sure! I'd love to!"
+msgstr "Звичайно! Я б із задоволенням!"
+
+#: classes/class-ssb-admin.php:533
+msgid "I've already left a review"
+msgstr "Я вже залишив відгук"
+
+#: classes/class-ssb-admin.php:539
+msgid "Maybe Later"
+msgstr "Можливо пізніше"
+
+#: classes/class-ssb-admin.php:545
+msgid "Never show again"
+msgstr "Більше не показувати"
+
+#: classes/class-ssb-admin.php:664
+msgid "Vote!"
+msgstr "Голосувати!"
+
+#: classes/class-ssb-admin.php:669
+msgid "Rate"
+msgstr "Оцінити"
+
+#: classes/class-ssb-react-admin.php:268
+#: classes/class-ssb-react-admin.php:269
+#: classes/class-ssb-settings.php:83
+#: classes/class-ssb-settings.php:84
+msgid "Help"
+msgstr "Допомога"
+
+#: classes/class-ssb-react-admin.php:278
+#: classes/class-ssb-settings.php:92
+msgid "Import and export settings"
+msgstr "Імпорт та експорт налаштувань"
+
+#: classes/class-ssb-react-admin.php:279
+#: classes/class-ssb-settings.php:93
+msgid "Import / Export"
+msgstr "Імпорт / Експорт"
+
+#: classes/class-ssb-react-admin.php:311
+#: classes/class-ssb-react-admin.php:312
+#: classes/class-ssb-settings-structure.php:807
+msgid "Upgrade to Pro"
+msgstr "Оновити до Pro"
+
+#: classes/class-ssb-react-admin.php:571
+msgid "Overview"
+msgstr "Огляд"
+
+#: classes/class-ssb-react-admin.php:572
+msgid "This is the React-powered admin interface for Simple Social Buttons."
+msgstr "Це адміністраторський інтерфейс на базі React для Simple Social Buttons."
+
+#: classes/class-ssb-react-admin.php:846
+msgid "Invalid data"
+msgstr "Недійсні дані"
+
+#: classes/class-ssb-react-admin.php:862
+#: classes/class-ssb-react-admin.php:907
+#. translators: %s: invalid section name.
+msgid "Invalid settings section: %s"
+msgstr "Недійсна секція налаштувань: %s"
+
+#: classes/class-ssb-react-admin.php:886
+msgid "Factory reset completed! All settings restored to defaults."
+msgstr ""
+"Скидання до заводських налаштувань завершено! Усі налаштування відновлено "
+"до значень за замовчуванням."
+
+#: classes/class-ssb-react-admin.php:887
+msgid "All settings saved successfully!"
+msgstr "Усі налаштування успішно збережено!"
+
+#: classes/class-ssb-settings-structure.php:479
+#: classes/class-ssb-settings.php:322
+#: classes/class-ssb-settings.php:479
+#: src/components/form-fields/SsbPostTypesField.jsx:14
+#: src/components/sections/SsbInlineSection.jsx:266
+#: src/components/sections/SsbSidebarSection.jsx:225
+msgid "Post Type Settings"
+msgstr "Налаштування типу поста"
+
+#: classes/class-ssb-settings-structure.php:805
+msgid "Support"
+msgstr "Підтримка"
+
+#: classes/class-ssb-settings-structure.php:837
+msgid "Documentation"
+msgstr "Документація"
+
+#: classes/class-ssb-settings-structure.php:884
+msgid "makes Social Sharing easy for everyone"
+msgstr "дозволяє легко ділитися в соціальних мережах для всіх"
+
+#: classes/class-ssb-settings-structure.php:890
+#. translators: %1$s and %5$s are the opening strong tag, %2$s and %4$s are the closing strong tag.
+msgid ""
+"%1$sSimple Social Buttons%2$s by %1$s%3$sWPBrigade%4$s%5$s adds an advanced "
+"set of social media sharing buttons to your WordPress sites, such as:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s and %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tThis makes it the most flexible social sharing plugin ever for "
+"Everyone."
+msgstr ""
+"%1$sПрості соціальні кнопки%2$s від %1$s%3$sWPBrigade%4$s%5$s додає "
+"розширений набір кнопок для обміну в соціальних мережах на ваші сайти "
+"WordPress, такі як:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s і %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tЦе робить його найгнучкішим плагіном для обміну в соціальних "
+"мережах для всіх."
+
+#: classes/class-ssb-settings-structure.php:921
+#: src/components/widgets/SsbFollowPlugins.jsx:12
+msgid "Spread the Word"
+msgstr "Розповсюдьте інформацію"
+
+#: classes/class-ssb-settings-structure.php:926
+#: src/components/widgets/SsbFollowPlugins.jsx:30
+#: src/components/widgets/SsbFollowPlugins.jsx:33
+msgid "Share on X/Twitter"
+msgstr "Поділитися в X/Twitter"
+
+#: classes/class-ssb-settings-structure.php:930
+#: src/components/widgets/SsbFollowPlugins.jsx:19
+#: src/components/widgets/SsbFollowPlugins.jsx:22
+#, fuzzy
+msgid "Share on Facebook"
+msgstr "Павло Rabinek на Facebook"
+
+#: classes/class-ssb-settings-structure.php:936
+#: src/components/widgets/SsbFollowPlugins.jsx:52
+#: src/components/widgets/SsbFollowPlugins.jsx:55
+msgid "Rate on WordPress.org"
+msgstr "Оцінити на WordPress.org"
+
+#: classes/class-ssb-settings-structure.php:945
+msgid "Subscribe Newsletter"
+msgstr "Підписатися на розсилку"
+
+#: classes/class-ssb-settings-structure.php:948
+#: simple-social-buttons.php:2713
+#: simple-social-buttons.php:2722
+#: src/components/widgets/SsbNewsletterWidget.jsx:146
+#: src/utils/constants.js:135
+msgid "Email"
+msgstr "Електронна пошта"
+
+#: classes/class-ssb-settings-structure.php:953
+#: src/components/widgets/SsbNewsletterWidget.jsx:157
+msgid "Name"
+msgstr "Ім'я"
+
+#: classes/class-ssb-settings-structure.php:969
+#: src/components/widgets/SsbRecommendedPlugins.jsx:38
+msgid "Recommended Plugins"
+msgstr "Рекомендовані плагіни"
+
+#: classes/class-ssb-settings-structure.php:973
+#: src/components/widgets/SsbRecommendedPlugins.jsx:11
+#: src/components/widgets/SsbRecommendedPlugins.jsx:13
+msgid "Customize WordPress Login Page"
+msgstr "Налаштувати сторінку входу в WordPress"
+
+#: classes/class-ssb-settings-structure.php:977
+#: src/components/widgets/SsbRecommendedPlugins.jsx:17
+#: src/components/widgets/SsbRecommendedPlugins.jsx:19
+msgid "Simplify Google Analytics in WordPress"
+msgstr "Спростити Google Analytics у WordPress"
+
+#: classes/class-ssb-settings-structure.php:981
+#: src/components/widgets/SsbRecommendedPlugins.jsx:23
+#: src/components/widgets/SsbRecommendedPlugins.jsx:25
+msgid "Related Posts Thumbnails"
+msgstr "Ескізи пов'язаних записів"
+
+#: classes/class-ssb-settings-structure.php:985
+#: src/components/widgets/SsbRecommendedPlugins.jsx:29
+#: src/components/widgets/SsbRecommendedPlugins.jsx:31
+msgid "Under Construction & Maintenance mode"
+msgstr "На стадії розробки & режим обслуговування"
+
+#: classes/class-ssb-settings-structure.php:1293
+msgid "Choose File"
+msgstr "Вибрати файл"
+
+#: classes/class-ssb-settings-structure.php:1586
+msgid ""
+"Social media is about the people! Not about your business. Provide for the "
+"people and the people will provide you."
+msgstr ""
+"Соціальні мережі – це про людей! Не про ваш бізнес. Підтримуйте людей, і "
+"люди підтримають вас."
+
+#: classes/class-ssb-settings-structure.php:1593
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:65
+msgid "Click to post"
+msgstr "Натисніть, щоб опублікувати"
+
+#: classes/class-ssb-settings.php:74
+#: classes/class-ssb-settings.php:75
+#: simple-social-buttons.php:529
+#: src/utils/constants.js:13
+msgid "Settings"
+msgstr "Налаштування"
+
+#: classes/class-ssb-settings.php:111
+#: src/components/sections/SsbNetworksSection.jsx:272
+#, fuzzy
+msgid "Social Buttons"
+msgstr "Приховати Прості соціальні кнопки"
+
+#: classes/class-ssb-settings.php:116
+#: src/components/sections/SsbThemesSection.jsx:114
+msgid "Social Buttons Designs"
+msgstr "Дизайни соціальних кнопок"
+
+#: classes/class-ssb-settings.php:121
+#: src/components/sections/SsbPositionsSection.jsx:34
+msgid "Social Buttons Positions"
+msgstr "Позиції соціальних кнопок"
+
+#: classes/class-ssb-settings.php:126
+#: classes/class-ssb-settings.php:215
+#: src/components/sections/SsbPositionsSection.jsx:23
+#: src/components/sections/SsbSidebarSection.jsx:82
+msgid "Sidebar"
+msgstr "Бокова панель"
+
+#: classes/class-ssb-settings.php:131
+#: src/components/sections/ProSections.jsx:113
+msgid "On Media"
+msgstr "На медіа"
+
+#: classes/class-ssb-settings.php:136
+#: classes/class-ssb-settings.php:218
+#: src/components/sections/ProSections.jsx:133
+#: src/components/sections/SsbPositionsSection.jsx:26
+msgid "Popup"
+msgstr "Вспливаюче вікно"
+
+#: classes/class-ssb-settings.php:141
+#: classes/class-ssb-settings.php:219
+#: src/components/sections/ProSections.jsx:153
+#: src/components/sections/SsbPositionsSection.jsx:27
+msgid "Fly In"
+msgstr "Зліт"
+
+#: classes/class-ssb-settings.php:146
+#: src/components/sections/SsbInlineSection.jsx:98
+msgid "InLine"
+msgstr "В рядку"
+
+#: classes/class-ssb-settings.php:151
+#: src/components/sections/SsbAdvancedTab.jsx:43
+msgid "Additional features"
+msgstr "Додаткові функції"
+
+#: classes/class-ssb-settings.php:189
+msgid "Home"
+msgstr "Головна"
+
+#: classes/class-ssb-settings.php:216
+#: src/components/sections/SsbPositionsSection.jsx:24
+msgid "Inline"
+msgstr "В рядку"
+
+#: classes/class-ssb-settings.php:217
+#: src/components/sections/SsbPositionsSection.jsx:25
+msgid "Media"
+msgstr "Медіа"
+
+#: classes/class-ssb-settings.php:226
+#: src/components/sections/SsbSidebarSection.jsx:97
+msgid "Sidebar Orientation"
+msgstr "Орієнтація бічної панелі"
+
+#: classes/class-ssb-settings.php:228
+#: classes/class-ssb-settings.php:357
+msgid "<h4>Display Settings</h4>"
+msgstr "<h4>Налаштування відображення</h4>"
+
+#: classes/class-ssb-settings.php:232
+#: classes/class-ssb-settings.php:373
+#: src/components/sections/SsbInlineSection.jsx:120
+#: src/components/sections/SsbSidebarSection.jsx:100
+msgid "Left"
+msgstr "Зліва"
+
+#: classes/class-ssb-settings.php:233
+#: classes/class-ssb-settings.php:375
+#: src/components/sections/SsbInlineSection.jsx:122
+#: src/components/sections/SsbSidebarSection.jsx:101
+msgid "Right"
+msgstr "Справа"
+
+#: classes/class-ssb-settings.php:239
+#: src/components/sections/SsbSidebarSection.jsx:107
+msgid "Intro Animation"
+msgstr "Анімація вступу"
+
+#: classes/class-ssb-settings.php:243
+#: classes/class-ssb-settings.php:385
+#: src/components/sections/SsbInlineSection.jsx:131
+#: src/components/sections/SsbSidebarSection.jsx:110
+msgid "No"
+msgstr "Ні"
+
+#: classes/class-ssb-settings.php:244
+#: src/components/sections/SsbSidebarSection.jsx:111
+msgid "From Right"
+msgstr "Зправа"
+
+#: classes/class-ssb-settings.php:245
+#: src/components/sections/SsbSidebarSection.jsx:112
+msgid "From Top"
+msgstr "Зверху"
+
+#: classes/class-ssb-settings.php:246
+#: src/components/sections/SsbSidebarSection.jsx:113
+msgid "From Bottom"
+msgstr "Знизу"
+
+#: classes/class-ssb-settings.php:247
+#: src/components/sections/SsbSidebarSection.jsx:114
+msgid "From Left"
+msgstr "Зліва"
+
+#: classes/class-ssb-settings.php:248
+#: classes/class-ssb-settings.php:390
+#: src/components/sections/SsbInlineSection.jsx:136
+#: src/components/sections/SsbSidebarSection.jsx:115
+msgid "Fade In"
+msgstr "Затухання"
+
+#: classes/class-ssb-settings.php:254
+#: classes/class-ssb-settings.php:396
+msgid ""
+"<p id=\"share-count-message\" >For Facebook share count you need to add "
+"Facebook App id and secret in the Social tab.</p>"
+msgstr ""
+"<p id=\"share-count-message\" >Для підрахунку поширень у Facebook вам "
+"потрібно додати ID програми Facebook та секрет у вкладці Соціальні "
+"мережі.</p>"
+
+#: classes/class-ssb-settings.php:258
+#: classes/class-ssb-settings.php:400
+#: src/components/sections/SsbInlineSection.jsx:143
+#: src/components/sections/SsbSidebarSection.jsx:122
+msgid "Display Share Counts"
+msgstr "Відображати кількість поширень"
+
+#: classes/class-ssb-settings.php:264
+#: classes/class-ssb-settings.php:406
+#: src/components/sections/SsbInlineSection.jsx:153
+#: src/components/sections/SsbSidebarSection.jsx:134
+msgid "Display Total Shares"
+msgstr "Відображати загальну кількість поширень"
+
+#: classes/class-ssb-settings.php:270
+#: src/components/sections/SsbSidebarSection.jsx:176
+msgid "Display Text on hover"
+msgstr "Відображати текст при наведенні"
+
+#: classes/class-ssb-settings.php:276
+#: src/components/sections/SsbSidebarSection.jsx:183
+msgid "Flat Button Style"
+msgstr "Стиль плоскої кнопки"
+
+#: classes/class-ssb-settings.php:282
+#: classes/class-ssb-settings.php:412
+#: src/components/sections/SsbInlineSection.jsx:170
+#: src/components/sections/SsbSidebarSection.jsx:151
+msgid "Add Icon Spacing"
+msgstr "Додати відстань до іконки"
+
+#: classes/class-ssb-settings.php:289
+#: classes/class-ssb-settings.php:419
+#: src/components/sections/SsbInlineSection.jsx:179
+#: src/components/sections/SsbSidebarSection.jsx:160
+msgid "Enter the Space in Pixel"
+msgstr "Введіть відстань в пікселях"
+
+#: classes/class-ssb-settings.php:296
+#: src/components/sections/SsbSidebarSection.jsx:169
+msgid "Sticky Bottom (Mobile)"
+msgstr "Прикріпити внизу (мобільний)"
+
+#: classes/class-ssb-settings.php:302
+#: classes/class-ssb-settings.php:426
+#: src/components/sections/SsbInlineSection.jsx:188
+#: src/components/sections/SsbSidebarSection.jsx:190
+msgid "Hide On Mobile Devices"
+msgstr "Сховати на мобільних пристроях"
+
+#: classes/class-ssb-settings.php:308
+#: classes/class-ssb-settings.php:432
+#: src/components/sections/SsbInlineSection.jsx:195
+#: src/components/sections/SsbSidebarSection.jsx:197
+msgid "Limit Social Icons"
+msgstr "Обмежити соціальні іконки"
+
+#: classes/class-ssb-settings.php:315
+#: classes/class-ssb-settings.php:439
+#: src/components/sections/SsbInlineSection.jsx:213
+#: src/components/sections/SsbSidebarSection.jsx:215
+msgid "Maximum Icons to Show"
+msgstr "Максимальна кількість іконок для відображення"
+
+#: classes/class-ssb-settings.php:323
+#: classes/class-ssb-settings.php:480
+#: classes/class-ssb-settings.php:653
+msgid "Multi checkbox description"
+msgstr "Опис багаторазового прапорця"
+
+#: classes/class-ssb-settings.php:335
+#: src/components/widgets/SsbGoProSection.jsx:14
+msgid "Want More Control Over Your Sidebar Social Buttons Styling?"
+msgstr "Бажаєте більше контролю над стилем соціальних кнопок у боковій панелі?"
+
+#: classes/class-ssb-settings.php:339
+#: classes/class-ssb-settings.php:496
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button,\n"
+"\t\t\t\t\t\tso they blend naturally with your website's design instead of "
+"standing out like a default plugin.\n"
+"\t\t\t\t\t\tButtons that fit your site tend to get clicked more, which "
+"means more shares and more traffic for you.\n"
+"\t\t\t\t\t\tPro also adds features like buttons on images, popups on exit "
+"intent, fly in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам встановлювати кастомні кольори фону, "
+"наведення та іконок для кожної кнопки, \n"
+"\t\t\t\t\t\tщоб вони природно поєднувалися з дизайном вашого веб-сайту, а "
+"не виділялися як стандартний плагін. \n"
+"\t\t\t\t\t\tКнопки, які підходять вашому сайту, зазвичай натискають більше, "
+"що означає більше поширень і більше трафіку для вас. \n"
+"\t\t\t\t\t\tPro також додає функції, такі як кнопки на зображеннях, "
+"спливаючі вікна при намірі виходу, анімації зльоту та інше."
+
+#: classes/class-ssb-settings.php:355
+#: src/components/sections/SsbInlineSection.jsx:110
+msgid "Icon Position"
+msgstr "Позиція іконки"
+
+#: classes/class-ssb-settings.php:361
+#: src/components/sections/SsbInlineSection.jsx:22
+msgid "Above The Content"
+msgstr "Вгорі вмісту"
+
+#: classes/class-ssb-settings.php:362
+#: src/components/sections/SsbInlineSection.jsx:23
+msgid "Below The Content"
+msgstr "Внизу вмісту"
+
+#: classes/class-ssb-settings.php:363
+#: src/components/sections/SsbInlineSection.jsx:24
+msgid "Above + Below The Content"
+msgstr "Вгорі + внизу вмісту"
+
+#: classes/class-ssb-settings.php:369
+#: src/components/sections/SsbInlineSection.jsx:117
+msgid "Icon Alignment"
+msgstr "Вирівнювання іконки"
+
+#: classes/class-ssb-settings.php:374
+#: src/components/sections/SsbInlineSection.jsx:121
+msgid "Centered"
+msgstr "По центру"
+
+#: classes/class-ssb-settings.php:381
+#: src/components/sections/SsbInlineSection.jsx:128
+msgid "Animation"
+msgstr "Анімація"
+
+#: classes/class-ssb-settings.php:386
+#: src/components/sections/SsbInlineSection.jsx:132
+msgid "From bottom"
+msgstr "Знизу"
+
+#: classes/class-ssb-settings.php:387
+#: src/components/sections/SsbInlineSection.jsx:133
+msgid "From top"
+msgstr "Зверху"
+
+#: classes/class-ssb-settings.php:388
+#: src/components/sections/SsbInlineSection.jsx:134
+msgid "From left"
+msgstr "Зліва"
+
+#: classes/class-ssb-settings.php:389
+#: src/components/sections/SsbInlineSection.jsx:135
+msgid "From right"
+msgstr "Праворуч"
+
+#: classes/class-ssb-settings.php:446
+#: src/components/sections/SsbInlineSection.jsx:223
+#, fuzzy
+msgid "Show at Category pages"
+msgstr "Показати на сторінках категорій"
+
+#: classes/class-ssb-settings.php:452
+#: src/components/sections/SsbInlineSection.jsx:230
+#, fuzzy
+msgid "Show at Archive pages"
+msgstr "Показати на сторінках архіву"
+
+#: classes/class-ssb-settings.php:459
+#: src/components/sections/SsbInlineSection.jsx:237
+#, fuzzy
+msgid "Show at Tag pages"
+msgstr "Показати на сторінках тегів"
+
+#: classes/class-ssb-settings.php:465
+#: src/components/sections/SsbInlineSection.jsx:244
+msgid "Show at Search pages"
+msgstr "Показати на сторінках пошуку"
+
+#: classes/class-ssb-settings.php:471
+#: src/components/sections/SsbInlineSection.jsx:252
+msgid "Share Title"
+msgstr "Поділитися заголовком"
+
+#: classes/class-ssb-settings.php:492
+#: src/components/widgets/SsbGoProSection.jsx:19
+msgid "Want More Control Over Your Inline Social Buttons Styling?"
+msgstr "Бажаєте більше контролю над стилями ваших вбудованих соціальних кнопок?"
+
+#: classes/class-ssb-settings.php:513
+msgid "Twitter/X @username:"
+msgstr "Twitter/X @username:"
+
+#: classes/class-ssb-settings.php:519
+msgid "Http/Https counts resolve:"
+msgstr "Кількість Http/Https рахунків:"
+
+#: classes/class-ssb-settings.php:524
+#: src/components/sections/SsbAdvancedTab.jsx:55
+msgid "Internal Share Flush Interval"
+msgstr "Інтервал очищення внутрішнього обміну"
+
+#: classes/class-ssb-settings.php:527
+msgid "1 hour"
+msgstr "1 година"
+
+#: classes/class-ssb-settings.php:528
+msgid "2 hours"
+msgstr "2 години"
+
+#: classes/class-ssb-settings.php:529
+msgid "3 hours"
+msgstr "3 години"
+
+#: classes/class-ssb-settings.php:530
+msgid "4 hours"
+msgstr "4 години"
+
+#: classes/class-ssb-settings.php:531
+msgid "5 hours"
+msgstr "5 годин"
+
+#: classes/class-ssb-settings.php:532
+msgid "6 hours"
+msgstr "6 годин"
+
+#: classes/class-ssb-settings.php:533
+msgid "7 hours"
+msgstr "7 годин"
+
+#: classes/class-ssb-settings.php:534
+msgid "8 hours"
+msgstr "8 годин"
+
+#: classes/class-ssb-settings.php:535
+msgid "9 hours"
+msgstr "9 годин"
+
+#: classes/class-ssb-settings.php:536
+msgid "10 hours"
+msgstr "10 годин"
+
+#: classes/class-ssb-settings.php:537
+msgid "11 hours"
+msgstr "11 годин"
+
+#: classes/class-ssb-settings.php:538
+msgid "12 hours"
+msgstr "12 годин"
+
+#: classes/class-ssb-settings.php:539
+msgid "13 hours"
+msgstr "13 годин"
+
+#: classes/class-ssb-settings.php:540
+msgid "14 hours"
+msgstr "14 годин"
+
+#: classes/class-ssb-settings.php:541
+msgid "15 hours"
+msgstr "15 годин"
+
+#: classes/class-ssb-settings.php:542
+msgid "16 hours"
+msgstr "16 годин"
+
+#: classes/class-ssb-settings.php:543
+msgid "17 hours"
+msgstr "17 годин"
+
+#: classes/class-ssb-settings.php:544
+msgid "18 hours"
+msgstr "18 годин"
+
+#: classes/class-ssb-settings.php:545
+msgid "19 hours"
+msgstr "19 годин"
+
+#: classes/class-ssb-settings.php:546
+msgid "20 hours"
+msgstr "20 годин"
+
+#: classes/class-ssb-settings.php:547
+msgid "21 hours"
+msgstr "21 година"
+
+#: classes/class-ssb-settings.php:548
+msgid "22 hours"
+msgstr "22 години"
+
+#: classes/class-ssb-settings.php:549
+msgid "23 hours"
+msgstr "23 години"
+
+#: classes/class-ssb-settings.php:550
+msgid "24 hours"
+msgstr "24 години"
+
+#: classes/class-ssb-settings.php:557
+#: src/components/sections/SsbAdvancedTab.jsx:73
+msgid "Open Graph Tags"
+msgstr "Теги Open Graph"
+
+#: classes/class-ssb-settings.php:565
+#: src/components/sections/SsbAdvancedTab.jsx:80
+msgid "Remove Settings on Uninstall"
+msgstr "Видалити налаштування при видаленні"
+
+#: classes/class-ssb-settings.php:569
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s This tool will remove all Simple Social Button settings upon "
+"uninstall.%2$s"
+msgstr ""
+"%1$s Цей інструмент видалить всі налаштування Simple Social Button при "
+"видаленні.%2$s"
+
+#: classes/class-ssb-settings.php:577
+#: src/components/sections/SsbAdvancedTab.jsx:88
+msgid "Factory Reset"
+msgstr "Скидання до заводських налаштувань"
+
+#: classes/class-ssb-settings.php:581
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s Enable to reset all settings made by Simple Social Buttons upon "
+"saving.%2$s"
+msgstr ""
+"%1$s Увімкнути скидання всіх налаштувань, зроблених Simple Social Buttons, "
+"при збереженні.%2$s"
+
+#: classes/class-ssb-settings.php:590
+#. translators: %1$s is the opening h4 tag, %2$s is the closing h4 tag, %3$s is the opening anchor tag, %4$s is the closing anchor tag.
+msgid "%1$sFacebook App%2$s %3$show to make App%4$s"
+msgstr "%1$sFacebook App%2$s %3$show, щоб відобразити App%4$s"
+
+#: classes/class-ssb-settings.php:597
+msgid "Facebook App ID:"
+msgstr "Ідентифікатор програми Facebook:"
+
+#: classes/class-ssb-settings.php:604
+msgid "Facebook App Secret:"
+msgstr "Секрет програми Facebook:"
+
+#: classes/class-ssb-settings.php:610
+#: src/components/sections/SsbAdvancedTab.jsx:99
+msgid "Custom CSS"
+msgstr "Користувацький CSS"
+
+#: classes/class-ssb-settings.php:617
+#: src/components/sections/SsbAdvancedTab.jsx:107
+msgid "Custom JS"
+msgstr "Користувацький JS"
+
+#: classes/class-ssb-settings.php:636
+msgid "Icon Style"
+msgstr "Стиль іконки"
+
+#: classes/class-ssb-settings.php:652
+msgid "Positions"
+msgstr "Позиції"
+
+#: classes/class-ssb-settings.php:666
+#: src/components/widgets/SsbGoProSection.jsx:24
+msgid "Want to Show Social Sharing Buttons on Your Media?"
+msgstr "Бажаєте відображати кнопки соціального обміну на ваших медіа?"
+
+#: classes/class-ssb-settings.php:670
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos\n"
+"\t\t\t\t\t\t\tacross your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site.\n"
+"\t\t\t\t\t\t\tYou can also hide them on mobile and control exactly which "
+"post types they appear on.\n"
+"\t\t\t\t\t\t\tIt's an easy way to turn every image into a shareable "
+"opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам відображати кнопки обміну "
+"безпосередньо на зображеннях та фотографіях\n"
+"\t\t\t\t\t\t\tу ваших постах і на сторінках, вибирати їхню позицію, "
+"додавати відстань між іконками та встановлювати користувацькі кольори, які "
+"відповідають вашому сайту.\n"
+"\t\t\t\t\t\t\tВи також можете приховати їх на мобільних пристроях і "
+"контролювати, на яких типах постів вони з’являються.\n"
+"\t\t\t\t\t\t\tЦе простий спосіб перетворити кожне зображення на можливість "
+"для обміну та залучити більше трафіку."
+
+#: classes/class-ssb-settings.php:684
+#: src/components/widgets/SsbGoProSection.jsx:29
+msgid "Want Smart Popups That Trigger at the Right Moment?"
+msgstr "Бажаєте розумних спливаючих вікон, які спрацьовують у правильний момент?"
+
+#: classes/class-ssb-settings.php:688
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message,\n"
+"\t\t\t\t\t\t\tand trigger it exactly when it matters, like before visitors "
+"leave or after they scroll.\n"
+"\t\t\t\t\t\t\tYou can add animation, display share counts or total shares "
+"to build social proof, and set custom colors to match your brand.\n"
+"\t\t\t\t\t\t\tIt's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам створити кастомне спливаюче вікно "
+"для обміну з вашим власним заголовком та повідомленням,\n"
+"\t\t\t\t\t\t\tі активувати його саме в той момент, коли це важливо, "
+"наприклад, перед тим, як відвідувачі покинуть сайт, або після "
+"прокручування.\n"
+"\t\t\t\t\t\t\tВи можете додати анімацію, відображати кількість обміну чи "
+"загальну кількість обмінів для створення соціального підтвердження, а також "
+"встановити користувацькі кольори, щоб відповідати вашому бренду.\n"
+"\t\t\t\t\t\t\tЦе розумний спосіб привернути увагу відвідувачів в той "
+"момент, коли вони найбільше готові ділитися."
+
+#: classes/class-ssb-settings.php:702
+#: src/components/widgets/SsbGoProSection.jsx:34
+msgid "Want Advanced Fly In Animations That Drive More Shares?"
+msgstr "Бажаєте розширених анімацій \"Fly In\", які збільшують кількість обмінів?"
+
+#: classes/class-ssb-settings.php:706
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message,\n"
+"\t\t\t\t\t\t\tchoose its position and animation, and even display share "
+"counts or total shares to build social proof.\n"
+"\t\t\t\t\t\t\tYou can fine-tune timing, icon spacing, and colors to match "
+"your brand, and control which post types it appears on.\n"
+"\t\t\t\t\t\t\tIt's a great way to prompt visitors to share right when "
+"they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам створити кастомне вікно \"Fly In\" з "
+"вашим власним заголовком та повідомленням,\n"
+"\t\t\t\t\t\t\tвибирати його позицію та анімацію, а також відображати "
+"кількість обмінів чи загальну кількість обмінів для створення соціального "
+"підтвердження.\n"
+"\t\t\t\t\t\t\tВи можете точно налаштувати час, відстань між іконками та "
+"кольори, щоб відповідати вашому бренду, і контролювати, на яких типах "
+"постів воно з’являється.\n"
+"\t\t\t\t\t\t\tЦе чудовий спосіб спонукати відвідувачів ділитися саме в той "
+"момент, коли вони найбільш зацікавлені."
+
+#: classes/class-ssb-settings.php:817
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid "Free support is available on the %1$s plugin support forums%2$s."
+msgstr "Безкоштовна підтримка доступна на %1$s форумах підтримки плагіна%2$s."
+
+#: classes/class-ssb-settings.php:825
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid ""
+"For premium features, add-ons and priority email support, %1$s upgrade to "
+"pro%2$s."
+msgstr ""
+"Для преміум-функцій, доповнень та пріоритетної електронної підтримки, %1$s "
+"оновіть до Pro%2$s."
+
+#: classes/class-ssb-settings.php:836
+#: src/components/Help.jsx:107
+msgid "Download Log File"
+msgstr "Завантажити файл журналу"
+
+#: classes/class-ssb-settings.php:916
+#: src/components/ImportExport.jsx:92
+msgid "Security check failed. Please refresh the page and try again."
+msgstr ""
+"Перевірка безпеки не вдалася. Будь ласка, оновіть сторінку та спробуйте ще "
+"раз."
+
+#: classes/class-ssb-settings.php:926
+#: src/components/ImportExport.jsx:93
+msgid "You do not have permission to import settings."
+msgstr "Ви не маєте дозволу на імпорт налаштувань."
+
+#: classes/class-ssb-settings.php:940
+#: src/components/ImportExport.jsx:94
+msgid "No file uploaded or upload failed."
+msgstr "Файл не завантажено або завантаження не вдалося."
+
+#: classes/class-ssb-settings.php:951
+msgid "The uploaded file is too large."
+msgstr "Завантажений файл надто великий."
+
+#: classes/class-ssb-settings.php:963
+msgid "Please upload a valid JSON export file."
+msgstr "Будь ласка, завантажте дійсний файл експорту JSON."
+
+#: classes/class-ssb-settings.php:977
+#: src/components/ImportExport.jsx:95
+msgid "Invalid JSON file. Please upload a valid SSB export file."
+msgstr "Недійсний файл JSON. Будь ласка, завантажте дійсний файл експорту SSB."
+
+#: classes/class-ssb-settings.php:984
+#: src/components/ImportExport.jsx:96
+msgid ""
+"Invalid file format. This does not appear to be a Simple Social Buttons "
+"export file."
+msgstr ""
+"Недійсний формат файлу. Це не виглядає як файл експорту Simple Social "
+"Buttons."
+
+#: classes/class-ssb-settings.php:1027
+msgid "Settings imported successfully."
+msgstr "Налаштування успішно імпортовано."
+
+#: classes/class-ssb-widget.php:37
+msgid "Display Follow Button For your site"
+msgstr "Відображати кнопку підписки для вашого сайту"
+
+#: classes/class-ssb-widget.php:39
+msgid "Social Follow Widget"
+msgstr "Віджет соціального підпису"
+
+#: classes/class-ssb-widget.php:132
+msgid "Follow us on Facebook"
+msgstr "Слідуйте за нами у Facebook"
+
+#: classes/class-ssb-widget.php:133
+msgid "Subscribe us on Youtube"
+msgstr "Підпишіться на нас у Youtube"
+
+#: classes/class-ssb-widget.php:134
+msgid "Follow us on Twitter"
+msgstr "Слідуйте за нами у Twitter"
+
+#: classes/class-ssb-widget.php:135
+msgid "Follow us on Pinterest"
+msgstr "Слідуйте за нами у Pinterest"
+
+#: classes/class-ssb-widget.php:136
+msgid "Follow us on Instagram"
+msgstr "Слідуйте за нами в Instagram"
+
+#: classes/class-ssb-widget.php:137
+msgid "Contact us on WhatsApp"
+msgstr "Зв'яжіться з нами в WhatsApp"
+
+#: classes/class-ssb-widget.php:141
+msgid "Follow Us"
+msgstr "Слідуйте за нами"
+
+#: inc/ssb-import-export.php:22
+msgid "Import/Export Simple Social Share Buttons Settings"
+msgstr "Імпорт/Експорт налаштувань кнопок Simple Social Share"
+
+#: inc/ssb-import-export.php:23
+msgid "Import/Export your Social share button Settings for/from other sites."
+msgstr ""
+"Імпортуйте/експортуйте налаштування кнопок соціального обміну для/з інших "
+"сайтів."
+
+#: inc/ssb-import-export.php:28
+msgid "Import Settings:"
+msgstr "Імпорт налаштувань:"
+
+#: inc/ssb-import-export.php:32
+msgid "Import"
+msgstr "Імпорт"
+
+#: inc/ssb-import-export.php:36
+#: src/components/ImportExport.jsx:146
+msgid "Simple Social Buttons Share Settings Imported Successfully."
+msgstr "Налаштування кнопок Simple Social Buttons успішно імпортовано."
+
+#: inc/ssb-import-export.php:38
+msgid "Select a file and click on Import to start processing."
+msgstr "Виберіть файл і натисніть на Імпорт, щоб почати обробку."
+
+#: inc/ssb-import-export.php:43
+msgid "Export Settings:"
+msgstr "Експорт налаштувань:"
+
+#: inc/ssb-import-export.php:46
+#: src/components/ImportExport.jsx:374
+msgid "Export"
+msgstr "Експорт"
+
+#: inc/ssb-import-export.php:50
+#: src/components/ImportExport.jsx:207
+msgid "Simple Social Button Settings Exported Successfully!"
+msgstr "Налаштування кнопки соціальних мереж успішно експортовано!"
+
+#: inc/ssb-import-export.php:51
+#: src/components/ImportExport.jsx:390
+msgid "Export Simple Social Button Settings."
+msgstr "Експортувати налаштування кнопки соціальних мереж."
+
+#: inc/ssb-widget-fields.php:15
+msgid "Title:"
+msgstr "Назва:"
+
+#: inc/ssb-widget-fields.php:35
+#: inc/ssb-widget-fields.php:103
+#: simple-social-buttons.php:2147
+#: src/components/sections/SsbThemesSection.jsx:73
+#: src/utils/constants.js:129
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/ssb-widget-fields.php:47
+#: inc/ssb-widget-fields.php:217
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/ssb-widget-fields.php:59
+#: inc/ssb-widget-fields.php:314
+msgid "YouTube"
+msgstr "YouTube"
+
+#: inc/ssb-widget-fields.php:71
+#: inc/ssb-widget-fields.php:394
+#: simple-social-buttons.php:2429
+#: simple-social-buttons.php:2439
+#: src/utils/constants.js:128
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: inc/ssb-widget-fields.php:83
+#: inc/ssb-widget-fields.php:457
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/ssb-widget-fields.php:95
+#: inc/ssb-widget-fields.php:523
+#: simple-social-buttons.php:2568
+#: simple-social-buttons.php:2577
+#: src/utils/constants.js:132
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: inc/ssb-widget-fields.php:106
+msgid "Facebook Button Text"
+msgstr "Текст кнопки Facebook"
+
+#: inc/ssb-widget-fields.php:120
+msgid "Facebook Page Name:"
+msgstr "Назва сторінки Facebook:"
+
+#: inc/ssb-widget-fields.php:140
+msgid "Display Facebook like counter"
+msgstr "Показати лічильник вподобань Facebook"
+
+#: inc/ssb-widget-fields.php:151
+msgid "Facebook App Id:"
+msgstr "Ідентифікатор програми Facebook:"
+
+#: inc/ssb-widget-fields.php:163
+msgid "Facebook Security Key:"
+msgstr "Ключ безпеки Facebook:"
+
+#: inc/ssb-widget-fields.php:175
+msgid "Facebook Access Token: "
+msgstr "Токен доступу Facebook: "
+
+#: inc/ssb-widget-fields.php:194
+#: inc/ssb-widget-fields.php:291
+msgid "Default count to show instead of 0 when API's are not available."
+msgstr "Типове значення для показу замість 0, коли API недоступні."
+
+#: inc/ssb-widget-fields.php:220
+msgid "Twitter Button Text:"
+msgstr "Текст кнопки Twitter:"
+
+#: inc/ssb-widget-fields.php:233
+msgid "Twitter Handle:"
+msgstr "Акаунт Twitter:"
+
+#: inc/ssb-widget-fields.php:254
+msgid "Display Twitter follower counter"
+msgstr "Показати лічильник підписників Twitter"
+
+#: inc/ssb-widget-fields.php:264
+msgid "Twitter Api Key: "
+msgstr "Ключ API Twitter: "
+
+#: inc/ssb-widget-fields.php:279
+msgid "Twitter Secret Key:"
+msgstr "Секретний ключ Twitter:"
+
+#: inc/ssb-widget-fields.php:317
+msgid "YouTube Button Text:"
+msgstr "Текст кнопки YouTube:"
+
+#: inc/ssb-widget-fields.php:331
+msgid "Type :"
+msgstr "Тип :"
+
+#: inc/ssb-widget-fields.php:335
+msgid "Channel"
+msgstr "Канал"
+
+#: inc/ssb-widget-fields.php:338
+msgid "Username"
+msgstr "Ім’я користувача"
+
+#: inc/ssb-widget-fields.php:345
+msgid "YouTube Channel ID:"
+msgstr "ID каналу YouTube:"
+
+#: inc/ssb-widget-fields.php:363
+msgid "Display YouTube subscriber counter"
+msgstr "Відображати лічильник підписників YouTube"
+
+#: inc/ssb-widget-fields.php:373
+msgid "YouTube Api Key: "
+msgstr "Ключ API YouTube: "
+
+#: inc/ssb-widget-fields.php:397
+msgid "Pinterest Button Text:"
+msgstr "Текст кнопки Pinterest:"
+
+#: inc/ssb-widget-fields.php:410
+msgid "Pinterest User ID:"
+msgstr "ID користувача Pinterest:"
+
+#: inc/ssb-widget-fields.php:429
+msgid "Display Pinterest follower counter"
+msgstr "Відображати лічильник підписників Pinterest"
+
+#: inc/ssb-widget-fields.php:435
+msgid "Printerest Access Token: "
+msgstr "Токен доступу Pinterest: "
+
+#: inc/ssb-widget-fields.php:460
+msgid "Instagram Button Text:"
+msgstr "Текст кнопки Instagram:"
+
+#: inc/ssb-widget-fields.php:473
+msgid "Instagram User Name:"
+msgstr "Ім’я користувача Instagram:"
+
+#: inc/ssb-widget-fields.php:492
+msgid "Display Instagram follower counter"
+msgstr "Відображати лічильник підписників Instagram"
+
+#: inc/ssb-widget-fields.php:501
+msgid "Instagram Access Token: "
+msgstr "Токен доступу Instagram: "
+
+#: inc/ssb-widget-fields.php:526
+msgid "WhatsApp Button Text:"
+msgstr "Текст кнопки WhatsApp:"
+
+#: inc/ssb-widget-fields.php:539
+msgid "WhatsApp Mobile Number:"
+msgstr "Мобільний номер WhatsApp:"
+
+#: simple-social-buttons.php:452
+#: simple-social-buttons.php:453
+msgid "Activate"
+msgstr "Активувати"
+
+#: simple-social-buttons.php:539
+#. translators: %1$s: opening anchor tag, %2$s: closing anchor tag, %3$s: opening span tag, %4$s: closing span tag.
+msgid "%1$s %3$s Upgrade Pro %4$s %2$s"
+msgstr "%1$s %3$s Оновити Pro %4$s %2$s"
+
+#: simple-social-buttons.php:968
+#. translators: %d: interval in hours.
+msgid "SSB Internal Share Flush (every %d hours)"
+msgstr "Внутрішній обмін SSB (кожні %d години)"
+
+#: simple-social-buttons.php:1410
+msgid "Hide social sharing bar"
+msgstr "Сховати панель соціального обміну"
+
+#: simple-social-buttons.php:1411
+msgid "Show social sharing bar"
+msgstr "Показати панель соціального обміну"
+
+#: simple-social-buttons.php:2130
+#: simple-social-buttons.php:2145
+msgid "Facebook Share"
+msgstr "Поділитися у Facebook"
+
+#: simple-social-buttons.php:2136
+#: simple-social-buttons.php:2374
+#: simple-social-buttons.php:3082
+#: src/components/sections/SsbThemesSection.jsx:35
+#: src/components/sections/SsbThemesSection.jsx:57
+msgid "Share"
+msgstr "Поділитися"
+
+#: simple-social-buttons.php:2162
+#: simple-social-buttons.php:2177
+msgid "Bluesky Share"
+msgstr "Поділитися у Bluesky"
+
+#: simple-social-buttons.php:2169
+#: simple-social-buttons.php:2179
+#: src/utils/constants.js:139
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: simple-social-buttons.php:2193
+#: simple-social-buttons.php:2208
+msgid "Telegram Share"
+msgstr "Поділитися у Telegram"
+
+#: simple-social-buttons.php:2200
+#: simple-social-buttons.php:2210
+#: src/utils/constants.js:140
+msgid "Telegram"
+msgstr "Telegram"
+
+#: simple-social-buttons.php:2239
+msgid "threads Share"
+msgstr "Поділитися у threads"
+
+#: simple-social-buttons.php:2247
+#: simple-social-buttons.php:2257
+#: src/utils/constants.js:141
+msgid "Threads"
+msgstr "Threads"
+
+#: simple-social-buttons.php:2255
+msgid "Threads Share"
+msgstr "Поділитися у Threads"
+
+#: simple-social-buttons.php:2276
+#: simple-social-buttons.php:2293
+msgid "Twitter/X Share"
+msgstr "Поділитися у Twitter/X"
+
+#: simple-social-buttons.php:2282
+#: simple-social-buttons.php:2284
+#: src/components/sections/SsbThemesSection.jsx:45
+msgid "Post"
+msgstr "Опублікувати"
+
+#: simple-social-buttons.php:2295
+#: src/components/sections/SsbSocialTab.jsx:60
+#: src/components/sections/SsbThemesSection.jsx:78
+#: src/utils/constants.js:127
+msgid "Twitter/X"
+msgstr "Twitter/X"
+
+#: simple-social-buttons.php:2309
+msgid "Copy"
+msgstr "Копіювати"
+
+#: simple-social-buttons.php:2319
+#: simple-social-buttons.php:2335
+#: src/utils/constants.js:136
+msgid "Copy Link"
+msgstr "Копіювати посилання"
+
+#: simple-social-buttons.php:2339
+msgid "Copied"
+msgstr "Скопійовано"
+
+#: simple-social-buttons.php:2364
+#: simple-social-buttons.php:2383
+msgid "LinkedIn Share"
+msgstr "Поділитися у LinkedIn"
+
+#: simple-social-buttons.php:2385
+#: src/components/sections/SsbThemesSection.jsx:83
+#: src/utils/constants.js:130
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: simple-social-buttons.php:2422
+#: simple-social-buttons.php:2436
+msgid "Pinterest Share"
+msgstr "Поділитися в Pinterest"
+
+#: simple-social-buttons.php:2453
+msgid "Shares"
+msgstr "Поділились"
+
+#: simple-social-buttons.php:2514
+#: simple-social-buttons.php:2531
+msgid "Reddit Share"
+msgstr "Поділитися в Reddit"
+
+#: simple-social-buttons.php:2522
+#: simple-social-buttons.php:2533
+#: src/utils/constants.js:131
+msgid "Reddit"
+msgstr "Reddit"
+
+#: simple-social-buttons.php:2561
+#: simple-social-buttons.php:2575
+msgid "WhatsApp Share"
+msgstr "Поділитися в WhatsApp"
+
+#: simple-social-buttons.php:2640
+#: simple-social-buttons.php:2653
+msgid "Viber Share"
+msgstr "Поділитися у Viber"
+
+#: simple-social-buttons.php:2644
+msgid "Viber icon"
+msgstr "іконка Viber"
+
+#: simple-social-buttons.php:2646
+#: simple-social-buttons.php:2655
+#: src/utils/constants.js:133
+msgid "Viber"
+msgstr "Viber"
+
+#: simple-social-buttons.php:2671
+#: simple-social-buttons.php:2687
+msgid "Facebook Messenger Share"
+msgstr "Поділитися у Facebook Messenger"
+
+#: simple-social-buttons.php:2681
+#: simple-social-buttons.php:2689
+#: src/utils/constants.js:134
+msgid "Messenger"
+msgstr "Messenger"
+
+#: simple-social-buttons.php:2704
+#: simple-social-buttons.php:2719
+msgid "Share through Email"
+msgstr "Поділитися через електронну пошту"
+
+#: simple-social-buttons.php:2730
+msgid "Print The Post"
+msgstr "Надрукувати пост"
+
+#: simple-social-buttons.php:2748
+#: simple-social-buttons.php:2763
+#: src/utils/constants.js:137
+msgid "Print"
+msgstr "Надрукувати"
+
+#: simple-social-buttons.php:2761
+msgid "Print Share"
+msgstr "Надрукувати поділ"
+
+#: simple-social-buttons.php:2776
+#: simple-social-buttons.php:2798
+msgid "Tumblr Share"
+msgstr "Поділитися в Tumblr"
+
+#: simple-social-buttons.php:2791
+#: simple-social-buttons.php:2799
+#: src/utils/constants.js:138
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: simple-social-buttons.php:2817
+#: simple-social-buttons.php:2831
+msgid "Line Share"
+msgstr "Поділитися в Line"
+
+#: simple-social-buttons.php:2824
+#: simple-social-buttons.php:2831
+#: src/utils/constants.js:142
+msgid "Line"
+msgstr "Line"
+
+#: simple-social-buttons.php:2846
+#: simple-social-buttons.php:2855
+msgid "Mastodon Share"
+msgstr "Поділитися в Mastodon"
+
+#: simple-social-buttons.php:2851
+#: simple-social-buttons.php:2855
+#: src/utils/constants.js:143
+msgid "Mastodon"
+msgstr "Mastodon"
+
+#: simple-social-buttons.php:2867
+#: simple-social-buttons.php:2879
+msgid "VK Share"
+msgstr "VK Поділитися"
+
+#: simple-social-buttons.php:2875
+#: simple-social-buttons.php:2879
+#: src/utils/constants.js:144
+msgid "VK"
+msgstr "VK"
+
+#: simple-social-buttons.php:2896
+#: simple-social-buttons.php:2905
+msgid "Snapchat Share"
+msgstr "Snapchat Поділитися"
+
+#: simple-social-buttons.php:2899
+#: simple-social-buttons.php:2907
+#: src/components/sections/SsbSocialTab.jsx:121
+#: src/utils/constants.js:145
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: simple-social-buttons.php:3069
+#: simple-social-buttons.php:3078
+#: simple-social-buttons.php:3225
+msgid "More share options"
+msgstr "Більше опцій для поділу"
+
+#: simple-social-buttons.php:3081
+msgid "Close"
+msgstr "Закрити"
+
+#: simple-social-buttons.php:3326
+msgid "Simple Social Buttons 2.0 (Relaunched)"
+msgstr "Прості соціальні кнопки 2.0 (Перезапущено)"
+
+#: simple-social-buttons.php:3329
+msgid ""
+"Simple Social Buttons had 50,000 Active installs and It was abondoned and "
+"rarely updated since last 5 years.<br />\n"
+"\t\t\t\t\tWe at <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\tadopted this plugin and rewrote it completely from scratch.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tCheck out</a> What's new in 2.0 version.<br /> Pardon me, If "
+"there is anything broken. Please\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">report</a> us any issue you see in the plugin."
+msgstr ""
+"Прості соціальні кнопки мали 50 000 активних установок, і вони були "
+"залишені без уваги і рідко оновлювалися протягом останніх 5 років.<br />\n"
+"\t\t\t\t\tМи в <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\tприйняли цей плагін і повністю переписали його з нуля.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tПерегляньте</a> що нового в версії 2.0.<br /> Вибачте, якщо є "
+"щось пошкоджене. Будь ласка,\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">повідомте</a> нам про будь-яку проблему, яку ви бачите в "
+"плагіні."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:23
+#: blocks/shortcode/settings.js:23
+msgid "Theme"
+msgstr "Тема"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:38
+msgid "select the style for click to post "
+msgstr "виберіть стиль для натискання для публікації "
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:45
+msgid "Content"
+msgstr "Контент"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:51
+msgid "Quote Content"
+msgstr "Цитата Контенту"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:53
+msgid "This text will be shown to the user."
+msgstr "Цей текст буде показаний користувачу."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:57
+msgid "Tweet Content"
+msgstr "Контент Твіту"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:59
+msgid "This text will be tweet . if empty Quote content will be used."
+msgstr "Цей текст буде твітнутим. Якщо порожньо, буде використано цитатний контент."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:66
+msgid " Configuration"
+msgstr " Налаштування"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:72
+msgid "Show Tweet Button"
+msgstr "Показати кнопку Твіту"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:77
+msgid "Include Page/post Link"
+msgstr "Включити посилання на сторінку/публікацію"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:80
+msgid ""
+"\n"
+" Link to this post will be appended to the Tweet. we have a filter if you "
+"want to modify it `ssb_ctt_url`."
+msgstr ""
+"\n"
+" Посилання на цю публікацію буде додано до Твіту. У нас є фільтр, якщо ви "
+"хочете його змінити `ssb_ctt_url`."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:83
+msgid "Include via @username"
+msgstr "Включити через @ім'я_користувача"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:86
+msgid ""
+"\n"
+" Twitter username from SSB Settings Advanced tab will be appended to the "
+"end of the Tweet with the text “via @username”."
+msgstr ""
+"Ім'я користувача Twitter з вкладки Розширені налаштування SSB буде додане в "
+"кінець Твіту з текстом “via @username”."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:59
+msgid "Enter your content ..."
+msgstr "Введіть ваш контент ..."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:44
+msgid "Configuration"
+msgstr "Конфігурація"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:50
+msgid "Share Counter"
+msgstr "Лічильник Поділитися"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:58
+msgid "Total Counts"
+msgstr "Загальні Кількості"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:68
+msgid ""
+"Supported Networks: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+msgstr ""
+"Підтримувані Мережі: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:70
+msgid "Order"
+msgstr "Порядок"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:25
+msgid "Align Left"
+msgstr "Вирівняти Зліва"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:30
+msgid "Align Center"
+msgstr "Вирівняти По Центру"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:35
+msgid "Align Right"
+msgstr "Вирівняти Праворуч"
+
+#: src/components/ErrorBoundary.jsx:30
+msgid "Settings Error"
+msgstr "Помилка Налаштувань"
+
+#: src/components/ErrorBoundary.jsx:33
+msgid ""
+"Something went wrong with the settings page. Please refresh the page to try "
+"again."
+msgstr ""
+"Щось пішло не так зі сторінкою налаштувань. Будь ласка, оновіть сторінку, "
+"щоб спробувати ще раз."
+
+#: src/components/ErrorBoundary.jsx:36
+msgid "Error Details"
+msgstr "Деталі Помилки"
+
+#: src/components/ErrorBoundary.jsx:44
+msgid "Refresh Page"
+msgstr "Оновити Сторінку"
+
+#: src/components/form-fields/SsbCheckboxField.jsx:77
+msgid "Toggle setting"
+msgstr "Переключити налаштування"
+
+#: src/components/form-fields/SsbColorField.jsx:99
+msgid "Select Color"
+msgstr "Вибрати Колір"
+
+#: src/components/form-fields/SsbColorField.jsx:129
+msgid "Clear"
+msgstr "Очистити"
+
+#: src/components/form-fields/SsbColorField.jsx:142
+msgid "Done"
+msgstr "Готово"
+
+#: src/components/form-fields/SsbIconSpaceField.jsx:53
+msgid "Enter a whole number of pixels from 1 to 999. The value was adjusted."
+msgstr "Введіть ціле число пікселів від 1 до 999. Значення було відкориговано."
+
+#: src/components/form-fields/SsbSelectField.jsx:265
+msgid "Select..."
+msgstr "Виберіть..."
+
+#: src/components/Help.jsx:29
+msgid "Simple Social Buttons Log File Downloaded Successfully!"
+msgstr "Файл журналу простих соціальних кнопок успішно завантажено!"
+
+#: src/components/Help.jsx:41
+#: src/components/ImportExport.jsx:241
+#: src/index.js:598
+msgid ""
+"<strong>Simple Social Buttons</strong> by <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> adds "
+"an advanced set of social media sharing buttons to your WordPress sites, "
+"such as: <strong>Facebook</strong>, <strong>Twitter/X</strong>, "
+"<strong>LinkedIn</strong>, <strong>WhatsApp</strong>, "
+"<strong>Viber</strong>, <strong>Reddit</strong> and "
+"<strong>Pinterest</strong>. This makes it the most flexible social sharing "
+"plugin for everyone."
+msgstr ""
+"<strong>Прості соціальні кнопки</strong> від <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> додає "
+"розширений набір кнопок для обміну в соціальних мережах на ваші сайти "
+"WordPress, такі як: <strong>Facebook</strong>, <strong>Twitter/X</strong>, "
+"<strong>LinkedIn</strong>, <strong>WhatsApp</strong>, "
+"<strong>Viber</strong>, <strong>Reddit</strong> та "
+"<strong>Pinterest</strong>. Це робить його найгнучкішим плагіном для обміну "
+"в соціальних мережах для всіх."
+
+#: src/components/Help.jsx:47
+msgid "Help & Troubleshooting"
+msgstr "Допомога та усунення неполадок"
+
+#: src/components/Help.jsx:52
+msgid "Free support is available on the %splugin support forums%s."
+msgstr "Безкоштовна підтримка доступна на %sфорумі підтримки плагіна%s."
+
+#: src/components/Help.jsx:66
+msgid ""
+"For premium features, add-ons and priority email support, %supgrade to "
+"pro%s."
+msgstr ""
+"Для преміум-функцій, доповнень та пріоритетної електронної підтримки, "
+"%supgrade to pro%s."
+
+#: src/components/Help.jsx:80
+msgid "Found a bug or have a feature request? Please submit an issue %shere!%s"
+msgstr "Знайдено помилку чи є запит на функцію? Будь ласка, подайте запит %shere!%s"
+
+#: src/components/ImportExport.jsx:51
+msgid "Invalid file. Please upload a JSON file starting with \"ssb\"."
+msgstr "Недійсний файл. Будь ласка, завантажте файл JSON, що починається з \"ssb\"."
+
+#: src/components/ImportExport.jsx:98
+msgid "Import failed. Please try again."
+msgstr "Імпорт не вдався. Будь ласка, спробуйте ще раз."
+
+#: src/components/ImportExport.jsx:106
+msgid "Please select a valid file first."
+msgstr "Спочатку виберіть дійсний файл."
+
+#: src/components/ImportExport.jsx:159
+msgid "Security check failed or server error. Please refresh and try again."
+msgstr ""
+"Перевірка безпеки не вдалася або помилка сервера. Будь ласка, оновіть і "
+"спробуйте ще раз."
+
+#: src/components/ImportExport.jsx:161
+msgid "Invalid response from server. Please try again."
+msgstr "Недійсна відповідь від сервера. Будь ласка, спробуйте ще раз."
+
+#: src/components/ImportExport.jsx:165
+msgid "An error occurred during import. Please try again."
+msgstr "Під час імпорту сталася помилка. Будь ласка, спробуйте ще раз."
+
+#: src/components/ImportExport.jsx:231
+msgid "Export failed. Please try again."
+msgstr "Експорт не вдався. Будь ласка, спробуйте ще раз."
+
+#: src/components/ImportExport.jsx:246
+msgid "Import & Export Simple Social Share Button Settings"
+msgstr "Імпорт та експорт налаштувань простих кнопок обміну в соціальних мережах"
+
+#: src/components/ImportExport.jsx:248
+msgid "Import/Export your Social share Settings for/from other sites."
+msgstr "Імпорт/експорт ваших налаштувань соціального обміну для/з інших сайтів."
+
+#: src/components/ImportExport.jsx:292
+msgid "Drag and drop file here or"
+msgstr "Перетягніть та скиньте файл сюди або"
+
+#: src/components/ImportExport.jsx:293
+msgid "Browse"
+msgstr "Переглянути"
+
+#: src/components/ImportExport.jsx:319
+msgid "Remove file"
+msgstr "Видалити файл"
+
+#: src/components/ImportExport.jsx:335
+msgid "Import Settings"
+msgstr "Імпорт налаштувань"
+
+#: src/components/ImportExport.jsx:344
+msgid "Importing settings..."
+msgstr "Імпорт налаштувань..."
+
+#: src/components/ImportExport.jsx:366
+msgid "Export Settings"
+msgstr "Налаштування експорту"
+
+#: src/components/ImportExport.jsx:374
+msgid "Exporting..."
+msgstr "Експорт..."
+
+#: src/components/sections/ProSections.jsx:114
+msgid "Control how share buttons appear on images and media within your posts."
+msgstr ""
+"Контролюйте, як кнопки спільного використання з'являються на зображеннях та "
+"медіа у ваших повідомленнях."
+
+#: src/components/sections/ProSections.jsx:134
+msgid "Configure your share popup: set the message, timing, and trigger behavior."
+msgstr ""
+"Налаштуйте спливаюче вікно спільного використання: встановіть повідомлення, "
+"таймінг та поведінку тригера."
+
+#: src/components/sections/ProSections.jsx:154
+msgid "Set up a slide-in share prompt with custom messaging, position, and timing"
+msgstr ""
+"Налаштуйте сповіщення про спільне використання, що з'являється з боку, з "
+"індивідуальним повідомленням, позицією та таймінгом"
+
+#: src/components/sections/SsbAdvancedTab.jsx:49
+msgid "HTTP/HTTPS Counts Resolve"
+msgstr "HTTP/HTTPS Кількість Розв'язків"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hour"
+msgstr "година"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hours"
+msgstr "години"
+
+#: src/components/sections/SsbAdvancedTab.jsx:64
+msgid ""
+"Internal share click counts are recorded for supported networks (for "
+"example Twitter/X, LinkedIn, WhatsApp) when visitors use the sharing "
+"buttons on your site. Counts are stored locally and are not sent to those "
+"social networks. Clear your page cache after upgrading the plugin so button "
+"markup stays in sync."
+msgstr ""
+"Внутрішні кількості кліків на спільне використання записуються для "
+"підтримуваних мереж (наприклад, Twitter/X, LinkedIn, WhatsApp), коли "
+"відвідувачі використовують кнопки спільного використання на вашому сайті. "
+"Кількості зберігаються локально і не надсилаються до цих соціальних мереж. "
+"Очищайте кеш сторінки після оновлення плагіна, щоб розмітка кнопок "
+"залишалася в синхронізації."
+
+#: src/components/sections/SsbAdvancedTab.jsx:82
+msgid "Enable to remove all settings upon uninstalling the plugin."
+msgstr "Увімкніть, щоб видалити всі налаштування при видаленні плагіна."
+
+#: src/components/sections/SsbAdvancedTab.jsx:90
+msgid "Enable to reset all settings back to default upon saving."
+msgstr ""
+"Увімкніть, щоб скинути всі налаштування до значень за замовчуванням при "
+"збереженні."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:26
+#: src/utils/constants.js:17
+msgid "Click To Post"
+msgstr "Натисніть, щоб опублікувати"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:29
+msgid "Unlock Click to Tweet Feature with Pro!"
+msgstr "Розблокуйте функцію \"Натисніть, щоб твітнути\" з Pro!"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:30
+msgid ""
+"Get the powerful Click to Tweet functionality that lets you create "
+"engaging, tweetable content directly in your posts. This Pro feature helps "
+"increase social engagement and drive more traffic to your site."
+msgstr ""
+"Отримайте потужну функціональність \"Натисніть, щоб твітнути\", яка "
+"дозволяє створювати залучаючий, твіттовий контент безпосередньо у ваших "
+"повідомленнях. Ця функція Pro допомагає збільшити соціальну активність і "
+"залучити більше трафіку на ваш сайт."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:36
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Upgrade"
+msgstr "Натисніть тут, щоб оновити"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:55
+#: src/components/sections/SsbNextGenGalleryTab.jsx:29
+msgid "Loading Pro settings..."
+msgstr "Завантаження налаштувань Pro..."
+
+#: src/components/sections/SsbInlineSection.jsx:44
+#: src/components/sections/SsbSidebarSection.jsx:31
+msgid "Loading Pro component..."
+msgstr "Завантаження компонента Pro..."
+
+#: src/components/sections/SsbInlineSection.jsx:101
+msgid "Configure how your inline share buttons appear within your content."
+msgstr ""
+"Налаштуйте, як ваші кнопки спільного використання з'являються у вашому "
+"контенті."
+
+#: src/components/sections/SsbInlineSection.jsx:146
+#: src/components/sections/SsbSidebarSection.jsx:126
+msgid ""
+"For Facebook share count you need to add Facebook App ID and Secret in the "
+"Social tab."
+msgstr ""
+"Для кількості спільного використання у Facebook потрібно додати Facebook "
+"App ID та Secret на вкладці Соціальні."
+
+#: src/components/sections/SsbInlineSection.jsx:199
+msgid ""
+"Show only a set number of icons in your content. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"Показувати лише встановлену кількість значків у вашому контенті. Залишкові "
+"значки відкриваються в спливаючому вікні, коли відвідувачі натискають "
+"кнопку +."
+
+#: src/components/sections/SsbInlineSection.jsx:257
+msgid ""
+"This text appears on your site as a heading above the inline share buttons. "
+"It is not used as the title when someone shares your content on social "
+"networks."
+msgstr ""
+"Цей текст з'являється на вашому сайті як заголовок над кнопками обміну. Він "
+"не використовується як заголовок, коли хтось ділиться вашим контентом у "
+"соціальних мережах."
+
+#: src/components/sections/SsbNetworksSection.jsx:134
+msgid "Press Enter to move to Inactive."
+msgstr "Натисніть Enter, щоб перейти до неактивного."
+
+#: src/components/sections/SsbNetworksSection.jsx:135
+msgid "Press Enter to move to Active."
+msgstr "Натисніть Enter, щоб перейти до активного."
+
+#: src/components/sections/SsbNetworksSection.jsx:136
+msgid "Use Up and Down arrow keys to reorder."
+msgstr "Використовуйте клавіші зі стрілками Вверх і Вниз для зміни порядку."
+
+#: src/components/sections/SsbNetworksSection.jsx:181
+#: src/components/sections/SsbNetworksSection.jsx:261
+msgid "Drop here"
+msgstr "Перетягніть сюди"
+
+#: src/components/sections/SsbNetworksSection.jsx:219
+msgid "Pro"
+msgstr "Про"
+
+#: src/components/sections/SsbNetworksSection.jsx:236
+msgid "Edit"
+msgstr "Редагувати"
+
+#: src/components/sections/SsbNetworksSection.jsx:251
+msgid "Drop at end of list"
+msgstr "Перетягніть в кінець списку"
+
+#: src/components/sections/SsbNetworksSection.jsx:275
+msgid "Drag & Drop to activate and reorder your share buttons:"
+msgstr ""
+"Перетягніть і скиньте, щоб активувати та змінити порядок ваших кнопок "
+"обміну:"
+
+#: src/components/sections/SsbNetworksSection.jsx:280
+msgid "Active"
+msgstr "Активний"
+
+#: src/components/sections/SsbNetworksSection.jsx:284
+msgid "Inactive"
+msgstr "Неактивний"
+
+#: src/components/sections/SsbNextGenGalleryTab.jsx:27
+msgid "Simple Social Buttons on NextGEN Gallery"
+msgstr "Прості соціальні кнопки на NextGEN Gallery"
+
+#: src/components/sections/SsbPositionsSection.jsx:38
+msgid "Select the display styles to position your share buttons."
+msgstr "Виберіть стилі відображення для розміщення ваших кнопок обміну."
+
+#: src/components/sections/SsbSidebarSection.jsx:87
+msgid "Configure the appearance and behavior of your sidebar share buttons."
+msgstr ""
+"Налаштуйте зовнішній вигляд та поведінку ваших кнопок обміну в бічній "
+"панелі."
+
+#: src/components/sections/SsbSidebarSection.jsx:201
+msgid ""
+"Show only a set number of icons in the sidebar. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"Показуйте лише обмежену кількість значків у бічній панелі. Залишкові значки "
+"відкриваються у спливаючому вікні, коли відвідувачі натискають кнопку +."
+
+#: src/components/sections/SsbSocialTab.jsx:62
+msgid ""
+"Add your X username to append via= to Twitter/X share links from your "
+"buttons."
+msgstr ""
+"Додайте своє ім'я користувача X, щоб додати via= до посилань на обмін у "
+"Twitter/X з ваших кнопок."
+
+#: src/components/sections/SsbSocialTab.jsx:72
+msgid "Twitter/X @username"
+msgstr "Twitter/X @username"
+
+#: src/components/sections/SsbSocialTab.jsx:81
+msgid "Facebook App"
+msgstr "Facebook App"
+
+#: src/components/sections/SsbSocialTab.jsx:88
+msgid "How to create a Facebook app"
+msgstr "Як створити Facebook додаток"
+
+#: src/components/sections/SsbSocialTab.jsx:96
+msgid "Facebook App ID"
+msgstr "ID додатку Facebook"
+
+#: src/components/sections/SsbSocialTab.jsx:100
+msgid ""
+"Required for Facebook share counts. Add your App ID and Secret from the "
+"Facebook developer portal."
+msgstr ""
+"Необхідно для підрахунку поширень у Facebook. Додайте свій ID програми та "
+"секрет з порталу розробників Facebook."
+
+#: src/components/sections/SsbSocialTab.jsx:112
+msgid "Facebook App Secret"
+msgstr "Секрет програми Facebook"
+
+#: src/components/sections/SsbSocialTab.jsx:123
+msgid ""
+"Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat "
+"app with your page link ready to share."
+msgstr ""
+"Snapchat використовує Snap Creative Kit Web, тому мобільні відвідувачі "
+"відкривають додаток Snapchat з вашим посиланням на сторінку, готовим до "
+"поширення."
+
+#: src/components/sections/SsbSocialTab.jsx:133
+msgid "Snap Kit Client ID (optional)"
+msgstr "ID клієнта Snap Kit (необов'язково)"
+
+#: src/components/sections/SsbSocialTab.jsx:137
+msgid ""
+"Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit "
+"developer portal. Sharing works without it."
+msgstr ""
+"Необов'язково. Додайте свій ID клієнта Snap Kit, щоб атрибутувати поширення "
+"в порталі розробників Snap Kit. Поширення працює без нього."
+
+#: src/components/sections/SsbSocialTab.jsx:147
+msgid "How it works"
+msgstr "Як це працює"
+
+#: src/components/sections/SsbSocialTab.jsx:150
+msgid "Add Snapchat from the Settings tab like any other button."
+msgstr "Додайте Snapchat на вкладці Налаштування, як будь-яку іншу кнопку."
+
+#: src/components/sections/SsbSocialTab.jsx:156
+msgid ""
+"On mobile, tapping the button opens the Snapchat app share flow for the "
+"current page."
+msgstr ""
+"На мобільному пристрої натискання кнопки відкриває потік поширення в "
+"додатку Snapchat для поточної сторінки."
+
+#: src/components/sections/SsbSocialTab.jsx:162
+msgid ""
+"On desktop, a Snapcode window opens so users can scan and share from their "
+"phone."
+msgstr ""
+"На настільному комп'ютері відкривається вікно Snapcode, щоб користувачі "
+"могли сканувати та ділитися з телефону."
+
+#: src/components/sections/SsbSocialTab.jsx:168
+msgid ""
+"Keep Open Graph tags enabled so Snapchat can show your page title and "
+"preview."
+msgstr ""
+"Залиште теги Open Graph увімкненими, щоб Snapchat міг показувати заголовок "
+"вашої сторінки та попередній перегляд."
+
+#: src/components/sections/SsbThemesSection.jsx:62
+msgid "Official Buttons"
+msgstr "Офіційні кнопки"
+
+#: src/components/sections/SsbThemesSection.jsx:118
+msgid "Choose a button style that fits your site's look and feel."
+msgstr "Виберіть стиль кнопки, який підходить до вигляду та відчуття вашого сайту."
+
+#: src/components/SsbPurgeNotice.jsx:87
+#: src/components/SsbPurgeNotice.jsx:91
+#: src/utils/formHelpers.js:241
+msgid "Dismiss this notice."
+msgstr "Приховати це повідомлення."
+
+#: src/components/SsbStickySaveBar.jsx:305
+#: src/index.js:689
+#: src/index.js:704
+msgid "Dismiss"
+msgstr "Приховати"
+
+#: src/components/widgets/SsbFollowPlugins.jsx:41
+#: src/components/widgets/SsbFollowPlugins.jsx:44
+msgid "Share on LinkedIn"
+msgstr "Поділитися в LinkedIn"
+
+#: src/components/widgets/SsbGoProSection.jsx:15
+#: src/components/widgets/SsbGoProSection.jsx:20
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button, so they blend naturally with your website's design "
+"instead of standing out like a default plugin. Buttons that fit your site "
+"tend to get clicked more, which means more shares and more traffic for you. "
+"Pro also adds features like buttons on images, popups on exit intent, fly "
+"in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам налаштувати кольори фону, наведення "
+"та іконок для кожної кнопки, щоб вони природно поєднувалися з дизайном "
+"вашого сайту, а не виділялися як стандартний плагін. Кнопки, які підходять "
+"до вашого сайту, зазвичай отримують більше кліків, що означає більше "
+"поширень і більше трафіку для вас. Pro також додає функції, такі як кнопки "
+"на зображеннях, спливаючі вікна при намірі виходу, анімації з'їзду, і "
+"багато іншого."
+
+#: src/components/widgets/SsbGoProSection.jsx:25
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos across your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site. You can also hide them "
+"on mobile and control exactly which post types they appear on. It's an easy "
+"way to turn every image into a shareable opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам відображати кнопки поширення "
+"безпосередньо на зображеннях і фотографіях у ваших публікаціях та "
+"сторінках, вибирати їхнє положення, додавати відстань між іконками та "
+"налаштовувати кольори, що відповідають вашому сайту. Ви також можете "
+"приховати їх на мобільному та контролювати, на яких типах публікацій вони "
+"з'являються. Це простий спосіб перетворити кожне зображення на можливість "
+"для поширення та залучити більше трафіку."
+
+#: src/components/widgets/SsbGoProSection.jsx:30
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message, and trigger it exactly when it matters, like before "
+"visitors leave or after they scroll. You can add animation, display share "
+"counts or total shares to build social proof, and set custom colors to "
+"match your brand. It's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам створити спливаюче вікно для "
+"поширення з власним заголовком і повідомленням, і активувати його саме "
+"тоді, коли це важливо, наприклад, перед виходом відвідувачів або після "
+"прокрутки. Ви можете додати анімацію, відображати кількість поширень або "
+"загальну кількість поширень, щоб створити соціальний доказ, і налаштувати "
+"кольори, щоб відповідали вашому бренду. Це розумний спосіб привернути увагу "
+"відвідувачів саме тоді, коли вони найімовірніше поділяться."
+
+#: src/components/widgets/SsbGoProSection.jsx:35
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message, choose its position and animation, and even display "
+"share counts or total shares to build social proof. You can fine-tune "
+"timing, icon spacing, and colors to match your brand, and control which "
+"post types it appears on. It's a great way to prompt visitors to share "
+"right when they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro дозволяє вам створити спливаюче вікно Fly In з "
+"власним заголовком і повідомленням, вибрати його положення та анімацію, а "
+"також відображати кількість поширень або загальну кількість поширень, щоб "
+"створити соціальний доказ. Ви можете точно налаштувати час, відстань між "
+"іконками та кольори, щоб відповідати вашому бренду, і контролювати, на яких "
+"типах публікацій воно з'являється. Це чудовий спосіб спонукати відвідувачів "
+"ділитися саме тоді, коли вони найбільше залучені."
+
+#: src/components/widgets/SsbGoProSection.jsx:68
+#: src/components/widgets/SsbGoProSection.jsx:72
+msgid "Failed to activate the plugin."
+msgstr "Не вдалося активувати плагін."
+
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Activate Pro"
+msgstr "Натисніть тут, щоб активувати Pro"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:74
+msgid "Please enter your email."
+msgstr "Будь ласка, введіть свою електронну пошту."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:83
+msgid "Please enter a valid email address."
+msgstr "Будь ласка, введіть дійсну електронну адресу."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:108
+#: src/components/widgets/SsbNewsletterWidget.jsx:123
+msgid "Failed to subscribe."
+msgstr "Не вдалося підписатися."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:116
+msgid "Thank you!"
+msgstr "Дякуємо!"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:124
+msgid "Please try again."
+msgstr "Будь ласка, спробуйте ще раз."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:135
+msgid "Newsletter"
+msgstr "Розсилка новин"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:169
+msgid "Subscribing"
+msgstr "Підписка"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:170
+msgid "Subscribe"
+msgstr "Підписатися"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:183
+#: src/components/widgets/SsbNewsletterWidget.jsx:205
+msgid "Dismiss notice"
+msgstr "Відхилити повідомлення"
+
+#: src/components/widgets/SsbSidebar.jsx:36
+msgid "Upgrade to Pro!"
+msgstr "Оновіть до Pro!"
+
+#: src/components/widgets/SsbSidebar.jsx:38
+msgid ""
+"Unlock premium features designed to help you increase engagement, boost "
+"visibility, and save time."
+msgstr ""
+"Розблокуйте преміум-функції, розроблені для підвищення залученості, "
+"збільшення видимості та економії часу."
+
+#: src/components/widgets/SsbSidebar.jsx:48
+msgid "Unlimited Websites:"
+msgstr "Безлімітні вебсайти:"
+
+#: src/components/widgets/SsbSidebar.jsx:49
+msgid "Use SSB Pro across all your sites (no limits)"
+msgstr "Використовуйте SSB Pro на всіх ваших сайтах (без обмежень)"
+
+#: src/components/widgets/SsbSidebar.jsx:52
+msgid "Priority Support:"
+msgstr "Пріоритетна підтримка:"
+
+#: src/components/widgets/SsbSidebar.jsx:53
+msgid "Get fast, friendly help from our expert support team when you need it."
+msgstr ""
+"Отримуйте швидку, дружню допомогу від нашої команди експертної підтримки, "
+"коли вона вам потрібна."
+
+#: src/components/widgets/SsbSidebar.jsx:56
+msgid "1 Year of Updates:"
+msgstr "1 рік оновлень:"
+
+#: src/components/widgets/SsbSidebar.jsx:57
+msgid "Stay secure and compatible with the latest releases."
+msgstr "Залишайтеся в безпеці та сумісності з останніми випусками."
+
+#: src/components/widgets/SsbSidebar.jsx:60
+msgid "No Coding Required:"
+msgstr "Кодування не потрібно:"
+
+#: src/components/widgets/SsbSidebar.jsx:61
+msgid "Set up and customize buttons effortlessly from the dashboard."
+msgstr "Налаштуйте та налаштуйте кнопки без зусиль з панелі керування."
+
+#: src/components/widgets/SsbSidebar.jsx:64
+msgid "Quick & Flexible Button Placement:"
+msgstr "Швидке та гнучке розташування кнопок:"
+
+#: src/components/widgets/SsbSidebar.jsx:65
+msgid "Add buttons exactly where you want: posts, pages, or custom locations."
+msgstr ""
+"Додайте кнопки точно там, де ви хочете: у постах, на сторінках або в "
+"кастомних місцях."
+
+#: src/components/widgets/SsbSidebar.jsx:68
+msgid "Fully Responsive Design:"
+msgstr "Повністю адаптивний дизайн:"
+
+#: src/components/widgets/SsbSidebar.jsx:69
+msgid "Your social buttons look great on desktop, tablet, and mobile."
+msgstr ""
+"Ваші соціальні кнопки виглядають чудово на настільних комп'ютерах, "
+"планшетах і мобільних пристроях."
+
+#: src/components/widgets/SsbSidebar.jsx:72
+msgid "Ongoing Feature Improvements:"
+msgstr "Постійні покращення функцій:"
+
+#: src/components/widgets/SsbSidebar.jsx:73
+msgid "Regular updates with new features and performance enhancements."
+msgstr "Регулярні оновлення з новими функціями та покращеннями продуктивності."
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "Get up to"
+msgstr "Отримайте до"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "50%"
+msgstr "50%"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "off your first year of Simple Social Buttons."
+msgstr "знижки на перший рік використання Simple Social Buttons."
+
+#: src/components/widgets/SsbSidebar.jsx:86
+msgid "Unlock Pro Features"
+msgstr "Розблокувати професійні функції"
+
+#: src/components/widgets/SsbSidebar.jsx:89
+msgid "* Discount applied automatically"
+msgstr "* Знижка застосована автоматично"
+
+#: src/components/widgets/SsbSidebar.jsx:92
+msgid "Reviewer avatar"
+msgstr "Аватар рецензента"
+
+#: src/components/widgets/SsbSidebar.jsx:94
+msgid "John"
+msgstr "Джон"
+
+#: src/components/widgets/SsbSidebar.jsx:97
+msgid "5 star rating"
+msgstr "Оцінка 5 зірок"
+
+#: src/components/widgets/SsbSidebar.jsx:100
+msgid ""
+"The plug-in really works well. The developers and the creators did a good "
+"job!"
+msgstr "Плагін дійсно добре працює. Розробники та творці виконали чудову роботу!"
+
+#: src/components/widgets/SsbSidebar.jsx:111
+msgid "Designed and Maintained by"
+msgstr "Розроблено та підтримується"
+
+#: src/components/widgets/SsbSidebar.jsx:113
+msgid "Company logo"
+msgstr "Логотип компанії"
+
+#: src/index.js:588
+msgid "Tab content not found"
+msgstr "Вміст вкладки не знайдено"
+
+#: src/index.js:628
+#: src/utils/formHelpers.js:233
+msgid "Settings saved successfully!"
+msgstr "Налаштування успішно збережено!"
+
+#: src/index.js:646
+msgid "Loading…"
+msgstr "Завантаження…"
+
+#: src/index.js:647
+msgid "Try again"
+msgstr "Спробуйте ще раз"
+
+#: src/index.js:671
+#: src/index.js:727
+msgid "Saving..."
+msgstr "Зберігаємо..."
+
+#: src/index.js:671
+#: src/index.js:726
+msgid "Save Changes"
+msgstr "Зберегти зміни"
+
+#: src/utils/constants.js:22
+msgid "Advanced"
+msgstr "Додатково"
+
+#: src/utils/constants.js:26
+msgid "Social"
+msgstr "Соціальні"
+
+#: src/utils/constants.js:30
+msgid "Upgrade To Pro For More Features"
+msgstr "Оновити до Pro для отримання додаткових функцій"
+
+#: src/utils/constants.js:93
+msgid ""
+"Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require "
+"Simple Social Buttons Pro."
+msgstr ""
+"Увімкніть бічну панель або вбудовану, щоб зберегти налаштування. Для медіа, "
+"спливаючих вікон та вхідних елементів потрібні Simple Social Buttons Pro."
+
+#: src/utils/formHelpers.js:209
+msgid "Unknown error while saving settings."
+msgstr "Невідома помилка під час збереження налаштувань."
+
+#: src/utils/purgeNotice.js:24
+msgid "Missing admin configuration for purge status."
+msgstr "Відсутня конфігурація адміністратора для статусу очищення."
+
+#: src/utils/purgeNotice.js:44
+msgid "Unable to load purge status."
+msgstr "Не вдалося завантажити статус очищення."
+
+#: src/utils/settingsManager.js:71
+msgid "Network error while loading settings. Check your connection and try again."
+msgstr ""
+"Помилка мережі під час завантаження налаштувань. Перевірте з'єднання та "
+"спробуйте ще раз."
+
+#: src/utils/settingsManager.js:80
+msgid "Could not read the server response. Try refreshing the page."
+msgstr "Не вдалося прочитати відповідь сервера. Спробуйте оновити сторінку."
+
+#: src/utils/settingsManager.js:86
+msgid "Invalid response from server."
+msgstr "Недійсна відповідь від сервера."
+
+#: src/utils/settingsManager.js:94
+msgid "Could not load settings. You may need to refresh the page or sign in again."
+msgstr ""
+"Не вдалося завантажити налаштування. Можливо, вам потрібно оновити сторінку "
+"або увійти знову."
+
+#: src/utils/settingsManager.js:102
+#. translators: %s: HTTP status code
+msgid "Unable to load settings (HTTP %s)."
+msgstr "Не вдалося завантажити налаштування (HTTP %s)."
+
+#: src/utils/settingsManager.js:110
+msgid "Invalid settings data from server."
+msgstr "Недійсні дані налаштувань від сервера."
+
+#: src/utils/settingsManager.js:285
+msgid "Something went wrong while loading settings."
+msgstr "Щось пішло не так під час завантаження налаштувань."
+
+#: simple-social-buttons.php:3798
+msgctxt "Word count type. Do not translate!"
+msgid "words"
+msgstr "слова"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block title"
+msgid "Click to Post"
+msgstr "Натисніть, щоб опублікувати"
+
+#: blocks/shortcode/block.json
+msgctxt "block title"
+msgid "Simple Social Buttons"
+msgstr "Прості соціальні кнопки"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block description"
+msgid "SSB Click to post easy way to post your content."
+msgstr "SSB Натисніть, щоб опублікувати простий спосіб публікації вашого контенту."
+
+#: blocks/shortcode/block.json
+msgctxt "block description"
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your sites, such as: Facebook, WhatsApp, Viber, Twitter, Reddit, "
+"LinkedIn and Pinterest."
+msgstr ""
+"Simple Social Buttons додає розширений набір кнопок для спільного "
+"використання в соціальних мережах на ваші сайти, такі як: Facebook, "
+"WhatsApp, Viber, Twitter, Reddit, LinkedIn та Pinterest."
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "twiter"
+msgstr "твітер"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "clicktotweet"
+msgstr "clicktotweet"
+
+#: blocks/click-to-tweet/block.json
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "ssb"
+msgstr "ssb"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Social Share"
+msgstr "Соціальний обмін"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Button"
+msgstr "Кнопка"

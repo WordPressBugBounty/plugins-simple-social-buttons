@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:33+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "uk",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Click to post": [
+                "\u041d\u0430\u0442\u0438\u0441\u043d\u0456\u0442\u044c, \u0449\u043e\u0431 \u043e\u043f\u0443\u0431\u043b\u0456\u043a\u0443\u0432\u0430\u0442\u0438"
+            ],
+            "Theme": [
+                "\u0422\u0435\u043c\u0430"
+            ],
+            "select the style for click to post ": [
+                "\u0432\u0438\u0431\u0435\u0440\u0456\u0442\u044c \u0441\u0442\u0438\u043b\u044c \u0434\u043b\u044f \u043d\u0430\u0442\u0438\u0441\u043a\u0430\u043d\u043d\u044f \u0434\u043b\u044f \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u0457 "
+            ],
+            "Content": [
+                "\u041a\u043e\u043d\u0442\u0435\u043d\u0442"
+            ],
+            "Quote Content": [
+                "\u0426\u0438\u0442\u0430\u0442\u0430 \u041a\u043e\u043d\u0442\u0435\u043d\u0442\u0443"
+            ],
+            "This text will be shown to the user.": [
+                "\u0426\u0435\u0439 \u0442\u0435\u043a\u0441\u0442 \u0431\u0443\u0434\u0435 \u043f\u043e\u043a\u0430\u0437\u0430\u043d\u0438\u0439 \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0443."
+            ],
+            "Tweet Content": [
+                "\u041a\u043e\u043d\u0442\u0435\u043d\u0442 \u0422\u0432\u0456\u0442\u0443"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "\u0426\u0435\u0439 \u0442\u0435\u043a\u0441\u0442 \u0431\u0443\u0434\u0435 \u0442\u0432\u0456\u0442\u043d\u0443\u0442\u0438\u043c. \u042f\u043a\u0449\u043e \u043f\u043e\u0440\u043e\u0436\u043d\u044c\u043e, \u0431\u0443\u0434\u0435 \u0432\u0438\u043a\u043e\u0440\u0438\u0441\u0442\u0430\u043d\u043e \u0446\u0438\u0442\u0430\u0442\u043d\u0438\u0439 \u043a\u043e\u043d\u0442\u0435\u043d\u0442."
+            ],
+            " Configuration": [
+                " \u041d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f"
+            ],
+            "Show Tweet Button": [
+                "\u041f\u043e\u043a\u0430\u0437\u0430\u0442\u0438 \u043a\u043d\u043e\u043f\u043a\u0443 \u0422\u0432\u0456\u0442\u0443"
+            ],
+            "Include Page\/post Link": [
+                "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0438 \u043f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0441\u0442\u043e\u0440\u0456\u043d\u043a\u0443\/\u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u044e"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n \u041f\u043e\u0441\u0438\u043b\u0430\u043d\u043d\u044f \u043d\u0430 \u0446\u044e \u043f\u0443\u0431\u043b\u0456\u043a\u0430\u0446\u0456\u044e \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u043e \u0434\u043e \u0422\u0432\u0456\u0442\u0443. \u0423 \u043d\u0430\u0441 \u0454 \u0444\u0456\u043b\u044c\u0442\u0440, \u044f\u043a\u0449\u043e \u0432\u0438 \u0445\u043e\u0447\u0435\u0442\u0435 \u0439\u043e\u0433\u043e \u0437\u043c\u0456\u043d\u0438\u0442\u0438 `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "\u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0438 \u0447\u0435\u0440\u0435\u0437 @\u0456\u043c'\u044f_\u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "\u0406\u043c'\u044f \u043a\u043e\u0440\u0438\u0441\u0442\u0443\u0432\u0430\u0447\u0430 Twitter \u0437 \u0432\u043a\u043b\u0430\u0434\u043a\u0438 \u0420\u043e\u0437\u0448\u0438\u0440\u0435\u043d\u0456 \u043d\u0430\u043b\u0430\u0448\u0442\u0443\u0432\u0430\u043d\u043d\u044f SSB \u0431\u0443\u0434\u0435 \u0434\u043e\u0434\u0430\u043d\u0435 \u0432 \u043a\u0456\u043d\u0435\u0446\u044c \u0422\u0432\u0456\u0442\u0443 \u0437 \u0442\u0435\u043a\u0441\u0442\u043e\u043c \u201cvia @username\u201d."
+            ],
+            "Enter your content ...": [
+                "\u0412\u0432\u0435\u0434\u0456\u0442\u044c \u0432\u0430\u0448 \u043a\u043e\u043d\u0442\u0435\u043d\u0442 ..."
+            ],
+            "Configuration": [
+                "\u041a\u043e\u043d\u0444\u0456\u0433\u0443\u0440\u0430\u0446\u0456\u044f"
+            ],
+            "Share Counter": [
+                "\u041b\u0456\u0447\u0438\u043b\u044c\u043d\u0438\u043a \u041f\u043e\u0434\u0456\u043b\u0438\u0442\u0438\u0441\u044f"
+            ],
+            "Total Counts": [
+                "\u0417\u0430\u0433\u0430\u043b\u044c\u043d\u0456 \u041a\u0456\u043b\u044c\u043a\u043e\u0441\u0442\u0456"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "\u041f\u0456\u0434\u0442\u0440\u0438\u043c\u0443\u0432\u0430\u043d\u0456 \u041c\u0435\u0440\u0435\u0436\u0456: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "\u041f\u043e\u0440\u044f\u0434\u043e\u043a"
+            ],
+            "Align Left": [
+                "\u0412\u0438\u0440\u0456\u0432\u043d\u044f\u0442\u0438 \u0417\u043b\u0456\u0432\u0430"
+            ],
+            "Align Center": [
+                "\u0412\u0438\u0440\u0456\u0432\u043d\u044f\u0442\u0438 \u041f\u043e \u0426\u0435\u043d\u0442\u0440\u0443"
+            ],
+            "Align Right": [
+                "\u0412\u0438\u0440\u0456\u0432\u043d\u044f\u0442\u0438 \u041f\u0440\u0430\u0432\u043e\u0440\u0443\u0447"
+            ]
+        }
+    }
+}

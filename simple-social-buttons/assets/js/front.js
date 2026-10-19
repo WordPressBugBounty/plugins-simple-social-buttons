@@ -13,8 +13,8 @@
 
 	$.fn.visible = function (partial) {
 
-		var $t            = $( this ),
-			$w            = $( window ),
+		let $t            = $( this ),
+			$w            = $( globalThis ),
 			viewTop       = $w.scrollTop(),
 			viewBottom    = viewTop + $w.height(),
 			_top          = $t.offset().top,
@@ -29,10 +29,11 @@
 })( jQuery );
 
 // IIFE - Immediately Invoked Function Expression
+// Read from globalThis — `let ssbPlugin = ssbPlugin || {}` throws TDZ ReferenceError.
+globalThis.ssbPlugin = globalThis.ssbPlugin || {};
+let ssbPlugin = globalThis.ssbPlugin;
 
-var ssbPlugin = ssbPlugin || {};
-
-(function ($, window, document) {
+(function ($, globalThis, document) {
 	'use strict';
 
 	ssbPlugin.getTrackableNetworkFromElement = function (element) {
@@ -40,14 +41,15 @@ var ssbPlugin = ssbPlugin || {};
 			return '';
 		}
 
-		var trackableNetworks = ( SSB && Array.isArray( SSB.share_trackable_networks ) ) ? SSB.share_trackable_networks : [];
-		var network           = element.getAttribute( 'data-ssb-network' );
+		let trackableNetworks = Array.isArray( SSB?.share_trackable_networks ) ? SSB.share_trackable_networks : [];
+		let network           = element.dataset.ssbNetwork;
 
-		return ( network && trackableNetworks.indexOf( network ) !== -1 ) ? network : '';
+		return ( network && trackableNetworks.includes( network ) ) ? network : '';
 	};
 
 	ssbPlugin.getSharePopupFeatures = function () {
-		return ( SSB && SSB.popup_features ) ? SSB.popup_features
+		return SSB?.popup_features
+			? SSB.popup_features
 			: 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600';
 	};
 
@@ -57,16 +59,16 @@ var ssbPlugin = ssbPlugin || {};
 	 * @param {Document|Element} [root] Optional subtree (e.g. icon-limit popup).
 	 */
 	ssbPlugin.initSnapchatCreativeKit = function (root) {
-		var scope   = root && root.getElementsByClassName ? root : document;
-		var buttons = scope.getElementsByClassName( 'snapchat-share-button' );
+		let scope   = root?.getElementsByClassName ? root : document;
+		let buttons = scope.getElementsByClassName( 'snapchat-share-button' );
 
 		if ( ! buttons.length ) {
 			return;
 		}
 
-		var bindButtons = function () {
-			if ( window.snap && window.snap.creativekit && window.snap.creativekit.initalizeShareButtons ) {
-				window.snap.creativekit.initalizeShareButtons( buttons );
+		let bindButtons = function () {
+			if ( globalThis.snap?.creativekit?.initalizeShareButtons ) {
+				globalThis.snap.creativekit.initalizeShareButtons( buttons );
 				return true;
 			}
 
@@ -77,7 +79,7 @@ var ssbPlugin = ssbPlugin || {};
 			return;
 		}
 
-		window.snapKitInit = function () {
+		globalThis.snapKitInit = function () {
 			bindButtons();
 		};
 
@@ -93,25 +95,25 @@ var ssbPlugin = ssbPlugin || {};
 		Array.prototype.forEach.call(
 			buttons,
 			function (button) {
-				if ( button.getAttribute( 'data-ssb-snapchat-fallback' ) === '1' ) {
+				if ( button.dataset.ssbSnapchatFallback === '1' ) {
 					return;
 				}
 
-				button.setAttribute( 'data-ssb-snapchat-fallback', '1' );
+				button.dataset.ssbSnapchatFallback = '1';
 				button.addEventListener(
 					'click',
 					function (event) {
-						if ( window.snap && window.snap.creativekit && window.snap.creativekit.initalizeShareButtons ) {
+						if ( globalThis.snap?.creativekit?.initalizeShareButtons ) {
 							return;
 						}
 
-						var shareUrl = button.getAttribute( 'data-share-url' );
+						let shareUrl = button.dataset.shareUrl;
 						if ( ! shareUrl ) {
 							return;
 						}
 
 						event.preventDefault();
-						window.open( shareUrl, '_blank', ssbPlugin.getSharePopupFeatures() );
+						globalThis.open( shareUrl, '_blank', ssbPlugin.getSharePopupFeatures() );
 					}
 				);
 			}
@@ -126,44 +128,44 @@ var ssbPlugin = ssbPlugin || {};
 					return;
 				}
 
-				var button = event.target.closest( '[data-ssb-share-action]' );
+				let button = event.target.closest( '[data-ssb-share-action]' );
 				if ( ! button ) {
 					return;
 				}
 
-				var action = button.getAttribute( 'data-ssb-share-action' );
+				let action = button.dataset.ssbShareAction;
 				if ( ! action ) {
 					return;
 				}
 
 				event.preventDefault();
 
-				var url            = button.dataset.href || '';
-				var popupFeatures  = ssbPlugin.getSharePopupFeatures();
+				let url            = button.dataset.href || '';
+				let popupFeatures  = ssbPlugin.getSharePopupFeatures();
 
 				switch ( action ) {
 				case 'popup':
-					window.open( url, '', popupFeatures );
+					globalThis.open( url, '', popupFeatures );
 					break;
 				case 'blank':
-					window.open( url, '_blank' );
+					globalThis.open( url, '_blank' );
 					break;
 				case 'self':
-					window.open( url, '_self' );
+					globalThis.open( url, '_self' );
 					break;
 				case 'messenger':
-					window.open( url, '_blank', popupFeatures );
+					globalThis.open( url, '_blank', popupFeatures );
 					break;
 				case 'mailto':
-					window.location.href = url;
+					globalThis.location.href = url;
 					break;
 				case 'print':
-					window.print();
+					globalThis.print();
 					break;
 				case 'pinterest-pin':
 					// Prefer Pinterest's pinmarklet picker; fall back to the pin-create URL.
 					if ( ! document.querySelector( 'script[src*="pinmarklet.js"]' ) ) {
-						var pinScript = document.createElement( 'script' );
+						let pinScript = document.createElement( 'script' );
 						pinScript.setAttribute( 'type', 'text/javascript' );
 						pinScript.setAttribute( 'charset', 'UTF-8' );
 						pinScript.setAttribute(
@@ -172,12 +174,12 @@ var ssbPlugin = ssbPlugin || {};
 						);
 						pinScript.onerror = function () {
 							if ( url ) {
-								window.open( url, '', popupFeatures );
+								globalThis.open( url, '', popupFeatures );
 							}
 						};
 						document.body.appendChild( pinScript );
 					} else if ( url ) {
-						window.open( url, '', popupFeatures );
+						globalThis.open( url, '', popupFeatures );
 					}
 					break;
 				default:
@@ -193,12 +195,12 @@ var ssbPlugin = ssbPlugin || {};
 			return;
 		}
 
-		var network = ssbPlugin.getTrackableNetworkFromElement( element );
+		let network = ssbPlugin.getTrackableNetworkFromElement( element );
 		if ( ! network ) {
 			return;
 		}
 
-		var postId = parseInt( element.getAttribute( 'data-ssb-post-id' ) || '0', 10 );
+		let postId = Number.parseInt( element.dataset.ssbPostId || '0', 10 );
 		if ( ! Number.isFinite( postId ) || postId <= 0 ) {
 			return;
 		}
@@ -207,19 +209,19 @@ var ssbPlugin = ssbPlugin || {};
 	};
 
 	ssbPlugin.trackShareClick = function (postId, network) {
-		if ( ! SSB || ! SSB.ajax_url || ! SSB.share_track_nonce ) {
+		if ( ! SSB?.ajax_url || ! SSB?.share_track_nonce ) {
 			return;
 		}
 
-		var payload = {
+		let payload = {
 			action: 'ssb_track_share_click',
 			security: SSB.share_track_nonce,
 			post_id: postId,
 			network: network
 		};
 
-		if ( navigator.sendBeacon && window.URLSearchParams ) {
-			var params = new URLSearchParams();
+		if ( navigator.sendBeacon && globalThis.URLSearchParams ) {
+			let params = new URLSearchParams();
 			Object.keys( payload ).forEach(
 				function (key) {
 					params.append( key, payload[ key ] );
@@ -246,7 +248,7 @@ var ssbPlugin = ssbPlugin || {};
 					return;
 				}
 
-				var target = event.target.closest( '.simplesocialbuttons [data-ssb-network]' );
+				let target = event.target.closest( '.simplesocialbuttons [data-ssb-network]' );
 				if ( ! target ) {
 					return;
 				}
@@ -268,7 +270,7 @@ var ssbPlugin = ssbPlugin || {};
 			function ssbCloseIconLimitPopups() {
 				$( '.ssb_icon-limit-popup' ).each(
 					function () {
-						var $popup = $( this );
+						let $popup = $( this );
 						$popup.removeClass( 'ssb_icon-limit-popup--open' ).attr( 'hidden', 'hidden' );
 					}
 				);
@@ -299,7 +301,7 @@ var ssbPlugin = ssbPlugin || {};
 					e.preventDefault();
 					e.stopPropagation();
 
-					var targetId = $( this ).attr( 'data-ssb-popup-target' );
+					let targetId = $( this ).attr( 'data-ssb-popup-target' );
 					if ( targetId ) {
 						ssbOpenIconLimitPopup( $( '#' + targetId ) );
 					}
@@ -394,12 +396,12 @@ var ssbPlugin = ssbPlugin || {};
 		}
 	);
 
-	$( window ).on(
+	$( globalThis ).on(
 		'load',
 		function () {
-			var allMods = $( ".simplesocialbuttons_inline" );
-			if ( 'IntersectionObserver' in window ) {
-				var inlineObserver = new IntersectionObserver(
+			let allMods = $( ".simplesocialbuttons_inline" );
+			if ( 'IntersectionObserver' in globalThis ) {
+				let inlineObserver = new IntersectionObserver(
 					function (entries) {
 						entries.forEach(
 							function (entry) {
@@ -420,10 +422,10 @@ var ssbPlugin = ssbPlugin || {};
 				);
 			} else {
 				// Legacy browsers: throttle checks and drop nodes once animated (no per-scroll full scan).
-				var pendingInline = [];
+				let pendingInline = [];
 				allMods.each(
 					function (i, el) {
-						var $el = $( el );
+						let $el = $( el );
 						if ($el.visible( true )) {
 							$el.addClass( 'simplesocialbuttons-inline-in' );
 						} else {
@@ -433,49 +435,49 @@ var ssbPlugin = ssbPlugin || {};
 				);
 
 				if (pendingInline.length > 0) {
-					var scrollTicking = false;
+					let scrollTicking = false;
 
 					function flushInlineVisibility() {
 						scrollTicking = false;
-						var i = pendingInline.length;
+						let i = pendingInline.length;
 						while ( i-- ) {
-							var el = pendingInline[ i ];
-							var $el = $( el );
+							let el = pendingInline[ i ];
+							let $el = $( el );
 							if ($el.visible( true )) {
 								$el.addClass( 'simplesocialbuttons-inline-in' );
 								pendingInline.splice( i, 1 );
 							}
 						}
 						if (pendingInline.length === 0) {
-							$( window ).off( 'scroll.ssbInlineVisibility' );
+							$( globalThis ).off( 'scroll.ssbInlineVisibility' );
 						}
 					}
 
-					$( window ).on(
+					$( globalThis ).on(
 						'scroll.ssbInlineVisibility',
 						function () {
 							if (!scrollTicking) {
 								scrollTicking = true;
-								window.requestAnimationFrame( flushInlineVisibility );
+								globalThis.requestAnimationFrame( flushInlineVisibility );
 							}
 						}
 					);
 				}
 			}
 
-			var $firstFloatLink = $( 'div[class*="simplesocialbuttons-float"]>a:first-child' );
+			let $firstFloatLink = $( 'div[class*="simplesocialbuttons-float"]>a:first-child' );
 			if ( $firstFloatLink.length ) {
-				var sidebarwidth = $firstFloatLink.outerWidth( true );
+				let sidebarwidth = $firstFloatLink.outerWidth( true );
 				if ( typeof sidebarwidth === 'number' && sidebarwidth > 0 ) {
 					$( 'div[class*="simplesocialbuttons-float"]' ).css( 'width', sidebarwidth + 'px' );
 				}
 			}
 			$( '.simplesocialbuttons.ssb_counter-activate:not(.simplesocial-round-txt):not(.simplesocial-round-icon):not(.simplesocial-simple-icons) button:not(.simplesocial-viber-share):not(.simplesocial-whatsapp-share):not(.simplesocial-msng-share):not(.simplesocial-email-share):not(.simplesocial-print-share):not(.simplesocial-copy-link):not(.simplesocial-linkedin-share)' ).each(
 				function () {
-					var $el = $( this );
+					let $el = $( this );
 					setTimeout(
 						function () {
-							var $elWidth = $el.children( '.ssb_counter' ).innerWidth();
+							let $elWidth = $el.children( '.ssb_counter' ).innerWidth();
 							$el.css( 'padding-right', $elWidth + 10 );
 						},
 						100
@@ -487,14 +489,14 @@ var ssbPlugin = ssbPlugin || {};
 
 	function ssbEscapeAttr(value) {
 		return String( value )
-			.replace( /&/g, '&amp;' )
-			.replace( /"/g, '&quot;' )
-			.replace( /</g, '&lt;' );
+			.replaceAll( '&', '&amp;' )
+			.replaceAll( '"', '&quot;' )
+			.replaceAll( '<', '&lt;' );
 	}
 
 	function docLoadedFun() {
-		var hideLabel = ( SSB && SSB.i18n && SSB.i18n.hide_bar ) ? SSB.i18n.hide_bar : 'Hide social sharing bar';
-		var hideSidebarButton = '<span tabindex="0" role="button" class="ssb-hide-floating-bar" aria-label="' + ssbEscapeAttr( hideLabel ) + '" aria-pressed="false"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 370.814 370.814"><path d="M292.92 24.848L268.781 0 77.895 185.401l190.886 185.413 24.139-24.853-165.282-160.56"></path></svg></span>';
+		let hideLabel = SSB?.i18n?.hide_bar ? SSB.i18n.hide_bar : 'Hide social sharing bar';
+		let hideSidebarButton = '<span tabindex="0" role="button" class="ssb-hide-floating-bar" aria-label="' + ssbEscapeAttr( hideLabel ) + '" aria-pressed="false"><svg aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 370.814 370.814"><path d="M292.92 24.848L268.781 0 77.895 185.401l190.886 185.413 24.139-24.853-165.282-160.56"></path></svg></span>';
 		if (document.querySelector( 'div[class*="simplesocialbuttons-float"]' )) {
 			document.querySelector( 'div[class*="simplesocialbuttons-float"]' ).insertAdjacentHTML( 'beforeend', hideSidebarButton );
 			document.querySelector( '.ssb-hide-floating-bar' ).addEventListener( 'click', toggleSidebarButtons );
@@ -502,13 +504,13 @@ var ssbPlugin = ssbPlugin || {};
 	}
 
 	function toggleSidebarButtons() {
-		var leftSidebar = document.querySelector( 'div[class*="simplesocialbuttons-float"]' );
-		var hideSidebarToggle = document.querySelector( '.ssb-hide-floating-bar' );
+		let leftSidebar = document.querySelector( 'div[class*="simplesocialbuttons-float"]' );
+		let hideSidebarToggle = document.querySelector( '.ssb-hide-floating-bar' );
 		leftSidebar.classList.toggle( 'ssb-hide-float-buttons' );
 		if (hideSidebarToggle) {
-			var isHidden  = leftSidebar.classList.contains( 'ssb-hide-float-buttons' );
-			var showLabel = ( SSB && SSB.i18n && SSB.i18n.show_bar ) ? SSB.i18n.show_bar : 'Show social sharing bar';
-			var hideLabel = ( SSB && SSB.i18n && SSB.i18n.hide_bar ) ? SSB.i18n.hide_bar : 'Hide social sharing bar';
+			let isHidden  = leftSidebar.classList.contains( 'ssb-hide-float-buttons' );
+			let showLabel = SSB?.i18n?.show_bar ? SSB.i18n.show_bar : 'Show social sharing bar';
+			let hideLabel = SSB?.i18n?.hide_bar ? SSB.i18n.hide_bar : 'Hide social sharing bar';
 			hideSidebarToggle.setAttribute( 'aria-label', isHidden ? showLabel : hideLabel );
 			hideSidebarToggle.setAttribute( 'aria-pressed', isHidden ? 'true' : 'false' );
 		}
@@ -521,45 +523,54 @@ var ssbPlugin = ssbPlugin || {};
 		ssbPlugin.initSnapchatCreativeKit();
 	} );
 
-})( window.jQuery, window, document );
+})( globalThis.jQuery, globalThis, document );
 
 // function to copy the current link to clipboard
 // eslint-disable-next-line no-unused-vars
 function ssb_copy_share_link(clickedButton) {
-	if ( typeof ssbPlugin !== 'undefined' && ssbPlugin.trackShareClickFromElement ) {
-		ssbPlugin.trackShareClickFromElement( clickedButton );
-	}
+	ssbPlugin?.trackShareClickFromElement?.( clickedButton );
 
-	const textArea = document.createElement( 'textarea' );
-	const url      = ( clickedButton.dataset.href || '' ).trim();
-	textArea.value = url;
-	document.body.appendChild( textArea );
-	textArea.select();
+	const url = ( clickedButton.dataset.href || '' ).trim();
 
-	try {
-		const copied = document.execCommand( 'copy' );
-		if (copied) {
-			if (jQuery( clickedButton ).closest( '.simplesocial-simple-round' ).length === 0) {
-				jQuery( clickedButton ).attr( 'data-tooltip', 'Copied' );
-			} else {
-				jQuery( clickedButton ).find( '.ssb_tooltip' ).show();
-			}
-			clickedButton.classList.add( 'ssb_copy_btn' );
-			setTimeout(
-				() => {
-					jQuery( clickedButton ).removeAttr( 'data-tooltip' );
-					clickedButton.classList.remove( 'ssb_copy_btn' );
-					jQuery( clickedButton ).find( '.ssb_tooltip' ).hide();
-				},
-				1500
-			);
-
+	const showCopiedFeedback = () => {
+		if (jQuery( clickedButton ).closest( '.simplesocial-simple-round' ).length === 0) {
+			jQuery( clickedButton ).attr( 'data-tooltip', 'Copied' );
 		} else {
-			console.warn( 'Failed to copy URL using text area selection.' );
+			jQuery( clickedButton ).find( '.ssb_tooltip' ).show();
 		}
-	} catch (err) {
-		console.error( 'Failed to copy URL:', err );
-	} finally {
-		document.body.removeChild( textArea );
+		clickedButton.classList.add( 'ssb_copy_btn' );
+		setTimeout(
+			() => {
+				jQuery( clickedButton ).removeAttr( 'data-tooltip' );
+				clickedButton.classList.remove( 'ssb_copy_btn' );
+				jQuery( clickedButton ).find( '.ssb_tooltip' ).hide();
+			},
+			1500
+		);
+	};
+
+	const copyWithTextArea = () => {
+		const textArea = document.createElement( 'textarea' );
+		textArea.value = url;
+		document.body.appendChild( textArea );
+		textArea.select();
+		try {
+			if ( document.execCommand( 'copy' ) ) {
+				showCopiedFeedback();
+			} else {
+				console.warn( 'Failed to copy URL using text area selection.' );
+			}
+		} catch (err) {
+			console.error( 'Failed to copy URL:', err );
+		} finally {
+			textArea.remove();
+		}
+	};
+
+	if ( navigator.clipboard && typeof navigator.clipboard.writeText === 'function' ) {
+		navigator.clipboard.writeText( url ).then( showCopiedFeedback ).catch( copyWithTextArea );
+		return;
 	}
+
+	copyWithTextArea();
 }

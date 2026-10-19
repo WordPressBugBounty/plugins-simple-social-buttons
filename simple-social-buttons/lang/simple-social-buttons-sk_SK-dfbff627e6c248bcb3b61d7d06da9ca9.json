@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:25+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sk-SK",
+                "plural-forms": "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;"
+            },
+            "Simple Social Buttons": [
+                "Jednoduch\u00e9 soci\u00e1lne tla\u010didl\u00e1"
+            ],
+            "Post Type Settings": [
+                "Nastavenia typu pr\u00edspevku"
+            ],
+            "Spread the Word": [
+                "Roz\u0161\u00edrte slovo"
+            ],
+            "Share on X\/Twitter": [
+                "Zdie\u013ea\u0165 na X\/Twitter"
+            ],
+            "Share on Facebook": [
+                "Pawe\u0142 Rabinek na Facebook"
+            ],
+            "Rate on WordPress.org": [
+                "Hodnoti\u0165 na WordPress.org"
+            ],
+            "Email": [
+                "Email"
+            ],
+            "Name": [
+                "Meno"
+            ],
+            "Recommended Plugins": [
+                "Odpor\u00fa\u010dan\u00e9 pluginy"
+            ],
+            "Customize WordPress Login Page": [
+                "Prisp\u00f4sobte prihlasovaciu str\u00e1nku WordPress"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "Zjednodu\u0161te Google Analytics v WordPress"
+            ],
+            "Related Posts Thumbnails": [
+                "Miniat\u00fary s\u00favisiacich pr\u00edspevkov"
+            ],
+            "Under Construction & Maintenance mode": [
+                "Pod stavbou & \u00dadr\u017ebov\u00fd re\u017eim"
+            ],
+            "Settings": [
+                "Nastavenia"
+            ],
+            "Social Buttons": [
+                "Skry\u0165 jednoduch\u00e9 soci\u00e1lnej Buttons"
+            ],
+            "Social Buttons Designs": [
+                "Dizajny soci\u00e1lnych tla\u010didiel"
+            ],
+            "Social Buttons Positions": [
+                "Poz\u00edcie soci\u00e1lnych tla\u010didiel"
+            ],
+            "Sidebar": [
+                "Postrann\u00fd panel"
+            ],
+            "On Media": [
+                "Na m\u00e9di\u00e1ch"
+            ],
+            "Popup": [
+                "Vyskakovacie okno"
+            ],
+            "Fly In": [
+                "Priletie\u0165"
+            ],
+            "InLine": [
+                "Na str\u00e1nke"
+            ],
+            "Additional features": [
+                "Dodato\u010dn\u00e9 funkcie"
+            ],
+            "Inline": [
+                "V r\u00e1mci"
+            ],
+            "Media": [
+                "M\u00e9dia"
+            ],
+            "Sidebar Orientation": [
+                "Orient\u00e1cia bo\u010dn\u00e9ho panela"
+            ],
+            "Left": [
+                "V\u013eavo"
+            ],
+            "Right": [
+                "Vpravo"
+            ],
+            "Intro Animation": [
+                "\u00davodn\u00e1 anim\u00e1cia"
+            ],
+            "No": [
+                "Nie"
+            ],
+            "From Right": [
+                "Zprava"
+            ],
+            "From Top": [
+                "Zhora"
+            ],
+            "From Bottom": [
+                "Zspodu"
+            ],
+            "From Left": [
+                "Z\u013eava"
+            ],
+            "Fade In": [
+                "Prech\u00e1dza\u0165"
+            ],
+            "Display Share Counts": [
+                "Zobrazi\u0165 po\u010dty zdie\u013ean\u00ed"
+            ],
+            "Display Total Shares": [
+                "Zobrazi\u0165 celkov\u00e9 zdie\u013eania"
+            ],
+            "Display Text on hover": [
+                "Zobrazi\u0165 text pri prechode my\u0161ou"
+            ],
+            "Flat Button Style": [
+                "\u0160t\u00fdl ploch\u00e9ho tla\u010didla"
+            ],
+            "Add Icon Spacing": [
+                "Prida\u0165 medzery pre ikony"
+            ],
+            "Enter the Space in Pixel": [
+                "Zadajte medzeru v pixeloch"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Pevn\u00fd spodok (mobil)"
+            ],
+            "Hide On Mobile Devices": [
+                "Skry\u0165 na mobiln\u00fdch zariadeniach"
+            ],
+            "Limit Social Icons": [
+                "Obmedzi\u0165 soci\u00e1lne ikony"
+            ],
+            "Maximum Icons to Show": [
+                "Maxim\u00e1lny po\u010det ikon na zobrazenie"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "Chcete ma\u0165 v\u00e4\u010d\u0161iu kontrolu nad \u0161t\u00fdlom tla\u010didiel soci\u00e1lnych siet\u00ed v bo\u010dnom paneli?"
+            ],
+            "Icon Position": [
+                "Poz\u00edcia ikony"
+            ],
+            "Above The Content": [
+                "Nad obsahom"
+            ],
+            "Below The Content": [
+                "Pod obsahom"
+            ],
+            "Above + Below The Content": [
+                "Nad + pod obsahom"
+            ],
+            "Icon Alignment": [
+                "Zarovnanie ikony"
+            ],
+            "Centered": [
+                "Na stred"
+            ],
+            "Animation": [
+                "Anim\u00e1cia"
+            ],
+            "From bottom": [
+                "Zospodu"
+            ],
+            "From top": [
+                "Zhora"
+            ],
+            "From left": [
+                "Z\u013eava"
+            ],
+            "From right": [
+                "Sprava"
+            ],
+            "Show at Category pages": [
+                "Uk\u00e1za\u0165 na str\u00e1nky kateg\u00f3rie"
+            ],
+            "Show at Archive pages": [
+                "Zobrazi\u0165 Arch\u00edv str\u00e1nky"
+            ],
+            "Show at Tag pages": [
+                "Uk\u00e1za\u0165 na zna\u010dku str\u00e1nok"
+            ],
+            "Show at Search pages": [
+                "Zobrazi\u0165 na str\u00e1nkach vyh\u013ead\u00e1vania"
+            ],
+            "Share Title": [
+                "Zdie\u013ea\u0165 n\u00e1zov"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "Chcete ma\u0165 v\u00e4\u010d\u0161iu kontrolu nad \u0161t\u00fdlovan\u00edm svojich inline soci\u00e1lnych tla\u010didiel?"
+            ],
+            "Internal Share Flush Interval": [
+                "Intern\u00fd interval vypr\u00e1zdnenia zdie\u013eania"
+            ],
+            "Open Graph Tags": [
+                "Otvori\u0165 Graph Tags"
+            ],
+            "Remove Settings on Uninstall": [
+                "Odstr\u00e1ni\u0165 nastavenia pri odin\u0161talovan\u00ed"
+            ],
+            "Factory Reset": [
+                "Obnovenie do tov\u00e1rensk\u00fdch nastaven\u00ed"
+            ],
+            "Custom CSS": [
+                "Vlastn\u00fd CSS"
+            ],
+            "Custom JS": [
+                "Vlastn\u00fd JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "Chcete zobrazi\u0165 tla\u010didl\u00e1 na zdie\u013eanie na va\u0161ich m\u00e9di\u00e1ch?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "Chcete inteligentn\u00e9 vyskakovacie okn\u00e1, ktor\u00e9 sa spustia v spr\u00e1vny okamih?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "Chcete pokro\u010dil\u00e9 anim\u00e1cie \"Fly In\", ktor\u00e9 zvy\u0161uj\u00fa po\u010det zdie\u013ean\u00ed?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Zdie\u013ea\u0165"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Threads"
+            ],
+            "Post": [
+                "Pr\u00edspevok"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Kop\u00edrova\u0165 odkaz"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "Tla\u010di\u0165"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Chyba nastaven\u00ed"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "Nie\u010do sa pokazilo na str\u00e1nke s nastaveniami. Pros\u00edm, obnovte str\u00e1nku a sk\u00faste to znova."
+            ],
+            "Error Details": [
+                "Detaily chyby"
+            ],
+            "Refresh Page": [
+                "Obnovi\u0165 str\u00e1nku"
+            ],
+            "Toggle setting": [
+                "Prepn\u00fa\u0165 nastavenie"
+            ],
+            "Select Color": [
+                "Vybra\u0165 farbu"
+            ],
+            "Clear": [
+                "Vymaza\u0165"
+            ],
+            "Done": [
+                "Hotovo"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "Zadajte cel\u00e9 \u010d\u00edslo pixelov od 1 do 999. Hodnota bola upraven\u00e1."
+            ],
+            "Select...": [
+                "Vybra\u0165..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> od <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> prid\u00e1va pokro\u010dil\u00fa sadu tla\u010didiel na zdie\u013eanie na soci\u00e1lnych m\u00e9di\u00e1ch na va\u0161e str\u00e1nky WordPress, ako s\u00fa: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> a <strong>Pinterest<\/strong>. To z neho rob\u00ed najflexibilnej\u0161\u00ed plugin na zdie\u013eanie na soci\u00e1lnych m\u00e9di\u00e1ch pre v\u0161etk\u00fdch."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Ovl\u00e1dajte, ako sa tla\u010didl\u00e1 zdie\u013eania zobrazuj\u00fa na obr\u00e1zkoch a m\u00e9di\u00e1ch vo va\u0161ich pr\u00edspevkoch."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Konfigurujte svoje vyskakovacie okno na zdie\u013eanie: nastavte spr\u00e1vu, \u010dasovanie a spr\u00e1vanie sp\u00fa\u0161\u0165ania."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "Nastavte posuvn\u00e9 v\u00fdzvy na zdie\u013eanie s vlastn\u00fdmi spr\u00e1vami, poz\u00edciou a \u010dasovan\u00edm"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS po\u010dty rie\u0161en\u00ed"
+            ],
+            "hour": [
+                "hodina"
+            ],
+            "hours": [
+                "hodiny"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Intern\u00e9 po\u010dty kliknut\u00ed na zdie\u013eanie s\u00fa zaznamen\u00e1van\u00e9 pre podporovan\u00e9 siete (napr\u00edklad Twitter\/X, LinkedIn, WhatsApp), ke\u010f n\u00e1v\u0161tevn\u00edci pou\u017e\u00edvaj\u00fa tla\u010didl\u00e1 zdie\u013eania na va\u0161ej str\u00e1nke. Po\u010dty s\u00fa ulo\u017een\u00e9 lok\u00e1lne a nie s\u00fa odosielan\u00e9 do t\u00fdchto soci\u00e1lnych siet\u00ed. Vyma\u017ete vyrovn\u00e1vaciu pam\u00e4\u0165 svojej str\u00e1nky po aktualiz\u00e1cii pluginu, aby sa zna\u010dka tla\u010didla udr\u017eala v synchroniz\u00e1cii."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "Povo\u013ete odstr\u00e1nenie v\u0161etk\u00fdch nastaven\u00ed pri odin\u0161talovan\u00ed pluginu."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "Povo\u013ete resetovanie v\u0161etk\u00fdch nastaven\u00ed na predvolen\u00e9 hodnoty pri ulo\u017een\u00edm."
+            ],
+            "Click To Post": [
+                "Kliknite na zverejnenie"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "Odomknite funkciu Klikn\u00fa\u0165 na Tweet s Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "Z\u00edskajte mocn\u00fa funkciu Klikn\u00fa\u0165 na Tweet, ktor\u00e1 v\u00e1m umo\u017en\u00ed vytv\u00e1ra\u0165 p\u00fatav\u00fd, tweetovate\u013en\u00fd obsah priamo vo va\u0161ich pr\u00edspevkoch. T\u00e1to funkcia Pro pom\u00e1ha zvy\u0161ova\u0165 soci\u00e1lnu anga\u017eovanos\u0165 a priv\u00e1dza\u0165 viac n\u00e1v\u0161tevn\u00edkov na va\u0161u str\u00e1nku."
+            ],
+            "Click here to Upgrade": [
+                "Kliknite sem na aktualiz\u00e1ciu"
+            ],
+            "Loading Pro settings...": [
+                "Na\u010d\u00edtavanie nastaven\u00ed Pro..."
+            ],
+            "Loading Pro component...": [
+                "Na\u010d\u00edtavanie Pro komponentu..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Konfigurujte, ako sa va\u0161e inline tla\u010didl\u00e1 zdie\u013eania zobrazuj\u00fa vo va\u0161om obsahu."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "Pre po\u010det zdie\u013ean\u00ed na Facebooku mus\u00edte prida\u0165 Facebook App ID a Secret na karte Soci\u00e1lne."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Zobrazi\u0165 len stanoven\u00fd po\u010det ikon vo va\u0161om obsahu. Zvy\u0161n\u00e9 ikony sa otvoria vo vyskakovacom okne, ke\u010f n\u00e1v\u0161tevn\u00edci stla\u010dia tla\u010didlo +."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "Tento text sa na va\u0161ej str\u00e1nke zobrazuje ako nadpis nad inline tla\u010didlami na zdie\u013eanie. Nepou\u017e\u00edva sa ako n\u00e1zov, ke\u010f niekto zdie\u013ea v\u00e1\u0161 obsah na soci\u00e1lnych sie\u0165ach."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Stla\u010dte Enter, aby ste pre\u0161li do neakt\u00edvneho stavu."
+            ],
+            "Press Enter to move to Active.": [
+                "Stla\u010dte Enter, aby ste pre\u0161li do akt\u00edvneho stavu."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Pou\u017eite kl\u00e1vesy so \u0161\u00edpkami hore a dole na preusporiadanie."
+            ],
+            "Drop here": [
+                "Sem vlo\u017ete"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Upravi\u0165"
+            ],
+            "Drop at end of list": [
+                "Vlo\u017ei\u0165 na koniec zoznamu"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Potiahnite a pustite na aktiv\u00e1ciu a preusporiadanie va\u0161ich tla\u010didiel na zdie\u013eanie:"
+            ],
+            "Active": [
+                "Akt\u00edvne"
+            ],
+            "Inactive": [
+                "Neakt\u00edvne"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Jednoduch\u00e9 soci\u00e1lne tla\u010didl\u00e1 na NextGEN Gallery"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "Vyberte \u0161t\u00fdly zobrazenia na umiestnenie va\u0161ich tla\u010didiel na zdie\u013eanie."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Konfigurujte vzh\u013ead a spr\u00e1vanie va\u0161ich tla\u010didiel na zdie\u013eanie v bo\u010dnom paneli."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Zobrazi\u0165 iba stanoven\u00fd po\u010det ikon v bo\u010dnom paneli. Zvy\u0161n\u00e9 ikony sa otvor\u00ed v okne, ke\u010f n\u00e1v\u0161tevn\u00edci klikn\u00fa na tla\u010didlo +."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "Pridajte svoje X pou\u017e\u00edvate\u013esk\u00e9 meno na pripojenie via= k Twitter\/X odkazom na zdie\u013eanie z va\u0161ich tla\u010didiel."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @pou\u017e\u00edvate\u013esk\u00e9_meno"
+            ],
+            "Facebook App": [
+                "Facebook aplik\u00e1cia"
+            ],
+            "How to create a Facebook app": [
+                "Ako vytvori\u0165 Facebook aplik\u00e1ciu"
+            ],
+            "Facebook App ID": [
+                "Facebook App ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "Vy\u017eaduje sa pre po\u010dty zdie\u013ean\u00ed na Facebooku. Pridajte svoje ID aplik\u00e1cie a tajn\u00fd k\u013e\u00fa\u010d z port\u00e1lu pre v\u00fdvoj\u00e1rov Facebooku."
+            ],
+            "Facebook App Secret": [
+                "Tajn\u00fd k\u013e\u00fa\u010d aplik\u00e1cie Facebook"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat pou\u017e\u00edva Snap Creative Kit Web, tak\u017ee mobiln\u00ed n\u00e1v\u0161tevn\u00edci otvoria aplik\u00e1ciu Snapchat s odkazom na va\u0161u str\u00e1nku pripraven\u00fdm na zdie\u013eanie."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "ID klienta Snap Kit (volite\u013en\u00e9)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Volite\u013en\u00e9. Pridajte svoje ID klienta Snap Kit na priradenie zdie\u013ean\u00ed v port\u00e1li pre v\u00fdvoj\u00e1rov Snap Kit. Zdie\u013eanie funguje aj bez toho."
+            ],
+            "How it works": [
+                "Ako to funguje"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "Pridajte Snapchat z karty Nastavenia ako ak\u00e9ko\u013evek in\u00e9 tla\u010didlo."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "Na mobile \u0165uknutie na tla\u010didlo otvor\u00ed zdie\u013eac\u00ed tok aplik\u00e1cie Snapchat pre aktu\u00e1lnu str\u00e1nku."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "Na desktopovom po\u010d\u00edta\u010di sa otvor\u00ed okno Snapcode, aby si pou\u017e\u00edvatelia mohli naskenova\u0165 a zdie\u013ea\u0165 z ich telef\u00f3nu."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "Majte povolen\u00e9 zna\u010dky Open Graph, aby Snapchat mohol zobrazi\u0165 n\u00e1zov a n\u00e1h\u013ead va\u0161ej str\u00e1nky."
+            ],
+            "Official Buttons": [
+                "Ofici\u00e1lne tla\u010didl\u00e1"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "Vyberte \u0161t\u00fdl tla\u010didla, ktor\u00fd sa hod\u00ed k vzh\u013eadu a pocitu v\u00e1\u0161ho webu."
+            ],
+            "Dismiss this notice.": [
+                "Zavrie\u0165 toto ozn\u00e1menie."
+            ],
+            "Dismiss": [
+                "Zavrie\u0165"
+            ],
+            "Share on LinkedIn": [
+                "Zdie\u013ea\u0165 na LinkedIn"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro v\u00e1m umo\u017e\u0148uje nastavi\u0165 vlastn\u00e9 farby pozadia, hover a ik\u00f3n pre ka\u017ed\u00e9 tla\u010didlo, tak\u017ee sa prirodzene zl\u00fa\u010dia s dizajnom va\u0161ej webovej str\u00e1nky namiesto toho, aby vy\u010dnievali ako predvolen\u00fd plugin. Tla\u010didl\u00e1, ktor\u00e9 sa hodia k va\u0161ej str\u00e1nke, maj\u00fa tendenciu by\u0165 \u010dastej\u0161ie kliknut\u00e9, \u010do znamen\u00e1 viac zdie\u013ean\u00ed a viac n\u00e1v\u0161tevnosti pre v\u00e1s. Pro tie\u017e prid\u00e1va funkcie ako tla\u010didl\u00e1 na obr\u00e1zkoch, vyskakovacie okn\u00e1 pri \u00famysle opustenia, anim\u00e1cie vklzovania a \u010fal\u0161ie."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro v\u00e1m umo\u017e\u0148uje zobrazi\u0165 tla\u010didl\u00e1 na zdie\u013eanie priamo na obr\u00e1zkoch a fotografi\u00e1ch vo va\u0161ich pr\u00edspevkoch a str\u00e1nkach, vybra\u0165 ich polohu, prida\u0165 medzery medzi ikony a nastavi\u0165 vlastn\u00e9 farby, ktor\u00e9 zodpovedaj\u00fa va\u0161ej str\u00e1nke. M\u00f4\u017eete ich tie\u017e skry\u0165 na mobile a presne ovl\u00e1da\u0165, na ktor\u00fdch typoch pr\u00edspevkov sa zobrazuj\u00fa. Je to jednoduch\u00fd sp\u00f4sob, ako premeni\u0165 ka\u017ed\u00fd obr\u00e1zok na zdie\u013eate\u013en\u00fa pr\u00edle\u017eitos\u0165 a zv\u00fd\u0161i\u0165 n\u00e1v\u0161tevnos\u0165."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro v\u00e1m umo\u017e\u0148uje vytvori\u0165 vlastn\u00e9 vyskakovacie okno na zdie\u013eanie s vlastn\u00fdm n\u00e1zvom a spr\u00e1vou a aktivova\u0165 ho presne vtedy, ke\u010f je to d\u00f4le\u017eit\u00e9, napr\u00edklad predt\u00fdm, ako n\u00e1v\u0161tevn\u00edci od\u00eddu, alebo po tom, \u010do posun\u00fa. M\u00f4\u017eete prida\u0165 anim\u00e1ciu, zobrazi\u0165 po\u010dty zdie\u013ean\u00ed alebo celkov\u00e9 zdie\u013eania na budovanie soci\u00e1lneho d\u00f4kazu a nastavi\u0165 vlastn\u00e9 farby, ktor\u00e9 zodpovedaj\u00fa va\u0161ej zna\u010dke. Je to inteligentn\u00fd sp\u00f4sob, ako up\u00fata\u0165 pozornos\u0165 n\u00e1v\u0161tevn\u00edkov presne vtedy, ke\u010f s\u00fa najpravdepodobnej\u0161ie, \u017ee zdie\u013eaj\u00fa."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro v\u00e1m umo\u017e\u0148uje vytvori\u0165 vlastn\u00e9 vyskakovacie okno Fly In s vlastn\u00fdm n\u00e1zvom a spr\u00e1vou, vybra\u0165 jeho polohu a anim\u00e1ciu a dokonca zobrazi\u0165 po\u010dty zdie\u013ean\u00ed alebo celkov\u00e9 zdie\u013eania na budovanie soci\u00e1lneho d\u00f4kazu. M\u00f4\u017eete jemne doladi\u0165 \u010dasovanie, medzery medzi ikonami a farby, aby zodpovedali va\u0161ej zna\u010dke, a ovl\u00e1da\u0165, na ktor\u00fdch typoch pr\u00edspevkov sa zobrazuje. Je to skvel\u00fd sp\u00f4sob, ako vyzva\u0165 n\u00e1v\u0161tevn\u00edkov, aby zdie\u013eali pr\u00e1ve vtedy, ke\u010f s\u00fa najviac zapojen\u00ed."
+            ],
+            "Failed to activate the plugin.": [
+                "Nepodarilo sa aktivova\u0165 plugin."
+            ],
+            "Click here to Activate Pro": [
+                "Kliknite sem pre aktiv\u00e1ciu Pro"
+            ],
+            "Please enter your email.": [
+                "Zadajte pros\u00edm svoju e-mailov\u00fa adresu."
+            ],
+            "Please enter a valid email address.": [
+                "Zadajte pros\u00edm platn\u00fa e-mailov\u00fa adresu."
+            ],
+            "Failed to subscribe.": [
+                "Prihl\u00e1senie sa nepodarilo."
+            ],
+            "Thank you!": [
+                "\u010eakujem!"
+            ],
+            "Please try again.": [
+                "Sk\u00faste to pros\u00edm znova."
+            ],
+            "Newsletter": [
+                "Newsletter"
+            ],
+            "Subscribing": [
+                "Prihl\u00e1senie"
+            ],
+            "Subscribe": [
+                "Prihl\u00e1si\u0165 sa"
+            ],
+            "Dismiss notice": [
+                "Zamietnu\u0165 ozn\u00e1menie"
+            ],
+            "Upgrade to Pro!": [
+                "Upgradujte na Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "Odblokujte pr\u00e9miov\u00e9 funkcie navrhnut\u00e9 na zv\u00fd\u0161enie anga\u017eovanosti, zlep\u0161enie vidite\u013enosti a \u00fasporu \u010dasu."
+            ],
+            "Unlimited Websites:": [
+                "Neobmedzen\u00e9 webov\u00e9 str\u00e1nky:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Pou\u017e\u00edvajte SSB Pro na v\u0161etk\u00fdch svojich str\u00e1nkach (bez obmedzen\u00ed)"
+            ],
+            "Priority Support:": [
+                "Prioritn\u00e1 podpora:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "Z\u00edskajte r\u00fdchlu, priate\u013esk\u00fa pomoc od n\u00e1\u0161ho odborn\u00e9ho t\u00edmu podpory, ke\u010f ju potrebujete."
+            ],
+            "1 Year of Updates:": [
+                "1 rok aktualiz\u00e1ci\u00ed:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "Zosta\u0148te zabezpe\u010den\u00ed a kompatibiln\u00ed s najnov\u0161\u00edmi vydaniami."
+            ],
+            "No Coding Required:": [
+                "\u017diadne programovanie nie je potrebn\u00e9:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "Nastavte a prisp\u00f4sobte tla\u010didl\u00e1 bez n\u00e1mahy z ovl\u00e1dacieho panela."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "R\u00fdchle a flexibiln\u00e9 umiestnenie tla\u010didiel:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "Pridajte tla\u010didl\u00e1 presne tam, kde chcete: pr\u00edspevky, str\u00e1nky alebo vlastn\u00e9 umiestnenia."
+            ],
+            "Fully Responsive Design:": [
+                "\u00daplne responz\u00edvny dizajn:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "Va\u0161e soci\u00e1lne tla\u010didl\u00e1 vyzeraj\u00fa skvele na desktope, tablete a mobile."
+            ],
+            "Ongoing Feature Improvements:": [
+                "Prebiehaj\u00face vylep\u0161enia funkci\u00ed:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Pravideln\u00e9 aktualiz\u00e1cie s nov\u00fdmi funkciami a vylep\u0161eniami v\u00fdkonu."
+            ],
+            "Get up to": [
+                "Z\u00edskajte a\u017e"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "z\u013eavu na v\u00e1\u0161 prv\u00fd rok Simple Social Buttons."
+            ],
+            "Unlock Pro Features": [
+                "Odomkn\u00fa\u0165 profesion\u00e1lne funkcie"
+            ],
+            "* Discount applied automatically": [
+                "* Z\u013eava sa aplikuje automaticky"
+            ],
+            "Reviewer avatar": [
+                "Avatar recenzenta"
+            ],
+            "John": [
+                "J\u00e1n"
+            ],
+            "5 star rating": [
+                "5-hviezdi\u010dkov\u00e9 hodnotenie"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "Tento doplnok naozaj dobre funguje. V\u00fdvoj\u00e1ri a tvorcovia odviedli dobr\u00fa pr\u00e1cu!"
+            ],
+            "Designed and Maintained by": [
+                "Navrhnut\u00e9 a spravovan\u00e9 spolo\u010dnos\u0165ou"
+            ],
+            "Company logo": [
+                "Logo spolo\u010dnosti"
+            ],
+            "Tab content not found": [
+                "Obsah karty nen\u00e1jden\u00fd"
+            ],
+            "Settings saved successfully!": [
+                "Nastavenia boli \u00faspe\u0161ne ulo\u017een\u00e9!"
+            ],
+            "Loading\u2026": [
+                "Na\u010d\u00edtava sa\u2026"
+            ],
+            "Try again": [
+                "Sk\u00faste znova"
+            ],
+            "Saving...": [
+                "Ukladanie..."
+            ],
+            "Save Changes": [
+                "Ulo\u017ei\u0165 zmeny"
+            ],
+            "Advanced": [
+                "Pokro\u010dil\u00e9"
+            ],
+            "Social": [
+                "Soci\u00e1lne"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Prejdite na Pro pre viac funkci\u00ed"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "Povo\u013ete bo\u010dn\u00fd panel alebo inline na ulo\u017eenie nastaven\u00ed. M\u00e9dia, vyskakovacie okn\u00e1 a Fly In vy\u017eaduj\u00fa Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Nezn\u00e1ma chyba pri ukladan\u00ed nastaven\u00ed."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Ch\u00fdbaj\u00faca administr\u00e1torsk\u00e1 konfigur\u00e1cia pre stav vymazania."
+            ],
+            "Unable to load purge status.": [
+                "Nemo\u017eno na\u010d\u00edta\u0165 stav vymazania."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "Chyba siete pri na\u010d\u00edtavan\u00ed nastaven\u00ed. Skontrolujte va\u0161e pripojenie a sk\u00faste to znova."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Nemo\u017eno pre\u010d\u00edta\u0165 odpove\u010f servera. Sk\u00faste obnovi\u0165 str\u00e1nku."
+            ],
+            "Invalid response from server.": [
+                "Neplatn\u00e1 odpove\u010f zo servera."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Nemo\u017eno na\u010d\u00edta\u0165 nastavenia. M\u00f4\u017eete potrebova\u0165 obnovi\u0165 str\u00e1nku alebo sa znova prihl\u00e1si\u0165."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Nemo\u017eno na\u010d\u00edta\u0165 nastavenia (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Neplatn\u00e9 nastavenia \u00fadajov zo servera."
+            ],
+            "Something went wrong while loading settings.": [
+                "Nie\u010do sa pokazilo pri na\u010d\u00edtavan\u00ed nastaven\u00ed."
+            ]
+        }
+    }
+}

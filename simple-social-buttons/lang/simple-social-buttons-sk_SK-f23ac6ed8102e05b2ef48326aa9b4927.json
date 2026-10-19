@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:25+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sk-SK",
+                "plural-forms": "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;"
+            },
+            "Click to post": [
+                "Kliknite na zverejnenie"
+            ],
+            "Theme": [
+                "T\u00e9ma"
+            ],
+            "select the style for click to post ": [
+                "vyberte \u0161t\u00fdl pre kliknutie na zverejnenie "
+            ],
+            "Content": [
+                "Obsah"
+            ],
+            "Quote Content": [
+                "Obsah cit\u00e1tu"
+            ],
+            "This text will be shown to the user.": [
+                "Tento text sa zobraz\u00ed pou\u017e\u00edvate\u013eovi."
+            ],
+            "Tweet Content": [
+                "Obsah tweetu"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Tento text bude tweetovan\u00fd. Ak je pr\u00e1zdny, pou\u017eije sa obsah cit\u00e1tu."
+            ],
+            " Configuration": [
+                " Konfigur\u00e1cia"
+            ],
+            "Show Tweet Button": [
+                "Zobrazi\u0165 tla\u010didlo Tweet"
+            ],
+            "Include Page\/post Link": [
+                "Zahrn\u00fa\u0165 odkaz na str\u00e1nku\/pr\u00edspevok"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n Odkaz na tento pr\u00edspevok bude pridan\u00fd k tweetu. m\u00e1me filter, ak ho chcete upravi\u0165 `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Zahrn\u00fa\u0165 cez @meno pou\u017e\u00edvate\u013ea"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "Twitter pou\u017e\u00edvate\u013esk\u00e9 meno z pokro\u010dil\u00e9ho nastavenia SSB bude pridan\u00e9 na koniec Tweeta s textom \u201ecez @username\u201c."
+            ],
+            "Enter your content ...": [
+                "Zadajte svoj obsah ..."
+            ],
+            "Configuration": [
+                "Konfigur\u00e1cia"
+            ],
+            "Share Counter": [
+                "Po\u010d\u00edtadlo zdie\u013ean\u00ed"
+            ],
+            "Total Counts": [
+                "Celkov\u00e9 po\u010dty"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Podporovan\u00e9 siete: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,tla\u010di\u0165,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Poradie"
+            ],
+            "Align Left": [
+                "Zarovna\u0165 v\u013eavo"
+            ],
+            "Align Center": [
+                "Zarovna\u0165 na stred"
+            ],
+            "Align Right": [
+                "Zarovna\u0165 vpravo"
+            ]
+        }
+    }
+}

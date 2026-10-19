@@ -5,9 +5,11 @@
  * Description: Simple Social Buttons adds an advanced set of social media sharing buttons to your WordPress sites,
  * such as: Facebook, Twitter, WhatsApp, Viber, Reddit, LinkedIn and Pinterest.
  * This makes it the most <code>Flexible Social Sharing Plugin ever for Everyone.</code>
- * Version: 7.1.0
+ * Version: 7.2.0
  * Author: WPBrigade
  * Author URI: https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_medium=author-url-link
+ * Requires at least: 5.0
+ * Requires PHP: 7.1
  * Text Domain: simple-social-buttons
  * Domain Path: /lang
  * GitHub Plugin URI: https://github.com/WPBrigade/simple-social-buttons
@@ -138,7 +140,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @since 1.0.0
 	 * @var string
 	 */
-	public $plugin_version = '7.1.0';
+	public $plugin_version = '7.2.0';
 
 	/**
 	 * Plugin Prefix
@@ -196,7 +198,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	/**
 	 * Allocate the next custom button ID and advance the counter in $networks.
 	 *
-	 * Uses next_custom_id in ssb_networks for O(1) allocation; falls back to scanning
+	 * Uses next_custom_id in ssb_networks for O(1) allocation; falls back to scanning.
 	 * custom_buttons keys only when the counter is missing (e.g. upgraded installs).
 	 *
 	 * @param array<string, mixed> $networks Current ssb_networks array (passed by reference; next_custom_id is updated).
@@ -607,9 +609,17 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @access public
 	 * @since 1.0.0
 	 * @return void
+	 * @version 7.2.0
 	 */
 	public function ssb_set_inline_option() {
 		$this->inline_option = get_option( 'ssb_inline' );
+		if ( ! is_array( $this->inline_option ) ) {
+			$this->inline_option = array();
+		}
+		$this->inline_option['location'] = ssb_sanitize_inline_location(
+			$this->inline_option['location'] ?? '',
+			'below'
+		);
 	}
 
 	/**
@@ -695,7 +705,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @access public
 	 * @since 1.0.0
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 * @return void
 	 */
 	public function ssb_ajax_fetch_fresh_data() {
@@ -706,9 +716,16 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 		}
 
 		$post_id = isset( $_POST['postID'] ) ? (int) $_POST['postID'] : 0;
+		$post    = $post_id > 0 ? get_post( $post_id ) : null;
+
+		// Only published, publicly viewable posts may have their counts fetched.
+		if ( ! $post || 'publish' !== $post->post_status || ! is_post_type_viewable( $post->post_type ) ) {
+			wp_send_json_error( 'Invalid post.' );
+			wp_die();
+		}
 
 		// Throttle abusive/anonymous polling; fall back to cached counts instead of a live fetch.
-		if ( ssb_is_rate_limited( 'ssb_fetch_limit', apply_filters( 'ssb_fetch_fresh_rate_limit_window', 30 ), (string) $post_id ) ) {
+		if ( ssb_is_rate_limited( 'ssb_fetch_limit', apply_filters( 'ssb_fetch_fresh_rate_limit_window', 30 ), (string) $post_id, true ) ) {
 			if ( $post_id > 0 ) {
 				echo wp_json_encode( $this->ssb_format_share_counts_for_json_response( ssb_fetch_cached_counts( $this->arr_known_buttons, $post_id ) ) );
 			} else {
@@ -733,7 +750,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 
 		$share_counts = $this->ssb_get_fresh_share_counts_for_networks( $post_id, get_permalink( $post_id ), $order );
 
-		if ( $post_id > 0 && isset( $_POST['ssb_cache'] ) && 'rebuild' === sanitize_text_field( wp_unslash( $_POST['ssb_cache'] ) ) ) { // phpcs:ignore
+		if ( current_user_can( 'manage_options' ) && isset( $_POST['ssb_cache'] ) && 'rebuild' === sanitize_text_field( wp_unslash( $_POST['ssb_cache'] ) ) ) { // phpcs:ignore
 			ssb_flush_internal_share_queue_for_post( $post_id );
 		}
 
@@ -764,13 +781,19 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	/**
 	 * Build fresh share counts for selected networks and URL.
 	 *
-	 * @param int    $post_id  Post ID.
+	 * @param int    $post_id   Post ID.
 	 * @param string $permalink Permalink URL.
-	 * @param array  $networks Ordered networks.
+	 * @param array  $networks  Ordered networks.
+	 * @param bool   $force     Bypass trust gate (admin purge/refetch).
 	 * @return array
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
-	private function ssb_get_fresh_share_counts_for_networks( $post_id, $permalink, $networks ) {
+	private function ssb_get_fresh_share_counts_for_networks( $post_id, $permalink, $networks, $force = false ) {
+		if ( ! $force && $post_id > 0 && ! ssb_should_trust_external_api_share_counts( $post_id ) ) {
+			return ssb_zero_api_share_counts_for_networks( $networks );
+		}
+
 		$share_links = array();
 		foreach ( $networks as $social_name => $priority ) {
 			if ( preg_match( '/^custom_\d+$/', $social_name ) ) {
@@ -786,10 +809,13 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			$share_links[ $social_name ] = call_user_func( $callback, $permalink );
 		}
 
-		$alt_share_links = $this->http_or_https_link_generate( $permalink );
-		$result          = ssb_fetch_shares_via_http_api( array_filter( $share_links ) );
+		$alt_share_links = array();
+		if ( $this->ssb_is_http_resolve_on() ) {
+			$alt_share_links = $this->http_or_https_link_generate( $permalink );
+		}
+		$result = ssb_fetch_shares_via_http_api( array_filter( $share_links ) );
 
-		return ssb_fetch_fresh_counts( $result, $post_id, $alt_share_links );
+		return ssb_fetch_fresh_counts( $result, $post_id, $alt_share_links, $force );
 	}
 
 	/**
@@ -799,6 +825,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @param array|null $networks Optional network order map; defaults to selected networks.
 	 * @return array|false Share counts array or false when permalink missing.
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	public function ssb_refetch_api_share_counts_for_post( $post_id, $networks = null ) {
 		$post_id = (int) $post_id;
@@ -820,7 +847,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			}
 		}
 
-		return $this->ssb_get_fresh_share_counts_for_networks( $post_id, $permalink, $networks );
+		return $this->ssb_get_fresh_share_counts_for_networks( $post_id, $permalink, $networks, true );
 	}
 
 	/**
@@ -855,7 +882,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 
 		document.addEventListener("DOMContentLoaded", function() {
 			var if_ssb_exist = document.getElementsByClassName( "simplesocialbuttons" ).length > 0;
-			if (if_ssb_exist) {	
+			if (if_ssb_exist) {
 				var ssb_admin_ajax = '<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>';
 				var ssb_post_id = <?php echo esc_js( $info['postID'] ); ?> ;
 				jQuery( document ).ready(function(){
@@ -1119,6 +1146,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @since 7.0.0
 	 * @param WP_Post $post Post object.
 	 * @return bool
+	 * @version 7.2.0
 	 */
 	private function ssb_post_has_nextgen_gallery_output( $post ) {
 		if ( ! $post instanceof WP_Post ) {
@@ -1127,11 +1155,10 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 
 		$content = $post->post_content;
 
-		if ( function_exists( 'has_block' ) ) {
-			if ( has_block( 'imagely/main-block', $post )
-				|| has_block( 'imagely/nextgen-gallery', $post ) ) {
-				return true;
-			}
+		if ( function_exists( 'has_block' )
+			&& ( has_block( 'imagely/main-block', $post )
+				|| has_block( 'imagely/nextgen-gallery', $post ) ) ) {
+			return true;
 		}
 
 		// Serialized block markup edge cases (matches NextGEN BlockManager registrations).
@@ -1313,12 +1340,15 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @since 7.1.0
 	 * @return void
+	 * @version 7.2.0
 	 */
 	private function ssb_register_front_assets() {
+		$suffix = ssb_asset_min_suffix();
+
 		if ( ! wp_script_is( 'ssb-front-js', 'registered' ) ) {
 			wp_register_script(
 				'ssb-front-js',
-				plugins_url( 'assets/js/front.min.js', __FILE__ ),
+				plugins_url( 'assets/js/front' . $suffix . '.js', __FILE__ ),
 				array( 'jquery' ),
 				SSB_VERSION,
 				true
@@ -1328,7 +1358,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 		if ( ! wp_style_is( 'ssb-front-css', 'registered' ) ) {
 			wp_register_style(
 				'ssb-front-css',
-				plugins_url( 'assets/css/front.min.css', __FILE__ ),
+				plugins_url( 'assets/css/front' . $suffix . '.css', __FILE__ ),
 				array(),
 				SSB_VERSION
 			);
@@ -1504,7 +1534,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @param mixed $default_value Default value.
 	 * @access public
 	 * @since 1.0.0
-	 * @version 5.3.3
+	 * @version 7.2.0
 	 * @return void
 	 */
 	public function ssb_plugin_install( $default_value = false ) { // phpcs:ignore Generic.CodeAnalysis.UnusedFunctionParameter.FoundAfterLastUsed
@@ -1637,6 +1667,16 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	}
 
 	/**
+	 * Whether HTTP/HTTPS share-count resolve is on.
+	 *
+	 * @return bool
+	 * @since 7.2.0
+	 */
+	public function ssb_is_http_resolve_on() {
+		return $this->ssb_is_setting_enabled( 'extra', 'http_https_resolve' );
+	}
+
+	/**
 	 * Resolved icon limit for a section (0 when disabled or invalid).
 	 *
 	 * @param string $section Section slug (inline, sidebar, etc.).
@@ -1715,6 +1755,33 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 		return $classes;
 	}
 
+	/**
+	 * Whether SSB is hidden for the current page view.
+	 *
+	 * Per-post hide applies only on singular views of that post. Archive and
+	 * blog home pages must not inherit hide state from posts in the main loop.
+	 *
+	 * @since 7.2.0
+	 * @param int|null $post_id Optional post ID. Defaults to queried object on singular views.
+	 * @return bool True when buttons should be hidden for this view.
+	 */
+	public function is_ssb_hidden_for_view( $post_id = null ) {
+		if ( ! is_singular() ) {
+			return false;
+		}
+
+		if ( null === $post_id ) {
+			$post_id = get_queried_object_id();
+		}
+
+		$post_id = (int) $post_id;
+		if ( $post_id <= 0 ) {
+			return false;
+		}
+
+		return 'true' === get_post_meta( $post_id, $this->hide_custom_meta_key, true );
+	}
+
 
 	/**
 	 * Add Inline Buttons.
@@ -1723,6 +1790,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @since 1.0
 	 * @param string $content Post content.
 	 * @return string
+	 * @version 7.2.0
 	 */
 	public function ssb_insert_buttons( $content ) {
 
@@ -1737,13 +1805,17 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 		}
 
 		if ( is_archive() && '0' === $this->get_settings( 'inline', 'show_on_archive', '0' ) && ! is_tag() && ! is_category() ) {
-			return $content; }
+			return $content;
+		}
 		if ( is_category() && '0' === $this->get_settings( 'inline', 'show_on_category', '0' ) ) {
-			return $content; }
+			return $content;
+		}
 		if ( is_tag() && '0' === $this->get_settings( 'inline', 'show_on_tag', '0' ) ) {
-			return $content; }
+			return $content;
+		}
 		if ( is_search() && '0' === $this->get_settings( 'inline', 'show_on_search', '0' ) ) {
-			return $content; }
+			return $content;
+		}
 
 		if ( isset( $this->selected_position['inline'] ) ) {
 			// Show Total at the end.
@@ -1763,8 +1835,9 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			}
 
 			if ( $this->get_settings( 'inline', 'hide_mobile' ) ) {
-				$extra_class .= ' simplesocialbuttons-mobile-hidden'; }
-				$extra_class .= ' simplesocialbuttons-inline-' . $this->get_settings( 'inline', 'animation', 'no-animation' );
+				$extra_class .= ' simplesocialbuttons-mobile-hidden';
+			}
+			$extra_class .= ' simplesocialbuttons-inline-' . $this->get_settings( 'inline', 'animation', 'no-animation' );
 
 			$_selected_network = apply_filters( 'ssb_inline_social_networks', $this->selected_networks );
 
@@ -1813,7 +1886,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @access public
 	 * @since 1.0.0
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 * @return string
 	 */
 	public function ssb_generate_buttons_code( $order = null, $show_count = false, $show_total = false, $extra_data = array(), $image = false ) {
@@ -1902,18 +1975,13 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			$post_id         = 0;
 		}
 
-		// Get the value for http or https solve options.
-		$http_solve = false;
-		if ( isset( $this->extra_option['http_https_resolve'] ) ) {
-			if ( false === get_post_meta( $post_id, 'ssb_old_counts', true ) ) {
-				$http_solve = true;
-			}
-		}
+		// When enabled, bootstrap alt-scheme counts once (stored in ssb_old_counts).
+		$http_solve = $this->ssb_is_http_resolve_on()
+			&& empty( ssb_get_old_network_counts( $post_id ) );
 
 		$non_exist_post_record = false;
 		// Special case if post id not exist for example short code run on widget out side the loop in archive page and old counts not exist.
 		if ( 0 === $post_id ) {
-			$non_exist_post_record = get_option( 'ssb_not_exist_post_old_counts' );
 			$non_exist_post_record = true;
 		}
 
@@ -2343,9 +2411,12 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 					$pinterest_share = ( isset( $share_counts['pinterest'] ) && $share_counts['pinterest'] > 0 ) ? $share_counts['pinterest'] : 0;
 					$pin_page_url    = $ssb_share_page_url ? $ssb_share_page_url : $permalink;
 					$pin_media       = ssb_get_pinterest_media_url( $ssb_share_post_id, $ssb_share_media );
-					// $title is rawurlencoded for normal posts; decode for the helper.
-					$pin_description = rawurldecode( (string) $title );
-					$pinterest_url   = ssb_pinterest_share_link( $pin_page_url, $pin_media, $pin_description );
+					// Prefer SEO meta description (Yoast, Rank Math, etc.), then excerpt, then title.
+					$pin_description = ssb_get_seo_meta_description( $ssb_share_post_id );
+					if ( '' === $pin_description ) {
+						$pin_description = rawurldecode( (string) $title );
+					}
+					$pinterest_url = ssb_pinterest_share_link( $pin_page_url, $pin_media, $pin_description );
 					// With media, open the create/button URL directly; otherwise use pinmarklet picker.
 					$pinterest_action = ( '' !== $pin_media ) ? $ssb_ck_popup : $ssb_ck_pinterest;
 
@@ -2412,7 +2483,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 						0.038-0.01 c0.027,0,0.027-0.027,0.051-0.027c2.954-1.092,6.072-1.639,9.157-1.639c5.619,0,11.154,1.704,15.821,4.821 c4.611,3.066,8.354,7.561,10.23,
 						13.143c0.019,0.037,0.019,0.07,0.037,0.103c0,0.037,0.019,0.057,0.037,0.084H307.523z M290.329,300.349c-2.202-1.428-4.751-2.291-7.448-2.291c-2.175,0-4.434,
 						0.621-6.445,1.955l0,0 c-19.004,11.342-41.355,17.558-63.547,17.558c-16.65,
-						0-33.199-3.514-48.192-10.879l-0.077-0.037l-0.075-0.028 
+						0-33.199-3.514-48.192-10.879l-0.077-0.037l-0.075-0.028
 						c-2.261-0.924-4.837-2.889-7.647-4.76c-1.428-0.925-2.919-1.844-4.574-2.521c-1.633-0.695-3.447-1.181-5.386-1.181 c-1.605,0-3.292,0.359-4.957,1.115c-0.086,
 						0.033-0.168,0.065-0.252,0.098h0.009c-2.616,0.999-4.66,2.829-5.974,4.994 c-1.372,2.23-2.046,4.826-2.046,7.411c0,2.334,0.551,4.667,1.691,6.786c1.085,2.007,
 						2.754,3.762,4.938,4.938 c21.429,14.454,46.662,21.002,71.992,20.979c22.838,0,45.814-5.287,66.27-14.911l0.107-0.065l0.103-0.056 c2.697-1.597,6.282-3.029,
@@ -2444,12 +2515,12 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 						0-3.884,0.266-5.778,0.854l-0.065,0.005l-0.056,0.023c-4.984,1.295-9.656,4.368-13.012,8.449 C330.046,74.486,328.002,79.508,328.002,84.733z M72.312,
 						177.578c-4.63-2.156-9.418-3.696-14.15-3.676 c-0.794,0-1.597,0.047-2.39,0.133h-0.11l-0.11,0.014c-6.795,0.187-13.653,3.15-18.801,7.899 c-5.152,4.732-8.559,
 						11.122-8.821,18.167v0.065l-0.012,0.058c-0.046,0.57-0.065,1.137-0.065,1.683 c0,4.345,1.333,8.545,3.593,12.368c1.673,2.847,3.867,5.441,6.348,7.701C45.735,
-						204.602,58.142,189.845,72.312,177.578z M374.066,262.635c0-15.5-5.592-31.069-14.646-43.604c-18.053-25.119-46.055-41.502-75.187-50.636l-0.205-0.072 
+						204.602,58.142,189.845,72.312,177.578z M374.066,262.635c0-15.5-5.592-31.069-14.646-43.604c-18.053-25.119-46.055-41.502-75.187-50.636l-0.205-0.072
 						c-5.592-1.715-11.238-3.234-16.933-4.534c-17.025-3.876-34.48-5.806-51.917-5.806c-23.414,0-46.827,3.465-69.245,10.379 c-29.125,9.243-57.221,25.51-75.233,
 						50.71v0.019c-9.129,12.587-14.475,28.208-14.475,43.763c0,5.727,0.716,11.453,2.23,17.025 l0.019,0.01c3.278,12.508,9.689,23.671,17.989,33.393c8.295,9.745,
 						18.472,18.058,29.176,24.839c2.371,1.47,4.751,2.87,7.187,4.237 c31.094,17.356,66.898,24.964,102.445,24.964c6.012,0,12.06-0.214,18.033-0.644c35.797-2.959,
 						71.742-13.525,100.8-35.115 l0.01-0.023c9.25-6.837,17.818-15.112,24.595-24.525c6.805-9.418,11.789-19.947,14.002-31.382V275.6l0.009-0.01 C373.627,271.32,
-						374.066,266.985,374.066,262.635z M402.32,200.95c-0.009-3.762-0.868-7.507-2.753-11l-0.047-0.044l-0.019-0.056 
+						374.066,266.985,374.066,262.635z M402.32,200.95c-0.009-3.762-0.868-7.507-2.753-11l-0.047-0.044l-0.019-0.056
 						c-2.521-5.19-6.479-9.11-11.248-11.782c-4.77-2.69-10.352-4.056-15.952-4.056c-5.063,0-10.1,1.132-14.57,3.379 c14.216,12.344,26.687,27.179,34.746,
 						44.636c2.595-2.259,4.808-5.018,6.464-8.084C401.098,209.92,402.32,205.405,402.32,200.95z';
 						$_html           = ' <' . $ssb_element_tag . ' class="ssb_reddit-icon" '
@@ -2491,13 +2562,13 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 						$whatsapp_svg_path  = 'M90,43.841c0,24.213-19.779,43.841-44.182,43.841c-7.747,0-15.025-1.98-21.357-5.455L0,90l7.975-23.522
 						 c-4.023-6.606-6.34-14.354-6.34-22.637C1.635,19.628,21.416,0,45.818,0C70.223,0,90,19.628,90,43.841z M45.818,6.982   c-20.484,0-37.146,
 						 16.535-37.146,36.859c0,8.065,2.629,15.534,7.076,21.61L11.107,79.14l14.275-4.537   c5.865,3.851,12.891,6.097,20.437,6.097c20.481,0,
-						 37.146-16.533,37.146-36.857S66.301,6.982,45.818,6.982z M68.129,53.938 
-						 c-0.273-0.447-0.994-0.717-2.076-1.254c-1.084-0.537-6.41-3.138-7.4-3.495c-0.993-0.358-1.717-0.538-2.438,0.537 
-						 c-0.721,1.076-2.797,3.495-3.43,4.212c-0.632,0.719-1.263,0.809-2.347,0.271c-1.082-0.537-4.571-1.673-8.708-5.333  
-						c-3.219-2.848-5.393-6.364-6.025-7.441c-0.631-1.075-0.066-1.656,0.475-2.191c0.488-0.482,1.084-1.255,1.625-1.882  
-						c0.543-0.628,0.723-1.075,1.082-1.793c0.363-0.717,0.182-1.344-0.09-1.883c-0.27-0.537-2.438-5.825-3.34-7.977 
-						c-0.902-2.15-1.803-1.792-2.436-1.792c-0.631,0-1.354-0.09-2.076-0.09c-0.722,0-1.896,0.269-2.889,1.344 
-						c-0.992,1.076-3.789,3.676-3.789,8.963c0,5.288,3.879,10.397,4.422,11.113c0.541,0.716,7.49,11.92,18.5,16.223 
+						 37.146-16.533,37.146-36.857S66.301,6.982,45.818,6.982z M68.129,53.938
+						 c-0.273-0.447-0.994-0.717-2.076-1.254c-1.084-0.537-6.41-3.138-7.4-3.495c-0.993-0.358-1.717-0.538-2.438,0.537
+						 c-0.721,1.076-2.797,3.495-3.43,4.212c-0.632,0.719-1.263,0.809-2.347,0.271c-1.082-0.537-4.571-1.673-8.708-5.333
+						c-3.219-2.848-5.393-6.364-6.025-7.441c-0.631-1.075-0.066-1.656,0.475-2.191c0.488-0.482,1.084-1.255,1.625-1.882
+						c0.543-0.628,0.723-1.075,1.082-1.793c0.363-0.717,0.182-1.344-0.09-1.883c-0.27-0.537-2.438-5.825-3.34-7.977
+						c-0.902-2.15-1.803-1.792-2.436-1.792c-0.631,0-1.354-0.09-2.076-0.09c-0.722,0-1.896,0.269-2.889,1.344
+						c-0.992,1.076-3.789,3.676-3.789,8.963c0,5.288,3.879,10.397,4.422,11.113c0.541,0.716,7.49,11.92,18.5,16.223
 						C58.2,65.771,58.2,64.336,60.186,64.156c1.984-0.179,6.406-2.599,7.312-5.107C68.398,56.537,68.398,54.386,68.129,53.938z';
 						$arr_buttons_code[] = ' <' . $ssb_element_tag . ' class="ssb_whatsapp-icon simplesocial-whatsapp-share" '
 							. $ssb_attr_html . ' aria-label="' . esc_attr__( 'WhatsApp Share', 'simple-social-buttons' ) . '" '
@@ -2811,8 +2882,8 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 							clip-rule="evenodd" d="M19.735.812c.14-.47 0-.812-.67-.812h-2.21c-.56 0-.82.297-.96.624 0 0-1.125 2.74-2.716
 							4.52-.515.515-.749.679-1.03.679-.14 0-.343-.164-.343-.634V.812c0-.56-.164-.812-.63-.812H7.702c-.352 0-.564.26-.564.51 0 .533.797.654.88
 							2.154V5.92c0 .712-.131.842-.41.842-.749 0-2.57-2.752-3.652-5.901C3.743.249 3.53.003 2.967.003H.757C.128.003 0 .3 0 .627c0 .585.749 3.49
-							3.489 7.33C5.316 10.578 7.887 12 10.229 12c1.404 0 1.58-.315 1.58-.86V9.156c0-.63.133-.758.579-.758.327 0 .891.164 2.2 1.428 1.498 1.497 
-							1.746 2.17 2.59 2.17h2.209c.63 0 .945-.315.764-.94-.2-.621-.916-1.521-1.864-2.591-.516-.61-1.289-1.264-1.522-1.592-.328-.42-.233-.609 0-.982-.003 
+							3.489 7.33C5.316 10.578 7.887 12 10.229 12c1.404 0 1.58-.315 1.58-.86V9.156c0-.63.133-.758.579-.758.327 0 .891.164 2.2 1.428 1.498 1.497
+							1.746 2.17 2.59 2.17h2.209c.63 0 .945-.315.764-.94-.2-.621-.916-1.521-1.864-2.591-.516-.61-1.289-1.264-1.522-1.592-.328-.42-.233-.609 0-.982-.003
 							0 2.688-3.791 2.97-5.08" fill="#fff"/></svg></span>
 						<span class="simplesocialtxt">' . esc_html__( 'VK', 'simple-social-buttons' ) . '</span>
 						' . ( $show_count ? '<span class="ssb_counter">' . ssb_count_format( $vk_share ) . '</span>' : '' ) . '
@@ -2858,27 +2929,34 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 						$networks_option = self::ssb_get_networks_option();
 						$custom_buttons  = $networks_option['custom_buttons'];
 						if ( isset( $custom_buttons[ $button_name ] ) ) {
-							$cb         = $custom_buttons[ $button_name ];
-							$url        = isset( $cb['url'] ) ? esc_url( $cb['url'] ) : '#';
-							$label      = isset( $cb['label'] ) ? esc_html( $cb['label'] ) : '';
-							$icon_url   = isset( $cb['icon_url'] ) ? esc_url( $cb['icon_url'] ) : '';
-							$bg         = isset( $cb['bg_color'] ) ? sanitize_hex_color( $cb['bg_color'] ) : '#0865ff';
-							$hover_bg   = isset( $cb['hover_bg_color'] ) ? sanitize_hex_color( $cb['hover_bg_color'] ) : '#1557b0';
-							$text_clr   = isset( $cb['text_color'] ) ? sanitize_hex_color( $cb['text_color'] ) : '#ffffff';
-							$bg         = $bg ? $bg : '#0865ff';
-							$hover_bg   = $hover_bg ? $hover_bg : '#1557b0';
-							$text_clr   = $text_clr ? $text_clr : '#ffffff';
-							$shadow     = ssb_darken_hex_color( $bg, 25 );
-							$hover_sh   = ssb_darken_hex_color( $hover_bg, 25 );
-							$style_attr = '--ssb-custom-bg:' . esc_attr( $bg )
+							$cb               = $custom_buttons[ $button_name ];
+							$url              = isset( $cb['url'] ) ? esc_url( $cb['url'] ) : '#';
+							$label            = isset( $cb['label'] ) ? esc_html( $cb['label'] ) : '';
+							$icon_url         = isset( $cb['icon_url'] ) ? esc_url( $cb['icon_url'] ) : '';
+							$bg               = isset( $cb['bg_color'] ) ? sanitize_hex_color( $cb['bg_color'] ) : '#0865ff';
+							$hover_bg         = isset( $cb['hover_bg_color'] ) ? sanitize_hex_color( $cb['hover_bg_color'] ) : '#1557b0';
+							$text_clr         = isset( $cb['text_color'] ) ? sanitize_hex_color( $cb['text_color'] ) : '#ffffff';
+							$hover_text       = isset( $cb['hover_text_color'] ) ? sanitize_hex_color( $cb['hover_text_color'] ) : '';
+							$bg               = $bg ? $bg : '#0865ff';
+							$hover_bg         = $hover_bg ? $hover_bg : '#1557b0';
+							$text_clr         = $text_clr ? $text_clr : '#ffffff';
+							$hover_text       = $hover_text ? $hover_text : $text_clr;
+							$shadow           = ssb_darken_hex_color( $bg, 25 );
+							$hover_sh         = ssb_darken_hex_color( $hover_bg, 25 );
+							$style_attr       = '--ssb-custom-bg:' . esc_attr( $bg )
 								. ';--ssb-custom-color:' . esc_attr( $text_clr )
+								. ';--ssb-custom-hover-color:' . esc_attr( $hover_text )
 								. ';--ssb-custom-hover-bg:' . esc_attr( $hover_bg )
 								. ';--ssb-custom-shadow:' . esc_attr( $shadow ? $shadow : $bg )
 								. ';--ssb-custom-hover-shadow:' . esc_attr( $hover_sh ? $hover_sh : $hover_bg )
 								. ';background-color:' . esc_attr( $bg )
 								. ';color:' . esc_attr( $text_clr ) . ';';
+							$custom_btn_class = 'simplesocial-custom';
+							if ( ! $icon_url ) {
+								$custom_btn_class .= ' ssb-custom-no-icon';
+							}
 							if ( 'simple-icons' === $theme ) {
-								$_html = '<' . $ssb_element_tag . ' class="ssb_custom-icon ssb-custom-button simplesocial-custom" ' . $ssb_attr_html . ' style="' . $style_attr . '" ' . $ssb_trigger_attr . '="' . $url . '"' . $ssb_ck_custom_blank . '>'; // phpcs:ignore Generic.Files.LineLength.TooLong
+								$_html = '<' . $ssb_element_tag . ' class="ssb_custom-icon ssb-custom-button ' . esc_attr( $custom_btn_class ) . '" ' . $ssb_attr_html . ' style="' . $style_attr . '" ' . $ssb_trigger_attr . '="' . $url . '"' . $ssb_ck_custom_blank . '>'; // phpcs:ignore Generic.Files.LineLength.TooLong
 								if ( $icon_url ) {
 									$_html .= '<span class="icon"><img src="' . $icon_url . '" alt="" class="ssb-custom-icon" /></span>';
 								}
@@ -2886,7 +2964,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 								$_html .= ssb_get_button_counter_markup( $button_name, $share_counts, $show_count, $theme );
 								$_html .= '</' . $ssb_element_tag . '>';
 							} else {
-								$_html = '<' . $ssb_element_tag . ' class="ssb-custom-button simplesocial-custom" ' . $ssb_attr_html . ' style="' . $style_attr . '" ' . $ssb_trigger_attr . '="' . $url . '"' . $ssb_ck_custom_blank . '>'; // phpcs:ignore Generic.Files.LineLength.TooLong
+								$_html = '<' . $ssb_element_tag . ' class="ssb-custom-button ' . esc_attr( $custom_btn_class ) . '" ' . $ssb_attr_html . ' style="' . $style_attr . '" ' . $ssb_trigger_attr . '="' . $url . '"' . $ssb_ck_custom_blank . '>'; // phpcs:ignore Generic.Files.LineLength.TooLong
 								if ( $icon_url ) {
 									$_html .= '<span class="ssb_custom_icon"> <img src="' . $icon_url . '" alt="" class="ssb-custom-icon" /> </span>';
 								}
@@ -2903,7 +2981,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			}
 		}
 
-		if ( count( $arr_buttons_code ) > 0 ) {
+		if ( ! empty( $arr_buttons_code ) ) {
 			// phpcs:ignore WordPress.NamingConventions.ValidVariableName.VariableNotSnakeCase
 			$arr_buttons_code = apply_filters( 'ssb_buttons_output', $arr_buttons_code );
 
@@ -3081,11 +3159,12 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * @access public
 	 * @since 2.0
 	 * @return void
+	 * @version 7.2.0
 	 */
 	public function ssb_include_sidebar() {
 
 		// Return Content if hide ssb.
-		if ( 'true' === get_post_meta( get_the_ID(), $this->hide_custom_meta_key, true ) ) {
+		if ( $this->is_ssb_hidden_for_view() ) {
 			return;
 		}
 
@@ -3220,14 +3299,14 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @access public
 	 * @since 2.0.0
+	 * @version 7.2.0
 	 */
 	public function update_notice() {
 
 		if ( get_option( 'ssb_update_2_0_dismiss' ) ) {
-			return; }
+			return;
+		}
 
-		$request_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
-		$scheme      = ( wp_parse_url( $request_uri, PHP_URL_QUERY ) ) ? '&' : '?';
 		$url         = admin_url( 'admin.php?page=simple-social-buttons' ) . '&ssb_update_2_0_dismiss=yes';
 		$dismiss_url = wp_nonce_url( $url, 'ssb-update-nonce' );
 
@@ -3293,7 +3372,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @access public
 	 * @since 2.0.2
-	 * @version 7.1.0
+	 * @version 7.2.0
 	 * @return string
 	 */
 	public function ssb_short_code_content( $atts ) {
@@ -3395,10 +3474,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			if ( ! empty( $post_url ) ) {
 				$extra_option['post_url'] = $post_url;
 			}
-			$ssb_buttons_code = $this->ssb_generate_buttons_code( $selected_theme['order'], $show_count, $show_total, $extra_option );
-			// }
-
-			return $ssb_buttons_code;
+			return $this->ssb_generate_buttons_code( $selected_theme['order'], $show_count, $show_total, $extra_option );
 	}
 
 
@@ -3501,7 +3577,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @access public
 	 * @since 2.0.9
-	 * @version 6.1.0
+	 * @version 7.2.0
 	 * @return string
 	 */
 	public function get_excerpt_by_id( $post_id ) {
@@ -3511,7 +3587,6 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 		}
 			// Check if the post has an excerpt.
 		if ( has_excerpt() ) {
-				$excerpt_length = apply_filters( 'excerpt_length', 35 ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound
 				return trim( wp_strip_all_tags( strip_shortcodes( get_the_excerpt() ) ) );
 		}
 
@@ -3688,7 +3763,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 *
 	 * @access public
 	 * @since 2.0
-	 * @version 5.0.1
+	 * @version 7.2.0
 	 * @return string
 	 */
 	public function ssb_on_excerpt_content( $text, $num_words, $more, $original_text ) {
@@ -3722,13 +3797,11 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 			// using a loop in case there are multiple occurrences.
 			foreach ( $xpath->query( "//div[contains(@class, 'simplesocialbuttons')]" ) as $node ) {
 				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
-				$paragraph_node = $node->parentNode;
-				// phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 				$node->parentNode->removeChild( $node );
 			}
 			$text = wp_strip_all_tags( $dom->saveHTML() );
-		} catch ( Exception $e ) {
-			$text = $text;
+		} catch ( Exception $e ) { // phpcs:ignore Generic.CodeAnalysis.EmptyStatement.DetectedCatch
+			// Keep original $text if DOM parsing fails.
 		}
 
 		/*
@@ -3783,7 +3856,7 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 	 * Register Block.
 	 *
 	 * @since 2.0.0
-	 * @version 3.2.0
+	 * @version 7.2.0
 	 * @return void
 	 */
 	public function ssb_register_block() {
@@ -3793,6 +3866,24 @@ class SimpleSocialButtonsPR { // phpcs:ignore
 		if ( ! function_exists( 'register_block_type' ) ) { // Backward compitablity check.
 			return;
 		}
+
+		if ( function_exists( 'register_block_type_from_metadata' ) ) {
+			register_block_type_from_metadata(
+				SSB_PLUGIN_DIR . '/blocks/shortcode',
+				array(
+					'render_callback' => array( $this, 'ssb_shortcode_block_callback' ),
+				)
+			);
+
+			register_block_type_from_metadata(
+				SSB_PLUGIN_DIR . '/blocks/click-to-tweet',
+				array(
+					'render_callback' => array( $this, 'ssb_click_to_tweet_block_callback' ),
+				)
+			);
+			return;
+		}
+
 		register_block_type(
 			'ssb/shortcode',
 			array(

@@ -1,0 +1,2472 @@
+# Copyright (C) 2026 WPBrigade
+# This file is distributed under the same license as the Simple Social Buttons plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: simplesocialbuttons\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Paweł Rabinek (DE: Dennis Schreiber) <pawel@rabinek.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2017-10-28 11:38+0500\n"
+"PO-Revision-Date: 2026-09-24 10:31+0000\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Domain: simple-social-buttons\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: th\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: simple-social-buttons.php
+#: classes/class-ssb-admin-bar-purge.php:80
+#: src/components/Help.jsx:40
+#: src/components/ImportExport.jsx:240
+#: src/index.js:597
+#. Plugin Name of the plugin
+msgid "Simple Social Buttons"
+msgstr "ปุ่มโซเชียลง่าย"
+
+#: simple-social-buttons.php
+#. Plugin URI of the plugin
+msgid ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+msgstr ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+
+#: simple-social-buttons.php
+#. Description of the plugin
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your WordPress sites,"
+msgstr ""
+"ปุ่มโซเชียลง่ายเพิ่มชุดปุ่มแชร์โซเชียลมีเดียที่ทันสมัยให้กับเว็บไซต์ "
+"WordPress ของคุณ"
+
+#: simple-social-buttons.php
+#. Author of the plugin
+msgid "WPBrigade"
+msgstr "WPBrigade"
+
+#: simple-social-buttons.php
+#. Author URI of the plugin
+msgid ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+msgstr ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+
+#: classes/class-ssb-admin-bar-purge.php:89
+msgid "Purge caches (30 recent posts/pages)"
+msgstr "ล้างแคช (30 โพสต์/หน้า ล่าสุด)"
+
+#: classes/class-ssb-admin-bar-purge.php:99
+msgid "Purge all (internal + API cache)"
+msgstr "ล้างทั้งหมด (แคชภายใน + API)"
+
+#: classes/class-ssb-admin-bar-purge.php:124
+msgid "You do not have permission to purge share caches."
+msgstr "คุณไม่มีสิทธิ์ล้างแคชแชร์"
+
+#: classes/class-ssb-admin-bar-purge.php:181
+#: classes/class-ssb-admin-bar-purge.php:313
+msgid "Purging all share caches in the background…"
+msgstr "ล้างแคชแชร์ทั้งหมดในพื้นหลัง..."
+
+#: classes/class-ssb-admin-bar-purge.php:217
+#. translators: 1: posts processed, 2: internal queue flushes.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. No posts found "
+"for API refetch."
+msgstr ""
+"ล้างโพสต์/หน้า %1$d เสร็จสิ้น แถวภายในถูกล้างสำหรับ %2$d "
+"ไม่พบโพสต์สำหรับการดึงข้อมูล API ใหม่"
+
+#: classes/class-ssb-admin-bar-purge.php:230
+msgid "Internal share queue flushed. No posts found for API refetch."
+msgstr "แถวแชร์ภายในถูกล้าง ไม่พบโพสต์สำหรับการดึงข้อมูล API ใหม่"
+
+#: classes/class-ssb-admin-bar-purge.php:253
+#. translators: %d: number of posts.
+msgid "Purging share caches for %d recent posts/pages in the background…"
+msgstr "กำลังล้างแคชแชร์สำหรับโพสต์/หน้า %d ล่าสุดในพื้นหลัง..."
+
+#: classes/class-ssb-admin-bar-purge.php:274
+msgid "Purge all is not enabled on this site."
+msgstr "การล้างทั้งหมดไม่ได้เปิดใช้งานในเว็บไซต์นี้"
+
+#: classes/class-ssb-admin-bar-purge.php:341
+msgid "The background purge could not be scheduled. Please try Purge All again."
+msgstr "ไม่สามารถกำหนดการล้างพื้นหลังได้ กรุณาลองล้างทั้งหมดอีกครั้ง"
+
+#: classes/class-ssb-admin-bar-purge.php:355
+#. translators: 1: posts processed, 2: internal queue flushes, 3: API refetches.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. API counts "
+"refetched for %3$d."
+msgstr ""
+"ล้างโพสต์/หน้า %1$d เสร็จสิ้น แถวภายในถูกล้างสำหรับ %2$d การนับ API "
+"ถูกดึงใหม่สำหรับ %3$d"
+
+#: classes/class-ssb-admin-bar-purge.php:366
+#. translators: %d: number of posts.
+msgid "Purge all complete. API counts refetched for %d posts/pages."
+msgstr "การล้างทั้งหมดเสร็จสิ้น การนับ API ถูกดึงใหม่สำหรับ %d โพสต์/หน้า"
+
+#: classes/class-ssb-admin-bar-purge.php:445
+#. translators: 1: done count, 2: total count.
+msgid "(%1$d / %2$d posts)"
+msgstr "(%1$d / %2$d โพสต์)"
+
+#: classes/class-ssb-admin-bar-purge.php:556
+msgid "Permission denied"
+msgstr "การอนุญาตถูกปฏิเสธ"
+
+#: classes/class-ssb-admin.php:238
+msgid "SSB Settings"
+msgstr "SSB การตั้งค่า"
+
+#: classes/class-ssb-admin.php:269
+msgid "Hide Simple Social Buttons"
+msgstr "ซ่อนปุ่มสังคมแบบง่าย ๆ"
+
+#: classes/class-ssb-admin.php:336
+msgid "You are not allowed to perform this action."
+msgstr "คุณไม่ได้รับอนุญาตให้ดำเนินการนี้"
+
+#: classes/class-ssb-admin.php:342
+msgid "Security check failed."
+msgstr "การตรวจสอบความปลอดภัยล้มเหลว"
+
+#: classes/class-ssb-admin.php:511
+msgid "Leave A Review?"
+msgstr "ขอรีวิวไหม?"
+
+#: classes/class-ssb-admin.php:515
+msgid ""
+"We hope you've enjoyed using Simple Social Buttons!\n"
+"\t\t\t\tWould you consider leaving us a review on WordPress.org?"
+msgstr ""
+"เราหวังว่าคุณจะสนุกกับการใช้ Simple Social Buttons! "
+"คุณจะพิจารณาที่จะให้รีวิวเราบน WordPress.org ไหม?"
+
+#: classes/class-ssb-admin.php:527
+msgid "Sure! I'd love to!"
+msgstr "แน่นอน! ฉันยินดีมาก!"
+
+#: classes/class-ssb-admin.php:533
+msgid "I've already left a review"
+msgstr "ฉันได้ให้รีวิวแล้ว"
+
+#: classes/class-ssb-admin.php:539
+msgid "Maybe Later"
+msgstr "อาจจะทีหลัง"
+
+#: classes/class-ssb-admin.php:545
+msgid "Never show again"
+msgstr "ไม่แสดงอีก"
+
+#: classes/class-ssb-admin.php:664
+msgid "Vote!"
+msgstr "โหวต!"
+
+#: classes/class-ssb-admin.php:669
+msgid "Rate"
+msgstr "ให้คะแนน"
+
+#: classes/class-ssb-react-admin.php:268
+#: classes/class-ssb-react-admin.php:269
+#: classes/class-ssb-settings.php:83
+#: classes/class-ssb-settings.php:84
+msgid "Help"
+msgstr "ช่วยเหลือ"
+
+#: classes/class-ssb-react-admin.php:278
+#: classes/class-ssb-settings.php:92
+msgid "Import and export settings"
+msgstr "นำเข้าหรือส่งออกการตั้งค่า"
+
+#: classes/class-ssb-react-admin.php:279
+#: classes/class-ssb-settings.php:93
+msgid "Import / Export"
+msgstr "นำเข้า / ส่งออก"
+
+#: classes/class-ssb-react-admin.php:311
+#: classes/class-ssb-react-admin.php:312
+#: classes/class-ssb-settings-structure.php:807
+msgid "Upgrade to Pro"
+msgstr "อัปเกรดเป็น Pro"
+
+#: classes/class-ssb-react-admin.php:571
+msgid "Overview"
+msgstr "ภาพรวม"
+
+#: classes/class-ssb-react-admin.php:572
+msgid "This is the React-powered admin interface for Simple Social Buttons."
+msgstr ""
+"นี่คืออินเตอร์เฟซผู้ดูแลระบบที่ขับเคลื่อนด้วย React สำหรับ Simple Social "
+"Buttons."
+
+#: classes/class-ssb-react-admin.php:846
+msgid "Invalid data"
+msgstr "ข้อมูลไม่ถูกต้อง"
+
+#: classes/class-ssb-react-admin.php:862
+#: classes/class-ssb-react-admin.php:907
+#. translators: %s: invalid section name.
+msgid "Invalid settings section: %s"
+msgstr "ชื่อส่วนการตั้งค่าไม่ถูกต้อง: %s"
+
+#: classes/class-ssb-react-admin.php:886
+msgid "Factory reset completed! All settings restored to defaults."
+msgstr "การรีเซ็ตจากโรงงานเสร็จสิ้น! การตั้งค่าทั้งหมดถูกคืนค่ากลับไปยังค่าเริ่มต้น."
+
+#: classes/class-ssb-react-admin.php:887
+msgid "All settings saved successfully!"
+msgstr "การตั้งค่าทั้งหมดบันทึกสำเร็จ!"
+
+#: classes/class-ssb-settings-structure.php:479
+#: classes/class-ssb-settings.php:322
+#: classes/class-ssb-settings.php:479
+#: src/components/form-fields/SsbPostTypesField.jsx:14
+#: src/components/sections/SsbInlineSection.jsx:266
+#: src/components/sections/SsbSidebarSection.jsx:225
+msgid "Post Type Settings"
+msgstr "การตั้งค่าประเภทโพสต์"
+
+#: classes/class-ssb-settings-structure.php:805
+msgid "Support"
+msgstr "สนับสนุน"
+
+#: classes/class-ssb-settings-structure.php:837
+msgid "Documentation"
+msgstr "เอกสาร"
+
+#: classes/class-ssb-settings-structure.php:884
+msgid "makes Social Sharing easy for everyone"
+msgstr "ทำให้การแชร์ทางโซเชียลเป็นเรื่องง่ายสำหรับทุกคน"
+
+#: classes/class-ssb-settings-structure.php:890
+#. translators: %1$s and %5$s are the opening strong tag, %2$s and %4$s are the closing strong tag.
+msgid ""
+"%1$sSimple Social Buttons%2$s by %1$s%3$sWPBrigade%4$s%5$s adds an advanced "
+"set of social media sharing buttons to your WordPress sites, such as:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s and %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tThis makes it the most flexible social sharing plugin ever for "
+"Everyone."
+msgstr ""
+"%1$sปุ่มโซเชียลที่เรียบง่าย%2$s โดย %1$s%3$sWPBrigade%4$s%5$s "
+"เพิ่มชุดของปุ่มแชร์โซเชียลมีเดียที่ทันสมัยให้กับเว็บไซต์ WordPress ของคุณ "
+"เช่น:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s และ %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tทำให้เป็นปลั๊กอินแชร์โซเชียลที่ยืดหยุ่นที่สุดสำหรับทุกคน."
+
+#: classes/class-ssb-settings-structure.php:921
+#: src/components/widgets/SsbFollowPlugins.jsx:12
+msgid "Spread the Word"
+msgstr "เผยแพร่ข่าวสาร"
+
+#: classes/class-ssb-settings-structure.php:926
+#: src/components/widgets/SsbFollowPlugins.jsx:30
+#: src/components/widgets/SsbFollowPlugins.jsx:33
+msgid "Share on X/Twitter"
+msgstr "แชร์บน X/Twitter"
+
+#: classes/class-ssb-settings-structure.php:930
+#: src/components/widgets/SsbFollowPlugins.jsx:19
+#: src/components/widgets/SsbFollowPlugins.jsx:22
+#, fuzzy
+msgid "Share on Facebook"
+msgstr "Pawel Rabinek ใน Facebook"
+
+#: classes/class-ssb-settings-structure.php:936
+#: src/components/widgets/SsbFollowPlugins.jsx:52
+#: src/components/widgets/SsbFollowPlugins.jsx:55
+msgid "Rate on WordPress.org"
+msgstr "ให้คะแนนที่ WordPress.org"
+
+#: classes/class-ssb-settings-structure.php:945
+msgid "Subscribe Newsletter"
+msgstr "สมัครรับจดหมายข่าว"
+
+#: classes/class-ssb-settings-structure.php:948
+#: simple-social-buttons.php:2713
+#: simple-social-buttons.php:2722
+#: src/components/widgets/SsbNewsletterWidget.jsx:146
+#: src/utils/constants.js:135
+msgid "Email"
+msgstr "อีเมล"
+
+#: classes/class-ssb-settings-structure.php:953
+#: src/components/widgets/SsbNewsletterWidget.jsx:157
+msgid "Name"
+msgstr "ชื่อ"
+
+#: classes/class-ssb-settings-structure.php:969
+#: src/components/widgets/SsbRecommendedPlugins.jsx:38
+msgid "Recommended Plugins"
+msgstr "ปลั๊กอินที่แนะนำ"
+
+#: classes/class-ssb-settings-structure.php:973
+#: src/components/widgets/SsbRecommendedPlugins.jsx:11
+#: src/components/widgets/SsbRecommendedPlugins.jsx:13
+msgid "Customize WordPress Login Page"
+msgstr "ปรับแต่งหน้าเข้าสู่ระบบ WordPress"
+
+#: classes/class-ssb-settings-structure.php:977
+#: src/components/widgets/SsbRecommendedPlugins.jsx:17
+#: src/components/widgets/SsbRecommendedPlugins.jsx:19
+msgid "Simplify Google Analytics in WordPress"
+msgstr "ทำให้ Google Analytics ง่ายขึ้นใน WordPress"
+
+#: classes/class-ssb-settings-structure.php:981
+#: src/components/widgets/SsbRecommendedPlugins.jsx:23
+#: src/components/widgets/SsbRecommendedPlugins.jsx:25
+msgid "Related Posts Thumbnails"
+msgstr "ภาพย่อของโพสต์ที่เกี่ยวข้อง"
+
+#: classes/class-ssb-settings-structure.php:985
+#: src/components/widgets/SsbRecommendedPlugins.jsx:29
+#: src/components/widgets/SsbRecommendedPlugins.jsx:31
+msgid "Under Construction & Maintenance mode"
+msgstr "อยู่ระหว่างการก่อสร้าง & โหมดบำรุงรักษา"
+
+#: classes/class-ssb-settings-structure.php:1293
+msgid "Choose File"
+msgstr "เลือกไฟล์"
+
+#: classes/class-ssb-settings-structure.php:1586
+msgid ""
+"Social media is about the people! Not about your business. Provide for the "
+"people and the people will provide you."
+msgstr ""
+"โซเชียลมีเดียเกี่ยวกับผู้คน! ไม่เกี่ยวกับธุรกิจของคุณ "
+"จัดหาสำหรับผู้คนและผู้คนจะจัดหาสำหรับคุณ."
+
+#: classes/class-ssb-settings-structure.php:1593
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:65
+msgid "Click to post"
+msgstr "คลิกเพื่อโพสต์"
+
+#: classes/class-ssb-settings.php:74
+#: classes/class-ssb-settings.php:75
+#: simple-social-buttons.php:529
+#: src/utils/constants.js:13
+msgid "Settings"
+msgstr "การตั้งค่า"
+
+#: classes/class-ssb-settings.php:111
+#: src/components/sections/SsbNetworksSection.jsx:272
+#, fuzzy
+msgid "Social Buttons"
+msgstr "ซ่อนปุ่มสังคมแบบง่าย ๆ"
+
+#: classes/class-ssb-settings.php:116
+#: src/components/sections/SsbThemesSection.jsx:114
+msgid "Social Buttons Designs"
+msgstr "การออกแบบปุ่มโซเชียล"
+
+#: classes/class-ssb-settings.php:121
+#: src/components/sections/SsbPositionsSection.jsx:34
+msgid "Social Buttons Positions"
+msgstr "ตำแหน่งปุ่มโซเชียล"
+
+#: classes/class-ssb-settings.php:126
+#: classes/class-ssb-settings.php:215
+#: src/components/sections/SsbPositionsSection.jsx:23
+#: src/components/sections/SsbSidebarSection.jsx:82
+msgid "Sidebar"
+msgstr "แถบด้านข้าง"
+
+#: classes/class-ssb-settings.php:131
+#: src/components/sections/ProSections.jsx:113
+msgid "On Media"
+msgstr "บนสื่อ"
+
+#: classes/class-ssb-settings.php:136
+#: classes/class-ssb-settings.php:218
+#: src/components/sections/ProSections.jsx:133
+#: src/components/sections/SsbPositionsSection.jsx:26
+msgid "Popup"
+msgstr "ป๊อปอัป"
+
+#: classes/class-ssb-settings.php:141
+#: classes/class-ssb-settings.php:219
+#: src/components/sections/ProSections.jsx:153
+#: src/components/sections/SsbPositionsSection.jsx:27
+msgid "Fly In"
+msgstr "บินเข้ามา"
+
+#: classes/class-ssb-settings.php:146
+#: src/components/sections/SsbInlineSection.jsx:98
+msgid "InLine"
+msgstr "ในบรรทัด"
+
+#: classes/class-ssb-settings.php:151
+#: src/components/sections/SsbAdvancedTab.jsx:43
+msgid "Additional features"
+msgstr "ฟีเจอร์เพิ่มเติม"
+
+#: classes/class-ssb-settings.php:189
+msgid "Home"
+msgstr "หน้าแรก"
+
+#: classes/class-ssb-settings.php:216
+#: src/components/sections/SsbPositionsSection.jsx:24
+msgid "Inline"
+msgstr "ในบรรทัด"
+
+#: classes/class-ssb-settings.php:217
+#: src/components/sections/SsbPositionsSection.jsx:25
+msgid "Media"
+msgstr "สื่อ"
+
+#: classes/class-ssb-settings.php:226
+#: src/components/sections/SsbSidebarSection.jsx:97
+msgid "Sidebar Orientation"
+msgstr "การจัดแนวแถบด้านข้าง"
+
+#: classes/class-ssb-settings.php:228
+#: classes/class-ssb-settings.php:357
+msgid "<h4>Display Settings</h4>"
+msgstr "<h4>การตั้งค่าการแสดงผล</h4>"
+
+#: classes/class-ssb-settings.php:232
+#: classes/class-ssb-settings.php:373
+#: src/components/sections/SsbInlineSection.jsx:120
+#: src/components/sections/SsbSidebarSection.jsx:100
+msgid "Left"
+msgstr "ซ้าย"
+
+#: classes/class-ssb-settings.php:233
+#: classes/class-ssb-settings.php:375
+#: src/components/sections/SsbInlineSection.jsx:122
+#: src/components/sections/SsbSidebarSection.jsx:101
+msgid "Right"
+msgstr "ขวา"
+
+#: classes/class-ssb-settings.php:239
+#: src/components/sections/SsbSidebarSection.jsx:107
+msgid "Intro Animation"
+msgstr "แอนิเมชันแนะนำ"
+
+#: classes/class-ssb-settings.php:243
+#: classes/class-ssb-settings.php:385
+#: src/components/sections/SsbInlineSection.jsx:131
+#: src/components/sections/SsbSidebarSection.jsx:110
+msgid "No"
+msgstr "ไม่"
+
+#: classes/class-ssb-settings.php:244
+#: src/components/sections/SsbSidebarSection.jsx:111
+msgid "From Right"
+msgstr "จากขวา"
+
+#: classes/class-ssb-settings.php:245
+#: src/components/sections/SsbSidebarSection.jsx:112
+msgid "From Top"
+msgstr "จากด้านบน"
+
+#: classes/class-ssb-settings.php:246
+#: src/components/sections/SsbSidebarSection.jsx:113
+msgid "From Bottom"
+msgstr "จากด้านล่าง"
+
+#: classes/class-ssb-settings.php:247
+#: src/components/sections/SsbSidebarSection.jsx:114
+msgid "From Left"
+msgstr "จากซ้าย"
+
+#: classes/class-ssb-settings.php:248
+#: classes/class-ssb-settings.php:390
+#: src/components/sections/SsbInlineSection.jsx:136
+#: src/components/sections/SsbSidebarSection.jsx:115
+msgid "Fade In"
+msgstr "จางเข้ามา"
+
+#: classes/class-ssb-settings.php:254
+#: classes/class-ssb-settings.php:396
+msgid ""
+"<p id=\"share-count-message\" >For Facebook share count you need to add "
+"Facebook App id and secret in the Social tab.</p>"
+msgstr ""
+"<p id=\"share-count-message\" >ในการนับแชร์ Facebook คุณต้องเพิ่ม Facebook "
+"App id และความลับในแท็บโซเชียล.</p>"
+
+#: classes/class-ssb-settings.php:258
+#: classes/class-ssb-settings.php:400
+#: src/components/sections/SsbInlineSection.jsx:143
+#: src/components/sections/SsbSidebarSection.jsx:122
+msgid "Display Share Counts"
+msgstr "แสดงจำนวนการแชร์"
+
+#: classes/class-ssb-settings.php:264
+#: classes/class-ssb-settings.php:406
+#: src/components/sections/SsbInlineSection.jsx:153
+#: src/components/sections/SsbSidebarSection.jsx:134
+msgid "Display Total Shares"
+msgstr "แสดงยอดรวมการแชร์"
+
+#: classes/class-ssb-settings.php:270
+#: src/components/sections/SsbSidebarSection.jsx:176
+msgid "Display Text on hover"
+msgstr "แสดงข้อความเมื่อชี้เมาส์"
+
+#: classes/class-ssb-settings.php:276
+#: src/components/sections/SsbSidebarSection.jsx:183
+msgid "Flat Button Style"
+msgstr "สไตล์ปุ่มแบบแบน"
+
+#: classes/class-ssb-settings.php:282
+#: classes/class-ssb-settings.php:412
+#: src/components/sections/SsbInlineSection.jsx:170
+#: src/components/sections/SsbSidebarSection.jsx:151
+msgid "Add Icon Spacing"
+msgstr "เพิ่มระยะห่างไอคอน"
+
+#: classes/class-ssb-settings.php:289
+#: classes/class-ssb-settings.php:419
+#: src/components/sections/SsbInlineSection.jsx:179
+#: src/components/sections/SsbSidebarSection.jsx:160
+msgid "Enter the Space in Pixel"
+msgstr "ป้อนระยะห่างเป็นพิกเซล"
+
+#: classes/class-ssb-settings.php:296
+#: src/components/sections/SsbSidebarSection.jsx:169
+msgid "Sticky Bottom (Mobile)"
+msgstr "ติดอยู่ที่ด้านล่าง (มือถือ)"
+
+#: classes/class-ssb-settings.php:302
+#: classes/class-ssb-settings.php:426
+#: src/components/sections/SsbInlineSection.jsx:188
+#: src/components/sections/SsbSidebarSection.jsx:190
+msgid "Hide On Mobile Devices"
+msgstr "ซ่อนในอุปกรณ์มือถือ"
+
+#: classes/class-ssb-settings.php:308
+#: classes/class-ssb-settings.php:432
+#: src/components/sections/SsbInlineSection.jsx:195
+#: src/components/sections/SsbSidebarSection.jsx:197
+msgid "Limit Social Icons"
+msgstr "จำกัดไอคอนโซเชียล"
+
+#: classes/class-ssb-settings.php:315
+#: classes/class-ssb-settings.php:439
+#: src/components/sections/SsbInlineSection.jsx:213
+#: src/components/sections/SsbSidebarSection.jsx:215
+msgid "Maximum Icons to Show"
+msgstr "จำนวนสูงสุดของไอคอนที่จะแสดง"
+
+#: classes/class-ssb-settings.php:323
+#: classes/class-ssb-settings.php:480
+#: classes/class-ssb-settings.php:653
+msgid "Multi checkbox description"
+msgstr "คำอธิบายหลายช่องทำเครื่องหมาย"
+
+#: classes/class-ssb-settings.php:335
+#: src/components/widgets/SsbGoProSection.jsx:14
+msgid "Want More Control Over Your Sidebar Social Buttons Styling?"
+msgstr "ต้องการควบคุมสไตล์ปุ่มโซเชียลในแถบด้านข้างของคุณมากขึ้นหรือไม่?"
+
+#: classes/class-ssb-settings.php:339
+#: classes/class-ssb-settings.php:496
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button,\n"
+"\t\t\t\t\t\tso they blend naturally with your website's design instead of "
+"standing out like a default plugin.\n"
+"\t\t\t\t\t\tButtons that fit your site tend to get clicked more, which "
+"means more shares and more traffic for you.\n"
+"\t\t\t\t\t\tPro also adds features like buttons on images, popups on exit "
+"intent, fly in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro ช่วยให้คุณตั้งค่าสีพื้นหลัง, สีเมาส์ชี้, "
+"และสีไอคอนสำหรับทุกปุ่มได้ตามต้องการ,\n"
+"\t\t\t\t\t\"
+"tเพื่อให้เข้ากับการออกแบบเว็บไซต์ของคุณอย่างเป็นธรรมชาติแทนที่จะโดดเด่นเหมือ"
+"นปลั๊กอินเริ่มต้น\n"
+"\t\t\t\t\t\tปุ่มที่เหมาะสมกับเว็บไซต์ของคุณมักถูกคลิกมากขึ้น "
+"ซึ่งหมายถึงการแชร์มากขึ้นและการเข้าชมมากขึ้นสำหรับคุณ\n"
+"\t\t\t\t\t\tPro ยังเพิ่มฟีเจอร์ต่างๆ เช่น ปุ่มบนภาพ, "
+"ป๊อปอัพเมื่อมีความตั้งใจออก, การเคลื่อนไหวแบบเลื่อนเข้ามา, และอื่นๆ."
+
+#: classes/class-ssb-settings.php:355
+#: src/components/sections/SsbInlineSection.jsx:110
+msgid "Icon Position"
+msgstr "ตำแหน่งไอคอน"
+
+#: classes/class-ssb-settings.php:361
+#: src/components/sections/SsbInlineSection.jsx:22
+msgid "Above The Content"
+msgstr "เหนือเนื้อหา"
+
+#: classes/class-ssb-settings.php:362
+#: src/components/sections/SsbInlineSection.jsx:23
+msgid "Below The Content"
+msgstr "ใต้เนื้อหา"
+
+#: classes/class-ssb-settings.php:363
+#: src/components/sections/SsbInlineSection.jsx:24
+msgid "Above + Below The Content"
+msgstr "เหนือ + ใต้เนื้อหา"
+
+#: classes/class-ssb-settings.php:369
+#: src/components/sections/SsbInlineSection.jsx:117
+msgid "Icon Alignment"
+msgstr "การจัดตำแหน่งไอคอน"
+
+#: classes/class-ssb-settings.php:374
+#: src/components/sections/SsbInlineSection.jsx:121
+msgid "Centered"
+msgstr "กึ่งกลาง"
+
+#: classes/class-ssb-settings.php:381
+#: src/components/sections/SsbInlineSection.jsx:128
+msgid "Animation"
+msgstr "การเคลื่อนไหว"
+
+#: classes/class-ssb-settings.php:386
+#: src/components/sections/SsbInlineSection.jsx:132
+msgid "From bottom"
+msgstr "จากด้านล่าง"
+
+#: classes/class-ssb-settings.php:387
+#: src/components/sections/SsbInlineSection.jsx:133
+msgid "From top"
+msgstr "จากด้านบน"
+
+#: classes/class-ssb-settings.php:388
+#: src/components/sections/SsbInlineSection.jsx:134
+msgid "From left"
+msgstr "จากด้านซ้าย"
+
+#: classes/class-ssb-settings.php:389
+#: src/components/sections/SsbInlineSection.jsx:135
+msgid "From right"
+msgstr "จากด้านขวา"
+
+#: classes/class-ssb-settings.php:446
+#: src/components/sections/SsbInlineSection.jsx:223
+#, fuzzy
+msgid "Show at Category pages"
+msgstr "แสดงที่หน้าหมวดหมู่"
+
+#: classes/class-ssb-settings.php:452
+#: src/components/sections/SsbInlineSection.jsx:230
+#, fuzzy
+msgid "Show at Archive pages"
+msgstr "แสดงที่หน้าเว็บที่เก็บ"
+
+#: classes/class-ssb-settings.php:459
+#: src/components/sections/SsbInlineSection.jsx:237
+#, fuzzy
+msgid "Show at Tag pages"
+msgstr "แสดงที่หน้าแท็ก"
+
+#: classes/class-ssb-settings.php:465
+#: src/components/sections/SsbInlineSection.jsx:244
+msgid "Show at Search pages"
+msgstr "แสดงที่หน้าค้นหา"
+
+#: classes/class-ssb-settings.php:471
+#: src/components/sections/SsbInlineSection.jsx:252
+msgid "Share Title"
+msgstr "แชร์หัวข้อ"
+
+#: classes/class-ssb-settings.php:492
+#: src/components/widgets/SsbGoProSection.jsx:19
+msgid "Want More Control Over Your Inline Social Buttons Styling?"
+msgstr "ต้องการควบคุมการจัดรูปแบบปุ่มโซเชียลในไลน์ของคุณมากขึ้นหรือไม่?"
+
+#: classes/class-ssb-settings.php:513
+msgid "Twitter/X @username:"
+msgstr "Twitter/X @ชื่อผู้ใช้:"
+
+#: classes/class-ssb-settings.php:519
+msgid "Http/Https counts resolve:"
+msgstr "Http/Https นับการแก้ไข:"
+
+#: classes/class-ssb-settings.php:524
+#: src/components/sections/SsbAdvancedTab.jsx:55
+msgid "Internal Share Flush Interval"
+msgstr "ช่วงเวลาการแชร์ภายใน"
+
+#: classes/class-ssb-settings.php:527
+msgid "1 hour"
+msgstr "1 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:528
+msgid "2 hours"
+msgstr "2 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:529
+msgid "3 hours"
+msgstr "3 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:530
+msgid "4 hours"
+msgstr "4 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:531
+msgid "5 hours"
+msgstr "5 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:532
+msgid "6 hours"
+msgstr "6 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:533
+msgid "7 hours"
+msgstr "7 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:534
+msgid "8 hours"
+msgstr "8 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:535
+msgid "9 hours"
+msgstr "9 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:536
+msgid "10 hours"
+msgstr "10 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:537
+msgid "11 hours"
+msgstr "11 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:538
+msgid "12 hours"
+msgstr "12 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:539
+msgid "13 hours"
+msgstr "13 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:540
+msgid "14 hours"
+msgstr "14 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:541
+msgid "15 hours"
+msgstr "15 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:542
+msgid "16 hours"
+msgstr "16 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:543
+msgid "17 hours"
+msgstr "17 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:544
+msgid "18 hours"
+msgstr "18 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:545
+msgid "19 hours"
+msgstr "19 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:546
+msgid "20 hours"
+msgstr "20 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:547
+msgid "21 hours"
+msgstr "21 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:548
+msgid "22 hours"
+msgstr "22 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:549
+msgid "23 hours"
+msgstr "23 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:550
+msgid "24 hours"
+msgstr "24 ชั่วโมง"
+
+#: classes/class-ssb-settings.php:557
+#: src/components/sections/SsbAdvancedTab.jsx:73
+msgid "Open Graph Tags"
+msgstr "แท็กกราฟเปิด"
+
+#: classes/class-ssb-settings.php:565
+#: src/components/sections/SsbAdvancedTab.jsx:80
+msgid "Remove Settings on Uninstall"
+msgstr "ลบการตั้งค่าเมื่อถอนการติดตั้ง"
+
+#: classes/class-ssb-settings.php:569
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s This tool will remove all Simple Social Button settings upon "
+"uninstall.%2$s"
+msgstr ""
+"%1$s เครื่องมือนี้จะลบการตั้งค่าทั้งหมดของ Simple Social Button "
+"เมื่อถอนการติดตั้ง.%2$s"
+
+#: classes/class-ssb-settings.php:577
+#: src/components/sections/SsbAdvancedTab.jsx:88
+msgid "Factory Reset"
+msgstr "ตั้งค่าโรงงาน"
+
+#: classes/class-ssb-settings.php:581
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s Enable to reset all settings made by Simple Social Buttons upon "
+"saving.%2$s"
+msgstr ""
+"%1$s เปิดใช้งานเพื่อตั้งค่าทั้งหมดที่ทำโดย Simple Social Buttons "
+"เมื่อบันทึก.%2$s"
+
+#: classes/class-ssb-settings.php:590
+#. translators: %1$s is the opening h4 tag, %2$s is the closing h4 tag, %3$s is the opening anchor tag, %4$s is the closing anchor tag.
+msgid "%1$sFacebook App%2$s %3$show to make App%4$s"
+msgstr "%1$sแอป Facebook%2$s %3$show เพื่อทำให้แอป%4$s"
+
+#: classes/class-ssb-settings.php:597
+msgid "Facebook App ID:"
+msgstr "รหัสแอป Facebook:"
+
+#: classes/class-ssb-settings.php:604
+msgid "Facebook App Secret:"
+msgstr "ความลับแอป Facebook:"
+
+#: classes/class-ssb-settings.php:610
+#: src/components/sections/SsbAdvancedTab.jsx:99
+msgid "Custom CSS"
+msgstr "CSS ที่กำหนดเอง"
+
+#: classes/class-ssb-settings.php:617
+#: src/components/sections/SsbAdvancedTab.jsx:107
+msgid "Custom JS"
+msgstr "JS ที่กำหนดเอง"
+
+#: classes/class-ssb-settings.php:636
+msgid "Icon Style"
+msgstr "รูปแบบไอคอน"
+
+#: classes/class-ssb-settings.php:652
+msgid "Positions"
+msgstr "ตำแหน่ง"
+
+#: classes/class-ssb-settings.php:666
+#: src/components/widgets/SsbGoProSection.jsx:24
+msgid "Want to Show Social Sharing Buttons on Your Media?"
+msgstr "ต้องการแสดงปุ่มแชร์สังคมบนสื่อของคุณหรือไม่?"
+
+#: classes/class-ssb-settings.php:670
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos\n"
+"\t\t\t\t\t\t\tacross your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site.\n"
+"\t\t\t\t\t\t\tYou can also hide them on mobile and control exactly which "
+"post types they appear on.\n"
+"\t\t\t\t\t\t\tIt's an easy way to turn every image into a shareable "
+"opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro ช่วยให้คุณแสดงปุ่มแชร์โดยตรงบนภาพและถ่ายภาพ\n"
+"\t\t\t\t\t\t\tในโพสต์และหน้าของคุณ เลือกตำแหน่งของพวกเขา "
+"เพิ่มระยะห่างระหว่างไอคอน และตั้งค่าสีที่กำหนดเองให้เข้ากับเว็บไซต์ของคุณ\n"
+"\t\t\t\t\t\t\"
+"tคุณยังสามารถซ่อนพวกเขาบนมือถือและควบคุมว่าโพสต์ประเภทใดที่จะแสดง\n"
+"\t\t\t\t\t\t\tมันเป็นวิธีง่ายๆ "
+"ในการทำให้ทุกภาพกลายเป็นโอกาสในการแชร์และเพิ่มการเข้าชมมากขึ้น."
+
+#: classes/class-ssb-settings.php:684
+#: src/components/widgets/SsbGoProSection.jsx:29
+msgid "Want Smart Popups That Trigger at the Right Moment?"
+msgstr "ต้องการป๊อปอัปอัจฉริยะที่กระตุ้นในช่วงเวลาที่เหมาะสมหรือไม่?"
+
+#: classes/class-ssb-settings.php:688
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message,\n"
+"\t\t\t\t\t\t\tand trigger it exactly when it matters, like before visitors "
+"leave or after they scroll.\n"
+"\t\t\t\t\t\t\tYou can add animation, display share counts or total shares "
+"to build social proof, and set custom colors to match your brand.\n"
+"\t\t\t\t\t\t\tIt's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro "
+"ช่วยให้คุณสร้างป๊อปอัปแชร์ที่กำหนดเองพร้อมชื่อและข้อความของคุณเอง\n"
+"\t\t\t\t\t\t\tและกระตุ้นมันในช่วงเวลาที่สำคัญ เช่น "
+"ก่อนที่ผู้เข้าชมจะออกหรือหลังจากที่พวกเขาเลื่อน\n"
+"\t\t\t\t\t\t\tคุณสามารถเพิ่มการเคลื่อนไหว "
+"แสดงจำนวนแชร์หรือจำนวนรวมเพื่อสร้างหลักฐานทางสังคม "
+"และตั้งค่าสีที่กำหนดเองให้เข้ากับแบรนด์ของคุณ\n"
+"\t\t\t\t\t\t\"
+"tมันเป็นวิธีอัจฉริยะในการดึงดูดความสนใจของผู้เข้าชมในช่วงเวลาที่พวกเขาน่าจะแ"
+"ชร์มากที่สุด."
+
+#: classes/class-ssb-settings.php:702
+#: src/components/widgets/SsbGoProSection.jsx:34
+msgid "Want Advanced Fly In Animations That Drive More Shares?"
+msgstr "ต้องการการเคลื่อนไหวแบบลอยที่ล้ำหน้าที่กระตุ้นการแชร์มากขึ้นหรือไม่?"
+
+#: classes/class-ssb-settings.php:706
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message,\n"
+"\t\t\t\t\t\t\tchoose its position and animation, and even display share "
+"counts or total shares to build social proof.\n"
+"\t\t\t\t\t\t\tYou can fine-tune timing, icon spacing, and colors to match "
+"your brand, and control which post types it appears on.\n"
+"\t\t\t\t\t\t\tIt's a great way to prompt visitors to share right when "
+"they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro "
+"ช่วยให้คุณสร้างกล่องลอยที่กำหนดเองพร้อมชื่อและข้อความของคุณเอง\n"
+"\t\t\t\t\t\t\tเลือกตำแหน่งและการเคลื่อนไหวของมัน "
+"และแม้กระทั่งแสดงจำนวนแชร์หรือจำนวนรวมเพื่อสร้างหลักฐานทางสังคม\n"
+"\t\t\t\t\t\t\tคุณสามารถปรับแต่งระยะเวลา ระยะห่างระหว่างไอคอน "
+"และสีให้เข้ากับแบรนด์ของคุณ และควบคุมว่าโพสต์ประเภทใดที่จะแสดง\n"
+"\t\t\t\t\t\t\"
+"tมันเป็นวิธีที่ดีในการกระตุ้นผู้เข้าชมให้แชร์ในช่วงเวลาที่พวกเขามีส่วนร่วมมา"
+"กที่สุด."
+
+#: classes/class-ssb-settings.php:817
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid "Free support is available on the %1$s plugin support forums%2$s."
+msgstr "มีการสนับสนุนฟรีในฟอรัมสนับสนุนปลั๊กอิน %1$s%2$s."
+
+#: classes/class-ssb-settings.php:825
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid ""
+"For premium features, add-ons and priority email support, %1$s upgrade to "
+"pro%2$s."
+msgstr ""
+"สำหรับฟีเจอร์พรีเมียม ส่วนเสริม และการสนับสนุนทางอีเมลลำดับความสำคัญ "
+"%1$sอัปเกรดเป็นโปร%2$s."
+
+#: classes/class-ssb-settings.php:836
+#: src/components/Help.jsx:107
+msgid "Download Log File"
+msgstr "ดาวน์โหลดไฟล์บันทึก"
+
+#: classes/class-ssb-settings.php:916
+#: src/components/ImportExport.jsx:92
+msgid "Security check failed. Please refresh the page and try again."
+msgstr "การตรวจสอบความปลอดภัยล้มเหลว กรุณารีเฟรชหน้าและลองอีกครั้ง."
+
+#: classes/class-ssb-settings.php:926
+#: src/components/ImportExport.jsx:93
+msgid "You do not have permission to import settings."
+msgstr "คุณไม่มีสิทธิ์นำเข้าสำหรับการตั้งค่า."
+
+#: classes/class-ssb-settings.php:940
+#: src/components/ImportExport.jsx:94
+msgid "No file uploaded or upload failed."
+msgstr "ไม่มีไฟล์ที่อัปโหลดหรือการอัปโหลดล้มเหลว."
+
+#: classes/class-ssb-settings.php:951
+msgid "The uploaded file is too large."
+msgstr "ไฟล์ที่อัปโหลดมีขนาดใหญ่เกินไป."
+
+#: classes/class-ssb-settings.php:963
+msgid "Please upload a valid JSON export file."
+msgstr "กรุณาอัปโหลดไฟล์ JSON ที่ส่งออกที่ถูกต้อง."
+
+#: classes/class-ssb-settings.php:977
+#: src/components/ImportExport.jsx:95
+msgid "Invalid JSON file. Please upload a valid SSB export file."
+msgstr "ไฟล์ JSON ไม่ถูกต้อง โปรดอัปโหลดไฟล์ส่งออก SSB ที่ถูกต้อง."
+
+#: classes/class-ssb-settings.php:984
+#: src/components/ImportExport.jsx:96
+msgid ""
+"Invalid file format. This does not appear to be a Simple Social Buttons "
+"export file."
+msgstr ""
+"รูปแบบไฟล์ไม่ถูกต้อง ไฟล์นี้ดูเหมือนจะไม่ใช่ไฟล์ส่งออก Simple Social "
+"Buttons."
+
+#: classes/class-ssb-settings.php:1027
+msgid "Settings imported successfully."
+msgstr "นำเข้าการตั้งค่าเรียบร้อยแล้ว."
+
+#: classes/class-ssb-widget.php:37
+msgid "Display Follow Button For your site"
+msgstr "แสดงปุ่มติดตามสำหรับเว็บไซต์ของคุณ"
+
+#: classes/class-ssb-widget.php:39
+msgid "Social Follow Widget"
+msgstr "วิดเจ็ตติดตามโซเชียล"
+
+#: classes/class-ssb-widget.php:132
+msgid "Follow us on Facebook"
+msgstr "ติดตามเราบน Facebook"
+
+#: classes/class-ssb-widget.php:133
+msgid "Subscribe us on Youtube"
+msgstr "สมัครสมาชิกเราบน Youtube"
+
+#: classes/class-ssb-widget.php:134
+msgid "Follow us on Twitter"
+msgstr "ติดตามเราบน Twitter"
+
+#: classes/class-ssb-widget.php:135
+msgid "Follow us on Pinterest"
+msgstr "ติดตามเราบน Pinterest"
+
+#: classes/class-ssb-widget.php:136
+msgid "Follow us on Instagram"
+msgstr "ติดตามเราบน Instagram"
+
+#: classes/class-ssb-widget.php:137
+msgid "Contact us on WhatsApp"
+msgstr "ติดต่อเราทาง WhatsApp"
+
+#: classes/class-ssb-widget.php:141
+msgid "Follow Us"
+msgstr "ติดตามเรา"
+
+#: inc/ssb-import-export.php:22
+msgid "Import/Export Simple Social Share Buttons Settings"
+msgstr "นำเข้า/ส่งออกการตั้งค่า Simple Social Share Buttons"
+
+#: inc/ssb-import-export.php:23
+msgid "Import/Export your Social share button Settings for/from other sites."
+msgstr "นำเข้า/ส่งออกการตั้งค่าปุ่มแชร์โซเชียลของคุณสำหรับ/จากเว็บไซต์อื่น."
+
+#: inc/ssb-import-export.php:28
+msgid "Import Settings:"
+msgstr "นำเข้า การตั้งค่า:"
+
+#: inc/ssb-import-export.php:32
+msgid "Import"
+msgstr "นำเข้า"
+
+#: inc/ssb-import-export.php:36
+#: src/components/ImportExport.jsx:146
+msgid "Simple Social Buttons Share Settings Imported Successfully."
+msgstr "นำเข้าการตั้งค่าปุ่มแชร์ Simple Social Buttons เรียบร้อยแล้ว."
+
+#: inc/ssb-import-export.php:38
+msgid "Select a file and click on Import to start processing."
+msgstr "เลือกไฟล์และคลิกที่นำเข้าเพื่อเริ่มการประมวลผล."
+
+#: inc/ssb-import-export.php:43
+msgid "Export Settings:"
+msgstr "ส่งออกการตั้งค่า:"
+
+#: inc/ssb-import-export.php:46
+#: src/components/ImportExport.jsx:374
+msgid "Export"
+msgstr "ส่งออก"
+
+#: inc/ssb-import-export.php:50
+#: src/components/ImportExport.jsx:207
+msgid "Simple Social Button Settings Exported Successfully!"
+msgstr "ตั้งค่าปุ่มโซเชียลง่าย ๆ ได้ส่งออกเรียบร้อยแล้ว!"
+
+#: inc/ssb-import-export.php:51
+#: src/components/ImportExport.jsx:390
+msgid "Export Simple Social Button Settings."
+msgstr "ส่งออกการตั้งค่าปุ่มโซเชียลง่าย ๆ"
+
+#: inc/ssb-widget-fields.php:15
+msgid "Title:"
+msgstr "หัวข้อ:"
+
+#: inc/ssb-widget-fields.php:35
+#: inc/ssb-widget-fields.php:103
+#: simple-social-buttons.php:2147
+#: src/components/sections/SsbThemesSection.jsx:73
+#: src/utils/constants.js:129
+msgid "Facebook"
+msgstr "เฟซบุ๊ก"
+
+#: inc/ssb-widget-fields.php:47
+#: inc/ssb-widget-fields.php:217
+msgid "Twitter"
+msgstr "ทวิตเตอร์"
+
+#: inc/ssb-widget-fields.php:59
+#: inc/ssb-widget-fields.php:314
+msgid "YouTube"
+msgstr "ยูทูบ"
+
+#: inc/ssb-widget-fields.php:71
+#: inc/ssb-widget-fields.php:394
+#: simple-social-buttons.php:2429
+#: simple-social-buttons.php:2439
+#: src/utils/constants.js:128
+msgid "Pinterest"
+msgstr "พินเทอเรสต์"
+
+#: inc/ssb-widget-fields.php:83
+#: inc/ssb-widget-fields.php:457
+msgid "Instagram"
+msgstr "อินสตาแกรม"
+
+#: inc/ssb-widget-fields.php:95
+#: inc/ssb-widget-fields.php:523
+#: simple-social-buttons.php:2568
+#: simple-social-buttons.php:2577
+#: src/utils/constants.js:132
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: inc/ssb-widget-fields.php:106
+msgid "Facebook Button Text"
+msgstr "ข้อความปุ่มเฟซบุ๊ก"
+
+#: inc/ssb-widget-fields.php:120
+msgid "Facebook Page Name:"
+msgstr "ชื่อเพจเฟซบุ๊ก:"
+
+#: inc/ssb-widget-fields.php:140
+msgid "Display Facebook like counter"
+msgstr "แสดงจำนวนผู้ถูกใจเฟซบุ๊ก"
+
+#: inc/ssb-widget-fields.php:151
+msgid "Facebook App Id:"
+msgstr "Facebook App Id:"
+
+#: inc/ssb-widget-fields.php:163
+msgid "Facebook Security Key:"
+msgstr "Facebook Security Key:"
+
+#: inc/ssb-widget-fields.php:175
+msgid "Facebook Access Token: "
+msgstr "Facebook Access Token: "
+
+#: inc/ssb-widget-fields.php:194
+#: inc/ssb-widget-fields.php:291
+msgid "Default count to show instead of 0 when API's are not available."
+msgstr "จำนวนเริ่มต้นที่จะแสดงแทน 0 เมื่อ API ไม่สามารถใช้งานได้."
+
+#: inc/ssb-widget-fields.php:220
+msgid "Twitter Button Text:"
+msgstr "ข้อความปุ่มทวิตเตอร์:"
+
+#: inc/ssb-widget-fields.php:233
+msgid "Twitter Handle:"
+msgstr "ชื่อผู้ใช้ทวิตเตอร์:"
+
+#: inc/ssb-widget-fields.php:254
+msgid "Display Twitter follower counter"
+msgstr "แสดงจำนวนผู้ติดตามทวิตเตอร์"
+
+#: inc/ssb-widget-fields.php:264
+msgid "Twitter Api Key: "
+msgstr "Twitter Api Key: "
+
+#: inc/ssb-widget-fields.php:279
+msgid "Twitter Secret Key:"
+msgstr "คีย์ลับ Twitter:"
+
+#: inc/ssb-widget-fields.php:317
+msgid "YouTube Button Text:"
+msgstr "ข้อความปุ่ม YouTube:"
+
+#: inc/ssb-widget-fields.php:331
+msgid "Type :"
+msgstr "ประเภท :"
+
+#: inc/ssb-widget-fields.php:335
+msgid "Channel"
+msgstr "ช่อง"
+
+#: inc/ssb-widget-fields.php:338
+msgid "Username"
+msgstr "ชื่อผู้ใช้"
+
+#: inc/ssb-widget-fields.php:345
+msgid "YouTube Channel ID:"
+msgstr "รหัสช่อง YouTube:"
+
+#: inc/ssb-widget-fields.php:363
+msgid "Display YouTube subscriber counter"
+msgstr "แสดงจำนวนผู้ติดตาม YouTube"
+
+#: inc/ssb-widget-fields.php:373
+msgid "YouTube Api Key: "
+msgstr "คีย์ API YouTube: "
+
+#: inc/ssb-widget-fields.php:397
+msgid "Pinterest Button Text:"
+msgstr "ข้อความปุ่ม Pinterest:"
+
+#: inc/ssb-widget-fields.php:410
+msgid "Pinterest User ID:"
+msgstr "รหัสผู้ใช้ Pinterest:"
+
+#: inc/ssb-widget-fields.php:429
+msgid "Display Pinterest follower counter"
+msgstr "แสดงจำนวนผู้ติดตาม Pinterest"
+
+#: inc/ssb-widget-fields.php:435
+msgid "Printerest Access Token: "
+msgstr "โทเค็นการเข้าถึง Pinterest: "
+
+#: inc/ssb-widget-fields.php:460
+msgid "Instagram Button Text:"
+msgstr "ข้อความปุ่ม Instagram:"
+
+#: inc/ssb-widget-fields.php:473
+msgid "Instagram User Name:"
+msgstr "ชื่อผู้ใช้ Instagram:"
+
+#: inc/ssb-widget-fields.php:492
+msgid "Display Instagram follower counter"
+msgstr "แสดงจำนวนผู้ติดตาม Instagram"
+
+#: inc/ssb-widget-fields.php:501
+msgid "Instagram Access Token: "
+msgstr "โทเค็นการเข้าถึง Instagram: "
+
+#: inc/ssb-widget-fields.php:526
+msgid "WhatsApp Button Text:"
+msgstr "ข้อความปุ่ม WhatsApp:"
+
+#: inc/ssb-widget-fields.php:539
+msgid "WhatsApp Mobile Number:"
+msgstr "หมายเลขโทรศัพท์มือถือ WhatsApp:"
+
+#: simple-social-buttons.php:452
+#: simple-social-buttons.php:453
+msgid "Activate"
+msgstr "เปิดใช้งาน"
+
+#: simple-social-buttons.php:539
+#. translators: %1$s: opening anchor tag, %2$s: closing anchor tag, %3$s: opening span tag, %4$s: closing span tag.
+msgid "%1$s %3$s Upgrade Pro %4$s %2$s"
+msgstr "%1$s %3$s อัปเกรด Pro %4$s %2$s"
+
+#: simple-social-buttons.php:968
+#. translators: %d: interval in hours.
+msgid "SSB Internal Share Flush (every %d hours)"
+msgstr "การแชร์ภายใน SSB (ทุก %d ชั่วโมง)"
+
+#: simple-social-buttons.php:1410
+msgid "Hide social sharing bar"
+msgstr "ซ่อนแถบการแชร์โซเชียล"
+
+#: simple-social-buttons.php:1411
+msgid "Show social sharing bar"
+msgstr "แสดงแถบการแชร์โซเชียล"
+
+#: simple-social-buttons.php:2130
+#: simple-social-buttons.php:2145
+msgid "Facebook Share"
+msgstr "แชร์ใน Facebook"
+
+#: simple-social-buttons.php:2136
+#: simple-social-buttons.php:2374
+#: simple-social-buttons.php:3082
+#: src/components/sections/SsbThemesSection.jsx:35
+#: src/components/sections/SsbThemesSection.jsx:57
+msgid "Share"
+msgstr "แชร์"
+
+#: simple-social-buttons.php:2162
+#: simple-social-buttons.php:2177
+msgid "Bluesky Share"
+msgstr "แชร์ใน Bluesky"
+
+#: simple-social-buttons.php:2169
+#: simple-social-buttons.php:2179
+#: src/utils/constants.js:139
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: simple-social-buttons.php:2193
+#: simple-social-buttons.php:2208
+msgid "Telegram Share"
+msgstr "แชร์ใน Telegram"
+
+#: simple-social-buttons.php:2200
+#: simple-social-buttons.php:2210
+#: src/utils/constants.js:140
+msgid "Telegram"
+msgstr "Telegram"
+
+#: simple-social-buttons.php:2239
+msgid "threads Share"
+msgstr "แชร์ใน Threads"
+
+#: simple-social-buttons.php:2247
+#: simple-social-buttons.php:2257
+#: src/utils/constants.js:141
+msgid "Threads"
+msgstr "Threads"
+
+#: simple-social-buttons.php:2255
+msgid "Threads Share"
+msgstr "แชร์ใน Threads"
+
+#: simple-social-buttons.php:2276
+#: simple-social-buttons.php:2293
+msgid "Twitter/X Share"
+msgstr "แชร์ใน Twitter/X"
+
+#: simple-social-buttons.php:2282
+#: simple-social-buttons.php:2284
+#: src/components/sections/SsbThemesSection.jsx:45
+msgid "Post"
+msgstr "โพสต์"
+
+#: simple-social-buttons.php:2295
+#: src/components/sections/SsbSocialTab.jsx:60
+#: src/components/sections/SsbThemesSection.jsx:78
+#: src/utils/constants.js:127
+msgid "Twitter/X"
+msgstr "Twitter/X"
+
+#: simple-social-buttons.php:2309
+msgid "Copy"
+msgstr "คัดลอก"
+
+#: simple-social-buttons.php:2319
+#: simple-social-buttons.php:2335
+#: src/utils/constants.js:136
+msgid "Copy Link"
+msgstr "คัดลอกลิงก์"
+
+#: simple-social-buttons.php:2339
+msgid "Copied"
+msgstr "คัดลอกแล้ว"
+
+#: simple-social-buttons.php:2364
+#: simple-social-buttons.php:2383
+msgid "LinkedIn Share"
+msgstr "แชร์ใน LinkedIn"
+
+#: simple-social-buttons.php:2385
+#: src/components/sections/SsbThemesSection.jsx:83
+#: src/utils/constants.js:130
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: simple-social-buttons.php:2422
+#: simple-social-buttons.php:2436
+msgid "Pinterest Share"
+msgstr "แชร์ Pinterest"
+
+#: simple-social-buttons.php:2453
+msgid "Shares"
+msgstr "แชร์"
+
+#: simple-social-buttons.php:2514
+#: simple-social-buttons.php:2531
+msgid "Reddit Share"
+msgstr "แชร์ Reddit"
+
+#: simple-social-buttons.php:2522
+#: simple-social-buttons.php:2533
+#: src/utils/constants.js:131
+msgid "Reddit"
+msgstr "Reddit"
+
+#: simple-social-buttons.php:2561
+#: simple-social-buttons.php:2575
+msgid "WhatsApp Share"
+msgstr "แชร์ WhatsApp"
+
+#: simple-social-buttons.php:2640
+#: simple-social-buttons.php:2653
+msgid "Viber Share"
+msgstr "แชร์ Viber"
+
+#: simple-social-buttons.php:2644
+msgid "Viber icon"
+msgstr "ไอคอน Viber"
+
+#: simple-social-buttons.php:2646
+#: simple-social-buttons.php:2655
+#: src/utils/constants.js:133
+msgid "Viber"
+msgstr "Viber"
+
+#: simple-social-buttons.php:2671
+#: simple-social-buttons.php:2687
+msgid "Facebook Messenger Share"
+msgstr "แชร์ Facebook Messenger"
+
+#: simple-social-buttons.php:2681
+#: simple-social-buttons.php:2689
+#: src/utils/constants.js:134
+msgid "Messenger"
+msgstr "Messenger"
+
+#: simple-social-buttons.php:2704
+#: simple-social-buttons.php:2719
+msgid "Share through Email"
+msgstr "แชร์ผ่านอีเมล"
+
+#: simple-social-buttons.php:2730
+msgid "Print The Post"
+msgstr "พิมพ์โพสต์"
+
+#: simple-social-buttons.php:2748
+#: simple-social-buttons.php:2763
+#: src/utils/constants.js:137
+msgid "Print"
+msgstr "พิมพ์"
+
+#: simple-social-buttons.php:2761
+msgid "Print Share"
+msgstr "พิมพ์แชร์"
+
+#: simple-social-buttons.php:2776
+#: simple-social-buttons.php:2798
+msgid "Tumblr Share"
+msgstr "แชร์ Tumblr"
+
+#: simple-social-buttons.php:2791
+#: simple-social-buttons.php:2799
+#: src/utils/constants.js:138
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: simple-social-buttons.php:2817
+#: simple-social-buttons.php:2831
+msgid "Line Share"
+msgstr "แชร์ Line"
+
+#: simple-social-buttons.php:2824
+#: simple-social-buttons.php:2831
+#: src/utils/constants.js:142
+msgid "Line"
+msgstr "Line"
+
+#: simple-social-buttons.php:2846
+#: simple-social-buttons.php:2855
+msgid "Mastodon Share"
+msgstr "แชร์ Mastodon"
+
+#: simple-social-buttons.php:2851
+#: simple-social-buttons.php:2855
+#: src/utils/constants.js:143
+msgid "Mastodon"
+msgstr "Mastodon"
+
+#: simple-social-buttons.php:2867
+#: simple-social-buttons.php:2879
+msgid "VK Share"
+msgstr "แชร์ VK"
+
+#: simple-social-buttons.php:2875
+#: simple-social-buttons.php:2879
+#: src/utils/constants.js:144
+msgid "VK"
+msgstr "VK"
+
+#: simple-social-buttons.php:2896
+#: simple-social-buttons.php:2905
+msgid "Snapchat Share"
+msgstr "แชร์ Snapchat"
+
+#: simple-social-buttons.php:2899
+#: simple-social-buttons.php:2907
+#: src/components/sections/SsbSocialTab.jsx:121
+#: src/utils/constants.js:145
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: simple-social-buttons.php:3069
+#: simple-social-buttons.php:3078
+#: simple-social-buttons.php:3225
+msgid "More share options"
+msgstr "ตัวเลือกการแชร์เพิ่มเติม"
+
+#: simple-social-buttons.php:3081
+msgid "Close"
+msgstr "ปิด"
+
+#: simple-social-buttons.php:3326
+msgid "Simple Social Buttons 2.0 (Relaunched)"
+msgstr "ปุ่มโซเชียลแบบง่าย 2.0 (เปิดตัวใหม่)"
+
+#: simple-social-buttons.php:3329
+msgid ""
+"Simple Social Buttons had 50,000 Active installs and It was abondoned and "
+"rarely updated since last 5 years.<br />\n"
+"\t\t\t\t\tWe at <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\tadopted this plugin and rewrote it completely from scratch.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tCheck out</a> What's new in 2.0 version.<br /> Pardon me, If "
+"there is anything broken. Please\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">report</a> us any issue you see in the plugin."
+msgstr ""
+"ปุ่มโซเชียลแบบง่ายมีการติดตั้งที่ใช้งานอยู่ 50,000 รายการ "
+"และถูกละทิ้งและอัปเดตน้อยมากในช่วง 5 ปีที่ผ่านมา.<br />\n"
+"\t\t\t\t\tเราที่ <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\tานำปลั๊กอินนี้มาใช้และเขียนใหม่ทั้งหมดจากศูนย์.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tดู</a> ว่าอะไรใหม่ในเวอร์ชัน 2.0.<br /> ขออภัย "
+"หากมีสิ่งใดที่เสียหาย โปรด\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">รายงาน</a> ปัญหาที่คุณเห็นในปลั๊กอินนี้."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:23
+#: blocks/shortcode/settings.js:23
+msgid "Theme"
+msgstr "ธีม"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:38
+msgid "select the style for click to post "
+msgstr "เลือกสไตล์สำหรับคลิกเพื่อโพสต์ "
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:45
+msgid "Content"
+msgstr "เนื้อหา"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:51
+msgid "Quote Content"
+msgstr "เนื้อหาที่อ้างอิง"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:53
+msgid "This text will be shown to the user."
+msgstr "ข้อความนี้จะแสดงให้ผู้ใช้เห็น."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:57
+msgid "Tweet Content"
+msgstr "เนื้อหาทวีต"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:59
+msgid "This text will be tweet . if empty Quote content will be used."
+msgstr "ข้อความนี้จะถูกทวีต หากว่างจะใช้เนื้อหาที่อ้างอิง."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:66
+msgid " Configuration"
+msgstr "การตั้งค่า"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:72
+msgid "Show Tweet Button"
+msgstr "แสดงปุ่มทวีต"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:77
+msgid "Include Page/post Link"
+msgstr "รวมลิงก์หน้า/โพสต์"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:80
+msgid ""
+"\n"
+" Link to this post will be appended to the Tweet. we have a filter if you "
+"want to modify it `ssb_ctt_url`."
+msgstr ""
+"\n"
+" ลิงก์ไปยังโพสต์นี้จะถูกเพิ่มไปยังทวีต เรามีตัวกรองหากคุณต้องการปรับเปลี่ยน "
+"`ssb_ctt_url`."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:83
+msgid "Include via @username"
+msgstr "รวมผ่าน @username"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:86
+msgid ""
+"\n"
+" Twitter username from SSB Settings Advanced tab will be appended to the "
+"end of the Tweet with the text “via @username”."
+msgstr ""
+"ชื่อผู้ใช้ Twitter จากแท็บการตั้งค่า SSB แบบขั้นสูงจะถูกเพิ่มที่ท้าย Tweet "
+"ด้วยข้อความ “ผ่าน @username”"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:59
+msgid "Enter your content ..."
+msgstr "กรอกเนื้อหาของคุณ ..."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:44
+msgid "Configuration"
+msgstr "การตั้งค่า"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:50
+msgid "Share Counter"
+msgstr "นับการแชร์"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:58
+msgid "Total Counts"
+msgstr "จำนวนรวม"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:68
+msgid ""
+"Supported Networks: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+msgstr ""
+"เครือข่ายที่รองรับ: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:70
+msgid "Order"
+msgstr "ลำดับ"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:25
+msgid "Align Left"
+msgstr "จัดแนวซ้าย"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:30
+msgid "Align Center"
+msgstr "จัดแนวกึ่งกลาง"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:35
+msgid "Align Right"
+msgstr "จัดแนวขวา"
+
+#: src/components/ErrorBoundary.jsx:30
+msgid "Settings Error"
+msgstr "ข้อผิดพลาดในการตั้งค่า"
+
+#: src/components/ErrorBoundary.jsx:33
+msgid ""
+"Something went wrong with the settings page. Please refresh the page to try "
+"again."
+msgstr "เกิดปัญหาบางอย่างกับหน้าการตั้งค่า กรุณารีเฟรชหน้าเพื่อลองอีกครั้ง"
+
+#: src/components/ErrorBoundary.jsx:36
+msgid "Error Details"
+msgstr "รายละเอียดข้อผิดพลาด"
+
+#: src/components/ErrorBoundary.jsx:44
+msgid "Refresh Page"
+msgstr "รีเฟรชหน้า"
+
+#: src/components/form-fields/SsbCheckboxField.jsx:77
+msgid "Toggle setting"
+msgstr "สลับการตั้งค่า"
+
+#: src/components/form-fields/SsbColorField.jsx:99
+msgid "Select Color"
+msgstr "เลือกสี"
+
+#: src/components/form-fields/SsbColorField.jsx:129
+msgid "Clear"
+msgstr "ล้าง"
+
+#: src/components/form-fields/SsbColorField.jsx:142
+msgid "Done"
+msgstr "เสร็จสิ้น"
+
+#: src/components/form-fields/SsbIconSpaceField.jsx:53
+msgid "Enter a whole number of pixels from 1 to 999. The value was adjusted."
+msgstr "กรอกหมายเลขเต็มของพิกเซลจาก 1 ถึง 999 ค่าถูกปรับแล้ว"
+
+#: src/components/form-fields/SsbSelectField.jsx:265
+msgid "Select..."
+msgstr "เลือก..."
+
+#: src/components/Help.jsx:29
+msgid "Simple Social Buttons Log File Downloaded Successfully!"
+msgstr "ดาวน์โหลดไฟล์บันทึกปุ่มโซเชียลง่ายเรียบร้อยแล้ว!"
+
+#: src/components/Help.jsx:41
+#: src/components/ImportExport.jsx:241
+#: src/index.js:598
+msgid ""
+"<strong>Simple Social Buttons</strong> by <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> adds "
+"an advanced set of social media sharing buttons to your WordPress sites, "
+"such as: <strong>Facebook</strong>, <strong>Twitter/X</strong>, "
+"<strong>LinkedIn</strong>, <strong>WhatsApp</strong>, "
+"<strong>Viber</strong>, <strong>Reddit</strong> and "
+"<strong>Pinterest</strong>. This makes it the most flexible social sharing "
+"plugin for everyone."
+msgstr ""
+"<strong>ปุ่มโซเชียลง่าย</strong> โดย <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> "
+"เพิ่มชุดปุ่มแชร์โซเชียลมีเดียที่มีความก้าวหน้าสำหรับเว็บไซต์ WordPress "
+"ของคุณ เช่น: <strong>Facebook</strong>, <strong>Twitter/X</strong>, "
+"<strong>LinkedIn</strong>, <strong>WhatsApp</strong>, "
+"<strong>Viber</strong>, <strong>Reddit</strong> และ "
+"<strong>Pinterest</strong>. "
+"ซึ่งทำให้มันเป็นปลั๊กอินแชร์โซเชียลที่ยืดหยุ่นที่สุดสำหรับทุกคน."
+
+#: src/components/Help.jsx:47
+msgid "Help & Troubleshooting"
+msgstr "ช่วยเหลือ & การแก้ปัญหา"
+
+#: src/components/Help.jsx:52
+msgid "Free support is available on the %splugin support forums%s."
+msgstr "มีการสนับสนุนฟรีใน %sฟอรัมสนับสนุนปลั๊กอิน%s."
+
+#: src/components/Help.jsx:66
+msgid ""
+"For premium features, add-ons and priority email support, %supgrade to "
+"pro%s."
+msgstr ""
+"สำหรับฟีเจอร์พรีเมียม, ส่วนเสริม และการสนับสนุนผ่านอีเมลแบบเร่งด่วน, "
+"%sอัปเกรดเป็นโปร%s."
+
+#: src/components/Help.jsx:80
+msgid "Found a bug or have a feature request? Please submit an issue %shere!%s"
+msgstr "พบข้อผิดพลาดหรือมีคำขอฟีเจอร์? กรุณาส่งปัญหา %shere!%s"
+
+#: src/components/ImportExport.jsx:51
+msgid "Invalid file. Please upload a JSON file starting with \"ssb\"."
+msgstr "ไฟล์ไม่มีความถูกต้อง กรุณาอัปโหลดไฟล์ JSON ที่เริ่มต้นด้วย \"ssb\"."
+
+#: src/components/ImportExport.jsx:98
+msgid "Import failed. Please try again."
+msgstr "นำเข้าล้มเหลว กรุณาลองอีกครั้ง."
+
+#: src/components/ImportExport.jsx:106
+msgid "Please select a valid file first."
+msgstr "กรุณาเลือกไฟล์ที่ถูกต้องก่อน."
+
+#: src/components/ImportExport.jsx:159
+msgid "Security check failed or server error. Please refresh and try again."
+msgstr ""
+"การตรวจสอบความปลอดภัยล้มเหลวหรือเกิดข้อผิดพลาดที่เซิร์ฟเวอร์ "
+"กรุณารีเฟรชและลองอีกครั้ง."
+
+#: src/components/ImportExport.jsx:161
+msgid "Invalid response from server. Please try again."
+msgstr "การตอบสนองจากเซิร์ฟเวอร์ไม่ถูกต้อง กรุณาลองอีกครั้ง."
+
+#: src/components/ImportExport.jsx:165
+msgid "An error occurred during import. Please try again."
+msgstr "เกิดข้อผิดพลาดระหว่างการนำเข้า กรุณาลองอีกครั้ง."
+
+#: src/components/ImportExport.jsx:231
+msgid "Export failed. Please try again."
+msgstr "การส่งออกล้มเหลว กรุณาลองอีกครั้ง."
+
+#: src/components/ImportExport.jsx:246
+msgid "Import & Export Simple Social Share Button Settings"
+msgstr "นำเข้า & ส่งออกการตั้งค่าปุ่มแชร์โซเชียลง่าย"
+
+#: src/components/ImportExport.jsx:248
+msgid "Import/Export your Social share Settings for/from other sites."
+msgstr "นำเข้า/ส่งออกการตั้งค่าการแชร์โซเชียลของคุณสำหรับ/จากเว็บไซต์อื่น."
+
+#: src/components/ImportExport.jsx:292
+msgid "Drag and drop file here or"
+msgstr "ลากและวางไฟล์ที่นี่หรือ"
+
+#: src/components/ImportExport.jsx:293
+msgid "Browse"
+msgstr "เรียกดู"
+
+#: src/components/ImportExport.jsx:319
+msgid "Remove file"
+msgstr "ลบไฟล์"
+
+#: src/components/ImportExport.jsx:335
+msgid "Import Settings"
+msgstr "นำเข้าการตั้งค่า"
+
+#: src/components/ImportExport.jsx:344
+msgid "Importing settings..."
+msgstr "กำลังนำเข้าการตั้งค่า..."
+
+#: src/components/ImportExport.jsx:366
+msgid "Export Settings"
+msgstr "การตั้งค่าการส่งออก"
+
+#: src/components/ImportExport.jsx:374
+msgid "Exporting..."
+msgstr "กำลังส่งออก..."
+
+#: src/components/sections/ProSections.jsx:114
+msgid "Control how share buttons appear on images and media within your posts."
+msgstr "ควบคุมวิธีที่ปุ่มแชร์ปรากฏบนภาพและสื่อในโพสต์ของคุณ."
+
+#: src/components/sections/ProSections.jsx:134
+msgid "Configure your share popup: set the message, timing, and trigger behavior."
+msgstr "กำหนดค่าหน้าต่างแชร์ของคุณ: ตั้งข้อความ, เวลา, และพฤติกรรมการกระตุ้น."
+
+#: src/components/sections/ProSections.jsx:154
+msgid "Set up a slide-in share prompt with custom messaging, position, and timing"
+msgstr "ตั้งค่าการแจ้งเตือนแชร์แบบเลื่อนเข้าด้วยข้อความที่กำหนดเอง, ตำแหน่ง, และเวลา"
+
+#: src/components/sections/SsbAdvancedTab.jsx:49
+msgid "HTTP/HTTPS Counts Resolve"
+msgstr "การนับ HTTP/HTTPS แก้ไข"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hour"
+msgstr "ชั่วโมง"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hours"
+msgstr "ชั่วโมง"
+
+#: src/components/sections/SsbAdvancedTab.jsx:64
+msgid ""
+"Internal share click counts are recorded for supported networks (for "
+"example Twitter/X, LinkedIn, WhatsApp) when visitors use the sharing "
+"buttons on your site. Counts are stored locally and are not sent to those "
+"social networks. Clear your page cache after upgrading the plugin so button "
+"markup stays in sync."
+msgstr ""
+"จำนวนการคลิกแชร์ภายในจะถูกบันทึกสำหรับเครือข่ายที่รองรับ (เช่น Twitter/X, "
+"LinkedIn, WhatsApp) เมื่อผู้เยี่ยมชมใช้ปุ่มแชร์บนเว็บไซต์ของคุณ "
+"จำนวนจะถูกเก็บไว้ในเครื่องและจะไม่ถูกส่งไปยังเครือข่ายสังคมเหล่านั้น "
+"ล้างแคชหน้าของคุณหลังจากอัปเกรดปลั๊กอินเพื่อให้โค้ดปุ่มอยู่ในความสอดคล้อง."
+
+#: src/components/sections/SsbAdvancedTab.jsx:82
+msgid "Enable to remove all settings upon uninstalling the plugin."
+msgstr "เปิดใช้งานเพื่อลบการตั้งค่าทั้งหมดเมื่อถอนการติดตั้งปลั๊กอิน."
+
+#: src/components/sections/SsbAdvancedTab.jsx:90
+msgid "Enable to reset all settings back to default upon saving."
+msgstr "เปิดใช้งานเพื่อตั้งค่าทั้งหมดกลับไปที่ค่าเริ่มต้นเมื่อบันทึก."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:26
+#: src/utils/constants.js:17
+msgid "Click To Post"
+msgstr "คลิกเพื่อโพสต์"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:29
+msgid "Unlock Click to Tweet Feature with Pro!"
+msgstr "ปลดล็อกฟีเจอร์คลิกเพื่อทวีตด้วย Pro!"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:30
+msgid ""
+"Get the powerful Click to Tweet functionality that lets you create "
+"engaging, tweetable content directly in your posts. This Pro feature helps "
+"increase social engagement and drive more traffic to your site."
+msgstr ""
+"รับฟังก์ชันการคลิกเพื่อทวีตที่ทรงพลังซึ่งช่วยให้คุณสร้างเนื้อหาที่น่าสนใจและ"
+"ทวีตได้โดยตรงในโพสต์ของคุณ ฟีเจอร์ Pro "
+"นี้ช่วยเพิ่มการมีส่วนร่วมในสังคมและดึงดูดการเข้าชมเพิ่มเติมไปยังเว็บไซต์ของค"
+"ุณ."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:36
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Upgrade"
+msgstr "คลิกที่นี่เพื่อต่ออายุ"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:55
+#: src/components/sections/SsbNextGenGalleryTab.jsx:29
+msgid "Loading Pro settings..."
+msgstr "กำลังโหลดการตั้งค่า Pro..."
+
+#: src/components/sections/SsbInlineSection.jsx:44
+#: src/components/sections/SsbSidebarSection.jsx:31
+msgid "Loading Pro component..."
+msgstr "กำลังโหลดส่วนประกอบ Pro..."
+
+#: src/components/sections/SsbInlineSection.jsx:101
+msgid "Configure how your inline share buttons appear within your content."
+msgstr "กำหนดว่าปุ่มแชร์ในเนื้อหาของคุณปรากฏอย่างไร."
+
+#: src/components/sections/SsbInlineSection.jsx:146
+#: src/components/sections/SsbSidebarSection.jsx:126
+msgid ""
+"For Facebook share count you need to add Facebook App ID and Secret in the "
+"Social tab."
+msgstr ""
+"สำหรับการนับแชร์ Facebook คุณต้องเพิ่ม Facebook App ID และ Secret "
+"ในแท็บสังคม."
+
+#: src/components/sections/SsbInlineSection.jsx:199
+msgid ""
+"Show only a set number of icons in your content. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"แสดงเฉพาะจำนวนไอคอนที่กำหนดในเนื้อหาของคุณ "
+"ไอคอนที่เหลือจะเปิดในหน้าต่างป๊อปอัพเมื่อผู้เยี่ยมชมแตะที่ปุ่ม +."
+
+#: src/components/sections/SsbInlineSection.jsx:257
+msgid ""
+"This text appears on your site as a heading above the inline share buttons. "
+"It is not used as the title when someone shares your content on social "
+"networks."
+msgstr ""
+"ข้อความนี้จะแสดงบนเว็บไซต์ของคุณเป็นหัวข้อด้านบนของปุ่มแชร์ในแบบอินไลน์ "
+"ไม่ได้ใช้เป็นชื่อเมื่อมีคนแชร์เนื้อหาของคุณบนเครือข่ายสังคม"
+
+#: src/components/sections/SsbNetworksSection.jsx:134
+msgid "Press Enter to move to Inactive."
+msgstr "กด Enter เพื่อย้ายไปที่ไม่ใช้งาน"
+
+#: src/components/sections/SsbNetworksSection.jsx:135
+msgid "Press Enter to move to Active."
+msgstr "กด Enter เพื่อย้ายไปที่ใช้งาน"
+
+#: src/components/sections/SsbNetworksSection.jsx:136
+msgid "Use Up and Down arrow keys to reorder."
+msgstr "ใช้ปุ่มลูกศรขึ้นและลงเพื่อจัดลำดับใหม่"
+
+#: src/components/sections/SsbNetworksSection.jsx:181
+#: src/components/sections/SsbNetworksSection.jsx:261
+msgid "Drop here"
+msgstr "วางที่นี่"
+
+#: src/components/sections/SsbNetworksSection.jsx:219
+msgid "Pro"
+msgstr "โปร"
+
+#: src/components/sections/SsbNetworksSection.jsx:236
+msgid "Edit"
+msgstr "แก้ไข"
+
+#: src/components/sections/SsbNetworksSection.jsx:251
+msgid "Drop at end of list"
+msgstr "วางที่ท้ายรายการ"
+
+#: src/components/sections/SsbNetworksSection.jsx:275
+msgid "Drag & Drop to activate and reorder your share buttons:"
+msgstr "ลาก & วางเพื่อเปิดใช้งานและจัดลำดับใหม่ปุ่มแชร์ของคุณ:"
+
+#: src/components/sections/SsbNetworksSection.jsx:280
+msgid "Active"
+msgstr "ใช้งาน"
+
+#: src/components/sections/SsbNetworksSection.jsx:284
+msgid "Inactive"
+msgstr "ไม่ใช้งาน"
+
+#: src/components/sections/SsbNextGenGalleryTab.jsx:27
+msgid "Simple Social Buttons on NextGEN Gallery"
+msgstr "ปุ่มโซเชียลแบบง่ายบน NextGEN Gallery"
+
+#: src/components/sections/SsbPositionsSection.jsx:38
+msgid "Select the display styles to position your share buttons."
+msgstr "เลือกสไตล์การแสดงผลเพื่อตำแหน่งปุ่มแชร์ของคุณ"
+
+#: src/components/sections/SsbSidebarSection.jsx:87
+msgid "Configure the appearance and behavior of your sidebar share buttons."
+msgstr "กำหนดรูปลักษณ์และพฤติกรรมของปุ่มแชร์ในแถบด้านข้างของคุณ"
+
+#: src/components/sections/SsbSidebarSection.jsx:201
+msgid ""
+"Show only a set number of icons in the sidebar. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"แสดงไอคอนจำนวนหนึ่งในแถบด้านข้าง "
+"ไอคอนที่เหลือจะเปิดในป๊อปอัปเมื่อผู้เข้าชมแตะปุ่ม +"
+
+#: src/components/sections/SsbSocialTab.jsx:62
+msgid ""
+"Add your X username to append via= to Twitter/X share links from your "
+"buttons."
+msgstr "เพิ่มชื่อผู้ใช้ X ของคุณเพื่อแนบ via= กับลิงก์แชร์ Twitter/X จากปุ่มของคุณ"
+
+#: src/components/sections/SsbSocialTab.jsx:72
+msgid "Twitter/X @username"
+msgstr "Twitter/X @ชื่อผู้ใช้"
+
+#: src/components/sections/SsbSocialTab.jsx:81
+msgid "Facebook App"
+msgstr "แอป Facebook"
+
+#: src/components/sections/SsbSocialTab.jsx:88
+msgid "How to create a Facebook app"
+msgstr "วิธีสร้างแอป Facebook"
+
+#: src/components/sections/SsbSocialTab.jsx:96
+msgid "Facebook App ID"
+msgstr "Facebook App ID"
+
+#: src/components/sections/SsbSocialTab.jsx:100
+msgid ""
+"Required for Facebook share counts. Add your App ID and Secret from the "
+"Facebook developer portal."
+msgstr ""
+"จำเป็นสำหรับการนับการแชร์บน Facebook เพิ่ม App ID และ Secret ของคุณจาก "
+"Facebook developer portal."
+
+#: src/components/sections/SsbSocialTab.jsx:112
+msgid "Facebook App Secret"
+msgstr "Facebook App Secret"
+
+#: src/components/sections/SsbSocialTab.jsx:123
+msgid ""
+"Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat "
+"app with your page link ready to share."
+msgstr ""
+"Snapchat ใช้ Snap Creative Kit Web ดังนั้นผู้เข้าชมบนมือถือจะเปิดแอป "
+"Snapchat ด้วยลิงก์หน้าของคุณที่พร้อมแชร์."
+
+#: src/components/sections/SsbSocialTab.jsx:133
+msgid "Snap Kit Client ID (optional)"
+msgstr "Snap Kit Client ID (ไม่บังคับ)"
+
+#: src/components/sections/SsbSocialTab.jsx:137
+msgid ""
+"Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit "
+"developer portal. Sharing works without it."
+msgstr ""
+"ไม่บังคับ เพิ่ม Snap Kit Client ID ของคุณเพื่อระบุการแชร์ใน Snap Kit "
+"developer portal การแชร์ยังทำงานได้โดยไม่ต้องใช้มัน."
+
+#: src/components/sections/SsbSocialTab.jsx:147
+msgid "How it works"
+msgstr "มันทำงานอย่างไร"
+
+#: src/components/sections/SsbSocialTab.jsx:150
+msgid "Add Snapchat from the Settings tab like any other button."
+msgstr "เพิ่ม Snapchat จากแท็บการตั้งค่าเหมือนกับปุ่มอื่น ๆ."
+
+#: src/components/sections/SsbSocialTab.jsx:156
+msgid ""
+"On mobile, tapping the button opens the Snapchat app share flow for the "
+"current page."
+msgstr "บนมือถือ การแตะที่ปุ่มจะเปิดกระบวนการแชร์ในแอป Snapchat สำหรับหน้าปัจจุบัน."
+
+#: src/components/sections/SsbSocialTab.jsx:162
+msgid ""
+"On desktop, a Snapcode window opens so users can scan and share from their "
+"phone."
+msgstr ""
+"บนเดสก์ท็อป หน้าต่าง Snapcode "
+"จะเปิดขึ้นเพื่อให้ผู้ใช้สามารถสแกนและแชร์จากโทรศัพท์ของพวกเขา."
+
+#: src/components/sections/SsbSocialTab.jsx:168
+msgid ""
+"Keep Open Graph tags enabled so Snapchat can show your page title and "
+"preview."
+msgstr ""
+"เปิดใช้งาน Open Graph tags เพื่อให้ Snapchat "
+"สามารถแสดงชื่อหน้าของคุณและตัวอย่าง."
+
+#: src/components/sections/SsbThemesSection.jsx:62
+msgid "Official Buttons"
+msgstr "ปุ่มทางการ"
+
+#: src/components/sections/SsbThemesSection.jsx:118
+msgid "Choose a button style that fits your site's look and feel."
+msgstr "เลือกสไตล์ปุ่มที่เหมาะกับรูปลักษณ์และความรู้สึกของเว็บไซต์ของคุณ."
+
+#: src/components/SsbPurgeNotice.jsx:87
+#: src/components/SsbPurgeNotice.jsx:91
+#: src/utils/formHelpers.js:241
+msgid "Dismiss this notice."
+msgstr "ปิดการแจ้งเตือนนี้."
+
+#: src/components/SsbStickySaveBar.jsx:305
+#: src/index.js:689
+#: src/index.js:704
+msgid "Dismiss"
+msgstr "ปิด"
+
+#: src/components/widgets/SsbFollowPlugins.jsx:41
+#: src/components/widgets/SsbFollowPlugins.jsx:44
+msgid "Share on LinkedIn"
+msgstr "แชร์บน LinkedIn"
+
+#: src/components/widgets/SsbGoProSection.jsx:15
+#: src/components/widgets/SsbGoProSection.jsx:20
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button, so they blend naturally with your website's design "
+"instead of standing out like a default plugin. Buttons that fit your site "
+"tend to get clicked more, which means more shares and more traffic for you. "
+"Pro also adds features like buttons on images, popups on exit intent, fly "
+"in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro ช่วยให้คุณตั้งค่าสีพื้นหลัง สีเมื่อชี้ "
+"และสีไอคอนที่กำหนดเองสำหรับแต่ละปุ่ม "
+"เพื่อให้เข้ากับการออกแบบของเว็บไซต์ของคุณแทนที่จะเด่นออกมาราวกับปลั๊กอินเริ่"
+"มต้น ปุ่มที่เข้ากับเว็บไซต์ของคุณมักจะถูกคลิกมากขึ้น "
+"ซึ่งหมายถึงการแชร์มากขึ้นและการเข้าชมมากขึ้นสำหรับคุณ Pro "
+"ยังเพิ่มฟีเจอร์เช่นปุ่มบนรูปภาพ ป๊อปอัปเมื่อมีเจตนาออก "
+"การเคลื่อนไหวแบบเลื่อนเข้ามา และอื่น ๆ."
+
+#: src/components/widgets/SsbGoProSection.jsx:25
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos across your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site. You can also hide them "
+"on mobile and control exactly which post types they appear on. It's an easy "
+"way to turn every image into a shareable opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro "
+"ช่วยให้คุณแสดงปุ่มแชร์โดยตรงบนรูปภาพและภาพถ่ายในโพสต์และหน้าของคุณ "
+"เลือกตำแหน่งของพวกเขา เพิ่มระยะห่างของไอคอน "
+"และตั้งค่าสีที่กำหนดเองซึ่งตรงกับเว็บไซต์ของคุณ "
+"คุณยังสามารถซ่อนพวกเขาบนมือถือและควบคุมประเภทโพสต์ที่พวกเขาปรากฏอยู่ "
+"มันเป็นวิธีง่าย ๆ "
+"ในการเปลี่ยนทุกภาพให้กลายเป็นโอกาสในการแชร์และเพิ่มการเข้าชม."
+
+#: src/components/widgets/SsbGoProSection.jsx:30
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message, and trigger it exactly when it matters, like before "
+"visitors leave or after they scroll. You can add animation, display share "
+"counts or total shares to build social proof, and set custom colors to "
+"match your brand. It's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro "
+"ช่วยให้คุณสร้างป๊อปอัปแชร์ที่กำหนดเองด้วยชื่อและข้อความของคุณเอง "
+"และกระตุ้นมันในช่วงเวลาที่สำคัญ เช่น "
+"ก่อนที่ผู้เข้าชมจะออกจากเว็บไซต์หรือหลังจากที่พวกเขาเลื่อน "
+"คุณสามารถเพิ่มการเคลื่อนไหว "
+"แสดงจำนวนการแชร์หรือจำนวนแชร์ทั้งหมดเพื่อสร้างหลักฐานทางสังคม "
+"และตั้งค่าสีที่กำหนดเองเพื่อให้ตรงกับแบรนด์ของคุณ "
+"มันเป็นวิธีที่ชาญฉลาดในการดึงดูดความสนใจของผู้เข้าชมในช่วงเวลาที่พวกเขาน่าจะ"
+"แชร์มากที่สุด."
+
+#: src/components/widgets/SsbGoProSection.jsx:35
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message, choose its position and animation, and even display "
+"share counts or total shares to build social proof. You can fine-tune "
+"timing, icon spacing, and colors to match your brand, and control which "
+"post types it appears on. It's a great way to prompt visitors to share "
+"right when they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro ช่วยให้คุณสร้างกล่อง Fly In "
+"ที่กำหนดเองด้วยชื่อและข้อความของคุณเอง เลือกตำแหน่งและการเคลื่อนไหว "
+"และแม้กระทั่งแสดงจำนวนการแชร์หรือจำนวนแชร์ทั้งหมดเพื่อสร้างหลักฐานทางสังคม "
+"คุณสามารถปรับแต่งระยะเวลา ระยะห่างของไอคอน และสีให้ตรงกับแบรนด์ของคุณ "
+"และควบคุมประเภทโพสต์ที่มันปรากฏอยู่ "
+"มันเป็นวิธีที่ยอดเยี่ยมในการกระตุ้นให้ผู้เข้าชมแชร์ในช่วงเวลาที่พวกเขามีส่วน"
+"ร่วมมากที่สุด."
+
+#: src/components/widgets/SsbGoProSection.jsx:68
+#: src/components/widgets/SsbGoProSection.jsx:72
+msgid "Failed to activate the plugin."
+msgstr "ไม่สามารถเปิดใช้งานปลั๊กอินได้."
+
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Activate Pro"
+msgstr "คลิกที่นี่เพื่อเปิดใช้งาน Pro"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:74
+msgid "Please enter your email."
+msgstr "กรุณาใส่อีเมลของคุณ"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:83
+msgid "Please enter a valid email address."
+msgstr "กรุณาใส่อีเมลที่ถูกต้อง"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:108
+#: src/components/widgets/SsbNewsletterWidget.jsx:123
+msgid "Failed to subscribe."
+msgstr "สมัครสมาชิกไม่สำเร็จ"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:116
+msgid "Thank you!"
+msgstr "ขอบคุณ!"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:124
+msgid "Please try again."
+msgstr "กรุณาลองอีกครั้ง"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:135
+msgid "Newsletter"
+msgstr "จดหมายข่าว"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:169
+msgid "Subscribing"
+msgstr "กำลังสมัครสมาชิก"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:170
+msgid "Subscribe"
+msgstr "สมัครสมาชิก"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:183
+#: src/components/widgets/SsbNewsletterWidget.jsx:205
+msgid "Dismiss notice"
+msgstr "ปิดการแจ้งเตือน"
+
+#: src/components/widgets/SsbSidebar.jsx:36
+msgid "Upgrade to Pro!"
+msgstr "อัปเกรดเป็น Pro!"
+
+#: src/components/widgets/SsbSidebar.jsx:38
+msgid ""
+"Unlock premium features designed to help you increase engagement, boost "
+"visibility, and save time."
+msgstr ""
+"ปลดล็อกฟีเจอร์พรีเมียมที่ออกแบบมาเพื่อช่วยคุณเพิ่มการมีส่วนร่วม "
+"เพิ่มการมองเห็น และประหยัดเวลา"
+
+#: src/components/widgets/SsbSidebar.jsx:48
+msgid "Unlimited Websites:"
+msgstr "เว็บไซต์ไม่จำกัด:"
+
+#: src/components/widgets/SsbSidebar.jsx:49
+msgid "Use SSB Pro across all your sites (no limits)"
+msgstr "ใช้ SSB Pro บนเว็บไซต์ทั้งหมดของคุณ (ไม่มีขีดจำกัด)"
+
+#: src/components/widgets/SsbSidebar.jsx:52
+msgid "Priority Support:"
+msgstr "การสนับสนุนที่มีลำดับความสำคัญ:"
+
+#: src/components/widgets/SsbSidebar.jsx:53
+msgid "Get fast, friendly help from our expert support team when you need it."
+msgstr ""
+"รับความช่วยเหลืออย่างรวดเร็วและเป็นมิตรจากทีมสนับสนุนผู้เชี่ยวชาญของเราเมื่อ"
+"คุณต้องการ"
+
+#: src/components/widgets/SsbSidebar.jsx:56
+msgid "1 Year of Updates:"
+msgstr "อัปเดต 1 ปี:"
+
+#: src/components/widgets/SsbSidebar.jsx:57
+msgid "Stay secure and compatible with the latest releases."
+msgstr "รักษาความปลอดภัยและความเข้ากันได้กับการเปิดตัวล่าสุด"
+
+#: src/components/widgets/SsbSidebar.jsx:60
+msgid "No Coding Required:"
+msgstr "ไม่ต้องเขียนโค้ด:"
+
+#: src/components/widgets/SsbSidebar.jsx:61
+msgid "Set up and customize buttons effortlessly from the dashboard."
+msgstr "ตั้งค่าและปรับแต่งปุ่มได้อย่างง่ายดายจากแดชบอร์ด"
+
+#: src/components/widgets/SsbSidebar.jsx:64
+msgid "Quick & Flexible Button Placement:"
+msgstr "การวางปุ่มที่รวดเร็วและยืดหยุ่น:"
+
+#: src/components/widgets/SsbSidebar.jsx:65
+msgid "Add buttons exactly where you want: posts, pages, or custom locations."
+msgstr "เพิ่มปุ่มในตำแหน่งที่คุณต้องการ: โพสต์, หน้า หรือสถานที่ที่กำหนดเอง."
+
+#: src/components/widgets/SsbSidebar.jsx:68
+msgid "Fully Responsive Design:"
+msgstr "การออกแบบที่ตอบสนองได้อย่างเต็มที่:"
+
+#: src/components/widgets/SsbSidebar.jsx:69
+msgid "Your social buttons look great on desktop, tablet, and mobile."
+msgstr "ปุ่มโซเชียลของคุณดูดีบนเดสก์ท็อป แท็บเล็ต และมือถือ."
+
+#: src/components/widgets/SsbSidebar.jsx:72
+msgid "Ongoing Feature Improvements:"
+msgstr "การปรับปรุงฟีเจอร์อย่างต่อเนื่อง:"
+
+#: src/components/widgets/SsbSidebar.jsx:73
+msgid "Regular updates with new features and performance enhancements."
+msgstr "อัปเดตเป็นประจำด้วยฟีเจอร์ใหม่และการปรับปรุงประสิทธิภาพ."
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "Get up to"
+msgstr "รับส่วนลดสูงสุดถึง"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "50%"
+msgstr "50%"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "off your first year of Simple Social Buttons."
+msgstr "จากปีแรกของ Simple Social Buttons."
+
+#: src/components/widgets/SsbSidebar.jsx:86
+msgid "Unlock Pro Features"
+msgstr "ปลดล็อกฟีเจอร์ Pro"
+
+#: src/components/widgets/SsbSidebar.jsx:89
+msgid "* Discount applied automatically"
+msgstr "* ส่วนลดจะถูกนำไปใช้โดยอัตโนมัติ"
+
+#: src/components/widgets/SsbSidebar.jsx:92
+msgid "Reviewer avatar"
+msgstr "อวตารผู้ตรวจสอบ"
+
+#: src/components/widgets/SsbSidebar.jsx:94
+msgid "John"
+msgstr "จอห์น"
+
+#: src/components/widgets/SsbSidebar.jsx:97
+msgid "5 star rating"
+msgstr "คะแนน 5 ดาว"
+
+#: src/components/widgets/SsbSidebar.jsx:100
+msgid ""
+"The plug-in really works well. The developers and the creators did a good "
+"job!"
+msgstr "ปลั๊กอินทำงานได้ดีจริงๆ นักพัฒนาและผู้สร้างทำงานได้ดีมาก!"
+
+#: src/components/widgets/SsbSidebar.jsx:111
+msgid "Designed and Maintained by"
+msgstr "ออกแบบและดูแลโดย"
+
+#: src/components/widgets/SsbSidebar.jsx:113
+msgid "Company logo"
+msgstr "โลโก้บริษัท"
+
+#: src/index.js:588
+msgid "Tab content not found"
+msgstr "ไม่พบเนื้อหาของแท็บ"
+
+#: src/index.js:628
+#: src/utils/formHelpers.js:233
+msgid "Settings saved successfully!"
+msgstr "บันทึกการตั้งค่าเรียบร้อยแล้ว!"
+
+#: src/index.js:646
+msgid "Loading…"
+msgstr "กำลังโหลด…"
+
+#: src/index.js:647
+msgid "Try again"
+msgstr "ลองอีกครั้ง"
+
+#: src/index.js:671
+#: src/index.js:727
+msgid "Saving..."
+msgstr "กำลังบันทึก..."
+
+#: src/index.js:671
+#: src/index.js:726
+msgid "Save Changes"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
+#: src/utils/constants.js:22
+msgid "Advanced"
+msgstr "ขั้นสูง"
+
+#: src/utils/constants.js:26
+msgid "Social"
+msgstr "สังคม"
+
+#: src/utils/constants.js:30
+msgid "Upgrade To Pro For More Features"
+msgstr "อัปเกรดเป็น Pro เพื่อฟีเจอร์เพิ่มเติม"
+
+#: src/utils/constants.js:93
+msgid ""
+"Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require "
+"Simple Social Buttons Pro."
+msgstr ""
+"เปิดใช้งานแถบด้านข้างหรือตัวในเพื่อบันทึกการตั้งค่า สื่อ, ป๊อปอัพ, "
+"และฟลายอินต้องการ Simple Social Buttons Pro."
+
+#: src/utils/formHelpers.js:209
+msgid "Unknown error while saving settings."
+msgstr "เกิดข้อผิดพลาดที่ไม่รู้จักขณะบันทึกการตั้งค่า."
+
+#: src/utils/purgeNotice.js:24
+msgid "Missing admin configuration for purge status."
+msgstr "การกำหนดค่าผู้ดูแลระบบหายไปสำหรับสถานะการล้างข้อมูล."
+
+#: src/utils/purgeNotice.js:44
+msgid "Unable to load purge status."
+msgstr "ไม่สามารถโหลดสถานะการล้างข้อมูล."
+
+#: src/utils/settingsManager.js:71
+msgid "Network error while loading settings. Check your connection and try again."
+msgstr ""
+"เกิดข้อผิดพลาดเครือข่ายขณะโหลดการตั้งค่า "
+"ตรวจสอบการเชื่อมต่อของคุณและลองอีกครั้ง."
+
+#: src/utils/settingsManager.js:80
+msgid "Could not read the server response. Try refreshing the page."
+msgstr "ไม่สามารถอ่านการตอบสนองจากเซิร์ฟเวอร์ได้ ลองรีเฟรชหน้า."
+
+#: src/utils/settingsManager.js:86
+msgid "Invalid response from server."
+msgstr "การตอบสนองจากเซิร์ฟเวอร์ไม่ถูกต้อง."
+
+#: src/utils/settingsManager.js:94
+msgid "Could not load settings. You may need to refresh the page or sign in again."
+msgstr ""
+"ไม่สามารถโหลดการตั้งค่าได้ "
+"คุณอาจต้องรีเฟรชหน้าใหม่หรือลงชื่อเข้าใช้อีกครั้ง."
+
+#: src/utils/settingsManager.js:102
+#. translators: %s: HTTP status code
+msgid "Unable to load settings (HTTP %s)."
+msgstr "ไม่สามารถโหลดการตั้งค่า (HTTP %s)."
+
+#: src/utils/settingsManager.js:110
+msgid "Invalid settings data from server."
+msgstr "ข้อมูลการตั้งค่าไม่ถูกต้องจากเซิร์ฟเวอร์."
+
+#: src/utils/settingsManager.js:285
+msgid "Something went wrong while loading settings."
+msgstr "มีบางอย่างผิดพลาดขณะโหลดการตั้งค่า."
+
+#: simple-social-buttons.php:3798
+msgctxt "Word count type. Do not translate!"
+msgid "words"
+msgstr "คำ"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block title"
+msgid "Click to Post"
+msgstr "คลิกเพื่อโพสต์"
+
+#: blocks/shortcode/block.json
+msgctxt "block title"
+msgid "Simple Social Buttons"
+msgstr "ปุ่มสังคมง่ายๆ"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block description"
+msgid "SSB Click to post easy way to post your content."
+msgstr "SSB คลิกเพื่อโพสต์วิธีง่ายๆ ในการโพสต์เนื้อหาของคุณ。"
+
+#: blocks/shortcode/block.json
+msgctxt "block description"
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your sites, such as: Facebook, WhatsApp, Viber, Twitter, Reddit, "
+"LinkedIn and Pinterest."
+msgstr ""
+"Simple Social Buttons "
+"เพิ่มชุดปุ่มแชร์โซเชียลมีเดียที่ทันสมัยไปยังเว็บไซต์ของคุณ เช่น: Facebook, "
+"WhatsApp, Viber, Twitter, Reddit, LinkedIn และ Pinterest。"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "twiter"
+msgstr "ทวิตเตอร์"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "clicktotweet"
+msgstr "คลิกเพื่อทวีต"
+
+#: blocks/click-to-tweet/block.json
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "ssb"
+msgstr "ssb"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Social Share"
+msgstr "แชร์โซเชียล"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Button"
+msgstr "ปุ่ม"

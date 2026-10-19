@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:29+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sv-SE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Enkla sociala knappar"
+            ],
+            "Download Log File": [
+                "Ladda ner loggfil"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Enkel Sociala Knappar Loggfil Nedladdad Framg\u00e5ngsrikt!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Enkla sociala knappar<\/strong> fr\u00e5n <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> l\u00e4gger till ett avancerat set av knappar f\u00f6r delning p\u00e5 sociala medier till dina WordPress-sajter, s\u00e5som: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> och <strong>Pinterest<\/strong>. Detta g\u00f6r det till det mest flexibla pluginet f\u00f6r delning p\u00e5 sociala medier f\u00f6r alla."
+            ],
+            "Help & Troubleshooting": [
+                "Hj\u00e4lp & Fels\u00f6kning"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Gratis support finns p\u00e5 %splugin supportforum%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "F\u00f6r premiumfunktioner, till\u00e4gg och prioriterad e-postsupport, %supgrade to pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Hittade du en bugg eller har en funktionsf\u00f6rfr\u00e5gan? V\u00e4nligen skicka in ett \u00e4rende %sh\u00e4r!%s"
+            ]
+        }
+    }
+}

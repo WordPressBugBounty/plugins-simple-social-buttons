@@ -339,6 +339,7 @@ class Ssb_React_Admin {
 	 * @param string $hook Current admin page hook.
 	 * @since 7.0.0
 	 * @return void
+	 * @version 7.2.0
 	 */
 	public function ssb_enqueue_react_scripts( $hook ) {
 		$this->ssb_enqueue_outside_plugin_admin_assets();
@@ -347,6 +348,7 @@ class Ssb_React_Admin {
 			return;
 		}
 
+		$this->ssb_maybe_register_react_jsx_runtime();
 		$this->ssb_enqueue_wp_dependencies();
 		$this->ssb_enqueue_main_script();
 		$this->ssb_enqueue_styles();
@@ -355,25 +357,69 @@ class Ssb_React_Admin {
 	}
 
 	/**
+	 * Register react-jsx-runtime on WordPress versions that do not ship it.
+	 *
+	 * @wordpress/scripts 28+ may list react-jsx-runtime as a dependency.
+	 * Core registers that handle from WordPress 6.6. Without a polyfill, the
+	 * React settings UI never prints on older supported WordPress releases.
+	 * No-op when core (or another plugin) already registered the handle.
+	 *
+	 * @since 7.2.0
+	 * @return void
+	 */
+	private function ssb_maybe_register_react_jsx_runtime() {
+		if ( wp_script_is( 'react-jsx-runtime', 'registered' ) ) {
+			return;
+		}
+
+		wp_register_script(
+			'react-jsx-runtime',
+			false,
+			array( 'react' ),
+			'18.3.1',
+			true
+		);
+
+		// Maps the automatic JSX runtime API to React.createElement (WP < 6.6).
+		$jsx_runtime = 'window.ReactJSXRuntime=window.ReactJSXRuntime||{'
+			. 'Fragment:window.React.Fragment,'
+			. 'jsx:function(type,config,maybeKey){'
+			. 'var props=Object.assign({},config);'
+			. 'if(maybeKey!==undefined){props.key=maybeKey;}'
+			. 'return window.React.createElement(type,props);'
+			. '},'
+			. 'jsxs:function(type,config,maybeKey){'
+			. 'var props=Object.assign({},config);'
+			. 'if(maybeKey!==undefined){props.key=maybeKey;}'
+			. 'return window.React.createElement(type,props);'
+			. '}};';
+
+		wp_add_inline_script( 'react-jsx-runtime', $jsx_runtime );
+	}
+
+	/**
 	 * Enqueue Lite upgrade-menu assets across the WordPress admin.
 	 *
 	 * @since 7.1.0
 	 * @return void
+	 * @version 7.2.0
 	 */
 	private function ssb_enqueue_outside_plugin_admin_assets() {
 		if ( class_exists( 'Simple_Social_Buttons_Pro' ) ) {
 			return;
 		}
 
+		$suffix = ssb_asset_min_suffix();
+
 		wp_enqueue_style(
 			'ssb-outside-plugin-admin',
-			SSB_PLUGIN_URL . 'assets/css/outside-plugin-admin.css',
+			SSB_PLUGIN_URL . 'assets/css/outside-plugin-admin' . $suffix . '.css',
 			array(),
 			SSB_VERSION
 		);
 		wp_enqueue_script(
 			'ssb-outside-plugin-admin',
-			SSB_PLUGIN_URL . 'assets/js/outside-plugin-admin.js',
+			SSB_PLUGIN_URL . 'assets/js/outside-plugin-admin' . $suffix . '.js',
 			array( 'jquery' ),
 			SSB_VERSION,
 			false
@@ -421,6 +467,7 @@ class Ssb_React_Admin {
 	 * @return void
 	 *
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_enqueue_main_script() {
 		$asset_data = $this->ssb_get_asset_data();
@@ -432,6 +479,7 @@ class Ssb_React_Admin {
 			$asset_data['version'],
 			true
 		);
+		wp_set_script_translations( 'ssb-react-admin', 'simple-social-buttons', SSB_PLUGIN_DIR . 'lang' );
 	}
 
 	/**
@@ -440,12 +488,15 @@ class Ssb_React_Admin {
 	 * @return void
 	 *
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_enqueue_styles() {
+		$suffix = ssb_asset_min_suffix();
+
 		wp_enqueue_style( 'wp-color-picker' );
 		wp_enqueue_style(
 			'ssb-admin-react',
-			SSB_PLUGIN_URL . 'assets/css/admin.css',
+			SSB_PLUGIN_URL . 'assets/css/admin' . $suffix . '.css',
 			array( 'wp-color-picker' ),
 			SSB_VERSION
 		);
@@ -457,7 +508,7 @@ class Ssb_React_Admin {
 	 * @return void
 	 *
 	 * @since 7.0.0
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 */
 	private function ssb_localize_script() {
 		wp_localize_script(
@@ -478,6 +529,7 @@ class Ssb_React_Admin {
 				'postTypes'     => $this->ssb_get_post_types(),
 				'version'       => SSB_VERSION,
 				'knownButtons'  => function_exists( 'ssb_get_known_buttons' ) ? ssb_get_known_buttons() : array(),
+				'purgeNotice'   => class_exists( 'Ssb_Admin_Bar_Purge' ) ? Ssb_Admin_Bar_Purge::get_notice_for_display() : null,
 			)
 		);
 	}
@@ -487,25 +539,37 @@ class Ssb_React_Admin {
 	 *
 	 * @since 7.0.0
 	 * @return array{dependencies: array, version: string} Asset dependencies and version.
+	 * @version 7.2.0
 	 */
 	private function ssb_get_asset_data() {
+		static $cached = null;
+
+		if ( null !== $cached ) {
+			return $cached;
+		}
+
 		$asset_file_path = SSB_PLUGIN_DIR . 'build/index.asset.php';
 
 		if ( ! file_exists( $asset_file_path ) ) {
-			return array(
+			return $cached = array( // phpcs:ignore
 				'dependencies' => array(),
 				'version'      => SSB_VERSION,
 			);
 		}
 
-		$asset_data = include $asset_file_path;
+		// Use include (not include_once): asset.php returns an array; include_once
+		// returns true on a second load and would drop dependencies.
+		$asset_data = include $asset_file_path; // NOSONAR .
+		if ( ! is_array( $asset_data ) ) {
+			$asset_data = array();
+		}
 
-		return array_merge(
+		return $cached = array_merge( // phpcs:ignore
 			array(
 				'dependencies' => array(),
 				'version'      => SSB_VERSION,
 			),
-			array( $asset_data )
+			$asset_data
 		);
 	}
 
@@ -685,6 +749,7 @@ class Ssb_React_Admin {
 	 * @param string $section_name Section name.
 	 * @return bool
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_is_valid_section( $section_name ) {
 		return in_array( $section_name, $this->ssb_get_all_sections(), true );
@@ -715,6 +780,7 @@ class Ssb_React_Admin {
 		'show_on_search',
 		'ssb_enable_ngg_setting',
 		'ssb_enable_ngg_on_list',
+		'http_https_resolve',
 	);
 
 	/**
@@ -751,6 +817,7 @@ class Ssb_React_Admin {
 	 * @since 7.0.0
 	 * @param array $data Settings array (may be nested).
 	 * @return array Normalized copy.
+	 * @version 7.2.0
 	 */
 	private function ssb_normalize_settings_for_react( $data ) {
 		if ( ! is_array( $data ) ) {
@@ -764,6 +831,10 @@ class Ssb_React_Admin {
 				$out[ $key ] = rest_sanitize_boolean( $value );
 			} elseif ( in_array( $key, self::INTEGER_KEYS, true ) ) {
 				$out[ $key ] = is_numeric( $value ) ? (int) $value : $value;
+			} elseif ( 'location' === $key ) {
+				$out[ $key ] = ssb_sanitize_inline_location( $value );
+			} elseif ( 'icon_space_value' === $key ) {
+				$out[ $key ] = ssb_sanitize_icon_space_value( $value );
 			} else {
 				$out[ $key ] = $value;
 			}
@@ -816,14 +887,28 @@ class Ssb_React_Admin {
 	 * @param string $data JSON encoded data.
 	 * @return void
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_save_all_sections( $data ) {
 		// Do not use stripslashes() on JSON — it corrupts escape sequences (e.g. \n becomes literal "n").
 		$all_data = json_decode( $data, true );
 
-		if ( ! $all_data ) {
+		if ( ! $all_data || ! is_array( $all_data ) ) {
 			wp_send_json_error( array( 'message' => __( 'Invalid data', 'simple-social-buttons' ) ) );
 			return;
+		}
+
+		// Validate every section before changing anything (factory reset or partial saves).
+		foreach ( array_keys( $all_data ) as $section_name ) {
+			if ( ! $this->ssb_is_valid_section( $section_name ) ) {
+				wp_send_json_error(
+					array(
+						/* translators: %s: invalid section name. */
+						'message' => sprintf( __( 'Invalid settings section: %s', 'simple-social-buttons' ), $section_name ),
+					)
+				);
+				return;
+			}
 		}
 
 		// Check if factory reset is triggered.
@@ -834,16 +919,6 @@ class Ssb_React_Admin {
 		}
 
 		foreach ( $all_data as $section_name => $section_data ) {
-			if ( ! $this->ssb_is_valid_section( $section_name ) ) {
-				wp_send_json_error(
-					array(
-						/* translators: %s: invalid section name. */
-						'message' => sprintf( __( 'Invalid settings section: %s', 'simple-social-buttons' ), $section_name ),
-					)
-				);
-				return;
-			}
-
 			if ( $factory_reset_triggered ) {
 				// Use restored defaults instead of incoming data.
 				$sanitized_data = $this->ssb_get_restored_defaults( $section_name );
@@ -877,6 +952,7 @@ class Ssb_React_Admin {
 	 * @param string       $section Section name.
 	 * @param string|array $data    Section data (JSON string or array).
 	 * @return void
+	 * @version 7.2.0
 	 */
 	private function ssb_save_single_section( $section, $data ) {
 		if ( ! $this->ssb_is_valid_section( $section ) ) {
@@ -911,17 +987,17 @@ class Ssb_React_Admin {
 	 * @param array  $data Section data.
 	 * @return array Data with defaults applied.
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_apply_section_defaults( $section_name, $data ) {
 		$defaults = $this->ssb_get_section_defaults( $section_name );
 		$merged   = array_merge( $defaults, $data );
 
 		// Special handling for ngg_gallery - preserve empty strings for description.
-		if ( 'ssb_ngg_gallery' === $section_name && isset( $data['ssb_enable_ngg_description'] ) ) {
-			// If user explicitly set it to empty string, preserve it.
-			if ( '' === $data['ssb_enable_ngg_description'] ) {
-				$merged['ssb_enable_ngg_description'] = '';
-			}
+		if ( 'ssb_ngg_gallery' === $section_name
+			&& isset( $data['ssb_enable_ngg_description'] )
+			&& '' === $data['ssb_enable_ngg_description'] ) {
+			$merged['ssb_enable_ngg_description'] = '';
 		}
 
 		return $merged;
@@ -992,6 +1068,7 @@ class Ssb_React_Admin {
 	 *
 	 * @return array
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_get_popup_defaults() {
 		return array(
@@ -1003,6 +1080,7 @@ class Ssb_React_Admin {
 			'trigger_before_leaving'        => '0',
 			'trigger_after_scrolling'       => '0',
 			'icon_alignment'                => 'left',
+			'text_alignment'                => 'centered',
 			'total_share'                   => '0',
 			'posts'                         => array(
 				'home' => 'home',
@@ -1016,6 +1094,7 @@ class Ssb_React_Admin {
 	 *
 	 * @return array
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_get_flyin_defaults() {
 		return array(
@@ -1025,6 +1104,7 @@ class Ssb_React_Admin {
 			'animation'      => 'no-animation',
 			'postion'        => 'bottom-right',
 			'icon_alignment' => 'left',
+			'text_alignment' => 'centered',
 			'total_share'    => '0',
 			'posts'          => array( 'post' => 'post' ),
 		);
@@ -1162,16 +1242,15 @@ class Ssb_React_Admin {
 	 * @param array  $data Section data.
 	 * @return array Processed data
 	 * @since 7.0.0
+	 * @version 7.2.0
 	 */
 	private function ssb_handle_special_cases( $section_name, $data ) {
-		if ( in_array( $section_name, array( 'ssb_inline', 'ssb_sidebar' ), true ) ) {
-			if (
-				isset( $data['icon_limit'] )
-				&& rest_sanitize_boolean( $data['icon_limit'] )
-				&& ( ! isset( $data['icon_limit_value'] ) || absint( $data['icon_limit_value'] ) < 3 )
-			) {
-				$data['icon_limit_value'] = 3;
-			}
+		if ( in_array( $section_name, array( 'ssb_inline', 'ssb_sidebar' ), true )
+			&& isset( $data['icon_limit'] )
+			&& rest_sanitize_boolean( $data['icon_limit'] )
+			&& ( ! isset( $data['icon_limit_value'] ) || absint( $data['icon_limit_value'] ) < 3 )
+		) {
+			$data['icon_limit_value'] = 3;
 		}
 
 		// Handle factory reset.
@@ -1220,14 +1299,15 @@ class Ssb_React_Admin {
 
 		// Sanitize custom_buttons and sync icon_selection for ssb_networks (full form save only).
 		if ( 'ssb_networks' === $section_name && isset( $data['custom_buttons'] ) && is_array( $data['custom_buttons'] ) ) {
-			$allowed_keys = array( 'label', 'url', 'icon_url', 'bg_color', 'hover_bg_color', 'text_color' );
+			$allowed_keys = array( 'label', 'url', 'icon_url', 'bg_color', 'hover_bg_color', 'text_color', 'hover_text_color' );
 			$defaults     = array(
-				'label'          => '',
-				'url'            => '',
-				'icon_url'       => '',
-				'bg_color'       => '#0865ff',
-				'hover_bg_color' => '#1557b0',
-				'text_color'     => '#ffffff',
+				'label'            => '',
+				'url'              => '',
+				'icon_url'         => '',
+				'bg_color'         => '#0865ff',
+				'hover_bg_color'   => '#1557b0',
+				'text_color'       => '#ffffff',
+				'hover_text_color' => '',
 			);
 			$sanitized    = array();
 			foreach ( $data['custom_buttons'] as $cid => $entry ) {
@@ -1243,10 +1323,18 @@ class Ssb_React_Admin {
 					$v = $row[ $key ];
 					if ( 'url' === $key || 'icon_url' === $key ) {
 						$out[ $key ] = is_string( $v ) ? esc_url_raw( $v ) : '';
-					} elseif ( 'bg_color' === $key || 'hover_bg_color' === $key || 'text_color' === $key ) {
+					} elseif ( 'bg_color' === $key || 'hover_bg_color' === $key || 'text_color' === $key || 'hover_text_color' === $key ) {
 						$out[ $key ] = is_string( $v ) ? sanitize_hex_color( $v ) : $out[ $key ];
 						if ( empty( $out[ $key ] ) ) {
-							$out[ $key ] = ( 'text_color' === $key ) ? '#ffffff' : ( ( 'hover_bg_color' === $key ) ? '#1557b0' : '#0865ff' );
+							if ( 'hover_text_color' === $key ) {
+								$out[ $key ] = '';
+							} elseif ( 'text_color' === $key ) {
+								$out[ $key ] = '#ffffff';
+							} elseif ( 'hover_bg_color' === $key ) {
+								$out[ $key ] = '#1557b0';
+							} else {
+								$out[ $key ] = '#0865ff';
+							}
 						}
 					} else {
 						$out[ $key ] = sanitize_text_field( $v );
@@ -1317,7 +1405,7 @@ class Ssb_React_Admin {
 	 * @param mixed  $value Field value.
 	 * @return mixed Sanitized value.
 	 * @since 7.0.0
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 */
 	private function ssb_sanitize_field_value( $key, $value ) {
 		switch ( $key ) {
@@ -1330,11 +1418,12 @@ class Ssb_React_Admin {
 					return is_array( $existing_advanced ) && isset( $existing_advanced['ssb_js'] ) ? $existing_advanced['ssb_js'] : '';
 				}
 				// Incoming base64 from client (transport only). Decode once and store raw.
-				if ( is_string( $value ) && preg_match( '/^[A-Za-z0-9+\/=]+\s*$/', trim( $value ) ) ) {
+				// Use # delimiters so `/` inside the character class is not the pattern terminator.
+				if ( is_string( $value ) && preg_match( '#^[A-Za-z0-9+/=]+\s*$#', trim( $value ) ) ) {
 					// phpcs:ignore WordPress.PHP.DiscouragedPHPFunctions.obfuscation_base64_decode
 					$decoded = base64_decode( trim( $value ), true );
 					if ( false !== $decoded ) {
-						return preg_replace( '/[\x00]/', '', $decoded );
+						return preg_replace( '/[\x00]/', '', $decoded ); // NOSONAR.
 					}
 				}
 				return $value;
@@ -1344,6 +1433,7 @@ class Ssb_React_Admin {
 			case 'ssb_facebook_page_url':
 				return is_string( $value ) ? esc_url_raw( $value ) : '';
 			case 'icon_space_value':
+				return ssb_sanitize_icon_space_value( $value );
 			case 'time_interval':
 			case 'trigger_after_scrolling_value':
 				return absint( $value );
@@ -1368,10 +1458,13 @@ class Ssb_React_Admin {
 			case 'ssb_factory_reset':
 			case 'ssb_enable_ngg_setting':
 			case 'ssb_enable_ngg_on_list':
+			case 'http_https_resolve':
 				return rest_sanitize_boolean( $value ) ? '1' : '0';
 			case 'location':
+				return ssb_sanitize_inline_location( $value );
 			case 'animation':
 			case 'icon_alignment':
+			case 'text_alignment':
 			case 'orientation':
 			case 'display_position':
 			case 'postion':
@@ -1382,6 +1475,18 @@ class Ssb_React_Admin {
 			case 'share_title':
 			case 'snapchat_client_id':
 				return sanitize_text_field( $value );
+			case 'background_color':
+			case 'hover_background_color':
+			case 'icon_color':
+			case 'hover_icon_color':
+			case 'box_background_color':
+			case 'box_text_color':
+			case 'total_share_color':
+				if ( ! is_string( $value ) || '' === trim( $value ) ) {
+					return '';
+				}
+				$color = sanitize_hex_color( $value );
+				return $color ? $color : '';
 			default:
 				return sanitize_text_field( $value );
 		}
@@ -1523,5 +1628,6 @@ class Ssb_React_Admin {
 	}
 }
 
-// Initialize React Admin if version compatibility is met.
-new Ssb_React_Admin();
+// Initialize React Admin if version compatibility is met (hooks register in constructor).
+$GLOBALS['ssb_react_admin'] = new Ssb_React_Admin();
+

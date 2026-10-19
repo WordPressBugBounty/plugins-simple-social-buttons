@@ -1,0 +1,669 @@
+{
+    "translation-revision-date": "2026-09-24 10:29+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/index.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sv-SE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Enkla sociala knappar"
+            ],
+            "Post Type Settings": [
+                "Inst\u00e4llningar f\u00f6r inl\u00e4ggstyp"
+            ],
+            "Spread the Word": [
+                "Sprid ordet"
+            ],
+            "Share on X\/Twitter": [
+                "Dela p\u00e5 X\/Twitter"
+            ],
+            "Share on Facebook": [
+                "Pawek Rabinek p\u00e5 Facebook"
+            ],
+            "Rate on WordPress.org": [
+                "Betygs\u00e4tt p\u00e5 WordPress.org"
+            ],
+            "Email": [
+                "E-post"
+            ],
+            "Name": [
+                "Namn"
+            ],
+            "Recommended Plugins": [
+                "Rekommenderade plugins"
+            ],
+            "Customize WordPress Login Page": [
+                "Anpassa WordPress inloggningssida"
+            ],
+            "Simplify Google Analytics in WordPress": [
+                "F\u00f6renkla Google Analytics i WordPress"
+            ],
+            "Related Posts Thumbnails": [
+                "Relaterade inl\u00e4ggsminiatyrer"
+            ],
+            "Under Construction & Maintenance mode": [
+                "Under konstruktion & Underh\u00e5llsl\u00e4ge"
+            ],
+            "Settings": [
+                "Inst\u00e4llningar"
+            ],
+            "Social Buttons": [
+                "G\u00f6m Simple Social Button"
+            ],
+            "Social Buttons Designs": [
+                "Design f\u00f6r sociala knappar"
+            ],
+            "Social Buttons Positions": [
+                "Positioner f\u00f6r sociala knappar"
+            ],
+            "Sidebar": [
+                "Sidof\u00e4lt"
+            ],
+            "On Media": [
+                "P\u00e5 media"
+            ],
+            "Popup": [
+                "Popup"
+            ],
+            "Fly In": [
+                "Flyg in"
+            ],
+            "InLine": [
+                "InLine"
+            ],
+            "Additional features": [
+                "Ytterligare inst\u00e4llningar"
+            ],
+            "Inline": [
+                "Inline"
+            ],
+            "Media": [
+                "Media"
+            ],
+            "Sidebar Orientation": [
+                "Sidof\u00e4ltets orientering"
+            ],
+            "Left": [
+                "V\u00e4nster"
+            ],
+            "Right": [
+                "H\u00f6ger"
+            ],
+            "Intro Animation": [
+                "Introanimation"
+            ],
+            "No": [
+                "Nej"
+            ],
+            "From Right": [
+                "Fr\u00e5n h\u00f6ger"
+            ],
+            "From Top": [
+                "Fr\u00e5n toppen"
+            ],
+            "From Bottom": [
+                "Fr\u00e5n botten"
+            ],
+            "From Left": [
+                "Fr\u00e5n v\u00e4nster"
+            ],
+            "Fade In": [
+                "Fading in"
+            ],
+            "Display Share Counts": [
+                "Visa delningsr\u00e4kningar"
+            ],
+            "Display Total Shares": [
+                "Visa Totala Dela"
+            ],
+            "Display Text on hover": [
+                "Visa Text vid hover"
+            ],
+            "Flat Button Style": [
+                "Platt Knapstil"
+            ],
+            "Add Icon Spacing": [
+                "L\u00e4gg till Ikonavst\u00e5nd"
+            ],
+            "Enter the Space in Pixel": [
+                "Ange Avst\u00e5nd i Pixlar"
+            ],
+            "Sticky Bottom (Mobile)": [
+                "Klistrig Botten (Mobil)"
+            ],
+            "Hide On Mobile Devices": [
+                "D\u00f6lj P\u00e5 Mobila Enheter"
+            ],
+            "Limit Social Icons": [
+                "Begr\u00e4nsa Sociala Ikoner"
+            ],
+            "Maximum Icons to Show": [
+                "Maximala Ikoner att Visa"
+            ],
+            "Want More Control Over Your Sidebar Social Buttons Styling?": [
+                "Vill Du Ha Mer Kontroll \u00d6ver Stilen f\u00f6r Dina Sidof\u00e4ltssociala Knappar?"
+            ],
+            "Icon Position": [
+                "Ikonposition"
+            ],
+            "Above The Content": [
+                "\u00d6ver Inneh\u00e5llet"
+            ],
+            "Below The Content": [
+                "Under Inneh\u00e5llet"
+            ],
+            "Above + Below The Content": [
+                "\u00d6ver + Under Inneh\u00e5llet"
+            ],
+            "Icon Alignment": [
+                "Ikonalignment"
+            ],
+            "Centered": [
+                "Centrerad"
+            ],
+            "Animation": [
+                "Animation"
+            ],
+            "From bottom": [
+                "Fr\u00e5n botten"
+            ],
+            "From top": [
+                "Fr\u00e5n toppen"
+            ],
+            "From left": [
+                "Fr\u00e5n v\u00e4nster"
+            ],
+            "From right": [
+                "Fr\u00e5n h\u00f6ger"
+            ],
+            "Show at Category pages": [
+                "Visa p\u00e5 kategorisidor"
+            ],
+            "Show at Archive pages": [
+                "Visa p\u00e5 arkivsidor"
+            ],
+            "Show at Tag pages": [
+                "Visa p\u00e5 taggsidor"
+            ],
+            "Show at Search pages": [
+                "Visa p\u00e5 s\u00f6ksidor"
+            ],
+            "Share Title": [
+                "Dela titel"
+            ],
+            "Want More Control Over Your Inline Social Buttons Styling?": [
+                "Vill du ha mer kontroll \u00f6ver stilen f\u00f6r dina inlinje sociala knappar?"
+            ],
+            "Internal Share Flush Interval": [
+                "Intervall f\u00f6r intern delningsflush"
+            ],
+            "Open Graph Tags": [
+                "\u00d6ppna grafetiketter"
+            ],
+            "Remove Settings on Uninstall": [
+                "Ta bort inst\u00e4llningar vid avinstallation"
+            ],
+            "Factory Reset": [
+                "Fabriksinst\u00e4llningar"
+            ],
+            "Custom CSS": [
+                "Anpassad CSS"
+            ],
+            "Custom JS": [
+                "Anpassad JS"
+            ],
+            "Want to Show Social Sharing Buttons on Your Media?": [
+                "Vill du visa sociala delningsknappar p\u00e5 ditt media?"
+            ],
+            "Want Smart Popups That Trigger at the Right Moment?": [
+                "Vill du ha smarta popup-f\u00f6nster som utl\u00f6ses vid r\u00e4tt tillf\u00e4lle?"
+            ],
+            "Want Advanced Fly In Animations That Drive More Shares?": [
+                "Vill du ha avancerade \"Fly In\"-animationer som driver fler delningar?"
+            ],
+            "Facebook": [
+                "Facebook"
+            ],
+            "Pinterest": [
+                "Pinterest"
+            ],
+            "WhatsApp": [
+                "WhatsApp"
+            ],
+            "Share": [
+                "Dela"
+            ],
+            "Bluesky": [
+                "Bluesky"
+            ],
+            "Telegram": [
+                "Telegram"
+            ],
+            "Threads": [
+                "Threads"
+            ],
+            "Post": [
+                "Inl\u00e4gg"
+            ],
+            "Twitter\/X": [
+                "Twitter\/X"
+            ],
+            "Copy Link": [
+                "Kopiera l\u00e4nk"
+            ],
+            "LinkedIn": [
+                "LinkedIn"
+            ],
+            "Reddit": [
+                "Reddit"
+            ],
+            "Viber": [
+                "Viber"
+            ],
+            "Messenger": [
+                "Messenger"
+            ],
+            "Print": [
+                "Skriv ut"
+            ],
+            "Tumblr": [
+                "Tumblr"
+            ],
+            "Line": [
+                "Line"
+            ],
+            "Mastodon": [
+                "Mastodon"
+            ],
+            "VK": [
+                "VK"
+            ],
+            "Snapchat": [
+                "Snapchat"
+            ],
+            "Settings Error": [
+                "Inst\u00e4llningsfel"
+            ],
+            "Something went wrong with the settings page. Please refresh the page to try again.": [
+                "N\u00e5got gick fel med inst\u00e4llningssidan. V\u00e4nligen uppdatera sidan f\u00f6r att f\u00f6rs\u00f6ka igen."
+            ],
+            "Error Details": [
+                "Felinformation"
+            ],
+            "Refresh Page": [
+                "Uppdatera Sida"
+            ],
+            "Toggle setting": [
+                "V\u00e4xla inst\u00e4llning"
+            ],
+            "Select Color": [
+                "V\u00e4lj F\u00e4rg"
+            ],
+            "Clear": [
+                "Rensa"
+            ],
+            "Done": [
+                "Klar"
+            ],
+            "Enter a whole number of pixels from 1 to 999. The value was adjusted.": [
+                "Ange ett heltal av pixlar fr\u00e5n 1 till 999. V\u00e4rdet justerades."
+            ],
+            "Select...": [
+                "V\u00e4lj..."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Enkla sociala knappar<\/strong> fr\u00e5n <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> l\u00e4gger till ett avancerat set av knappar f\u00f6r delning p\u00e5 sociala medier till dina WordPress-sajter, s\u00e5som: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> och <strong>Pinterest<\/strong>. Detta g\u00f6r det till det mest flexibla pluginet f\u00f6r delning p\u00e5 sociala medier f\u00f6r alla."
+            ],
+            "Control how share buttons appear on images and media within your posts.": [
+                "Kontrollera hur delaknappar visas p\u00e5 bilder och media inom dina inl\u00e4gg."
+            ],
+            "Configure your share popup: set the message, timing, and trigger behavior.": [
+                "Konfigurera din delningspopup: st\u00e4ll in meddelandet, tidpunkten och utl\u00f6sarens beteende."
+            ],
+            "Set up a slide-in share prompt with custom messaging, position, and timing": [
+                "St\u00e4ll in en slid-in delningsprompt med anpassat meddelande, position och timing"
+            ],
+            "HTTP\/HTTPS Counts Resolve": [
+                "HTTP\/HTTPS R\u00e4knare L\u00f6st"
+            ],
+            "hour": [
+                "timme"
+            ],
+            "hours": [
+                "timmar"
+            ],
+            "Internal share click counts are recorded for supported networks (for example Twitter\/X, LinkedIn, WhatsApp) when visitors use the sharing buttons on your site. Counts are stored locally and are not sent to those social networks. Clear your page cache after upgrading the plugin so button markup stays in sync.": [
+                "Interna klickr\u00e4kningar f\u00f6r delning registreras f\u00f6r st\u00f6dda n\u00e4tverk (till exempel Twitter\/X, LinkedIn, WhatsApp) n\u00e4r bes\u00f6kare anv\u00e4nder delaknappen p\u00e5 din webbplats. R\u00e4knarna lagras lokalt och skickas inte till dessa sociala n\u00e4tverk. Rensa din sidcache efter att du har uppgraderat pluginet s\u00e5 att knappens markup f\u00f6rblir synkroniserad."
+            ],
+            "Enable to remove all settings upon uninstalling the plugin.": [
+                "Aktivera f\u00f6r att ta bort alla inst\u00e4llningar vid avinstallering av pluginet."
+            ],
+            "Enable to reset all settings back to default upon saving.": [
+                "Aktivera f\u00f6r att \u00e5terst\u00e4lla alla inst\u00e4llningar till standard vid sparande."
+            ],
+            "Click To Post": [
+                "Klicka f\u00f6r att posta"
+            ],
+            "Unlock Click to Tweet Feature with Pro!": [
+                "L\u00e5s upp Klicka f\u00f6r att Tweet-funktionen med Pro!"
+            ],
+            "Get the powerful Click to Tweet functionality that lets you create engaging, tweetable content directly in your posts. This Pro feature helps increase social engagement and drive more traffic to your site.": [
+                "F\u00e5 den kraftfulla Klicka f\u00f6r att Tweet-funktionen som l\u00e5ter dig skapa engagerande, tweetbara inneh\u00e5ll direkt i dina inl\u00e4gg. Denna Pro-funktion hj\u00e4lper till att \u00f6ka sociala engagemang och driva mer trafik till din webbplats."
+            ],
+            "Click here to Upgrade": [
+                "Klicka h\u00e4r f\u00f6r att uppgradera"
+            ],
+            "Loading Pro settings...": [
+                "Laddar Pro-inst\u00e4llningar..."
+            ],
+            "Loading Pro component...": [
+                "Laddar Pro-komponent..."
+            ],
+            "Configure how your inline share buttons appear within your content.": [
+                "Konfigurera hur dina inlinjedelarknappar visas inom ditt inneh\u00e5ll."
+            ],
+            "For Facebook share count you need to add Facebook App ID and Secret in the Social tab.": [
+                "F\u00f6r Facebook-delningr\u00e4kning beh\u00f6ver du l\u00e4gga till Facebook App ID och Secret i fliken Social."
+            ],
+            "Show only a set number of icons in your content. Remaining icons open in a popup when visitors tap the + button.": [
+                "Visa endast ett begr\u00e4nsat antal ikoner i ditt inneh\u00e5ll. \u00c5terst\u00e5ende ikoner \u00f6ppnas i en popup n\u00e4r bes\u00f6kare trycker p\u00e5 + knappen."
+            ],
+            "This text appears on your site as a heading above the inline share buttons. It is not used as the title when someone shares your content on social networks.": [
+                "Denna text visas p\u00e5 din webbplats som en rubrik ovanf\u00f6r inlinjedelarknapparna. Den anv\u00e4nds inte som titel n\u00e4r n\u00e5gon delar ditt inneh\u00e5ll p\u00e5 sociala n\u00e4tverk."
+            ],
+            "Press Enter to move to Inactive.": [
+                "Tryck p\u00e5 Enter f\u00f6r att flytta till Inaktiv."
+            ],
+            "Press Enter to move to Active.": [
+                "Tryck p\u00e5 Enter f\u00f6r att flytta till Aktiv."
+            ],
+            "Use Up and Down arrow keys to reorder.": [
+                "Anv\u00e4nd piltangenterna Upp och Ner f\u00f6r att \u00e4ndra ordning."
+            ],
+            "Drop here": [
+                "Sl\u00e4pp h\u00e4r"
+            ],
+            "Pro": [
+                "Pro"
+            ],
+            "Edit": [
+                "Redigera"
+            ],
+            "Drop at end of list": [
+                "Sl\u00e4pp i slutet av listan"
+            ],
+            "Drag & Drop to activate and reorder your share buttons:": [
+                "Dra & sl\u00e4pp f\u00f6r att aktivera och \u00e4ndra ordning p\u00e5 dina delningsknappar:"
+            ],
+            "Active": [
+                "Aktiv"
+            ],
+            "Inactive": [
+                "Inaktiv"
+            ],
+            "Simple Social Buttons on NextGEN Gallery": [
+                "Enkla sociala knappar p\u00e5 NextGEN Galleri"
+            ],
+            "Select the display styles to position your share buttons.": [
+                "V\u00e4lj visningsstilar f\u00f6r att placera dina delningsknappar."
+            ],
+            "Configure the appearance and behavior of your sidebar share buttons.": [
+                "Konfigurera utseendet och beteendet f\u00f6r dina sidof\u00e4lts delningsknappar."
+            ],
+            "Show only a set number of icons in the sidebar. Remaining icons open in a popup when visitors tap the + button.": [
+                "Visa endast ett visst antal ikoner i sidof\u00e4ltet. \u00c5terst\u00e5ende ikoner \u00f6ppnas i en popup n\u00e4r bes\u00f6kare trycker p\u00e5 + knappen."
+            ],
+            "Add your X username to append via= to Twitter\/X share links from your buttons.": [
+                "L\u00e4gg till ditt X-anv\u00e4ndarnamn f\u00f6r att l\u00e4gga till via= till Twitter\/X delningsl\u00e4nkar fr\u00e5n dina knappar."
+            ],
+            "Twitter\/X @username": [
+                "Twitter\/X @anv\u00e4ndarnamn"
+            ],
+            "Facebook App": [
+                "Facebook-app"
+            ],
+            "How to create a Facebook app": [
+                "Hur man skapar en Facebook-app"
+            ],
+            "Facebook App ID": [
+                "Facebook-app-ID"
+            ],
+            "Required for Facebook share counts. Add your App ID and Secret from the Facebook developer portal.": [
+                "Kr\u00e4vs f\u00f6r Facebook-delningstal. L\u00e4gg till ditt App-ID och hemlighet fr\u00e5n Facebooks utvecklarportal."
+            ],
+            "Facebook App Secret": [
+                "Facebook App-hemlighet"
+            ],
+            "Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat app with your page link ready to share.": [
+                "Snapchat anv\u00e4nder Snap Creative Kit Web s\u00e5 att mobila bes\u00f6kare \u00f6ppnar Snapchat-appen med din sidl\u00e4nk redo att dela."
+            ],
+            "Snap Kit Client ID (optional)": [
+                "Snap Kit Klient-ID (valfritt)"
+            ],
+            "Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit developer portal. Sharing works without it.": [
+                "Valfritt. L\u00e4gg till ditt Snap Kit Klient-ID f\u00f6r att attribuera delningar i Snap Kit utvecklarportalen. Delning fungerar utan det."
+            ],
+            "How it works": [
+                "Hur det fungerar"
+            ],
+            "Add Snapchat from the Settings tab like any other button.": [
+                "L\u00e4gg till Snapchat fr\u00e5n Inst\u00e4llningar-fliken som vilken annan knapp som helst."
+            ],
+            "On mobile, tapping the button opens the Snapchat app share flow for the current page.": [
+                "P\u00e5 mobil \u00f6ppnar ett tryck p\u00e5 knappen Snapchat-appens delningsfl\u00f6de f\u00f6r den aktuella sidan."
+            ],
+            "On desktop, a Snapcode window opens so users can scan and share from their phone.": [
+                "P\u00e5 skrivbordet \u00f6ppnas ett Snapcode-f\u00f6nster s\u00e5 att anv\u00e4ndare kan skanna och dela fr\u00e5n sin telefon."
+            ],
+            "Keep Open Graph tags enabled so Snapchat can show your page title and preview.": [
+                "H\u00e5ll Open Graph-taggar aktiverade s\u00e5 att Snapchat kan visa din sidtitel och f\u00f6rhandsvisning."
+            ],
+            "Official Buttons": [
+                "Officiella knappar"
+            ],
+            "Choose a button style that fits your site's look and feel.": [
+                "V\u00e4lj en knappstil som passar din sidas utseende och k\u00e4nsla."
+            ],
+            "Dismiss this notice.": [
+                "Avvisa detta meddelande."
+            ],
+            "Dismiss": [
+                "Avvisa"
+            ],
+            "Share on LinkedIn": [
+                "Dela p\u00e5 LinkedIn"
+            ],
+            "Simple Social Buttons Pro lets you set custom background, hover, and icon colors for every button, so they blend naturally with your website's design instead of standing out like a default plugin. Buttons that fit your site tend to get clicked more, which means more shares and more traffic for you. Pro also adds features like buttons on images, popups on exit intent, fly in slide animations, and more.": [
+                "Simple Social Buttons Pro l\u00e5ter dig st\u00e4lla in anpassad bakgrund, hover- och ikonf\u00e4rger f\u00f6r varje knapp, s\u00e5 att de sm\u00e4lter in naturligt med din webbdesign ist\u00e4llet f\u00f6r att sticka ut som en standardplugin. Knappar som passar din sida tenderar att bli klickade mer, vilket inneb\u00e4r fler delningar och mer trafik f\u00f6r dig. Pro l\u00e4gger ocks\u00e5 till funktioner som knappar p\u00e5 bilder, popup-f\u00f6nster vid avsiktsutfart, fly-in-slide-animationer och mer."
+            ],
+            "Simple Social Buttons Pro lets you display share buttons directly on images and photos across your posts and pages, choose their position, add icon spacing, and set custom colors that match your site. You can also hide them on mobile and control exactly which post types they appear on. It's an easy way to turn every image into a shareable opportunity and drive more traffic.": [
+                "Simple Social Buttons Pro l\u00e5ter dig visa delningsknappar direkt p\u00e5 bilder och foton \u00f6ver dina inl\u00e4gg och sidor, v\u00e4lja deras position, l\u00e4gga till ikonavst\u00e5nd och st\u00e4lla in anpassade f\u00e4rger som matchar din sida. Du kan ocks\u00e5 d\u00f6lja dem p\u00e5 mobil och kontrollera exakt vilka inl\u00e4ggstyper de visas p\u00e5. Det \u00e4r ett enkelt s\u00e4tt att g\u00f6ra varje bild till en delbar m\u00f6jlighet och driva mer trafik."
+            ],
+            "Simple Social Buttons Pro lets you create a custom share popup with your own title and message, and trigger it exactly when it matters, like before visitors leave or after they scroll. You can add animation, display share counts or total shares to build social proof, and set custom colors to match your brand. It's a smart way to catch visitor attention right when they're most likely to share.": [
+                "Simple Social Buttons Pro l\u00e5ter dig skapa en anpassad delnings-popup med din egen titel och meddelande, och trigga den exakt n\u00e4r det betyder n\u00e5got, som innan bes\u00f6kare l\u00e4mnar eller efter att de har scrolat. Du kan l\u00e4gga till animation, visa delningsantal eller totala delningar f\u00f6r att bygga socialt bevis, och st\u00e4lla in anpassade f\u00e4rger f\u00f6r att matcha ditt varum\u00e4rke. Det \u00e4r ett smart s\u00e4tt att f\u00e5nga bes\u00f6karnas uppm\u00e4rksamhet precis n\u00e4r de \u00e4r mest ben\u00e4gna att dela."
+            ],
+            "Simple Social Buttons Pro lets you create a custom Fly In box with your own title and message, choose its position and animation, and even display share counts or total shares to build social proof. You can fine-tune timing, icon spacing, and colors to match your brand, and control which post types it appears on. It's a great way to prompt visitors to share right when they're most engaged.": [
+                "Simple Social Buttons Pro l\u00e5ter dig skapa en anpassad Fly In-ruta med din egen titel och meddelande, v\u00e4lja dess position och animation, och till och med visa delningsantal eller totala delningar f\u00f6r att bygga socialt bevis. Du kan finjustera timing, ikonavst\u00e5nd och f\u00e4rger f\u00f6r att matcha ditt varum\u00e4rke, och kontrollera vilka inl\u00e4ggstyper den visas p\u00e5. Det \u00e4r ett utm\u00e4rkt s\u00e4tt att uppmana bes\u00f6kare att dela precis n\u00e4r de \u00e4r mest engagerade."
+            ],
+            "Failed to activate the plugin.": [
+                "Misslyckades med att aktivera pluginet."
+            ],
+            "Click here to Activate Pro": [
+                "Klicka h\u00e4r f\u00f6r att aktivera Pro"
+            ],
+            "Please enter your email.": [
+                "V\u00e4nligen ange din e-postadress."
+            ],
+            "Please enter a valid email address.": [
+                "V\u00e4nligen ange en giltig e-postadress."
+            ],
+            "Failed to subscribe.": [
+                "Misslyckades med att prenumerera."
+            ],
+            "Thank you!": [
+                "Tack!"
+            ],
+            "Please try again.": [
+                "V\u00e4nligen f\u00f6rs\u00f6k igen."
+            ],
+            "Newsletter": [
+                "Nyhetsbrev"
+            ],
+            "Subscribing": [
+                "Prenumererar"
+            ],
+            "Subscribe": [
+                "Prenumerera"
+            ],
+            "Dismiss notice": [
+                "Avvisa meddelande"
+            ],
+            "Upgrade to Pro!": [
+                "Uppgradera till Pro!"
+            ],
+            "Unlock premium features designed to help you increase engagement, boost visibility, and save time.": [
+                "L\u00e5s upp premiumfunktioner utformade f\u00f6r att hj\u00e4lpa dig \u00f6ka engagemanget, f\u00f6rb\u00e4ttra synligheten och spara tid."
+            ],
+            "Unlimited Websites:": [
+                "Obegr\u00e4nsade webbplatser:"
+            ],
+            "Use SSB Pro across all your sites (no limits)": [
+                "Anv\u00e4nd SSB Pro p\u00e5 alla dina webbplatser (inga begr\u00e4nsningar)"
+            ],
+            "Priority Support:": [
+                "Prioriterad support:"
+            ],
+            "Get fast, friendly help from our expert support team when you need it.": [
+                "F\u00e5 snabb, v\u00e4nlig hj\u00e4lp fr\u00e5n v\u00e5rt expert-supportteam n\u00e4r du beh\u00f6ver det."
+            ],
+            "1 Year of Updates:": [
+                "1 \u00e5r av uppdateringar:"
+            ],
+            "Stay secure and compatible with the latest releases.": [
+                "H\u00e5ll dig s\u00e4ker och kompatibel med de senaste versionerna."
+            ],
+            "No Coding Required:": [
+                "Ingen kodning kr\u00e4vs:"
+            ],
+            "Set up and customize buttons effortlessly from the dashboard.": [
+                "St\u00e4ll in och anpassa knappar enkelt fr\u00e5n instrumentpanelen."
+            ],
+            "Quick & Flexible Button Placement:": [
+                "Snabb & flexibel knappplacering:"
+            ],
+            "Add buttons exactly where you want: posts, pages, or custom locations.": [
+                "L\u00e4gg till knappar precis d\u00e4r du vill: inl\u00e4gg, sidor eller anpassade platser."
+            ],
+            "Fully Responsive Design:": [
+                "Helt responsiv design:"
+            ],
+            "Your social buttons look great on desktop, tablet, and mobile.": [
+                "Dina sociala knappar ser bra ut p\u00e5 skrivbord, surfplatta och mobil."
+            ],
+            "Ongoing Feature Improvements:": [
+                "P\u00e5g\u00e5ende funktionsf\u00f6rb\u00e4ttringar:"
+            ],
+            "Regular updates with new features and performance enhancements.": [
+                "Regelbundna uppdateringar med nya funktioner och prestandaf\u00f6rb\u00e4ttringar."
+            ],
+            "Get up to": [
+                "F\u00e5 upp till"
+            ],
+            "50%": [
+                "50%"
+            ],
+            "off your first year of Simple Social Buttons.": [
+                "rabatt p\u00e5 ditt f\u00f6rsta \u00e5r av Simple Social Buttons."
+            ],
+            "Unlock Pro Features": [
+                "L\u00e5s upp Pro-funktioner"
+            ],
+            "* Discount applied automatically": [
+                "* Rabatt till\u00e4mpas automatiskt"
+            ],
+            "Reviewer avatar": [
+                "Recensentens avatar"
+            ],
+            "John": [
+                "John"
+            ],
+            "5 star rating": [
+                "5-stj\u00e4rnig bed\u00f6mning"
+            ],
+            "The plug-in really works well. The developers and the creators did a good job!": [
+                "Pluginet fungerar verkligen bra. Utvecklarna och skaparna gjorde ett bra jobb!"
+            ],
+            "Designed and Maintained by": [
+                "Designad och underh\u00e5llen av"
+            ],
+            "Company logo": [
+                "F\u00f6retagslogotyp"
+            ],
+            "Tab content not found": [
+                "Flikens inneh\u00e5ll hittades inte"
+            ],
+            "Settings saved successfully!": [
+                "Inst\u00e4llningar sparades framg\u00e5ngsrikt!"
+            ],
+            "Loading\u2026": [
+                "Laddar\u2026"
+            ],
+            "Try again": [
+                "F\u00f6rs\u00f6k igen"
+            ],
+            "Saving...": [
+                "Sparar..."
+            ],
+            "Save Changes": [
+                "Spara \u00e4ndringar"
+            ],
+            "Advanced": [
+                "Avancerat"
+            ],
+            "Social": [
+                "Social"
+            ],
+            "Upgrade To Pro For More Features": [
+                "Uppgradera till Pro f\u00f6r fler funktioner"
+            ],
+            "Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require Simple Social Buttons Pro.": [
+                "Aktivera sidopanel eller inline f\u00f6r att spara inst\u00e4llningar. Media, Popup och Fly In kr\u00e4ver Simple Social Buttons Pro."
+            ],
+            "Unknown error while saving settings.": [
+                "Ok\u00e4nt fel vid sparande av inst\u00e4llningar."
+            ],
+            "Missing admin configuration for purge status.": [
+                "Saknar administrat\u00f6rskonfiguration f\u00f6r rensningsstatus."
+            ],
+            "Unable to load purge status.": [
+                "Kunde inte ladda rensningsstatus."
+            ],
+            "Network error while loading settings. Check your connection and try again.": [
+                "N\u00e4tverksfel vid inl\u00e4sning av inst\u00e4llningar. Kontrollera din anslutning och f\u00f6rs\u00f6k igen."
+            ],
+            "Could not read the server response. Try refreshing the page.": [
+                "Kunde inte l\u00e4sa serverns svar. F\u00f6rs\u00f6k att uppdatera sidan."
+            ],
+            "Invalid response from server.": [
+                "Ogiltigt svar fr\u00e5n servern."
+            ],
+            "Could not load settings. You may need to refresh the page or sign in again.": [
+                "Kunde inte ladda inst\u00e4llningar. Du kan beh\u00f6va uppdatera sidan eller logga in igen."
+            ],
+            "Unable to load settings (HTTP %s).": [
+                "Kunde inte ladda inst\u00e4llningar (HTTP %s)."
+            ],
+            "Invalid settings data from server.": [
+                "Ogiltiga inst\u00e4llningsdata fr\u00e5n servern."
+            ],
+            "Something went wrong while loading settings.": [
+                "N\u00e5got gick fel vid inl\u00e4sning av inst\u00e4llningar."
+            ]
+        }
+    }
+}

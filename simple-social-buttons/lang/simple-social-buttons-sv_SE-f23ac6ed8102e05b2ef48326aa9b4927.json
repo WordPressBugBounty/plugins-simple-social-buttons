@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:29+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sv-SE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Click to post": [
+                "Klicka f\u00f6r att publicera"
+            ],
+            "Theme": [
+                "Tema"
+            ],
+            "select the style for click to post ": [
+                "v\u00e4lj stil f\u00f6r klicka f\u00f6r att posta "
+            ],
+            "Content": [
+                "Inneh\u00e5ll"
+            ],
+            "Quote Content": [
+                "Citat Inneh\u00e5ll"
+            ],
+            "This text will be shown to the user.": [
+                "Denna text kommer att visas f\u00f6r anv\u00e4ndaren."
+            ],
+            "Tweet Content": [
+                "Tweet Inneh\u00e5ll"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Denna text kommer att tweetas. Om den \u00e4r tom kommer Citatinneh\u00e5ll att anv\u00e4ndas."
+            ],
+            " Configuration": [
+                " Konfiguration"
+            ],
+            "Show Tweet Button": [
+                "Visa Tweet-knapp"
+            ],
+            "Include Page\/post Link": [
+                "Inkludera Sida\/inl\u00e4gg L\u00e4nk"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n L\u00e4nken till detta inl\u00e4gg kommer att l\u00e4ggas till i Tweeten. Vi har ett filter om du vill modifiera det `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Inkludera via @anv\u00e4ndarnamn"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "\n Twitter-anv\u00e4ndarnamn fr\u00e5n SSB Inst\u00e4llningar Avancerad flik kommer att l\u00e4ggas till i slutet av Tweeten med texten \u201cvia @anv\u00e4ndarnamn\u201d."
+            ],
+            "Enter your content ...": [
+                "Ange ditt inneh\u00e5ll ..."
+            ],
+            "Configuration": [
+                "Konfiguration"
+            ],
+            "Share Counter": [
+                "Dela R\u00e4knare"
+            ],
+            "Total Counts": [
+                "Totala R\u00e4knare"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "St\u00f6dda N\u00e4tverk: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Ordning"
+            ],
+            "Align Left": [
+                "Justera V\u00e4nster"
+            ],
+            "Align Center": [
+                "Justera Center"
+            ],
+            "Align Right": [
+                "Justera H\u00f6ger"
+            ]
+        }
+    }
+}

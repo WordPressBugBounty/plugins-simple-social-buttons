@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:13+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "da-DK",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Enkle sociale knapper"
+            ],
+            "Download Log File": [
+                "Download logfil"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Logfil for Simple Social Buttons downloadet med succes!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> af <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> tilf\u00f8jer et avanceret s\u00e6t af sociale mediedelingsknapper til dine WordPress-sider, s\u00e5som: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> og <strong>Pinterest<\/strong>. Dette g\u00f8r det til det mest fleksible sociale delingsplugin for alle."
+            ],
+            "Help & Troubleshooting": [
+                "Hj\u00e6lp & Fejlfinding"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Gratis support er tilg\u00e6ngelig p\u00e5 %splugin supportfora%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "For premiumfunktioner, tilf\u00f8jelsesprogrammer og prioriteret e-mail support, %supgrade til pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Har du fundet en fejl eller har en funktionsanmodning? Indsend venligst et problem %shere!%s"
+            ]
+        }
+    }
+}

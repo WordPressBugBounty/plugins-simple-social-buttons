@@ -2,10 +2,10 @@
 Contributors: hiddenpearls, WPBrigade, desideveloper
 Donate link: https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_medium=donate-link
 Tags: Social Share, Social buttons, Social Media Share, Social Sharing, Share buttons
-Requires at least: 4.0
-Tested up to: 7.0
-Stable tag: 7.1.0
-Requires PHP: 5.6
+Requires at least: 5.0
+Tested up to: 7.1
+Stable tag: 7.2.0
+Requires PHP: 7.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -117,7 +117,7 @@ Check the written [documentation](https://simplesocialbuttons.com/documentation/
 
 = Why use this plugin? =
 
-This plugin lets you adds the Facebook share button, Google plus one +1 (removed by Google), Twitter share button and Pinterest Pin for each post or page on your blog. This is the simple, easy and effective way to promote your blog in social media networks.
+This plugin lets you add Facebook, X (Twitter), LinkedIn, Pinterest, WhatsApp and many more share buttons to each post or page on your blog. This is the simple, easy and effective way to promote your blog in social media networks.
 
 = How about support? =
 
@@ -144,9 +144,9 @@ Attributes with all the possible values.
 counter = true or false
 show_total_count = true or false
 align = left or right or centered
-order = twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,fblike
+order = twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat
 theme = theme1 or theme2 or theme3 or theme4  or Flat or Circle or Official
-like_button_size = small(default), large
+
 == Screenshots ==
 
 1. Drag and Drop Social media buttons.
@@ -160,6 +160,26 @@ like_button_size = small(default), large
 9. Social Share buttons on flyins.
 
 == Changelog ==
+
+= 7.2.0 – 2026-10-19 =
+* New Feature: Added a sticky Save button that follows you while scrolling settings.
+* New Feature: Added an icon-spacing control for inline and sidebar layouts.
+* New Feature: Added an admin bar menu to purge share-count caches, with live progress feedback.
+* Enhancement: Pinterest descriptions now pull from your SEO plugin when available.
+* Enhancement: Hardened Facebook/Tumblr/LINE share-count trust to avoid showing stale counts.
+* Enhancement: Skipped share-count API requests for local/development URLs.
+* Enhancement: Free-tier sites with a Pro-only position must also enable Sidebar or Inline to save.
+* Enhancement: Minified front-end assets load by default; unminified files load when SCRIPT_DEBUG is on.
+* Enhancement: Accessibility improvements across settings screens.
+* Enhancement: Refreshed translations for 12 languages and fixed translation loading.
+* Bugfix: Fixed dashboard and block-editor styling issues.
+* Security: General code hardening and cleanup across the codebase.
+* Compatibility: Compatible with WordPress 7.1.
+* Bugfix: Share-count refresh now only runs for published, public posts and is rate limited per IP.
+* Bugfix: Factory reset no longer runs when the save request contains an invalid section.
+* Bugfix: Uninstall (with "Remove data on uninstall" enabled) now removes all share-count post meta, options, transients and scheduled events.
+* Compatibility: Minimum requirements are now WordPress 5.0 and PHP 7.1.
+* Important: After updating, use "Purge caches" in the admin bar to refresh Facebook/Tumblr/LINE counts for your 30 most recent posts/pages. Counts on older posts refresh automatically when their cache expires.
 
 = 7.1.0 – 2026-08-04 =
 * New Feature: Added lowercase [ssb] shortcode support alongside [SSB].
@@ -421,7 +441,7 @@ like_button_size = small(default), large
 = 2.0.16 - 2018-07-09 =
 * Enhancement: Like button size parameter added in short code.
 * Bug Fix: Illegal offset string.
-* Bug Fix: Reddit Api  Invalid argument supplied for foreach()
+* Bug Fix: Reddit Api  Invalid argument supplied for `foreach()`.
 
 = 2.0.15 - 2018-06-05 =
 * New Feature: Button show on excerpt content.
@@ -632,6 +652,9 @@ like_button_size = small(default), large
 * Fixed users permission
 
 == Upgrade Notice ==
+
+= 7.2.0 =
+* Sticky save bar, cache-purge menu, and share-count reliability fixes. Update now.
 
 = 7.1.0 =
 * Shortcode, Twitter/X, share-count, Pinterest, and security fixes. Update now.

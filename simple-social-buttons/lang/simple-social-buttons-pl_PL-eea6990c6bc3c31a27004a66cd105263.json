@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:23+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "pl-PL",
+                "plural-forms": "nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Proste przyciski spo\u0142eczno\u015bciowe"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "Sprawdzenie bezpiecze\u0144stwa nie powiod\u0142o si\u0119. Prosz\u0119 od\u015bwie\u017cy\u0107 stron\u0119 i spr\u00f3bowa\u0107 ponownie."
+            ],
+            "You do not have permission to import settings.": [
+                "Nie masz uprawnie\u0144 do importowania ustawie\u0144."
+            ],
+            "No file uploaded or upload failed.": [
+                "Nie przes\u0142ano pliku lub przesy\u0142anie nie powiod\u0142o si\u0119."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Nieprawid\u0142owy plik JSON. Prosz\u0119 przes\u0142a\u0107 prawid\u0142owy plik eksportu SSB."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Nieprawid\u0142owy format pliku. To nie wydaje si\u0119 by\u0107 plikiem eksportu przycisk\u00f3w spo\u0142eczno\u015bciowych Simple."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Ustawienia przycisk\u00f3w spo\u0142eczno\u015bciowych Simple zaimportowane pomy\u015blnie."
+            ],
+            "Export": [
+                "Eksportuj"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Ustawienia przycisk\u00f3w spo\u0142eczno\u015bciowych Simple wyeksportowane pomy\u015blnie!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Eksportuj ustawienia prostego przycisku spo\u0142eczno\u015bciowego."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Proste przyciski spo\u0142eczno\u015bciowe<\/strong> autorstwa <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> dodaje zaawansowany zestaw przycisk\u00f3w do udost\u0119pniania w mediach spo\u0142eczno\u015bciowych na Twoich stronach WordPress, takich jak: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> i <strong>Pinterest<\/strong>. Dzi\u0119ki temu jest to najelastyczniejsza wtyczka do udost\u0119pniania w mediach spo\u0142eczno\u015bciowych dla ka\u017cdego."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Nieprawid\u0142owy plik. Prosz\u0119 przes\u0142a\u0107 plik JSON zaczynaj\u0105cy si\u0119 od \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "Import nie powi\u00f3d\u0142 si\u0119. Prosz\u0119 spr\u00f3bowa\u0107 ponownie."
+            ],
+            "Please select a valid file first.": [
+                "Prosz\u0119 najpierw wybra\u0107 prawid\u0142owy plik."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "Niepowodzenie weryfikacji bezpiecze\u0144stwa lub b\u0142\u0105d serwera. Prosz\u0119 od\u015bwie\u017cy\u0107 i spr\u00f3bowa\u0107 ponownie."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Nieprawid\u0142owa odpowied\u017a z serwera. Prosz\u0119 spr\u00f3bowa\u0107 ponownie."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Wyst\u0105pi\u0142 b\u0142\u0105d podczas importu. Prosz\u0119 spr\u00f3bowa\u0107 ponownie."
+            ],
+            "Export failed. Please try again.": [
+                "Eksport nie powi\u00f3d\u0142 si\u0119. Prosz\u0119 spr\u00f3bowa\u0107 ponownie."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Import & Eksport ustawie\u0144 przycisku do prostego udost\u0119pniania w mediach spo\u0142eczno\u015bciowych"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importuj\/Eksportuj ustawienia udost\u0119pniania spo\u0142eczno\u015bciowego dla\/z innych stron."
+            ],
+            "Drag and drop file here or": [
+                "Przeci\u0105gnij i upu\u015b\u0107 plik tutaj lub"
+            ],
+            "Browse": [
+                "Przegl\u0105daj"
+            ],
+            "Remove file": [
+                "Usu\u0144 plik"
+            ],
+            "Import Settings": [
+                "Importuj ustawienia"
+            ],
+            "Importing settings...": [
+                "Importowanie ustawie\u0144..."
+            ],
+            "Export Settings": [
+                "Eksportuj ustawienia"
+            ],
+            "Exporting...": [
+                "Eksportowanie..."
+            ]
+        }
+    }
+}

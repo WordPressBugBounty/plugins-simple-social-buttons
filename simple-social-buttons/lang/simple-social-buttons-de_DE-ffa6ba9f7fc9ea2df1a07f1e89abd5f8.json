@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:14+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de-DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Einfache soziale Schaltfl\u00e4chen"
+            ],
+            "Download Log File": [
+                "Logdatei herunterladen"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Protokolldatei f\u00fcr einfache Social Buttons erfolgreich heruntergeladen!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Einfache Social Buttons<\/strong> von <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> f\u00fcgt Ihren WordPress-Seiten ein erweitertes Set von Schaltfl\u00e4chen f\u00fcr das Teilen in sozialen Medien hinzu, wie z.B.: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> und <strong>Pinterest<\/strong>. Dies macht es zum flexibelsten Plugin f\u00fcr das Teilen in sozialen Medien f\u00fcr alle."
+            ],
+            "Help & Troubleshooting": [
+                "Hilfe & Fehlersuche"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Kostenloser Support ist in den %sPlugin-Supportforen%s verf\u00fcgbar."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "F\u00fcr Premium-Funktionen, Add-Ons und priorisierten E-Mail-Support %swechseln Sie zu Pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Haben Sie einen Fehler gefunden oder eine Funktion angefordert? Bitte reichen Sie ein Problem %shier ein!%s"
+            ]
+        }
+    }
+}

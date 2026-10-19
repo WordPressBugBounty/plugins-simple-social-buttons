@@ -54,7 +54,7 @@ function ssb_format_fbshare_response( $response ) {
  * @param string $url URL to get share count for.
  * @return string|false Ready link to call for API, or false if credentials missing.
  * @since 1.0.0
- * @version 7.0.0
+ * @version 7.2.0
  */
 function ssb_fbshare_generate_link( $url ) {
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound
@@ -73,9 +73,7 @@ function ssb_fbshare_generate_link( $url ) {
 
 	// Request only share_count under engagement (smaller payload than full engagement).
 	$fields = rawurlencode( 'engagement{share_count}' );
-	$link   = 'https://graph.facebook.com/' . $api_version . '/?id=' . rawurlencode( $url )
+	return 'https://graph.facebook.com/' . $api_version . '/?id=' . rawurlencode( $url )
 		. '&fields=' . $fields
 		. '&access_token=' . $facebook_app_id . '|' . $facebook_secret_key;
-
-	return $link;
 }

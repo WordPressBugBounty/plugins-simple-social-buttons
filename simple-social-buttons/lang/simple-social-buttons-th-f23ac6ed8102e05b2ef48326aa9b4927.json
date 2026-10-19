@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:31+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "th",
+                "plural-forms": "nplurals=1; plural=0;"
+            },
+            "Click to post": [
+                "\u0e04\u0e25\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e42\u0e1e\u0e2a\u0e15\u0e4c"
+            ],
+            "Theme": [
+                "\u0e18\u0e35\u0e21"
+            ],
+            "select the style for click to post ": [
+                "\u0e40\u0e25\u0e37\u0e2d\u0e01\u0e2a\u0e44\u0e15\u0e25\u0e4c\u0e2a\u0e33\u0e2b\u0e23\u0e31\u0e1a\u0e04\u0e25\u0e34\u0e01\u0e40\u0e1e\u0e37\u0e48\u0e2d\u0e42\u0e1e\u0e2a\u0e15\u0e4c "
+            ],
+            "Content": [
+                "\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32"
+            ],
+            "Quote Content": [
+                "\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e17\u0e35\u0e48\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07"
+            ],
+            "This text will be shown to the user.": [
+                "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49\u0e08\u0e30\u0e41\u0e2a\u0e14\u0e07\u0e43\u0e2b\u0e49\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49\u0e40\u0e2b\u0e47\u0e19."
+            ],
+            "Tweet Content": [
+                "\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e17\u0e27\u0e35\u0e15"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21\u0e19\u0e35\u0e49\u0e08\u0e30\u0e16\u0e39\u0e01\u0e17\u0e27\u0e35\u0e15 \u0e2b\u0e32\u0e01\u0e27\u0e48\u0e32\u0e07\u0e08\u0e30\u0e43\u0e0a\u0e49\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e17\u0e35\u0e48\u0e2d\u0e49\u0e32\u0e07\u0e2d\u0e34\u0e07."
+            ],
+            " Configuration": [
+                "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32"
+            ],
+            "Show Tweet Button": [
+                "\u0e41\u0e2a\u0e14\u0e07\u0e1b\u0e38\u0e48\u0e21\u0e17\u0e27\u0e35\u0e15"
+            ],
+            "Include Page\/post Link": [
+                "\u0e23\u0e27\u0e21\u0e25\u0e34\u0e07\u0e01\u0e4c\u0e2b\u0e19\u0e49\u0e32\/\u0e42\u0e1e\u0e2a\u0e15\u0e4c"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n \u0e25\u0e34\u0e07\u0e01\u0e4c\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e42\u0e1e\u0e2a\u0e15\u0e4c\u0e19\u0e35\u0e49\u0e08\u0e30\u0e16\u0e39\u0e01\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e44\u0e1b\u0e22\u0e31\u0e07\u0e17\u0e27\u0e35\u0e15 \u0e40\u0e23\u0e32\u0e21\u0e35\u0e15\u0e31\u0e27\u0e01\u0e23\u0e2d\u0e07\u0e2b\u0e32\u0e01\u0e04\u0e38\u0e13\u0e15\u0e49\u0e2d\u0e07\u0e01\u0e32\u0e23\u0e1b\u0e23\u0e31\u0e1a\u0e40\u0e1b\u0e25\u0e35\u0e48\u0e22\u0e19 `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "\u0e23\u0e27\u0e21\u0e1c\u0e48\u0e32\u0e19 @username"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "\u0e0a\u0e37\u0e48\u0e2d\u0e1c\u0e39\u0e49\u0e43\u0e0a\u0e49 Twitter \u0e08\u0e32\u0e01\u0e41\u0e17\u0e47\u0e1a\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32 SSB \u0e41\u0e1a\u0e1a\u0e02\u0e31\u0e49\u0e19\u0e2a\u0e39\u0e07\u0e08\u0e30\u0e16\u0e39\u0e01\u0e40\u0e1e\u0e34\u0e48\u0e21\u0e17\u0e35\u0e48\u0e17\u0e49\u0e32\u0e22 Tweet \u0e14\u0e49\u0e27\u0e22\u0e02\u0e49\u0e2d\u0e04\u0e27\u0e32\u0e21 \u201c\u0e1c\u0e48\u0e32\u0e19 @username\u201d"
+            ],
+            "Enter your content ...": [
+                "\u0e01\u0e23\u0e2d\u0e01\u0e40\u0e19\u0e37\u0e49\u0e2d\u0e2b\u0e32\u0e02\u0e2d\u0e07\u0e04\u0e38\u0e13 ..."
+            ],
+            "Configuration": [
+                "\u0e01\u0e32\u0e23\u0e15\u0e31\u0e49\u0e07\u0e04\u0e48\u0e32"
+            ],
+            "Share Counter": [
+                "\u0e19\u0e31\u0e1a\u0e01\u0e32\u0e23\u0e41\u0e0a\u0e23\u0e4c"
+            ],
+            "Total Counts": [
+                "\u0e08\u0e33\u0e19\u0e27\u0e19\u0e23\u0e27\u0e21"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "\u0e40\u0e04\u0e23\u0e37\u0e2d\u0e02\u0e48\u0e32\u0e22\u0e17\u0e35\u0e48\u0e23\u0e2d\u0e07\u0e23\u0e31\u0e1a: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "\u0e25\u0e33\u0e14\u0e31\u0e1a"
+            ],
+            "Align Left": [
+                "\u0e08\u0e31\u0e14\u0e41\u0e19\u0e27\u0e0b\u0e49\u0e32\u0e22"
+            ],
+            "Align Center": [
+                "\u0e08\u0e31\u0e14\u0e41\u0e19\u0e27\u0e01\u0e36\u0e48\u0e07\u0e01\u0e25\u0e32\u0e07"
+            ],
+            "Align Right": [
+                "\u0e08\u0e31\u0e14\u0e41\u0e19\u0e27\u0e02\u0e27\u0e32"
+            ]
+        }
+    }
+}

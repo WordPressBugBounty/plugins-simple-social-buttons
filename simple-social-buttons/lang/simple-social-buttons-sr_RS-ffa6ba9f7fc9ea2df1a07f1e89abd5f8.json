@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:27+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sr-RS",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Jednostavni dru\u0161tveni dugmadi"
+            ],
+            "Download Log File": [
+                "Preuzmite log fajl"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Preuzimanje dnevnika jednostavnog dru\u0161tvenog dugmeta je uspe\u0161no!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Jednostavna dru\u0161tvena dugmad<\/strong> od <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> dodaje napredni set dugmadi za deljenje na dru\u0161tvenim mre\u017eama na va\u0161e WordPress sajtove, kao \u0161to su: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> i <strong>Pinterest<\/strong>. Ovo ga \u010dini najfleksibilnijim dodatkom za deljenje na dru\u0161tvenim mre\u017eama za sve."
+            ],
+            "Help & Troubleshooting": [
+                "Pomo\u0107 & Re\u0161avanje problema"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Besplatna podr\u0161ka je dostupna na %sforumima za podr\u0161ku dodatku%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "Za premium funkcije, dodatke i prioritetnu email podr\u0161ku, %supgrade to pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Prona\u0161li ste gre\u0161ku ili imate zahtev za funkciju? Molimo vas da prijavite problem %shere!%s"
+            ]
+        }
+    }
+}

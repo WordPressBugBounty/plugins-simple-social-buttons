@@ -47,16 +47,20 @@ class Ssb_Admin_Bar_Purge {
 	 * Constructor.
 	 *
 	 * @param SimpleSocialButtonsPR $plugin Plugin instance.
+	 * @version 7.2.0
 	 */
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 
 		add_action( 'admin_bar_menu', array( $this, 'register_admin_bar_menu' ), 100 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_bar_styles' ) );
 
 		if ( is_admin() ) {
 			add_action( 'admin_post_ssb_purge_caches_recent', array( $this, 'handle_purge_recent' ) );
 			add_action( 'admin_post_ssb_purge_caches_all', array( $this, 'handle_purge_all' ) );
 			add_action( 'admin_notices', array( $this, 'render_admin_notice' ) );
+			add_action( 'in_admin_header', array( $this, 'render_settings_screen_notice' ), 100001 );
+			add_action( 'wp_ajax_ssb_get_purge_notice', array( $this, 'handle_get_purge_notice_ajax' ) );
 			add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_notice_script' ) );
 		}
 	}
@@ -66,6 +70,7 @@ class Ssb_Admin_Bar_Purge {
 	 *
 	 * @param WP_Admin_Bar $admin_bar Admin bar instance.
 	 * @return void
+	 * @version 7.2.0
 	 */
 	public function register_admin_bar_menu( $admin_bar ) {
 		if ( ! current_user_can( 'manage_options' ) || wp_doing_ajax() ) {
@@ -75,7 +80,10 @@ class Ssb_Admin_Bar_Purge {
 		$admin_bar->add_node(
 			array(
 				'id'    => 'ssb-admin-bar',
-				'title' => esc_html__( 'Simple Social Buttons', 'simple-social-buttons' ),
+				'title' => sprintf(
+					'<span class="ab-icon" aria-hidden="true"></span><span class="ab-label">%s</span>',
+					esc_html__( 'Simple Social Buttons', 'simple-social-buttons' )
+				),
 				'href'  => false,
 			)
 		);
@@ -99,6 +107,31 @@ class Ssb_Admin_Bar_Purge {
 				)
 			);
 		}
+	}
+
+	/**
+	 * Add the SSB logo to the admin bar node.
+	 *
+	 * @return void
+	 * @since 7.2.0
+	 */
+	public function enqueue_admin_bar_styles() {
+		if ( ! is_admin_bar_showing() || ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$css = '#wpadminbar #wp-admin-bar-ssb-admin-bar > .ab-item .ab-icon:before {
+			background: url("' . esc_url_raw( ssb_get_admin_menu_icon(), array( 'data' ) ) . '") center / contain no-repeat;
+			content: "";
+			display: block;
+			float: left;
+			height: 20px;
+			margin: 3px 0 0;
+			width: 20px;
+		}';
+
+		wp_enqueue_style( 'admin-bar' );
+		wp_add_inline_style( 'admin-bar', $css );
 	}
 
 	/**
@@ -291,7 +324,7 @@ class Ssb_Admin_Bar_Purge {
 	 *
 	 * @param SimpleSocialButtonsPR $plugin Plugin instance.
 	 * @return void
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 */
 	public static function process_api_batch( $plugin ) {
 		$state = get_transient( self::PURGE_ALL_STATE_TRANSIENT );
@@ -422,29 +455,20 @@ class Ssb_Admin_Bar_Purge {
 	}
 
 	/**
-	 * Output dismissible admin notice from transient.
+	 * Build purge notice payload for admin UI.
 	 *
-	 * @return void
+	 * @return array|null
+	 * @since 7.2.0
 	 */
-	public function render_admin_notice() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
-		}
-
+	public static function get_notice_for_display() {
 		$notice = get_transient( self::NOTICE_TRANSIENT );
 		if ( ! is_array( $notice ) || empty( $notice['message'] ) ) {
-			return;
+			return null;
 		}
 
-		$status = isset( $notice['status'] ) ? $notice['status'] : 'info';
-		$class  = 'notice-info';
-		if ( 'completed' === $status ) {
-			$class = 'notice-success';
-		} elseif ( 'error' === $status ) {
-			$class = 'notice-error';
-		}
-
+		$status  = isset( $notice['status'] ) ? $notice['status'] : 'info';
 		$message = $notice['message'];
+
 		if ( ! empty( $notice['progress']['total'] ) ) {
 			$done     = isset( $notice['progress']['done'] ) ? (int) $notice['progress']['done'] : 0;
 			$total    = (int) $notice['progress']['total'];
@@ -456,12 +480,126 @@ class Ssb_Admin_Bar_Purge {
 			);
 		}
 
+		return array(
+			'status'   => $status,
+			'message'  => $message,
+			'progress' => isset( $notice['progress'] ) && is_array( $notice['progress'] ) ? $notice['progress'] : array(),
+		);
+	}
+
+	/**
+	 * Map purge notice status to WordPress admin notice class.
+	 *
+	 * @param string $status Notice status.
+	 * @return string
+	 * @since 7.2.0
+	 */
+	private static function get_notice_class( $status ) {
+		if ( 'completed' === $status ) {
+			return 'notice-success';
+		}
+		if ( 'error' === $status ) {
+			return 'notice-error';
+		}
+		return 'notice-info';
+	}
+
+	/**
+	 * Output dismissible purge notice markup.
+	 *
+	 * @param array $notice Notice payload from get_notice_for_display().
+	 * @return void
+	 * @since 7.2.0
+	 */
+	private static function render_notice_markup( $notice ) {
+		$status = isset( $notice['status'] ) ? $notice['status'] : 'info';
+
 		printf(
-			'<div class="notice %1$s is-dismissible ssb-purge-notice ssb-purge-notice--%2$s" data-ssb-purge-autodismiss="%3$s"><p>%4$s</p></div>',
-			esc_attr( $class ),
+			'<div class="notice %1$s is-dismissible ssb-purge-notice ssb-purge-notice--%2$s" data-ssb-purge-autodismiss="%3$s" role="status" aria-live="polite"><p>%4$s</p></div>',
+			esc_attr( self::get_notice_class( $status ) ),
 			esc_attr( $status ),
 			esc_attr( in_array( $status, array( 'completed', 'error' ), true ) ? '1' : '0' ),
-			esc_html( $message )
+			esc_html( $notice['message'] )
+		);
+	}
+
+	/**
+	 * Output dismissible admin notice from transient.
+	 *
+	 * @return void
+	 * @version 7.2.0
+	 */
+	public function render_admin_notice() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$notice = self::get_notice_for_display();
+		if ( null === $notice ) {
+			return;
+		}
+
+		self::render_notice_markup( $notice );
+	}
+
+	/**
+	 * Output purge notice on SSB subpages where admin_notices are stripped.
+	 *
+	 * The main React settings screen renders its own notice and polls for progress.
+	 *
+	 * @return void
+	 * @since 7.2.0
+	 */
+	public function render_settings_screen_notice() {
+		if ( ! current_user_can( 'manage_options' ) || ! function_exists( 'get_current_screen' ) ) {
+			return;
+		}
+
+		$screen = get_current_screen();
+		if ( ! $screen instanceof WP_Screen ) {
+			return;
+		}
+
+		if ( 'toplevel_page_simple-social-buttons' === $screen->id ) {
+			return;
+		}
+
+		if ( false === strpos( $screen->id, 'simple-social-buttons' ) ) {
+			return;
+		}
+
+		$notice = self::get_notice_for_display();
+		if ( null === $notice ) {
+			return;
+		}
+
+		echo '<div class="wrap ssb-purge-notice-wrap">';
+		self::render_notice_markup( $notice );
+		echo '</div>';
+	}
+
+	/**
+	 * AJAX: return current purge notice for the React settings screen.
+	 *
+	 * @return void
+	 * @since 7.2.0
+	 */
+	public function handle_get_purge_notice_ajax() {
+		check_ajax_referer( 'ssb_react_nonce', '_wpnonce' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_send_json_error(
+				array(
+					'message' => __( 'Permission denied', 'simple-social-buttons' ),
+				),
+				403
+			);
+		}
+
+		wp_send_json_success(
+			array(
+				'notice' => self::get_notice_for_display(),
+			)
 		);
 	}
 
@@ -469,6 +607,7 @@ class Ssb_Admin_Bar_Purge {
 	 * Enqueue auto-dismiss script when a purge notice is active.
 	 *
 	 * @return void
+	 * @version 7.2.0
 	 */
 	public function enqueue_notice_script() {
 		if ( ! current_user_can( 'manage_options' ) ) {
@@ -482,7 +621,7 @@ class Ssb_Admin_Bar_Purge {
 
 		wp_enqueue_script(
 			'ssb-admin-purge-notice',
-			SSB_PLUGIN_URL . 'assets/js/admin-purge-notice.js',
+			SSB_PLUGIN_URL . 'assets/js/admin-purge-notice' . ssb_asset_min_suffix() . '.js',
 			array(),
 			SSB_VERSION,
 			true

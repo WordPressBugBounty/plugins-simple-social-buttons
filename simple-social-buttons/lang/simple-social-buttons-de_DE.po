@@ -1,0 +1,2544 @@
+# Copyright (C) 2026 WPBrigade
+# This file is distributed under the same license as the Simple Social Buttons plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: simplesocialbuttons\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Paweł Rabinek (DE: Dennis Schreiber) <pawel@rabinek.pl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2017-10-28 11:37+0500\n"
+"PO-Revision-Date: 2026-09-24 10:14+0000\n"
+"X-Generator: Poedit 2.0.2\n"
+"X-Domain: simple-social-buttons\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de-DE\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: simple-social-buttons.php
+#: classes/class-ssb-admin-bar-purge.php:80
+#: src/components/Help.jsx:40
+#: src/components/ImportExport.jsx:240
+#: src/index.js:597
+#. Plugin Name of the plugin
+msgid "Simple Social Buttons"
+msgstr "Einfache soziale Schaltflächen"
+
+#: simple-social-buttons.php
+#. Plugin URI of the plugin
+msgid ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+msgstr ""
+"https://simplesocialbuttons.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=plugin-url-link"
+
+#: simple-social-buttons.php
+#. Description of the plugin
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your WordPress sites,"
+msgstr ""
+"Einfache soziale Schaltflächen fügt eine erweiterte Reihe von Schaltflächen "
+"zum Teilen von sozialen Medien zu Ihren WordPress-Seiten hinzu,"
+
+#: simple-social-buttons.php
+#. Author of the plugin
+msgid "WPBrigade"
+msgstr "WPBrigade"
+
+#: simple-social-buttons.php
+#. Author URI of the plugin
+msgid ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+msgstr ""
+"https://www.WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=author-url-link"
+
+#: classes/class-ssb-admin-bar-purge.php:89
+msgid "Purge caches (30 recent posts/pages)"
+msgstr "Caches bereinigen (30 aktuelle Beiträge/Seiten)"
+
+#: classes/class-ssb-admin-bar-purge.php:99
+msgid "Purge all (internal + API cache)"
+msgstr "Alle bereinigen (intern + API-Cache)"
+
+#: classes/class-ssb-admin-bar-purge.php:124
+msgid "You do not have permission to purge share caches."
+msgstr "Sie haben keine Berechtigung, die Freigabecaches zu bereinigen."
+
+#: classes/class-ssb-admin-bar-purge.php:181
+#: classes/class-ssb-admin-bar-purge.php:313
+msgid "Purging all share caches in the background…"
+msgstr "Bereinigen aller Freigabecaches im Hintergrund…"
+
+#: classes/class-ssb-admin-bar-purge.php:217
+#. translators: 1: posts processed, 2: internal queue flushes.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. No posts found "
+"for API refetch."
+msgstr ""
+"%1$d Beiträge/Seiten bereinigt. Interne Warteschlange für %2$d bereinigt. "
+"Keine Beiträge für API-Neuladen gefunden."
+
+#: classes/class-ssb-admin-bar-purge.php:230
+msgid "Internal share queue flushed. No posts found for API refetch."
+msgstr ""
+"Interne Freigabewarteschlange bereinigt. Keine Beiträge für API-Neuladen "
+"gefunden."
+
+#: classes/class-ssb-admin-bar-purge.php:253
+#. translators: %d: number of posts.
+msgid "Purging share caches for %d recent posts/pages in the background…"
+msgstr ""
+"Bereinigen der Freigabecaches für %d aktuelle Beiträge/Seiten im "
+"Hintergrund…"
+
+#: classes/class-ssb-admin-bar-purge.php:274
+msgid "Purge all is not enabled on this site."
+msgstr "Alle bereinigen ist auf dieser Seite nicht aktiviert."
+
+#: classes/class-ssb-admin-bar-purge.php:341
+msgid "The background purge could not be scheduled. Please try Purge All again."
+msgstr ""
+"Die Hintergrundbereinigung konnte nicht geplant werden. Bitte versuchen Sie "
+"es erneut mit Alle bereinigen."
+
+#: classes/class-ssb-admin-bar-purge.php:355
+#. translators: 1: posts processed, 2: internal queue flushes, 3: API refetches.
+msgid ""
+"Purged %1$d posts/pages. Internal queue flushed for %2$d. API counts "
+"refetched for %3$d."
+msgstr ""
+"%1$d Beiträge/Seiten bereinigt. Interne Warteschlange für %2$d bereinigt. "
+"API-Zählungen für %3$d neu geladen."
+
+#: classes/class-ssb-admin-bar-purge.php:366
+#. translators: %d: number of posts.
+msgid "Purge all complete. API counts refetched for %d posts/pages."
+msgstr ""
+"Alle Bereinigungen abgeschlossen. API-Zählungen für %d Beiträge/Seiten neu "
+"geladen."
+
+#: classes/class-ssb-admin-bar-purge.php:445
+#. translators: 1: done count, 2: total count.
+msgid "(%1$d / %2$d posts)"
+msgstr "(%1$d / %2$d Beiträge)"
+
+#: classes/class-ssb-admin-bar-purge.php:556
+msgid "Permission denied"
+msgstr "Zugriff verweigert"
+
+#: classes/class-ssb-admin.php:238
+msgid "SSB Settings"
+msgstr "SSB einstellungen"
+
+#: classes/class-ssb-admin.php:269
+msgid "Hide Simple Social Buttons"
+msgstr "Verbergen Simple Social Buttons"
+
+#: classes/class-ssb-admin.php:336
+msgid "You are not allowed to perform this action."
+msgstr "Sie dürfen diese Aktion nicht ausführen."
+
+#: classes/class-ssb-admin.php:342
+msgid "Security check failed."
+msgstr "Sicherheitsüberprüfung fehlgeschlagen."
+
+#: classes/class-ssb-admin.php:511
+msgid "Leave A Review?"
+msgstr "Eine Bewertung abgeben?"
+
+#: classes/class-ssb-admin.php:515
+msgid ""
+"We hope you've enjoyed using Simple Social Buttons!\n"
+"\t\t\t\tWould you consider leaving us a review on WordPress.org?"
+msgstr ""
+"Wir hoffen, dass Sie die Verwendung von Simple Social Buttons genossen "
+"haben! Würden Sie in Betracht ziehen, uns eine Bewertung auf WordPress.org "
+"zu hinterlassen?"
+
+#: classes/class-ssb-admin.php:527
+msgid "Sure! I'd love to!"
+msgstr "Klar! Ich würde mich freuen!"
+
+#: classes/class-ssb-admin.php:533
+msgid "I've already left a review"
+msgstr "Ich habe bereits eine Bewertung hinterlassen"
+
+#: classes/class-ssb-admin.php:539
+msgid "Maybe Later"
+msgstr "Vielleicht später"
+
+#: classes/class-ssb-admin.php:545
+msgid "Never show again"
+msgstr "Nie wieder anzeigen"
+
+#: classes/class-ssb-admin.php:664
+msgid "Vote!"
+msgstr "Abstimmen!"
+
+#: classes/class-ssb-admin.php:669
+msgid "Rate"
+msgstr "Bewerten"
+
+#: classes/class-ssb-react-admin.php:268
+#: classes/class-ssb-react-admin.php:269
+#: classes/class-ssb-settings.php:83
+#: classes/class-ssb-settings.php:84
+msgid "Help"
+msgstr "Hilfe"
+
+#: classes/class-ssb-react-admin.php:278
+#: classes/class-ssb-settings.php:92
+msgid "Import and export settings"
+msgstr "Einstellungen importieren und exportieren"
+
+#: classes/class-ssb-react-admin.php:279
+#: classes/class-ssb-settings.php:93
+msgid "Import / Export"
+msgstr "Import / Export"
+
+#: classes/class-ssb-react-admin.php:311
+#: classes/class-ssb-react-admin.php:312
+#: classes/class-ssb-settings-structure.php:807
+msgid "Upgrade to Pro"
+msgstr "Auf Pro upgraden"
+
+#: classes/class-ssb-react-admin.php:571
+msgid "Overview"
+msgstr "Übersicht"
+
+#: classes/class-ssb-react-admin.php:572
+msgid "This is the React-powered admin interface for Simple Social Buttons."
+msgstr ""
+"Dies ist die von React unterstützte Admin-Oberfläche für Simple Social "
+"Buttons."
+
+#: classes/class-ssb-react-admin.php:846
+msgid "Invalid data"
+msgstr "Ungültige Daten"
+
+#: classes/class-ssb-react-admin.php:862
+#: classes/class-ssb-react-admin.php:907
+#. translators: %s: invalid section name.
+msgid "Invalid settings section: %s"
+msgstr "Ungültiger Einstellungsbereich: %s"
+
+#: classes/class-ssb-react-admin.php:886
+msgid "Factory reset completed! All settings restored to defaults."
+msgstr ""
+"Werkseinstellung zurückgesetzt! Alle Einstellungen auf die Standardwerte "
+"wiederhergestellt."
+
+#: classes/class-ssb-react-admin.php:887
+msgid "All settings saved successfully!"
+msgstr "Alle Einstellungen erfolgreich gespeichert!"
+
+#: classes/class-ssb-settings-structure.php:479
+#: classes/class-ssb-settings.php:322
+#: classes/class-ssb-settings.php:479
+#: src/components/form-fields/SsbPostTypesField.jsx:14
+#: src/components/sections/SsbInlineSection.jsx:266
+#: src/components/sections/SsbSidebarSection.jsx:225
+msgid "Post Type Settings"
+msgstr "Einstellungen für den Beitragstyp"
+
+#: classes/class-ssb-settings-structure.php:805
+msgid "Support"
+msgstr "Unterstützung"
+
+#: classes/class-ssb-settings-structure.php:837
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: classes/class-ssb-settings-structure.php:884
+msgid "makes Social Sharing easy for everyone"
+msgstr "macht das Teilen in sozialen Medien für alle einfach"
+
+#: classes/class-ssb-settings-structure.php:890
+#. translators: %1$s and %5$s are the opening strong tag, %2$s and %4$s are the closing strong tag.
+msgid ""
+"%1$sSimple Social Buttons%2$s by %1$s%3$sWPBrigade%4$s%5$s adds an advanced "
+"set of social media sharing buttons to your WordPress sites, such as:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s and %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tThis makes it the most flexible social sharing plugin ever for "
+"Everyone."
+msgstr ""
+"%1$sEinfache soziale Buttons%2$s von %1$s%3$sWPBrigade%4$s%5$s fügt Ihren "
+"WordPress-Seiten eine erweiterte Auswahl an Schaltflächen zum Teilen in "
+"sozialen Medien hinzu, wie z.B.:\n"
+"\t\t\t\t\t\t%1$sFacebook%2$s, %1$sTwitter%2$s, %1$sLinkedIn%2$s, "
+"%1$sWhatsApp%2$s, %1$sViber%2$s, %1$sReddit%2$s und %1$sPinterest%2$s.\n"
+"\t\t\t\t\t\tDies macht es zum flexibelsten Plugin für das Teilen in "
+"sozialen Medien für alle."
+
+#: classes/class-ssb-settings-structure.php:921
+#: src/components/widgets/SsbFollowPlugins.jsx:12
+msgid "Spread the Word"
+msgstr "Verbreite das Wort"
+
+#: classes/class-ssb-settings-structure.php:926
+#: src/components/widgets/SsbFollowPlugins.jsx:30
+#: src/components/widgets/SsbFollowPlugins.jsx:33
+msgid "Share on X/Twitter"
+msgstr "Auf X/Twitter teilen"
+
+#: classes/class-ssb-settings-structure.php:930
+#: src/components/widgets/SsbFollowPlugins.jsx:19
+#: src/components/widgets/SsbFollowPlugins.jsx:22
+#, fuzzy
+msgid "Share on Facebook"
+msgstr "Paweł Rabinek bei Facebook"
+
+#: classes/class-ssb-settings-structure.php:936
+#: src/components/widgets/SsbFollowPlugins.jsx:52
+#: src/components/widgets/SsbFollowPlugins.jsx:55
+msgid "Rate on WordPress.org"
+msgstr "Bewerten auf WordPress.org"
+
+#: classes/class-ssb-settings-structure.php:945
+msgid "Subscribe Newsletter"
+msgstr "Newsletter abonnieren"
+
+#: classes/class-ssb-settings-structure.php:948
+#: simple-social-buttons.php:2713
+#: simple-social-buttons.php:2722
+#: src/components/widgets/SsbNewsletterWidget.jsx:146
+#: src/utils/constants.js:135
+msgid "Email"
+msgstr "E-Mail"
+
+#: classes/class-ssb-settings-structure.php:953
+#: src/components/widgets/SsbNewsletterWidget.jsx:157
+msgid "Name"
+msgstr "Name"
+
+#: classes/class-ssb-settings-structure.php:969
+#: src/components/widgets/SsbRecommendedPlugins.jsx:38
+msgid "Recommended Plugins"
+msgstr "Empfohlene Plugins"
+
+#: classes/class-ssb-settings-structure.php:973
+#: src/components/widgets/SsbRecommendedPlugins.jsx:11
+#: src/components/widgets/SsbRecommendedPlugins.jsx:13
+msgid "Customize WordPress Login Page"
+msgstr "WordPress-Anmeldeseite anpassen"
+
+#: classes/class-ssb-settings-structure.php:977
+#: src/components/widgets/SsbRecommendedPlugins.jsx:17
+#: src/components/widgets/SsbRecommendedPlugins.jsx:19
+msgid "Simplify Google Analytics in WordPress"
+msgstr "Google Analytics in WordPress vereinfachen"
+
+#: classes/class-ssb-settings-structure.php:981
+#: src/components/widgets/SsbRecommendedPlugins.jsx:23
+#: src/components/widgets/SsbRecommendedPlugins.jsx:25
+msgid "Related Posts Thumbnails"
+msgstr "Miniaturansichten verwandter Beiträge"
+
+#: classes/class-ssb-settings-structure.php:985
+#: src/components/widgets/SsbRecommendedPlugins.jsx:29
+#: src/components/widgets/SsbRecommendedPlugins.jsx:31
+msgid "Under Construction & Maintenance mode"
+msgstr "In Arbeit & Wartungsmodus"
+
+#: classes/class-ssb-settings-structure.php:1293
+msgid "Choose File"
+msgstr "Datei wählen"
+
+#: classes/class-ssb-settings-structure.php:1586
+msgid ""
+"Social media is about the people! Not about your business. Provide for the "
+"people and the people will provide you."
+msgstr ""
+"Soziale Medien sind über die Menschen! Nicht über Ihr Geschäft. Kümmern Sie "
+"sich um die Menschen, und die Menschen werden sich um Sie kümmern."
+
+#: classes/class-ssb-settings-structure.php:1593
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:65
+msgid "Click to post"
+msgstr "Klicken, um zu posten"
+
+#: classes/class-ssb-settings.php:74
+#: classes/class-ssb-settings.php:75
+#: simple-social-buttons.php:529
+#: src/utils/constants.js:13
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: classes/class-ssb-settings.php:111
+#: src/components/sections/SsbNetworksSection.jsx:272
+#, fuzzy
+msgid "Social Buttons"
+msgstr "Verbergen Simple Social Buttons"
+
+#: classes/class-ssb-settings.php:116
+#: src/components/sections/SsbThemesSection.jsx:114
+msgid "Social Buttons Designs"
+msgstr "Designs für soziale Buttons"
+
+#: classes/class-ssb-settings.php:121
+#: src/components/sections/SsbPositionsSection.jsx:34
+msgid "Social Buttons Positions"
+msgstr "Positionen der sozialen Buttons"
+
+#: classes/class-ssb-settings.php:126
+#: classes/class-ssb-settings.php:215
+#: src/components/sections/SsbPositionsSection.jsx:23
+#: src/components/sections/SsbSidebarSection.jsx:82
+msgid "Sidebar"
+msgstr "Seitenleiste"
+
+#: classes/class-ssb-settings.php:131
+#: src/components/sections/ProSections.jsx:113
+msgid "On Media"
+msgstr "Zu Medien"
+
+#: classes/class-ssb-settings.php:136
+#: classes/class-ssb-settings.php:218
+#: src/components/sections/ProSections.jsx:133
+#: src/components/sections/SsbPositionsSection.jsx:26
+msgid "Popup"
+msgstr "Popup"
+
+#: classes/class-ssb-settings.php:141
+#: classes/class-ssb-settings.php:219
+#: src/components/sections/ProSections.jsx:153
+#: src/components/sections/SsbPositionsSection.jsx:27
+msgid "Fly In"
+msgstr "Hereinfliegen"
+
+#: classes/class-ssb-settings.php:146
+#: src/components/sections/SsbInlineSection.jsx:98
+msgid "InLine"
+msgstr "Inline"
+
+#: classes/class-ssb-settings.php:151
+#: src/components/sections/SsbAdvancedTab.jsx:43
+msgid "Additional features"
+msgstr "Zusätzliche Funktionen"
+
+#: classes/class-ssb-settings.php:189
+msgid "Home"
+msgstr "Startseite"
+
+#: classes/class-ssb-settings.php:216
+#: src/components/sections/SsbPositionsSection.jsx:24
+msgid "Inline"
+msgstr "Inline"
+
+#: classes/class-ssb-settings.php:217
+#: src/components/sections/SsbPositionsSection.jsx:25
+msgid "Media"
+msgstr "Medien"
+
+#: classes/class-ssb-settings.php:226
+#: src/components/sections/SsbSidebarSection.jsx:97
+msgid "Sidebar Orientation"
+msgstr "Seitenleistenorientierung"
+
+#: classes/class-ssb-settings.php:228
+#: classes/class-ssb-settings.php:357
+msgid "<h4>Display Settings</h4>"
+msgstr "<h4>Anzeigeeinstellungen</h4>"
+
+#: classes/class-ssb-settings.php:232
+#: classes/class-ssb-settings.php:373
+#: src/components/sections/SsbInlineSection.jsx:120
+#: src/components/sections/SsbSidebarSection.jsx:100
+msgid "Left"
+msgstr "Links"
+
+#: classes/class-ssb-settings.php:233
+#: classes/class-ssb-settings.php:375
+#: src/components/sections/SsbInlineSection.jsx:122
+#: src/components/sections/SsbSidebarSection.jsx:101
+msgid "Right"
+msgstr "Rechts"
+
+#: classes/class-ssb-settings.php:239
+#: src/components/sections/SsbSidebarSection.jsx:107
+msgid "Intro Animation"
+msgstr "Einführungsanimation"
+
+#: classes/class-ssb-settings.php:243
+#: classes/class-ssb-settings.php:385
+#: src/components/sections/SsbInlineSection.jsx:131
+#: src/components/sections/SsbSidebarSection.jsx:110
+msgid "No"
+msgstr "Nein"
+
+#: classes/class-ssb-settings.php:244
+#: src/components/sections/SsbSidebarSection.jsx:111
+msgid "From Right"
+msgstr "Von rechts"
+
+#: classes/class-ssb-settings.php:245
+#: src/components/sections/SsbSidebarSection.jsx:112
+msgid "From Top"
+msgstr "Von oben"
+
+#: classes/class-ssb-settings.php:246
+#: src/components/sections/SsbSidebarSection.jsx:113
+msgid "From Bottom"
+msgstr "Von unten"
+
+#: classes/class-ssb-settings.php:247
+#: src/components/sections/SsbSidebarSection.jsx:114
+msgid "From Left"
+msgstr "Von links"
+
+#: classes/class-ssb-settings.php:248
+#: classes/class-ssb-settings.php:390
+#: src/components/sections/SsbInlineSection.jsx:136
+#: src/components/sections/SsbSidebarSection.jsx:115
+msgid "Fade In"
+msgstr "Einblenden"
+
+#: classes/class-ssb-settings.php:254
+#: classes/class-ssb-settings.php:396
+msgid ""
+"<p id=\"share-count-message\" >For Facebook share count you need to add "
+"Facebook App id and secret in the Social tab.</p>"
+msgstr ""
+"<p id=\"share-count-message\" >Für die Facebook-Anzahl der Shares müssen "
+"Sie die Facebook-App-ID und das Geheimnis im Tab \"Sozial\" hinzufügen.</p>"
+
+#: classes/class-ssb-settings.php:258
+#: classes/class-ssb-settings.php:400
+#: src/components/sections/SsbInlineSection.jsx:143
+#: src/components/sections/SsbSidebarSection.jsx:122
+msgid "Display Share Counts"
+msgstr "Anzahl der Shares anzeigen"
+
+#: classes/class-ssb-settings.php:264
+#: classes/class-ssb-settings.php:406
+#: src/components/sections/SsbInlineSection.jsx:153
+#: src/components/sections/SsbSidebarSection.jsx:134
+msgid "Display Total Shares"
+msgstr "Gesamtanzahl der Shares anzeigen"
+
+#: classes/class-ssb-settings.php:270
+#: src/components/sections/SsbSidebarSection.jsx:176
+msgid "Display Text on hover"
+msgstr "Text beim Hover anzeigen"
+
+#: classes/class-ssb-settings.php:276
+#: src/components/sections/SsbSidebarSection.jsx:183
+msgid "Flat Button Style"
+msgstr "Flacher Button-Stil"
+
+#: classes/class-ssb-settings.php:282
+#: classes/class-ssb-settings.php:412
+#: src/components/sections/SsbInlineSection.jsx:170
+#: src/components/sections/SsbSidebarSection.jsx:151
+msgid "Add Icon Spacing"
+msgstr "Icon-Abstand hinzufügen"
+
+#: classes/class-ssb-settings.php:289
+#: classes/class-ssb-settings.php:419
+#: src/components/sections/SsbInlineSection.jsx:179
+#: src/components/sections/SsbSidebarSection.jsx:160
+msgid "Enter the Space in Pixel"
+msgstr "Geben Sie den Abstand in Pixeln ein"
+
+#: classes/class-ssb-settings.php:296
+#: src/components/sections/SsbSidebarSection.jsx:169
+msgid "Sticky Bottom (Mobile)"
+msgstr "Sticky Bottom (Mobil)"
+
+#: classes/class-ssb-settings.php:302
+#: classes/class-ssb-settings.php:426
+#: src/components/sections/SsbInlineSection.jsx:188
+#: src/components/sections/SsbSidebarSection.jsx:190
+msgid "Hide On Mobile Devices"
+msgstr "Auf mobilen Geräten ausblenden"
+
+#: classes/class-ssb-settings.php:308
+#: classes/class-ssb-settings.php:432
+#: src/components/sections/SsbInlineSection.jsx:195
+#: src/components/sections/SsbSidebarSection.jsx:197
+msgid "Limit Social Icons"
+msgstr "Soziale Icons begrenzen"
+
+#: classes/class-ssb-settings.php:315
+#: classes/class-ssb-settings.php:439
+#: src/components/sections/SsbInlineSection.jsx:213
+#: src/components/sections/SsbSidebarSection.jsx:215
+msgid "Maximum Icons to Show"
+msgstr "Maximale Anzahl an anzuzeigenden Icons"
+
+#: classes/class-ssb-settings.php:323
+#: classes/class-ssb-settings.php:480
+#: classes/class-ssb-settings.php:653
+msgid "Multi checkbox description"
+msgstr "Beschreibung für mehrere Kontrollkästchen"
+
+#: classes/class-ssb-settings.php:335
+#: src/components/widgets/SsbGoProSection.jsx:14
+msgid "Want More Control Over Your Sidebar Social Buttons Styling?"
+msgstr "Möchten Sie mehr Kontrolle über das Styling Ihrer Sidebar-Sozial-Buttons?"
+
+#: classes/class-ssb-settings.php:339
+#: classes/class-ssb-settings.php:496
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button,\n"
+"\t\t\t\t\t\tso they blend naturally with your website's design instead of "
+"standing out like a default plugin.\n"
+"\t\t\t\t\t\tButtons that fit your site tend to get clicked more, which "
+"means more shares and more traffic for you.\n"
+"\t\t\t\t\t\tPro also adds features like buttons on images, popups on exit "
+"intent, fly in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, benutzerdefinierte "
+"Hintergrund-, Hover- und Icon-Farben für jeden Button festzulegen,\n"
+"\t\t\t\t\t\tdamit sie sich natürlich in das Design Ihrer Website einfügen, "
+"anstatt wie ein Standard-Plugin herauszustechen.\n"
+"\t\t\t\t\t\tButtons, die zu Ihrer Website passen, werden tendenziell "
+"häufiger angeklickt, was mehr Shares und mehr Traffic für Sie bedeutet.\n"
+"\t\t\t\t\t\tPro fügt auch Funktionen wie Buttons auf Bildern, Popups bei "
+"Verlassen der Seite, Fly-In-Slide-Animationen und mehr hinzu."
+
+#: classes/class-ssb-settings.php:355
+#: src/components/sections/SsbInlineSection.jsx:110
+msgid "Icon Position"
+msgstr "Icon-Position"
+
+#: classes/class-ssb-settings.php:361
+#: src/components/sections/SsbInlineSection.jsx:22
+msgid "Above The Content"
+msgstr "Über dem Inhalt"
+
+#: classes/class-ssb-settings.php:362
+#: src/components/sections/SsbInlineSection.jsx:23
+msgid "Below The Content"
+msgstr "Unter dem Inhalt"
+
+#: classes/class-ssb-settings.php:363
+#: src/components/sections/SsbInlineSection.jsx:24
+msgid "Above + Below The Content"
+msgstr "Über und unter dem Inhalt"
+
+#: classes/class-ssb-settings.php:369
+#: src/components/sections/SsbInlineSection.jsx:117
+msgid "Icon Alignment"
+msgstr "Icon-Ausrichtung"
+
+#: classes/class-ssb-settings.php:374
+#: src/components/sections/SsbInlineSection.jsx:121
+msgid "Centered"
+msgstr "Zentriert"
+
+#: classes/class-ssb-settings.php:381
+#: src/components/sections/SsbInlineSection.jsx:128
+msgid "Animation"
+msgstr "Animation"
+
+#: classes/class-ssb-settings.php:386
+#: src/components/sections/SsbInlineSection.jsx:132
+msgid "From bottom"
+msgstr "Von unten"
+
+#: classes/class-ssb-settings.php:387
+#: src/components/sections/SsbInlineSection.jsx:133
+msgid "From top"
+msgstr "Von oben"
+
+#: classes/class-ssb-settings.php:388
+#: src/components/sections/SsbInlineSection.jsx:134
+msgid "From left"
+msgstr "Von links"
+
+#: classes/class-ssb-settings.php:389
+#: src/components/sections/SsbInlineSection.jsx:135
+msgid "From right"
+msgstr "Von rechts"
+
+#: classes/class-ssb-settings.php:446
+#: src/components/sections/SsbInlineSection.jsx:223
+#, fuzzy
+msgid "Show at Category pages"
+msgstr "Zeige in den Kategorien"
+
+#: classes/class-ssb-settings.php:452
+#: src/components/sections/SsbInlineSection.jsx:230
+#, fuzzy
+msgid "Show at Archive pages"
+msgstr "Zeige bei Archiven"
+
+#: classes/class-ssb-settings.php:459
+#: src/components/sections/SsbInlineSection.jsx:237
+#, fuzzy
+msgid "Show at Tag pages"
+msgstr "Zeige bei Stichworten"
+
+#: classes/class-ssb-settings.php:465
+#: src/components/sections/SsbInlineSection.jsx:244
+msgid "Show at Search pages"
+msgstr "Auf Suchseiten anzeigen"
+
+#: classes/class-ssb-settings.php:471
+#: src/components/sections/SsbInlineSection.jsx:252
+msgid "Share Title"
+msgstr "Titel teilen"
+
+#: classes/class-ssb-settings.php:492
+#: src/components/widgets/SsbGoProSection.jsx:19
+msgid "Want More Control Over Your Inline Social Buttons Styling?"
+msgstr "Möchten Sie mehr Kontrolle über das Styling Ihrer Inline-Sozial-Buttons?"
+
+#: classes/class-ssb-settings.php:513
+msgid "Twitter/X @username:"
+msgstr "Twitter/X @benutzername:"
+
+#: classes/class-ssb-settings.php:519
+msgid "Http/Https counts resolve:"
+msgstr "Http/Https-Zählungen auflösen:"
+
+#: classes/class-ssb-settings.php:524
+#: src/components/sections/SsbAdvancedTab.jsx:55
+msgid "Internal Share Flush Interval"
+msgstr "Interner Freigabe-Flush-Intervall"
+
+#: classes/class-ssb-settings.php:527
+msgid "1 hour"
+msgstr "1 Stunde"
+
+#: classes/class-ssb-settings.php:528
+msgid "2 hours"
+msgstr "2 Stunden"
+
+#: classes/class-ssb-settings.php:529
+msgid "3 hours"
+msgstr "3 Stunden"
+
+#: classes/class-ssb-settings.php:530
+msgid "4 hours"
+msgstr "4 Stunden"
+
+#: classes/class-ssb-settings.php:531
+msgid "5 hours"
+msgstr "5 Stunden"
+
+#: classes/class-ssb-settings.php:532
+msgid "6 hours"
+msgstr "6 Stunden"
+
+#: classes/class-ssb-settings.php:533
+msgid "7 hours"
+msgstr "7 Stunden"
+
+#: classes/class-ssb-settings.php:534
+msgid "8 hours"
+msgstr "8 Stunden"
+
+#: classes/class-ssb-settings.php:535
+msgid "9 hours"
+msgstr "9 Stunden"
+
+#: classes/class-ssb-settings.php:536
+msgid "10 hours"
+msgstr "10 Stunden"
+
+#: classes/class-ssb-settings.php:537
+msgid "11 hours"
+msgstr "11 Stunden"
+
+#: classes/class-ssb-settings.php:538
+msgid "12 hours"
+msgstr "12 Stunden"
+
+#: classes/class-ssb-settings.php:539
+msgid "13 hours"
+msgstr "13 Stunden"
+
+#: classes/class-ssb-settings.php:540
+msgid "14 hours"
+msgstr "14 Stunden"
+
+#: classes/class-ssb-settings.php:541
+msgid "15 hours"
+msgstr "15 Stunden"
+
+#: classes/class-ssb-settings.php:542
+msgid "16 hours"
+msgstr "16 Stunden"
+
+#: classes/class-ssb-settings.php:543
+msgid "17 hours"
+msgstr "17 Stunden"
+
+#: classes/class-ssb-settings.php:544
+msgid "18 hours"
+msgstr "18 Stunden"
+
+#: classes/class-ssb-settings.php:545
+msgid "19 hours"
+msgstr "19 Stunden"
+
+#: classes/class-ssb-settings.php:546
+msgid "20 hours"
+msgstr "20 Stunden"
+
+#: classes/class-ssb-settings.php:547
+msgid "21 hours"
+msgstr "21 Stunden"
+
+#: classes/class-ssb-settings.php:548
+msgid "22 hours"
+msgstr "22 Stunden"
+
+#: classes/class-ssb-settings.php:549
+msgid "23 hours"
+msgstr "23 Stunden"
+
+#: classes/class-ssb-settings.php:550
+msgid "24 hours"
+msgstr "24 Stunden"
+
+#: classes/class-ssb-settings.php:557
+#: src/components/sections/SsbAdvancedTab.jsx:73
+msgid "Open Graph Tags"
+msgstr "Open Graph-Tags"
+
+#: classes/class-ssb-settings.php:565
+#: src/components/sections/SsbAdvancedTab.jsx:80
+msgid "Remove Settings on Uninstall"
+msgstr "Einstellungen bei Deinstallation entfernen"
+
+#: classes/class-ssb-settings.php:569
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s This tool will remove all Simple Social Button settings upon "
+"uninstall.%2$s"
+msgstr ""
+"%1$s Dieses Tool entfernt alle Einstellungen des Simple Social Button bei "
+"der Deinstallation.%2$s"
+
+#: classes/class-ssb-settings.php:577
+#: src/components/sections/SsbAdvancedTab.jsx:88
+msgid "Factory Reset"
+msgstr "Werkseinstellung zurücksetzen"
+
+#: classes/class-ssb-settings.php:581
+#. translators: %1$s is the opening span tag, %2$s is the closing span tag.
+msgid ""
+"%1$s Enable to reset all settings made by Simple Social Buttons upon "
+"saving.%2$s"
+msgstr ""
+"%1$s Aktivieren, um alle Einstellungen, die von Simple Social Buttons "
+"vorgenommen wurden, beim Speichern zurückzusetzen.%2$s"
+
+#: classes/class-ssb-settings.php:590
+#. translators: %1$s is the opening h4 tag, %2$s is the closing h4 tag, %3$s is the opening anchor tag, %4$s is the closing anchor tag.
+msgid "%1$sFacebook App%2$s %3$show to make App%4$s"
+msgstr "%1$sFacebook-App%2$s %3$sanzeigen, um App%4$s zu erstellen"
+
+#: classes/class-ssb-settings.php:597
+msgid "Facebook App ID:"
+msgstr "Facebook App-ID:"
+
+#: classes/class-ssb-settings.php:604
+msgid "Facebook App Secret:"
+msgstr "Facebook App-Geheimnis:"
+
+#: classes/class-ssb-settings.php:610
+#: src/components/sections/SsbAdvancedTab.jsx:99
+msgid "Custom CSS"
+msgstr "Benutzerdefiniertes CSS"
+
+#: classes/class-ssb-settings.php:617
+#: src/components/sections/SsbAdvancedTab.jsx:107
+msgid "Custom JS"
+msgstr "Benutzerdefiniertes JS"
+
+#: classes/class-ssb-settings.php:636
+msgid "Icon Style"
+msgstr "Symbolstil"
+
+#: classes/class-ssb-settings.php:652
+msgid "Positions"
+msgstr "Positionen"
+
+#: classes/class-ssb-settings.php:666
+#: src/components/widgets/SsbGoProSection.jsx:24
+msgid "Want to Show Social Sharing Buttons on Your Media?"
+msgstr "Möchten Sie soziale Sharing-Buttons auf Ihren Medien anzeigen?"
+
+#: classes/class-ssb-settings.php:670
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos\n"
+"\t\t\t\t\t\t\tacross your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site.\n"
+"\t\t\t\t\t\t\tYou can also hide them on mobile and control exactly which "
+"post types they appear on.\n"
+"\t\t\t\t\t\t\tIt's an easy way to turn every image into a shareable "
+"opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, Share-Buttons direkt auf "
+"Bildern und Fotos in Ihren Beiträgen und Seiten anzuzeigen, ihre Position "
+"zu wählen, den Abstand der Icons hinzuzufügen und benutzerdefinierte Farben "
+"festzulegen, die zu Ihrer Website passen. Sie können sie auch auf "
+"Mobilgeräten ausblenden und genau steuern, auf welchen Beitragstypen sie "
+"angezeigt werden. Es ist eine einfache Möglichkeit, jedes Bild in eine "
+"teilbare Gelegenheit zu verwandeln und mehr Traffic zu generieren."
+
+#: classes/class-ssb-settings.php:684
+#: src/components/widgets/SsbGoProSection.jsx:29
+msgid "Want Smart Popups That Trigger at the Right Moment?"
+msgstr "Möchten Sie smarte Popups, die im richtigen Moment ausgelöst werden?"
+
+#: classes/class-ssb-settings.php:688
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message,\n"
+"\t\t\t\t\t\t\tand trigger it exactly when it matters, like before visitors "
+"leave or after they scroll.\n"
+"\t\t\t\t\t\t\tYou can add animation, display share counts or total shares "
+"to build social proof, and set custom colors to match your brand.\n"
+"\t\t\t\t\t\t\tIt's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, ein benutzerdefiniertes "
+"Share-Popup mit Ihrem eigenen Titel und Ihrer eigenen Nachricht zu "
+"erstellen und es genau dann auszulösen, wenn es wichtig ist, zum Beispiel "
+"bevor Besucher die Seite verlassen oder nachdem sie gescrollt haben. Sie "
+"können Animationen hinzufügen, die Share-Zahlen oder die Gesamtanzahl der "
+"Shares anzeigen, um sozialen Beweis zu schaffen, und benutzerdefinierte "
+"Farben festlegen, die zu Ihrer Marke passen. Es ist eine clevere "
+"Möglichkeit, die Aufmerksamkeit der Besucher genau in dem Moment zu "
+"erlangen, in dem sie am ehesten teilen möchten."
+
+#: classes/class-ssb-settings.php:702
+#: src/components/widgets/SsbGoProSection.jsx:34
+msgid "Want Advanced Fly In Animations That Drive More Shares?"
+msgstr "Möchten Sie erweiterte Fly-In-Animationen, die mehr Shares generieren?"
+
+#: classes/class-ssb-settings.php:706
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message,\n"
+"\t\t\t\t\t\t\tchoose its position and animation, and even display share "
+"counts or total shares to build social proof.\n"
+"\t\t\t\t\t\t\tYou can fine-tune timing, icon spacing, and colors to match "
+"your brand, and control which post types it appears on.\n"
+"\t\t\t\t\t\t\tIt's a great way to prompt visitors to share right when "
+"they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, eine benutzerdefinierte "
+"Fly-In-Box mit Ihrem eigenen Titel und Ihrer eigenen Nachricht zu "
+"erstellen, ihre Position und Animation zu wählen und sogar die Share-Zahlen "
+"oder die Gesamtanzahl der Shares anzuzeigen, um sozialen Beweis zu "
+"schaffen. Sie können Timing, Abstand der Icons und Farben anpassen, um sie "
+"an Ihre Marke anzupassen, und steuern, auf welchen Beitragstypen sie "
+"angezeigt wird. Es ist eine großartige Möglichkeit, Besucher dazu zu "
+"bringen, zu teilen, genau in dem Moment, in dem sie am engagiertesten sind."
+
+#: classes/class-ssb-settings.php:817
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid "Free support is available on the %1$s plugin support forums%2$s."
+msgstr "Kostenlose Unterstützung ist in den %1$s Plugin-Supportforen%2$s verfügbar."
+
+#: classes/class-ssb-settings.php:825
+#. translators: %1$s is the opening anchor tag, %2$s is the closing anchor tag.
+msgid ""
+"For premium features, add-ons and priority email support, %1$s upgrade to "
+"pro%2$s."
+msgstr ""
+"Für Premium-Funktionen, Add-ons und priorisierte E-Mail-Unterstützung %1$s "
+"auf Pro upgraden%2$s."
+
+#: classes/class-ssb-settings.php:836
+#: src/components/Help.jsx:107
+msgid "Download Log File"
+msgstr "Logdatei herunterladen"
+
+#: classes/class-ssb-settings.php:916
+#: src/components/ImportExport.jsx:92
+msgid "Security check failed. Please refresh the page and try again."
+msgstr ""
+"Sicherheitsüberprüfung fehlgeschlagen. Bitte aktualisieren Sie die Seite "
+"und versuchen Sie es erneut."
+
+#: classes/class-ssb-settings.php:926
+#: src/components/ImportExport.jsx:93
+msgid "You do not have permission to import settings."
+msgstr "Sie haben keine Berechtigung, Einstellungen zu importieren."
+
+#: classes/class-ssb-settings.php:940
+#: src/components/ImportExport.jsx:94
+msgid "No file uploaded or upload failed."
+msgstr "Keine Datei hochgeladen oder Upload fehlgeschlagen."
+
+#: classes/class-ssb-settings.php:951
+msgid "The uploaded file is too large."
+msgstr "Die hochgeladene Datei ist zu groß."
+
+#: classes/class-ssb-settings.php:963
+msgid "Please upload a valid JSON export file."
+msgstr "Bitte laden Sie eine gültige JSON-Exportdatei hoch."
+
+#: classes/class-ssb-settings.php:977
+#: src/components/ImportExport.jsx:95
+msgid "Invalid JSON file. Please upload a valid SSB export file."
+msgstr "Ungültige JSON-Datei. Bitte laden Sie eine gültige SSB-Exportdatei hoch."
+
+#: classes/class-ssb-settings.php:984
+#: src/components/ImportExport.jsx:96
+msgid ""
+"Invalid file format. This does not appear to be a Simple Social Buttons "
+"export file."
+msgstr ""
+"Ungültiges Dateiformat. Dies scheint keine Simple Social "
+"Buttons-Exportdatei zu sein."
+
+#: classes/class-ssb-settings.php:1027
+msgid "Settings imported successfully."
+msgstr "Einstellungen erfolgreich importiert."
+
+#: classes/class-ssb-widget.php:37
+msgid "Display Follow Button For your site"
+msgstr "Folgen-Button für Ihre Website anzeigen"
+
+#: classes/class-ssb-widget.php:39
+msgid "Social Follow Widget"
+msgstr "Soziales Follow-Widget"
+
+#: classes/class-ssb-widget.php:132
+msgid "Follow us on Facebook"
+msgstr "Folgen Sie uns auf Facebook"
+
+#: classes/class-ssb-widget.php:133
+msgid "Subscribe us on Youtube"
+msgstr "Abonnieren Sie uns auf Youtube"
+
+#: classes/class-ssb-widget.php:134
+msgid "Follow us on Twitter"
+msgstr "Folgen Sie uns auf Twitter"
+
+#: classes/class-ssb-widget.php:135
+msgid "Follow us on Pinterest"
+msgstr "Folgen Sie uns auf Pinterest"
+
+#: classes/class-ssb-widget.php:136
+msgid "Follow us on Instagram"
+msgstr "Folgen Sie uns auf Instagram"
+
+#: classes/class-ssb-widget.php:137
+msgid "Contact us on WhatsApp"
+msgstr "Kontaktieren Sie uns über WhatsApp"
+
+#: classes/class-ssb-widget.php:141
+msgid "Follow Us"
+msgstr "Folgen Sie uns"
+
+#: inc/ssb-import-export.php:22
+msgid "Import/Export Simple Social Share Buttons Settings"
+msgstr "Importieren/Exportieren der Einstellungen für Simple Social Share Buttons"
+
+#: inc/ssb-import-export.php:23
+msgid "Import/Export your Social share button Settings for/from other sites."
+msgstr ""
+"Importieren/Exportieren Sie Ihre Einstellungen für Social Share Buttons "
+"für/von anderen Websites."
+
+#: inc/ssb-import-export.php:28
+msgid "Import Settings:"
+msgstr "Einstellungen importieren:"
+
+#: inc/ssb-import-export.php:32
+msgid "Import"
+msgstr "Importieren"
+
+#: inc/ssb-import-export.php:36
+#: src/components/ImportExport.jsx:146
+msgid "Simple Social Buttons Share Settings Imported Successfully."
+msgstr "Einstellungen für Simple Social Buttons erfolgreich importiert."
+
+#: inc/ssb-import-export.php:38
+msgid "Select a file and click on Import to start processing."
+msgstr ""
+"Wählen Sie eine Datei aus und klicken Sie auf Importieren, um mit der "
+"Verarbeitung zu beginnen."
+
+#: inc/ssb-import-export.php:43
+msgid "Export Settings:"
+msgstr "Einstellungen exportieren:"
+
+#: inc/ssb-import-export.php:46
+#: src/components/ImportExport.jsx:374
+msgid "Export"
+msgstr "Exportieren"
+
+#: inc/ssb-import-export.php:50
+#: src/components/ImportExport.jsx:207
+msgid "Simple Social Button Settings Exported Successfully!"
+msgstr "Einfache Einstellungen für soziale Schaltflächen erfolgreich exportiert!"
+
+#: inc/ssb-import-export.php:51
+#: src/components/ImportExport.jsx:390
+msgid "Export Simple Social Button Settings."
+msgstr "Einfache Einstellungen für soziale Schaltflächen exportieren."
+
+#: inc/ssb-widget-fields.php:15
+msgid "Title:"
+msgstr "Titel:"
+
+#: inc/ssb-widget-fields.php:35
+#: inc/ssb-widget-fields.php:103
+#: simple-social-buttons.php:2147
+#: src/components/sections/SsbThemesSection.jsx:73
+#: src/utils/constants.js:129
+msgid "Facebook"
+msgstr "Facebook"
+
+#: inc/ssb-widget-fields.php:47
+#: inc/ssb-widget-fields.php:217
+msgid "Twitter"
+msgstr "Twitter"
+
+#: inc/ssb-widget-fields.php:59
+#: inc/ssb-widget-fields.php:314
+msgid "YouTube"
+msgstr "YouTube"
+
+#: inc/ssb-widget-fields.php:71
+#: inc/ssb-widget-fields.php:394
+#: simple-social-buttons.php:2429
+#: simple-social-buttons.php:2439
+#: src/utils/constants.js:128
+msgid "Pinterest"
+msgstr "Pinterest"
+
+#: inc/ssb-widget-fields.php:83
+#: inc/ssb-widget-fields.php:457
+msgid "Instagram"
+msgstr "Instagram"
+
+#: inc/ssb-widget-fields.php:95
+#: inc/ssb-widget-fields.php:523
+#: simple-social-buttons.php:2568
+#: simple-social-buttons.php:2577
+#: src/utils/constants.js:132
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: inc/ssb-widget-fields.php:106
+msgid "Facebook Button Text"
+msgstr "Facebook-Button-Text"
+
+#: inc/ssb-widget-fields.php:120
+msgid "Facebook Page Name:"
+msgstr "Name der Facebook-Seite:"
+
+#: inc/ssb-widget-fields.php:140
+msgid "Display Facebook like counter"
+msgstr "Facebook-Like-Zähler anzeigen"
+
+#: inc/ssb-widget-fields.php:151
+msgid "Facebook App Id:"
+msgstr "Facebook-App-ID:"
+
+#: inc/ssb-widget-fields.php:163
+msgid "Facebook Security Key:"
+msgstr "Facebook-Sicherheitsschlüssel:"
+
+#: inc/ssb-widget-fields.php:175
+msgid "Facebook Access Token: "
+msgstr "Facebook-Zugriffstoken: "
+
+#: inc/ssb-widget-fields.php:194
+#: inc/ssb-widget-fields.php:291
+msgid "Default count to show instead of 0 when API's are not available."
+msgstr ""
+"Standardanzahl, die anstelle von 0 angezeigt wird, wenn APIs nicht "
+"verfügbar sind."
+
+#: inc/ssb-widget-fields.php:220
+msgid "Twitter Button Text:"
+msgstr "Twitter-Button-Text:"
+
+#: inc/ssb-widget-fields.php:233
+msgid "Twitter Handle:"
+msgstr "Twitter-Handle:"
+
+#: inc/ssb-widget-fields.php:254
+msgid "Display Twitter follower counter"
+msgstr "Twitter-Follower-Zähler anzeigen"
+
+#: inc/ssb-widget-fields.php:264
+msgid "Twitter Api Key: "
+msgstr "Twitter-API-Schlüssel: "
+
+#: inc/ssb-widget-fields.php:279
+msgid "Twitter Secret Key:"
+msgstr "Twitter-Geheimschlüssel:"
+
+#: inc/ssb-widget-fields.php:317
+msgid "YouTube Button Text:"
+msgstr "YouTube-Button-Text:"
+
+#: inc/ssb-widget-fields.php:331
+msgid "Type :"
+msgstr "Typ :"
+
+#: inc/ssb-widget-fields.php:335
+msgid "Channel"
+msgstr "Kanal"
+
+#: inc/ssb-widget-fields.php:338
+msgid "Username"
+msgstr "Benutzername"
+
+#: inc/ssb-widget-fields.php:345
+msgid "YouTube Channel ID:"
+msgstr "YouTube-Kanal-ID:"
+
+#: inc/ssb-widget-fields.php:363
+msgid "Display YouTube subscriber counter"
+msgstr "YouTube-Abonnentenzähler anzeigen"
+
+#: inc/ssb-widget-fields.php:373
+msgid "YouTube Api Key: "
+msgstr "YouTube-API-Schlüssel: "
+
+#: inc/ssb-widget-fields.php:397
+msgid "Pinterest Button Text:"
+msgstr "Pinterest-Button-Text:"
+
+#: inc/ssb-widget-fields.php:410
+msgid "Pinterest User ID:"
+msgstr "Pinterest-Benutzer-ID:"
+
+#: inc/ssb-widget-fields.php:429
+msgid "Display Pinterest follower counter"
+msgstr "Pinterest-Follower-Zähler anzeigen"
+
+#: inc/ssb-widget-fields.php:435
+msgid "Printerest Access Token: "
+msgstr "Pinterest-Zugriffstoken: "
+
+#: inc/ssb-widget-fields.php:460
+msgid "Instagram Button Text:"
+msgstr "Instagram-Button-Text:"
+
+#: inc/ssb-widget-fields.php:473
+msgid "Instagram User Name:"
+msgstr "Instagram-Benutzername:"
+
+#: inc/ssb-widget-fields.php:492
+msgid "Display Instagram follower counter"
+msgstr "Instagram-Follower-Zähler anzeigen"
+
+#: inc/ssb-widget-fields.php:501
+msgid "Instagram Access Token: "
+msgstr "Instagram-Zugriffstoken: "
+
+#: inc/ssb-widget-fields.php:526
+msgid "WhatsApp Button Text:"
+msgstr "WhatsApp-Button-Text:"
+
+#: inc/ssb-widget-fields.php:539
+msgid "WhatsApp Mobile Number:"
+msgstr "WhatsApp-Handynummer:"
+
+#: simple-social-buttons.php:452
+#: simple-social-buttons.php:453
+msgid "Activate"
+msgstr "Aktivieren"
+
+#: simple-social-buttons.php:539
+#. translators: %1$s: opening anchor tag, %2$s: closing anchor tag, %3$s: opening span tag, %4$s: closing span tag.
+msgid "%1$s %3$s Upgrade Pro %4$s %2$s"
+msgstr "%1$s %3$s Upgrade Pro %4$s %2$s"
+
+#: simple-social-buttons.php:968
+#. translators: %d: interval in hours.
+msgid "SSB Internal Share Flush (every %d hours)"
+msgstr "SSB Interner Share Flush (alle %d Stunden)"
+
+#: simple-social-buttons.php:1410
+msgid "Hide social sharing bar"
+msgstr "Soziale Sharing-Leiste ausblenden"
+
+#: simple-social-buttons.php:1411
+msgid "Show social sharing bar"
+msgstr "Soziale Sharing-Leiste anzeigen"
+
+#: simple-social-buttons.php:2130
+#: simple-social-buttons.php:2145
+msgid "Facebook Share"
+msgstr "Facebook Teilen"
+
+#: simple-social-buttons.php:2136
+#: simple-social-buttons.php:2374
+#: simple-social-buttons.php:3082
+#: src/components/sections/SsbThemesSection.jsx:35
+#: src/components/sections/SsbThemesSection.jsx:57
+msgid "Share"
+msgstr "Teilen"
+
+#: simple-social-buttons.php:2162
+#: simple-social-buttons.php:2177
+msgid "Bluesky Share"
+msgstr "Bluesky Teilen"
+
+#: simple-social-buttons.php:2169
+#: simple-social-buttons.php:2179
+#: src/utils/constants.js:139
+msgid "Bluesky"
+msgstr "Bluesky"
+
+#: simple-social-buttons.php:2193
+#: simple-social-buttons.php:2208
+msgid "Telegram Share"
+msgstr "Telegram Teilen"
+
+#: simple-social-buttons.php:2200
+#: simple-social-buttons.php:2210
+#: src/utils/constants.js:140
+msgid "Telegram"
+msgstr "Telegram"
+
+#: simple-social-buttons.php:2239
+msgid "threads Share"
+msgstr "Threads Teilen"
+
+#: simple-social-buttons.php:2247
+#: simple-social-buttons.php:2257
+#: src/utils/constants.js:141
+msgid "Threads"
+msgstr "Threads"
+
+#: simple-social-buttons.php:2255
+msgid "Threads Share"
+msgstr "Threads Teilen"
+
+#: simple-social-buttons.php:2276
+#: simple-social-buttons.php:2293
+msgid "Twitter/X Share"
+msgstr "Twitter/X Teilen"
+
+#: simple-social-buttons.php:2282
+#: simple-social-buttons.php:2284
+#: src/components/sections/SsbThemesSection.jsx:45
+msgid "Post"
+msgstr "Beitrag"
+
+#: simple-social-buttons.php:2295
+#: src/components/sections/SsbSocialTab.jsx:60
+#: src/components/sections/SsbThemesSection.jsx:78
+#: src/utils/constants.js:127
+msgid "Twitter/X"
+msgstr "Twitter/X"
+
+#: simple-social-buttons.php:2309
+msgid "Copy"
+msgstr "Kopieren"
+
+#: simple-social-buttons.php:2319
+#: simple-social-buttons.php:2335
+#: src/utils/constants.js:136
+msgid "Copy Link"
+msgstr "Link kopieren"
+
+#: simple-social-buttons.php:2339
+msgid "Copied"
+msgstr "Kopiert"
+
+#: simple-social-buttons.php:2364
+#: simple-social-buttons.php:2383
+msgid "LinkedIn Share"
+msgstr "LinkedIn Teilen"
+
+#: simple-social-buttons.php:2385
+#: src/components/sections/SsbThemesSection.jsx:83
+#: src/utils/constants.js:130
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+#: simple-social-buttons.php:2422
+#: simple-social-buttons.php:2436
+msgid "Pinterest Share"
+msgstr "Pinterest teilen"
+
+#: simple-social-buttons.php:2453
+msgid "Shares"
+msgstr "Shares"
+
+#: simple-social-buttons.php:2514
+#: simple-social-buttons.php:2531
+msgid "Reddit Share"
+msgstr "Reddit teilen"
+
+#: simple-social-buttons.php:2522
+#: simple-social-buttons.php:2533
+#: src/utils/constants.js:131
+msgid "Reddit"
+msgstr "Reddit"
+
+#: simple-social-buttons.php:2561
+#: simple-social-buttons.php:2575
+msgid "WhatsApp Share"
+msgstr "WhatsApp teilen"
+
+#: simple-social-buttons.php:2640
+#: simple-social-buttons.php:2653
+msgid "Viber Share"
+msgstr "Viber teilen"
+
+#: simple-social-buttons.php:2644
+msgid "Viber icon"
+msgstr "Viber-Symbol"
+
+#: simple-social-buttons.php:2646
+#: simple-social-buttons.php:2655
+#: src/utils/constants.js:133
+msgid "Viber"
+msgstr "Viber"
+
+#: simple-social-buttons.php:2671
+#: simple-social-buttons.php:2687
+msgid "Facebook Messenger Share"
+msgstr "Facebook Messenger teilen"
+
+#: simple-social-buttons.php:2681
+#: simple-social-buttons.php:2689
+#: src/utils/constants.js:134
+msgid "Messenger"
+msgstr "Messenger"
+
+#: simple-social-buttons.php:2704
+#: simple-social-buttons.php:2719
+msgid "Share through Email"
+msgstr "Per E-Mail teilen"
+
+#: simple-social-buttons.php:2730
+msgid "Print The Post"
+msgstr "Beitrag drucken"
+
+#: simple-social-buttons.php:2748
+#: simple-social-buttons.php:2763
+#: src/utils/constants.js:137
+msgid "Print"
+msgstr "Drucken"
+
+#: simple-social-buttons.php:2761
+msgid "Print Share"
+msgstr "Drucken und teilen"
+
+#: simple-social-buttons.php:2776
+#: simple-social-buttons.php:2798
+msgid "Tumblr Share"
+msgstr "Tumblr teilen"
+
+#: simple-social-buttons.php:2791
+#: simple-social-buttons.php:2799
+#: src/utils/constants.js:138
+msgid "Tumblr"
+msgstr "Tumblr"
+
+#: simple-social-buttons.php:2817
+#: simple-social-buttons.php:2831
+msgid "Line Share"
+msgstr "Line teilen"
+
+#: simple-social-buttons.php:2824
+#: simple-social-buttons.php:2831
+#: src/utils/constants.js:142
+msgid "Line"
+msgstr "Line"
+
+#: simple-social-buttons.php:2846
+#: simple-social-buttons.php:2855
+msgid "Mastodon Share"
+msgstr "Mastodon teilen"
+
+#: simple-social-buttons.php:2851
+#: simple-social-buttons.php:2855
+#: src/utils/constants.js:143
+msgid "Mastodon"
+msgstr "Mastodon"
+
+#: simple-social-buttons.php:2867
+#: simple-social-buttons.php:2879
+msgid "VK Share"
+msgstr "VK teilen"
+
+#: simple-social-buttons.php:2875
+#: simple-social-buttons.php:2879
+#: src/utils/constants.js:144
+msgid "VK"
+msgstr "VK"
+
+#: simple-social-buttons.php:2896
+#: simple-social-buttons.php:2905
+msgid "Snapchat Share"
+msgstr "Snapchat teilen"
+
+#: simple-social-buttons.php:2899
+#: simple-social-buttons.php:2907
+#: src/components/sections/SsbSocialTab.jsx:121
+#: src/utils/constants.js:145
+msgid "Snapchat"
+msgstr "Snapchat"
+
+#: simple-social-buttons.php:3069
+#: simple-social-buttons.php:3078
+#: simple-social-buttons.php:3225
+msgid "More share options"
+msgstr "Weitere Freigabeoptionen"
+
+#: simple-social-buttons.php:3081
+msgid "Close"
+msgstr "Schließen"
+
+#: simple-social-buttons.php:3326
+msgid "Simple Social Buttons 2.0 (Relaunched)"
+msgstr "Einfache soziale Schaltflächen 2.0 (neu gestartet)"
+
+#: simple-social-buttons.php:3329
+msgid ""
+"Simple Social Buttons had 50,000 Active installs and It was abondoned and "
+"rarely updated since last 5 years.<br />\n"
+"\t\t\t\t\tWe at <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\tadopted this plugin and rewrote it completely from scratch.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tCheck out</a> What's new in 2.0 version.<br /> Pardon me, If "
+"there is anything broken. Please\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">report</a> us any issue you see in the plugin."
+msgstr ""
+"Einfache soziale Schaltflächen hatten 50.000 aktive Installationen und "
+"wurden in den letzten 5 Jahren aufgegeben und selten aktualisiert.<br />\n"
+"\t\t\t\t\tWir bei <a "
+"href=\"https://WPBrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-notice-2-0\" target=\"_blank\">WPBrigade</a>\n"
+"\t\t\t\t\thaben dieses Plugin übernommen und von Grund auf neu "
+"geschrieben.<br />\n"
+"\t\t\t\t\t<a "
+"href=\"https://simplesocialbuttons.com/pricing/?utm_source=simple-social-"
+"buttons-lite&utm_medium=link-notice-2-0&utm_campaign=pro-upgrade\" "
+"target=\"_blank\">\n"
+"\t\t\t\t\tÜberprüfen Sie</a> die Neuigkeiten in Version 2.0.<br /> "
+"Entschuldigen Sie bitte, wenn etwas nicht funktioniert. Bitte\n"
+"\t\t\t\t\t<a "
+"href=\"https://WPBrigade.com/contact/?utm_source=simple-social-buttons-lite\""
+" target=\"_blank\">melden</a> Sie uns jedes Problem, das Sie im Plugin "
+"sehen."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:23
+#: blocks/shortcode/settings.js:23
+msgid "Theme"
+msgstr "Thema"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:38
+msgid "select the style for click to post "
+msgstr "Wählen Sie den Stil für Klick zum Posten "
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:45
+msgid "Content"
+msgstr "Inhalt"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:51
+msgid "Quote Content"
+msgstr "Zitatinhalt"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:53
+msgid "This text will be shown to the user."
+msgstr "Dieser Text wird dem Benutzer angezeigt."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:57
+msgid "Tweet Content"
+msgstr "Tweet-Inhalt"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:59
+msgid "This text will be tweet . if empty Quote content will be used."
+msgstr ""
+"Dieser Text wird getwittert. Wenn er leer ist, wird der Zitatinhalt "
+"verwendet."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:66
+msgid " Configuration"
+msgstr "Konfiguration"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:72
+msgid "Show Tweet Button"
+msgstr "Tweet-Button anzeigen"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:77
+msgid "Include Page/post Link"
+msgstr "Seiten-/Beitrag-Link einfügen"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:80
+msgid ""
+"\n"
+" Link to this post will be appended to the Tweet. we have a filter if you "
+"want to modify it `ssb_ctt_url`."
+msgstr ""
+"\n"
+" Der Link zu diesem Beitrag wird an den Tweet angehängt. Wir haben einen "
+"Filter, wenn Sie ihn ändern möchten `ssb_ctt_url`."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:83
+msgid "Include via @username"
+msgstr "Inklusive über @Benutzername"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/settings.js:86
+msgid ""
+"\n"
+" Twitter username from SSB Settings Advanced tab will be appended to the "
+"end of the Tweet with the text “via @username”."
+msgstr ""
+"Der Twitter-Benutzername aus dem SSB-Einstellungs-Tab \"Erweitert\" wird am "
+"Ende des Tweets mit dem Text „via @Benutzername“ angehängt."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/click-to-tweet/index.js:59
+msgid "Enter your content ..."
+msgstr "Geben Sie Ihren Inhalt ein ..."
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:44
+msgid "Configuration"
+msgstr "Konfiguration"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:50
+msgid "Share Counter"
+msgstr "Teilen-Zähler"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:58
+msgid "Total Counts"
+msgstr "Gesamtanzahlen"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:68
+msgid ""
+"Supported Networks: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+msgstr ""
+"Unterstützte Netzwerke: "
+"twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,"
+"copylink,drucken,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/settings.js:70
+msgid "Order"
+msgstr "Reihenfolge"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:25
+msgid "Align Left"
+msgstr "Links ausrichten"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:30
+msgid "Align Center"
+msgstr "Zentrieren"
+
+#: assets/js/blocks.editor.js:2
+#: blocks/shortcode/index.js:35
+msgid "Align Right"
+msgstr "Rechts ausrichten"
+
+#: src/components/ErrorBoundary.jsx:30
+msgid "Settings Error"
+msgstr "Einstellungsfehler"
+
+#: src/components/ErrorBoundary.jsx:33
+msgid ""
+"Something went wrong with the settings page. Please refresh the page to try "
+"again."
+msgstr ""
+"Es gab ein Problem mit der Einstellungsseite. Bitte aktualisieren Sie die "
+"Seite, um es erneut zu versuchen."
+
+#: src/components/ErrorBoundary.jsx:36
+msgid "Error Details"
+msgstr "Fehlerdetails"
+
+#: src/components/ErrorBoundary.jsx:44
+msgid "Refresh Page"
+msgstr "Seite aktualisieren"
+
+#: src/components/form-fields/SsbCheckboxField.jsx:77
+msgid "Toggle setting"
+msgstr "Einstellung umschalten"
+
+#: src/components/form-fields/SsbColorField.jsx:99
+msgid "Select Color"
+msgstr "Farbe auswählen"
+
+#: src/components/form-fields/SsbColorField.jsx:129
+msgid "Clear"
+msgstr "Löschen"
+
+#: src/components/form-fields/SsbColorField.jsx:142
+msgid "Done"
+msgstr "Fertig"
+
+#: src/components/form-fields/SsbIconSpaceField.jsx:53
+msgid "Enter a whole number of pixels from 1 to 999. The value was adjusted."
+msgstr ""
+"Geben Sie eine ganze Zahl von Pixeln von 1 bis 999 ein. Der Wert wurde "
+"angepasst."
+
+#: src/components/form-fields/SsbSelectField.jsx:265
+msgid "Select..."
+msgstr "Auswählen..."
+
+#: src/components/Help.jsx:29
+msgid "Simple Social Buttons Log File Downloaded Successfully!"
+msgstr "Protokolldatei für einfache Social Buttons erfolgreich heruntergeladen!"
+
+#: src/components/Help.jsx:41
+#: src/components/ImportExport.jsx:241
+#: src/index.js:598
+msgid ""
+"<strong>Simple Social Buttons</strong> by <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> adds "
+"an advanced set of social media sharing buttons to your WordPress sites, "
+"such as: <strong>Facebook</strong>, <strong>Twitter/X</strong>, "
+"<strong>LinkedIn</strong>, <strong>WhatsApp</strong>, "
+"<strong>Viber</strong>, <strong>Reddit</strong> and "
+"<strong>Pinterest</strong>. This makes it the most flexible social sharing "
+"plugin for everyone."
+msgstr ""
+"<strong>Einfache Social Buttons</strong> von <strong><a "
+"href=\"https://wpbrigade.com/?utm_source=simple-social-buttons-lite&utm_"
+"medium=link-header&utm_campaign=pro-upgrade\">WPBrigade</a></strong> fügt "
+"Ihren WordPress-Seiten ein erweitertes Set von Schaltflächen für das Teilen "
+"in sozialen Medien hinzu, wie z.B.: <strong>Facebook</strong>, "
+"<strong>Twitter/X</strong>, <strong>LinkedIn</strong>, "
+"<strong>WhatsApp</strong>, <strong>Viber</strong>, <strong>Reddit</strong> "
+"und <strong>Pinterest</strong>. Dies macht es zum flexibelsten Plugin für "
+"das Teilen in sozialen Medien für alle."
+
+#: src/components/Help.jsx:47
+msgid "Help & Troubleshooting"
+msgstr "Hilfe & Fehlersuche"
+
+#: src/components/Help.jsx:52
+msgid "Free support is available on the %splugin support forums%s."
+msgstr "Kostenloser Support ist in den %sPlugin-Supportforen%s verfügbar."
+
+#: src/components/Help.jsx:66
+msgid ""
+"For premium features, add-ons and priority email support, %supgrade to "
+"pro%s."
+msgstr ""
+"Für Premium-Funktionen, Add-Ons und priorisierten E-Mail-Support %swechseln "
+"Sie zu Pro%s."
+
+#: src/components/Help.jsx:80
+msgid "Found a bug or have a feature request? Please submit an issue %shere!%s"
+msgstr ""
+"Haben Sie einen Fehler gefunden oder eine Funktion angefordert? Bitte "
+"reichen Sie ein Problem %shier ein!%s"
+
+#: src/components/ImportExport.jsx:51
+msgid "Invalid file. Please upload a JSON file starting with \"ssb\"."
+msgstr ""
+"Ungültige Datei. Bitte laden Sie eine JSON-Datei hoch, die mit \"ssb\" "
+"beginnt."
+
+#: src/components/ImportExport.jsx:98
+msgid "Import failed. Please try again."
+msgstr "Import fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: src/components/ImportExport.jsx:106
+msgid "Please select a valid file first."
+msgstr "Bitte wählen Sie zuerst eine gültige Datei aus."
+
+#: src/components/ImportExport.jsx:159
+msgid "Security check failed or server error. Please refresh and try again."
+msgstr ""
+"Sicherheitsüberprüfung fehlgeschlagen oder Serverfehler. Bitte "
+"aktualisieren Sie und versuchen Sie es erneut."
+
+#: src/components/ImportExport.jsx:161
+msgid "Invalid response from server. Please try again."
+msgstr "Ungültige Antwort vom Server. Bitte versuchen Sie es erneut."
+
+#: src/components/ImportExport.jsx:165
+msgid "An error occurred during import. Please try again."
+msgstr "Beim Import ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+
+#: src/components/ImportExport.jsx:231
+msgid "Export failed. Please try again."
+msgstr "Export fehlgeschlagen. Bitte versuchen Sie es erneut."
+
+#: src/components/ImportExport.jsx:246
+msgid "Import & Export Simple Social Share Button Settings"
+msgstr ""
+"Importieren & Exportieren der Einstellungen für die einfachen Social Share "
+"Buttons"
+
+#: src/components/ImportExport.jsx:248
+msgid "Import/Export your Social share Settings for/from other sites."
+msgstr ""
+"Importieren/Exportieren Ihrer Social Share-Einstellungen für/von anderen "
+"Seiten."
+
+#: src/components/ImportExport.jsx:292
+msgid "Drag and drop file here or"
+msgstr "Datei hierher ziehen und ablegen oder"
+
+#: src/components/ImportExport.jsx:293
+msgid "Browse"
+msgstr "Durchsuchen"
+
+#: src/components/ImportExport.jsx:319
+msgid "Remove file"
+msgstr "Datei entfernen"
+
+#: src/components/ImportExport.jsx:335
+msgid "Import Settings"
+msgstr "Einstellungen importieren"
+
+#: src/components/ImportExport.jsx:344
+msgid "Importing settings..."
+msgstr "Einstellungen werden importiert..."
+
+#: src/components/ImportExport.jsx:366
+msgid "Export Settings"
+msgstr "Export-Einstellungen"
+
+#: src/components/ImportExport.jsx:374
+msgid "Exporting..."
+msgstr "Exportieren..."
+
+#: src/components/sections/ProSections.jsx:114
+msgid "Control how share buttons appear on images and media within your posts."
+msgstr ""
+"Steuern Sie, wie die Teilen-Schaltflächen auf Bildern und Medien in Ihren "
+"Beiträgen angezeigt werden."
+
+#: src/components/sections/ProSections.jsx:134
+msgid "Configure your share popup: set the message, timing, and trigger behavior."
+msgstr ""
+"Konfigurieren Sie Ihr Teilen-Popup: Setzen Sie die Nachricht, das Timing "
+"und das Triggerverhalten."
+
+#: src/components/sections/ProSections.jsx:154
+msgid "Set up a slide-in share prompt with custom messaging, position, and timing"
+msgstr ""
+"Richten Sie eine slide-in Teilen-Aufforderung mit benutzerdefinierter "
+"Nachricht, Position und Timing ein"
+
+#: src/components/sections/SsbAdvancedTab.jsx:49
+msgid "HTTP/HTTPS Counts Resolve"
+msgstr "HTTP/HTTPS-Zählungen auflösen"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hour"
+msgstr "Stunde"
+
+#: src/components/sections/SsbAdvancedTab.jsx:61
+msgid "hours"
+msgstr "Stunden"
+
+#: src/components/sections/SsbAdvancedTab.jsx:64
+msgid ""
+"Internal share click counts are recorded for supported networks (for "
+"example Twitter/X, LinkedIn, WhatsApp) when visitors use the sharing "
+"buttons on your site. Counts are stored locally and are not sent to those "
+"social networks. Clear your page cache after upgrading the plugin so button "
+"markup stays in sync."
+msgstr ""
+"Interne Klickzählungen für das Teilen werden für unterstützte Netzwerke (z. "
+"B. Twitter/X, LinkedIn, WhatsApp) aufgezeichnet, wenn Besucher die "
+"Teilen-Schaltflächen auf Ihrer Seite verwenden. Zählungen werden lokal "
+"gespeichert und nicht an diese sozialen Netzwerke gesendet. Leeren Sie den "
+"Seiten-Cache nach dem Upgrade des Plugins, damit das Schaltflächen-Markup "
+"synchron bleibt."
+
+#: src/components/sections/SsbAdvancedTab.jsx:82
+msgid "Enable to remove all settings upon uninstalling the plugin."
+msgstr ""
+"Aktivieren, um alle Einstellungen beim Deinstallieren des Plugins zu "
+"entfernen."
+
+#: src/components/sections/SsbAdvancedTab.jsx:90
+msgid "Enable to reset all settings back to default upon saving."
+msgstr ""
+"Aktivieren, um alle Einstellungen beim Speichern auf die Standardwerte "
+"zurückzusetzen."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:26
+#: src/utils/constants.js:17
+msgid "Click To Post"
+msgstr "Klicken Sie zum Posten"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:29
+msgid "Unlock Click to Tweet Feature with Pro!"
+msgstr "Entsperren Sie die Funktion \"Klicken, um zu twittern\" mit Pro!"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:30
+msgid ""
+"Get the powerful Click to Tweet functionality that lets you create "
+"engaging, tweetable content directly in your posts. This Pro feature helps "
+"increase social engagement and drive more traffic to your site."
+msgstr ""
+"Erhalten Sie die leistungsstarke Funktion \"Klicken, um zu twittern\", mit "
+"der Sie ansprechende, tweetbare Inhalte direkt in Ihren Beiträgen erstellen "
+"können. Diese Pro-Funktion hilft, die soziale Interaktion zu erhöhen und "
+"mehr Verkehr auf Ihre Seite zu lenken."
+
+#: src/components/sections/SsbClickToTweetTab.jsx:36
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Upgrade"
+msgstr "Hier klicken, um ein Upgrade durchzuführen"
+
+#: src/components/sections/SsbClickToTweetTab.jsx:55
+#: src/components/sections/SsbNextGenGalleryTab.jsx:29
+msgid "Loading Pro settings..."
+msgstr "Pro-Einstellungen werden geladen..."
+
+#: src/components/sections/SsbInlineSection.jsx:44
+#: src/components/sections/SsbSidebarSection.jsx:31
+msgid "Loading Pro component..."
+msgstr "Pro-Komponente wird geladen..."
+
+#: src/components/sections/SsbInlineSection.jsx:101
+msgid "Configure how your inline share buttons appear within your content."
+msgstr ""
+"Konfigurieren Sie, wie Ihre Inline-Teilen-Schaltflächen in Ihrem Inhalt "
+"angezeigt werden."
+
+#: src/components/sections/SsbInlineSection.jsx:146
+#: src/components/sections/SsbSidebarSection.jsx:126
+msgid ""
+"For Facebook share count you need to add Facebook App ID and Secret in the "
+"Social tab."
+msgstr ""
+"Für die Facebook-Teilen-Zählung müssen Sie die Facebook-App-ID und das "
+"Geheimnis im sozialen Tab hinzufügen."
+
+#: src/components/sections/SsbInlineSection.jsx:199
+msgid ""
+"Show only a set number of icons in your content. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"Zeigen Sie nur eine festgelegte Anzahl von Symbolen in Ihrem Inhalt an. "
+"Verbleibende Symbole öffnen sich in einem Popup, wenn Besucher die + "
+"Schaltfläche antippen."
+
+#: src/components/sections/SsbInlineSection.jsx:257
+msgid ""
+"This text appears on your site as a heading above the inline share buttons. "
+"It is not used as the title when someone shares your content on social "
+"networks."
+msgstr ""
+"Dieser Text erscheint auf Ihrer Seite als Überschrift über den "
+"Inline-Share-Buttons. Er wird nicht als Titel verwendet, wenn jemand Ihren "
+"Inhalt in sozialen Netzwerken teilt."
+
+#: src/components/sections/SsbNetworksSection.jsx:134
+msgid "Press Enter to move to Inactive."
+msgstr "Drücken Sie die Eingabetaste, um zu Inaktiv zu wechseln."
+
+#: src/components/sections/SsbNetworksSection.jsx:135
+msgid "Press Enter to move to Active."
+msgstr "Drücken Sie die Eingabetaste, um zu Aktiv zu wechseln."
+
+#: src/components/sections/SsbNetworksSection.jsx:136
+msgid "Use Up and Down arrow keys to reorder."
+msgstr ""
+"Verwenden Sie die Pfeiltasten nach oben und unten, um die Reihenfolge zu "
+"ändern."
+
+#: src/components/sections/SsbNetworksSection.jsx:181
+#: src/components/sections/SsbNetworksSection.jsx:261
+msgid "Drop here"
+msgstr "Hier ablegen"
+
+#: src/components/sections/SsbNetworksSection.jsx:219
+msgid "Pro"
+msgstr "Pro"
+
+#: src/components/sections/SsbNetworksSection.jsx:236
+msgid "Edit"
+msgstr "Bearbeiten"
+
+#: src/components/sections/SsbNetworksSection.jsx:251
+msgid "Drop at end of list"
+msgstr "Am Ende der Liste ablegen"
+
+#: src/components/sections/SsbNetworksSection.jsx:275
+msgid "Drag & Drop to activate and reorder your share buttons:"
+msgstr ""
+"Ziehen und Ablegen, um Ihre Share-Buttons zu aktivieren und die Reihenfolge "
+"zu ändern:"
+
+#: src/components/sections/SsbNetworksSection.jsx:280
+msgid "Active"
+msgstr "Aktiv"
+
+#: src/components/sections/SsbNetworksSection.jsx:284
+msgid "Inactive"
+msgstr "Inaktiv"
+
+#: src/components/sections/SsbNextGenGalleryTab.jsx:27
+msgid "Simple Social Buttons on NextGEN Gallery"
+msgstr "Einfache soziale Buttons in der NextGEN Gallery"
+
+#: src/components/sections/SsbPositionsSection.jsx:38
+msgid "Select the display styles to position your share buttons."
+msgstr "Wählen Sie die Anzeige-Stile aus, um Ihre Share-Buttons zu positionieren."
+
+#: src/components/sections/SsbSidebarSection.jsx:87
+msgid "Configure the appearance and behavior of your sidebar share buttons."
+msgstr ""
+"Konfigurieren Sie das Aussehen und Verhalten Ihrer Share-Buttons in der "
+"Seitenleiste."
+
+#: src/components/sections/SsbSidebarSection.jsx:201
+msgid ""
+"Show only a set number of icons in the sidebar. Remaining icons open in a "
+"popup when visitors tap the + button."
+msgstr ""
+"Zeigen Sie nur eine bestimmte Anzahl von Icons in der Seitenleiste an. Die "
+"verbleibenden Icons öffnen sich in einem Popup, wenn Besucher auf die "
+"Schaltfläche + tippen."
+
+#: src/components/sections/SsbSocialTab.jsx:62
+msgid ""
+"Add your X username to append via= to Twitter/X share links from your "
+"buttons."
+msgstr ""
+"Fügen Sie Ihren X-Benutzernamen hinzu, um via= zu den Twitter/X-Share-Links "
+"von Ihren Buttons hinzuzufügen."
+
+#: src/components/sections/SsbSocialTab.jsx:72
+msgid "Twitter/X @username"
+msgstr "Twitter/X @benutzername"
+
+#: src/components/sections/SsbSocialTab.jsx:81
+msgid "Facebook App"
+msgstr "Facebook-App"
+
+#: src/components/sections/SsbSocialTab.jsx:88
+msgid "How to create a Facebook app"
+msgstr "So erstellen Sie eine Facebook-App"
+
+#: src/components/sections/SsbSocialTab.jsx:96
+msgid "Facebook App ID"
+msgstr "Facebook-App-ID"
+
+#: src/components/sections/SsbSocialTab.jsx:100
+msgid ""
+"Required for Facebook share counts. Add your App ID and Secret from the "
+"Facebook developer portal."
+msgstr ""
+"Erforderlich für Facebook-Anteilzahlen. Fügen Sie Ihre App-ID und das "
+"Geheimnis aus dem Facebook-Entwicklerportal hinzu."
+
+#: src/components/sections/SsbSocialTab.jsx:112
+msgid "Facebook App Secret"
+msgstr "Facebook-App-Geheimnis"
+
+#: src/components/sections/SsbSocialTab.jsx:123
+msgid ""
+"Snapchat uses Snap Creative Kit Web so mobile visitors open the Snapchat "
+"app with your page link ready to share."
+msgstr ""
+"Snapchat verwendet Snap Creative Kit Web, damit mobile Besucher die "
+"Snapchat-App mit Ihrem Seitenlink öffnen, bereit zum Teilen."
+
+#: src/components/sections/SsbSocialTab.jsx:133
+msgid "Snap Kit Client ID (optional)"
+msgstr "Snap Kit Client-ID (optional)"
+
+#: src/components/sections/SsbSocialTab.jsx:137
+msgid ""
+"Optional. Add your Snap Kit Client ID to attribute shares in the Snap Kit "
+"developer portal. Sharing works without it."
+msgstr ""
+"Optional. Fügen Sie Ihre Snap Kit Client-ID hinzu, um Shares im Snap "
+"Kit-Entwicklerportal zuzuordnen. Das Teilen funktioniert auch ohne sie."
+
+#: src/components/sections/SsbSocialTab.jsx:147
+msgid "How it works"
+msgstr "So funktioniert es"
+
+#: src/components/sections/SsbSocialTab.jsx:150
+msgid "Add Snapchat from the Settings tab like any other button."
+msgstr ""
+"Fügen Sie Snapchat über den Tab Einstellungen wie jeden anderen Button "
+"hinzu."
+
+#: src/components/sections/SsbSocialTab.jsx:156
+msgid ""
+"On mobile, tapping the button opens the Snapchat app share flow for the "
+"current page."
+msgstr ""
+"Auf mobilen Geräten öffnet das Tippen auf den Button den "
+"Snapchat-App-Share-Flow für die aktuelle Seite."
+
+#: src/components/sections/SsbSocialTab.jsx:162
+msgid ""
+"On desktop, a Snapcode window opens so users can scan and share from their "
+"phone."
+msgstr ""
+"Auf dem Desktop öffnet sich ein Snapcode-Fenster, damit Benutzer scannen "
+"und von ihrem Telefon aus teilen können."
+
+#: src/components/sections/SsbSocialTab.jsx:168
+msgid ""
+"Keep Open Graph tags enabled so Snapchat can show your page title and "
+"preview."
+msgstr ""
+"Halten Sie die Open Graph-Tags aktiviert, damit Snapchat Ihren Seitentitel "
+"und die Vorschau anzeigen kann."
+
+#: src/components/sections/SsbThemesSection.jsx:62
+msgid "Official Buttons"
+msgstr "Offizielle Buttons"
+
+#: src/components/sections/SsbThemesSection.jsx:118
+msgid "Choose a button style that fits your site's look and feel."
+msgstr "Wählen Sie einen Buttonstil, der zum Look and Feel Ihrer Website passt."
+
+#: src/components/SsbPurgeNotice.jsx:87
+#: src/components/SsbPurgeNotice.jsx:91
+#: src/utils/formHelpers.js:241
+msgid "Dismiss this notice."
+msgstr "Diese Mitteilung schließen."
+
+#: src/components/SsbStickySaveBar.jsx:305
+#: src/index.js:689
+#: src/index.js:704
+msgid "Dismiss"
+msgstr "Schließen"
+
+#: src/components/widgets/SsbFollowPlugins.jsx:41
+#: src/components/widgets/SsbFollowPlugins.jsx:44
+msgid "Share on LinkedIn"
+msgstr "Auf LinkedIn teilen"
+
+#: src/components/widgets/SsbGoProSection.jsx:15
+#: src/components/widgets/SsbGoProSection.jsx:20
+msgid ""
+"Simple Social Buttons Pro lets you set custom background, hover, and icon "
+"colors for every button, so they blend naturally with your website's design "
+"instead of standing out like a default plugin. Buttons that fit your site "
+"tend to get clicked more, which means more shares and more traffic for you. "
+"Pro also adds features like buttons on images, popups on exit intent, fly "
+"in slide animations, and more."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, benutzerdefinierte "
+"Hintergrund-, Hover- und Icon-Farben für jeden Button festzulegen, sodass "
+"sie sich natürlich in das Design Ihrer Website einfügen, anstatt wie ein "
+"Standard-Plugin hervorzustechen. Buttons, die zu Ihrer Website passen, "
+"werden eher angeklickt, was mehr Shares und mehr Traffic für Sie bedeutet. "
+"Pro fügt außerdem Funktionen wie Buttons auf Bildern, Popups bei Verlassen "
+"der Seite, Fly-In-Animationsschieberegler und mehr hinzu."
+
+#: src/components/widgets/SsbGoProSection.jsx:25
+msgid ""
+"Simple Social Buttons Pro lets you display share buttons directly on images "
+"and photos across your posts and pages, choose their position, add icon "
+"spacing, and set custom colors that match your site. You can also hide them "
+"on mobile and control exactly which post types they appear on. It's an easy "
+"way to turn every image into a shareable opportunity and drive more traffic."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, Share-Buttons direkt auf "
+"Bildern und Fotos in Ihren Beiträgen und Seiten anzuzeigen, ihre Position "
+"auszuwählen, Icon-Abstände hinzuzufügen und benutzerdefinierte Farben "
+"festzulegen, die zu Ihrer Website passen. Sie können sie auch auf mobilen "
+"Geräten ausblenden und genau steuern, auf welchen Beitragstypen sie "
+"erscheinen. Es ist eine einfache Möglichkeit, jedes Bild in eine teilbare "
+"Gelegenheit zu verwandeln und mehr Traffic zu generieren."
+
+#: src/components/widgets/SsbGoProSection.jsx:30
+msgid ""
+"Simple Social Buttons Pro lets you create a custom share popup with your "
+"own title and message, and trigger it exactly when it matters, like before "
+"visitors leave or after they scroll. You can add animation, display share "
+"counts or total shares to build social proof, and set custom colors to "
+"match your brand. It's a smart way to catch visitor attention right when "
+"they're most likely to share."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, ein benutzerdefiniertes "
+"Share-Popup mit Ihrem eigenen Titel und Ihrer Nachricht zu erstellen und es "
+"genau dann auszulösen, wenn es wichtig ist, z. B. bevor Besucher die Seite "
+"verlassen oder nachdem sie gescrollt haben. Sie können Animationen "
+"hinzufügen, Share-Zahlen oder Gesamtanteile anzeigen, um sozialen Beweis zu "
+"erbringen, und benutzerdefinierte Farben festlegen, die zu Ihrer Marke "
+"passen. Es ist eine clevere Möglichkeit, die Aufmerksamkeit der Besucher "
+"genau dann zu gewinnen, wenn sie am wahrscheinlichsten teilen."
+
+#: src/components/widgets/SsbGoProSection.jsx:35
+msgid ""
+"Simple Social Buttons Pro lets you create a custom Fly In box with your own "
+"title and message, choose its position and animation, and even display "
+"share counts or total shares to build social proof. You can fine-tune "
+"timing, icon spacing, and colors to match your brand, and control which "
+"post types it appears on. It's a great way to prompt visitors to share "
+"right when they're most engaged."
+msgstr ""
+"Simple Social Buttons Pro ermöglicht es Ihnen, eine benutzerdefinierte "
+"Fly-In-Box mit Ihrem eigenen Titel und Ihrer Nachricht zu erstellen, ihre "
+"Position und Animation auszuwählen und sogar Share-Zahlen oder "
+"Gesamtanteile anzuzeigen, um sozialen Beweis zu erbringen. Sie können "
+"Timing, Icon-Abstände und Farben anpassen, um zu Ihrer Marke zu passen, und "
+"steuern, auf welchen Beitragstypen sie erscheint. Es ist eine großartige "
+"Möglichkeit, Besucher genau dann zum Teilen zu motivieren, wenn sie am "
+"engagiertesten sind."
+
+#: src/components/widgets/SsbGoProSection.jsx:68
+#: src/components/widgets/SsbGoProSection.jsx:72
+msgid "Failed to activate the plugin."
+msgstr "Die Aktivierung des Plugins ist fehlgeschlagen."
+
+#: src/components/widgets/SsbGoProSection.jsx:80
+msgid "Click here to Activate Pro"
+msgstr "Klicken Sie hier, um Pro zu aktivieren"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:74
+msgid "Please enter your email."
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:83
+msgid "Please enter a valid email address."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:108
+#: src/components/widgets/SsbNewsletterWidget.jsx:123
+msgid "Failed to subscribe."
+msgstr "Abonnement fehlgeschlagen."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:116
+msgid "Thank you!"
+msgstr "Danke!"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:124
+msgid "Please try again."
+msgstr "Bitte versuchen Sie es erneut."
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:135
+msgid "Newsletter"
+msgstr "Newsletter"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:169
+msgid "Subscribing"
+msgstr "Abonnieren"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:170
+msgid "Subscribe"
+msgstr "Abonnieren"
+
+#: src/components/widgets/SsbNewsletterWidget.jsx:183
+#: src/components/widgets/SsbNewsletterWidget.jsx:205
+msgid "Dismiss notice"
+msgstr "Hinweis schließen"
+
+#: src/components/widgets/SsbSidebar.jsx:36
+msgid "Upgrade to Pro!"
+msgstr "Upgrade zu Pro!"
+
+#: src/components/widgets/SsbSidebar.jsx:38
+msgid ""
+"Unlock premium features designed to help you increase engagement, boost "
+"visibility, and save time."
+msgstr ""
+"Schalten Sie Premium-Funktionen frei, die Ihnen helfen, Engagement zu "
+"erhöhen, Sichtbarkeit zu steigern und Zeit zu sparen."
+
+#: src/components/widgets/SsbSidebar.jsx:48
+msgid "Unlimited Websites:"
+msgstr "Unbegrenzte Websites:"
+
+#: src/components/widgets/SsbSidebar.jsx:49
+msgid "Use SSB Pro across all your sites (no limits)"
+msgstr "Verwenden Sie SSB Pro auf all Ihren Websites (keine Einschränkungen)"
+
+#: src/components/widgets/SsbSidebar.jsx:52
+msgid "Priority Support:"
+msgstr "Prioritätsunterstützung:"
+
+#: src/components/widgets/SsbSidebar.jsx:53
+msgid "Get fast, friendly help from our expert support team when you need it."
+msgstr ""
+"Erhalten Sie schnelle, freundliche Hilfe von unserem Expertenteam, wenn Sie "
+"sie benötigen."
+
+#: src/components/widgets/SsbSidebar.jsx:56
+msgid "1 Year of Updates:"
+msgstr "1 Jahr Updates:"
+
+#: src/components/widgets/SsbSidebar.jsx:57
+msgid "Stay secure and compatible with the latest releases."
+msgstr "Bleiben Sie sicher und kompatibel mit den neuesten Versionen."
+
+#: src/components/widgets/SsbSidebar.jsx:60
+msgid "No Coding Required:"
+msgstr "Kein Coding erforderlich:"
+
+#: src/components/widgets/SsbSidebar.jsx:61
+msgid "Set up and customize buttons effortlessly from the dashboard."
+msgstr ""
+"Richten Sie Schaltflächen mühelos über das Dashboard ein und passen Sie sie "
+"an."
+
+#: src/components/widgets/SsbSidebar.jsx:64
+msgid "Quick & Flexible Button Placement:"
+msgstr "Schnelle & Flexible Platzierung von Schaltflächen:"
+
+#: src/components/widgets/SsbSidebar.jsx:65
+msgid "Add buttons exactly where you want: posts, pages, or custom locations."
+msgstr ""
+"Fügen Sie Schaltflächen genau dort hinzu, wo Sie möchten: Beiträge, Seiten "
+"oder benutzerdefinierte Standorte."
+
+#: src/components/widgets/SsbSidebar.jsx:68
+msgid "Fully Responsive Design:"
+msgstr "Vollständig responsives Design:"
+
+#: src/components/widgets/SsbSidebar.jsx:69
+msgid "Your social buttons look great on desktop, tablet, and mobile."
+msgstr ""
+"Ihre sozialen Schaltflächen sehen auf Desktop, Tablet und Mobilgerät "
+"großartig aus."
+
+#: src/components/widgets/SsbSidebar.jsx:72
+msgid "Ongoing Feature Improvements:"
+msgstr "Laufende Verbesserungen der Funktionen:"
+
+#: src/components/widgets/SsbSidebar.jsx:73
+msgid "Regular updates with new features and performance enhancements."
+msgstr "Regelmäßige Updates mit neuen Funktionen und Leistungsverbesserungen."
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "Get up to"
+msgstr "Erhalten Sie bis zu"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "50%"
+msgstr "50%"
+
+#: src/components/widgets/SsbSidebar.jsx:82
+msgid "off your first year of Simple Social Buttons."
+msgstr "Rabatt auf Ihr erstes Jahr von Simple Social Buttons."
+
+#: src/components/widgets/SsbSidebar.jsx:86
+msgid "Unlock Pro Features"
+msgstr "Pro-Funktionen freischalten"
+
+#: src/components/widgets/SsbSidebar.jsx:89
+msgid "* Discount applied automatically"
+msgstr "* Rabatt wird automatisch angewendet"
+
+#: src/components/widgets/SsbSidebar.jsx:92
+msgid "Reviewer avatar"
+msgstr "Rezensenten-Avatar"
+
+#: src/components/widgets/SsbSidebar.jsx:94
+msgid "John"
+msgstr "John"
+
+#: src/components/widgets/SsbSidebar.jsx:97
+msgid "5 star rating"
+msgstr "5-Sterne-Bewertung"
+
+#: src/components/widgets/SsbSidebar.jsx:100
+msgid ""
+"The plug-in really works well. The developers and the creators did a good "
+"job!"
+msgstr ""
+"Das Plugin funktioniert wirklich gut. Die Entwickler und die Ersteller "
+"haben gute Arbeit geleistet!"
+
+#: src/components/widgets/SsbSidebar.jsx:111
+msgid "Designed and Maintained by"
+msgstr "Entwickelt und gewartet von"
+
+#: src/components/widgets/SsbSidebar.jsx:113
+msgid "Company logo"
+msgstr "Firmenlogo"
+
+#: src/index.js:588
+msgid "Tab content not found"
+msgstr "Tab-Inhalt nicht gefunden"
+
+#: src/index.js:628
+#: src/utils/formHelpers.js:233
+msgid "Settings saved successfully!"
+msgstr "Einstellungen erfolgreich gespeichert!"
+
+#: src/index.js:646
+msgid "Loading…"
+msgstr "Wird geladen…"
+
+#: src/index.js:647
+msgid "Try again"
+msgstr "Erneut versuchen"
+
+#: src/index.js:671
+#: src/index.js:727
+msgid "Saving..."
+msgstr "Speichern..."
+
+#: src/index.js:671
+#: src/index.js:726
+msgid "Save Changes"
+msgstr "Änderungen speichern"
+
+#: src/utils/constants.js:22
+msgid "Advanced"
+msgstr "Erweitert"
+
+#: src/utils/constants.js:26
+msgid "Social"
+msgstr "Sozial"
+
+#: src/utils/constants.js:30
+msgid "Upgrade To Pro For More Features"
+msgstr "Upgrade auf Pro für mehr Funktionen"
+
+#: src/utils/constants.js:93
+msgid ""
+"Enable Sidebar or Inline to save settings. Media, Popup, and Fly In require "
+"Simple Social Buttons Pro."
+msgstr ""
+"Aktivieren Sie die Seitenleiste oder inline, um die Einstellungen zu "
+"speichern. Medien, Popup und Fly In erfordern Simple Social Buttons Pro."
+
+#: src/utils/formHelpers.js:209
+msgid "Unknown error while saving settings."
+msgstr "Unbekannter Fehler beim Speichern der Einstellungen."
+
+#: src/utils/purgeNotice.js:24
+msgid "Missing admin configuration for purge status."
+msgstr "Fehlende Admin-Konfiguration für den Löschstatus."
+
+#: src/utils/purgeNotice.js:44
+msgid "Unable to load purge status."
+msgstr "Löschstatus kann nicht geladen werden."
+
+#: src/utils/settingsManager.js:71
+msgid "Network error while loading settings. Check your connection and try again."
+msgstr ""
+"Netzwerkfehler beim Laden der Einstellungen. Überprüfen Sie Ihre Verbindung "
+"und versuchen Sie es erneut."
+
+#: src/utils/settingsManager.js:80
+msgid "Could not read the server response. Try refreshing the page."
+msgstr ""
+"Serverantwort konnte nicht gelesen werden. Versuchen Sie, die Seite zu "
+"aktualisieren."
+
+#: src/utils/settingsManager.js:86
+msgid "Invalid response from server."
+msgstr "Ungültige Antwort vom Server."
+
+#: src/utils/settingsManager.js:94
+msgid "Could not load settings. You may need to refresh the page or sign in again."
+msgstr ""
+"Einstellungen konnten nicht geladen werden. Möglicherweise müssen Sie die "
+"Seite aktualisieren oder sich erneut anmelden."
+
+#: src/utils/settingsManager.js:102
+#. translators: %s: HTTP status code
+msgid "Unable to load settings (HTTP %s)."
+msgstr "Einstellungen konnten nicht geladen werden (HTTP %s)."
+
+#: src/utils/settingsManager.js:110
+msgid "Invalid settings data from server."
+msgstr "Ungültige Einstellungsdaten vom Server."
+
+#: src/utils/settingsManager.js:285
+msgid "Something went wrong while loading settings."
+msgstr "Beim Laden der Einstellungen ist ein Fehler aufgetreten."
+
+#: simple-social-buttons.php:3798
+msgctxt "Word count type. Do not translate!"
+msgid "words"
+msgstr "Wörter"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block title"
+msgid "Click to Post"
+msgstr "Klicken, um zu posten"
+
+#: blocks/shortcode/block.json
+msgctxt "block title"
+msgid "Simple Social Buttons"
+msgstr "Einfache soziale Schaltflächen"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block description"
+msgid "SSB Click to post easy way to post your content."
+msgstr "SSB Klicken Sie, um auf einfache Weise Ihre Inhalte zu posten."
+
+#: blocks/shortcode/block.json
+msgctxt "block description"
+msgid ""
+"Simple Social Buttons adds an advanced set of social media sharing buttons "
+"to your sites, such as: Facebook, WhatsApp, Viber, Twitter, Reddit, "
+"LinkedIn and Pinterest."
+msgstr ""
+"Simple Social Buttons fügt eine erweiterte Reihe von sozialen "
+"Medien-Sharing-Buttons zu Ihren Seiten hinzu, wie z.B.: Facebook, WhatsApp, "
+"Viber, Twitter, Reddit, LinkedIn und Pinterest."
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "twiter"
+msgstr "twiter"
+
+#: blocks/click-to-tweet/block.json
+msgctxt "block keyword"
+msgid "clicktotweet"
+msgstr "clicktotweet"
+
+#: blocks/click-to-tweet/block.json
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "ssb"
+msgstr "ssb"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Social Share"
+msgstr "Soziale Teilen"
+
+#: blocks/shortcode/block.json
+msgctxt "block keyword"
+msgid "Button"
+msgstr "Schaltfläche"

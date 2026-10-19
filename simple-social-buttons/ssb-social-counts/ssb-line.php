@@ -25,9 +25,9 @@ function ssb_format_line_response( $response ) {
  * @param string $url URL to get share count for.
  * @since 7.0.0
  * @return string  ready link to call for API.
+ * @version 7.2.0
  */
 function ssb_line_generate_link( $url ) {
 	// Line Social Plugin Metrics API.
-	$request_url = 'https://api.line.me/social-plugin/metrics?url=' . rawurlencode( $url );
-	return $request_url;
+	return 'https://api.line.me/social-plugin/metrics?url=' . rawurlencode( $url );
 }

@@ -1,4 +1,4 @@
-
+<?php defined( 'ABSPATH' ) || exit; ?>
 @font-face {
 	font-family: 'ssb-icon';
 	src: url('<?php echo plugin_dir_url( __FILE__ ); ?>../fonts/ssb-icon.eot');

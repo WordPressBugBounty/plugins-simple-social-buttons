@@ -60,13 +60,12 @@ add_action( 'admin_enqueue_scripts', 'wpb_debug_enqueue_styles' );
  * @return bool True if valid POST with valid nonce and capability.
  */
 function wpb_debug_verify_request( $action ) {
-	if ( ! isset( $_SERVER['REQUEST_METHOD'] ) || 'POST' !== $_SERVER['REQUEST_METHOD'] ) {
-		return false;
-	}
-	if ( ! current_user_can( 'manage_options' ) ) {
-		return false;
-	}
-	if ( ! isset( $_POST['_wpnonce'] ) ) {
+	if (
+		! isset( $_SERVER['REQUEST_METHOD'] )
+		|| 'POST' !== $_SERVER['REQUEST_METHOD']
+		|| ! current_user_can( 'manage_options' )
+		|| ! isset( $_POST['_wpnonce'] )
+	) {
 		return false;
 	}
 	return (bool) wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), $action );
@@ -273,6 +272,35 @@ $wpb_debug_msg_load_error = __( 'Option not loaded. Name must start with wpb_.',
 ?>
 
 <h1>WPB Debug - SDK v.<?php echo esc_html( defined( 'WP_WPBRIGADE_SDK_VERSION' ) ? WP_WPBRIGADE_SDK_VERSION : '' ); ?></h1>
+<h2><?php esc_html_e( 'Debug Style Preview', 'wpbrigade-sdk' ); ?></h2>
+<p>
+	<span class="wpb-sdk-tag wpb-sdk-warn">Warning</span>
+	<span class="wpb-sdk-tag wpb-sdk-info">Info</span>
+	<span class="wpb-sdk-tag wpb-sdk-success">Success</span>
+	<span class="wpb-sdk-tag wpb-sdk-error">Error</span>
+</p>
+<table id="wpb-sdk_log_book" class="widefat">
+	<thead>
+		<tr>
+			<th><?php esc_html_e( 'Logger', 'wpbrigade-sdk' ); ?></th>
+			<th><?php esc_html_e( 'Type', 'wpbrigade-sdk' ); ?></th>
+			<th><?php esc_html_e( 'Function', 'wpbrigade-sdk' ); ?></th>
+			<th><?php esc_html_e( 'Message', 'wpbrigade-sdk' ); ?></th>
+			<th><?php esc_html_e( 'File', 'wpbrigade-sdk' ); ?></th>
+			<th><?php esc_html_e( 'Timestamp', 'wpbrigade-sdk' ); ?></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td class="wpb-sdk-col--logger">WPB SDK</td>
+			<td class="wpb-sdk-col--type">Info</td>
+			<td class="wpb-sdk-col--function">Debug Style Preview</td>
+			<td class="wpb-sdk-col--message"><?php esc_html_e( 'Preview row for the WPB SDK debug styles.', 'wpbrigade-sdk' ); ?></td>
+			<td class="wpb-sdk-col--file">views/wpb-debug.php</td>
+			<td class="wpb-sdk-col--timestamp">—</td>
+		</tr>
+	</tbody>
+</table>
 
 <?php if ( $wpb_debug_set_option_submitted ) : ?>
 <div id="success_message" class="notice notice-<?php echo esc_attr( $wpb_debug_set_option_success ? 'success' : 'error' ); ?>" role="alert">
@@ -293,6 +321,11 @@ $wpb_debug_msg_load_error = __( 'Option not loaded. Name must start with wpb_.',
 
 <h2><?php esc_html_e( 'Actions', 'wpbrigade-sdk' ); ?></h2>
 <table>
+	<thead>
+		<tr>
+			<th colspan="3"><?php esc_html_e( 'Available Actions', 'wpbrigade-sdk' ); ?></th>
+		</tr>
+	</thead>
 	<tbody>
 		<tr>
 			<td>
@@ -329,13 +362,7 @@ $wpb_debug_msg_load_error = __( 'Option not loaded. Name must start with wpb_.',
 						<button type="submit" id="submit_option_button">Submit</button>
 					</div>
 				</form>
-				<div id="result" 
-				<?php
-				if ( ! $result_visible ) {
-					echo ' style="' . esc_attr( 'display: none;' ) . '"';
-				}
-				?>
-				>
+				<div id="result"<?php echo ! $result_visible ? ' style="' . esc_attr( 'display: none;' ) . '"' : ''; ?>>
 					<?php
 					if ( null === $option_value ) {
 						esc_html_e( 'Option not found.', 'wpbrigade-sdk' );
@@ -394,7 +421,7 @@ $wpb_debug_msg_load_error = __( 'Option not loaded. Name must start with wpb_.',
 </table>
 
 <h2>SDK Versions</h2>
-<table id="wpb_sdks" class="widefat">
+<table id="wpb_sdks_versions" class="widefat">
 	<thead>
 		<tr>
 			<th>Version</th>
@@ -414,7 +441,7 @@ $wpb_debug_msg_load_error = __( 'Option not loaded. Name must start with wpb_.',
 </table>
 
 <h2>Plugins</h2>
-<table id="wpb_sdks" class="widefat">
+<table id="wpb_plugins" class="widefat">
 	<thead>
 		<tr>
 			<th>ID</th>
@@ -446,7 +473,7 @@ $wpb_debug_msg_load_error = __( 'Option not loaded. Name must start with wpb_.',
 </table>
 
 <h2>Plugins/Sites</h2>
-<table id="wpb_sdks" class="widefat">
+<table id="wpb_plugins_sites" class="widefat">
 	<thead>
 		<tr>
 			<th>ID</th>

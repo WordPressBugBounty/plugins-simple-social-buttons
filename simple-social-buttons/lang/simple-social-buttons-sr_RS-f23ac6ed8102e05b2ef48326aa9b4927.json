@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:27+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sr-RS",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Click to post": [
+                "Kliknite za objavljivanje"
+            ],
+            "Theme": [
+                "Tema"
+            ],
+            "select the style for click to post ": [
+                "izaberite stil za klik na objavu "
+            ],
+            "Content": [
+                "Sadr\u017eaj"
+            ],
+            "Quote Content": [
+                "Sadr\u017eaj citata"
+            ],
+            "This text will be shown to the user.": [
+                "Ovaj tekst \u0107e biti prikazan korisniku."
+            ],
+            "Tweet Content": [
+                "Sadr\u017eaj tvita"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Ovaj tekst \u0107e biti tvitovan. ako je prazan, koristi\u0107e se sadr\u017eaj citata."
+            ],
+            " Configuration": [
+                " Konfiguracija"
+            ],
+            "Show Tweet Button": [
+                "Prika\u017ei dugme za tvit"
+            ],
+            "Include Page\/post Link": [
+                "Uklju\u010di link ka stranici\/objavi"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                " \n Link ka ovoj objavi bi\u0107e dodat tvitu. imamo filter ako \u017eelite da ga izmenite `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Uklju\u010di putem @korisni\u010dkog_imena"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "Korisni\u010dko ime sa Twitter-a iz SSB pode\u0161avanja na kartici Napredno bi\u0107e dodato na kraj Tweeta sa tekstom \u201cvia @username\u201d."
+            ],
+            "Enter your content ...": [
+                "Unesite svoj sadr\u017eaj ..."
+            ],
+            "Configuration": [
+                "Konfiguracija"
+            ],
+            "Share Counter": [
+                "Broja\u010d deljenja"
+            ],
+            "Total Counts": [
+                "Ukupni brojevi"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Podr\u017eane mre\u017ee: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Redosled"
+            ],
+            "Align Left": [
+                "Poravnaj levo"
+            ],
+            "Align Center": [
+                "Poravnaj centar"
+            ],
+            "Align Right": [
+                "Poravnaj desno"
+            ]
+        }
+    }
+}

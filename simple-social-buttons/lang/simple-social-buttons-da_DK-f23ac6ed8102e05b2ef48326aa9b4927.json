@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:13+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "da-DK",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Click to post": [
+                "Klik for at poste"
+            ],
+            "Theme": [
+                "Tema"
+            ],
+            "select the style for click to post ": [
+                "v\u00e6lg stilen for klik for at poste "
+            ],
+            "Content": [
+                "Indhold"
+            ],
+            "Quote Content": [
+                "Citer Indhold"
+            ],
+            "This text will be shown to the user.": [
+                "Denne tekst vil blive vist for brugeren."
+            ],
+            "Tweet Content": [
+                "Tweet Indhold"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Denne tekst vil blive tweetet. Hvis den er tom, vil citeret indhold blive brugt."
+            ],
+            " Configuration": [
+                " Konfiguration"
+            ],
+            "Show Tweet Button": [
+                "Vis Tweet Knap"
+            ],
+            "Include Page\/post Link": [
+                "Inkluder Side\/indl\u00e6g Link"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n Link til dette indl\u00e6g vil blive tilf\u00f8jet til Tweetet. Vi har et filter, hvis du vil \u00e6ndre det `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Inkluder via @brugernavn"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "Twitter-brugernavn fra SSB Indstillinger Avanceret fane vil blive tilf\u00f8jet til slutningen af Tweeten med teksten \u201cvia @brugernavn\u201d."
+            ],
+            "Enter your content ...": [
+                "Indtast dit indhold ..."
+            ],
+            "Configuration": [
+                "Konfiguration"
+            ],
+            "Share Counter": [
+                "Del Z\u00e6ller"
+            ],
+            "Total Counts": [
+                "Samlede T\u00e6llinger"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Underst\u00f8ttede Netv\u00e6rk: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "R\u00e6kkef\u00f8lge"
+            ],
+            "Align Left": [
+                "Just\u00e9r Venstre"
+            ],
+            "Align Center": [
+                "Just\u00e9r Center"
+            ],
+            "Align Right": [
+                "Just\u00e9r H\u00f8jre"
+            ]
+        }
+    }
+}

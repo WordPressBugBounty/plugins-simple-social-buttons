@@ -17,6 +17,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 class WPBRIGADE_Opt_Manager {
 
 	/**
+	 * Error message for unauthorized AJAX requests.
+	 *
+	 * @return string
+	 */
+	private static function permission_error_message() {
+		return __( 'You do not have permission to perform this action.', 'wpbrigade-sdk' );
+	}
+
+	/**
+	 * Instantiated manager instances per slug.
+	 *
+	 * @var array<string, self>
+	 */
+	private static $instances = array();
+
+	/**
 	 * Booted slugs (register once per product).
 	 *
 	 * @var array<string, bool>
@@ -92,8 +108,8 @@ class WPBRIGADE_Opt_Manager {
 			return;
 		}
 
-		self::$booted[ $slug ] = true;
-		new self( $module );
+		self::$booted[ $slug ]    = true;
+		self::$instances[ $slug ] = new self( $module );
 	}
 
 	/**
@@ -145,7 +161,8 @@ class WPBRIGADE_Opt_Manager {
 			return sanitize_key( (string) $optin['ajax_prefix'] );
 		}
 
-		return sanitize_key( str_replace( '-', '_', $this->slug ) );
+		// Must match the prefix the opt-in form posts with (wpb_sdk_render_optin_form()).
+		return wpb_sdk_default_ajax_prefix( $this->slug );
 	}
 
 	/**
@@ -304,6 +321,8 @@ class WPBRIGADE_Opt_Manager {
 
 		delete_option( 'wpb_sdk_' . $this->slug . '_initial_log_sent' );
 		delete_option( 'wpb_sdk_' . $this->slug . '_fallback_verify_token' );
+		delete_transient( 'wpb_sdk_' . $this->slug . '_verify_email_dispatched' );
+		delete_transient( 'wpb_sdk_' . $this->slug . '_verify_resend_' . $user_id );
 		if ( function_exists( 'wpb_sdk_legacy_upgrade_optin_option_key' ) ) {
 			delete_option( wpb_sdk_legacy_upgrade_optin_option_key( $this->slug ) );
 		}
@@ -364,7 +383,7 @@ class WPBRIGADE_Opt_Manager {
 	public static function ajax_resend_verification_email() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_send_json_error(
-				array( 'message' => __( 'You do not have permission to perform this action.', 'wpbrigade-sdk' ) ),
+				array( 'message' => self::permission_error_message() ),
 				403
 			);
 		}
@@ -501,10 +520,26 @@ class WPBRIGADE_Opt_Manager {
 	private function defer_activation_log() {
 		$slug      = $this->slug;
 		$module_id = isset( $this->module['id'] ) ? (string) $this->module['id'] : '';
+		$module    = $this->module;
+		$user_id   = (int) get_current_user_id();
 
 		add_action(
 			'shutdown',
-			static function () use ( $slug, $module_id ) {
+			static function () use ( $slug, $module_id, $module, $user_id ) {
+				$needs_verify = ! empty( $module['optin_user_meta']['token'] )
+					&& function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
+					&& '' !== wpb_sdk_email_verified_meta_key_from_module( $module );
+
+				if (
+					$needs_verify
+					&& function_exists( 'wpb_sdk_allows_ongoing_telemetry' )
+					&& wpb_sdk_allows_ongoing_telemetry( $slug )
+					&& function_exists( 'wpb_sdk_dispatch_verification_email' )
+					&& wpb_sdk_dispatch_verification_email( $slug, $user_id )
+				) {
+					return;
+				}
+
 				if ( ! class_exists( 'WPBRIGADE_Logger', false ) ) {
 					return;
 				}
@@ -612,26 +647,11 @@ class WPBRIGADE_Opt_Manager {
 	}
 
 	/**
-	 * Opted in via Allow but email verification not completed yet.
+	 * Check whether any telemetry communication/diagnostic/extension flags are enabled.
 	 *
 	 * @return bool
 	 */
-	private function is_pending_email_verification() {
-		if ( ! $this->requires_email_verification() ) {
-			return false;
-		}
-
-		if (
-			function_exists( 'wpb_sdk_is_user_verified' )
-			&& wpb_sdk_is_user_verified( $this->slug )
-		) {
-			return false;
-		}
-
-		if ( 'yes' === $this->get_optin_flag() ) {
-			return true;
-		}
-
+	private function has_active_telemetry_flags() {
 		$sdk_data = json_decode( (string) get_option( $this->sdk_option_name(), '' ), true );
 		if ( ! is_array( $sdk_data ) ) {
 			return false;
@@ -645,6 +665,21 @@ class WPBRIGADE_Opt_Manager {
 		}
 
 		return false;
+	}
+
+	/**
+	 * Opted in via Allow but email verification not completed yet.
+	 *
+	 * @return bool
+	 */
+	private function is_pending_email_verification() {
+		if ( ! $this->requires_email_verification()
+			|| ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $this->slug ) )
+		) {
+			return false;
+		}
+
+		return 'yes' === $this->get_optin_flag() || $this->has_active_telemetry_flags();
 	}
 
 	/**
@@ -723,47 +758,46 @@ class WPBRIGADE_Opt_Manager {
 	}
 
 	/**
+	 * Whether the current user and product are eligible for the verification admin notice.
+	 *
+	 * @return string Admin recipient email if notice should be shown, or empty string.
+	 */
+	private function eligible_verification_notice_email() {
+		if (
+			! current_user_can( 'manage_options' )
+			|| ! $this->should_show_verification_admin_notice()
+			|| $this->is_verification_notice_dismissed()
+		) {
+			return '';
+		}
+
+		$verify_user_id = function_exists( 'wpb_sdk_resolve_optin_verification_user_id' )
+			? (int) wpb_sdk_resolve_optin_verification_user_id( $this->slug )
+			: 0;
+
+		if ( $verify_user_id > 0 && (int) get_current_user_id() !== $verify_user_id ) {
+			return '';
+		}
+
+		$email        = function_exists( 'wpb_sdk_get_optin_verification_user_email' )
+			? (string) wpb_sdk_get_optin_verification_user_email( $this->slug )
+			: '';
+		$email_issued = function_exists( 'wpb_sdk_verification_email_was_issued' )
+			&& wpb_sdk_verification_email_was_issued( $this->slug, $verify_user_id );
+
+		return ( '' !== $email && $email_issued ) ? $email : '';
+	}
+
+	/**
 	 * Admin notice while opted in but email verification is still pending.
 	 *
 	 * @return void
 	 */
 	public function maybe_show_optin_verification_notice() {
-		if ( ! current_user_can( 'manage_options' ) ) {
-			return;
+		$email = $this->eligible_verification_notice_email();
+		if ( '' !== $email ) {
+			$this->optin_email_notice( $email, true );
 		}
-
-		if ( ! $this->should_show_verification_admin_notice() ) {
-			return;
-		}
-
-		if ( $this->is_verification_notice_dismissed() ) {
-			return;
-		}
-
-		$verify_user_id = function_exists( 'wpb_sdk_resolve_optin_verification_user_id' )
-			? wpb_sdk_resolve_optin_verification_user_id( $this->slug )
-			: 0;
-
-		if ( $verify_user_id > 0 && (int) get_current_user_id() !== $verify_user_id ) {
-			return;
-		}
-
-		$email          = function_exists( 'wpb_sdk_get_optin_verification_user_email' )
-			? wpb_sdk_get_optin_verification_user_email( $this->slug )
-			: '';
-
-		if ( '' === $email ) {
-			return;
-		}
-
-		$email_issued = function_exists( 'wpb_sdk_verification_email_was_issued' )
-			&& wpb_sdk_verification_email_was_issued( $this->slug, $verify_user_id );
-
-		if ( ! $email_issued ) {
-			return;
-		}
-
-		$this->optin_email_notice( $email, true );
 	}
 
 	/**
@@ -821,6 +855,7 @@ class WPBRIGADE_Opt_Manager {
 		$show_button = ! empty( $copy['show_button'] );
 
 		if ( $show_button ) {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Sanitized via wp_kses_post.
 			printf(
 				'<div class="notice notice-success is-dismissible wpb-sdk-verify-notice" data-wpb-sdk-slug="%1$s">'
 				. '<p style="color: green;">%2$s</p>'
@@ -830,16 +865,17 @@ class WPBRIGADE_Opt_Manager {
 				. '</p>'
 				. '</div>',
 				esc_attr( $this->slug ),
-				$message,
+				$message, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 				esc_html( $copy['button'] )
 			);
 		} else {
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Sanitized via wp_kses_post.
 			printf(
 				'<div class="notice notice-success is-dismissible wpb-sdk-verify-notice" data-wpb-sdk-slug="%1$s">'
 				. '<p style="color: green;">%2$s</p>'
 				. '</div>',
 				esc_attr( $this->slug ),
-				$message
+				$message // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			);
 		}
 
@@ -858,11 +894,15 @@ class WPBRIGADE_Opt_Manager {
 
 		$optout = $this->optout_view_path();
 		if ( is_readable( $optout ) ) {
-			$wpb_sdk_plugin_slug     = $this->slug;
-			$wpb_sdk_product_name    = $this->product_name();
-			$wpb_sdk_ajax_prefix     = $this->ajax_prefix();
-			$wpb_sdk_plugin_basename = $this->plugin_basename();
-			$wpb_sdk_optout_nonce    = wp_create_nonce( $this->ajax_prefix() . '_optout_page_nonce' );
+			$optout_vars = array(
+				'wpb_sdk_plugin_slug'     => $this->slug,
+				'wpb_sdk_product_name'    => $this->product_name(),
+				'wpb_sdk_ajax_prefix'     => $this->ajax_prefix(),
+				'wpb_sdk_plugin_basename' => $this->plugin_basename(),
+				'wpb_sdk_optout_nonce'    => wp_create_nonce( $this->ajax_prefix() . '_optout_page_nonce' ),
+			);
+			// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- Extracting view variables for template inclusion.
+			extract( $optout_vars, EXTR_SKIP );
 			include $optout;
 		}
 	}
@@ -883,7 +923,7 @@ class WPBRIGADE_Opt_Manager {
 		 */
 		$allowed = apply_filters( 'wpb_sdk_allowed_opt_out_settings', $allowed, $this->slug );
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified in ajax_opt_out_option().
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- Verified in ajax_opt_out_option().
 		$setting_name = isset( $_POST['setting_name'] )
 			? sanitize_key( wp_unslash( (string) $_POST['setting_name'] ) )
 			: '';
@@ -892,10 +932,10 @@ class WPBRIGADE_Opt_Manager {
 			return null;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- Verified in ajax_opt_out_option().
 		$setting_value = isset( $_POST['setting_value'] )
 			? sanitize_text_field( wp_unslash( (string) $_POST['setting_value'] ) )
 			: '0';
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 
 		if ( ! in_array( $setting_value, array( '0', '1' ), true ) ) {
 			$setting_value = '0';
@@ -984,7 +1024,7 @@ class WPBRIGADE_Opt_Manager {
 	public function ajax_optout_yes() {
 		$prefix = $this->ajax_prefix();
 		if ( ! current_user_can( 'manage_options' ) || ! check_ajax_referer( $prefix . '_optin_page_nonce', 'optout_yes_nonce' ) ) {
-			wp_send_json_error( __( 'You do not have permission to perform this action.', 'wpbrigade-sdk' ), 403 );
+			wp_send_json_error( self::permission_error_message(), 403 );
 		}
 
 		$sdk_data = get_option( $this->sdk_option_name(), array() );
@@ -1011,7 +1051,7 @@ class WPBRIGADE_Opt_Manager {
 	public function ajax_optin_skip() {
 		$prefix = $this->ajax_prefix();
 		if ( ! current_user_can( 'manage_options' ) || ! check_ajax_referer( $prefix . '_optin_page_nonce', 'optin_skip_nonce' ) ) {
-			wp_send_json_error( __( 'You do not have permission to perform this action.', 'wpbrigade-sdk' ), 403 );
+			wp_send_json_error( self::permission_error_message(), 403 );
 		}
 
 		if ( function_exists( 'wpb_sdk_set_optin_initiator' ) ) {

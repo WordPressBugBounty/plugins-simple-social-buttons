@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:13+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "da-DK",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Enkle sociale knapper"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "Sikkerhedskontrol fejlede. Venligst opdater siden og pr\u00f8v igen."
+            ],
+            "You do not have permission to import settings.": [
+                "Du har ikke tilladelse til at importere indstillinger."
+            ],
+            "No file uploaded or upload failed.": [
+                "Ingen fil uploadet eller uploaden fejlede."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Ugyldig JSON-fil. Upload venligst en gyldig SSB eksportfil."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Ugyldigt filformat. Dette ser ikke ud til at v\u00e6re en Simple Social Buttons eksportfil."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Indstillinger for Simple Social Buttons deling importeret med succes."
+            ],
+            "Export": [
+                "Eksport\u00e9r"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Indstillinger for Simple Social Button er blevet eksporteret med succes!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Eksport\u00e9r indstillinger for Simple Social Button."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> af <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> tilf\u00f8jer et avanceret s\u00e6t af sociale mediedelingsknapper til dine WordPress-sider, s\u00e5som: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> og <strong>Pinterest<\/strong>. Dette g\u00f8r det til det mest fleksible sociale delingsplugin for alle."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Ugyldig fil. Upload venligst en JSON-fil, der starter med \"ssb\"."
+            ],
+            "Import failed. Please try again.": [
+                "Import fejlede. Pr\u00f8v venligst igen."
+            ],
+            "Please select a valid file first.": [
+                "V\u00e6lg venligst en gyldig fil f\u00f8rst."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "Sikkerhedstjek fejlede eller serverfejl. Opdater venligst og pr\u00f8v igen."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Ugyldigt svar fra serveren. Pr\u00f8v venligst igen."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Der opstod en fejl under importen. Pr\u00f8v venligst igen."
+            ],
+            "Export failed. Please try again.": [
+                "Eksport fejlede. Pr\u00f8v venligst igen."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Importer & Eksporter indstillinger for Simple Social Share Button"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importer\/Eksporter dine sociale delingsindstillinger for\/fra andre sider."
+            ],
+            "Drag and drop file here or": [
+                "Tr\u00e6k og slip fil her eller"
+            ],
+            "Browse": [
+                "Gennemse"
+            ],
+            "Remove file": [
+                "Fjern fil"
+            ],
+            "Import Settings": [
+                "Importer indstillinger"
+            ],
+            "Importing settings...": [
+                "Importer indstillinger..."
+            ],
+            "Export Settings": [
+                "Eksportindstillinger"
+            ],
+            "Exporting...": [
+                "Eksporterer..."
+            ]
+        }
+    }
+}

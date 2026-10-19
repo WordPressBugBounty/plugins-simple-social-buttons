@@ -1,0 +1,96 @@
+{
+    "translation-revision-date": "2026-09-24 10:14+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/import-export.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "de-DE",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Einfache soziale Schaltfl\u00e4chen"
+            ],
+            "Security check failed. Please refresh the page and try again.": [
+                "Sicherheits\u00fcberpr\u00fcfung fehlgeschlagen. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut."
+            ],
+            "You do not have permission to import settings.": [
+                "Sie haben keine Berechtigung, Einstellungen zu importieren."
+            ],
+            "No file uploaded or upload failed.": [
+                "Keine Datei hochgeladen oder Upload fehlgeschlagen."
+            ],
+            "Invalid JSON file. Please upload a valid SSB export file.": [
+                "Ung\u00fcltige JSON-Datei. Bitte laden Sie eine g\u00fcltige SSB-Exportdatei hoch."
+            ],
+            "Invalid file format. This does not appear to be a Simple Social Buttons export file.": [
+                "Ung\u00fcltiges Dateiformat. Dies scheint keine Simple Social Buttons-Exportdatei zu sein."
+            ],
+            "Simple Social Buttons Share Settings Imported Successfully.": [
+                "Einstellungen f\u00fcr Simple Social Buttons erfolgreich importiert."
+            ],
+            "Export": [
+                "Exportieren"
+            ],
+            "Simple Social Button Settings Exported Successfully!": [
+                "Einfache Einstellungen f\u00fcr soziale Schaltfl\u00e4chen erfolgreich exportiert!"
+            ],
+            "Export Simple Social Button Settings.": [
+                "Einfache Einstellungen f\u00fcr soziale Schaltfl\u00e4chen exportieren."
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Einfache Social Buttons<\/strong> von <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> f\u00fcgt Ihren WordPress-Seiten ein erweitertes Set von Schaltfl\u00e4chen f\u00fcr das Teilen in sozialen Medien hinzu, wie z.B.: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> und <strong>Pinterest<\/strong>. Dies macht es zum flexibelsten Plugin f\u00fcr das Teilen in sozialen Medien f\u00fcr alle."
+            ],
+            "Invalid file. Please upload a JSON file starting with \"ssb\".": [
+                "Ung\u00fcltige Datei. Bitte laden Sie eine JSON-Datei hoch, die mit \"ssb\" beginnt."
+            ],
+            "Import failed. Please try again.": [
+                "Import fehlgeschlagen. Bitte versuchen Sie es erneut."
+            ],
+            "Please select a valid file first.": [
+                "Bitte w\u00e4hlen Sie zuerst eine g\u00fcltige Datei aus."
+            ],
+            "Security check failed or server error. Please refresh and try again.": [
+                "Sicherheits\u00fcberpr\u00fcfung fehlgeschlagen oder Serverfehler. Bitte aktualisieren Sie und versuchen Sie es erneut."
+            ],
+            "Invalid response from server. Please try again.": [
+                "Ung\u00fcltige Antwort vom Server. Bitte versuchen Sie es erneut."
+            ],
+            "An error occurred during import. Please try again.": [
+                "Beim Import ist ein Fehler aufgetreten. Bitte versuchen Sie es erneut."
+            ],
+            "Export failed. Please try again.": [
+                "Export fehlgeschlagen. Bitte versuchen Sie es erneut."
+            ],
+            "Import & Export Simple Social Share Button Settings": [
+                "Importieren & Exportieren der Einstellungen f\u00fcr die einfachen Social Share Buttons"
+            ],
+            "Import\/Export your Social share Settings for\/from other sites.": [
+                "Importieren\/Exportieren Ihrer Social Share-Einstellungen f\u00fcr\/von anderen Seiten."
+            ],
+            "Drag and drop file here or": [
+                "Datei hierher ziehen und ablegen oder"
+            ],
+            "Browse": [
+                "Durchsuchen"
+            ],
+            "Remove file": [
+                "Datei entfernen"
+            ],
+            "Import Settings": [
+                "Einstellungen importieren"
+            ],
+            "Importing settings...": [
+                "Einstellungen werden importiert..."
+            ],
+            "Export Settings": [
+                "Export-Einstellungen"
+            ],
+            "Exporting...": [
+                "Exportieren..."
+            ]
+        }
+    }
+}

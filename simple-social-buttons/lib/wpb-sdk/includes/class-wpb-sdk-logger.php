@@ -14,6 +14,13 @@
 class WPBRIGADE_Logger {
 
 	/**
+	 * Product slug for this logger instance.
+	 *
+	 * @var string
+	 */
+	public $slug = '';
+
+	/**
 	 * Singleton instances keyed by product slug.
 	 *
 	 * @var array<string, self>
@@ -69,9 +76,9 @@ class WPBRIGADE_Logger {
 	 * @param mixed $slug      Product slug.
 	 * @param bool  $is_init   Whether this is an init call.
 	 */
-	private function __construct( $module_id, $slug = false, $is_init = false ) {
-		if ( ! $is_init && ! is_numeric( $module_id ) && ! is_string( $slug ) ) {
-			return;
+	private function __construct( $module_id = null, $slug = false, $is_init = false ) {
+		if ( ! empty( $slug ) ) {
+			$this->slug = (string) $slug;
 		}
 	}
 
@@ -159,20 +166,11 @@ class WPBRIGADE_Logger {
 		if ( ! is_string( $slug ) || '' === $slug ) {
 			return array();
 		}
-		if (
-			isset( self::$product_data[ $slug ]['module'] )
-			&& is_array( self::$product_data[ $slug ]['module'] )
-		) {
+		if ( isset( self::$product_data[ $slug ]['module'] ) && is_array( self::$product_data[ $slug ]['module'] ) ) {
 			return self::$product_data[ $slug ]['module'];
 		}
-		if ( function_exists( 'wpb_sdk_get_registered_module' ) ) {
-			$module = wpb_sdk_get_registered_module( $slug );
-			if ( is_array( $module ) && ! empty( $module ) ) {
-				return $module;
-			}
-		}
-
-		return array();
+		$module = function_exists( 'wpb_sdk_get_registered_module' ) ? wpb_sdk_get_registered_module( $slug ) : null;
+		return ( is_array( $module ) && ! empty( $module ) ) ? $module : array();
 	}
 
 	/**
@@ -185,10 +183,25 @@ class WPBRIGADE_Logger {
 		if ( ! empty( self::$product_data[ $slug ]['module'] ) ) {
 			return;
 		}
-		if ( function_exists( 'wpb_sdk_get_registered_module' ) && ! empty( wpb_sdk_get_registered_module( $slug ) ) ) {
-			return;
+		$main = wpb_sdk_get_plugin_path( $slug );
+		if ( '' !== $main && file_exists( $main ) ) {
+			include_once $main;
 		}
-		do_action( 'wpb_sdk_bootstrap_module', $slug );
+
+		if ( empty( self::$product_data[ $slug ]['module'] ) ) {
+			do_action( 'wpb_sdk_bootstrap_module', $slug );
+			if ( function_exists( 'wpb_sdk_restore_module_for_lifecycle' ) ) {
+				$restored = wpb_sdk_restore_module_for_lifecycle( $slug );
+				if ( is_array( $restored ) && ! empty( $restored ) ) {
+					self::$product_data[ $slug ] = array_merge(
+						self::$product_data[ $slug ] ?? array(),
+						array(
+							'module' => $restored,
+						)
+					);
+				}
+			}
+		}
 	}
 
 	/**
@@ -232,6 +245,80 @@ class WPBRIGADE_Logger {
 	}
 
 	/**
+	 * Product slug accessor.
+	 *
+	 * @return string
+	 */
+	public function get_slug() {
+		return $this->slug;
+	}
+
+	/**
+	 * Extract product slug and module definition from dynamic init module config.
+	 *
+	 * @param array $module Module config.
+	 * @return array{0: string, 1: array<string, mixed>}
+	 */
+	public static function extract_slug_and_module_from_init( array $module ) {
+		$slug = isset( $module['slug'] ) ? sanitize_key( (string) $module['slug'] ) : '';
+		if ( '' === $slug && isset( $module['id'] ) ) {
+			$slug = sanitize_key( (string) $module['id'] );
+		}
+
+		$config = $module;
+		if ( '' !== $slug && empty( $config['slug'] ) ) {
+			$config['slug'] = $slug;
+		}
+
+		return array( $slug, $config );
+	}
+
+	/**
+	 * Instantiate lifecycle class using args count.
+	 *
+	 * @param string $class_name Class name.
+	 * @param array  $args       Constructor arguments.
+	 * @return object
+	 */
+	private static function instantiate_lifecycle_class( $class_name, array $args ) {
+		$count = count( $args );
+		if ( 0 === $count ) {
+			return new $class_name();
+		}
+		if ( 1 === $count ) {
+			return new $class_name( $args[0] );
+		}
+		$ref = new ReflectionClass( $class_name );
+		return $ref->newInstanceArgs( $args );
+	}
+
+	/**
+	 * Prepare and verify environment before invoking product lifecycle class.
+	 *
+	 * @param string $plugin_dir Directory of the plugin.
+	 * @param array  $lifecycle  Lifecycle config.
+	 * @param string $which      activate|deactivate|uninstall.
+	 * @return bool
+	 */
+	private static function prepare_lifecycle_environment( $plugin_dir, array $lifecycle, $which ) {
+		foreach ( (array) ( $lifecycle['bootstrap_files'] ?? array() ) as $relative ) {
+			$path = $plugin_dir . ltrim( (string) $relative, '/\\' );
+			if ( is_readable( $path ) ) {
+				require_once $path;
+			}
+		}
+
+		if ( 'uninstall' === $which && ! empty( $lifecycle['uninstall_requires'] ) ) {
+			$required = $plugin_dir . ltrim( (string) $lifecycle['uninstall_requires'], '/\\' );
+			if ( ! is_readable( $required ) ) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
 	 * Optional product lifecycle class (activate / deactivate / uninstall) from module config.
 	 *
 	 * @param string $slug  Product slug.
@@ -246,43 +333,19 @@ class WPBRIGADE_Logger {
 		$module    = self::get_module_config( $slug );
 		$lifecycle = isset( $module['lifecycle'] ) && is_array( $module['lifecycle'] ) ? $module['lifecycle'] : array();
 		$class     = isset( $lifecycle['class'] ) ? (string) $lifecycle['class'] : '';
-		if ( '' === $class ) {
-			return;
-		}
-
 		$main_file = wpb_sdk_get_plugin_path( $slug );
-		if ( ! file_exists( $main_file ) ) {
+
+		if ( '' === $class || ! file_exists( $main_file ) ) {
 			return;
 		}
 
 		$plugin_dir = trailingslashit( dirname( $main_file ) );
-		foreach ( (array) ( $lifecycle['bootstrap_files'] ?? array() ) as $relative ) {
-			$path = $plugin_dir . ltrim( (string) $relative, '/\\' );
-			if ( is_readable( $path ) ) {
-				require_once $path;
-			}
-		}
-
-		if ( 'uninstall' === $which && ! empty( $lifecycle['uninstall_requires'] ) ) {
-			$required = $plugin_dir . ltrim( (string) $lifecycle['uninstall_requires'], '/\\' );
-			if ( ! is_readable( $required ) ) {
-				return;
-			}
-		}
-
-		if ( ! class_exists( $class, false ) ) {
+		if ( ! self::prepare_lifecycle_environment( $plugin_dir, $lifecycle, $which ) || ! class_exists( $class, false ) ) {
 			return;
 		}
 
-		$args = isset( $lifecycle['constructor_args'] ) ? (array) $lifecycle['constructor_args'] : array( null );
-		if ( 0 === count( $args ) ) {
-			$instance = new $class();
-		} elseif ( 1 === count( $args ) ) {
-			$instance = new $class( $args[0] );
-		} else {
-			$ref      = new ReflectionClass( $class );
-			$instance = $ref->newInstanceArgs( $args );
-		}
+		$args     = isset( $lifecycle['constructor_args'] ) ? (array) $lifecycle['constructor_args'] : array( null );
+		$instance = self::instantiate_lifecycle_class( $class, $args );
 
 		if ( is_object( $instance ) && is_callable( array( $instance, $which ) ) ) {
 			call_user_func( array( $instance, $which ) );
@@ -376,6 +439,30 @@ class WPBRIGADE_Logger {
 
 
 	/**
+	 * Register optional verification and opt manager subsystems for a product module.
+	 *
+	 * @param string $slug Product slug.
+	 * @return void
+	 */
+	private static function register_subsystem_modules( $slug ) {
+		$module = isset( self::$product_data[ $slug ]['module'] ) && is_array( self::$product_data[ $slug ]['module'] )
+			? self::$product_data[ $slug ]['module']
+			: array();
+
+		if ( class_exists( 'WPBRIGADE_Optin_Verification' )
+			&& ! empty( $module['optin_user_meta']['token'] )
+			&& function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
+			&& '' !== wpb_sdk_email_verified_meta_key_from_module( $module )
+		) {
+			WPBRIGADE_Optin_Verification::register_module( $module );
+		}
+
+		if ( class_exists( 'WPBRIGADE_Opt_Manager' ) && ! empty( $module['sdk_views_dir'] ) ) {
+			WPBRIGADE_Opt_Manager::register_module( $module );
+		}
+	}
+
+	/**
 	 * Register cron, AJAX, activation/deactivation, and uninstall hooks.
 	 *
 	 * @param string $slug Product slug.
@@ -445,24 +532,7 @@ class WPBRIGADE_Logger {
 		register_uninstall_hook( $plugin_path, 'wpb_sdk_run_product_uninstall' );
 
 		self::register_lifecycle_uninstall_hook( $slug );
-
-		if ( class_exists( 'WPBRIGADE_Optin_Verification' ) ) {
-			$module = isset( self::$product_data[ $slug ]['module'] ) ? self::$product_data[ $slug ]['module'] : array();
-			if (
-				! empty( $module['optin_user_meta']['token'] )
-				&& function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
-				&& '' !== wpb_sdk_email_verified_meta_key_from_module( $module )
-			) {
-				WPBRIGADE_Optin_Verification::register_module( $module );
-			}
-		}
-
-		if ( class_exists( 'WPBRIGADE_Opt_Manager' ) ) {
-			$module = isset( self::$product_data[ $slug ]['module'] ) ? self::$product_data[ $slug ]['module'] : array();
-			if ( ! empty( $module['sdk_views_dir'] ) ) {
-				WPBRIGADE_Opt_Manager::register_module( $module );
-			}
-		}
+		self::register_subsystem_modules( $slug );
 	}
 
 	/**
@@ -623,10 +693,13 @@ class WPBRIGADE_Logger {
 		if ( empty( $plugin_data ) || ! is_array( $plugin_data ) ) {
 			return;
 		}
-		$module               = self::get_module_config( $slug );
-		$product_name         = $plugin_data['Name'];
-		$product_slug         = $slug;
-		$plugin_file_basename = self::resolve_plugin_basename_for_list_table( $slug );
+		$deactivate_vars = array(
+			'product_name'         => $plugin_data['Name'],
+			'product_slug'         => $slug,
+			'plugin_file_basename' => self::resolve_plugin_basename_for_list_table( $slug ),
+		);
+		// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- Extracting view variables for template inclusion.
+		extract( $deactivate_vars, EXTR_SKIP );
 		include dirname( __DIR__ ) . '/views/wpb-sdk-deactivate-form.php';
 	}
 
@@ -642,12 +715,12 @@ class WPBRIGADE_Logger {
 		if ( ! isset( $_POST['nonce'] ) || '' === $_POST['nonce'] ) {
 			wp_die( -1, '', array( 'response' => 403 ) );
 		}
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, '', array( 'response' => 403 ) );
+		}
 
-		$nonce        = sanitize_text_field( wp_unslash( $_POST['nonce'] ) );
 		$plugin_file  = self::resolve_plugin_basename_for_list_table( $slug );
-		$verify_nonce = wp_verify_nonce( $nonce, 'deactivate-plugin_' . $plugin_file );
-
-		if ( ! $verify_nonce ) {
+		if ( ! check_ajax_referer( 'deactivate-plugin_' . $plugin_file, 'nonce', false ) ) {
 			wp_die( -1, '', array( 'response' => 403 ) );
 		}
 
@@ -759,16 +832,20 @@ class WPBRIGADE_Logger {
 			return;
 		}
 
-		$mid = self::$module_id;
-		if ( empty( $mid ) && ! empty( self::$product_data[ $slug ]['module']['id'] ) ) {
-			$mid = self::$product_data[ $slug ]['module']['id'];
+		$mid = ! empty( self::$product_data[ $slug ]['module']['id'] )
+			? (string) self::$product_data[ $slug ]['module']['id']
+			: '';
+		if ( '' === $mid && function_exists( 'wpb_sdk_get_registered_module' ) ) {
+			$reg_module = wpb_sdk_get_registered_module( $slug );
+			if ( ! empty( $reg_module['id'] ) ) {
+				$mid = (string) $reg_module['id'];
+			}
 		}
-		if ( empty( $mid ) ) {
+		if ( '' === $mid ) {
 			$mid = '1';
 		}
 
 		self::$current_uninstall_slug = $slug;
-		self::$module_id              = $mid;
 
 		self::bootstrap_module_if_needed( $slug );
 
@@ -857,34 +934,98 @@ class WPBRIGADE_Logger {
 	}
 
 	private static function should_include_verification_token( $slug, $action, array $module, $user_id = 0 ) {
-		if ( empty( $module['optin_user_meta']['token'] ) ) {
+		if ( empty( $module['optin_user_meta']['token'] ) || 'activate' !== $action ) {
 			return false;
 		}
-		if ( function_exists( 'wpb_sdk_user_skipped_optin' ) && wpb_sdk_user_skipped_optin( $slug ) ) {
-			return false;
-		}
-		if ( 'activate' !== $action ) {
-			return false;
-		}
-		if ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) ) {
+		if ( ( function_exists( 'wpb_sdk_user_skipped_optin' ) && wpb_sdk_user_skipped_optin( $slug ) )
+			|| ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) )
+		) {
 			return false;
 		}
 
-		if ( self::is_verification_email_dispatch( $slug ) ) {
-			return true;
+		$is_initial_or_dispatch = self::is_verification_email_dispatch( $slug ) || '1' !== (string) get_option( self::wpb_sdk_initial_log_option_key( $slug ), '' );
+
+		return $is_initial_or_dispatch || ( function_exists( 'wpb_sdk_is_verification_token_expired' ) && (bool) wpb_sdk_is_verification_token_expired( $slug, $user_id ) );
+	}
+
+	/**
+	 * Retrieve or create fallback verification token for non-user contexts.
+	 *
+	 * @param string $slug Product slug.
+	 * @return string
+	 */
+	private static function get_or_create_fallback_verification_token( $slug ) {
+		$opt_key = 'wpb_sdk_' . $slug . '_fallback_verify_token';
+		$token   = (string) get_option( $opt_key, '' );
+		if ( '' === $token ) {
+			$token = function_exists( 'wpb_sdk_generate_verification_token' )
+				? wpb_sdk_generate_verification_token()
+				: wp_generate_password( 32, false, false );
+			update_option( $opt_key, $token, false );
+		}
+		return $token;
+	}
+
+	/**
+	 * Resolves telemetry display name using WP_User display_name/user_login, first/last name, or email user part.
+	 *
+	 * @param mixed  $admin_obj WP_User or null.
+	 * @param string $first     First name.
+	 * @param string $last      Last name.
+	 * @param string $email     Resolved email.
+	 * @return string
+	 */
+	private static function resolve_telemetry_display_name( $admin_obj, $first, $last, $email ) {
+		$name = '';
+		if ( $admin_obj instanceof WP_User ) {
+			$name = sanitize_text_field( (string) $admin_obj->display_name );
+			if ( '' === $name ) {
+				$name = sanitize_text_field( (string) $admin_obj->user_login );
+			}
+		}
+		if ( '' === $name ) {
+			$name = trim( $first . ' ' . $last );
+		}
+		if ( '' === $name && '' !== $email ) {
+			$local = strstr( $email, '@', true );
+			$name  = false !== $local ? $local : '';
+		}
+		return $name;
+	}
+
+	/**
+	 * Retrieve or create verification token for a specific user ID.
+	 *
+	 * @param int                  $user_id    User ID.
+	 * @param string               $token_meta Meta key.
+	 * @param string               $slug       Product slug.
+	 * @param array<string, mixed> $module     Module definition.
+	 * @return string
+	 */
+	private static function ensure_user_verification_token( $user_id, $token_meta, $slug, array $module ) {
+		$expires_meta = function_exists( 'wpb_sdk_verification_token_expires_meta_key' )
+			? wpb_sdk_verification_token_expires_meta_key( $module )
+			: $token_meta . '_expires';
+		$existing     = get_user_meta( $user_id, $token_meta, true );
+		$expires_at   = function_exists( 'wpb_sdk_ensure_verification_token_expiry_meta' )
+			? wpb_sdk_ensure_verification_token_expiry_meta( $slug, $user_id )
+			: (int) get_user_meta( $user_id, $expires_meta, true );
+		$is_expired   = $expires_at > 0 && time() > $expires_at;
+
+		$force_new = self::is_verification_email_dispatch( $slug )
+			&& ! empty( self::$verification_email_dispatch['force'] );
+
+		if ( ! $force_new && is_string( $existing ) && '' !== $existing && ! $is_expired ) {
+			return $existing;
 		}
 
-		// First opt-in Allow: one verification email.
-		if ( '1' !== (string) get_option( self::wpb_sdk_initial_log_option_key( $slug ), '' ) ) {
-			return true;
+		$token = wp_generate_password( 40, false, false );
+		update_user_meta( $user_id, $token_meta, $token );
+		if ( function_exists( 'wpb_sdk_verification_token_expires_at' ) ) {
+			update_user_meta( $user_id, $expires_meta, wpb_sdk_verification_token_expires_at( $module ) );
 		}
 
-		// Plugin re-activated while still unverified: reminder only after token TTL (Freemius-style, not every toggle).
-		if ( function_exists( 'wpb_sdk_is_verification_token_expired' ) ) {
-			return wpb_sdk_is_verification_token_expired( $slug, $user_id );
-		}
-
-		return false;
+		return $token;
 	}
 
 	/**
@@ -902,39 +1043,10 @@ class WPBRIGADE_Logger {
 			: '';
 
 		if ( $user_id > 0 && '' !== $token_meta ) {
-			$expires_meta = function_exists( 'wpb_sdk_verification_token_expires_meta_key' )
-				? wpb_sdk_verification_token_expires_meta_key( $module )
-				: $token_meta . '_expires';
-			$existing     = get_user_meta( $user_id, $token_meta, true );
-			$expires_at   = function_exists( 'wpb_sdk_ensure_verification_token_expiry_meta' )
-				? wpb_sdk_ensure_verification_token_expiry_meta( $slug, $user_id )
-				: (int) get_user_meta( $user_id, $expires_meta, true );
-			$is_expired   = $expires_at > 0 && time() > $expires_at;
-
-			$force_new = self::is_verification_email_dispatch( $slug )
-				&& ! empty( self::$verification_email_dispatch['force'] );
-
-			if ( ! $force_new && is_string( $existing ) && '' !== $existing && ! $is_expired ) {
-				return $existing;
-			}
-
-			$token = wp_generate_password( 40, false, false );
-			update_user_meta( $user_id, $token_meta, $token );
-			if ( function_exists( 'wpb_sdk_verification_token_expires_at' ) ) {
-				update_user_meta( $user_id, $expires_meta, wpb_sdk_verification_token_expires_at( $module ) );
-			}
-
-			return $token;
+			return self::ensure_user_verification_token( $user_id, $token_meta, $slug, $module );
 		}
 
-		$opt_key = 'wpb_sdk_' . $slug . '_fallback_verify_token';
-		$stored  = get_option( $opt_key, '' );
-		if ( is_string( $stored ) && '' !== $stored ) {
-			return $stored;
-		}
-		$token = wp_generate_password( 40, false, false );
-		update_option( $opt_key, $token, false );
-		return $token;
+		return self::get_or_create_fallback_verification_token( $slug );
 	}
 
 	/**
@@ -955,12 +1067,39 @@ class WPBRIGADE_Logger {
 	}
 
 	/**
-	 * Shared site_info diagnostics (site_meta_info + location_details) for all WPB SDK collectors.
+	 * Get HTTP blocking diagnostic string.
 	 *
-	 * @param \wpdb       $wpdb WordPress database object.
-	 * @param \WP_Theme   $theme_data Output of wp_get_theme().
-	 * @param string      $ip Client IP.
-	 * @param mixed       $location Result from get_location_details().
+	 * @return string
+	 */
+	private static function get_http_blocked_status() {
+		if ( ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) || ! WP_HTTP_BLOCK_EXTERNAL ) {
+			return 'none';
+		}
+		return defined( 'WP_ACCESSIBLE_HOSTS' )
+			? 'partially (accessible hosts: ' . esc_html( WP_ACCESSIBLE_HOSTS ) . ')'
+			: 'all';
+	}
+
+	/**
+	 * Get cURL version string.
+	 *
+	 * @return string
+	 */
+	private static function get_curl_version_string() {
+		if ( ! function_exists( 'curl_init' ) || ! function_exists( 'curl_version' ) ) {
+			return '';
+		}
+		$curl = curl_version();
+		return '(' . $curl['version'] . ' ' . $curl['ssl_version'] . ')';
+	}
+
+	/**
+	 * Build diagnostic metadata for telemetry payload.
+	 *
+	 * @param \wpdb       $wpdb Database instance.
+	 * @param \WP_Theme   $theme_data Active theme.
+	 * @param string      $ip Client/server IP.
+	 * @param mixed       $location Location details.
 	 * @param array|false $multisites Result from get_multisites().
 	 * @return array{site_meta_info: array, location_details: mixed}
 	 */
@@ -969,41 +1108,27 @@ class WPBRIGADE_Logger {
 			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
 
-		$curl_version          = '';
-		$external_http_blocked = '';
-		$users_count           = '';
-
+		$users_count = '';
 		if ( function_exists( 'count_users' ) ) {
 			$uc          = count_users();
 			$users_count = isset( $uc['total_users'] ) ? (int) $uc['total_users'] : '';
 		}
 
-		if ( ! defined( 'WP_HTTP_BLOCK_EXTERNAL' ) || ! WP_HTTP_BLOCK_EXTERNAL ) {
-			$external_http_blocked = 'none';
-		} else {
-			$external_http_blocked = defined( 'WP_ACCESSIBLE_HOSTS' )
-				? 'partially (accessible hosts: ' . esc_html( WP_ACCESSIBLE_HOSTS ) . ')'
-				: 'all';
-		}
-
-		if ( function_exists( 'curl_init' ) ) {
-			$curl         = curl_version();
-			$curl_version = '(' . $curl['version'] . ' ' . $curl['ssl_version'] . ')';
-		}
+		$server = isset( $_SERVER['SERVER_SOFTWARE'] )
+			? sanitize_text_field( wp_unslash( (string) $_SERVER['SERVER_SOFTWARE'] ) )
+			: '';
 
 		$site_meta_info = array(
 			'is_multisite'          => is_multisite(),
 			'multisites'            => $multisites,
 			'php_version'           => phpversion(),
 			'wp_version'            => get_bloginfo( 'version' ),
-			'server'                => isset( $_SERVER['SERVER_SOFTWARE'] )
-				? sanitize_text_field( wp_unslash( (string) $_SERVER['SERVER_SOFTWARE'] ) )
-				: '',
+			'server'                => $server,
 			'timezoneoffset'        => gmdate( 'P' ),
 			'ext/mysqli'            => isset( $wpdb->use_mysqli ) && ! empty( $wpdb->use_mysqli ),
 			'mysql_version'         => self::wpb_sdk_get_mysql_server_version( $wpdb ),
 			'memory_limit'          => defined( 'WP_MEMORY_LIMIT' ) ? WP_MEMORY_LIMIT : ini_get( 'memory_limit' ),
-			'external_http_blocked' => $external_http_blocked,
+			'external_http_blocked' => self::get_http_blocked_status(),
 			'wp_locale'             => get_locale(),
 			'db_charset'            => defined( 'DB_CHARSET' ) ? DB_CHARSET : '',
 			'debug_mode'            => defined( 'WP_DEBUG' ) && WP_DEBUG,
@@ -1012,7 +1137,7 @@ class WPBRIGADE_Logger {
 			'php_error_log'         => function_exists( 'ini_get' ) ? ini_get( 'error_log' ) : '',
 			'fsockopen'             => function_exists( 'fsockopen' ),
 			'open_ssl'              => defined( 'OPENSSL_VERSION_TEXT' ) ? OPENSSL_VERSION_TEXT : '',
-			'curl'                  => $curl_version,
+			'curl'                  => self::get_curl_version_string(),
 			'ip'                    => $ip,
 			'user_count'            => $users_count,
 			'admin_email'           => sanitize_email( get_bloginfo( 'admin_email' ) ),
@@ -1064,6 +1189,131 @@ class WPBRIGADE_Logger {
 	}
 
 	/**
+	 * Populate verification fields in user info payload.
+	 *
+	 * @param array<string, mixed> $user_info        Reference to user info array.
+	 * @param string               $slug             Product slug.
+	 * @param string               $action           Telemetry action.
+	 * @param array<string, mixed> $module           Module definition.
+	 * @param bool                 $user_skipped     Whether user skipped opt-in.
+	 * @param int                  $user_id          User ID.
+	 * @param bool                 $payload_verified Whether user is already verified.
+	 * @return void
+	 */
+	private static function populate_verification_payload( array &$user_info, $slug, $action, array $module, $user_skipped, $user_id, $payload_verified ) {
+		if ( $user_skipped ) {
+			$user_info['email_verification'] = 'skip';
+		} elseif ( $payload_verified ) {
+			$user_info['email_verification'] = 'yes';
+		} elseif ( self::should_include_verification_token( $slug, $action, $module, $user_id ) ) {
+			$user_info['email_verification'] = '';
+			$token                           = $user_id > 0 ? self::ensure_verification_token( $user_id, $slug, $module ) : '';
+			$user_info['token']              = is_string( $token ) ? $token : '';
+		} else {
+			$user_info['email_verification'] = 'pending';
+		}
+	}
+
+	/**
+	 * Resolve admin contact email.
+	 *
+	 * @param mixed  $admin_obj User object or null.
+	 * @param string $slug      Product slug.
+	 * @return string
+	 */
+	private static function resolve_telemetry_email( $admin_obj, $slug ) {
+		if ( $admin_obj instanceof WP_User && '' !== $admin_obj->user_email ) {
+			return sanitize_email( $admin_obj->user_email );
+		}
+		if ( function_exists( 'wpb_sdk_resolve_optin_admin_user_id' ) ) {
+			$fallback_id = wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
+			if ( $fallback_id > 0 ) {
+				$fallback_user = get_user_by( 'id', $fallback_id );
+				if ( $fallback_user instanceof WP_User && '' !== $fallback_user->user_email ) {
+					return sanitize_email( $fallback_user->user_email );
+				}
+			}
+		}
+		return sanitize_email( (string) get_bloginfo( 'admin_email' ) );
+	}
+
+
+
+	/**
+	 * Build user info payload for Laravel telemetry format.
+	 *
+	 * @param string               $slug         Product slug.
+	 * @param string               $action       Telemetry action.
+	 * @param array<string, mixed> $module       Module definition.
+	 * @param bool                 $user_skipped Whether user skipped opt-in.
+	 * @return array<string, mixed>
+	 */
+	private static function build_laravel_user_info_payload( $slug, $action, array $module, $user_skipped ) {
+		$admin_user_id = 0;
+		$admin_obj     = self::resolve_telemetry_contact_user( $slug );
+		$admin_meta    = array();
+
+		if ( $admin_obj instanceof WP_User ) {
+			$admin_user_id = (int) $admin_obj->ID;
+			$admin_meta    = get_user_meta( $admin_user_id );
+		}
+
+		$first        = isset( $admin_meta['first_name'][0] ) ? sanitize_text_field( (string) $admin_meta['first_name'][0] ) : '';
+		$last         = isset( $admin_meta['last_name'][0] ) ? sanitize_text_field( (string) $admin_meta['last_name'][0] ) : '';
+		$email        = self::resolve_telemetry_email( $admin_obj, $slug );
+		$display_name = self::resolve_telemetry_display_name( $admin_obj, $first, $last, $email );
+
+		$payload_verified = function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $admin_user_id );
+
+		$user_info = array(
+			'user_email' => $email,
+			'name'       => $display_name,
+		);
+
+		self::populate_verification_payload( $user_info, $slug, $action, $module, $user_skipped, $admin_user_id, $payload_verified );
+		return $user_info;
+	}
+
+	/**
+	 * Build user info payload for classic telemetry format.
+	 *
+	 * @param string               $slug         Product slug.
+	 * @param string               $action       Telemetry action.
+	 * @param array<string, mixed> $module       Module definition.
+	 * @param bool                 $user_skipped Whether user skipped opt-in.
+	 * @return array<string, mixed>
+	 */
+	private static function build_classic_user_info_payload( $slug, $action, array $module, $user_skipped ) {
+		$contact_user = self::resolve_telemetry_contact_user( $slug );
+		$admin        = ( $contact_user instanceof WP_User ) ? $contact_user->data : null;
+		$admin_meta   = ( $contact_user instanceof WP_User ) ? get_user_meta( $contact_user->ID ) : array();
+
+		$user_info = array(
+			'user_email'     => ! empty( $admin ) ? sanitize_email( $admin->user_email ) : '',
+			'user_nickname'  => ! empty( $admin ) ? sanitize_text_field( $admin->user_nicename ) : '',
+			'user_firstname' => isset( $admin_meta['first_name'][0] ) ? sanitize_text_field( (string) $admin_meta['first_name'][0] ) : '',
+			'user_lastname'  => isset( $admin_meta['last_name'][0] ) ? sanitize_text_field( (string) $admin_meta['last_name'][0] ) : '',
+		);
+
+		$has_verification = ! empty( $module['optin_user_meta']['token'] )
+			&& function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
+			&& '' !== wpb_sdk_email_verified_meta_key_from_module( $module );
+
+		if ( ! $has_verification ) {
+			return $user_info;
+		}
+
+		$token_uid = ! empty( $admin ) ? (int) $admin->ID : 0;
+		if ( $token_uid < 1 && function_exists( 'wpb_sdk_resolve_telemetry_contact_user_id' ) ) {
+			$token_uid = wpb_sdk_resolve_telemetry_contact_user_id( $slug );
+		}
+		$payload_verified = ( $token_uid > 0 ) && function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $token_uid );
+
+		self::populate_verification_payload( $user_info, $slug, $action, $module, $user_skipped, $token_uid, $payload_verified );
+		return $user_info;
+	}
+
+	/**
 	 * Build telemetry payload from module config (user_info format, opt-out key, etc.).
 	 *
 	 * @param string $slug Product slug.
@@ -1090,130 +1340,30 @@ class WPBRIGADE_Logger {
 		$send_wpb_sdk_diagnostic_info = isset( $sdk_data['diagnostic_info'] ) && wpb_sdk_sdk_option_is_enabled( $sdk_data['diagnostic_info'] );
 		$send_wpb_sdk_extensions      = isset( $sdk_data['extensions'] ) && wpb_sdk_sdk_option_is_enabled( $sdk_data['extensions'] );
 		$user_skipped                 = isset( $sdk_data['user_skip'] ) && wpb_sdk_sdk_option_is_enabled( $sdk_data['user_skip'] );
+		$is_initial_skip_activate     = $user_skipped && 'activate' === $action && self::may_send_telemetry( $slug, 'activate' );
 
 		if (
 			! $send_wpb_sdk_communication
 			&& ! $send_wpb_sdk_diagnostic_info
 			&& ! $send_wpb_sdk_extensions
+			&& ! $is_initial_skip_activate
 		) {
 			self::remove_logs_schedule( $slug );
 			return array();
 		}
-		self::reset_logs_schedule( $slug );
+
+		if ( ! $user_skipped ) {
+			self::reset_logs_schedule( $slug );
+		} else {
+			self::remove_logs_schedule( $slug );
+		}
 
 		$data['authentication']['public_key'] = $module['public_key'];
 
-		$include_user_info = $send_wpb_sdk_communication;
-
-		if ( $include_user_info ) {
-			if ( $laravel_format ) {
-				$admin_user_id = 0;
-				$admin_obj     = self::resolve_telemetry_contact_user( $slug );
-				$admin_meta    = array();
-
-				if ( $admin_obj instanceof WP_User ) {
-					$admin_user_id = (int) $admin_obj->ID;
-					$admin_meta    = get_user_meta( $admin_user_id );
-				}
-
-				$first = isset( $admin_meta['first_name'][0] )
-					? sanitize_text_field( (string) $admin_meta['first_name'][0] )
-					: '';
-				$last  = isset( $admin_meta['last_name'][0] )
-					? sanitize_text_field( (string) $admin_meta['last_name'][0] )
-					: '';
-				$email = ( $admin_obj instanceof WP_User )
-					? sanitize_email( $admin_obj->user_email )
-					: '';
-				if ( '' === $email && function_exists( 'wpb_sdk_resolve_optin_admin_user_id' ) ) {
-					$fallback_id = wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
-					if ( $fallback_id > 0 ) {
-						$fallback_user = get_user_by( 'id', $fallback_id );
-						if ( $fallback_user instanceof WP_User ) {
-							$email = sanitize_email( $fallback_user->user_email );
-						}
-					}
-				}
-				if ( '' === $email ) {
-					$email = sanitize_email( (string) get_bloginfo( 'admin_email' ) );
-				}
-
-				$display_name = '';
-				if ( $admin_obj instanceof WP_User ) {
-					$display_name = sanitize_text_field( (string) $admin_obj->display_name );
-					if ( '' === $display_name ) {
-						$display_name = sanitize_text_field( (string) $admin_obj->user_login );
-					}
-				}
-				if ( '' === $display_name ) {
-					$display_name = trim( $first . ' ' . $last );
-				}
-				if ( '' === $display_name && '' !== $email ) {
-					$local        = strstr( $email, '@', true );
-					$display_name = false !== $local ? $local : '';
-				}
-
-				$payload_verified = function_exists( 'wpb_sdk_is_user_verified' )
-					&& wpb_sdk_is_user_verified( $slug, $admin_user_id );
-
-				$data['user_info'] = array(
-					'user_email' => $email,
-					'name'       => $display_name,
-				);
-				if ( $user_skipped ) {
-					$data['user_info']['email_verification'] = 'skip';
-				} elseif ( $payload_verified ) {
-					$data['user_info']['email_verification'] = 'yes';
-				} elseif ( self::should_include_verification_token( $slug, $action, $module, $admin_user_id ) ) {
-					$data['user_info']['email_verification'] = '';
-					$data['user_info']['token']              = self::ensure_verification_token( $admin_user_id, $slug, $module );
-				} else {
-					$data['user_info']['email_verification'] = 'pending';
-				}
-			} else {
-				$contact_user = self::resolve_telemetry_contact_user( $slug );
-				$admin        = ( $contact_user instanceof WP_User ) ? $contact_user->data : null;
-				$admin_meta   = ( $contact_user instanceof WP_User ) ? get_user_meta( $contact_user->ID ) : array();
-
-				$data['user_info'] = array(
-					'user_email'     => ! empty( $admin ) ? sanitize_email( $admin->user_email ) : '',
-					'user_nickname'  => ! empty( $admin ) ? sanitize_text_field( $admin->user_nicename ) : '',
-					'user_firstname' => isset( $admin_meta['first_name'][0] )
-						? sanitize_text_field( (string) $admin_meta['first_name'][0] )
-						: '',
-					'user_lastname'  => isset( $admin_meta['last_name'][0] )
-						? sanitize_text_field( (string) $admin_meta['last_name'][0] )
-						: '',
-				);
-
-				if (
-					! empty( $module['optin_user_meta']['token'] )
-					&& function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
-					&& '' !== wpb_sdk_email_verified_meta_key_from_module( $module )
-				) {
-					$token_uid = ! empty( $admin ) ? (int) $admin->ID : 0;
-					if ( $token_uid < 1 && function_exists( 'wpb_sdk_resolve_telemetry_contact_user_id' ) ) {
-						$token_uid = wpb_sdk_resolve_telemetry_contact_user_id( $slug );
-					}
-					$payload_verified = ( $token_uid > 0 )
-						&& function_exists( 'wpb_sdk_is_user_verified' )
-						&& wpb_sdk_is_user_verified( $slug, $token_uid );
-
-					if ( $user_skipped ) {
-						$data['user_info']['email_verification'] = 'skip';
-					} elseif ( $payload_verified ) {
-						$data['user_info']['email_verification'] = 'yes';
-					} elseif ( self::should_include_verification_token( $slug, $action, $module, $token_uid ) ) {
-						$verification_token = $token_uid > 0
-							? self::ensure_verification_token( $token_uid, $slug, $module )
-							: '';
-						$data['user_info']['email_verification'] = '';
-						$data['user_info']['token']              = is_string( $verification_token ) ? $verification_token : '';
-					} else {
-						$data['user_info']['email_verification'] = 'pending';
-					}
-				}
-			}
+		if ( $send_wpb_sdk_communication || $is_initial_skip_activate ) {
+			$data['user_info'] = $laravel_format
+				? self::build_laravel_user_info_payload( $slug, $action, $module, $user_skipped )
+				: self::build_classic_user_info_payload( $slug, $action, $module, $user_skipped );
 		}
 
 		$data['product_info']                = $this->get_product_data( $slug );
@@ -1223,13 +1373,13 @@ class WPBRIGADE_Logger {
 			$data['client_info'] = wpb_sdk_get_client_info();
 		}
 
-		if ( $send_wpb_sdk_diagnostic_info ) {
-			$data['product_info']['product_settings'] = $this->get_product_settings( $slug );
-
+		if ( $send_wpb_sdk_diagnostic_info || $is_initial_skip_activate ) {
 			$data['site_info'] = array(
 				'site_url' => site_url(),
 				'home_url' => home_url(),
 			);
+
+			$data['product_info']['product_settings'] = $this->get_product_settings( $slug );
 
 			$ip                                    = $this->get_ip();
 			$location                              = $this->get_location_details( $ip );
@@ -1244,8 +1394,8 @@ class WPBRIGADE_Logger {
 			$data['site_info']['location_details'] = $diag['location_details'];
 		}
 
-		if ( $send_wpb_sdk_extensions ) {
-			$data['site_plugins'] = $this->get_all_plugins();
+		if ( $send_wpb_sdk_extensions || $is_initial_skip_activate ) {
+			$data['site_plugins'] = $this->get_all_plugins( $slug, $action );
 		}
 
 		return $data;
@@ -1263,9 +1413,13 @@ class WPBRIGADE_Logger {
 		$product_data   = self::$product_data[ $slug ]['module'] ?? array();
 		$plugin_options = array();
 
+		// Opt-in flag may live network-wide (wp_sitemeta) on Multisite.
+		$optin           = $product_data['optin'] ?? array();
+		$site_optin_name = ! empty( $optin['use_site_option'] ) && ! empty( $optin['option_name'] ) ? (string) $optin['option_name'] : '';
+
 		// Pull settings data from db.
 		foreach ( $product_data['settings'] as $option_name => $default_value ) {
-			$get_option       = get_option( $option_name );
+			$get_option       = $option_name === $site_optin_name ? get_site_option( $option_name ) : get_option( $option_name );
 			$plugin_options[] = array(
 				'option' => $option_name,
 				'value'  => ! empty( $get_option ) ? wp_json_encode( $get_option ) : $default_value,
@@ -1277,7 +1431,7 @@ class WPBRIGADE_Logger {
 
 
 	/**
-	 * Collect multisite data.
+	 * Collect multisite summary (no other blogs' names or URLs are sent).
 	 *
 	 * @return array|false
 	 */
@@ -1286,18 +1440,12 @@ class WPBRIGADE_Logger {
 			return false;
 		}
 
-		$sites_info = array();
-		$sites      = get_sites();
-
-		foreach ( $sites as $site ) {
-			$sites_info[ $site->blog_id ] = array(
-				'name'   => get_blog_details( $site->blog_id )->blogname,
-				'domain' => $site->domain,
-				'path'   => $site->path,
-			);
-		}
-
-		return $sites_info;
+		return array(
+			'network_id'  => hash( 'sha256', untrailingslashit( strtolower( network_home_url() ) ) ),
+			'sites_count' => (int) get_sites( array( 'count' => true ) ),
+			'blog_id'     => get_current_blog_id(),
+			'is_main'     => is_main_site(),
+		);
 	}
 
 
@@ -1334,11 +1482,29 @@ class WPBRIGADE_Logger {
 	/**
 	 * Collect plugins information: Active/Inactive plugins.
 	 *
+	 * @param string $slug   Product slug.
+	 * @param string $action Telemetry action.
 	 * @return array
 	 */
-	private function get_all_plugins() {
+	private function get_all_plugins( $slug, $action ) {
 		$all_plugins      = array_keys( get_plugins() );
-		$active_plugins   = get_option( 'active_plugins', array() );
+		$active_plugins   = (array) get_option( 'active_plugins', array() );
+
+		if ( is_multisite() ) {
+			$active_plugins = array_merge( $active_plugins, array_keys( (array) get_site_option( 'active_sitewide_plugins', array() ) ) );
+		}
+
+		// WordPress fires activate_/deactivate_ hooks before it saves the active list,
+		// so report this product's own state from the action instead.
+		$self = plugin_basename( wpb_sdk_get_plugin_path( $slug ) );
+		if ( 'activate' === $action && in_array( $self, $all_plugins, true ) ) {
+			$active_plugins[] = $self;
+		} elseif ( in_array( $action, array( 'deactivate', 'uninstall' ), true ) ) {
+			$active_plugins = array_diff( $active_plugins, array( $self ) );
+		}
+
+		$active_plugins = array_values( array_unique( $active_plugins ) );
+
 		$inactive_plugins = array_diff( $all_plugins, $active_plugins );
 
 		return array(

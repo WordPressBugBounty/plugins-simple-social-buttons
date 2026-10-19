@@ -43,7 +43,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 */
 		public function __construct() {
 			add_action( 'admin_enqueue_scripts', array( $this, 'ssb_settings_admin_enqueue_scripts' ) );
-			add_action( 'wp_ajax_activate_plugin', array( $this, 'ssb_activate_plugin' ) );
+			add_action( 'wp_ajax_ssb_activate_plugin', array( $this, 'ssb_activate_plugin' ) );
 		}
 
 		/**
@@ -122,7 +122,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * This function gets the initiated settings sections and fields. Then
 		 * registers them to WordPress and ready for use.
 		 *
-		 * @version 5.3.3
+		 * @version 7.2.0
 		 * @since 1.0.0
 		 */
 		public function admin_init() {
@@ -160,7 +160,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			// Register settings fields.
 			foreach ( $this->settings_fields as $section => $field ) {
 
-				foreach ( $field as $index => $option ) {
+				foreach ( $field as $option ) {
 					$name     = isset( $option['name'] ) && ! empty( $option['name'] ) ? $option['name'] : '';
 					$type     = isset( $option['type'] ) ? $option['type'] : 'text';
 					$label    = isset( $option['label'] ) ? $option['label'] : '';
@@ -244,22 +244,29 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $args Field arguments.
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function callback_icon_style( $args ) {
 
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
 			?>
 
-		<!-- <div class="postbox">
-		<div class="inside"> -->
 			<?php foreach ( $args['options'] as $key => $label ) : ?>
+				<?php
+					$radio_id = sprintf(
+						'%1$s[%2$s][%3$s]',
+						$args['section'],
+						$args['id'],
+						$key
+					);
+				?>
 			<div class="simplesocialbuttons-style-outer">
 				<div class="simplesocialbuttons-style">
-				<label>
-					<!-- <input type="radio" name="simplesocialbuttons" value="test" <?php echo checked( $value, $key, false ); ?>> -->
+				<label for="<?php echo esc_attr( $radio_id ); ?>">
 					<?php
 					printf(
-						'<input type="radio" class="radio" id="%1$s[%2$s][%3$s]" name="%1$s[%2$s]" value="%3$s" %4$s />',
+						'<input type="radio" class="radio" id="%1$s" name="%2$s[%3$s]" value="%4$s" %5$s />',
+						esc_attr( $radio_id ),
 						esc_attr( $args['section'] ),
 						esc_attr( $args['id'] ),
 						esc_attr( $key ),
@@ -276,7 +283,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 						14 3.667v8.566c0 .934-.733 1.667-1.667 1.767H10v-3.967h1.3l.7-2.066h-2V6.933c0-.466.167-.9.867-.9H12v-1.8c.033 0-.933-.266-1.533-.266-1.267
 						0-2.434.7-2.467 2.133v1.867H6v2.066h2V14z"></path></svg></span><span class="simplesocial-hidden-text">Share</span></a></li>
 					<li><a href="#" class="simplesocial-twt-share"><span class="icon"><svg viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-						<path d="M4.9 0H0L5.782 7.7098L0.315 14H2.17L6.6416 8.8557L10.5 14H15.4L9.3744 5.9654L14.56 0H12.705L8.5148 4.8202L4.9 0ZM11.2 12.6L2.8 
+						<path d="M4.9 0H0L5.782 7.7098L0.315 14H2.17L6.6416 8.8557L10.5 14H15.4L9.3744 5.9654L14.56 0H12.705L8.5148 4.8202L4.9 0ZM11.2 12.6L2.8
 						1.4H4.2L12.6 12.6H11.2Z" fill="#fff"/></svg></span><span class="simplesocial-hidden-text">Post</span></a></li>
 					<li><a href="#" class="simplesocial-linkedin-share"><span class="icon"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
 					xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="15px" height="14.1px" viewBox="-301.4 387.5 15 14.1"
@@ -297,12 +304,10 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 					<li><a href="#" class="simplesocial-linkedin-share"><span class="simplesocial-hidden-text">LinkedIn</span></a></li>
 					</ul>
 				<?php endif; ?>
-				</div> <!--  .simplesocialbuttons-nav -->
-				</div> <!--  .simplesocialbuttons-style -->
-			</div> <!--  .simplesocialbuttons-style-outer -->
+				</div>
+				</div>
+			</div>
 			<?php endforeach; ?>
-		<!-- </div>
-		</div> -->
 
 			<?php
 		}
@@ -312,6 +317,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $args Field arguments.
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function callback_position( $args ) {
 
@@ -326,9 +332,17 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			);
 			?>
 			<?php foreach ( $args['options'] as $key => $label ) : ?>
-				<?php $checked = isset( $value[ $key ] ) ? $value[ $key ] : '0'; ?>
+				<?php
+				$checked     = isset( $value[ $key ] ) ? $value[ $key ] : '0';
+				$checkbox_id = sprintf(
+					'%1$s[%2$s][%3$s]',
+					$args['section'],
+					$args['id'],
+					$key
+				);
+				?>
 				<div class="simplesocial-position-outer">
-				<label class="simplesocial-position-box simplesocial-<?php echo esc_attr( $key ); ?>">
+				<label class="simplesocial-position-box simplesocial-<?php echo esc_attr( $key ); ?>" for="<?php echo esc_attr( $checkbox_id ); ?>">
 					<span class="simplesocial-fb-sharehd-line"><?php echo esc_html( $label ); ?></span>
 					<span class="simplesocial-blue-box">
 					<span class="simplesocial-highlight">
@@ -336,9 +350,8 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 					</span>
 					<?php
 					printf(
-						'<input type="checkbox" class="checkbox" id="%1$s[%2$s][%3$s]" name="%1$s[%2$s][%3$s]" value="%3$s" %4$s />',
-						esc_attr( $args['section'] ),
-						esc_attr( $args['id'] ),
+						'<input type="checkbox" class="checkbox" id="%1$s" name="%1$s" value="%2$s" %3$s />',
+						esc_attr( $checkbox_id ),
 						esc_attr( $key ),
 						checked( $checked, $key, false )
 					);
@@ -460,11 +473,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $args Field arguments.
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function callback_ssb_post_types( $args ) {
 
 			$value = $this->get_option( $args['id'], $args['section'], $args['std'] );
-			$html  = '<fieldset>';
 			?>
 		<h4><?php esc_html_e( 'Post Type Settings', 'simple-social-buttons' ); ?></h4>
 		<div class="simplesocial-inline-form-section">
@@ -617,7 +630,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * @param array $args Field arguments.
 		 * @return void
 		 * @since 1.0.0
-		 * @version 7.0.1
+		 * @version 7.2.0
 		 */
 		public function callback_ssb_icon_selection( $args ) {
 
@@ -643,7 +656,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				<?php foreach ( $ssb_icons_order as $key => $value ) : ?>
 						<?php if ( 0 !== (int) $value ) : ?>
 					<li data-id="<?php echo esc_attr( $key ); ?>" class="list">
-					<img src="<?php echo esc_url( plugins_url( 'assets/images/' . $key . '.svg', plugin_dir_path( __FILE__ ) ) ); ?>" /></li>
+					<img src="<?php echo esc_url( plugins_url( 'assets/images/' . $key . '.svg', plugin_dir_path( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr( $key ); ?>" /></li>
 					<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
@@ -655,7 +668,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				<?php foreach ( $ssb_icons_order as $key => $value ) : ?>
 						<?php if ( 0 === (int) $value ) : ?>
 				<li data-id="<?php echo esc_attr( $key ); ?>" class="list" >
-				<img src="<?php echo esc_url( plugins_url( 'assets/images/' . $key . '.svg', plugin_dir_path( __FILE__ ) ) ); ?>" /></li>
+				<img src="<?php echo esc_url( plugins_url( 'assets/images/' . $key . '.svg', plugin_dir_path( __FILE__ ) ) ); ?>" alt="<?php echo esc_attr( $key ); ?>" /></li>
 				<?php endif; ?>
 				<?php endforeach; ?>
 			</ul>
@@ -680,7 +693,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $args An array of arguments for the settings structure.
 		 *
-		 * @version 6.1.0
+		 * @version 7.2.0
 		 */
 		public function callback_ssb_go_pro( $args ) {
 			// Check if the Pro version is installed.
@@ -701,7 +714,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			<div class="ssb_goto_pro_section">
 				<h4><?php echo esc_html( $args['name'] ); ?></h4>
 				<p><?php echo esc_html( $args['desc'] ); ?></p>
-				<a href="<?php echo esc_url( $args['link'] ); ?>" class="ssb_goto_pro_button" 
+				<a href="<?php echo esc_url( $args['link'] ); ?>" class="ssb_goto_pro_button"
 				data-action="<?php echo esc_attr( $button_action ); ?>" data-plugin="<?php echo esc_attr( $pro_plugin_path ); ?>"><?php echo esc_html( $button_text ); ?></a>
 			</div>
 			<script>
@@ -715,7 +728,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 							url: ajaxurl,
 							type: 'POST',
 							data: {
-								action: 'activate_plugin',
+								action: 'ssb_activate_plugin',
 								plugin: plugin,
 								_wpnonce: '<?php echo esc_attr( wp_create_nonce( 'activate-plugin_' . $pro_plugin_path ) ); ?>'
 							},
@@ -741,6 +754,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @since 7.0.0
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public static function ssb_banner_content() {
 			?>
@@ -757,6 +771,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 	<a
 		href="<?php echo esc_url( class_exists( 'Simple_Social_Buttons_Pro' ) ? 'https://simplesocialbuttons.com/contact/' : 'https://simplesocialbuttons.com/pricing/' ); ?>"
 		target="_blank"
+		rel="noopener noreferrer"
 		class="ssb-update-button"
 	>
 		<svg
@@ -801,6 +816,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 	<a
 		href="https://simplesocialbuttons.com/documentation/"
 		target="_blank"
+		rel="noopener noreferrer"
 		class="ssb-doc-button"
 	>
 		<svg
@@ -866,7 +882,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		public function settings_header() {
 			?>
 		<div class="ssb-top-bar">
-		<a href="https://wpbrigade.com/"><img src="<?php echo esc_url( plugins_url( 'assets/images/social_button.svg', plugin_dir_path( __FILE__ ) ) ); ?>" 
+		<a href="https://wpbrigade.com/"><img src="<?php echo esc_url( plugins_url( 'assets/images/social_button.svg', plugin_dir_path( __FILE__ ) ) ); ?>"
 		alt="Simple Social Buttons"></a>
 		<div class="ssb-top-bar-content">
 			<h2>Simple Social Buttons -->> <?php esc_html_e( 'makes Social Sharing easy for everyone', 'simple-social-buttons' ); ?></h2>
@@ -899,6 +915,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * Settings sidebar.
 		 *
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function settings_sidebar() {
 			?>
@@ -914,7 +931,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				title="Post to Twitter Now"><?php esc_html_e( 'Share on X/Twitter', 'simple-social-buttons' ); ?><span class="dashicons ssb-x-icon"></span></a>
 				</li>
 				<li>
-				<a href="https://www.facebook.com/sharer/sharer.php?u=https://wordpress.org/plugins/simple-social-buttons/" class="button facebook" target="_blank" 
+				<a href="https://www.facebook.com/sharer/sharer.php?u=https://wordpress.org/plugins/simple-social-buttons/" class="button facebook" target="_blank"
 				title="Check out this (FREE) Amazing Social Share Plugin for WordPress"><?php esc_html_e( 'Share on Facebook', 'simple-social-buttons' ); ?>
 				<span class="dashicons dashicons-facebook-alt"></span>
 				</a>
@@ -943,7 +960,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				</li>
 				<li>
 				<input type="submit" value="Subscribe Now" class="button button-primary button-big" id="ssb_subscribe_btn">
-				<img src="<?php echo esc_url( admin_url( 'images/spinner.gif' ) ); ?>" class="ssb_subscribe_loader" style="display:none">
+				<img src="<?php echo esc_url( admin_url( 'images/spinner.gif' ) ); ?>" class="ssb_subscribe_loader" style="display:none" alt="">
 				</li>
 				<li>
 				<p class="ssb_return_message"></p>
@@ -957,11 +974,11 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			<h2><?php esc_html_e( 'Recommended Plugins', 'simple-social-buttons' ); ?></h2>
 			<ul class="plugins_lists">
 				<li>
-				<a href="https://loginpress.pro/?utm_source=ssb-lite&amp;utm_medium=sidebar&amp;utm_campaign=pro-upgrade&utm_content=text-link" target="_blank" 
+				<a href="https://loginpress.pro/?utm_source=ssb-lite&amp;utm_medium=sidebar&amp;utm_campaign=pro-upgrade&utm_content=text-link" target="_blank"
 				title="Post to Twitter Now"><?php esc_html_e( 'Customize WordPress Login Page', 'simple-social-buttons' ); ?></a>
 				</li>
 				<li>
-				<a href="https://analytify.io/ref/73/?utm_source=ssb-lite&amp;utm_medium=sidebar&amp;utm_campaign=pro-upgrade&utm_content=text-link" target="_blank" 
+				<a href="https://analytify.io/ref/73/?utm_source=ssb-lite&amp;utm_medium=sidebar&amp;utm_campaign=pro-upgrade&utm_content=text-link" target="_blank"
 				title="Share with your facebook friends about this awesome plugin."><?php esc_html_e( 'Simplify Google Analytics in WordPress', 'simple-social-buttons' ); ?></a>
 				</li>
 				<li>
@@ -969,7 +986,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				target="_blank" title="Related Posts Thumbnails"><?php esc_html_e( 'Related Posts Thumbnails', 'simple-social-buttons' ); ?></a>
 				</li>
 				<li>
-				<a href="https://wpbrigade.com/recommend/maintenance-mode&utm_content=text-link" target="_blank" 
+				<a href="https://wpbrigade.com/recommend/maintenance-mode&utm_content=text-link" target="_blank"
 				title="Under Construction &amp; Maintenance mode"><?php esc_html_e( 'Under Construction & Maintenance mode', 'simple-social-buttons' ); ?></a>
 				</a>
 				</li>
@@ -1273,12 +1290,12 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $args Settings field args.
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function callback_file( $args ) {
 
 			$value = esc_attr( $this->get_option( $args['id'], $args['section'], $args['std'] ) );
 			$size  = isset( $args['size'] ) && ! is_null( $args['size'] ) ? $args['size'] : 'regular';
-			$id    = $args['section'] . '[' . $args['id'] . ']';
 			$label = isset( $args['options']['button_label'] ) ? $args['options']['button_label'] : __( 'Choose File', 'simple-social-buttons' );
 
 			$html  = sprintf(
@@ -1369,6 +1386,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param array $options Options array.
 		 * @return array Sanitized options.
+		 * @version 7.2.0
 		 */
 		public function ssb_sanitize_options( $options ) {
 
@@ -1382,7 +1400,6 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 				// If callback is set, call it.
 				if ( $sanitize_callback ) {
 					$options[ $option_slug ] = call_user_func( $sanitize_callback, $option_value );
-					continue;
 				}
 			}
 
@@ -1394,6 +1411,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 *
 		 * @param string $slug Option slug.
 		 * @return mixed|false String or bool false.
+		 * @version 7.2.0
 		 */
 		public function get_sanitize_callback( $slug = '' ) {
 			if ( empty( $slug ) ) {
@@ -1401,7 +1419,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			}
 
 			// Iterate over registered fields and see if we can find proper callback.
-			foreach ( $this->settings_fields as $section => $options ) {
+			foreach ( $this->settings_fields as $options ) {
 				foreach ( $options as $option ) {
 					if ( $option['name'] !== $slug ) {
 							continue;
@@ -1553,7 +1571,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * Render the click to post structure.
 		 *
 		 * @since 1.0.0
-		 * @version 4.0.4
+		 * @version 7.2.0
 		 * @return void
 		 */
 		public function render_click_to_tweet() {
@@ -1563,8 +1581,13 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 
 						<div class="ssb_ctt_desgin">
 							<div class="ssb-ctt-wrapper  twitter-round" data-theme="twitter-round">
-									<a data-href="https://twitter.com/intent/tweet?text=Social media is about the people! Not about your business. Provide for the people
-									and the people will provide you.&url=https://simplesocialbuttons.com&via=wpbrigade" rel="nofollow" onclick="<?php echo esc_js( $js_code ); ?>">
+									<button
+										type="button"
+										class="ssb-ctt-preview-trigger"
+										data-href="https://twitter.com/intent/tweet?text=Social media is about the people! Not about your business. Provide for the people
+									and the people will provide you.&url=https://simplesocialbuttons.com&via=wpbrigade"
+										onclick="<?php echo esc_attr( $js_code ); ?>"
+									>
 											<span class="ssb-ctt">
 												<span class="ssb-ctt-text">
 												<?php
@@ -1579,7 +1602,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 														<span id="twitter_icon_ctt" class="ssb-x-icon"></span>
 												</span>
 											</span>
-									</a>
+									</button>
 								</div>
 						</div>
 			</div>
@@ -1648,6 +1671,7 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 		 * @param string $page Slug title of the admin page who's settings fields you want to show.
 		 * @param string $section Slug title of the settings section who's fields you want to show.
 		 * @return void
+		 * @version 7.2.0
 		 */
 		public function do_settings_fields( $page, $section ) {
 			global $wp_settings_fields;
@@ -1657,12 +1681,6 @@ if ( ! class_exists( 'Ssb_Settings_Structure' ) ) :
 			}
 
 			foreach ( (array) $wp_settings_fields[ $page ][ $section ] as $field ) {
-				$class = '';
-
-				if ( ! empty( $field['args']['class'] ) ) {
-					$class = ' class="' . esc_attr( $field['args']['class'] ) . '"';
-				}
-
 				call_user_func( $field['callback'], $field['args'] );
 			}
 		}

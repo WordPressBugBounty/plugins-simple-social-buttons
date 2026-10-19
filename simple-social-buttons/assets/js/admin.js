@@ -1,5 +1,5 @@
 // IIFE - Immediately Invoked Function Expression
-(function ($, window, document) {
+(function ($, globalThis, document) {
 
 	// Listen for the jQuery ready event on the document
 	$(
@@ -11,9 +11,9 @@
 					connectWith: "#ssb_inactive_icons",
 					cursor: 'move',
 					update: function (_event, _ui) {
-						var order = $( "#ssb_active_icons" ).sortable( "toArray", {attribute: 'data-id' } );
+						let order = $( "#ssb_active_icons" ).sortable( "toArray", {attribute: 'data-id' } );
 						$( '#ssb_icons_order' ).val( order.join( ',' ) );
-						$( '#ssb_networks\\[icon_selection\\]' ).val( order.join( ',' ) );
+						$( String.raw`#ssb_networks\[icon_selection\]` ).val( order.join( ',' ) );
 					},
 				}
 			);
@@ -28,86 +28,92 @@
 			$( '.ssb_settings_color_picker' ).wpColorPicker();
 
 			// sidebar extra space.
-			if ( ! $( '#ssb_sidebar\\[icon_space\\]' ).is( ':checked' )) {
-					$( '.container-ssb_sidebar\\[icon_space_value\\]' ).css( 'display', 'none' );
-			}
-			$( '#ssb_sidebar\\[icon_space\\]' ).on(
+			$( String.raw`.container-ssb_sidebar\[icon_space_value\]` ).css(
+				'display',
+				$( String.raw`#ssb_sidebar\[icon_space\]` ).is( ':checked' ) ? 'block' : 'none'
+			);
+			$( String.raw`#ssb_sidebar\[icon_space\]` ).on(
 				'change',
 				function (_event) {
 					if ($( this ).is( ':checked' )) {
-						$( '.container-ssb_sidebar\\[icon_space_value\\]' ).css( 'display', 'block' );
+						$( String.raw`.container-ssb_sidebar\[icon_space_value\]` ).css( 'display', 'block' );
 					} else {
-						$( '.container-ssb_sidebar\\[icon_space_value\\]' ).css( 'display', 'none' );
+						$( String.raw`.container-ssb_sidebar\[icon_space_value\]` ).css( 'display', 'none' );
 					}
 				}
 			);
 
-			if ( ! $( '#ssb_inline\\[icon_space\\]' ).is( ':checked' )) {
-					$( '.container-ssb_inline\\[icon_space_value\\]' ).css( 'display', 'none' );
-			}
-			$( '#ssb_inline\\[icon_space\\]' ).on(
+			$( String.raw`.container-ssb_inline\[icon_space_value\]` ).css(
+				'display',
+				$( String.raw`#ssb_inline\[icon_space\]` ).is( ':checked' ) ? 'block' : 'none'
+			);
+			$( String.raw`#ssb_inline\[icon_space\]` ).on(
 				'change',
 				function (_event) {
 					if ($( this ).is( ':checked' )) {
-						$( '.container-ssb_inline\\[icon_space_value\\]' ).css( 'display', 'block' );
+						$( String.raw`.container-ssb_inline\[icon_space_value\]` ).css( 'display', 'block' );
 					} else {
-						$( '.container-ssb_inline\\[icon_space_value\\]' ).css( 'display', 'none' );
+						$( String.raw`.container-ssb_inline\[icon_space_value\]` ).css( 'display', 'none' );
 					}
 				}
 			);
 
-			if ( ! $( '#ssb_media\\[icon_space\\]' ).is( ':checked' )) {
-					$( '.container-ssb_media\\[icon_space_value\\]' ).css( 'display', 'none' );
-			}
-			$( '#ssb_media\\[icon_space\\]' ).on(
+			$( String.raw`.container-ssb_media\[icon_space_value\]` ).css(
+				'display',
+				$( String.raw`#ssb_media\[icon_space\]` ).is( ':checked' ) ? 'block' : 'none'
+			);
+			$( String.raw`#ssb_media\[icon_space\]` ).on(
 				'change',
 				function (_event) {
 					if ($( this ).is( ':checked' )) {
-						$( '.container-ssb_media\\[icon_space_value\\]' ).css( 'display', 'block' );
+						$( String.raw`.container-ssb_media\[icon_space_value\]` ).css( 'display', 'block' );
 					} else {
-						$( '.container-ssb_media\\[icon_space_value\\]' ).css( 'display', 'none' );
+						$( String.raw`.container-ssb_media\[icon_space_value\]` ).css( 'display', 'none' );
 					}
 				}
 			);
 
-			if ( ! $( '#ssb_flyin\\[icon_space\\]' ).is( ':checked' )) {
-					$( '.container-ssb_flyin\\[icon_space_value\\]' ).css( 'display', 'none' );
-			}
-			$( '#ssb_flyin\\[icon_space\\]' ).on(
+			$( String.raw`.container-ssb_flyin\[icon_space_value\]` ).css(
+				'display',
+				$( String.raw`#ssb_flyin\[icon_space\]` ).is( ':checked' ) ? 'block' : 'none'
+			);
+			$( String.raw`#ssb_flyin\[icon_space\]` ).on(
 				'change',
 				function (_event) {
 					if ($( this ).is( ':checked' )) {
-						$( '.container-ssb_flyin\\[icon_space_value\\]' ).css( 'display', 'block' );
+						$( String.raw`.container-ssb_flyin\[icon_space_value\]` ).css( 'display', 'block' );
 					} else {
-						$( '.container-ssb_flyin\\[icon_space_value\\]' ).css( 'display', 'none' );
+						$( String.raw`.container-ssb_flyin\[icon_space_value\]` ).css( 'display', 'none' );
 					}
 				}
 			);
 
-			if ( ! $( '#ssb_popup\\[icon_space\\]' ).is( ':checked' )) {
-					$( '.container-ssb_popup\\[icon_space_value\\]' ).css( 'display', 'none' );
-			}
-			$( '#ssb_popup\\[icon_space\\]' ).on(
+			$( String.raw`.container-ssb_popup\[icon_space_value\]` ).css(
+				'display',
+				$( String.raw`#ssb_popup\[icon_space\]` ).is( ':checked' ) ? 'block' : 'none'
+			);
+			$( String.raw`#ssb_popup\[icon_space\]` ).on(
 				'change',
 				function (_event) {
 					if ($( this ).is( ':checked' )) {
-						$( '.container-ssb_popup\\[icon_space_value\\]' ).css( 'display', 'block' );
+						$( String.raw`.container-ssb_popup\[icon_space_value\]` ).css( 'display', 'block' );
 					} else {
-						$( '.container-ssb_popup\\[icon_space_value\\]' ).css( 'display', 'none' );
+						$( String.raw`.container-ssb_popup\[icon_space_value\]` ).css( 'display', 'none' );
 					}
 				}
 			);
 
-			if ( ! $( '#ssb_popup\\[trigger_after_scrolling\\]' ).is( ':checked' )) {
-					$( '.container-ssb_popup\\[trigger_after_scrolling_value\\]' ).css( 'display', 'none' );
-			}
-			$( '#ssb_popup\\[trigger_after_scrolling\\]' ).on(
+			$( String.raw`.container-ssb_popup\[trigger_after_scrolling_value\]` ).css(
+				'display',
+				$( String.raw`#ssb_popup\[trigger_after_scrolling\]` ).is( ':checked' ) ? 'block' : 'none'
+			);
+			$( String.raw`#ssb_popup\[trigger_after_scrolling\]` ).on(
 				'change',
 				function (_event) {
 					if ($( this ).is( ':checked' )) {
-						$( '.container-ssb_popup\\[trigger_after_scrolling_value\\]' ).css( 'display', 'block' );
+						$( String.raw`.container-ssb_popup\[trigger_after_scrolling_value\]` ).css( 'display', 'block' );
 					} else {
-						$( '.container-ssb_popup\\[trigger_after_scrolling_value\\]' ).css( 'display', 'none' );
+						$( String.raw`.container-ssb_popup\[trigger_after_scrolling_value\]` ).css( 'display', 'none' );
 					}
 				}
 			);
@@ -139,7 +145,10 @@
 								$( '.ssb-log-file-sniper' ).hide();
 								$( '.ssb-log-file-text' ).show();
 
-								if ( ! window.navigator.msSaveOrOpenBlob ) { // If msSaveOrOpenBlob() is supported, then so is msSaveBlob().
+								if ( globalThis.navigator.msSaveOrOpenBlob ) { // If msSaveOrOpenBlob() is supported, then so is msSaveBlob().
+									let blobObject = new Blob( [response] );
+									globalThis.navigator.msSaveBlob( blobObject, 'simple-social-buttons-log.txt' );
+								} else {
 									$(
 										'<a />',
 										{
@@ -152,9 +161,6 @@
 											$( this ).remove()
 										}
 									)[0].click()
-								} else {
-									var blobObject = new Blob( [response] );
-									window.navigator.msSaveBlob( blobObject, 'simple-social-buttons-log.txt' );
 								}
 
 								setTimeout(
@@ -177,34 +183,33 @@
 				}
 			)
 			function initCTT() {
-					var newTheme   = $( '[name="ssb_click_to_tweet[theme]"] option:selected' ).val();
-					var hideButton = $( '[id*="hide_button"]' ).is( ':checked' )
-					var hideLink   = $( '[id*="hide_link"]' ).is( ':checked' )
-					var includeVia = $( '[id*="include_via"]' ).is( ':checked' )
+					let newTheme   = $( '[name="ssb_click_to_tweet[theme]"] option:selected' ).val();
+					let hideButton = $( '[id*="hide_button"]' ).is( ':checked' )
+					let hideLink   = $( '[id*="hide_link"]' ).is( ':checked' )
+					let includeVia = $( '[id*="include_via"]' ).is( ':checked' )
 
-					var oldTheme = $( '.ssb-ctt-wrapper' ).data( 'theme' );
+					let oldTheme = $( '.ssb-ctt-wrapper' ).data( 'theme' );
 
 					$( '.ssb-ctt-wrapper' ).data( 'theme', newTheme );
 					$( '.ssb-ctt-wrapper' ).removeClass( oldTheme ).addClass( newTheme );
 
-					var tweetText = "Social media is about the people! Not about your business. Provide for the people and the people will provide you.";
+					let tweetText = "Social media is about the people! Not about your business. Provide for the people and the people will provide you.";
 
 				if (hideButton) {
 					$( '.ssb-ctt-wrapper' ).addClass( 'hide-button' )
 				} else {
 					$( '.ssb-ctt-wrapper' ).removeClass( 'hide-button' )
 				}
-				if (hideLink == false) {
-					tweetText += '&url=https://simplesocialbuttons.com/'
-				} else {
+				if (hideLink) {
 					tweetText += '&url=0'
+				} else {
+					tweetText += '&url=https://simplesocialbuttons.com/'
 				}
 
 				if (includeVia) {
 					tweetText += '&via=wpbrigade'
 				}
 				$( '.ssb-ctt-wrapper > a' ).attr( 'data-href', 'https://twitter.com/intent/tweet?text=' + encodeURIComponent( tweetText ) )
-				// $('.ssb-ctt-wrapper a').data('href', 'https://twitter.com/intent/tweet?text='.tweetText)
 			}
 			initCTT()
 
@@ -214,9 +219,9 @@
 				'.get_fb_token',
 				function (e) {
 					e.preventDefault();
-					var fb_content = $( this ).parent().parent().parent().parent();
-					var client_id  = $( fb_content ).find( '.fb_app_id' ).val().trim();
-					var secret_key = $( fb_content ).find( '.fb_secret_key' ).val().trim();
+					let fb_content = $( this ).parent().parent().parent().parent();
+					let client_id  = $( fb_content ).find( '.fb_app_id' ).val().trim();
+					let secret_key = $( fb_content ).find( '.fb_secret_key' ).val().trim();
 
 					if ( 0 == client_id.length ) {
 						$( fb_content ).find( '.fb-error' ).text( 'Fb App id :  required' );
@@ -241,7 +246,6 @@
 						}
 					).done(
 						function (data, _textStatus, _jqXHR) {
-							// facebook_access_token.val( data.replace( 'access_token=' , '' ) );
 							$( fb_content ).find( '.fb_access_token' ).val( data.access_token );
 							$( fb_content ).find( '.fb-error' ).text( '' );
 						}
@@ -262,11 +266,10 @@
 				'click',
 				'.fb_count_check',
 				function () {
-					var fb_content = $( this ).parent().parent();
+					let fb_content = $( this ).parent().parent();
 
 					if ($( this ).is( ':checked' )) {
 						$( fb_content ).find( '.fb_api_key' ).css( 'display', 'block' );
-						// $('.fb_api_key').css('display', 'block');
 					} else {
 						$( fb_content ).find( '.fb_api_key' ).css( 'display', 'none' );
 					}
@@ -276,7 +279,7 @@
 				'click',
 				'.show_fb_check',
 				function () {
-					var widget_content = $( this ).parent().parent();
+					let widget_content = $( this ).parent().parent();
 
 					if ($( this ).is( ':checked' )) {
 						$( widget_content ).find( '.show_fb' ).css( 'display', 'block' );
@@ -291,7 +294,7 @@
 				'click',
 				'.show_twitter_check',
 				function () {
-					var widget_content = $( this ).parent().parent();
+					let widget_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 						$( widget_content ).find( '.show_twitter' ).css( 'display', 'block' );
 					} else {
@@ -305,11 +308,9 @@
 				'.twitter_count_check',
 				function () {
 
-					var twitter_content = $( this ).parent().parent();
+					let twitter_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 						$( twitter_content ).find( '.twitter_api_key' ).css( 'display', 'block' );
-
-						// $('.twitter_api_key').css('display', 'block');
 					} else {
 						$( twitter_content ).find( '.twitter_api_key' ).css( 'display', 'none' );
 					}
@@ -320,7 +321,7 @@
 				'click',
 				'.show_youtube_check',
 				function () {
-					var widget_content = $( this ).parent().parent();
+					let widget_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 
 						$( widget_content ).find( '.show_youtube' ).css( 'display', 'block' );
@@ -336,7 +337,7 @@
 				'.youtube_count_check',
 				function () {
 
-					var youtube_content = $( this ).parent().parent();
+					let youtube_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 						$( youtube_content ).find( '.youtube_api_key' ).css( 'display', 'block' );
 					} else {
@@ -349,7 +350,7 @@
 				'click',
 				'.show_pinterest_check',
 				function () {
-					var widget_content = $( this ).parent().parent();
+					let widget_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 
 						$( widget_content ).find( '.show_pinterest' ).css( 'display', 'block' );
@@ -360,21 +361,11 @@
 				}
 			);
 
-			// $(document).on('click', '.pinterest_count_check', function () {
-
-			// var pinterest_content = $(this).parent().parent();
-			// if ($(this).is(':checked')) {
-			// $(pinterest_content).find('.pinterest_api_key').css('display', 'block');
-			// } else {
-			// $(pinterest_content).find('.pinterest_api_key').css('display', 'none');
-			// }
-			// });
-
 			$( document ).on(
 				'click',
 				'.show_instagram_check',
 				function () {
-					var widget_content = $( this ).parent().parent();
+					let widget_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 
 						$( widget_content ).find( '.show_instagram' ).css( 'display', 'block' );
@@ -390,7 +381,7 @@
 				'.instagram_count_check',
 				function () {
 
-					var instagram_content = $( this ).parent().parent();
+					let instagram_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 						$( instagram_content ).find( '.instagram_api_key' ).css( 'display', 'block' );
 					} else {
@@ -403,7 +394,7 @@
 				'click',
 				'.show_whatsapp_check',
 				function () {
-					var widget_content = $( this ).parent().parent();
+					let widget_content = $( this ).parent().parent();
 					if ($( this ).is( ':checked' )) {
 						$( widget_content ).find( '.show_whatsapp' ).css( 'display', 'block' );
 					} else {
@@ -427,4 +418,4 @@
 	);
 
 	// The rest of the code goes here!
-}(window.jQuery, window, document));
+}(globalThis.jQuery, globalThis, document));

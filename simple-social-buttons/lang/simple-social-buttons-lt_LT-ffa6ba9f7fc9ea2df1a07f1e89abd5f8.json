@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:20+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "lt-LT",
+                "plural-forms": "nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);"
+            },
+            "Simple Social Buttons": [
+                "Paprasti socialiniai mygtukai"
+            ],
+            "Download Log File": [
+                "Atsisi\u0173sti \u017eurnalo fail\u0105"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Papras\u010di\u0173 socialini\u0173 mygtuk\u0173 \u017eurnalo failas s\u0117kmingai atsisi\u0173stas!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Papras\u010di\u0173 socialini\u0173 mygtuk\u0173<\/strong> k\u016br\u0117jas <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> prideda pa\u017eangi\u0105 socialini\u0173 tinkl\u0173 dalijimosi mygtuk\u0173 rinkin\u012f j\u016bs\u0173 WordPress svetain\u0117ms, tokias kaip: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> ir <strong>Pinterest<\/strong>. Tai daro j\u012f labiausiai lanks\u010diu socialinio dalijimosi papildiniu visiems."
+            ],
+            "Help & Troubleshooting": [
+                "Pagalba & Nustatym\u0173 sprendimas"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Nemokama pagalba yra prieinama %splugin\u0173 palaikymo forumuose%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "D\u0117l premium funkcij\u0173, papildini\u0173 ir prioritetinio el. pa\u0161to palaikymo, %supgrade to pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Radote klaid\u0105 arba turite funkcijos pra\u0161ym\u0105? Pra\u0161ome pateikti problem\u0105 %shere!%s"
+            ]
+        }
+    }
+}

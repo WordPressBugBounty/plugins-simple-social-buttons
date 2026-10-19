@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:21+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl-NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Click to post": [
+                "Klik om te plaatsen"
+            ],
+            "Theme": [
+                "Thema"
+            ],
+            "select the style for click to post ": [
+                "selecteer de stijl voor klikken om te posten "
+            ],
+            "Content": [
+                "Inhoud"
+            ],
+            "Quote Content": [
+                "Citaat Inhoud"
+            ],
+            "This text will be shown to the user.": [
+                "Deze tekst zal aan de gebruiker worden getoond."
+            ],
+            "Tweet Content": [
+                "Tweet Inhoud"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Deze tekst zal getweet worden. als leeg, zal Citaat inhoud worden gebruikt."
+            ],
+            " Configuration": [
+                " Configuratie"
+            ],
+            "Show Tweet Button": [
+                "Toon Tweet Knop"
+            ],
+            "Include Page\/post Link": [
+                "Inclusief Pagina\/post Link"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "Link naar deze post zal worden toegevoegd aan de Tweet. we hebben een filter als je het wilt aanpassen `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Inclusief via @gebruikersnaam"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "Twitter-gebruikersnaam van het SSB-instellingen Geavanceerd tabblad zal worden toegevoegd aan het einde van de Tweet met de tekst \u201cvia @gebruikersnaam\u201d."
+            ],
+            "Enter your content ...": [
+                "Voer uw inhoud in ..."
+            ],
+            "Configuration": [
+                "Configuratie"
+            ],
+            "Share Counter": [
+                "Delen Teller"
+            ],
+            "Total Counts": [
+                "Totaal Aantallen"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Ondersteunde Netwerken: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Volgorde"
+            ],
+            "Align Left": [
+                "Links Uitlijnen"
+            ],
+            "Align Center": [
+                "Centraal Uitlijnen"
+            ],
+            "Align Right": [
+                "Rechts Uitlijnen"
+            ]
+        }
+    }
+}

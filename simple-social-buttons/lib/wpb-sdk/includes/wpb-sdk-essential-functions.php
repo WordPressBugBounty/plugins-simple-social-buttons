@@ -77,22 +77,12 @@ if ( ! function_exists( 'wpb_sdk_get_provider_for_slug' ) ) {
 
 if ( ! function_exists( 'wpb_sdk_detect_bundled_sdk_dir' ) ) {
 	/**
-	 * Directory of the wpb-sdk folder that registered for this slug.
+	/**
+	 * Detect SDK directory from caller backtrace.
 	 *
-	 * @param string $slug Product slug.
-	 * @return string Absolute path to lib/wpb-sdk (no trailing slash).
+	 * @return string
 	 */
-	function wpb_sdk_detect_bundled_sdk_dir( $slug = '' ) {
-		$provider = wpb_sdk_get_provider_for_slug( $slug );
-		if ( ! empty( $provider['sdk_dir'] ) ) {
-			$dir = function_exists( 'wp_normalize_path' )
-				? wp_normalize_path( (string) $provider['sdk_dir'] )
-				: (string) $provider['sdk_dir'];
-			if ( is_dir( $dir ) ) {
-				return $dir;
-			}
-		}
-
+	function wpb_sdk_detect_sdk_dir_from_backtrace() {
 		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- Resolve caller bundle only.
 		$trace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 12 );
 		foreach ( $trace as $frame ) {
@@ -106,24 +96,45 @@ if ( ! function_exists( 'wpb_sdk_detect_bundled_sdk_dir' ) ) {
 				return dirname( $file );
 			}
 		}
+		return '';
+	}
 
-		if ( defined( 'WPBRIGADE_SDK_DIR' ) ) {
-			return function_exists( 'wp_normalize_path' )
+	/**
+	 * Directory of the wpb-sdk folder that registered for this slug.
+	 *
+	 * @param string $slug Product slug.
+	 * @return string Absolute path to lib/wpb-sdk (no trailing slash).
+	 */
+	function wpb_sdk_detect_bundled_sdk_dir( $slug = '' ) {
+		$result   = '';
+		$provider = wpb_sdk_get_provider_for_slug( $slug );
+		if ( ! empty( $provider['sdk_dir'] ) ) {
+			$dir = function_exists( 'wp_normalize_path' )
+				? wp_normalize_path( (string) $provider['sdk_dir'] )
+				: (string) $provider['sdk_dir'];
+			if ( is_dir( $dir ) ) {
+				$result = $dir;
+			}
+		}
+
+		if ( '' === $result ) {
+			$result = wpb_sdk_detect_sdk_dir_from_backtrace();
+		}
+
+		if ( '' === $result && defined( 'WPBRIGADE_SDK_DIR' ) ) {
+			$result = function_exists( 'wp_normalize_path' )
 				? wp_normalize_path( WPBRIGADE_SDK_DIR )
 				: WPBRIGADE_SDK_DIR;
 		}
 
-		$slug = (string) $slug;
-		if ( '' !== $slug && defined( 'WP_PLUGIN_DIR' ) ) {
-			$candidate = WP_PLUGIN_DIR . '/' . $slug . '/lib/wpb-sdk';
+		if ( '' === $result && '' !== (string) $slug && defined( 'WP_PLUGIN_DIR' ) ) {
+			$candidate = WP_PLUGIN_DIR . '/' . (string) $slug . '/lib/wpb-sdk';
 			if ( is_dir( $candidate ) ) {
-				return function_exists( 'wp_normalize_path' )
-					? wp_normalize_path( $candidate )
-					: $candidate;
+				$result = function_exists( 'wp_normalize_path' ) ? wp_normalize_path( $candidate ) : $candidate;
 			}
 		}
 
-		return '';
+		return $result;
 	}
 }
 
@@ -132,7 +143,7 @@ if ( ! function_exists( 'wpb_sdk_detect_host_plugin_root' ) ) {
 	 * Host plugin root directory (parent of lib/wpb-sdk).
 	 *
 	 * @param string $slug Product slug.
-	 * @return string
+	 * @return string Absolute directory path or empty.
 	 */
 	function wpb_sdk_detect_host_plugin_root( $slug = '' ) {
 		$sdk_dir = wpb_sdk_detect_bundled_sdk_dir( $slug );
@@ -140,39 +151,52 @@ if ( ! function_exists( 'wpb_sdk_detect_host_plugin_root' ) ) {
 			return '';
 		}
 
-		$sdk_dir = function_exists( 'wp_normalize_path' )
-			? wp_normalize_path( $sdk_dir )
-			: $sdk_dir;
+		$root = dirname( dirname( $sdk_dir ) );
 
-		if ( preg_match( '#/lib/wpb-sdk$#', $sdk_dir ) ) {
-			return dirname( dirname( $sdk_dir ) );
+		return function_exists( 'wp_normalize_path' ) ? wp_normalize_path( $root ) : $root;
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_load_plugin_admin_file' ) ) {
+	/**
+	 * Ensure wp-admin/includes/plugin.php is loaded.
+	 *
+	 * @return void
+	 */
+	function wpb_sdk_load_plugin_admin_file() {
+		if ( ! function_exists( 'get_plugin_data' ) && defined( 'ABSPATH' ) ) {
+			require_once ABSPATH . 'wp-admin/includes/plugin.php';
 		}
-
-		return '';
 	}
 }
 
 if ( ! function_exists( 'wpb_sdk_detect_calling_plugin_file' ) ) {
 	/**
-	 * Main plugin PHP file that invoked wpb_sdk_dynamic_init() (Freemius-style).
+	 * Scan debug backtrace for a main plugin header file.
 	 *
-	 * @return string Absolute path or empty.
+	 * @return string Absolute file path or empty.
 	 */
 	function wpb_sdk_detect_calling_plugin_file() {
-		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- Caller plugin file detection.
+		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_debug_backtrace -- Bundled SDK discovery.
 		$trace = debug_backtrace( DEBUG_BACKTRACE_IGNORE_ARGS, 15 );
 		foreach ( $trace as $frame ) {
 			if ( empty( $frame['file'] ) ) {
 				continue;
 			}
 			$file = function_exists( 'wp_normalize_path' )
-				? wp_normalize_path( $frame['file'] )
-				: str_replace( '\\', '/', $frame['file'] );
+				? wp_normalize_path( (string) $frame['file'] )
+				: (string) $frame['file'];
 			if ( false !== strpos( $file, '/lib/wpb-sdk/' ) ) {
 				continue;
 			}
-			if ( false !== strpos( $file, '/wp-content/plugins/' ) && is_readable( $file ) ) {
-				return $file;
+			if ( ! function_exists( 'get_plugin_data' ) ) {
+				wpb_sdk_load_plugin_admin_file();
+			}
+			if ( function_exists( 'get_plugin_data' ) && is_readable( $file ) ) {
+				$data = get_plugin_data( $file, false, false );
+				if ( ! empty( $data['Name'] ) ) {
+					return $file;
+				}
 			}
 		}
 
@@ -198,31 +222,25 @@ if ( ! function_exists( 'wpb_sdk_detect_plugin_main_file' ) ) {
 			return $caller;
 		}
 
-		$root = wpb_sdk_detect_host_plugin_root( $slug );
+		$candidates = array();
+		$root       = wpb_sdk_detect_host_plugin_root( $slug );
 		if ( '' !== $root ) {
-			$candidates = array(
-				$root . '/' . basename( $root ) . '.php',
-				$root . '/' . $slug . '.php',
-			);
-			foreach ( $candidates as $path ) {
-				if ( is_readable( $path ) ) {
-					return function_exists( 'wp_normalize_path' )
-						? wp_normalize_path( $path )
-						: $path;
-				}
-			}
+			$candidates[] = $root . '/' . basename( $root ) . '.php';
+			$candidates[] = $root . '/' . $slug . '.php';
 		}
-
 		if ( defined( 'WP_PLUGIN_DIR' ) ) {
-			$fallback = WP_PLUGIN_DIR . '/' . $slug . '/' . $slug . '.php';
-			if ( is_readable( $fallback ) ) {
-				return function_exists( 'wp_normalize_path' )
-					? wp_normalize_path( $fallback )
-					: $fallback;
+			$candidates[] = WP_PLUGIN_DIR . '/' . $slug . '/' . $slug . '.php';
+		}
+
+		$result = '';
+		foreach ( $candidates as $path ) {
+			if ( is_readable( $path ) ) {
+				$result = function_exists( 'wp_normalize_path' ) ? wp_normalize_path( $path ) : $path;
+				break;
 			}
 		}
 
-		return '';
+		return $result;
 	}
 }
 
@@ -256,24 +274,30 @@ if ( ! function_exists( 'wpb_sdk_find_optout_view' ) ) {
 		}
 
 		$prefix = wpb_sdk_default_ajax_prefix( $slug );
-		$try    = array(
-			'wpb-sdk-optout-form.php',
-			$prefix . '-optout-form.php',
-			$slug . '-optout-form.php',
+		$try    = array_unique(
+			array(
+				'wpb-sdk-optout-form.php',
+				$prefix . '-optout-form.php',
+				$slug . '-optout-form.php',
+			)
 		);
-		$try    = array_unique( $try );
+
+		$found = '';
 		foreach ( $try as $name ) {
 			if ( is_readable( $views_dir . $name ) ) {
-				return $name;
+				$found = $name;
+				break;
 			}
 		}
 
-		$glob = glob( $views_dir . '*-optout-form.php' );
-		if ( ! empty( $glob[0] ) && is_readable( $glob[0] ) ) {
-			return basename( $glob[0] );
+		if ( '' === $found ) {
+			$glob = glob( $views_dir . '*-optout-form.php' );
+			if ( ! empty( $glob[0] ) && is_readable( $glob[0] ) ) {
+				$found = basename( $glob[0] );
+			}
 		}
 
-		return '';
+		return $found;
 	}
 }
 
@@ -321,7 +345,7 @@ if ( ! function_exists( 'wpb_sdk_uses_custom_optin_form' ) ) {
 	 * @return bool
 	 */
 	function wpb_sdk_uses_custom_optin_form( $slug ) {
-		$custom = array( 'loginpress', 'wp-analytify' );
+		$custom = array();
 
 		/**
 		 * Filter products that use a custom opt-in form instead of wpb-sdk-optin-form.php.
@@ -331,82 +355,69 @@ if ( ! function_exists( 'wpb_sdk_uses_custom_optin_form' ) ) {
 		 */
 		$custom = apply_filters( 'wpb_sdk_custom_optin_slugs', $custom, $slug );
 
-		return in_array( $slug, $custom, true );
+		return in_array( $slug, (array) $custom, true );
 	}
 }
 
-if ( ! function_exists( 'wpb_sdk_resolve_optin_logo_url' ) ) {
+if ( ! function_exists( 'wpb_sdk_get_logo_candidate_paths' ) ) {
 	/**
-	 * Logo URL for the shared opt-in splash.
+	 * Build candidate logo asset paths relative to host plugin root.
 	 *
-	 * @param array<string, mixed> $module Module config.
-	 * @return string Empty when no logo is configured or found.
+	 * @param array<string, mixed> $optin  Optin configuration.
+	 * @param string               $prefix Ajax/slug prefix.
+	 * @param string               $slug   Product slug.
+	 * @return string[]
 	 */
-	function wpb_sdk_resolve_optin_logo_url( array $module ) {
-		$optin = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
-		if ( ! empty( $optin['logo_url'] ) ) {
-			return (string) $optin['logo_url'];
-		}
-
-		$plugin_file = ! empty( $module['plugin_file'] ) ? (string) $module['plugin_file'] : '';
-		if ( '' === $plugin_file || ! is_readable( $plugin_file ) ) {
-			return '';
-		}
-
+	function wpb_sdk_get_logo_candidate_paths( array $optin, $prefix, $slug ) {
 		$candidates = array();
 		if ( ! empty( $optin['logo_path'] ) ) {
 			$candidates[] = (string) $optin['logo_path'];
 		}
 
-		$prefix     = wpb_sdk_default_ajax_prefix( (string) $module['slug'] );
-		$slug       = (string) $module['slug'];
+		$img_dir  = 'assets/images/';
+		$logo_svg = '-logo.svg';
+
 		$candidates = array_merge(
 			$candidates,
 			array(
-				'assets/images/' . $prefix . '_icon.png',
-				'assets/images/' . $prefix . '-icon.png',
-				'assets/images/' . $prefix . '_logo.png',
-				'assets/images/' . $prefix . '-logo.svg',
-				'assets/images/' . $prefix . '-logo.png',
-				'assets/images/' . $prefix . '-brand.svg',
-				'assets/img/' . $prefix . '-logo.svg',
-				'assets/img/' . $prefix . '_logo.png',
-				'img/' . $prefix . '.png',
+				$img_dir . $prefix . '_icon.png',
+				$img_dir . $prefix . '-icon.png',
+				$img_dir . $prefix . '_logo.png',
+				$img_dir . $prefix . $logo_svg,
+				$img_dir . $prefix . '-logo.png',
+				$img_dir . $prefix . '-brand.svg',
+				'assets/img/' . $prefix . $logo_svg,
+				'assets/img/' . $prefix . '-logo.png',
+				'img/' . $prefix . '.svg',
 				'img/' . $prefix . '_icon.png',
 				'img/icon.png',
 				'img/logo.png',
 				'img/review-icon.png',
 				'asset/img/logo.svg',
 				'asset/img/logo.png',
-				'assets/images/logo.svg',
-				'assets/images/logo.png',
-				'assets/images/icon.png',
+				$img_dir . 'logo.svg',
+				$img_dir . 'logo.png',
+				$img_dir . 'icon.png',
 			)
 		);
-		if ( str_starts_with( $slug, 'wp-' ) ) {
+
+		if ( 0 === strpos( (string) $slug, 'wp-' ) ) {
 			$short_slug   = substr( $slug, 3 );
-			$candidates[] = 'assets/images/' . $short_slug . '-logo.svg';
-			$candidates[] = 'assets/images/' . $short_slug . '_icon.png';
+			$candidates[] = $img_dir . $short_slug . $logo_svg;
+			$candidates[] = $img_dir . $short_slug . '_icon.png';
 		}
 
-		foreach ( $candidates as $relative ) {
-			$path = plugin_dir_path( $plugin_file ) . ltrim( $relative, '/\\' );
-			if ( is_readable( $path ) ) {
-				return plugins_url( $relative, $plugin_file );
-			}
-		}
+		return $candidates;
+	}
 
-		/**
-		 * Last-resort logo URL when no bundled asset exists (e.g. plugins without assets/images/).
-		 *
-		 * @param string               $url    Empty by default.
-		 * @param array<string, mixed> $module Module config.
-		 */
-		$filtered = apply_filters( 'wpb_sdk_optin_logo_url', '', $module );
-		if ( '' !== $filtered ) {
-			return (string) $filtered;
-		}
-
+	/**
+	 * WordPress.org fallback asset URL if enabled.
+	 *
+	 * @param array<string, mixed> $optin Optin configuration.
+	 * @param string               $slug  Product slug.
+	 * @return string
+	 */
+	function wpb_sdk_resolve_wporg_logo_url( array $optin, $slug ) {
 		$use_wporg = ! isset( $optin['wporg_logo_fallback'] ) || false !== $optin['wporg_logo_fallback'];
 		if ( ! $use_wporg ) {
 			return '';
@@ -418,6 +429,58 @@ if ( ! function_exists( 'wpb_sdk_resolve_optin_logo_url' ) ) {
 		}
 
 		return 'https://ps.w.org/' . rawurlencode( $wporg_slug ) . '/assets/icon-256x256.png';
+	}
+
+	/**
+	 * Logo URL for the shared opt-in splash.
+	 *
+	 * Resolution order (unchanged when no custom filter is hooked):
+	 * 1. Module config `optin['logo_url']`
+	 * 2. First readable local asset from candidate paths
+	 * 3. WordPress.org icon fallback (`ps.w.org/.../icon-256x256.png`)
+	 *
+	 * Then always applies `wpb_sdk_optin_logo_url_{$slug}` as top priority for
+	 * user/custom overrides. A non-empty filter result wins; an empty result keeps
+	 * the resolved URL. The slug in the hook name isolates products from each other.
+	 *
+	 * @param array<string, mixed> $module Module config.
+	 * @return string Empty when no logo is configured or found.
+	 */
+	function wpb_sdk_resolve_optin_logo_url( array $module ) {
+		$optin    = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
+		$slug     = (string) ( $module['slug'] ?? '' );
+		$logo_url = '';
+
+		if ( ! empty( $optin['logo_url'] ) ) {
+			$logo_url = (string) $optin['logo_url'];
+		} else {
+			$plugin_file = ! empty( $module['plugin_file'] ) ? (string) $module['plugin_file'] : '';
+			if ( '' !== $plugin_file && is_readable( $plugin_file ) ) {
+				$prefix     = wpb_sdk_default_ajax_prefix( $slug );
+				$candidates = wpb_sdk_get_logo_candidate_paths( $optin, $prefix, $slug );
+
+				foreach ( $candidates as $relative ) {
+					$path = plugin_dir_path( $plugin_file ) . ltrim( $relative, '/\\' );
+					if ( is_readable( $path ) ) {
+						$logo_url = plugins_url( $relative, $plugin_file );
+						break;
+					}
+				}
+			}
+
+			if ( '' === $logo_url ) {
+				$logo_url = wpb_sdk_resolve_wporg_logo_url( $optin, $slug );
+			}
+		}
+
+		if ( '' !== $slug ) {
+			$filtered = (string) apply_filters( 'wpb_sdk_optin_logo_url_' . $slug, $logo_url, $module );
+			if ( '' !== $filtered ) {
+				$logo_url = $filtered;
+			}
+		}
+
+		return '' !== $logo_url ? esc_url_raw( $logo_url ) : '';
 	}
 }
 
@@ -436,19 +499,18 @@ if ( ! function_exists( 'wpb_sdk_resolve_optin_hero_url' ) ) {
 
 		$plugin_file = ! empty( $module['plugin_file'] ) ? (string) $module['plugin_file'] : '';
 		if ( '' !== $plugin_file && is_readable( $plugin_file ) ) {
+			$candidates = array();
 			if ( ! empty( $optin['hero_image_path'] ) ) {
-				$relative = (string) $optin['hero_image_path'];
-				$path     = plugin_dir_path( $plugin_file ) . ltrim( $relative, '/\\' );
-				if ( is_readable( $path ) ) {
-					return plugins_url( $relative, $plugin_file );
-				}
+				$candidates[] = (string) $optin['hero_image_path'];
 			}
-
 			$prefix     = wpb_sdk_default_ajax_prefix( (string) $module['slug'] );
-			$candidates = array(
-				'assets/images/welcome-' . $prefix . '.png',
-				'assets/images/' . $prefix . '-welcome.png',
-				'assets/images/social_button.svg',
+			$candidates = array_merge(
+				$candidates,
+				array(
+					'assets/images/welcome-' . $prefix . '.png',
+					'assets/images/' . $prefix . '-welcome.png',
+					'assets/images/social_button.svg',
+				)
 			);
 			foreach ( $candidates as $relative ) {
 				$path = plugin_dir_path( $plugin_file ) . ltrim( $relative, '/\\' );
@@ -466,36 +528,66 @@ if ( ! function_exists( 'wpb_sdk_get_optin_view_path' ) ) {
 	/**
 	 * Absolute path to the opt-in view for a product.
 	 *
+	 * If a custom view is specified in module config, it is prioritized.
+	 * Otherwise, falls back to the SDK's built-in default splash template.
+	 *
 	 * @param string $slug Product slug.
-	 * @return string
+	 * @return string Absolute file path or empty string if not found.
 	 */
 	function wpb_sdk_get_optin_view_path( $slug ) {
 		$module = wpb_sdk_get_registered_module( $slug );
-		if ( empty( $module['sdk_views_dir'] ) ) {
+		if ( empty( $module ) ) {
 			return '';
 		}
 
-		$views_dir = trailingslashit( (string) $module['sdk_views_dir'] );
+		$path      = '';
 		$optin     = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
+		$views_dir = ! empty( $module['sdk_views_dir'] )
+			? trailingslashit( (string) $module['sdk_views_dir'] )
+			: trailingslashit( dirname( __DIR__ ) . '/views' );
 
 		if ( ! empty( $optin['optin_view'] ) ) {
-			$path = $views_dir . ltrim( (string) $optin['optin_view'], '/\\' );
-			return is_readable( $path ) ? $path : '';
+			$custom_view = (string) $optin['optin_view'];
+			if ( 'wpb-sdk-optin-form.php' === $custom_view && wpb_sdk_uses_custom_optin_form( $slug ) ) {
+				$custom_view = '';
+			}
+			if ( '' !== $custom_view ) {
+				if ( is_readable( $custom_view ) ) {
+					$path = $custom_view;
+				} elseif ( is_readable( $views_dir . ltrim( $custom_view, '/\\' ) ) ) {
+					$path = $views_dir . ltrim( $custom_view, '/\\' );
+				} elseif ( ! empty( $module['plugin_file'] ) && is_readable( plugin_dir_path( (string) $module['plugin_file'] ) . ltrim( $custom_view, '/\\' ) ) ) {
+					$path = plugin_dir_path( (string) $module['plugin_file'] ) . ltrim( $custom_view, '/\\' );
+				}
+			}
 		}
 
-		if ( wpb_sdk_uses_custom_optin_form( $slug ) ) {
-			return '';
+		if ( '' === $path && ! wpb_sdk_uses_custom_optin_form( $slug ) ) {
+			$default_view = $views_dir . 'wpb-sdk-optin-form.php';
+			if ( is_readable( $default_view ) ) {
+				$path = $default_view;
+			} elseif ( is_readable( dirname( __DIR__ ) . '/views/wpb-sdk-optin-form.php' ) ) {
+				$path = dirname( __DIR__ ) . '/views/wpb-sdk-optin-form.php';
+			}
 		}
 
-		$default = $views_dir . 'wpb-sdk-optin-form.php';
+		$filtered = (string) apply_filters( 'wpb_sdk_optin_view_path', $path, $slug, $module );
+		if ( '' !== $filtered && is_readable( $filtered ) ) {
+			$path = $filtered;
+		}
 
-		return is_readable( $default ) ? $default : '';
+		$slug_filter = (string) apply_filters( "wpb_sdk_{$slug}_optin_view_path", $path, $module );
+		if ( '' !== $slug_filter && is_readable( $slug_filter ) ) {
+			$path = $slug_filter;
+		}
+
+		return $path;
 	}
 }
 
 if ( ! function_exists( 'wpb_sdk_render_optin_form' ) ) {
 	/**
-	 * Render the shared (or configured) opt-in admin page for a product.
+	 * Render the shared (or configured custom) opt-in admin page for a product.
 	 *
 	 * @param string $slug Product slug.
 	 * @return void
@@ -506,32 +598,47 @@ if ( ! function_exists( 'wpb_sdk_render_optin_form' ) ) {
 			return;
 		}
 
-		$path = wpb_sdk_get_optin_view_path( $slug );
-		if ( '' === $path ) {
+		if ( wpb_sdk_uses_custom_optin_form( $slug ) && empty( $module['optin']['optin_view'] ) ) {
 			return;
 		}
 
-		$optin  = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
-		$prefix = ! empty( $optin['ajax_prefix'] )
+		$path = wpb_sdk_get_optin_view_path( $slug );
+		if ( '' === $path || ! is_readable( $path ) ) {
+			return;
+		}
+
+		$optin             = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
+		$prefix            = ! empty( $optin['ajax_prefix'] )
 			? sanitize_key( (string) $optin['ajax_prefix'] )
 			: wpb_sdk_default_ajax_prefix( $slug );
-
-		$wpb_sdk_product_name = ! empty( $optin['product_name'] )
-			? (string) $optin['product_name']
-			: $slug;
-		$wpb_sdk_ajax_prefix  = $prefix;
-		$wpb_sdk_optin_option = ! empty( $optin['option_name'] ) ? (string) $optin['option_name'] : '';
-		$wpb_sdk_optin_nonce  = wp_create_nonce( $prefix . '_optin_page_nonce' );
-		$wpb_sdk_logo_url     = wpb_sdk_resolve_optin_logo_url( $module );
-		$wpb_sdk_optin_page   = ! empty( $optin['optin_page'] ) ? (string) $optin['optin_page'] : '';
-
-		$redirect_override = '';
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['redirect-page'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		$redirect_override = isset( $optin['redirect_url'] ) ? (string) $optin['redirect_url'] : '';
+		if ( '' === $redirect_override && ! empty( $_GET['redirect-page'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe read of redirect query param from GET.
 			$redirect_override = sanitize_key( wp_unslash( (string) $_GET['redirect-page'] ) );
 		}
-		$wpb_sdk_redirect_url = wpb_sdk_resolve_optin_redirect_url( $slug, $redirect_override );
+
+		$optin_vars = array(
+			'wpb_sdk_plugin_slug'  => $slug,
+			'wpb_sdk_product_name' => ! empty( $optin['product_name'] ) ? (string) $optin['product_name'] : $slug,
+			'wpb_sdk_ajax_prefix'  => $prefix,
+			'wpb_sdk_optin_option' => ! empty( $optin['option_name'] ) ? (string) $optin['option_name'] : '',
+			'wpb_sdk_optin_nonce'  => wp_create_nonce( $prefix . '_optin_page_nonce' ),
+			'wpb_sdk_logo_url'     => wpb_sdk_resolve_optin_logo_url( $module ),
+			'wpb_sdk_optin_page'   => ! empty( $optin['optin_page'] ) ? (string) $optin['optin_page'] : '',
+			'wpb_sdk_redirect_url' => wpb_sdk_resolve_optin_redirect_url( $slug, $redirect_override ),
+		);
+
+		/**
+		 * Filter template variables passed to opt-in view.
+		 *
+		 * @param array<string, mixed> $optin_vars Template variables.
+		 * @param string               $slug       Product slug.
+		 * @param array<string, mixed> $module     Module definition.
+		 */
+		$optin_vars = apply_filters( 'wpb_sdk_optin_template_vars', $optin_vars, $slug, $module );
+
+		// phpcs:ignore WordPress.PHP.DontExtract.extract_extract -- Extracting view variables for template inclusion.
+		extract( $optin_vars, EXTR_SKIP );
 
 		include $path;
 	}
@@ -539,40 +646,24 @@ if ( ! function_exists( 'wpb_sdk_render_optin_form' ) ) {
 
 if ( ! function_exists( 'wpb_sdk_apply_module_defaults' ) ) {
 	/**
-	 * Fill module config from bundled SDK path and slug (minimal init like Freemius).
+	 * Populate environment, type, provider, path, and text domain defaults on module config.
 	 *
-	 * Required keys only: id, slug, public_key, (+ product-specific optin/settings).
-	 *
-	 * @param array<string, mixed> $module Module config from the host plugin.
-	 * @return array<string, mixed>
+	 * @param array<string, mixed> $module  Reference to module config.
+	 * @param string               $slug    Product slug.
+	 * @param string               $sdk_dir Detected SDK directory path.
+	 * @return void
 	 */
-	function wpb_sdk_apply_module_defaults( $module ) {
-		if ( ! is_array( $module ) || empty( $module['slug'] ) ) {
-			return $module;
-		}
-
-		$slug    = (string) $module['slug'];
-		$sdk_dir = wpb_sdk_detect_bundled_sdk_dir( $slug );
-
+	function wpb_sdk_apply_module_environment_defaults( array &$module, $slug, $sdk_dir ) {
 		if ( empty( $module['type'] ) ) {
 			$module['type'] = 'plugin';
 		}
 
-		if ( empty( $module['api_endpoint'] ) ) {
-			$provider = wpb_sdk_get_provider_for_slug( $slug );
-			if ( ! empty( $provider['api_endpoint'] ) ) {
-				$module['api_endpoint'] = (string) $provider['api_endpoint'];
-			}
+		$provider = wpb_sdk_get_provider_for_slug( $slug );
+		if ( empty( $module['api_endpoint'] ) && ! empty( $provider['api_endpoint'] ) ) {
+			$module['api_endpoint'] = (string) $provider['api_endpoint'];
 		}
-
-		// Inject the plugin's own SDK version from its provider registration.
-		// Used downstream to detect whether this plugin manages its own action links
-		// (old SDK ≤ 3.1.x) or delegates to WPBRIGADE_Opt_Manager (new SDK ≥ 3.2.0).
-		if ( empty( $module['sdk_version'] ) ) {
-			$provider = wpb_sdk_get_provider_for_slug( $slug );
-			if ( ! empty( $provider['sdk_version'] ) ) {
-				$module['sdk_version'] = (string) $provider['sdk_version'];
-			}
+		if ( empty( $module['sdk_version'] ) && ! empty( $provider['sdk_version'] ) ) {
+			$module['sdk_version'] = (string) $provider['sdk_version'];
 		}
 
 		if ( empty( $module['plugin_file'] ) ) {
@@ -587,9 +678,7 @@ if ( ! function_exists( 'wpb_sdk_apply_module_defaults' ) ) {
 		}
 
 		if ( empty( $module['text_domain'] ) && ! empty( $module['plugin_file'] ) && is_readable( $module['plugin_file'] ) ) {
-			if ( ! function_exists( 'get_plugin_data' ) ) {
-				require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
+			wpb_sdk_load_plugin_admin_file();
 			$header = get_plugin_data( $module['plugin_file'], false, false );
 			if ( ! empty( $header['TextDomain'] ) ) {
 				$module['text_domain'] = (string) $header['TextDomain'];
@@ -598,7 +687,16 @@ if ( ! function_exists( 'wpb_sdk_apply_module_defaults' ) ) {
 		if ( empty( $module['text_domain'] ) ) {
 			$module['text_domain'] = $slug;
 		}
+	}
 
+	/**
+	 * Populate optin sub-array defaults.
+	 *
+	 * @param array<string, mixed> $module Reference to module config.
+	 * @param string               $slug   Product slug.
+	 * @return void
+	 */
+	function wpb_sdk_apply_module_optin_defaults( array &$module, $slug ) {
 		$optin = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
 		if ( empty( $optin['ajax_prefix'] ) ) {
 			$optin['ajax_prefix'] = wpb_sdk_default_ajax_prefix( $slug );
@@ -608,31 +706,30 @@ if ( ! function_exists( 'wpb_sdk_apply_module_defaults' ) ) {
 			if ( is_readable( $shared_optout ) ) {
 				$optin['optout_view'] = 'wpb-sdk-optout-form.php';
 			} elseif ( empty( $optin['optout_view'] ) ) {
-				$found = wpb_sdk_find_optout_view( $module['sdk_views_dir'], $slug );
-				if ( '' !== $found ) {
-					$optin['optout_view'] = $found;
-				}
+				$optin['optout_view'] = wpb_sdk_find_optout_view( $module['sdk_views_dir'], $slug );
 			}
 		}
-		if (
-			empty( $optin['optin_view'] )
-			&& ! wpb_sdk_uses_custom_optin_form( $slug )
-			&& ! empty( $module['sdk_views_dir'] )
-			&& is_readable( trailingslashit( $module['sdk_views_dir'] ) . 'wpb-sdk-optin-form.php' )
-		) {
+		if ( ! wpb_sdk_uses_custom_optin_form( $slug ) && empty( $optin['optin_view'] ) && ! empty( $module['sdk_views_dir'] ) && is_readable( trailingslashit( $module['sdk_views_dir'] ) . 'wpb-sdk-optin-form.php' ) ) {
 			$optin['optin_view'] = 'wpb-sdk-optin-form.php';
 		}
 		if ( empty( $optin['product_name'] ) && ! empty( $module['plugin_file'] ) && is_readable( $module['plugin_file'] ) ) {
-			if ( ! function_exists( 'get_plugin_data' ) ) {
-				require_once ABSPATH . 'wp-admin/includes/plugin.php';
-			}
+			wpb_sdk_load_plugin_admin_file();
 			$header = get_plugin_data( $module['plugin_file'], false, false );
 			if ( ! empty( $header['Name'] ) ) {
 				$optin['product_name'] = (string) $header['Name'];
 			}
 		}
 		$module['optin'] = $optin;
+	}
 
+	/**
+	 * Populate optin user meta defaults.
+	 *
+	 * @param array<string, mixed> $module Reference to module config.
+	 * @param string               $slug   Product slug.
+	 * @return void
+	 */
+	function wpb_sdk_apply_module_user_meta_defaults( array &$module, $slug ) {
 		$meta = isset( $module['optin_user_meta'] ) && is_array( $module['optin_user_meta'] )
 			? $module['optin_user_meta']
 			: array();
@@ -653,12 +750,28 @@ if ( ! function_exists( 'wpb_sdk_apply_module_defaults' ) ) {
 			unset( $meta['verified'], $meta['verified_at'], $meta['verified_v2'], $meta['verified_v2_at'] );
 			$module['optin_user_meta'] = $meta;
 		}
+	}
 
-		/**
-		 * Filter module config after SDK defaults are applied.
-		 *
-		 * @param array<string, mixed> $module Module config.
-		 */
+	/**
+	 * Fill module config from bundled SDK path and slug (minimal SDK initialization).
+	 *
+	 * Required keys only: id, slug, public_key, (+ product-specific optin/settings).
+	 *
+	 * @param array<string, mixed> $module Module config from the host plugin.
+	 * @return array<string, mixed>
+	 */
+	function wpb_sdk_apply_module_defaults( $module ) {
+		if ( ! is_array( $module ) || empty( $module['slug'] ) ) {
+			return $module;
+		}
+
+		$slug    = (string) $module['slug'];
+		$sdk_dir = wpb_sdk_detect_bundled_sdk_dir( $slug );
+
+		wpb_sdk_apply_module_environment_defaults( $module, $slug, $sdk_dir );
+		wpb_sdk_apply_module_optin_defaults( $module, $slug );
+		wpb_sdk_apply_module_user_meta_defaults( $module, $slug );
+
 		return apply_filters( 'wpb_sdk_module_config', $module );
 	}
 }
@@ -813,26 +926,23 @@ if ( ! function_exists( 'wpb_sdk_admin_menu_page_slug_exists' ) ) {
 			return true;
 		}
 
-		if ( ! is_array( $submenu ) ) {
-			return false;
-		}
-
-		foreach ( $submenu as $items ) {
-			if ( ! is_array( $items ) ) {
-				continue;
-			}
-			foreach ( $items as $item ) {
-				if ( ! is_array( $item ) || empty( $item[2] ) ) {
+		$found = false;
+		if ( is_array( $submenu ) ) {
+			foreach ( $submenu as $items ) {
+				if ( ! is_array( $items ) ) {
 					continue;
 				}
-				$hook = (string) $item[2];
-				if ( $page_slug === $hook || false !== strpos( $hook, 'page=' . $page_slug ) ) {
-					return true;
+				foreach ( $items as $item ) {
+					$hook = ( is_array( $item ) && ! empty( $item[2] ) ) ? (string) $item[2] : '';
+					if ( '' !== $hook && ( $page_slug === $hook || false !== strpos( $hook, 'page=' . $page_slug ) ) ) {
+						$found = true;
+						break 2;
+					}
 				}
 			}
 		}
 
-		return false;
+		return $found;
 	}
 }
 
@@ -850,6 +960,76 @@ if ( ! function_exists( 'wpb_sdk_admin_url_for_registered_page_slug' ) ) {
 		}
 
 		return admin_url( 'admin.php?page=' . $page_slug );
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_get_allowed_redirect_page_slugs' ) ) {
+	/**
+	 * Collect valid admin.php?page= slugs registered across modules.
+	 *
+	 * @param string               $slug   Product slug.
+	 * @param array<string, mixed> $module Module definition.
+	 * @return string[] Allowed page slugs.
+	 */
+	function wpb_sdk_get_allowed_redirect_page_slugs( $slug = '', array $module = array() ) {
+		$allowed = array();
+		if ( ! empty( $slug ) ) {
+			$allowed[] = sanitize_key( $slug );
+		}
+
+		if ( ! empty( $module ) ) {
+			if ( ! empty( $module['slug'] ) ) {
+				$allowed[] = sanitize_key( (string) $module['slug'] );
+			}
+			if ( ! empty( $module['menu']['slug'] ) ) {
+				$allowed[] = sanitize_key( (string) $module['menu']['slug'] );
+			}
+			if ( ! empty( $module['optin']['settings_page'] ) ) {
+				$allowed[] = sanitize_key( (string) $module['optin']['settings_page'] );
+			}
+			if ( ! empty( $module['optin']['optin_page'] ) ) {
+				$allowed[] = sanitize_key( (string) $module['optin']['optin_page'] );
+			}
+			if ( ! empty( $module['optin']['guard_pages'] ) && is_array( $module['optin']['guard_pages'] ) ) {
+				foreach ( $module['optin']['guard_pages'] as $gp ) {
+					$allowed[] = sanitize_key( (string) $gp );
+				}
+			}
+		}
+
+		if ( function_exists( 'wpb_sdk_get_registered_modules' ) ) {
+			$all_modules = wpb_sdk_get_registered_modules();
+			if ( is_array( $all_modules ) ) {
+				foreach ( $all_modules as $mod_slug => $mod_data ) {
+					$allowed[] = sanitize_key( (string) $mod_slug );
+					if ( ! empty( $mod_data['menu']['slug'] ) ) {
+						$allowed[] = sanitize_key( (string) $mod_data['menu']['slug'] );
+					}
+					if ( ! empty( $mod_data['optin']['settings_page'] ) ) {
+						$allowed[] = sanitize_key( (string) $mod_data['optin']['settings_page'] );
+					}
+					if ( ! empty( $mod_data['optin']['optin_page'] ) ) {
+						$allowed[] = sanitize_key( (string) $mod_data['optin']['optin_page'] );
+					}
+					if ( ! empty( $mod_data['optin']['guard_pages'] ) && is_array( $mod_data['optin']['guard_pages'] ) ) {
+						foreach ( $mod_data['optin']['guard_pages'] as $gp ) {
+							$allowed[] = sanitize_key( (string) $gp );
+						}
+					}
+				}
+			}
+		}
+
+		$allowed = array_values( array_unique( array_filter( $allowed ) ) );
+
+		/**
+		 * Filter allowed page slugs for post-opt-in redirect.
+		 *
+		 * @param string[]             $allowed Allowed page slugs.
+		 * @param string               $slug    Product slug.
+		 * @param array<string, mixed> $module  Module definition.
+		 */
+		return (array) apply_filters( 'wpb_sdk_allowed_redirect_page_slugs', $allowed, $slug, $module );
 	}
 }
 
@@ -873,25 +1053,43 @@ if ( ! function_exists( 'wpb_sdk_resolve_optin_redirect_url' ) ) {
 			? $module['optin']
 			: array();
 
+		if ( '' === $redirect_override && ! empty( $_GET['redirect-page'] ) ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Safe read of redirect query param from GET.
+			$redirect_override = sanitize_key( wp_unslash( (string) $_GET['redirect-page'] ) );
+		}
+
 		$redirect_override = sanitize_key( (string) $redirect_override );
 
 		if ( '' !== $redirect_override ) {
-			$url = wpb_sdk_admin_url_for_registered_page_slug( $redirect_override );
-			if ( '' === $url ) {
-				$url = $fallback;
-			}
+			$allowed_slugs = wpb_sdk_get_allowed_redirect_page_slugs( $slug, $module );
+			$is_allowed    = in_array( $redirect_override, $allowed_slugs, true );
 
-			return apply_filters( 'wpb_sdk_optin_redirect_url', $url, $slug, $optin, $redirect_override );
+			if ( $is_allowed ) {
+				$url = wpb_sdk_admin_url_for_registered_page_slug( $redirect_override );
+				if ( '' === $url ) {
+					$url = admin_url( 'admin.php?page=' . $redirect_override );
+				}
+				if ( '' !== $url ) {
+					return apply_filters( 'wpb_sdk_optin_redirect_url', $url, $slug, $optin, $redirect_override );
+				}
+			}
 		}
 
 		if ( ! empty( $optin['settings_page'] ) ) {
-			$url = wpb_sdk_admin_url_for_registered_page_slug( (string) $optin['settings_page'] );
+			$settings_slug = sanitize_key( (string) $optin['settings_page'] );
+			$url           = wpb_sdk_admin_url_for_registered_page_slug( $settings_slug );
+			if ( '' === $url && ! did_action( 'admin_menu' ) ) {
+				$url = admin_url( 'admin.php?page=' . $settings_slug );
+			}
 			if ( '' !== $url ) {
 				return apply_filters( 'wpb_sdk_optin_redirect_url', $url, $slug, $optin, $redirect_override );
 			}
 		}
 
 		$url = wpb_sdk_admin_url_for_registered_page_slug( $slug );
+		if ( '' === $url && ! did_action( 'admin_menu' ) ) {
+			$url = admin_url( 'admin.php?page=' . $slug );
+		}
 		if ( '' === $url ) {
 			$url = $fallback;
 		}
@@ -900,12 +1098,31 @@ if ( ! function_exists( 'wpb_sdk_resolve_optin_redirect_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpb_sdk_extract_settings_option_keys' ) ) {
+	/**
+	 * Extract option keys from module settings array.
+	 *
+	 * @param array<string, mixed> $settings Settings array.
+	 * @return string[]
+	 */
+	function wpb_sdk_extract_settings_option_keys( array $settings ) {
+		$keys = array();
+		foreach ( array_keys( $settings ) as $key ) {
+			$key = (string) $key;
+			if ( '' !== $key && ( 0 === strpos( $key, 'wpb_sdk_' ) || 0 === strpos( $key, '_' ) ) ) {
+				$keys[] = $key;
+			}
+		}
+		return $keys;
+	}
+}
+
 if ( ! function_exists( 'wpb_sdk_build_uninstall_option_names_from_module' ) ) {
 	/**
-	 * Option names the SDK may persist for a product (for uninstall cleanup).
+	 * Derive option names registered under module config for uninstallation cleanup.
 	 *
 	 * @param string               $slug   Product slug.
-	 * @param array<string, mixed> $module Module definition.
+	 * @param array<string, mixed> $module Module configuration.
 	 * @return string[]
 	 */
 	function wpb_sdk_build_uninstall_option_names_from_module( $slug, array $module ) {
@@ -922,6 +1139,8 @@ if ( ! function_exists( 'wpb_sdk_build_uninstall_option_names_from_module' ) ) {
 			'wpb_sdk_' . $slug . '_optin_initiator_backfill_version',
 			'wpb_sdk_' . $slug . '_uninstall_manifest',
 			'wpb_sdk_' . $slug . '_lifecycle_module',
+			'wpb_sdk_module_id',
+			'wpb_sdk_module_slug',
 		);
 
 		$optin = isset( $module['optin'] ) && is_array( $module['optin'] ) ? $module['optin'] : array();
@@ -936,22 +1155,8 @@ if ( ! function_exists( 'wpb_sdk_build_uninstall_option_names_from_module' ) ) {
 		}
 
 		if ( ! empty( $module['settings'] ) && is_array( $module['settings'] ) ) {
-			foreach ( array_keys( $module['settings'] ) as $key ) {
-				$key = (string) $key;
-				if ( '' === $key ) {
-					continue;
-				}
-				if (
-					0 === strpos( $key, 'wpb_sdk_' )
-					|| 0 === strpos( $key, '_' )
-				) {
-					$options[] = $key;
-				}
-			}
+			$options = array_merge( $options, wpb_sdk_extract_settings_option_keys( $module['settings'] ) );
 		}
-
-		$options[] = 'wpb_sdk_module_id';
-		$options[] = 'wpb_sdk_module_slug';
 
 		return array_values( array_unique( array_filter( $options ) ) );
 	}
@@ -991,32 +1196,18 @@ if ( ! function_exists( 'wpb_sdk_is_verification_notice_dismissed' ) ) {
 	 * @return bool
 	 */
 	function wpb_sdk_is_verification_notice_dismissed( $slug, $user_id = 0 ) {
-		$slug = sanitize_key( (string) $slug );
-		if ( '' === $slug ) {
+		$slug    = sanitize_key( (string) $slug );
+		$user_id = (int) $user_id > 0 ? (int) $user_id : (int) get_current_user_id();
+
+		if ( '' === $slug || $user_id < 1 ) {
 			return false;
 		}
 
-		$user_id = (int) $user_id;
-		if ( $user_id < 1 ) {
-			$user_id = (int) get_current_user_id();
-		}
-		if ( $user_id < 1 ) {
-			return false;
-		}
+		$dismiss_key  = wpb_sdk_verification_notice_dismissed_meta_key( $slug );
+		$dismissed_at = '' !== $dismiss_key ? (int) get_user_meta( $user_id, $dismiss_key, true ) : 0;
+		$ttl          = wpb_sdk_verification_notice_dismiss_ttl_seconds();
 
-		$dismiss_key = wpb_sdk_verification_notice_dismissed_meta_key( $slug );
-		if ( '' === $dismiss_key ) {
-			return false;
-		}
-
-		$dismissed_at = (int) get_user_meta( $user_id, $dismiss_key, true );
-		if ( $dismissed_at < 1 ) {
-			return false;
-		}
-
-		$ttl = wpb_sdk_verification_notice_dismiss_ttl_seconds();
-
-		return $ttl > 0 && ( time() - $dismissed_at ) < $ttl;
+		return $dismissed_at > 0 && $ttl > 0 && ( time() - $dismissed_at ) < $ttl;
 	}
 }
 
@@ -1088,11 +1279,11 @@ if ( ! function_exists( 'wpb_sdk_build_uninstall_user_meta_keys_from_module' ) )
 	 * @return string[]
 	 */
 	function wpb_sdk_build_uninstall_user_meta_keys_from_module( array $module ) {
-		$keys     = array();
-		$meta     = isset( $module['optin_user_meta'] ) && is_array( $module['optin_user_meta'] )
+		$keys           = array();
+		$meta           = isset( $module['optin_user_meta'] ) && is_array( $module['optin_user_meta'] )
 			? $module['optin_user_meta']
 			: array();
-		$token    = ! empty( $meta['token'] ) ? (string) $meta['token'] : '';
+		$token          = ! empty( $meta['token'] ) ? (string) $meta['token'] : '';
 		$email_verified = function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
 			? wpb_sdk_email_verified_meta_key_from_module( $module )
 			: '';
@@ -1389,31 +1580,14 @@ if ( ! function_exists( 'wpb_sdk_foreach_site_on_uninstall' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wpb_sdk_cleanup_data_on_uninstall' ) ) {
+if ( ! function_exists( 'wpb_sdk_collect_uninstall_resources' ) ) {
 	/**
-	 * Remove all SDK options and opt-in user meta for a product on uninstall.
+	 * Collect uninstall options and user meta keys.
 	 *
 	 * @param string $slug Product slug.
-	 * @return void
+	 * @return array{options: string[], user_meta: string[], use_site: bool, optin_name: string}
 	 */
-	function wpb_sdk_cleanup_data_on_uninstall( $slug ) {
-		$slug = sanitize_key( (string) $slug );
-		if ( '' === $slug ) {
-			return;
-		}
-
-		/**
-		 * Whether the SDK should delete its options and user meta on uninstall.
-		 *
-		 * @param bool   $cleanup Default true.
-		 * @param string $slug    Product slug.
-		 */
-		if ( ! apply_filters( 'wpb_sdk_should_cleanup_on_uninstall', true, $slug ) ) {
-			return;
-		}
-
-		do_action( 'wpb_sdk_bootstrap_module', $slug );
-
+	function wpb_sdk_collect_uninstall_resources( $slug ) {
 		$manifest   = wpb_sdk_get_uninstall_cleanup_manifest( $slug );
 		$options    = $manifest['options'];
 		$user_meta  = $manifest['user_meta'];
@@ -1424,35 +1598,46 @@ if ( ! function_exists( 'wpb_sdk_cleanup_data_on_uninstall' ) ) {
 			array_merge( $options, wpb_sdk_query_option_names_by_prefix( 'wpb_sdk_' . $slug ) )
 		);
 
-		$module = function_exists( 'wpb_sdk_get_registered_module' )
-			? wpb_sdk_get_registered_module( $slug )
-			: array();
+		$module = function_exists( 'wpb_sdk_get_registered_module' ) ? wpb_sdk_get_registered_module( $slug ) : array();
 		if ( ! empty( $module ) ) {
-			$options   = array_unique(
-				array_merge( $options, wpb_sdk_build_uninstall_option_names_from_module( $slug, $module ) )
-			);
-			$user_meta = array_unique(
-				array_merge( $user_meta, wpb_sdk_build_uninstall_user_meta_keys_from_module( $module ) )
-			);
+			$options   = array_unique( array_merge( $options, wpb_sdk_build_uninstall_option_names_from_module( $slug, $module ) ) );
+			$user_meta = array_unique( array_merge( $user_meta, wpb_sdk_build_uninstall_user_meta_keys_from_module( $module ) ) );
 		}
-
-		/**
-		 * @param string[] $options  Option names to delete.
-		 * @param string   $slug     Product slug.
-		 */
-		$options = apply_filters( 'wpb_sdk_uninstall_option_names', $options, $slug );
 
 		$dismiss_meta = wpb_sdk_verification_notice_dismissed_meta_key( $slug );
 		if ( '' !== $dismiss_meta ) {
 			$user_meta[] = $dismiss_meta;
 		}
-		$user_meta = array_values( array_unique( array_filter( $user_meta ) ) );
 
-		/**
-		 * @param string[] $user_meta User meta keys to delete for all users.
-		 * @param string   $slug      Product slug.
-		 */
-		$user_meta = apply_filters( 'wpb_sdk_uninstall_user_meta_keys', $user_meta, $slug );
+		return array(
+			'options'    => (array) apply_filters( 'wpb_sdk_uninstall_option_names', $options, $slug ),
+			'user_meta'  => (array) apply_filters( 'wpb_sdk_uninstall_user_meta_keys', array_values( array_unique( array_filter( $user_meta ) ) ), $slug ),
+			'use_site'   => $use_site,
+			'optin_name' => $optin_name,
+		);
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_cleanup_data_on_uninstall' ) ) {
+	/**
+	 * Remove all SDK options and opt-in user meta for a product on uninstall.
+	 *
+	 * @param string $slug Product slug.
+	 * @return void
+	 */
+	function wpb_sdk_cleanup_data_on_uninstall( $slug ) {
+		$slug = sanitize_key( (string) $slug );
+		if ( '' === $slug || ! apply_filters( 'wpb_sdk_should_cleanup_on_uninstall', true, $slug ) ) {
+			return;
+		}
+
+		do_action( 'wpb_sdk_bootstrap_module', $slug );
+
+		$resources  = wpb_sdk_collect_uninstall_resources( $slug );
+		$options    = $resources['options'];
+		$user_meta  = $resources['user_meta'];
+		$use_site   = $resources['use_site'];
+		$optin_name = $resources['optin_name'];
 
 		delete_transient( 'wpb_sdk_' . $slug . '_pending_verify_notice' );
 
@@ -1650,20 +1835,15 @@ if ( ! function_exists( 'wpb_sdk_ensure_verification_token_expiry_meta' ) ) {
 			$user_id = wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
 		}
 
-		if ( $user_id < 1 ) {
-			return 0;
-		}
-
 		$token_meta   = (string) $module['optin_user_meta']['token'];
 		$expires_meta = wpb_sdk_verification_token_expires_meta_key( $module );
-		$token        = get_user_meta( $user_id, $token_meta, true );
+		$token        = $user_id >= 1 ? get_user_meta( $user_id, $token_meta, true ) : '';
 
 		if ( ! is_string( $token ) || '' === $token || '' === $expires_meta ) {
 			return 0;
 		}
 
 		$expires_at = (int) get_user_meta( $user_id, $expires_meta, true );
-
 		if ( $expires_at < 1 ) {
 			$expires_at = wpb_sdk_verification_token_expires_at( $module );
 			update_user_meta( $user_id, $expires_meta, $expires_at );
@@ -1682,13 +1862,9 @@ if ( ! function_exists( 'wpb_sdk_is_verification_token_expired' ) ) {
 	 * @return bool
 	 */
 	function wpb_sdk_is_verification_token_expired( $slug, $user_id = 0 ) {
-		$module = wpb_sdk_get_registered_module( $slug );
-		if ( empty( $module['optin_user_meta']['token'] ) ) {
-			return false;
-		}
-
+		$module  = wpb_sdk_get_registered_module( $slug );
 		$user_id = (int) $user_id;
-		if ( $user_id < 1 ) {
+		if ( empty( $module['optin_user_meta']['token'] ) || $user_id < 1 ) {
 			return false;
 		}
 
@@ -1699,11 +1875,7 @@ if ( ! function_exists( 'wpb_sdk_is_verification_token_expired' ) ) {
 		}
 
 		$expires_at = wpb_sdk_ensure_verification_token_expiry_meta( $slug, $user_id );
-		if ( $expires_at < 1 ) {
-			return false;
-		}
-
-		return time() > $expires_at;
+		return $expires_at >= 1 && time() > $expires_at;
 	}
 }
 
@@ -1983,14 +2155,15 @@ if ( ! function_exists( 'wpb_sdk_resolve_optin_admin_user_id' ) ) {
 			return $user_id;
 		}
 
-		$admins = wpb_sdk_get_administrator_users(
+		$admins   = wpb_sdk_get_administrator_users(
 			array(
 				'number' => 1,
 				'fields' => 'ID',
 			)
 		);
+		$admin_id = ! empty( $admins[0] ) ? (int) $admins[0] : 0;
 
-		return ! empty( $admins[0] ) ? (int) $admins[0] : 0;
+		return (int) apply_filters( 'wpb_sdk_optin_admin_user_id', $admin_id, $slug );
 	}
 }
 
@@ -2151,23 +2324,11 @@ if ( ! function_exists( 'wpb_sdk_user_was_telemetry_contact_for_product' ) ) {
 			return true;
 		}
 
-		$module = wpb_sdk_get_registered_module( $slug );
-		if ( empty( $module['optin_user_meta']['token'] ) ) {
-			return false;
-		}
-
-		$token_meta = (string) $module['optin_user_meta']['token'];
-		$token      = get_user_meta( $user_id, $token_meta, true );
-		if ( is_string( $token ) && '' !== $token ) {
-			return true;
-		}
-
+		$module       = wpb_sdk_get_registered_module( $slug );
+		$token_meta   = ! empty( $module['optin_user_meta']['token'] ) ? (string) $module['optin_user_meta']['token'] : '';
 		$verified_key = wpb_sdk_email_verified_meta_key_from_module( $module );
-		if ( '' === $verified_key ) {
-			return false;
-		}
 
-		return wpb_sdk_is_email_verified_meta_value( get_user_meta( $user_id, $verified_key, true ) );
+		return wpb_sdk_admin_has_centralized_meta( $user_id, $token_meta, $verified_key );
 	}
 }
 
@@ -2192,6 +2353,7 @@ if ( ! function_exists( 'wpb_sdk_handle_deleted_user_telemetry_contact' ) ) {
 			global $wpdb;
 
 			$like = $wpdb->esc_like( 'wpb_sdk_' ) . '%' . $wpdb->esc_like( '_optin_initiator' );
+			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Discovery of dynamic option keys when active product slugs are empty.
 			$rows = $wpdb->get_col(
 				$wpdb->prepare(
 					"SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE %s",
@@ -2268,7 +2430,7 @@ if ( ! function_exists( 'wpb_sdk_telemetry_contact_cohort_option_key' ) ) {
 if ( ! function_exists( 'wpb_sdk_set_telemetry_contact_cohort' ) ) {
 	/**
 	 * @param string $slug   Product slug.
-	 * @param string $cohort initiator_fresh|pre_32_login|centralized_32_primary
+	 * @param string $cohort initiator_fresh|pre_32_login|centralized_32_primary.
 	 * @return void
 	 */
 	function wpb_sdk_set_telemetry_contact_cohort( $slug, $cohort ) {
@@ -2323,6 +2485,21 @@ if ( ! function_exists( 'wpb_sdk_optin_initiator_backfill_version_option_key' ) 
 	}
 }
 
+if ( ! function_exists( 'wpb_sdk_has_active_telemetry_flags' ) ) {
+	/**
+	 * Check whether any telemetry sharing flags are enabled in SDK option array.
+	 *
+	 * @param array<string, mixed> $sdk Stored SDK data.
+	 * @return bool
+	 */
+	function wpb_sdk_has_active_telemetry_flags( array $sdk ) {
+		if ( isset( $sdk['user_skip'] ) && '1' === (string) $sdk['user_skip'] ) {
+			return false;
+		}
+		return ! empty( $sdk['communication'] ) || ! empty( $sdk['diagnostic_info'] ) || ! empty( $sdk['extensions'] );
+	}
+}
+
 if ( ! function_exists( 'wpb_sdk_legacy_optin_consent_is_active' ) ) {
 	/**
 	 * Whether this product has an active Allow (not Skip) opt-in on record.
@@ -2340,13 +2517,7 @@ if ( ! function_exists( 'wpb_sdk_legacy_optin_consent_is_active' ) ) {
 		$sdk     = is_string( $sdk_raw ) ? json_decode( $sdk_raw, true ) : $sdk_raw;
 
 		if ( is_array( $sdk ) ) {
-			foreach ( array( 'communication', 'diagnostic_info', 'extensions' ) as $flag ) {
-				if ( wpb_sdk_sdk_option_is_enabled( $sdk[ $flag ] ?? '0' ) ) {
-					return true;
-				}
-			}
-
-			return false;
+			return wpb_sdk_has_active_telemetry_flags( $sdk );
 		}
 
 		return 'yes' === wpb_sdk_get_optin_decision( $slug );
@@ -2368,18 +2539,18 @@ if ( ! function_exists( 'wpb_sdk_explain_telemetry_contact_resolution' ) ) {
 		$contact      = $contact_id > 0 ? get_user_by( 'id', $contact_id ) : null;
 
 		return array(
-			'slug'                      => $slug,
-			'cohort'                    => wpb_sdk_get_telemetry_contact_cohort( $slug ),
-			'fallback_mode'             => wpb_sdk_get_telemetry_contact_fallback_mode( $slug ),
-			'used_centralized_sdk_32'   => wpb_sdk_site_used_centralized_sdk_32( $slug ),
-			'initiator_user_id'         => $initiator_id,
-			'initiator_valid'           => wpb_sdk_optin_initiator_is_valid( $initiator_id ),
-			'resolved_user_id'          => $contact_id,
-			'resolved_email'            => ( $contact instanceof WP_User ) ? $contact->user_email : '',
-			'legacy_login_admin_id'     => wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug ),
-			'primary_admin_id'          => wpb_sdk_resolve_optin_admin_user_id( $slug, 0 ),
-			'backfill_version'          => (int) get_option( wpb_sdk_optin_initiator_backfill_version_option_key( $slug ), 0 ),
-			'backfill_complete'         => '1' === (string) get_option( wpb_sdk_optin_initiator_backfill_option_key( $slug ), '' ),
+			'slug'                    => $slug,
+			'cohort'                  => wpb_sdk_get_telemetry_contact_cohort( $slug ),
+			'fallback_mode'           => wpb_sdk_get_telemetry_contact_fallback_mode( $slug ),
+			'used_centralized_sdk_32' => wpb_sdk_site_used_centralized_sdk_32( $slug ),
+			'initiator_user_id'       => $initiator_id,
+			'initiator_valid'         => wpb_sdk_optin_initiator_is_valid( $initiator_id ),
+			'resolved_user_id'        => $contact_id,
+			'resolved_email'          => ( $contact instanceof WP_User ) ? $contact->user_email : '',
+			'legacy_login_admin_id'   => wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug ),
+			'primary_admin_id'        => wpb_sdk_resolve_optin_admin_user_id( $slug, 0 ),
+			'backfill_version'        => (int) get_option( wpb_sdk_optin_initiator_backfill_version_option_key( $slug ), 0 ),
+			'backfill_complete'       => '1' === (string) get_option( wpb_sdk_optin_initiator_backfill_option_key( $slug ), '' ),
 		);
 	}
 }
@@ -2387,7 +2558,7 @@ if ( ! function_exists( 'wpb_sdk_explain_telemetry_contact_resolution' ) ) {
 if ( ! function_exists( 'wpb_sdk_set_telemetry_contact_fallback_mode' ) ) {
 	/**
 	 * @param string $slug Product slug.
-	 * @param string $mode primary_admin|legacy_login_admin
+	 * @param string $mode primary_admin|legacy_login_admin.
 	 * @return void
 	 */
 	function wpb_sdk_set_telemetry_contact_fallback_mode( $slug, $mode ) {
@@ -2421,12 +2592,7 @@ if ( ! function_exists( 'wpb_sdk_get_telemetry_contact_fallback_mode' ) ) {
 			return '';
 		}
 
-		$stored = sanitize_key( (string) $stored );
-		if ( 'legacy_login_admin' === $stored ) {
-			return 'legacy_login_admin';
-		}
-
-		return 'primary_admin';
+		return 'legacy_login_admin' === sanitize_key( (string) $stored ) ? 'legacy_login_admin' : 'primary_admin';
 	}
 }
 
@@ -2472,6 +2638,32 @@ if ( ! function_exists( 'wpb_sdk_resolve_legacy_pre_32_admin_user_id' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpb_sdk_admin_has_centralized_meta' ) ) {
+	/**
+	 * Check whether an administrator has centralized token or verified meta.
+	 *
+	 * @param int    $admin_id     Admin user ID.
+	 * @param string $token_meta   Token user meta key.
+	 * @param string $verified_key Email verified user meta key.
+	 * @return bool
+	 */
+	function wpb_sdk_admin_has_centralized_meta( $admin_id, $token_meta, $verified_key ) {
+		if ( '' !== $token_meta ) {
+			$token = get_user_meta( $admin_id, $token_meta, true );
+			if ( is_string( $token ) && '' !== $token ) {
+				return true;
+			}
+		}
+		if ( '' !== $verified_key ) {
+			$verified_raw = get_user_meta( $admin_id, $verified_key, true );
+			if ( function_exists( 'wpb_sdk_is_email_verified_meta_value' ) && wpb_sdk_is_email_verified_meta_value( $verified_raw ) ) {
+				return true;
+			}
+		}
+		return false;
+	}
+}
+
 if ( ! function_exists( 'wpb_sdk_site_used_centralized_sdk_32' ) ) {
 	/**
 	 * Whether this site already ran centralized SDK 3.2.0+ (e.g. LoginPress 6.2.3).
@@ -2488,58 +2680,27 @@ if ( ! function_exists( 'wpb_sdk_site_used_centralized_sdk_32' ) ) {
 		}
 
 		$option_prefix = 'wpb_sdk_' . $slug;
+		$has_opt       = '1' === (string) get_option( $option_prefix . '_initial_log_sent', '' )
+			|| '' !== (string) get_option( $option_prefix . '_fallback_verify_token', '' )
+			|| false !== get_option( wpb_sdk_legacy_upgrade_optin_option_key( $slug ), false );
 
-		if ( '1' === (string) get_option( $option_prefix . '_initial_log_sent', '' ) ) {
-			return true;
-		}
+		$module       = function_exists( 'wpb_sdk_get_registered_module' ) ? wpb_sdk_get_registered_module( $slug ) : array();
+		$token_meta   = ! empty( $module['optin_user_meta']['token'] ) ? (string) $module['optin_user_meta']['token'] : '';
+		$verified_key = function_exists( 'wpb_sdk_email_verified_meta_key_from_module' ) ? wpb_sdk_email_verified_meta_key_from_module( $module ) : '';
 
-		if ( '' !== (string) get_option( $option_prefix . '_fallback_verify_token', '' ) ) {
-			return true;
-		}
-
-		if ( false !== get_option( wpb_sdk_legacy_upgrade_optin_option_key( $slug ), false ) ) {
-			return true;
-		}
-
-		$module = function_exists( 'wpb_sdk_get_registered_module' )
-			? wpb_sdk_get_registered_module( $slug )
-			: array();
-
-		$token_meta   = ! empty( $module['optin_user_meta']['token'] )
-			? (string) $module['optin_user_meta']['token']
-			: '';
-		$verified_key = function_exists( 'wpb_sdk_email_verified_meta_key_from_module' )
-			? wpb_sdk_email_verified_meta_key_from_module( $module )
-			: '';
-
-		if ( '' === $token_meta && '' === $verified_key ) {
-			return (bool) apply_filters( 'wpb_sdk_site_used_centralized_sdk_32', false, $slug, $module );
-		}
-
-		$admins = wpb_sdk_get_administrator_users( array( 'fields' => 'ID' ) );
-		foreach ( $admins as $admin_id ) {
-			$admin_id = (int) $admin_id;
-			if ( $admin_id < 1 ) {
-				continue;
-			}
-
-			if ( '' !== $token_meta ) {
-				$token = get_user_meta( $admin_id, $token_meta, true );
-				if ( is_string( $token ) && '' !== $token ) {
-					return true;
-				}
-			}
-
-			if ( '' !== $verified_key ) {
-				$verified_raw = get_user_meta( $admin_id, $verified_key, true );
-				if ( function_exists( 'wpb_sdk_is_email_verified_meta_value' )
-					&& wpb_sdk_is_email_verified_meta_value( $verified_raw ) ) {
-					return true;
+		$has_admin_meta = false;
+		if ( '' !== $token_meta || '' !== $verified_key ) {
+			$admins = wpb_sdk_get_administrator_users( array( 'fields' => 'ID' ) );
+			foreach ( $admins as $admin_id ) {
+				$admin_id = (int) $admin_id;
+				if ( $admin_id >= 1 && wpb_sdk_admin_has_centralized_meta( $admin_id, $token_meta, $verified_key ) ) {
+					$has_admin_meta = true;
+					break;
 				}
 			}
 		}
 
-		return (bool) apply_filters( 'wpb_sdk_site_used_centralized_sdk_32', false, $slug, $module );
+		return $has_opt || $has_admin_meta || (bool) apply_filters( 'wpb_sdk_site_used_centralized_sdk_32', false, $slug, $module );
 	}
 }
 
@@ -2556,25 +2717,13 @@ if ( ! function_exists( 'wpb_sdk_resolve_telemetry_contact_fallback_user_id' ) )
 			return 0;
 		}
 
-		$mode = wpb_sdk_get_telemetry_contact_fallback_mode( $slug );
-		if ( 'legacy_login_admin' === $mode ) {
-			return wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug );
-		}
-		if ( 'primary_admin' === $mode ) {
-			return wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
-		}
+		$mode      = wpb_sdk_get_telemetry_contact_fallback_mode( $slug );
+		$is_legacy = ( 'legacy_login_admin' === $mode )
+			|| ( 'primary_admin' !== $mode && 'initiator_fresh' !== wpb_sdk_get_telemetry_contact_cohort( $slug ) && wpb_sdk_legacy_optin_consent_is_active( $slug ) );
 
-		// Fresh opt-ins (post-3.3.1 Allow/Skip): lowest-ID admin when initiator is gone.
-		if ( 'initiator_fresh' === wpb_sdk_get_telemetry_contact_cohort( $slug ) ) {
-			return wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
-		}
-
-		// All legacy opted-in sites (SDK 3.1.x and LoginPress 6.2.3): SDK 3.1.0 login order.
-		if ( wpb_sdk_legacy_optin_consent_is_active( $slug ) ) {
-			return wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug );
-		}
-
-		return wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
+		return $is_legacy
+			? wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug )
+			: wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
 	}
 }
 
@@ -2611,11 +2760,7 @@ if ( ! function_exists( 'wpb_sdk_get_telemetry_contact_user' ) ) {
 	 */
 	function wpb_sdk_get_telemetry_contact_user( $slug ) {
 		$user_id = wpb_sdk_resolve_telemetry_contact_user_id( $slug );
-		if ( $user_id < 1 ) {
-			return null;
-		}
-
-		$user = get_user_by( 'id', $user_id );
+		$user    = $user_id >= 1 ? get_user_by( 'id', $user_id ) : null;
 		if ( $user instanceof WP_User ) {
 			return $user;
 		}
@@ -2625,13 +2770,9 @@ if ( ! function_exists( 'wpb_sdk_get_telemetry_contact_user' ) ) {
 		wpb_sdk_clear_verification_dispatch_state( $slug );
 
 		$fallback_id = wpb_sdk_resolve_telemetry_contact_fallback_user_id( $slug );
-		if ( $fallback_id < 1 ) {
-			return null;
-		}
+		$fallback    = $fallback_id >= 1 ? get_user_by( 'id', $fallback_id ) : null;
 
-		$user = get_user_by( 'id', $fallback_id );
-
-		return ( $user instanceof WP_User ) ? $user : null;
+		return ( $fallback instanceof WP_User ) ? $fallback : null;
 	}
 }
 
@@ -2656,6 +2797,35 @@ if ( ! function_exists( 'wpb_sdk_maybe_backfill_optin_initiator_for_legacy_site'
 	 * login name. That restores the original telemetry email and avoids new rows
 	 * after the 6.2.3 lowest-ID change.
 	 *
+if ( ! function_exists( 'wpb_sdk_sync_fresh_cohort_initiator' ) ) {
+	/**
+	 * Synchronize fresh opt-in initiator records.
+	 *
+	 * @param string $slug             Product slug.
+	 * @param mixed  $stored_initiator Stored initiator ID.
+	 * @param int    $stored_version   Stored backfill version.
+	 * @param int    $target_version   Target backfill version.
+	 * @param bool   $legacy_flag      Whether legacy flag is set.
+	 * @return void
+	 */
+	function wpb_sdk_sync_fresh_cohort_initiator( $slug, $stored_initiator, $stored_version, $target_version, $legacy_flag ) {
+		$stored_int = (int) $stored_initiator;
+		if ( $stored_int > 0 && ! wpb_sdk_optin_initiator_is_valid( $stored_int ) ) {
+			delete_option( wpb_sdk_optin_initiator_option_key( $slug ) );
+		}
+		if ( $stored_version < $target_version ) {
+			update_option( wpb_sdk_optin_initiator_backfill_version_option_key( $slug ), $target_version, false );
+		}
+		if ( ! $legacy_flag ) {
+			update_option( wpb_sdk_optin_initiator_backfill_option_key( $slug ), '1', false );
+		}
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_maybe_backfill_optin_initiator_for_legacy_site' ) ) {
+	/**
+	 * Align legacy site telemetry contact to the first admin by login name.
+	 *
 	 * @param string $slug Product slug.
 	 * @return void
 	 */
@@ -2671,46 +2841,30 @@ if ( ! function_exists( 'wpb_sdk_maybe_backfill_optin_initiator_for_legacy_site'
 		$stored_initiator = get_option( wpb_sdk_optin_initiator_option_key( $slug ), null );
 		$cohort           = wpb_sdk_get_telemetry_contact_cohort( $slug );
 
-		// Fresh opt-in after 3.3.1 (Allow/Skip): never legacy-backfill; clear dead initiator.
 		if ( 'initiator_fresh' === $cohort ) {
-			$stored_int = (int) $stored_initiator;
-			if ( $stored_int > 0 && ! wpb_sdk_optin_initiator_is_valid( $stored_int ) ) {
-				delete_option( wpb_sdk_optin_initiator_option_key( $slug ) );
-			}
+			wpb_sdk_sync_fresh_cohort_initiator( $slug, $stored_initiator, $stored_version, $target_version, $legacy_flag );
+			return;
+		}
+
+		if ( $legacy_flag && 'pre_32_login' === $cohort ) {
 			if ( $stored_version < $target_version ) {
-				update_option( wpb_sdk_optin_initiator_backfill_version_option_key( $slug ), $target_version, false );
+				delete_option( wpb_sdk_optin_initiator_option_key( $slug ) );
+			} else {
+				return;
 			}
-			if ( ! $legacy_flag ) {
-				update_option( wpb_sdk_optin_initiator_backfill_option_key( $slug ), '1', false );
+		}
+
+		if ( wpb_sdk_legacy_optin_consent_is_active( $slug ) ) {
+			$contact_id = wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug );
+			if ( $contact_id > 0 ) {
+				wpb_sdk_set_optin_initiator( $slug, $contact_id );
 			}
-			return;
-		}
 
-		// Legacy alphabetical backfill already completed at v3+.
-		if ( $stored_version >= $target_version && $legacy_flag && 'pre_32_login' === $cohort ) {
-			return;
+			wpb_sdk_set_telemetry_contact_fallback_mode( $slug, 'legacy_login_admin' );
+			wpb_sdk_set_telemetry_contact_cohort( $slug, 'pre_32_login' );
+			update_option( wpb_sdk_optin_initiator_backfill_option_key( $slug ), '1', false );
+			update_option( wpb_sdk_optin_initiator_backfill_version_option_key( $slug ), $target_version, false );
 		}
-
-		// Re-pin when an older backfill used lowest-ID (3.2.9–3.2.11 tiered rules).
-		if ( $legacy_flag && $stored_version < $target_version ) {
-			delete_option( wpb_sdk_optin_initiator_option_key( $slug ) );
-		} elseif ( $legacy_flag && 'pre_32_login' === $cohort ) {
-			return;
-		}
-
-		if ( ! wpb_sdk_legacy_optin_consent_is_active( $slug ) ) {
-			return;
-		}
-
-		$contact_id = wpb_sdk_resolve_legacy_pre_32_admin_user_id( $slug );
-		if ( $contact_id > 0 ) {
-			wpb_sdk_set_optin_initiator( $slug, $contact_id );
-		}
-
-		wpb_sdk_set_telemetry_contact_fallback_mode( $slug, 'legacy_login_admin' );
-		wpb_sdk_set_telemetry_contact_cohort( $slug, 'pre_32_login' );
-		update_option( wpb_sdk_optin_initiator_backfill_option_key( $slug ), '1', false );
-		update_option( wpb_sdk_optin_initiator_backfill_version_option_key( $slug ), $target_version, false );
 	}
 }
 
@@ -2859,45 +3013,21 @@ if ( ! function_exists( 'wpb_sdk_verification_email_was_issued' ) ) {
 	 * @return bool
 	 */
 	function wpb_sdk_verification_email_was_issued( $slug, $user_id = 0 ) {
-		$slug = sanitize_key( (string) $slug );
-		if ( '' === $slug ) {
+		$slug    = sanitize_key( (string) $slug );
+		$user_id = (int) $user_id > 0 ? (int) $user_id : wpb_sdk_resolve_optin_verification_user_id( $slug );
+		if ( '' === $slug || $user_id < 1 || ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) ) ) {
 			return false;
 		}
 
-		$user_id = (int) $user_id;
-		if ( $user_id < 1 ) {
-			$user_id = wpb_sdk_resolve_optin_verification_user_id( $slug );
-		}
-		if ( $user_id < 1 ) {
-			return false;
-		}
-
-		if ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) ) {
-			return false;
-		}
-
-		// Resend / dispatch just fired → "Thanks, check your inbox".
-		if ( get_transient( 'wpb_sdk_' . $slug . '_verify_resend_' . $user_id ) ) {
-			return true;
-		}
-
-		if ( get_transient( 'wpb_sdk_' . $slug . '_verify_email_dispatched' ) ) {
+		if ( get_transient( 'wpb_sdk_' . $slug . '_verify_resend_' . $user_id ) || get_transient( 'wpb_sdk_' . $slug . '_verify_email_dispatched' ) ) {
 			return true;
 		}
 
 		$module    = wpb_sdk_get_registered_module( $slug );
-		$token_key = ! empty( $module['optin_user_meta']['token'] )
-			? (string) $module['optin_user_meta']['token']
-			: '';
+		$token_key = ! empty( $module['optin_user_meta']['token'] ) ? (string) $module['optin_user_meta']['token'] : '';
+		$token     = '' !== $token_key ? get_user_meta( $user_id, $token_key, true ) : '';
 
-		if ( '' !== $token_key ) {
-			$token = get_user_meta( $user_id, $token_key, true );
-			if ( is_string( $token ) && '' !== $token ) {
-				return ! wpb_sdk_is_verification_token_expired( $slug, $user_id );
-			}
-		}
-
-		return false;
+		return is_string( $token ) && '' !== $token && ! wpb_sdk_is_verification_token_expired( $slug, $user_id );
 	}
 }
 
@@ -2928,11 +3058,7 @@ if ( ! function_exists( 'wpb_sdk_needs_verification_email_dispatch' ) ) {
 	 * @return bool
 	 */
 	function wpb_sdk_needs_verification_email_dispatch( $slug, $user_id = 0 ) {
-		if ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) ) {
-			return false;
-		}
-
-		if ( ! function_exists( 'wpb_sdk_allows_ongoing_telemetry' ) || ! wpb_sdk_allows_ongoing_telemetry( $slug ) ) {
+		if ( ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) ) || ! function_exists( 'wpb_sdk_allows_ongoing_telemetry' ) || ! wpb_sdk_allows_ongoing_telemetry( $slug ) ) {
 			return false;
 		}
 
@@ -2941,22 +3067,58 @@ if ( ! function_exists( 'wpb_sdk_needs_verification_email_dispatch' ) ) {
 			return false;
 		}
 
-		if ( $user_id < 1 ) {
-			$user_id = wpb_sdk_resolve_optin_verification_user_id( $slug );
-		}
+		$user_id = (int) $user_id > 0 ? (int) $user_id : wpb_sdk_resolve_optin_verification_user_id( $slug );
 		if ( $user_id < 1 ) {
 			$user_id = wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
 		}
-		if (
-			function_exists( 'wpb_sdk_has_pending_verification_token' )
+
+		$has_active_token = function_exists( 'wpb_sdk_has_pending_verification_token' )
 			&& wpb_sdk_has_pending_verification_token( $slug, $user_id )
 			&& function_exists( 'wpb_sdk_is_verification_token_expired' )
-			&& ! wpb_sdk_is_verification_token_expired( $slug, $user_id )
-		) {
-			return false;
-		}
+			&& ! wpb_sdk_is_verification_token_expired( $slug, $user_id );
 
-		return true;
+		return ! $has_active_token;
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_clear_user_verification_meta' ) ) {
+	/**
+	 * Clear verification meta and fallback tokens for resend flows.
+	 *
+	 * @param int                  $user_id User ID.
+	 * @param string               $slug    Product slug.
+	 * @param array<string, mixed> $module  Module config.
+	 * @return void
+	 */
+	function wpb_sdk_clear_user_verification_meta( $user_id, $slug, array $module ) {
+		if ( $user_id > 0 && ! empty( $module['optin_user_meta']['token'] ) ) {
+			$token_meta = (string) $module['optin_user_meta']['token'];
+			delete_user_meta( $user_id, $token_meta );
+			$expires_meta = function_exists( 'wpb_sdk_verification_token_expires_meta_key' )
+				? wpb_sdk_verification_token_expires_meta_key( $module )
+				: $token_meta . '_expires';
+			delete_user_meta( $user_id, $expires_meta );
+			delete_option( 'wpb_sdk_' . $slug . '_fallback_verify_token' );
+		}
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_can_dispatch_verification_email' ) ) {
+	/**
+	 * Validate prerequisites for dispatching a verification email.
+	 *
+	 * @param string               $slug            Product slug.
+	 * @param int                  $user_id         User ID.
+	 * @param bool                 $force_new_token Force new token.
+	 * @param array<string, mixed> $module          Module config.
+	 * @return bool
+	 */
+	function wpb_sdk_can_dispatch_verification_email( $slug, $user_id, $force_new_token, array $module ) {
+		$valid_slug_and_user = '' !== $slug && ! ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) );
+		$telemetry_ready     = function_exists( 'wpb_sdk_allows_ongoing_telemetry' ) && wpb_sdk_allows_ongoing_telemetry( $slug );
+		$has_token_meta      = '' !== wpb_sdk_email_verified_meta_key_from_module( $module ) && ! empty( $module['optin_user_meta']['token'] );
+
+		return $valid_slug_and_user && $telemetry_ready && $has_token_meta && ( $force_new_token || wpb_sdk_needs_verification_email_dispatch( $slug, $user_id ) );
 	}
 }
 
@@ -2970,64 +3132,30 @@ if ( ! function_exists( 'wpb_sdk_dispatch_verification_email' ) ) {
 	 * @return bool True when a dispatch was attempted.
 	 */
 	function wpb_sdk_dispatch_verification_email( $slug, $user_id = 0, $force_new_token = false ) {
-		$slug = sanitize_key( (string) $slug );
-		if ( '' === $slug ) {
-			return false;
-		}
-
-		if ( function_exists( 'wpb_sdk_is_user_verified' ) && wpb_sdk_is_user_verified( $slug, $user_id ) ) {
-			return false;
-		}
-
-		if ( ! function_exists( 'wpb_sdk_allows_ongoing_telemetry' ) || ! wpb_sdk_allows_ongoing_telemetry( $slug ) ) {
-			return false;
-		}
-
+		$slug   = sanitize_key( (string) $slug );
 		$module = wpb_sdk_get_registered_module( $slug );
-		if ( '' === wpb_sdk_email_verified_meta_key_from_module( $module ) || empty( $module['optin_user_meta']['token'] ) ) {
+		if ( ! wpb_sdk_can_dispatch_verification_email( $slug, $user_id, $force_new_token, $module ) ) {
 			return false;
 		}
 
-		if ( ! $force_new_token && ! wpb_sdk_needs_verification_email_dispatch( $slug, $user_id ) ) {
-			return false;
-		}
-
-		if ( $user_id < 1 ) {
-			$user_id = wpb_sdk_resolve_optin_verification_user_id( $slug );
-		}
+		$user_id = (int) $user_id > 0 ? (int) $user_id : wpb_sdk_resolve_optin_verification_user_id( $slug );
 		if ( $user_id < 1 ) {
 			$user_id = wpb_sdk_resolve_optin_admin_user_id( $slug, 0 );
 		}
-		$rate_key = $force_new_token
-			? 'wpb_sdk_' . $slug . '_verify_resend_' . $user_id
-			: 'wpb_sdk_' . $slug . '_verify_email_dispatched';
 
-		if ( get_transient( $rate_key ) ) {
-			return false;
-		}
-
-		if ( $force_new_token && $user_id > 0 && ! empty( $module['optin_user_meta']['token'] ) ) {
-			$token_meta = (string) $module['optin_user_meta']['token'];
-			delete_user_meta( $user_id, $token_meta );
-			$expires_meta = function_exists( 'wpb_sdk_verification_token_expires_meta_key' )
-				? wpb_sdk_verification_token_expires_meta_key( $module )
-				: $token_meta . '_expires';
-			delete_user_meta( $user_id, $expires_meta );
-			delete_option( 'wpb_sdk_' . $slug . '_fallback_verify_token' );
-		}
-
-		if ( ! class_exists( 'WPBRIGADE_Logger', false ) ) {
-			return false;
-		}
-
+		$rate_key  = $force_new_token ? 'wpb_sdk_' . $slug . '_verify_resend_' . $user_id : 'wpb_sdk_' . $slug . '_verify_email_dispatched';
 		$module_id = ! empty( $module['id'] ) ? (string) $module['id'] : '';
-		$logger    = WPBRIGADE_Logger::instance( $module_id, $slug, true );
-		if ( ! $logger ) {
+		$logger    = class_exists( 'WPBRIGADE_Logger', false ) ? WPBRIGADE_Logger::instance( $module_id, $slug, true ) : null;
+
+		if ( get_transient( $rate_key ) || ! $logger ) {
 			return false;
+		}
+
+		if ( $force_new_token ) {
+			wpb_sdk_clear_user_verification_meta( $user_id, $slug, $module );
 		}
 
 		$logger->log_verification_email_request( $slug, $force_new_token );
-
 		$ttl = $force_new_token ? 2 * MINUTE_IN_SECONDS : 12 * HOUR_IN_SECONDS;
 		set_transient( $rate_key, '1', $ttl );
 		set_transient( 'wpb_sdk_' . $slug . '_pending_verify_notice', '1', DAY_IN_SECONDS );
@@ -3062,21 +3190,39 @@ if ( ! function_exists( 'wpb_sdk_may_send_telemetry_action' ) ) {
 	 * @return bool
 	 */
 	function wpb_sdk_may_send_telemetry_action( $slug, $action = '' ) {
-		if ( ! wpb_sdk_module_requires_optin_consent( $slug ) ) {
-			return true;
-		}
-
-		if ( wpb_sdk_allows_ongoing_telemetry( $slug ) ) {
+		if ( ! wpb_sdk_module_requires_optin_consent( $slug ) || wpb_sdk_allows_ongoing_telemetry( $slug ) ) {
 			return true;
 		}
 
 		if ( 'activate' === $action && wpb_sdk_user_skipped_optin( $slug ) ) {
-			$sent_key = 'wpb_sdk_' . $slug . '_initial_log_sent';
-
-			return '1' !== (string) get_option( $sent_key, '' );
+			return '1' !== (string) get_option( 'wpb_sdk_' . $slug . '_initial_log_sent', '' );
 		}
 
 		return false;
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_get_all_active_plugin_files' ) ) {
+	/**
+	 * Retrieve unique list of all active plugin basenames.
+	 *
+	 * @return string[]
+	 */
+	function wpb_sdk_get_all_active_plugin_files() {
+		$files = array();
+		foreach ( (array) get_option( 'active_plugins', array() ) as $file ) {
+			if ( is_string( $file ) && '' !== $file ) {
+				$files[] = $file;
+			}
+		}
+		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
+			foreach ( array_keys( (array) get_site_option( 'active_sitewide_plugins', array() ) ) as $file ) {
+				if ( is_string( $file ) && '' !== $file ) {
+					$files[] = $file;
+				}
+			}
+		}
+		return array_unique( $files );
 	}
 }
 
@@ -3093,33 +3239,31 @@ if ( ! function_exists( 'wpb_sdk_scan_active_plugin_basename' ) ) {
 			return '';
 		}
 
-		$files = array();
-		foreach ( (array) get_option( 'active_plugins', array() ) as $file ) {
-			if ( is_string( $file ) && '' !== $file ) {
-				$files[] = $file;
-			}
-		}
-
-		if ( function_exists( 'is_multisite' ) && is_multisite() ) {
-			foreach ( array_keys( (array) get_site_option( 'active_sitewide_plugins', array() ) ) as $file ) {
-				if ( is_string( $file ) && '' !== $file ) {
-					$files[] = $file;
-				}
-			}
-		}
-
 		$file_pattern = '#/' . preg_quote( $slug, '#' ) . '\\.php$#';
-		foreach ( array_unique( $files ) as $file ) {
+		foreach ( wpb_sdk_get_all_active_plugin_files() as $file ) {
 			$dir = dirname( $file );
-			if ( $dir === $slug || basename( $dir ) === $slug ) {
-				return $file;
-			}
-			if ( preg_match( $file_pattern, $file ) ) {
+			if ( $dir === $slug || basename( $dir ) === $slug || preg_match( $file_pattern, $file ) ) {
 				return $file;
 			}
 		}
 
 		return '';
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_normalize_readable_path' ) ) {
+	/**
+	 * Normalize path and verify readability.
+	 *
+	 * @param mixed $path File path.
+	 * @return string Normalized path if readable, empty string otherwise.
+	 */
+	function wpb_sdk_normalize_readable_path( $path ) {
+		if ( ! is_string( $path ) || '' === $path ) {
+			return '';
+		}
+		$normalized = function_exists( 'wp_normalize_path' ) ? wp_normalize_path( $path ) : $path;
+		return is_readable( $normalized ) ? $normalized : '';
 	}
 }
 
@@ -3138,48 +3282,26 @@ if ( ! function_exists( 'wpb_sdk_get_plugin_path' ) ) {
 			return '';
 		}
 
+		$path   = '';
 		$module = wpb_sdk_get_registered_module( $slug );
 		if ( ! empty( $module['plugin_file'] ) ) {
-			$path = function_exists( 'wp_normalize_path' )
-				? wp_normalize_path( (string) $module['plugin_file'] )
-				: (string) $module['plugin_file'];
-			if ( is_readable( $path ) ) {
-				return $path;
+			$path = wpb_sdk_normalize_readable_path( (string) $module['plugin_file'] );
+		}
+		if ( '' === $path ) {
+			$path = wpb_sdk_normalize_readable_path( apply_filters( 'wpb_sdk_plugin_main_file', '', $slug ) );
+		}
+		if ( '' === $path ) {
+			$basename = wpb_sdk_scan_active_plugin_basename( $slug );
+			if ( '' !== $basename ) {
+				$path = wpb_sdk_normalize_readable_path( WP_PLUGIN_DIR . '/' . ltrim( $basename, '/\\' ) );
 			}
 		}
-
-		/**
-		 * Filter the resolved main plugin file before scanning active plugins.
-		 *
-		 * @param string $path Empty string or absolute path.
-		 * @param string $slug Product slug.
-		 */
-		$filtered = apply_filters( 'wpb_sdk_plugin_main_file', '', $slug );
-		if ( is_string( $filtered ) && '' !== $filtered ) {
-			$filtered = function_exists( 'wp_normalize_path' )
-				? wp_normalize_path( $filtered )
-				: $filtered;
-			if ( is_readable( $filtered ) ) {
-				return $filtered;
-			}
+		if ( '' === $path ) {
+			$fallback = WP_PLUGIN_DIR . '/' . $slug . '/' . $slug . '.php';
+			$path     = function_exists( 'wp_normalize_path' ) ? wp_normalize_path( $fallback ) : $fallback;
 		}
 
-		$basename = wpb_sdk_scan_active_plugin_basename( $slug );
-		if ( '' !== $basename ) {
-			$path = WP_PLUGIN_DIR . '/' . ltrim( $basename, '/\\' );
-			if ( function_exists( 'wp_normalize_path' ) ) {
-				$path = wp_normalize_path( $path );
-			}
-			if ( is_readable( $path ) ) {
-				return $path;
-			}
-		}
-
-		$fallback = WP_PLUGIN_DIR . '/' . $slug . '/' . $slug . '.php';
-
-		return function_exists( 'wp_normalize_path' )
-			? wp_normalize_path( $fallback )
-			: $fallback;
+		return $path;
 	}
 }
 
@@ -3215,9 +3337,7 @@ if ( ! function_exists( 'wpb_sdk_get_plugin_details' ) ) {
 			return null;
 		}
 
-		if ( ! function_exists( 'get_plugin_data' ) ) {
-			require_once ABSPATH . 'wp-admin/includes/plugin.php';
-		}
+		wpb_sdk_load_plugin_admin_file();
 
 		return get_plugin_data( $plugin_path );
 	}
@@ -3271,6 +3391,29 @@ if ( ! function_exists( 'wpb_get_plugin_path' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpb_sdk_get_first_registered_module_slug' ) ) {
+	/**
+	 * Get the first registered or initialized module slug.
+	 *
+	 * @return string
+	 */
+	function wpb_sdk_get_first_registered_module_slug() {
+		if ( ! empty( $GLOBALS['wpb_sdk_registry']['modules'] ) && is_array( $GLOBALS['wpb_sdk_registry']['modules'] ) ) {
+			$keys = array_keys( $GLOBALS['wpb_sdk_registry']['modules'] );
+			if ( ! empty( $keys[0] ) ) {
+				return (string) $keys[0];
+			}
+		}
+		if ( ! empty( $GLOBALS['wpb_sdk_registry']['initialized_modules'] ) && is_array( $GLOBALS['wpb_sdk_registry']['initialized_modules'] ) ) {
+			$keys = array_keys( array_filter( $GLOBALS['wpb_sdk_registry']['initialized_modules'] ) );
+			if ( ! empty( $keys[0] ) ) {
+				return (string) $keys[0];
+			}
+		}
+		return '';
+	}
+}
+
 if ( ! function_exists( 'wpb_sdk_dev_view_resolve_product' ) ) {
 	/**
 	 * Resolve slug and module id for SDK dev views (account, debug).
@@ -3285,31 +3428,13 @@ if ( ! function_exists( 'wpb_sdk_dev_view_resolve_product' ) ) {
 		if ( isset( $_GET['wpb_sdk_slug'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$requested = sanitize_key( wp_unslash( (string) $_GET['wpb_sdk_slug'] ) );
-			if (
-				'' !== $requested
-				&& function_exists( 'wpb_sdk_get_registered_module' )
-				&& ! empty( wpb_sdk_get_registered_module( $requested ) )
-			) {
+			if ( '' !== $requested && function_exists( 'wpb_sdk_get_registered_module' ) && ! empty( wpb_sdk_get_registered_module( $requested ) ) ) {
 				$slug = $requested;
 			}
 		}
 
-		if ( '' === $slug && ! empty( $GLOBALS['wpb_sdk_registry']['modules'] ) && is_array( $GLOBALS['wpb_sdk_registry']['modules'] ) ) {
-			$registry_slugs = array_keys( $GLOBALS['wpb_sdk_registry']['modules'] );
-			if ( ! empty( $registry_slugs[0] ) ) {
-				$slug = (string) $registry_slugs[0];
-			}
-		}
-
-		if (
-			'' === $slug
-			&& ! empty( $GLOBALS['wpb_sdk_registry']['initialized_modules'] )
-			&& is_array( $GLOBALS['wpb_sdk_registry']['initialized_modules'] )
-		) {
-			$registry_slugs = array_keys( array_filter( $GLOBALS['wpb_sdk_registry']['initialized_modules'] ) );
-			if ( ! empty( $registry_slugs[0] ) ) {
-				$slug = (string) $registry_slugs[0];
-			}
+		if ( '' === $slug ) {
+			$slug = wpb_sdk_get_first_registered_module_slug();
 		}
 
 		if ( '' !== $slug && function_exists( 'wpb_sdk_get_registered_module' ) ) {
@@ -3406,6 +3531,44 @@ if ( ! function_exists( 'wpb_sdk_remove_lifecycle_basename_map_entry' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpb_sdk_get_lifecycle_request_basename' ) ) {
+	/**
+	 * Extract plugin basename for lifecycle actions.
+	 *
+	 * @return string
+	 */
+	function wpb_sdk_get_lifecycle_request_basename() {
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended -- Lifecycle admin context.
+		if ( isset( $_REQUEST['plugin'] ) && is_string( $_REQUEST['plugin'] ) ) {
+			return sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) );
+		}
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+		if ( defined( 'WP_UNINSTALL_PLUGIN' ) && is_string( WP_UNINSTALL_PLUGIN ) ) {
+			return sanitize_text_field( WP_UNINSTALL_PLUGIN );
+		}
+		return '';
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_match_registry_plugin_basename' ) ) {
+	/**
+	 * Match request basename against registered SDK module files.
+	 *
+	 * @param string $request_basename Request plugin basename.
+	 * @return string
+	 */
+	function wpb_sdk_match_registry_plugin_basename( $request_basename ) {
+		if ( ! empty( $GLOBALS['wpb_sdk_registry']['modules'] ) && is_array( $GLOBALS['wpb_sdk_registry']['modules'] ) ) {
+			foreach ( $GLOBALS['wpb_sdk_registry']['modules'] as $reg_slug => $module ) {
+				if ( is_array( $module ) && ! empty( $module['plugin_file'] ) && plugin_basename( (string) $module['plugin_file'] ) === $request_basename ) {
+					return (string) $reg_slug;
+				}
+			}
+		}
+		return '';
+	}
+}
+
 if ( ! function_exists( 'wpb_sdk_resolve_product_slug_for_lifecycle' ) ) {
 	/**
 	 * Resolve product slug during activate / deactivate / uninstall.
@@ -3413,48 +3576,30 @@ if ( ! function_exists( 'wpb_sdk_resolve_product_slug_for_lifecycle' ) ) {
 	 * @return string
 	 */
 	function wpb_sdk_resolve_product_slug_for_lifecycle() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Lifecycle admin context.
-		$request_basename = isset( $_REQUEST['plugin'] ) && is_string( $_REQUEST['plugin'] )
-			? sanitize_text_field( wp_unslash( $_REQUEST['plugin'] ) )
-			: '';
-
-		if ( '' === $request_basename && defined( 'WP_UNINSTALL_PLUGIN' ) && is_string( WP_UNINSTALL_PLUGIN ) ) {
-			$request_basename = sanitize_text_field( WP_UNINSTALL_PLUGIN );
-		}
-
+		$request_basename = wpb_sdk_get_lifecycle_request_basename();
 		if ( '' === $request_basename ) {
 			return '';
 		}
 
-		$map = get_option( 'wpb_sdk_lifecycle_basenames', array() );
+		$resolved = '';
+		$map      = get_option( 'wpb_sdk_lifecycle_basenames', array() );
 		if ( is_array( $map ) && ! empty( $map[ $request_basename ] ) ) {
-			return sanitize_key( (string) $map[ $request_basename ] );
-		}
+			$resolved = sanitize_key( (string) $map[ $request_basename ] );
+		} else {
+			$slug = wpb_sdk_slug_from_plugin_basename( $request_basename );
+			if ( ! wpb_sdk_module_exists_for_slug( $slug ) && function_exists( 'wpb_sdk_restore_module_for_lifecycle' ) ) {
+				wpb_sdk_restore_module_for_lifecycle( $slug );
+			}
 
-		$slug = wpb_sdk_slug_from_plugin_basename( $request_basename );
-		if ( wpb_sdk_module_exists_for_slug( $slug ) ) {
-			return $slug;
-		}
-
-		if ( function_exists( 'wpb_sdk_restore_module_for_lifecycle' ) ) {
-			wpb_sdk_restore_module_for_lifecycle( $slug );
 			if ( wpb_sdk_module_exists_for_slug( $slug ) ) {
-				return $slug;
+				$resolved = $slug;
+			} else {
+				$matched  = wpb_sdk_match_registry_plugin_basename( $request_basename );
+				$resolved = '' !== $matched ? $matched : $slug;
 			}
 		}
 
-		if ( ! empty( $GLOBALS['wpb_sdk_registry']['modules'] ) && is_array( $GLOBALS['wpb_sdk_registry']['modules'] ) ) {
-			foreach ( $GLOBALS['wpb_sdk_registry']['modules'] as $reg_slug => $module ) {
-				if ( ! is_array( $module ) || empty( $module['plugin_file'] ) ) {
-					continue;
-				}
-				if ( plugin_basename( (string) $module['plugin_file'] ) === $request_basename ) {
-					return (string) $reg_slug;
-				}
-			}
-		}
-
-		return wpb_sdk_slug_from_plugin_basename( $request_basename );
+		return $resolved;
 	}
 }
 
@@ -3765,6 +3910,92 @@ if ( ! function_exists( 'wpb_sdk_get_client_ip' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpb_sdk_parse_user_agent_device' ) ) {
+	/**
+	 * Detect device type from user agent.
+	 *
+	 * @param string $user_agent User agent string.
+	 * @return string
+	 */
+	function wpb_sdk_parse_user_agent_device( $user_agent ) {
+		if ( preg_match( '/iPad|Tablet|Android(?!.*Mobile)/i', $user_agent ) ) {
+			return 'Tablet';
+		}
+		if ( preg_match( '/Mobile|Android.*Mobile|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i', $user_agent ) ) {
+			return 'Mobile';
+		}
+		return 'Desktop';
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_parse_user_agent_os' ) ) {
+	/**
+	 * Detect operating system from user agent.
+	 *
+	 * @param string $user_agent User agent string.
+	 * @return string
+	 */
+	function wpb_sdk_parse_user_agent_os( $user_agent ) {
+		$os          = 'Unknown';
+		$os_patterns = array(
+			'/Windows NT 10/i'   => 'Windows',
+			'/Windows NT 6\.3/i' => 'Windows 8.1',
+			'/Windows NT 6\.2/i' => 'Windows 8',
+			'/Windows NT 6\.1/i' => 'Windows 7',
+			'/Windows/i'         => 'Windows',
+			'/Mac OS X/i'        => 'macOS',
+			'/Android/i'         => 'Android',
+			'/Linux/i'           => 'Linux',
+			'/CrOS/i'            => 'Chrome OS',
+		);
+
+		if ( preg_match( '/Mac OS X ([0-9_\.]+)/i', $user_agent, $matches ) ) {
+			$os = 'macOS ' . str_replace( '_', '.', $matches[1] );
+		} elseif ( preg_match( '/Android ([0-9\.]+)/i', $user_agent, $matches ) ) {
+			$os = 'Android ' . $matches[1];
+		} elseif ( preg_match( '/(?:iPhone OS|CPU (?:iPhone )?OS) ([0-9_]+)/i', $user_agent, $matches ) ) {
+			$os = 'iOS ' . str_replace( '_', '.', $matches[1] );
+		} else {
+			foreach ( $os_patterns as $pattern => $os_name ) {
+				if ( preg_match( $pattern, $user_agent ) ) {
+					$os = $os_name;
+					break;
+				}
+			}
+		}
+
+		return $os;
+	}
+}
+
+if ( ! function_exists( 'wpb_sdk_parse_user_agent_browser' ) ) {
+	/**
+	 * Detect browser and version from user agent.
+	 *
+	 * @param string $user_agent User agent string.
+	 * @return string
+	 */
+	function wpb_sdk_parse_user_agent_browser( $user_agent ) {
+		$browser = 'Unknown';
+		$matches = array();
+		if ( preg_match( '/Edg\/([0-9\.]+)/i', $user_agent, $matches ) ) {
+			$browser = 'Edge ' . $matches[1];
+		} elseif ( preg_match( '/OPR\/([0-9\.]+)/i', $user_agent, $matches ) ) {
+			$browser = 'Opera ' . $matches[1];
+		} elseif ( preg_match( '/Chrome\/([0-9\.]+)/i', $user_agent, $matches ) && ! preg_match( '/Edg\//i', $user_agent ) ) {
+			$browser = 'Chrome ' . $matches[1];
+		} elseif ( preg_match( '/Firefox\/([0-9\.]+)/i', $user_agent, $matches ) ) {
+			$browser = 'Firefox ' . $matches[1];
+		} elseif ( preg_match( '/Version\/([0-9\.]+).*Safari/i', $user_agent, $matches ) ) {
+			$browser = 'Safari ' . $matches[1];
+		} elseif ( preg_match( '/(?:MSIE |Trident\/.*rv:)([0-9\.]+)/i', $user_agent, $matches ) ) {
+			$browser = 'Internet Explorer ' . $matches[1];
+		}
+
+		return $browser;
+	}
+}
+
 if ( ! function_exists( 'wpb_sdk_parse_user_agent' ) ) {
 	/**
 	 * Parse browser, OS, and device type from a User-Agent string.
@@ -3778,72 +4009,18 @@ if ( ! function_exists( 'wpb_sdk_parse_user_agent' ) ) {
 		}
 
 		$user_agent = (string) $user_agent;
-		$browser    = 'Unknown';
-		$os         = 'Unknown';
-		$device     = 'Desktop';
-
 		if ( '' === $user_agent ) {
 			return array(
-				'browser' => $browser,
-				'os'      => $os,
-				'device'  => $device,
+				'browser' => 'Unknown',
+				'os'      => 'Unknown',
+				'device'  => 'Desktop',
 			);
 		}
 
-		if ( preg_match( '/iPad|Tablet|Android(?!.*Mobile)/i', $user_agent ) ) {
-			$device = 'Tablet';
-		} elseif ( preg_match( '/Mobile|Android.*Mobile|iPhone|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i', $user_agent ) ) {
-			$device = 'Mobile';
-		}
-
-		if ( preg_match( '/Windows NT 10/i', $user_agent ) ) {
-			$os = 'Windows';
-		} elseif ( preg_match( '/Windows NT 6\.3/i', $user_agent ) ) {
-			$os = 'Windows 8.1';
-		} elseif ( preg_match( '/Windows NT 6\.2/i', $user_agent ) ) {
-			$os = 'Windows 8';
-		} elseif ( preg_match( '/Windows NT 6\.1/i', $user_agent ) ) {
-			$os = 'Windows 7';
-		} elseif ( preg_match( '/Windows/i', $user_agent ) ) {
-			$os = 'Windows';
-		} elseif ( preg_match( '/Mac OS X ([0-9_\.]+)/i', $user_agent, $matches ) ) {
-			$os = 'macOS ' . str_replace( '_', '.', $matches[1] );
-		} elseif ( preg_match( '/Mac OS X/i', $user_agent ) ) {
-			$os = 'macOS';
-		} elseif ( preg_match( '/Android ([0-9\.]+)/i', $user_agent, $matches ) ) {
-			$os = 'Android ' . $matches[1];
-		} elseif ( preg_match( '/Android/i', $user_agent ) ) {
-			$os = 'Android';
-		} elseif ( preg_match( '/iPhone OS ([0-9_]+)/i', $user_agent, $matches ) ) {
-			$os = 'iOS ' . str_replace( '_', '.', $matches[1] );
-		} elseif ( preg_match( '/CPU (?:iPhone )?OS ([0-9_]+)/i', $user_agent, $matches ) ) {
-			$os = 'iOS ' . str_replace( '_', '.', $matches[1] );
-		} elseif ( preg_match( '/Linux/i', $user_agent ) ) {
-			$os = 'Linux';
-		} elseif ( preg_match( '/CrOS/i', $user_agent ) ) {
-			$os = 'Chrome OS';
-		}
-
-		if ( preg_match( '/Edg\/([0-9\.]+)/i', $user_agent, $matches ) ) {
-			$browser = 'Edge ' . $matches[1];
-		} elseif ( preg_match( '/OPR\/([0-9\.]+)/i', $user_agent, $matches ) ) {
-			$browser = 'Opera ' . $matches[1];
-		} elseif ( preg_match( '/Chrome\/([0-9\.]+)/i', $user_agent, $matches ) && ! preg_match( '/Edg\//i', $user_agent ) ) {
-			$browser = 'Chrome ' . $matches[1];
-		} elseif ( preg_match( '/Firefox\/([0-9\.]+)/i', $user_agent, $matches ) ) {
-			$browser = 'Firefox ' . $matches[1];
-		} elseif ( preg_match( '/Version\/([0-9\.]+).*Safari/i', $user_agent, $matches ) ) {
-			$browser = 'Safari ' . $matches[1];
-		} elseif ( preg_match( '/MSIE ([0-9\.]+)/i', $user_agent, $matches ) ) {
-			$browser = 'Internet Explorer ' . $matches[1];
-		} elseif ( preg_match( '/Trident\/.*rv:([0-9\.]+)/i', $user_agent, $matches ) ) {
-			$browser = 'Internet Explorer ' . $matches[1];
-		}
-
 		return array(
-			'browser' => $browser,
-			'os'      => $os,
-			'device'  => $device,
+			'browser' => wpb_sdk_parse_user_agent_browser( $user_agent ),
+			'os'      => wpb_sdk_parse_user_agent_os( $user_agent ),
+			'device'  => wpb_sdk_parse_user_agent_device( $user_agent ),
 		);
 	}
 }

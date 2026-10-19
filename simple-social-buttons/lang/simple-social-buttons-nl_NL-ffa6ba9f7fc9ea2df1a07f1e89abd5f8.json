@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:21+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "nl-NL",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Simple Social Buttons": [
+                "Eenvoudige Sociale Knoppen"
+            ],
+            "Download Log File": [
+                "Logbestand downloaden"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "Logbestand van Simple Social Buttons succesvol gedownload!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> door <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> voegt een geavanceerde set sociale media deelknoppen toe aan uw WordPress-sites, zoals: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> en <strong>Pinterest<\/strong>. Dit maakt het de meest flexibele sociale deelplugin voor iedereen."
+            ],
+            "Help & Troubleshooting": [
+                "Hulp & Probleemoplossing"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Gratis ondersteuning is beschikbaar op de %splugin ondersteuningsforums%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "Voor premium functies, add-ons en prioritaire e-mailondersteuning, %supgrade naar pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Een bug gevonden of een functie verzoek? Dien alstublieft een probleem %shier in!%s"
+            ]
+        }
+    }
+}

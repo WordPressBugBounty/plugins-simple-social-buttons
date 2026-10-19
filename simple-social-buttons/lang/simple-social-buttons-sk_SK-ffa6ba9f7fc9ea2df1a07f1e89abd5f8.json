@@ -1,0 +1,39 @@
+{
+    "translation-revision-date": "2026-09-24 10:25+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "build\/help.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "sk-SK",
+                "plural-forms": "nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;"
+            },
+            "Simple Social Buttons": [
+                "Jednoduch\u00e9 soci\u00e1lne tla\u010didl\u00e1"
+            ],
+            "Download Log File": [
+                "Stiahnu\u0165 log s\u00fabor"
+            ],
+            "Simple Social Buttons Log File Downloaded Successfully!": [
+                "S\u00fabor protokolu Simple Social Buttons bol \u00faspe\u0161ne stiahnut\u00fd!"
+            ],
+            "<strong>Simple Social Buttons<\/strong> by <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> adds an advanced set of social media sharing buttons to your WordPress sites, such as: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> and <strong>Pinterest<\/strong>. This makes it the most flexible social sharing plugin for everyone.": [
+                "<strong>Simple Social Buttons<\/strong> od <strong><a href=\"https:\/\/wpbrigade.com\/?utm_source=simple-social-buttons-lite&utm_medium=link-header&utm_campaign=pro-upgrade\">WPBrigade<\/a><\/strong> prid\u00e1va pokro\u010dil\u00fa sadu tla\u010didiel na zdie\u013eanie na soci\u00e1lnych m\u00e9di\u00e1ch na va\u0161e str\u00e1nky WordPress, ako s\u00fa: <strong>Facebook<\/strong>, <strong>Twitter\/X<\/strong>, <strong>LinkedIn<\/strong>, <strong>WhatsApp<\/strong>, <strong>Viber<\/strong>, <strong>Reddit<\/strong> a <strong>Pinterest<\/strong>. To z neho rob\u00ed najflexibilnej\u0161\u00ed plugin na zdie\u013eanie na soci\u00e1lnych m\u00e9di\u00e1ch pre v\u0161etk\u00fdch."
+            ],
+            "Help & Troubleshooting": [
+                "Pomoc a rie\u0161enie probl\u00e9mov"
+            ],
+            "Free support is available on the %splugin support forums%s.": [
+                "Bezplatn\u00e1 podpora je k dispoz\u00edcii na %sfor\u00e1ch podpory pluginu%s."
+            ],
+            "For premium features, add-ons and priority email support, %supgrade to pro%s.": [
+                "Pre pr\u00e9miov\u00e9 funkcie, doplnky a prioritn\u00fa e-mailov\u00fa podporu, %supgrade na pro%s."
+            ],
+            "Found a bug or have a feature request? Please submit an issue %shere!%s": [
+                "Na\u0161li ste chybu alebo m\u00e1te po\u017eiadavku na funkciu? Pros\u00edm, po\u0161lite probl\u00e9m %shere!%s"
+            ]
+        }
+    }
+}

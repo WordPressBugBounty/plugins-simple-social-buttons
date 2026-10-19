@@ -1,0 +1,84 @@
+{
+    "translation-revision-date": "2026-09-24 10:16+0000",
+    "generator": "WP-CLI\/2.11.0",
+    "source": "assets\/js\/blocks.editor.js",
+    "domain": "messages",
+    "locale_data": {
+        "messages": {
+            "": {
+                "domain": "messages",
+                "lang": "es-ES",
+                "plural-forms": "nplurals=2; plural=(n != 1);"
+            },
+            "Click to post": [
+                "Clic para publicar"
+            ],
+            "Theme": [
+                "Tema"
+            ],
+            "select the style for click to post ": [
+                "selecciona el estilo para hacer clic y publicar "
+            ],
+            "Content": [
+                "Contenido"
+            ],
+            "Quote Content": [
+                "Contenido de la cita"
+            ],
+            "This text will be shown to the user.": [
+                "Este texto se mostrar\u00e1 al usuario."
+            ],
+            "Tweet Content": [
+                "Contenido del Tweet"
+            ],
+            "This text will be tweet . if empty Quote content will be used.": [
+                "Este texto ser\u00e1 tuiteado. Si est\u00e1 vac\u00edo, se utilizar\u00e1 el contenido de la cita."
+            ],
+            " Configuration": [
+                " Configuraci\u00f3n"
+            ],
+            "Show Tweet Button": [
+                "Mostrar bot\u00f3n de Tweet"
+            ],
+            "Include Page\/post Link": [
+                "Incluir enlace de p\u00e1gina\/publicaci\u00f3n"
+            ],
+            "\n Link to this post will be appended to the Tweet. we have a filter if you want to modify it `ssb_ctt_url`.": [
+                "\n El enlace a esta publicaci\u00f3n se a\u00f1adir\u00e1 al Tweet. tenemos un filtro si deseas modificarlo `ssb_ctt_url`."
+            ],
+            "Include via @username": [
+                "Incluir a trav\u00e9s de @username"
+            ],
+            "\n Twitter username from SSB Settings Advanced tab will be appended to the end of the Tweet with the text \u201cvia @username\u201d.": [
+                "El nombre de usuario de Twitter de la pesta\u00f1a Avanzadas de la configuraci\u00f3n de SSB se a\u00f1adir\u00e1 al final del Tweet con el texto \u201cvia @username\u201d."
+            ],
+            "Enter your content ...": [
+                "Introduce tu contenido ..."
+            ],
+            "Configuration": [
+                "Configuraci\u00f3n"
+            ],
+            "Share Counter": [
+                "Contador de Compartidos"
+            ],
+            "Total Counts": [
+                "Total de Contadores"
+            ],
+            "Supported Networks: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat": [
+                "Redes Soportadas: twitter,pinterest,fbshare,linkedin,reddit,whatsapp,viber,messenger,email,copylink,print,tumblr,bluesky,telegram,threads,line,mastodon,vk,snapchat"
+            ],
+            "Order": [
+                "Orden"
+            ],
+            "Align Left": [
+                "Alinear a la Izquierda"
+            ],
+            "Align Center": [
+                "Alinear al Centro"
+            ],
+            "Align Right": [
+                "Alinear a la Derecha"
+            ]
+        }
+    }
+}

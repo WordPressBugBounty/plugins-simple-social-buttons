@@ -206,6 +206,7 @@ class Ssb_Settings {
 	 * Returns all the settings fields.
 	 *
 	 * @return array Settings fields.
+	 * @version 7.2.0
 	 */
 	public function get_settings_fields() {
 			$post_types            = $this->get_current_post_types();
@@ -288,7 +289,7 @@ class Ssb_Settings {
 					'type'              => 'ssb_text',
 					'label'             => __( 'Enter the Space in Pixel', 'simple-social-buttons' ),
 					'placeholder'       => '10',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'ssb_sanitize_icon_space_value',
 					'priority'          => '30',
 				),
 				array(
@@ -418,7 +419,7 @@ class Ssb_Settings {
 					'type'              => 'ssb_text',
 					'label'             => __( 'Enter the Space in Pixel', 'simple-social-buttons' ),
 					'placeholder'       => '10',
-					'sanitize_callback' => 'sanitize_text_field',
+					'sanitize_callback' => 'ssb_sanitize_icon_space_value',
 					'priority'          => '35',
 				),
 				array(
@@ -726,7 +727,7 @@ class Ssb_Settings {
 	 *
 	 * @param string $input The code input to sanitize.
 	 * @since 4.0.0
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 *
 	 * @return $input the sanitized value.
 	 */
@@ -741,7 +742,7 @@ class Ssb_Settings {
 		if ( ! is_string( $input ) ) {
 			return '';
 		}
-		return preg_replace( '/[\x00]/', '', $input );
+		return preg_replace( '/[\x00]/', '', $input ); // NOSONAR.
 	}
 
 	/**
@@ -805,10 +806,11 @@ class Ssb_Settings {
 	 * Help page callback.
 	 *
 	 * @return void
+	 * @version 7.2.0
 	 */
 	public function ssb_help_page() {
 
-		include SSB_PLUGIN_DIR . 'classes/class-ssb-logs.php';
+		include_once SSB_PLUGIN_DIR . 'classes/class-ssb-logs.php';
 
 		$html  = '<div class="simple-social-buttons-help-page">';
 		$html .= '<h2>Help & Troubleshooting</h2>';
@@ -845,7 +847,7 @@ class Ssb_Settings {
 	 * Download help callback.
 	 *
 	 * @return void
-	 * @version 7.0.1
+	 * @version 7.2.0
 	 */
 	public function ssb_download_help() {
 
@@ -855,7 +857,7 @@ class Ssb_Settings {
 			wp_die( 'Not allowed.' );
 		}
 
-		include SSB_PLUGIN_DIR . 'classes/class-ssb-logs.php';
+		include_once SSB_PLUGIN_DIR . 'classes/class-ssb-logs.php';
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- plain-text log file, not HTML.
 		echo Ssb_Logs_Info::ssb_get_sysinfo();
@@ -1028,4 +1030,4 @@ class Ssb_Settings {
 	}
 }
 
-new Ssb_Settings();
+$GLOBALS['ssb_settings'] = new Ssb_Settings();

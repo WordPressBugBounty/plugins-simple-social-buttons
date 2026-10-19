@@ -14,29 +14,18 @@ if ( ! isset( $this->selected_position['inline'] ) && ! isset( $this->selected_p
 	return;
 }
 
-$ssb_inline_icon_margin = '';
-if (
-	isset( $this->inline_option['icon_space'], $this->inline_option['icon_space_value'] )
-	&& '1' === $this->inline_option['icon_space']
-	&& '' !== $this->inline_option['icon_space_value']
-) {
-	$ssb_inline_icon_margin = esc_attr( absint( $this->inline_option['icon_space_value'] ) ) . 'px';
-}
+$ssb_inline_icon_margin  = ssb_icon_space_margin( $this->inline_option ?? array(), 'px' );
+$ssb_sidebar_icon_margin = ssb_icon_space_margin( $this->sidebar_option ?? array(), 'px 0' );
 
-$ssb_sidebar_icon_margin = '';
-if (
-	isset( $this->sidebar_option['icon_space'], $this->sidebar_option['icon_space_value'] )
-	&& '1' === $this->sidebar_option['icon_space']
-	&& '' !== $this->sidebar_option['icon_space_value']
-) {
-	$ssb_sidebar_icon_margin = esc_attr( absint( $this->sidebar_option['icon_space_value'] ) ) . 'px 0';
+if ( '' === $ssb_inline_icon_margin && '' === $ssb_sidebar_icon_margin ) {
+	return;
 }
 ?>
 <?php // phpcs:disable WordPress.Security.EscapeOutput.OutputNotEscaped -- Legacy CSS template; refactor deferred. ?>
 <style media="screen">
 
 	<?php
-	if ( isset( $this->selected_position['inline'] ) && isset( $this->inline_option['icon_space'] ) ) :
+	if ( isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline .ssb-fb-like,
 	.simplesocialbuttons.simplesocialbuttons_inline amp-facebook-like {
@@ -45,7 +34,7 @@ if (
 	<?php endif ?>
 	/*inline margin*/
 	<?php
-	if ( 'sm-round' === $this->selected_theme && isset( $this->selected_position['inline'] ) ) :
+	if ( 'sm-round' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-sm-round button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -53,7 +42,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'simple-round' === $this->selected_theme && isset( $this->selected_position['inline'] ) ) :
+	if ( 'simple-round' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-simple-round button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -61,7 +50,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'round-txt' === $this->selected_theme && isset( $this->selected_position['inline'] ) ) :
+	if ( 'round-txt' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-round-txt button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -69,7 +58,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'round-btm-border' === $this->selected_theme && isset( $this->selected_position['inline'] ) ) :
+	if ( 'round-btm-border' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-round-btm-border button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -77,7 +66,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'flat-button-border' === $this->selected_theme && isset( $this->selected_position['inline'] ) ) :
+	if ( 'flat-button-border' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-flat-button-border button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -85,7 +74,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'round-icon' === $this->selected_theme && isset( $this->selected_position['inline'] ) ) :
+	if ( 'round-icon' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 		?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-round-icon button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -94,7 +83,7 @@ if (
 	<?php endif ?>
 
 		<?php
-		if ( 'simple-icons' === $this->selected_theme && isset( $this->selected_position['inline'] ) && isset( $this->inline_option['icon_space'] ) ) :
+		if ( 'simple-icons' === $this->selected_theme && isset( $this->selected_position['inline'] ) && '' !== $ssb_inline_icon_margin ) :
 			?>
 	.simplesocialbuttons.simplesocialbuttons_inline.simplesocial-simple-icons button{
 		margin: <?php echo $ssb_inline_icon_margin; ?>;
@@ -104,7 +93,7 @@ if (
 	/*margin-digbar*/
 
 	<?php
-	if ( 'sm-round' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) ) :
+	if ( 'sm-round' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-sm-round button{
 		margin: <?php echo $ssb_sidebar_icon_margin; ?>;
@@ -112,7 +101,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'simple-round' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) ) :
+	if ( 'simple-round' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-round button{
 		margin: <?php echo $ssb_sidebar_icon_margin; ?>;
@@ -120,7 +109,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'round-txt' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) ) :
+	if ( 'round-txt' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-txt button{
 	margin: <?php echo $ssb_sidebar_icon_margin; ?>;
@@ -128,7 +117,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'round-btm-border' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) ) :
+	if ( 'round-btm-border' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-btm-border button{
 		margin: <?php echo $ssb_sidebar_icon_margin; ?>;
@@ -136,7 +125,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'round-icon' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) ) :
+	if ( 'round-icon' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-round-icon button{
 	margin: <?php echo $ssb_sidebar_icon_margin; ?>;
@@ -144,7 +133,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( 'simple-icons' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) ) :
+	if ( 'simple-icons' === $this->selected_theme && isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons.simplesocial-simple-icons button{
 		margin: <?php echo $ssb_sidebar_icon_margin; ?>;
@@ -156,7 +145,7 @@ if (
 	<?php endif ?>
 
 	<?php
-	if ( isset( $this->selected_position['sidebar'] ) && '1' === $this->sidebar_option['icon_space'] ) :
+	if ( isset( $this->selected_position['sidebar'] ) && '' !== $ssb_sidebar_icon_margin ) :
 		?>
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons .ssb-fb-like,
 	div[class*="simplesocialbuttons-float"].simplesocialbuttons amp-facebook-like{
